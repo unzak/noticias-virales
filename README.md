@@ -1,40 +1,154 @@
-# Pulso — noticias en tendencia en España
+# Pulso Viral — radar social para España
 
-Dashboard estático que agrupa titulares recientes, detecta temas repetidos y
-les asigna un **score heurístico** combinando:
+Dashboard estático para detectar contenidos con **potencial editorial viral**:
+humor, curiosidades, animales, entretenimiento, televisión, deporte y formatos
+visuales. El ranking combina interacción observable, velocidad, recencia,
+presencia en varias plataformas, coincidencia con tendencias y afinidad con
+formatos compartibles.
 
-- número de medios distintos;
-- número de menciones del tema;
-- recencia;
-- coincidencia con Google Trends España.
+> El score es una heurística. No predice ni garantiza likes, alcance o ingresos.
 
-> El score no mide compartidos, visitas ni interacciones reales en redes sociales.
+## Fuentes
 
-## Publicarlo en GitHub Pages
+### Funcionan sin claves
 
-1. Sube esta carpeta completa a un repositorio de GitHub.
-2. Abre **Settings → Pages**.
-3. En **Build and deployment → Source**, selecciona **GitHub Actions**.
-4. Abre **Actions → Actualizar y publicar noticias trending**.
-5. Pulsa **Run workflow**, elige la rama `main` y vuelve a pulsar
-   **Run workflow**.
-6. Cuando termine en verde, abre el trabajo y entra en la URL mostrada en
-   **deployments**, o prueba:
-   `https://TU_USUARIO.github.io/TU_REPOSITORIO/`.
+- Google News España y búsquedas temáticas mediante RSS.
+- Menéame mediante RSS.
+- Google Trends España mediante RSS.
+- Bluesky mediante sus endpoints públicos.
+- Tendencias públicas de Mastodon en `masto.es` y `mastodon.social`.
 
-No selecciones `Deploy from a branch`: el workflow genera `docs/data.json` y
-publica la carpeta `docs` directamente como artefacto de GitHub Pages.
+### Opcionales
 
-No hacen falta tokens personales ni claves API. GitHub crea automáticamente el
-`GITHUB_TOKEN` temporal que necesita el despliegue.
+- **Reddit:** votos, comentarios, recencia y publicaciones visuales de
+  comunidades españolas y globales. Requiere credenciales OAuth.
+- **YouTube:** vídeos populares en España con visualizaciones, likes y
+  comentarios. Requiere una clave de YouTube Data API.
+- **X:** tendencias de España y volumen de publicaciones cuando está disponible.
+  Requiere un token de la API de X, que puede tener coste.
 
-## Archivos principales
+Facebook no está incluido como rastreo general: Meta no ofrece un feed público
+de “tendencias de España” para este uso. El acceso automatizado a páginas
+públicas requiere una aplicación de Meta, permisos aprobados y, según el caso,
+revisión de la aplicación. No se recomienda hacer scraping de Facebook.
 
-- `fetch_news.py`: descarga, limpia, agrupa y puntúa las noticias.
-- `docs/index.html`: interfaz pública.
-- `docs/data.json`: marcador inicial; el workflow lo sustituye antes de publicar.
-- `.github/workflows/update.yml`: generación y despliegue manual, con cada push
-  relevante y cada ~45 minutos.
+## Instalar esta versión en el repositorio
+
+Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
+
+```bash
+git add -A
+git commit -m "Añadir señales sociales y potencial viral"
+git push origin main
+```
+
+El `push` inicia el workflow automáticamente. También se puede ejecutar desde:
+
+`Actions → Actualizar y publicar radar viral → Run workflow`
+
+En **Settings → Pages**, la fuente debe estar configurada como
+**GitHub Actions**.
+
+## Activar Reddit
+
+Antes de utilizar Reddit, revisa sus condiciones de la Data API y solicita u
+obtén las credenciales correspondientes. Para un proyecto editorial o
+comercial pueden existir requisitos adicionales.
+
+En GitHub abre:
+
+`Settings → Secrets and variables → Actions → Secrets → New repository secret`
+
+Crea estos secretos:
+
+```text
+REDDIT_CLIENT_ID
+REDDIT_CLIENT_SECRET
+```
+
+Opcionalmente, en la pestaña **Variables**, crea:
+
+```text
+REDDIT_USER_AGENT
+```
+
+Ejemplo de valor:
+
+```text
+PulsoNoticias/2.0 by u/TU_USUARIO
+```
+
+Comunidades configuradas inicialmente:
+
+```text
+spain, Espana, es, askspain, yo_elvr, MemesEnEspanol,
+HistoriasDeReddit, Asi_va_Espana
+```
+
+Y para contenido visual global:
+
+```text
+Unexpected, AnimalsBeingDerps, ContagiousLaughter, MadeMeSmile
+```
+
+Puedes cambiarlas añadiendo variables de repositorio separadas por comas:
+
+```text
+REDDIT_SUBREDDITS_ES
+REDDIT_SUBREDDITS_GLOBAL
+```
+
+## Activar YouTube
+
+1. Crea o elige un proyecto en Google Cloud.
+2. Activa **YouTube Data API v3**.
+3. Crea una API key y restríngela a esa API.
+4. Añádela como secreto del repositorio:
+
+```text
+YOUTUBE_API_KEY
+```
+
+El generador consulta `videos.list` con `chart=mostPopular` y `regionCode=ES`.
+
+## Activar tendencias de X
+
+Añade como secreto:
+
+```text
+X_BEARER_TOKEN
+```
+
+El código consulta el endpoint oficial de tendencias para España. Comprueba
+antes el precio y el acceso disponibles en tu cuenta de desarrollador de X.
+
+## Cómo se calcula el potencial
+
+El score, de 1 a 100, pondera:
+
+- votos, likes, reposts, comentarios, visualizaciones e impulsos;
+- interacción por hora y antigüedad;
+- aparición del mismo tema en varias plataformas o fuentes;
+- coincidencia con Google Trends y, si está configurado, X Trends;
+- presencia de imagen o vídeo;
+- afinidad con entretenimiento, humor, animales, curiosidades y cultura popular;
+- penalización de política, sucesos duros y contenido sensible.
+
+Los pesos están en `fetch_news.py` y pueden ajustarse a partir del rendimiento
+real de las publicaciones. Conviene guardar, fuera de este panel, el score de
+cada candidato y los resultados posteriores para recalibrarlo con datos propios.
+
+## Publicación responsable
+
+El panel es una herramienta de descubrimiento y siempre enlaza al original.
+Antes de republicar contenido de una red social:
+
+- verifica que la historia sea cierta y conserve su contexto;
+- confirma los derechos de uso de imagen, vídeo y texto;
+- acredita al autor y a la plataforma cuando corresponda;
+- evita exponer datos personales o amplificar contenido retirado;
+- revisa las condiciones de la API y de la plataforma, especialmente para usos
+  comerciales.
 
 ## Probarlo localmente
 
@@ -42,19 +156,12 @@ No hacen falta tokens personales ni claves API. GitHub crea automáticamente el
 python -m venv .venv
 ```
 
-Activa el entorno:
+Activa el entorno e instala las dependencias:
 
 ```bash
-# macOS / Linux
-source .venv/bin/activate
+# Git Bash / macOS / Linux
+source .venv/Scripts/activate 2>/dev/null || source .venv/bin/activate
 
-# Windows PowerShell
-.venv\Scripts\Activate.ps1
-```
-
-Instala y ejecuta:
-
-```bash
 python -m pip install -r requirements.txt
 python fetch_news.py
 python -m http.server 8000 --directory docs
@@ -62,11 +169,13 @@ python -m http.server 8000 --directory docs
 
 Abre `http://localhost:8000`.
 
-## Notas operativas
+## Archivos principales
 
-- Si falla una fuente pero otra funciona, el panel se actualiza y deja el aviso
-  en el JSON desplegado.
-- Si fallan todas las fuentes de noticias, el job termina con error y GitHub
-  conserva el despliegue anterior.
-- Las ejecuciones programadas pueden retrasarse; el cron está desplazado del
-  minuto cero para reducir ese riesgo.
+- `fetch_news.py`: consulta, filtra, agrupa y puntúa las fuentes.
+- `docs/index.html`: interfaz y filtros del panel.
+- `docs/data.json`: datos generados antes de cada despliegue.
+- `.github/workflows/update.yml`: actualización y publicación cada ~45 minutos.
+
+Si todas las fuentes fallan, el proceso termina sin sustituir el despliegue
+anterior. Si falla solo una fuente, el panel sigue publicándose y muestra su
+estado y los avisos de la actualización.

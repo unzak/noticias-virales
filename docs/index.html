@@ -3,275 +3,297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="no-referrer-when-downgrade">
-<title>Pulso — Lo más viral de España</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="dark">
+<title>Pulso Viral — Radar social para España</title>
 <style>
   :root{
-    --ink:#12151c;
-    --ink-2:#1a1e28;
-    --paper:#ede8dd;
-    --paper-dim:#b7b2a5;
-    --heat:#c1440e;
-    --pulse:#3fa796;
-    --gold:#d4a537;
-    --line:#2a2e38;
+    --bg:#0b0c10;
+    --panel:#13151b;
+    --panel-2:#191c24;
+    --text:#f5f1e8;
+    --muted:#aaa69d;
+    --line:#2b2e38;
+    --hot:#ff5b2e;
+    --yellow:#ffd15c;
+    --mint:#62d6bf;
+    --blue:#75a7ff;
+    --purple:#bb8cff;
+    --danger:#ff7f7f;
+    --radius:16px;
   }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{
-    background:var(--ink);
-    color:var(--paper);
-    font-family:'Source Serif 4', serif;
+    margin:0;
     min-height:100vh;
+    background:
+      radial-gradient(circle at 85% -10%, rgba(255,91,46,.13), transparent 33rem),
+      radial-gradient(circle at -10% 20%, rgba(98,214,191,.09), transparent 28rem),
+      var(--bg);
+    color:var(--text);
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
-  a{color:inherit;}
+  a{color:inherit}
+  button{font:inherit}
+  .shell{max-width:1180px;margin:0 auto;padding:0 20px}
 
-  header{
-    padding:2.2rem 1.5rem 1.4rem;
-    border-bottom:1px solid var(--line);
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.18em;
-    text-transform:uppercase;
-    color:var(--pulse);
-    display:flex;
-    align-items:center;
-    gap:0.5rem;
-  }
-  .eyebrow::before{
-    content:'';
-    width:7px;height:7px;border-radius:50%;
-    background:var(--heat);
-    box-shadow:0 0 0 0 rgba(193,68,14,0.6);
-    animation:beat 1.6s infinite;
-  }
-  @keyframes beat{
-    0%{box-shadow:0 0 0 0 rgba(193,68,14,0.55);}
-    70%{box-shadow:0 0 0 8px rgba(193,68,14,0);}
-    100%{box-shadow:0 0 0 0 rgba(193,68,14,0);}
-  }
-  h1{
-    font-family:'Archivo Black', sans-serif;
-    font-weight:400;
-    font-size:clamp(2rem, 5vw, 3.2rem);
-    margin:0.5rem 0 0.3rem;
-    letter-spacing:-0.01em;
-  }
-  .sub{
-    color:var(--paper-dim);
-    font-size:1rem;
-    max-width:38em;
-  }
-  .updated{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.78rem;
-    color:var(--paper-dim);
-    margin-top:0.8rem;
-  }
+  header{padding:38px 0 24px;border-bottom:1px solid var(--line)}
+  .topline{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+  .brand-kicker{display:flex;align-items:center;gap:9px;color:var(--mint);font-weight:800;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+  .live-dot{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 6px rgba(255,91,46,.12)}
+  h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.9;letter-spacing:-.065em;margin:16px 0 14px;max-width:850px}
+  .lede{margin:0;max-width:760px;color:var(--muted);font-size:clamp(1rem,2vw,1.16rem);line-height:1.55}
+  .updated{color:var(--muted);font-size:.82rem;white-space:nowrap;padding-top:4px}
 
-  /* Marquee de tendencias */
-  .ticker-wrap{
-    border-bottom:1px solid var(--line);
-    background:var(--ink-2);
-    overflow:hidden;
-    white-space:nowrap;
-    padding:0.6rem 0;
-  }
-  .ticker{
-    display:inline-block;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.82rem;
-    color:var(--gold);
-    animation:scroll 35s linear infinite;
-    padding-left:100%;
-  }
-  .ticker span{margin-right:2.5rem;}
-  @keyframes scroll{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-100%);}
-  }
+  .ticker-wrap{border-bottom:1px solid var(--line);overflow:hidden;background:rgba(19,21,27,.78);backdrop-filter:blur(12px)}
+  .ticker{display:flex;gap:25px;overflow-x:auto;padding:12px 20px;scrollbar-width:none;font-size:.79rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--yellow)}
+  .ticker::-webkit-scrollbar{display:none}
+  .ticker span{white-space:nowrap}
+  .ticker .x{color:var(--blue)}
 
-  main{
-    max-width:900px;
-    margin:0 auto;
-    padding:2rem 1.5rem 4rem;
-  }
+  main{padding:26px 0 58px}
+  .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .summary-card{background:rgba(19,21,27,.88);border:1px solid var(--line);border-radius:14px;padding:15px}
+  .summary-card strong{display:block;font-size:1.5rem;letter-spacing:-.04em}
+  .summary-card span{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em}
 
+  .toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;margin:20px 0}
+  .filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filter{
+    border:1px solid var(--line);background:var(--panel);color:var(--muted);
+    border-radius:999px;padding:9px 13px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:750
+  }
+  .filter:hover,.filter.active{border-color:var(--hot);color:var(--text);background:rgba(255,91,46,.1)}
+  .count{color:var(--muted);font-size:.82rem;white-space:nowrap}
+
+  .stories{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
   .story{
-    display:grid;
-    grid-template-columns:3rem 1fr;
-    gap:1.1rem;
-    padding:1.4rem 0;
-    border-bottom:1px solid var(--line);
+    position:relative;display:grid;grid-template-columns:145px minmax(0,1fr);min-height:220px;
+    border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:linear-gradient(145deg,var(--panel),var(--panel-2));
+    transition:transform .18s ease,border-color .18s ease
   }
-  .rank{
-    font-family:'Archivo Black', sans-serif;
-    font-size:1.6rem;
-    color:var(--paper-dim);
-    line-height:1;
-  }
-  .story:nth-child(1) .rank{color:var(--heat);}
-  .story:nth-child(2) .rank{color:var(--gold);}
-  .story:nth-child(3) .rank{color:var(--pulse);}
+  .story:hover{transform:translateY(-2px);border-color:#4b4f5c}
+  .story:first-child{grid-column:span 2;grid-template-columns:minmax(280px,41%) minmax(0,1fr);min-height:330px}
+  .visual{position:relative;background:#0e1015;min-height:100%}
+  .visual img{width:100%;height:100%;min-height:220px;object-fit:cover;display:block}
+  .story:first-child .visual img{min-height:330px}
+  .visual.placeholder{display:grid;place-items:center;background:radial-gradient(circle at 20% 10%,rgba(255,91,46,.28),transparent 60%),linear-gradient(145deg,#181a23,#0d0f14)}
+  .placeholder-mark{font-size:3rem;font-weight:950;color:rgba(245,241,232,.22);letter-spacing:-.09em}
+  .media-tag{position:absolute;left:10px;bottom:10px;padding:5px 8px;border-radius:999px;background:rgba(11,12,16,.82);border:1px solid rgba(255,255,255,.16);font-size:.68rem;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
+  .content{padding:18px;display:flex;flex-direction:column;min-width:0}
+  .rank-line{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+  .rank{font-size:.76rem;font-weight:900;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+  .score{display:flex;align-items:center;gap:7px;font-weight:950}
+  .score b{font-size:1.45rem;line-height:1;color:var(--yellow)}
+  .score span{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;line-height:1.05}
+  h2{font-size:1.14rem;line-height:1.28;letter-spacing:-.018em;margin:0 0 11px}
+  .story:first-child h2{font-size:clamp(1.45rem,3vw,2.2rem);line-height:1.1}
+  h2 a{text-decoration:none}
+  h2 a:hover{text-decoration:underline;text-decoration-color:var(--hot);text-decoration-thickness:3px}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .badge{border:1px solid var(--line);border-radius:999px;padding:5px 8px;color:var(--muted);font-size:.7rem;font-weight:760}
+  .badge.hot{color:var(--hot);border-color:rgba(255,91,46,.5);background:rgba(255,91,46,.08)}
+  .badge.cross{color:var(--mint);border-color:rgba(98,214,191,.45)}
+  .badge.platform{color:var(--blue);border-color:rgba(117,167,255,.4)}
+  .signals{list-style:none;padding:0;margin:auto 0 13px;display:grid;gap:5px;color:var(--muted);font-size:.77rem;line-height:1.35}
+  .signals li::before{content:"↗";color:var(--mint);margin-right:7px;font-weight:900}
+  .source-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px solid var(--line);font-size:.76rem;color:var(--muted)}
+  .source-row a{color:var(--text);font-weight:800;text-decoration:none;white-space:nowrap}
+  .source-row a:hover{color:var(--hot)}
+  .meter{height:5px;border-radius:99px;background:#282b34;overflow:hidden;margin-top:10px}
+  .meter div{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--mint),var(--yellow),var(--hot))}
 
-  .story h2{
-    font-size:1.15rem;
-    font-weight:600;
-    line-height:1.35;
-    margin:0 0 0.55rem;
-  }
-  .story h2 a{text-decoration:none;}
-  .story h2 a:hover{text-decoration:underline;text-decoration-color:var(--heat);}
+  .sources-panel{margin-top:25px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:18px}
+  .sources-panel h3{margin:0 0 12px;font-size:1rem}
+  .source-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .source-chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:var(--muted);font-size:.73rem}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+  .source-chip.ok .status-dot{background:var(--mint)}
+  .source-chip.off .status-dot{background:var(--yellow)}
+  .source-chip.fail .status-dot{background:var(--danger)}
+  details{margin-top:13px;color:var(--muted);font-size:.76rem}
+  details summary{cursor:pointer;color:var(--text);font-weight:750}
+  .notice{margin-top:20px;padding:14px 16px;border-left:3px solid var(--yellow);background:rgba(255,209,92,.06);color:var(--muted);font-size:.78rem;line-height:1.5}
+  .empty,.error{grid-column:1/-1;text-align:center;padding:70px 20px;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted)}
 
-  .meta{
-    display:flex;
-    flex-wrap:wrap;
-    align-items:center;
-    gap:0.9rem;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    color:var(--paper-dim);
-  }
-  .badge{
-    padding:0.15rem 0.5rem;
-    border:1px solid var(--line);
-    border-radius:2px;
-  }
-  .badge.trend{border-color:var(--pulse);color:var(--pulse);}
+  footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--muted);font-size:.75rem;line-height:1.6}
 
-  .pulsebar{
-    margin-top:0.6rem;
-    height:5px;
-    background:var(--line);
-    border-radius:3px;
-    overflow:hidden;
+  @media(max-width:820px){
+    .topline{display:block}.updated{margin-top:16px}.summary-grid{grid-template-columns:repeat(2,1fr)}
+    .stories{grid-template-columns:1fr}.story,.story:first-child{grid-column:auto;grid-template-columns:125px minmax(0,1fr);min-height:220px}
+    .story:first-child .visual img{min-height:220px}.story:first-child h2{font-size:1.25rem}
   }
-  .pulsebar-fill{
-    height:100%;
-    background:linear-gradient(90deg, var(--pulse), var(--heat));
-    border-radius:3px;
+  @media(max-width:560px){
+    .shell{padding:0 14px}header{padding-top:28px}.summary-grid{gap:8px}.summary-card{padding:12px}.toolbar{display:block}.count{margin-top:10px}
+    .story,.story:first-child{display:block}.visual,.visual img,.story:first-child .visual img{height:210px;min-height:210px}.content{padding:15px}
   }
-
-  .empty, .error{
-    font-family:'IBM Plex Mono', monospace;
-    color:var(--paper-dim);
-    padding:3rem 0;
-    text-align:center;
-  }
-
-  footer{
-    text-align:center;
-    padding:2rem 1.5rem 3rem;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    color:var(--paper-dim);
-  }
-  footer a{color:var(--pulse);}
-
-  @media (prefers-reduced-motion: reduce){
-    .ticker{animation:none;}
-    .eyebrow::before{animation:none;}
-  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.story{transition:none}}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="eyebrow">En directo</div>
-  <h1>Pulso</h1>
-  <div class="sub">Temas destacados en medios españoles y Google Trends, agrupados y puntuados automáticamente.</div>
-  <div class="updated" id="updated">Cargando última actualización…</div>
+  <div class="shell topline">
+    <div>
+      <div class="brand-kicker"><span class="live-dot"></span> Radar social España</div>
+      <h1>Pulso Viral</h1>
+      <p class="lede">Ideas con potencial editorial para humor, curiosidades, animales, entretenimiento y vídeos compartibles. Ordenadas por interacción, velocidad, recencia y presencia en varias plataformas.</p>
+    </div>
+    <div class="updated" id="updated">Cargando actualización…</div>
+  </div>
 </header>
+<div class="ticker-wrap"><div class="ticker shell" id="ticker"><span>Cargando tendencias…</span></div></div>
 
-<div class="ticker-wrap">
-  <div class="ticker" id="ticker">Cargando tendencias…</div>
-</div>
+<main class="shell">
+  <section class="summary-grid" aria-label="Resumen">
+    <div class="summary-card"><strong id="storyCount">—</strong><span>oportunidades</span></div>
+    <div class="summary-card"><strong id="highCount">—</strong><span>potencial alto</span></div>
+    <div class="summary-card"><strong id="sourceCount">—</strong><span>fuentes activas</span></div>
+    <div class="summary-card"><strong id="entryCount">—</strong><span>piezas analizadas</span></div>
+  </section>
 
-<main id="main">
-  <div class="empty">Cargando noticias…</div>
+  <div class="toolbar">
+    <div class="filters" id="filters" aria-label="Filtros">
+      <button class="filter active" data-filter="all">Todo</button>
+      <button class="filter" data-filter="high">Potencial alto</button>
+      <button class="filter" data-filter="social">Social</button>
+      <button class="filter" data-filter="visual">Vídeo / imagen</button>
+      <button class="filter" data-filter="cross">Multiplataforma</button>
+    </div>
+    <div class="count" id="visibleCount"></div>
+  </div>
+
+  <section class="stories" id="stories"><div class="empty">Analizando señales…</div></section>
+  <section class="sources-panel" id="sourcesPanel" hidden>
+    <h3>Estado de las fuentes</h3>
+    <div class="source-chips" id="sourceChips"></div>
+    <details id="warningsBox" hidden><summary>Ver avisos de esta actualización</summary><ul id="warnings"></ul></details>
+  </section>
+  <div class="notice" id="notice">El score es una ayuda editorial: no garantiza likes. Comprueba contexto, derechos, autoría, privacidad y seguridad de marca antes de republicar contenido de terceros.</div>
 </main>
 
-<footer>
-  Datos: Google News España · Menéame · Google Trends España — ranking heurístico, no mide compartidos reales · actualización cada ~45 min
-</footer>
+<footer><div class="shell">Actualización automática cada ~45 minutos · Las métricas pertenecen a sus plataformas de origen y pueden cambiar · El panel enlaza a la publicación original.</div></footer>
 
 <script>
-async function load(){
-  const main = document.getElementById('main');
-  try{
-    const res = await fetch('./data.json?_=' + Date.now());
-    if(!res.ok) throw new Error('data.json no encontrado todavía');
-    const data = await res.json();
+let allStories = [];
+let currentFilter = 'all';
 
-    // Cabecera: hora de actualización
-    const updatedEl = document.getElementById('updated');
-    if(data.updated_at){
-      const d = new Date(data.updated_at);
-      updatedEl.textContent = 'Actualizado: ' + d.toLocaleString('es-ES', {dateStyle:'medium', timeStyle:'short'});
-    }
-
-    // Ticker de tendencias de Google
-    const tickerEl = document.getElementById('ticker');
-    if(data.trends_google && data.trends_google.length){
-      tickerEl.innerHTML = data.trends_google.map(t => `<span>▲ ${escapeHtml(t)}</span>`).join('');
-    } else {
-      tickerEl.innerHTML = '<span>Sin datos de Google Trends en esta actualización</span>';
-    }
-
-    // Lista de noticias
-    if(!data.stories || !data.stories.length){
-      main.innerHTML = '<div class="empty">Todavía no hay noticias generadas. Vuelve en un rato.</div>';
-      return;
-    }
-
-    const maxScore = Math.max(...data.stories.map(s => s.score));
-    main.innerHTML = data.stories.map((s, i) => {
-      const pct = maxScore ? Math.max(8, Math.round((s.score / maxScore) * 100)) : 0;
-      const trendBadge = s.matched_trend
-        ? `<span class="badge trend">Google Trends: ${escapeHtml(s.matched_trend)}</span>`
-        : '';
-      return `
-        <article class="story">
-          <div class="rank">${String(i+1).padStart(2,'0')}</div>
-          <div>
-            <h2><a href="${escapeHtml(safeUrl(s.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title)}</a></h2>
-            <div class="meta">
-              <span class="badge" title="${escapeHtml((s.sources || []).join(' · '))}">${s.sources.length} fuente${s.sources.length===1?'':'s'}</span>
-              <span class="badge">${s.num_mentions} mención${s.num_mentions===1?'':'es'}</span>
-              <span>score ${s.score}</span>
-              ${trendBadge}
-            </div>
-            <div class="pulsebar"><div class="pulsebar-fill" style="width:${pct}%"></div></div>
-          </div>
-        </article>`;
-    }).join('');
-
-  } catch(err){
-    main.innerHTML = `<div class="error">Todavía no hay datos publicados (${escapeHtml(err.message)}).<br>El primer workflow de GitHub Actions tiene que ejecutarse al menos una vez.</div>`;
-  }
+function escapeHtml(value){
+  return String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
 }
-
 function safeUrl(value){
+  if(value === null || value === undefined || String(value).trim() === '') return '#';
   try{
     const url = new URL(String(value), window.location.href);
-    return (url.protocol === 'http:' || url.protocol === 'https:') ? url.href : '#';
-  } catch {
-    return '#';
+    return ['http:','https:'].includes(url.protocol) ? url.href : '#';
+  }catch{return '#'}
+}
+function mediaLabel(type){
+  return ({video:'vídeo',image:'imagen',article:'artículo',link:'enlace',text:'social'})[type] || 'contenido';
+}
+function potentialLabel(score){
+  if(score >= 80) return 'Muy alto';
+  if(score >= 65) return 'Alto';
+  if(score >= 45) return 'Medio';
+  return 'Exploratorio';
+}
+function visibleFor(story, filter){
+  const platforms = story.platforms || [];
+  if(filter === 'high') return Number(story.viral_score ?? story.score) >= 65;
+  if(filter === 'social') return platforms.some(p => p !== 'news');
+  if(filter === 'visual') return ['video','image'].includes(story.media_type);
+  if(filter === 'cross') return platforms.length >= 2;
+  return true;
+}
+function storyCard(story, index){
+  const score = Math.max(0, Math.min(100, Number(story.viral_score ?? story.score ?? 0)));
+  const platforms = story.platform_labels || story.platforms || [];
+  const platformBadges = platforms.slice(0,4).map(p => `<span class="badge platform">${escapeHtml(p)}</span>`).join('');
+  const trend = story.matched_google_trend || story.matched_x_trend;
+  const trendBadge = trend ? `<span class="badge hot">En tendencia</span>` : '';
+  const crossBadge = (story.platforms || []).length >= 2 ? `<span class="badge cross">${story.platforms.length} plataformas</span>` : '';
+  const signals = (story.signals || []).slice(0,4).map(s => `<li>${escapeHtml(s)}</li>`).join('');
+  const thumbnail = safeUrl(story.thumbnail);
+  const visual = thumbnail !== '#'
+    ? `<div class="visual"><img src="${escapeHtml(thumbnail)}" alt="" loading="lazy"><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`
+    : `<div class="visual placeholder"><div class="placeholder-mark">PV</div><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`;
+  const sources = story.sources || [];
+  const sourceText = sources.length ? sources.slice(0,2).join(' · ') : 'Fuente original';
+  return `<article class="story" data-score="${score}">
+    ${visual}
+    <div class="content">
+      <div class="rank-line"><span class="rank">#${String(index+1).padStart(2,'0')}</span><span class="score"><b>${score}</b><span>potencial<br>viral</span></span></div>
+      <h2><a href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(story.title)}</a></h2>
+      <div class="badges">${trendBadge}${crossBadge}${platformBadges}</div>
+      ${signals ? `<ul class="signals">${signals}</ul>` : ''}
+      <div class="source-row"><span title="${escapeHtml(sources.join(' · '))}">${escapeHtml(sourceText)}</span><a href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">Abrir original ↗</a></div>
+      <div class="meter" aria-label="Potencial ${escapeHtml(potentialLabel(score))}"><div style="width:${score}%"></div></div>
+    </div>
+  </article>`;
+}
+function renderStories(){
+  const storiesEl = document.getElementById('stories');
+  const visible = allStories.filter(s => visibleFor(s,currentFilter));
+  document.getElementById('visibleCount').textContent = `${visible.length} resultado${visible.length === 1 ? '' : 's'}`;
+  if(!visible.length){storiesEl.innerHTML = '<div class="empty">No hay resultados para este filtro en esta actualización.</div>';return}
+  storiesEl.innerHTML = visible.map(storyCard).join('');
+  storiesEl.querySelectorAll('img').forEach(img => img.addEventListener('error', () => {
+    const visual = img.closest('.visual');
+    if(visual){visual.classList.add('placeholder');visual.innerHTML = `<div class="placeholder-mark">PV</div><span class="media-tag">contenido</span>`}
+  }, {once:true}));
+}
+function renderSources(data){
+  const panel = document.getElementById('sourcesPanel');
+  const statuses = data.source_status || [];
+  if(!statuses.length) return;
+  panel.hidden = false;
+  document.getElementById('sourceChips').innerHTML = statuses.map(s => {
+    const state = s.ok === true ? 'ok' : s.ok === false ? 'fail' : 'off';
+    const suffix = s.ok === null ? (s.note || 'No configurada') : `${Number(s.items || 0)} elementos`;
+    return `<span class="source-chip ${state}" title="${escapeHtml(suffix)}"><span class="status-dot"></span>${escapeHtml(s.name)}</span>`;
+  }).join('');
+  const warnings = data.warnings || [];
+  if(warnings.length){
+    document.getElementById('warningsBox').hidden = false;
+    document.getElementById('warnings').innerHTML = warnings.map(w => `<li>${escapeHtml(w)}</li>`).join('');
   }
 }
+async function load(){
+  try{
+    const response = await fetch('./data.json?_=' + Date.now(), {cache:'no-store'});
+    if(!response.ok) throw new Error('data.json no disponible');
+    const data = await response.json();
+    allStories = Array.isArray(data.stories) ? data.stories : [];
+    const updated = data.updated_at ? new Date(data.updated_at) : null;
+    document.getElementById('updated').textContent = updated && !Number.isNaN(updated.valueOf())
+      ? `Actualizado ${updated.toLocaleString('es-ES',{dateStyle:'medium',timeStyle:'short'})}`
+      : 'Esperando primera actualización';
 
-function escapeHtml(str){
-  return String(str).replace(/[&<>"']/g, m => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[m]));
+    const google = (data.trends_google || []).slice(0,12).map(t => `<span>▲ ${escapeHtml(t)}</span>`);
+    const x = (data.trends_x || []).slice(0,8).map(t => `<span class="x">X · ${escapeHtml(t)}</span>`);
+    document.getElementById('ticker').innerHTML = [...google,...x].join('') || '<span>Sin tendencias disponibles</span>';
+
+    const summary = data.source_summary || {};
+    document.getElementById('storyCount').textContent = allStories.length;
+    document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
+    document.getElementById('sourceCount').textContent = summary.active ?? '—';
+    document.getElementById('entryCount').textContent = summary.entries_collected ?? '—';
+    if(data.editorial_notice) document.getElementById('notice').textContent = data.editorial_notice;
+    renderStories();
+    renderSources(data);
+  }catch(error){
+    document.getElementById('stories').innerHTML = `<div class="error">No se pudieron cargar los datos: ${escapeHtml(error.message)}.<br>Ejecuta el workflow de GitHub Actions al menos una vez.</div>`;
+  }
 }
-
+document.getElementById('filters').addEventListener('click', event => {
+  const button = event.target.closest('[data-filter]');
+  if(!button) return;
+  currentFilter = button.dataset.filter;
+  document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+  renderStories();
+});
 load();
 </script>
-
 </body>
 </html>

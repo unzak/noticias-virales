@@ -1,5 +1,20 @@
 {
   "updated_at": null,
   "trends_google": [],
-  "stories": []
+  "trends_x": [],
+  "trend_details": {
+    "google": [],
+    "x": []
+  },
+  "stories": [],
+  "warnings": [],
+  "source_status": [],
+  "source_summary": {
+    "active": 0,
+    "configured": 0,
+    "total": 0,
+    "entries_collected": 0
+  },
+  "methodology": "Potencial viral heurístico; no predice ni garantiza likes futuros.",
+  "editorial_notice": "El panel enlaza a contenido de terceros para descubrimiento. Antes de republicar, verifica contexto, permisos, autoría, privacidad y seguridad de marca."
 }
