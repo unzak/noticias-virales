@@ -58,7 +58,7 @@ NEWS_SOURCES = (
         "Google News · animales e historias",
         f"{GOOGLE_NEWS_BASE}/search?{urllib.parse.urlencode({'q': 'animales OR mascotas OR historia viral'})}&{GOOGLE_NEWS_PARAMS}",
     ),
-    ("Menéame", "https://www.meneame.net/rss2"),
+    ("Menéame", "https://www.meneame.net/rss"),
 )
 GOOGLE_TRENDS_URL = "https://trends.google.com/trending/rss?geo=ES"
 BLUESKY_SEARCH_URL = "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts"
