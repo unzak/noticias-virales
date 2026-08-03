@@ -34,6 +34,7 @@ import os
 import re
 import shutil
 import tempfile
+import time
 import unicodedata
 import urllib.error
 import urllib.parse
@@ -189,33 +190,12 @@ NEWS_SOURCES = (
         ("viral",),
     ),
     (
-        "La Vanguardia · Cribeo Viral",
-        google_news_search_url("site:lavanguardia.com/cribeo/viral"),
-        10.0,
-        "Cribeo Viral",
-        ("viral",),
-    ),
-    (
         "AS · Tikitakas Viral",
         google_news_search_url(
             'site:as.com/tikitakas (viral OR TikTok OR Instagram OR "redes sociales")'
         ),
         9.0,
         "Tikitakas Virales",
-        ("viral",),
-    ),
-    (
-        "Antena 3 · Virales",
-        google_news_search_url("site:antena3.com/noticias/virales"),
-        9.0,
-        "Virales",
-        ("viral",),
-    ),
-    (
-        "laSexta · Virales",
-        google_news_search_url("site:lasexta.com/noticias/virales"),
-        9.0,
-        "Virales",
         ("viral",),
     ),
     (
@@ -228,36 +208,11 @@ NEWS_SOURCES = (
         ("viral", "curiosidades"),
     ),
     (
-        "EL ESPAÑOL · Virales",
-        google_news_search_url("site:elespanol.com/temas/virales"),
-        8.0,
-        "Virales",
-        ("viral",),
-    ),
-    (
         "Público · Tremending",
         google_news_search_url("site:publico.es/tremending"),
         8.0,
         "Tremending",
         ("viral",),
-    ),
-    (
-        "Infobae · Virales",
-        google_news_search_url(
-            'site:infobae.com/virales (TikTok OR curiosidades OR viral OR insólito)'
-        ),
-        10.0,
-        "Infobae Virales",
-        ("viral", "tiktok", "curiosidades"),
-    ),
-    (
-        "Infobae España · TikTok y curiosidades",
-        google_news_search_url(
-            'site:infobae.com/espana (TikTok OR curiosidades OR curioso OR viral)'
-        ),
-        9.0,
-        "TikTok y curiosidades",
-        ("tiktok", "curiosidades"),
     ),
     *build_topic_sources(),
     ("Google News España", f"{GOOGLE_NEWS_BASE}?{GOOGLE_NEWS_PARAMS}", 0.0, None, ()),
@@ -290,12 +245,75 @@ NEWS_SOURCES = (
         ("viral",),
     ),
 )
+
+# Secciones editoriales que se leen directamente desde la portada del medio.
+# Google News queda como respaldo si una portada cambia temporalmente su HTML.
+# Tupla: (estado, medio, URL directa, URL de respaldo, impulso, sección, etiquetas).
+DIRECT_SECTION_SOURCES = (
+    (
+        "La Vanguardia · Cribeo Viral",
+        "La Vanguardia",
+        "https://www.lavanguardia.com/cribeo/viral",
+        google_news_search_url("site:lavanguardia.com/cribeo/viral"),
+        10.0,
+        "Cribeo Viral",
+        ("viral", "curiosidades"),
+    ),
+    (
+        "Antena 3 · Virales",
+        "Antena 3",
+        "https://www.antena3.com/noticias/virales/",
+        google_news_search_url("site:antena3.com/noticias/virales"),
+        9.0,
+        "Virales",
+        ("viral",),
+    ),
+    (
+        "laSexta · Viral",
+        "laSexta",
+        "https://www.lasexta.com/temas/viral-1",
+        google_news_search_url('site:lasexta.com (viral OR "vídeo viral" OR "video viral")'),
+        9.0,
+        "Viral y vídeos virales",
+        ("viral", "curiosidades"),
+    ),
+    (
+        "EL ESPAÑOL · Offbeat",
+        "EL ESPAÑOL",
+        "https://www.elespanol.com/offbeat/",
+        google_news_search_url("site:elespanol.com/offbeat"),
+        9.0,
+        "Offbeat",
+        ("viral", "curiosidades"),
+    ),
+    (
+        "Infobae · Virales",
+        "Infobae",
+        "https://www.infobae.com/virales/",
+        google_news_search_url('site:infobae.com/virales (TikTok OR curiosidades OR viral OR insólito)'),
+        10.0,
+        "Virales",
+        ("viral", "tiktok", "curiosidades"),
+    ),
+    (
+        "Infobae España · Virales",
+        "Infobae España",
+        "https://www.infobae.com/tag/virales-espana/",
+        google_news_search_url('site:infobae.com/espana (TikTok OR curiosidades OR curioso OR viral)'),
+        9.0,
+        "Virales España",
+        ("viral", "tiktok", "curiosidades"),
+    ),
+)
 MENEAME_SECTIONS = (
     ("Menéame · Populares", "https://www.meneame.net/popular", "popular"),
     ("Menéame · Más visitadas", "https://www.meneame.net/top_visited", "top_visited"),
 )
 GOOGLE_TRENDS_URL = "https://trends.google.com/trending/rss?geo=ES"
-BLUESKY_SEARCH_URL = "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
+BLUESKY_SEARCH_URLS = (
+    "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts",
+    "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts",
+)
 X_TRENDS_URL = "https://api.x.com/2/trends/by/woeid/23424950"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
@@ -319,14 +337,14 @@ DEFAULT_REDDIT_GLOBAL = (
 
 USER_AGENT = os.getenv(
     "PULSO_USER_AGENT",
-    "PulsoNoticias/2.7 (+https://github.com/unzak/noticias-virales)",
+    "PulsoNoticias/2.8 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
 NEWS_MAX_AGE_HOURS = 72
 SOCIAL_MAX_AGE_HOURS = 48
 YOUTUBE_MAX_AGE_HOURS = 14 * 24
 TIKTOK_MAX_AGE_HOURS = 7 * 24
-TIKTOK_DEFAULT_COUNT = 40
+TIKTOK_DEFAULT_COUNT = 30
 MAX_STORIES = 100
 MAX_NEWS_ITEMS_PER_SOURCE = 35
 IMAGE_ENRICH_LIMIT = 100
@@ -344,7 +362,7 @@ IMAGE_FETCH_TIMEOUT_SECONDS = 10
 BROWSER_USER_AGENT = os.getenv(
     "PULSO_IMAGE_USER_AGENT",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.7",
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.8",
 )
 
 STOPWORDS = set(
@@ -2065,12 +2083,441 @@ def extract_publisher(entry: Any, fallback: str) -> str:
     return fallback
 
 
+
+SECTION_GENERIC_TITLES = {
+    "viral", "virales", "curiosidades", "últimas noticias", "ultima hora",
+    "ver más", "ver mas", "más información", "mas informacion", "inicio",
+    "noticias", "vídeos", "videos", "redes sociales", "publicidad",
+}
+
+
+def best_srcset_url(value: str | None) -> str | None:
+    if not value:
+        return None
+    options: list[tuple[float, str]] = []
+    for part in value.split(","):
+        bits = part.strip().split()
+        if not bits:
+            continue
+        url = bits[0]
+        weight = 0.0
+        if len(bits) > 1:
+            descriptor = bits[-1].lower()
+            try:
+                if descriptor.endswith("w"):
+                    weight = float(descriptor[:-1])
+                elif descriptor.endswith("x"):
+                    weight = float(descriptor[:-1]) * 1000
+            except ValueError:
+                pass
+        options.append((weight, url))
+    if not options:
+        return None
+    return max(options, key=lambda item: item[0])[1]
+
+
+class SectionListingParser(HTMLParser):
+    """Extrae titulares de una portada editorial sin depender de sus clases CSS."""
+
+    def __init__(self, base_url: str) -> None:
+        super().__init__(convert_charrefs=True)
+        self.base_url = base_url
+        self.main_depth = 0
+        self.article_depth = 0
+        self.heading_depth = 0
+        self.current_anchor: dict[str, Any] | None = None
+        self.anchors: list[dict[str, Any]] = []
+        self.in_jsonld = False
+        self.jsonld_buffer: list[str] = []
+        self.jsonld_blocks: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        tag = tag.lower()
+        attr = {key.lower(): value or "" for key, value in attrs}
+        if tag == "main":
+            self.main_depth += 1
+        if tag == "article":
+            self.article_depth += 1
+        if tag in {"h1", "h2", "h3", "h4"}:
+            self.heading_depth += 1
+        if tag == "script" and "ld+json" in attr.get("type", "").lower():
+            self.in_jsonld = True
+            self.jsonld_buffer = []
+        if tag == "a" and attr.get("href"):
+            self.current_anchor = {
+                "href": urllib.parse.urljoin(self.base_url, attr["href"]),
+                "text": [],
+                "heading": [],
+                "images": [],
+                "in_main": self.main_depth > 0,
+                "in_article": self.article_depth > 0,
+                "aria": attr.get("aria-label") or attr.get("title") or "",
+            }
+        elif tag == "img" and self.current_anchor is not None:
+            src = (
+                best_srcset_url(attr.get("srcset") or attr.get("data-srcset"))
+                or attr.get("data-original")
+                or attr.get("data-src")
+                or attr.get("loading-src")
+                or attr.get("src")
+            )
+            if src:
+                self.current_anchor["images"].append(
+                    {
+                        "url": urllib.parse.urljoin(self.base_url, src),
+                        "alt": attr.get("alt") or attr.get("title") or "",
+                        "width": parse_human_count(attr.get("width")),
+                        "height": parse_human_count(attr.get("height")),
+                    }
+                )
+
+    def handle_data(self, data: str) -> None:
+        if self.in_jsonld:
+            self.jsonld_buffer.append(data)
+        if self.current_anchor is not None:
+            value = " ".join(data.split())
+            if value:
+                self.current_anchor["text"].append(value)
+                if self.heading_depth:
+                    self.current_anchor["heading"].append(value)
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag == "a" and self.current_anchor is not None:
+            self.anchors.append(self.current_anchor)
+            self.current_anchor = None
+        if tag == "script" and self.in_jsonld:
+            self.jsonld_blocks.append("".join(self.jsonld_buffer).strip())
+            self.in_jsonld = False
+            self.jsonld_buffer = []
+        if tag in {"h1", "h2", "h3", "h4"} and self.heading_depth:
+            self.heading_depth -= 1
+        if tag == "article" and self.article_depth:
+            self.article_depth -= 1
+        if tag == "main" and self.main_depth:
+            self.main_depth -= 1
+
+
+def jsonld_url(value: Any) -> str | None:
+    if isinstance(value, str):
+        return valid_http_url(value)
+    if isinstance(value, dict):
+        return valid_http_url(value.get("url") or value.get("@id"))
+    return None
+
+
+def jsonld_image(value: Any) -> str | None:
+    if isinstance(value, str):
+        return valid_http_url(value)
+    if isinstance(value, list):
+        for item in value:
+            result = jsonld_image(item)
+            if result:
+                return result
+    if isinstance(value, dict):
+        return valid_http_url(value.get("url") or value.get("contentUrl") or value.get("@id"))
+    return None
+
+
+def iter_jsonld_articles(value: Any) -> Iterable[dict[str, Any]]:
+    if isinstance(value, list):
+        for item in value:
+            yield from iter_jsonld_articles(item)
+        return
+    if not isinstance(value, dict):
+        return
+    raw_type = value.get("@type")
+    types = {str(item).lower() for item in raw_type} if isinstance(raw_type, list) else {str(raw_type).lower()}
+    if types & {"article", "newsarticle", "reportagenewsarticle", "blogposting", "videoobject"}:
+        yield value
+    if "listitem" in types and isinstance(value.get("item"), dict):
+        yield from iter_jsonld_articles(value["item"])
+    for key in ("@graph", "itemListElement", "mainEntity", "hasPart"):
+        child = value.get(key)
+        if isinstance(child, (list, dict)):
+            yield from iter_jsonld_articles(child)
+
+
+def section_host_matches(url: str, section_url: str) -> bool:
+    host = (urllib.parse.urlparse(url).hostname or "").lower().removeprefix("www.")
+    section_host = (urllib.parse.urlparse(section_url).hostname or "").lower().removeprefix("www.")
+    return bool(host and section_host and (host == section_host or host.endswith("." + section_host)))
+
+
+def looks_like_section_article(url: str, section_url: str) -> bool:
+    if not section_host_matches(url, section_url):
+        return False
+    parsed = urllib.parse.urlparse(url)
+    path = re.sub(r"/+", "/", parsed.path).rstrip("/")
+    section_path = re.sub(r"/+", "/", urllib.parse.urlparse(section_url).path).rstrip("/")
+    if not path or path == section_path:
+        return False
+    lowered = path.casefold()
+    if any(piece in lowered for piece in ("/tag/", "/temas/", "/autor/", "/authors/", "/contact", "/rss")):
+        return False
+    parts = [part for part in path.split("/") if part]
+    if len(parts) < 3:
+        return False
+    return bool(
+        re.search(r"/20\d{2}(?:/|\d{4})", path)
+        or re.search(r"_20\d{6,}", path)
+        or path.endswith(".html")
+        or len(parts) >= 5
+    )
+
+
+def clean_section_title(value: str) -> str:
+    value = compact_text(strip_html(value), 220)
+    value = re.sub(r"^(?:vídeo|video|viral|virales|tiktok)\s*:\s*", "", value, flags=re.I)
+    return value.strip(" -–—|·")
+
+
+def parse_section_listing(payload: bytes, section_url: str) -> list[dict[str, Any]]:
+    parser = SectionListingParser(section_url)
+    parser.feed(payload.decode("utf-8", errors="replace"))
+    candidates: list[dict[str, Any]] = []
+
+    for block in parser.jsonld_blocks:
+        if not block:
+            continue
+        try:
+            decoded = json.loads(block)
+        except json.JSONDecodeError:
+            continue
+        for article in iter_jsonld_articles(decoded):
+            link = jsonld_url(article.get("url") or article.get("mainEntityOfPage"))
+            title = clean_section_title(str(article.get("headline") or article.get("name") or ""))
+            if not link or not title or not looks_like_section_article(link, section_url):
+                continue
+            candidates.append(
+                {
+                    "title": title,
+                    "link": link,
+                    "published_at": parse_iso_datetime(article.get("datePublished")),
+                    "image": jsonld_image(article.get("image") or article.get("thumbnailUrl")),
+                    "image_alt": title,
+                    "score": 20,
+                    "origin": "jsonld",
+                }
+            )
+
+    for anchor in parser.anchors:
+        link = valid_http_url(anchor.get("href"))
+        if not link or not looks_like_section_article(link, section_url):
+            continue
+        images = anchor.get("images") if isinstance(anchor.get("images"), list) else []
+        image_alt = next((str(item.get("alt") or "").strip() for item in images if item.get("alt")), "")
+        options = [
+            " ".join(anchor.get("heading") or []),
+            str(anchor.get("aria") or ""),
+            image_alt,
+            " ".join(anchor.get("text") or []),
+        ]
+        title = next((clean_section_title(item) for item in options if len(clean_section_title(item)) >= 24), "")
+        if not title or normalize(title) in {normalize(item) for item in SECTION_GENERIC_TITLES}:
+            continue
+        score = 0
+        score += 8 if anchor.get("in_article") else 0
+        score += 5 if anchor.get("in_main") else 0
+        score += 6 if anchor.get("heading") else 0
+        score += 2 if images else 0
+        candidates.append(
+            {
+                "title": title,
+                "link": link,
+                "published_at": None,
+                "image": images[0].get("url") if images else None,
+                "image_alt": image_alt or title,
+                "image_width": images[0].get("width") if images else 0,
+                "image_height": images[0].get("height") if images else 0,
+                "score": score,
+                "origin": "html",
+            }
+        )
+
+    best_by_link: dict[str, dict[str, Any]] = {}
+    for candidate in candidates:
+        key = candidate["link"].split("#", 1)[0]
+        previous = best_by_link.get(key)
+        if previous is None or candidate.get("score", 0) > previous.get("score", 0):
+            best_by_link[key] = candidate
+    ordered = sorted(best_by_link.values(), key=lambda item: item.get("score", 0), reverse=True)
+    return ordered[:MAX_NEWS_ITEMS_PER_SOURCE]
+
+
+def feed_fallback_for_section(
+    *,
+    status_name: str,
+    fallback_url: str,
+    editorial_boost: float,
+    editorial_section: str,
+    configured_tags: tuple[str, ...],
+    cutoff: dt.datetime,
+    seen: set[tuple[str, str]],
+    limit: int,
+) -> list[StoryEntry]:
+    try:
+        feed = fetch_feed(fallback_url)
+    except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError):
+        return []
+    result: list[StoryEntry] = []
+    for raw in feed.entries:
+        raw_title = str(raw.get("title", "")).strip()
+        link = valid_http_url(raw.get("link"))
+        if not raw_title or not link:
+            continue
+        source = extract_publisher(raw, status_name)
+        title = clean_google_title(raw_title, source)
+        published_at = parse_published(raw)
+        if published_at and published_at < cutoff:
+            continue
+        key = (normalize(title), source.casefold())
+        if key in seen or is_blocked_content(title):
+            continue
+        seen.add(key)
+        image_candidates = extract_feed_image_candidates(raw)
+        result.append(
+            StoryEntry(
+                title=compact_text(title, 220),
+                link=link,
+                source=source,
+                platform="news",
+                published_at=published_at,
+                keywords=keywords(title),
+                social_points=editorial_boost,
+                metrics={
+                    "curated_editorial": True,
+                    "editorial_section": editorial_section,
+                    "editorial_feed": status_name,
+                    "topic_tags": sorted(set(configured_tags)),
+                    "source_mode": "google-news-fallback",
+                },
+                thumbnail=image_candidates[0].url if image_candidates else None,
+                image_candidates=image_candidates,
+                media_type="article",
+            )
+        )
+        if len(result) >= limit:
+            break
+    return result
+
+
+def fetch_direct_section_entries(
+    cutoff: dt.datetime,
+    seen: set[tuple[str, str]],
+) -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
+    entries: list[StoryEntry] = []
+    warnings: list[str] = []
+    statuses: list[dict[str, Any]] = []
+    for status_name, publisher, section_url, fallback_url, boost, section, tags in DIRECT_SECTION_SOURCES:
+        direct_items: list[dict[str, Any]] = []
+        direct_error: Exception | None = None
+        try:
+            payload = fetch_bytes(
+                section_url,
+                headers={
+                    "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5",
+                    "Accept-Language": "es-ES,es;q=0.9",
+                },
+            )
+            direct_items = parse_section_listing(payload, section_url)
+        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+            direct_error = exc
+
+        accepted = 0
+        for item in direct_items:
+            title = clean_section_title(str(item.get("title") or ""))
+            link = valid_http_url(item.get("link"))
+            if not title or not link or is_blocked_content(title):
+                continue
+            published_at = item.get("published_at") if isinstance(item.get("published_at"), dt.datetime) else None
+            if published_at and published_at < cutoff:
+                continue
+            key = (normalize(title), publisher.casefold())
+            if key in seen:
+                continue
+            seen.add(key)
+            detected_tags = {str(tag).strip().lower() for tag in tags if str(tag).strip()}
+            normalized_title = normalize(title)
+            if "tiktok" in normalized_title or "tik tok" in normalized_title:
+                detected_tags.add("tiktok")
+            if any(term in normalized_title for term in ("curiosidad", "curioso", "curiosa", "insolito", "sorprendente")):
+                detected_tags.add("curiosidades")
+            candidate = make_image_candidate(
+                item.get("image"),
+                f"section:{item.get('origin', 'html')}",
+                94.0,
+                alt=item.get("image_alt") or title,
+                width=item.get("image_width") or 0,
+                height=item.get("image_height") or 0,
+                page_url=link,
+            )
+            image_candidates = dedupe_image_candidates((candidate,))
+            entries.append(
+                StoryEntry(
+                    title=compact_text(title, 220),
+                    link=link,
+                    source=publisher,
+                    platform="news",
+                    published_at=published_at,
+                    keywords=keywords(title),
+                    social_points=boost,
+                    metrics={
+                        "curated_editorial": True,
+                        "editorial_section": section,
+                        "editorial_feed": status_name,
+                        "topic_tags": sorted(detected_tags),
+                        "source_mode": "direct-section",
+                    },
+                    thumbnail=image_candidates[0].url if image_candidates else None,
+                    image_candidates=image_candidates,
+                    media_type="article",
+                )
+            )
+            accepted += 1
+            if accepted >= MAX_NEWS_ITEMS_PER_SOURCE:
+                break
+
+        mode = "directo"
+        if accepted < 5:
+            fallback = feed_fallback_for_section(
+                status_name=status_name,
+                fallback_url=fallback_url,
+                editorial_boost=boost,
+                editorial_section=section,
+                configured_tags=tags,
+                cutoff=cutoff,
+                seen=seen,
+                limit=MAX_NEWS_ITEMS_PER_SOURCE - accepted,
+            )
+            entries.extend(fallback)
+            accepted += len(fallback)
+            if fallback:
+                mode = "directo + respaldo Google News" if direct_items else "respaldo Google News"
+
+        if accepted == 0:
+            note = "La portada no devolvió artículos y el respaldo tampoco"
+            if direct_error:
+                note = f"Portada inaccesible: {compact_text(str(direct_error), 120)}"
+            warnings.append(f"{status_name}: {note}")
+            statuses.append({"name": status_name, "ok": False, "items": 0, "note": note})
+            print(f"[aviso] {status_name}: 0 elementos · {note}")
+        else:
+            statuses.append({"name": status_name, "ok": True, "items": accepted, "note": mode})
+            print(f"[ok] {status_name}: {accepted} elementos · {mode}")
+    return entries, warnings, statuses
+
 def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
     entries: list[StoryEntry] = []
     warnings: list[str] = []
     statuses: list[dict[str, Any]] = []
     cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=NEWS_MAX_AGE_HOURS)
     seen: set[tuple[str, str]] = set()
+
+    direct_entries, direct_warnings, direct_statuses = fetch_direct_section_entries(cutoff, seen)
+    entries.extend(direct_entries)
+    warnings.extend(direct_warnings)
+    statuses.extend(direct_statuses)
 
     for fallback_source, url, editorial_boost, editorial_section, configured_tags in NEWS_SOURCES:
         try:
@@ -2144,8 +2591,10 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             if accepted >= MAX_NEWS_ITEMS_PER_SOURCE:
                 break
 
-        statuses.append({"name": fallback_source, "ok": True, "items": accepted})
-        print(f"[ok] {fallback_source}: {accepted} elementos")
+        note = "Sin artículos recientes" if accepted == 0 else None
+        statuses.append({"name": fallback_source, "ok": True, "items": accepted, "note": note})
+        prefix = "[sin resultados]" if accepted == 0 else "[ok]"
+        print(f"{prefix} {fallback_source}: {accepted} elementos")
 
     return entries, warnings, statuses
 
@@ -2640,24 +3089,54 @@ def bluesky_post_url(uri: str, handle: str) -> str | None:
     return valid_http_url(f"https://bsky.app/profile/{handle}/post/{rkey}")
 
 
+def fetch_bluesky_search(params: str) -> tuple[Any | None, int | None, str | None]:
+    """Prueba el AppView público con caché y el host directo con backoff."""
+    last_code: int | None = None
+    last_error: str | None = None
+    for attempt, base in enumerate(BLUESKY_SEARCH_URLS):
+        try:
+            return fetch_json(
+                f"{base}?{params}",
+                headers={"Accept-Language": "es-ES,es;q=0.9"},
+            ), None, None
+        except urllib.error.HTTPError as exc:
+            last_code = exc.code
+            last_error = f"HTTP {exc.code}"
+            if exc.code not in {403, 429, 500, 502, 503, 504}:
+                break
+            time.sleep(0.9 + attempt * 0.8)
+        except (OSError, urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+            last_error = compact_text(str(exc) or exc.__class__.__name__, 120)
+            time.sleep(0.5 + attempt * 0.5)
+    return None, last_code, last_error
+
+
 def fetch_bluesky_entries(
     seed_trends: list[str],
 ) -> tuple[list[StoryEntry], list[str], dict[str, Any]]:
     now = dt.datetime.now(dt.timezone.utc)
     since = (now - dt.timedelta(hours=SOCIAL_MAX_AGE_HOURS)).isoformat().replace("+00:00", "Z")
     seeds: list[str] = []
-    for candidate in [*seed_trends[:8], "meme", "insólito", "animales", "televisión"]:
+    normalized_seeds: set[str] = set()
+    # Menos consultas y pausas cortas reducen los bloqueos 403 del AppView.
+    for candidate in [*seed_trends[:6], "meme", "animales"]:
         candidate = candidate.strip().lstrip("#")
-        if len(candidate) < 3 or normalize(candidate) in {normalize(item) for item in seeds}:
+        normalized = normalize(candidate)
+        if len(candidate) < 3 or normalized in normalized_seeds:
             continue
+        normalized_seeds.add(normalized)
         seeds.append(candidate)
-        if len(seeds) >= 12:
+        if len(seeds) >= 8:
             break
 
     entries: list[StoryEntry] = []
     warnings: list[str] = []
     seen: set[str] = set()
     successful_queries = 0
+    limited_seeds: list[str] = []
+    other_failures: list[str] = []
+    consecutive_access_failures = 0
+
     for seed in seeds:
         params = urllib.parse.urlencode(
             {
@@ -2665,15 +3144,22 @@ def fetch_bluesky_entries(
                 "lang": "es",
                 "sort": "top",
                 "since": since,
-                "limit": 25,
+                "limit": 20,
             }
         )
-        try:
-            payload = fetch_json(f"{BLUESKY_SEARCH_URL}?{params}")
-            successful_queries += 1
-        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
-            warnings.append(f"Bluesky falló para «{seed}»: {exc}")
+        payload, error_code, error_text = fetch_bluesky_search(params)
+        if payload is None:
+            if error_code in {403, 429}:
+                limited_seeds.append(seed)
+                consecutive_access_failures += 1
+                if consecutive_access_failures >= 2:
+                    break
+            else:
+                other_failures.append(f"{seed}: {error_text or 'sin respuesta'}")
+                consecutive_access_failures = 0
             continue
+        consecutive_access_failures = 0
+        successful_queries += 1
 
         for post in payload.get("posts", []) if isinstance(payload, dict) else []:
             if not isinstance(post, dict):
@@ -2733,14 +3219,27 @@ def fetch_bluesky_entries(
                     seed_trend=seed,
                 )
             )
+        time.sleep(0.35)
+
+    if limited_seeds:
+        warnings.append(
+            "Bluesky limitó temporalmente algunas búsquedas (403/429): "
+            + ", ".join(f"«{item}»" for item in limited_seeds)
+            + ". Se conservaron los resultados obtenidos antes del límite."
+        )
+    if other_failures:
+        warnings.append("Bluesky tuvo fallos parciales: " + "; ".join(other_failures[:3]))
 
     ok = successful_queries > 0
-    print(f"[ok] Bluesky: {len(entries)} publicaciones")
+    note_parts = [f"{successful_queries}/{len(seeds)} búsquedas respondieron"]
+    if limited_seeds:
+        note_parts.append(f"{len(limited_seeds)} limitadas")
+    print(f"[ok] Bluesky: {len(entries)} publicaciones · {'; '.join(note_parts)}")
     return entries, warnings, {
         "name": "Bluesky España",
         "ok": ok,
         "items": len(entries),
-        "note": None if ok else "No respondió ninguna búsqueda",
+        "note": "; ".join(note_parts) if ok else "No respondió ninguna búsqueda",
     }
 
 
@@ -2748,8 +3247,38 @@ def looks_spanish(text: str) -> bool:
     tokens = normalize(text).split()
     if not tokens:
         return False
-    common = {"que", "para", "como", "esto", "esta", "pero", "porque", "cuando", "tambien", "muy", "una", "los", "las"}
+    common = {
+        "que", "para", "como", "esto", "esta", "pero", "porque", "cuando",
+        "tambien", "muy", "una", "uno", "unos", "unas", "los", "las", "el",
+        "del", "por", "con", "sin", "sobre", "entre", "desde", "hasta", "es",
+        "son", "fue", "han", "se", "su", "sus", "al", "y", "en",
+    }
     return sum(token in common for token in tokens) >= 2
+
+
+def likely_spanish_link(title: str, description: str, url: str) -> bool:
+    if looks_spanish(f"{title} {description}"):
+        return True
+    host = (urllib.parse.urlparse(url).hostname or "").lower()
+    return host.endswith(".es") or any(
+        domain in host
+        for domain in (
+            "elpais.com", "lavanguardia.com", "20minutos.es", "elespanol.com",
+            "huffingtonpost.es", "publico.es", "antena3.com", "lasexta.com",
+            "telecinco.es", "marca.com", "as.com", "infobae.com",
+        )
+    )
+
+
+def mastodon_history_totals(history: Any) -> tuple[int, int]:
+    uses = 0
+    accounts = 0
+    for item in history if isinstance(history, list) else []:
+        if not isinstance(item, dict):
+            continue
+        uses += parse_human_count(item.get("uses"))
+        accounts += parse_human_count(item.get("accounts"))
+    return uses, accounts
 
 
 def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
@@ -2763,7 +3292,8 @@ def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str
 
     for instance in instances:
         base = instance.rstrip("/")
-        name = f"Mastodon · {urllib.parse.urlparse(base).netloc}"
+        host = urllib.parse.urlparse(base).netloc
+        name = f"Mastodon · {host}"
         try:
             payload = fetch_json(f"{base}/api/v1/trends/statuses?limit=40")
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
@@ -2771,7 +3301,7 @@ def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str
             statuses.append({"name": name, "ok": False, "items": 0})
             continue
 
-        accepted = 0
+        accepted_statuses = 0
         for status in payload if isinstance(payload, list) else []:
             if not isinstance(status, dict):
                 continue
@@ -2856,9 +3386,75 @@ def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str
                     media_type=media_type,
                 )
             )
-            accepted += 1
-        statuses.append({"name": name, "ok": True, "items": accepted})
-        print(f"[ok] {name}: {accepted} publicaciones")
+            accepted_statuses += 1
+
+        # Cuando una instancia no tiene posts españoles en tendencias, se prueban
+        # enlaces compartidos en tendencia. Este endpoint también es público.
+        accepted_links = 0
+        if accepted_statuses < 5:
+            try:
+                link_payload = fetch_json(f"{base}/api/v1/trends/links?limit=20")
+            except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
+                warnings.append(f"No se pudieron consultar enlaces de {name}: {exc}")
+                link_payload = []
+            for card in link_payload if isinstance(link_payload, list) else []:
+                if not isinstance(card, dict):
+                    continue
+                link = valid_http_url(card.get("url"))
+                title = compact_text(str(card.get("title") or ""), 220)
+                description = compact_text(str(card.get("description") or ""), 260)
+                if not link or link in seen or len(title) < 20 or is_blocked_content(title):
+                    continue
+                if not likely_spanish_link(title, description, link):
+                    continue
+                uses, accounts = mastodon_history_totals(card.get("history"))
+                if uses < 2 and accounts < 2:
+                    continue
+                provider = compact_text(str(card.get("provider_name") or card.get("author_name") or host), 80)
+                image_candidate = make_image_candidate(
+                    card.get("image"),
+                    "mastodon:trending-link",
+                    112.0,
+                    alt=title,
+                    width=card.get("width") or 0,
+                    height=card.get("height") or 0,
+                    page_url=link,
+                )
+                image_candidates = dedupe_image_candidates((image_candidate,))
+                seen.add(link)
+                social_points = min(18.0, 3.0 + math.log10(uses + 1) * 4.0 + math.log10(accounts + 1) * 2.0)
+                entries.append(
+                    StoryEntry(
+                        title=title,
+                        link=link,
+                        source=f"Mastodon · {provider}",
+                        platform="mastodon",
+                        published_at=None,
+                        keywords=keywords(f"{title} {description}"),
+                        social_points=social_points,
+                        metrics={
+                            "favourites": 0,
+                            "boosts": 0,
+                            "replies": 0,
+                            "link_uses": uses,
+                            "link_accounts": accounts,
+                            "mastodon_trending_link": True,
+                        },
+                        thumbnail=image_candidates[0].url if image_candidates else None,
+                        image_candidates=image_candidates,
+                        media_type="article",
+                    )
+                )
+                accepted_links += 1
+
+        accepted = accepted_statuses + accepted_links
+        note = f"{accepted_statuses} publicaciones"
+        if accepted_links:
+            note += f" + {accepted_links} enlaces"
+        elif accepted == 0:
+            note = "Sin tendencias en español en esta actualización"
+        statuses.append({"name": name, "ok": True, "items": accepted, "note": note})
+        print(f"[ok] {name}: {accepted} elementos · {note}")
 
     return entries, warnings, statuses
 
@@ -2996,11 +3592,6 @@ async def collect_tiktok_trending(
         "geolocation": {"latitude": 40.4168, "longitude": -3.7038},
         "permissions": ["geolocation"],
         "viewport": {"width": 1365, "height": 768},
-        "user_agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/124.0.0.0 Safari/537.36"
-        ),
     }
     proxies = [proxy] if proxy else None
     raw_items: list[dict[str, Any]] = []
@@ -3010,8 +3601,8 @@ async def collect_tiktok_trending(
             headless=True,
             ms_tokens=[ms_token],
             proxies=proxies,
-            sleep_after=3,
-            starting_url="https://www.tiktok.com/foryou?lang=es",
+            sleep_after=5,
+            starting_url="https://www.tiktok.com/?lang=es",
             context_options=context_options,
             suppress_resource_load_types=["media", "font"],
             browser="chromium",
@@ -3026,11 +3617,10 @@ async def collect_tiktok_trending(
             session.params.update(
                 {
                     "region": "ES",
-                    "priority_region": "ES",
-                    "app_language": "es-ES",
+                    "priority_region": "",
+                    "app_language": "es",
                     "browser_language": "es-ES",
-                    "language": "es-ES",
-                    "webcast_language": "es-ES",
+                    "language": "es",
                     "tz_name": "Europe/Madrid",
                 }
             )
@@ -3055,7 +3645,7 @@ def fetch_tiktok_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]]
         }
 
     try:
-        count = max(10, min(60, int(os.getenv("TIKTOK_COUNT", str(TIKTOK_DEFAULT_COUNT)))))
+        count = max(10, min(30, int(os.getenv("TIKTOK_COUNT", str(TIKTOK_DEFAULT_COUNT)))))
     except ValueError:
         count = TIKTOK_DEFAULT_COUNT
 
@@ -3073,6 +3663,11 @@ def fetch_tiktok_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]]
         raw_items = asyncio.run(
             collect_tiktok_trending(ms_token, count=count, proxy=proxy)
         )
+        if not raw_items and count > 12:
+            time.sleep(2)
+            raw_items = asyncio.run(
+                collect_tiktok_trending(ms_token, count=12, proxy=proxy)
+            )
     except Exception as exc:  # La librería puede cambiar cuando TikTok modifica su web.
         message = compact_text(str(exc) or exc.__class__.__name__, 260)
         return [], [f"No se pudo consultar TikTokApi: {message}"], {
@@ -3080,6 +3675,19 @@ def fetch_tiktok_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]]
             "ok": False,
             "items": 0,
             "note": "TikTokApi bloqueado o sesión caducada",
+        }
+
+    if not raw_items:
+        note = (
+            "TikTok no devolvió vídeos. El código 10201 suele indicar una petición "
+            "rechazada o parámetros/sesión no aceptados; renueva msToken y usa una IP residencial española."
+        )
+        print("[aviso] TikTokApi: 0 vídeos · respuesta vacía/10201")
+        return [], [note], {
+            "name": "TikTok Trends España",
+            "ok": False,
+            "items": 0,
+            "note": "Respuesta vacía o status 10201",
         }
 
     now = dt.datetime.now(dt.timezone.utc)
