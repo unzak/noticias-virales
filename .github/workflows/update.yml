@@ -33,7 +33,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     env:
       # Opcionales. El panel sigue funcionando sin estas claves.
@@ -64,6 +64,11 @@ jobs:
 
       - name: Comprobar JSON generado
         run: python -m json.tool docs/data.json > /dev/null
+
+      - name: Comprobar previsualizaciones locales
+        run: |
+          test -d docs/media
+          echo "Imágenes almacenadas: $(find docs/media -maxdepth 1 -type f | wc -l)"
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v6

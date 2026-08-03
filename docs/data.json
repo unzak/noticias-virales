@@ -16,5 +16,11 @@
     "entries_collected": 0
   },
   "methodology": "Potencial viral heurístico; no predice ni garantiza likes futuros.",
-  "editorial_notice": "El panel enlaza a contenido de terceros para descubrimiento. Antes de republicar, verifica contexto, permisos, autoría, privacidad y seguridad de marca."
+  "editorial_notice": "El panel enlaza a contenido de terceros para descubrimiento. Antes de republicar, verifica contexto, permisos, autoría, privacidad y seguridad de marca.",
+  "image_summary": {
+    "verified": 0,
+    "total": 0,
+    "cached_files": 0,
+    "origins": {}
+  }
 }

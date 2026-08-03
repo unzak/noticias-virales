@@ -1,4 +1,4 @@
-# Pulso Viral — radar social para España
+# Pulso Viral v2.4 — radar social para España
 
 Dashboard estático para detectar contenidos con **potencial editorial viral**:
 humor, curiosidades, animales, entretenimiento, televisión, deporte y formatos
@@ -43,6 +43,32 @@ públicas requiere una aplicación de Meta, permisos aprobados y, según el caso
 revisión de la aplicación. No se recomienda hacer scraping de Facebook.
 
 
+
+## Previsualizaciones verificadas
+
+Esta versión no entrega directamente al navegador las miniaturas remotas. En
+cada actualización, el workflow selecciona y descarga una imagen asociada al
+contenido, la valida y la publica dentro de `docs/media/`. Esto evita enlaces
+caducados, bloqueos de hotlink y miniaturas genéricas.
+
+La selección se adapta a cada tipo de fuente:
+
+- **Medios y Menéame:** consulta `og:image`, Twitter Card, Schema.org,
+  `media:content`, enclosures e imágenes del cuerpo del artículo.
+- **Reddit:** prioriza la imagen original de `preview`, galerías y resoluciones
+  alternativas antes que la miniatura pequeña.
+- **Bluesky:** usa imágenes, miniaturas de vídeo o tarjetas externas del embed.
+- **Mastodon:** compara los adjuntos y sus tamaños `preview` y `original`.
+- **YouTube:** prueba `maxres`, `standard`, `high` y tamaños inferiores hasta
+  encontrar la mejor miniatura válida.
+
+Se rechazan logos, avatares, placeholders, píxeles de seguimiento, imágenes
+pequeñas, proporciones extremas y archivos excesivamente pesados. Entre los
+candidatos válidos se favorecen la fuente principal, los metadatos editoriales,
+la coincidencia del texto alternativo con el titular y una resolución adecuada.
+Si no hay una imagen fiable, el panel muestra un placeholder en vez de una
+imagen posiblemente incorrecta.
+
 ## Diseño de lectura
 
 La interfaz muestra **una noticia por fila**. En escritorio, cada fila separa
@@ -56,7 +82,7 @@ Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
 
 ```bash
 git add -A
-git commit -m "Mejorar lectura del radar viral"
+git commit -m "Verificar y almacenar previsualizaciones"
 git push origin main
 ```
 
@@ -193,6 +219,7 @@ Abre `http://localhost:8000`.
 - `fetch_news.py`: consulta, filtra, agrupa y puntúa las fuentes.
 - `docs/index.html`: interfaz y filtros del panel.
 - `docs/data.json`: datos generados antes de cada despliegue.
+- `docs/media/`: previsualizaciones verificadas y almacenadas por el workflow.
 - `.github/workflows/update.yml`: actualización y publicación cada ~45 minutos.
 
 Si todas las fuentes fallan, el proceso termina sin sustituir el despliegue

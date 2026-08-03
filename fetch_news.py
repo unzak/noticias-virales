@@ -23,16 +23,20 @@ from __future__ import annotations
 import base64
 import calendar
 import datetime as dt
+import hashlib
 import html
+import ipaddress
 import json
 import math
 import os
 import re
+import shutil
 import tempfile
 import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from html.parser import HTMLParser
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -42,6 +46,7 @@ import feedparser
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
+MEDIA_DIR = ROOT / "docs" / "media"
 
 GOOGLE_NEWS_BASE = "https://news.google.com/rss"
 GOOGLE_NEWS_PARAMS = "hl=es&gl=ES&ceid=ES:es"
@@ -192,7 +197,7 @@ DEFAULT_REDDIT_GLOBAL = (
 
 USER_AGENT = os.getenv(
     "PULSO_USER_AGENT",
-    "PulsoNoticias/2.2 (+https://github.com/unzak/noticias-virales)",
+    "PulsoNoticias/2.4 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
 NEWS_MAX_AGE_HOURS = 72
@@ -200,6 +205,23 @@ SOCIAL_MAX_AGE_HOURS = 48
 YOUTUBE_MAX_AGE_HOURS = 14 * 24
 MAX_STORIES = 60
 MAX_NEWS_ITEMS_PER_SOURCE = 35
+IMAGE_ENRICH_LIMIT = 50
+IMAGE_PAGE_CONTEXT_LIMIT = 2
+IMAGE_CANDIDATE_LIMIT = 5
+IMAGE_WORKERS = 8
+IMAGE_HTML_MAX_BYTES = 1_800_000
+IMAGE_FILE_MAX_BYTES = 2_500_000
+IMAGE_MIN_WIDTH = 300
+IMAGE_MIN_HEIGHT = 150
+IMAGE_MIN_AREA = 90_000
+IMAGE_MIN_ASPECT = 0.28
+IMAGE_MAX_ASPECT = 4.0
+IMAGE_FETCH_TIMEOUT_SECONDS = 10
+BROWSER_USER_AGENT = os.getenv(
+    "PULSO_IMAGE_USER_AGENT",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.4",
+)
 
 STOPWORDS = set(
     """de la el en y a los que del las un por con no una su para es al lo
@@ -316,6 +338,17 @@ PLATFORM_LABELS = {
 
 
 @dataclass(frozen=True)
+class ImageCandidate:
+    url: str
+    origin: str
+    base_score: float
+    alt: str = ""
+    width: int = 0
+    height: int = 0
+    page_url: str | None = None
+
+
+@dataclass(frozen=True)
 class StoryEntry:
     title: str
     link: str
@@ -326,6 +359,7 @@ class StoryEntry:
     social_points: float = 0.0
     metrics: dict[str, int | float | str] = field(default_factory=dict)
     thumbnail: str | None = None
+    image_candidates: tuple[ImageCandidate, ...] = ()
     media_type: str = "article"
     seed_trend: str | None = None
 
@@ -406,6 +440,896 @@ def valid_http_url(value: Any) -> str | None:
         return None
     return value
 
+
+
+
+GENERIC_IMAGE_TERMS = (
+    "logo", "icon", "avatar", "author", "profile", "favicon", "sprite",
+    "placeholder", "default", "fallback", "branding", "brandmark", "banner",
+    "header", "footer", "newsletter", "subscription", "suscripcion", "pixel",
+    "tracking", "analytics", "advert", "publicidad", "adsystem", "share-button",
+    "social-share", "userpic", "gravatar", "emoji", "weather", "generic",
+)
+
+
+def public_fetch_url(value: Any) -> str | None:
+    url = valid_http_url(value)
+    if not url:
+        return None
+    parsed = urllib.parse.urlparse(url)
+    host = (parsed.hostname or "").lower().strip(".")
+    if not host or host in {"localhost", "localhost.localdomain"} or host.endswith(".local"):
+        return None
+    try:
+        address = ipaddress.ip_address(host)
+    except ValueError:
+        return url
+    if address.is_private or address.is_loopback or address.is_link_local or address.is_reserved:
+        return None
+    return url
+
+
+def make_image_candidate(
+    value: Any,
+    origin: str,
+    base_score: float,
+    *,
+    alt: Any = "",
+    width: Any = 0,
+    height: Any = 0,
+    page_url: str | None = None,
+) -> ImageCandidate | None:
+    url = public_fetch_url(value)
+    if not url:
+        return None
+    try:
+        parsed_width = max(0, int(float(width or 0)))
+    except (TypeError, ValueError):
+        parsed_width = 0
+    try:
+        parsed_height = max(0, int(float(height or 0)))
+    except (TypeError, ValueError):
+        parsed_height = 0
+    return ImageCandidate(
+        url=url,
+        origin=origin,
+        base_score=float(base_score),
+        alt=strip_html(alt),
+        width=parsed_width,
+        height=parsed_height,
+        page_url=public_fetch_url(page_url),
+    )
+
+
+def dedupe_image_candidates(candidates: Iterable[ImageCandidate | None]) -> tuple[ImageCandidate, ...]:
+    best: dict[str, ImageCandidate] = {}
+    for candidate in candidates:
+        if not candidate:
+            continue
+        key = html.unescape(candidate.url).replace("&amp;", "&")
+        current = best.get(key)
+        if current is None or candidate.base_score > current.base_score:
+            best[key] = ImageCandidate(
+                url=key,
+                origin=candidate.origin,
+                base_score=candidate.base_score,
+                alt=candidate.alt,
+                width=candidate.width,
+                height=candidate.height,
+                page_url=candidate.page_url,
+            )
+    return tuple(sorted(best.values(), key=lambda item: item.base_score, reverse=True))
+
+
+def best_srcset_url(value: str, base_url: str) -> str | None:
+    options: list[tuple[float, str]] = []
+    for part in value.split(","):
+        bits = part.strip().split()
+        if not bits:
+            continue
+        candidate = urllib.parse.urljoin(base_url, bits[0])
+        weight = 1.0
+        if len(bits) > 1:
+            descriptor = bits[-1].lower()
+            try:
+                if descriptor.endswith("w"):
+                    weight = float(descriptor[:-1])
+                elif descriptor.endswith("x"):
+                    weight = float(descriptor[:-1]) * 1000
+            except ValueError:
+                pass
+        options.append((weight, candidate))
+    if not options:
+        return None
+    return public_fetch_url(max(options, key=lambda item: item[0])[1])
+
+
+class InlineImageParser(HTMLParser):
+    def __init__(self, base_url: str = "") -> None:
+        super().__init__(convert_charrefs=True)
+        self.base_url = base_url
+        self.images: list[tuple[str, str, int, int]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag != "img":
+            return
+        values = {key.lower(): value or "" for key, value in attrs}
+        raw = (
+            best_srcset_url(values.get("srcset", "") or values.get("data-srcset", ""), self.base_url)
+            or values.get("src")
+            or values.get("data-src")
+            or values.get("data-lazy-src")
+            or values.get("data-original")
+        )
+        if not raw:
+            return
+        url = public_fetch_url(urllib.parse.urljoin(self.base_url, raw))
+        if not url:
+            return
+        try:
+            width = int(float(values.get("width") or 0))
+        except ValueError:
+            width = 0
+        try:
+            height = int(float(values.get("height") or 0))
+        except ValueError:
+            height = 0
+        self.images.append((url, values.get("alt", ""), width, height))
+
+
+def extract_inline_images(fragment: Any, base_url: str = "") -> list[tuple[str, str, int, int]]:
+    if not isinstance(fragment, str) or "<img" not in fragment.lower():
+        return []
+    parser = InlineImageParser(base_url)
+    try:
+        parser.feed(fragment)
+        parser.close()
+    except Exception:
+        return []
+    return parser.images
+
+
+def _jsonld_image_values(value: Any, *, context: str = "") -> list[tuple[str, str]]:
+    found: list[tuple[str, str]] = []
+    if isinstance(value, str):
+        if public_fetch_url(value):
+            found.append((value, context))
+    elif isinstance(value, list):
+        for item in value:
+            found.extend(_jsonld_image_values(item, context=context))
+    elif isinstance(value, dict):
+        descriptive = str(
+            value.get("caption") or value.get("description") or value.get("name") or context or ""
+        )
+        for key in ("url", "contentUrl", "thumbnailUrl"):
+            if key in value:
+                found.extend(_jsonld_image_values(value.get(key), context=descriptive))
+    return found
+
+
+def extract_jsonld_candidates(payload: Any, base_url: str) -> list[ImageCandidate]:
+    candidates: list[ImageCandidate] = []
+
+    def walk(node: Any, inherited_text: str = "") -> None:
+        if isinstance(node, list):
+            for item in node:
+                walk(item, inherited_text)
+            return
+        if not isinstance(node, dict):
+            return
+        descriptive = str(
+            node.get("headline")
+            or node.get("caption")
+            or node.get("name")
+            or node.get("description")
+            or inherited_text
+            or ""
+        )
+        for key, score in (
+            ("primaryImageOfPage", 104.0),
+            ("image", 102.0),
+            ("thumbnailUrl", 96.0),
+        ):
+            if key not in node:
+                continue
+            for image_url, alt in _jsonld_image_values(node.get(key), context=descriptive):
+                candidate = make_image_candidate(
+                    urllib.parse.urljoin(base_url, image_url),
+                    f"schema:{key}",
+                    score,
+                    alt=alt,
+                    page_url=base_url,
+                )
+                if candidate:
+                    candidates.append(candidate)
+        for key, value in node.items():
+            if key.lower() in {"logo", "publisher", "author", "creator"}:
+                continue
+            if isinstance(value, (dict, list)):
+                walk(value, descriptive)
+
+    walk(payload)
+    return candidates
+
+
+class PageMetadataParser(HTMLParser):
+    def __init__(self, base_url: str) -> None:
+        super().__init__(convert_charrefs=True)
+        self.base_url = base_url
+        self.candidates: list[ImageCandidate] = []
+        self.canonical_url: str | None = None
+        self.outbound_links: list[str] = []
+        self.document_title: str = ""
+        self._title_depth = 0
+        self._title_parts: list[str] = []
+        self._article_depth = 0
+        self._main_depth = 0
+        self._jsonld_depth = 0
+        self._jsonld_parts: list[str] = []
+        self._jsonld_documents: list[str] = []
+        self._last_og_image_index: int | None = None
+        self._last_twitter_image_index: int | None = None
+
+    @staticmethod
+    def _attrs(attrs: list[tuple[str, str | None]]) -> dict[str, str]:
+        return {key.lower(): value or "" for key, value in attrs}
+
+    def _add(
+        self,
+        raw_url: Any,
+        origin: str,
+        score: float,
+        *,
+        alt: Any = "",
+        width: Any = 0,
+        height: Any = 0,
+    ) -> None:
+        if not raw_url:
+            return
+        candidate = make_image_candidate(
+            urllib.parse.urljoin(self.base_url, str(raw_url)),
+            origin,
+            score,
+            alt=alt,
+            width=width,
+            height=height,
+            page_url=self.base_url,
+        )
+        if candidate:
+            self.candidates.append(candidate)
+            if origin.startswith("og:image"):
+                self._last_og_image_index = len(self.candidates) - 1
+            elif origin.startswith("twitter:image"):
+                self._last_twitter_image_index = len(self.candidates) - 1
+
+    def _update_candidate_metadata(self, index: int | None, *, alt: str | None = None, width: int | None = None, height: int | None = None) -> None:
+        if index is None or index < 0 or index >= len(self.candidates):
+            return
+        current = self.candidates[index]
+        self.candidates[index] = ImageCandidate(
+            url=current.url,
+            origin=current.origin,
+            base_score=current.base_score,
+            alt=strip_html(alt) if alt else current.alt,
+            width=width if width and width > 0 else current.width,
+            height=height if height and height > 0 else current.height,
+            page_url=current.page_url,
+        )
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = self._attrs(attrs)
+        if tag == "article":
+            self._article_depth += 1
+        if tag == "main":
+            self._main_depth += 1
+        if tag == "title":
+            self._title_depth += 1
+            self._title_parts = []
+        if tag == "script" and "ld+json" in values.get("type", "").lower():
+            self._jsonld_depth += 1
+            self._jsonld_parts = []
+            return
+        if tag == "meta":
+            key = (values.get("property") or values.get("name") or values.get("itemprop") or "").lower()
+            content = values.get("content") or values.get("value")
+            mapping = {
+                "og:image": (112.0, "og:image"),
+                "og:image:url": (112.0, "og:image:url"),
+                "og:image:secure_url": (114.0, "og:image:secure_url"),
+                "twitter:image": (108.0, "twitter:image"),
+                "twitter:image:src": (108.0, "twitter:image:src"),
+                "thumbnail": (88.0, "meta:thumbnail"),
+                "thumbnailurl": (94.0, "meta:thumbnailUrl"),
+                "image": (90.0, "meta:image"),
+            }
+            if key in mapping:
+                score, origin = mapping[key]
+                self._add(content, origin, score, alt=values.get("alt", ""))
+            if key in {"og:title", "twitter:title"} and content and not self.document_title:
+                self.document_title = strip_html(content)
+            if key in {"og:image:alt", "twitter:image:alt"} and content:
+                self._update_candidate_metadata(
+                    self._last_og_image_index if key.startswith("og:") else self._last_twitter_image_index,
+                    alt=content,
+                )
+            if key in {"og:image:width", "og:image:height"} and content:
+                try:
+                    numeric = int(float(content))
+                except (TypeError, ValueError):
+                    numeric = 0
+                self._update_candidate_metadata(
+                    self._last_og_image_index,
+                    width=numeric if key.endswith(":width") else None,
+                    height=numeric if key.endswith(":height") else None,
+                )
+            if key in {"og:url", "twitter:url"} and content:
+                resolved = public_fetch_url(urllib.parse.urljoin(self.base_url, content))
+                if resolved:
+                    self.canonical_url = resolved
+            if values.get("http-equiv", "").lower() == "refresh" and content:
+                match = re.search(r"url\s*=\s*([^;]+)$", content, flags=re.IGNORECASE)
+                if match:
+                    resolved = public_fetch_url(urllib.parse.urljoin(self.base_url, match.group(1).strip(" '\"")))
+                    if resolved:
+                        self.outbound_links.append(resolved)
+            return
+        if tag == "link":
+            rels = {item.lower() for item in values.get("rel", "").split()}
+            href = values.get("href")
+            if "canonical" in rels and href:
+                resolved = public_fetch_url(urllib.parse.urljoin(self.base_url, href))
+                if resolved:
+                    self.canonical_url = resolved
+            if "image_src" in rels:
+                self._add(href, "link:image_src", 104.0)
+            if "preload" in rels and values.get("as", "").lower() == "image":
+                self._add(href, "link:preload", 78.0)
+            return
+        if tag == "a":
+            href = values.get("href")
+            if href:
+                resolved = public_fetch_url(urllib.parse.urljoin(self.base_url, href))
+                if resolved:
+                    self.outbound_links.append(resolved)
+            return
+        if tag != "img" or len(self.candidates) >= 36:
+            return
+        if values.get("aria-hidden", "").lower() == "true" or values.get("role", "").lower() == "presentation":
+            return
+        raw = (
+            best_srcset_url(values.get("srcset", "") or values.get("data-srcset", ""), self.base_url)
+            or values.get("data-original")
+            or values.get("data-lazy-src")
+            or values.get("data-src")
+            or values.get("src")
+        )
+        score = 70.0 if self._article_depth else 64.0 if self._main_depth else 48.0
+        self._add(
+            raw,
+            "page:article-img" if self._article_depth else "page:main-img" if self._main_depth else "page:img",
+            score,
+            alt=values.get("alt") or values.get("title") or "",
+            width=values.get("width") or 0,
+            height=values.get("height") or 0,
+        )
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "title" and self._title_depth:
+            self._title_depth -= 1
+            if self._title_parts and not self.document_title:
+                self.document_title = strip_html(" ".join(self._title_parts))
+            self._title_parts = []
+        if tag == "article" and self._article_depth:
+            self._article_depth -= 1
+        if tag == "main" and self._main_depth:
+            self._main_depth -= 1
+        if tag == "script" and self._jsonld_depth:
+            self._jsonld_depth -= 1
+            if self._jsonld_parts:
+                self._jsonld_documents.append("".join(self._jsonld_parts))
+            self._jsonld_parts = []
+
+    def handle_data(self, data: str) -> None:
+        if self._jsonld_depth:
+            self._jsonld_parts.append(data)
+        if self._title_depth:
+            self._title_parts.append(data)
+
+    def finish(self) -> tuple[ImageCandidate, ...]:
+        for document in self._jsonld_documents:
+            try:
+                payload = json.loads(document.strip())
+            except (json.JSONDecodeError, TypeError, ValueError):
+                continue
+            self.candidates.extend(extract_jsonld_candidates(payload, self.base_url))
+        return dedupe_image_candidates(self.candidates)
+
+
+def _decode_google_news_legacy_url(url: str) -> str | None:
+    parsed = urllib.parse.urlparse(url)
+    if "news.google." not in (parsed.hostname or ""):
+        return None
+    match = re.search(r"/(?:articles|read)/([^/?]+)", parsed.path)
+    if not match:
+        return None
+    token = match.group(1)
+    try:
+        decoded = base64.urlsafe_b64decode(token + "=" * (-len(token) % 4))
+    except (ValueError, TypeError):
+        return None
+    found = re.search(rb"https?://[^\x00-\x20\x7f]+", decoded)
+    if not found:
+        return None
+    try:
+        candidate = found.group(0).decode("utf-8", errors="strict")
+    except UnicodeDecodeError:
+        return None
+    candidate = candidate.rstrip("\x01\x02\x03\x04\x05\x06\x07\x08")
+    return public_fetch_url(candidate)
+
+
+def _is_google_host(url: str) -> bool:
+    host = (urllib.parse.urlparse(url).hostname or "").lower()
+    return host == "google.com" or host.endswith(".google.com") or host.startswith("news.google.")
+
+
+def select_external_article_link(urls: Iterable[str | None], expected_title: str = "") -> str | None:
+    blocked_hosts = {
+        "accounts.google.com", "support.google.com", "policies.google.com",
+        "www.google.com", "google.com", "youtube.com", "www.youtube.com",
+    }
+    ranked: list[tuple[float, str]] = []
+    for value in urls:
+        candidate = public_fetch_url(value)
+        if not candidate or _is_google_host(candidate):
+            continue
+        parsed = urllib.parse.urlparse(candidate)
+        host = (parsed.hostname or "").lower()
+        if host in blocked_hosts or host.endswith(".googleusercontent.com"):
+            continue
+        path_parts = [part for part in parsed.path.split("/") if part]
+        score = min(8.0, len(path_parts) * 1.5)
+        if re.search(r"\d{4}/\d{1,2}/\d{1,2}|\d{4}-\d{1,2}-\d{1,2}", parsed.path):
+            score += 5.0
+        if any(term in normalize(parsed.path) for term in ("article", "noticia", "viral", "video", "historia")):
+            score += 3.0
+        shared = keywords(urllib.parse.unquote(parsed.path)) & keywords(expected_title)
+        score += min(24.0, len(shared) * 7.0)
+        if expected_title and len(shared) < 2:
+            score -= 16.0
+        if parsed.path in {"", "/"}:
+            score -= 12.0
+        ranked.append((score, candidate))
+    best_score, best_url = max(ranked, default=(-999.0, None), key=lambda item: item[0])
+    return best_url if best_score >= 3.0 else None
+
+
+def page_matches_story(document_title: str, expected_title: str, final_url: str) -> bool:
+    """Descarta páginas genéricas o redirecciones que no corresponden al titular."""
+    if not expected_title or not document_title:
+        return True
+    page_words = keywords(document_title)
+    story_words = keywords(expected_title)
+    if not page_words or not story_words:
+        return True
+    shared = len(page_words & story_words)
+    required = 1 if min(len(page_words), len(story_words)) <= 3 else 2
+    if shared >= required:
+        return True
+    path = urllib.parse.urlparse(final_url).path
+    path_shared = len(keywords(urllib.parse.unquote(path)) & story_words)
+    if path_shared >= required:
+        return True
+    # En una portada o página de categoría, una discordancia suele indicar que
+    # el enlace caducó o fue redirigido; es preferible no mostrar una imagen.
+    return path not in {"", "/"} and shared >= 1
+
+
+def fetch_html_metadata(url: str, *, expected_title: str = "", _depth: int = 0) -> tuple[str, tuple[ImageCandidate, ...]]:
+    target = public_fetch_url(url)
+    if not target:
+        return url, ()
+    legacy = _decode_google_news_legacy_url(target)
+    if legacy:
+        target = legacy
+    request = urllib.request.Request(
+        target,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.4",
+            "Accept-Language": "es-ES,es;q=0.9,en;q=0.4",
+            "Accept-Encoding": "identity",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=IMAGE_FETCH_TIMEOUT_SECONDS) as response:
+        final_url = public_fetch_url(response.geturl()) or target
+        content_type = response.headers.get_content_type().lower()
+        if content_type not in {"text/html", "application/xhtml+xml"}:
+            return final_url, ()
+        payload = response.read(IMAGE_HTML_MAX_BYTES + 1)
+        if len(payload) > IMAGE_HTML_MAX_BYTES:
+            payload = payload[:IMAGE_HTML_MAX_BYTES]
+        charset = response.headers.get_content_charset() or "utf-8"
+    document = payload.decode(charset, errors="replace")
+    parser = PageMetadataParser(final_url)
+    parser.feed(document)
+    parser.close()
+    candidates = parser.finish()
+
+    # Las URLs de Google News suelen envolver el artículo. Solo seguimos una
+    # URL externa cuando es canónica o su slug coincide con el titular; elegir
+    # un enlace cualquiera de la portada puede asociar una imagen incorrecta.
+    if _is_google_host(final_url) and _depth < 1:
+        canonical = public_fetch_url(parser.canonical_url)
+        external = canonical if canonical and not _is_google_host(canonical) else None
+        if not external:
+            external = select_external_article_link(parser.outbound_links, expected_title)
+        if external and external != target:
+            try:
+                return fetch_html_metadata(
+                    external,
+                    expected_title=expected_title,
+                    _depth=_depth + 1,
+                )
+            except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError):
+                pass
+        # No usamos imágenes de la envoltura de Google News: suelen pertenecer
+        # a la interfaz, a otra noticia o a una miniatura genérica.
+        return final_url, ()
+
+    if not page_matches_story(parser.document_title, expected_title, final_url):
+        return final_url, ()
+    return final_url, candidates
+
+
+def image_dimensions_and_extension(data: bytes, content_type: str = "") -> tuple[int, int, str] | None:
+    if len(data) < 24:
+        return None
+    if data.startswith(b"\x89PNG\r\n\x1a\n"):
+        width = int.from_bytes(data[16:20], "big")
+        height = int.from_bytes(data[20:24], "big")
+        return width, height, ".png"
+    if data[:3] == b"GIF" and len(data) >= 10:
+        return int.from_bytes(data[6:8], "little"), int.from_bytes(data[8:10], "little"), ".gif"
+    if data.startswith(b"RIFF") and data[8:12] == b"WEBP":
+        chunk = data[12:16]
+        if chunk == b"VP8X" and len(data) >= 30:
+            width = 1 + int.from_bytes(data[24:27], "little")
+            height = 1 + int.from_bytes(data[27:30], "little")
+            return width, height, ".webp"
+        if chunk == b"VP8 " and len(data) >= 30 and data[23:26] == b"\x9d\x01\x2a":
+            width = int.from_bytes(data[26:28], "little") & 0x3FFF
+            height = int.from_bytes(data[28:30], "little") & 0x3FFF
+            return width, height, ".webp"
+        if chunk == b"VP8L" and len(data) >= 25 and data[20] == 0x2F:
+            bits = int.from_bytes(data[21:25], "little")
+            width = (bits & 0x3FFF) + 1
+            height = ((bits >> 14) & 0x3FFF) + 1
+            return width, height, ".webp"
+    if data.startswith(b"\xff\xd8"):
+        index = 2
+        while index + 9 < len(data):
+            if data[index] != 0xFF:
+                index += 1
+                continue
+            marker = data[index + 1]
+            index += 2
+            if marker in {0xD8, 0xD9} or 0xD0 <= marker <= 0xD7:
+                continue
+            if index + 2 > len(data):
+                break
+            length = int.from_bytes(data[index:index + 2], "big")
+            if length < 2 or index + length > len(data):
+                break
+            if marker in {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}:
+                height = int.from_bytes(data[index + 3:index + 5], "big")
+                width = int.from_bytes(data[index + 5:index + 7], "big")
+                return width, height, ".jpg"
+            index += length
+    if "jpeg" in content_type or "jpg" in content_type:
+        return None
+    return None
+
+
+def candidate_relevance(candidate: ImageCandidate, story_title: str, *, main_context: bool = False) -> float:
+    score = candidate.base_score + (8.0 if main_context else 0.0)
+    descriptive = f"{candidate.alt} {urllib.parse.unquote(urllib.parse.urlparse(candidate.url).path)}"
+    shared = keywords(descriptive) & keywords(story_title)
+    score += min(18.0, len(shared) * 4.5)
+    if candidate.origin == "page:img" and not shared:
+        score -= 42.0
+    elif candidate.origin == "page:main-img" and not shared:
+        score -= 20.0
+    elif candidate.origin == "page:article-img" and not shared:
+        score -= 6.0
+    elif candidate.origin == "link:preload" and not shared:
+        score -= 24.0
+    normalized_descriptor = normalize(descriptive)
+    if any(term in normalized_descriptor for term in GENERIC_IMAGE_TERMS):
+        score -= 85.0
+    if candidate.width and candidate.height:
+        area = candidate.width * candidate.height
+        aspect = candidate.width / max(1, candidate.height)
+        if area >= 600_000:
+            score += 8.0
+        elif area >= 200_000:
+            score += 4.0
+        if 1.35 <= aspect <= 2.1:
+            score += 5.0
+        if candidate.width < IMAGE_MIN_WIDTH or candidate.height < IMAGE_MIN_HEIGHT:
+            score -= 45.0
+    return score
+
+
+def fetch_verified_image(candidate: ImageCandidate, story_title: str, *, main_context: bool) -> dict[str, Any] | None:
+    request = urllib.request.Request(
+        candidate.url,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "image/avif,image/webp,image/apng,image/*,*/*;q=0.4",
+            "Accept-Language": "es-ES,es;q=0.8",
+            "Accept-Encoding": "identity",
+            "Referer": candidate.page_url or "https://www.google.com/",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=IMAGE_FETCH_TIMEOUT_SECONDS) as response:
+        content_type = response.headers.get_content_type().lower()
+        content_length = response.headers.get("Content-Length")
+        if content_length and int(content_length) > IMAGE_FILE_MAX_BYTES:
+            return None
+        payload = response.read(IMAGE_FILE_MAX_BYTES + 1)
+        if len(payload) > IMAGE_FILE_MAX_BYTES:
+            return None
+    image_info = image_dimensions_and_extension(payload, content_type)
+    if not image_info:
+        return None
+    width, height, extension = image_info
+    area = width * height
+    aspect = width / max(1, height)
+    if width < IMAGE_MIN_WIDTH or height < IMAGE_MIN_HEIGHT or area < IMAGE_MIN_AREA:
+        return None
+    if not (IMAGE_MIN_ASPECT <= aspect <= IMAGE_MAX_ASPECT):
+        return None
+    verified = ImageCandidate(
+        url=candidate.url,
+        origin=candidate.origin,
+        base_score=candidate.base_score,
+        alt=candidate.alt,
+        width=width,
+        height=height,
+        page_url=candidate.page_url,
+    )
+    shared = keywords(
+        f"{verified.alt} {urllib.parse.unquote(urllib.parse.urlparse(verified.url).path)}"
+    ) & keywords(story_title)
+    if verified.origin == "page:img" and not shared:
+        return None
+    if verified.origin in {"page:main-img", "link:preload"} and not shared and not main_context:
+        return None
+    score = candidate_relevance(verified, story_title, main_context=main_context)
+    if score < 45.0:
+        return None
+    if area >= 1_000_000:
+        score += 8.0
+    elif area >= 400_000:
+        score += 5.0
+    if 1.4 <= aspect <= 2.0:
+        score += 4.0
+    return {
+        "payload": payload,
+        "extension": extension,
+        "width": width,
+        "height": height,
+        "score": score,
+        "origin": candidate.origin,
+        "remote_url": candidate.url,
+        "alt": candidate.alt,
+    }
+
+
+def serialize_candidate(candidate: ImageCandidate) -> dict[str, Any]:
+    return {
+        "url": candidate.url,
+        "origin": candidate.origin,
+        "base_score": candidate.base_score,
+        "alt": candidate.alt,
+        "width": candidate.width,
+        "height": candidate.height,
+        "page_url": candidate.page_url,
+    }
+
+
+def deserialize_candidate(value: Any) -> ImageCandidate | None:
+    if not isinstance(value, dict):
+        return None
+    return make_image_candidate(
+        value.get("url"),
+        str(value.get("origin") or "unknown"),
+        float(value.get("base_score") or 0),
+        alt=value.get("alt") or "",
+        width=value.get("width") or 0,
+        height=value.get("height") or 0,
+        page_url=value.get("page_url"),
+    )
+
+
+def _context_candidates(context: dict[str, Any], story_title: str) -> tuple[ImageCandidate, ...]:
+    candidates: list[ImageCandidate | None] = [
+        deserialize_candidate(item) for item in context.get("candidates", [])
+    ]
+    thumbnail = context.get("thumbnail")
+    if thumbnail:
+        platform = str(context.get("platform") or "")
+        base = {
+            "youtube": 124.0,
+            "reddit": 119.0,
+            "bluesky": 119.0,
+            "mastodon": 119.0,
+            "meneame": 72.0,
+            "news": 90.0,
+        }.get(platform, 82.0)
+        candidates.append(
+            make_image_candidate(
+                thumbnail,
+                f"{platform}:primary",
+                base,
+                alt=context.get("title") or story_title,
+                page_url=context.get("link"),
+            )
+        )
+    return dedupe_image_candidates(candidates)
+
+
+def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
+    contexts = story.get("_image_contexts") if isinstance(story.get("_image_contexts"), list) else []
+    candidates: list[tuple[ImageCandidate, bool]] = []
+    for context in contexts:
+        if not isinstance(context, dict):
+            continue
+        is_main = bool(context.get("is_main"))
+        candidates.extend((candidate, is_main) for candidate in _context_candidates(context, story["title"]))
+
+    page_contexts = sorted(
+        [context for context in contexts if isinstance(context, dict)],
+        key=lambda context: (
+            bool(context.get("is_main")),
+            context.get("platform") in {"news", "meneame"},
+            bool(context.get("candidates")),
+        ),
+        reverse=True,
+    )
+    fetched_pages: set[str] = set()
+    for context in page_contexts[:IMAGE_PAGE_CONTEXT_LIMIT]:
+        platform = str(context.get("platform") or "")
+        direct_candidates = _context_candidates(context, story["title"])
+        has_trusted_direct = any(item.base_score >= 115 for item in direct_candidates)
+        if has_trusted_direct and platform not in {"news", "meneame"}:
+            continue
+        link = public_fetch_url(context.get("link"))
+        if not link or link in fetched_pages:
+            continue
+        fetched_pages.add(link)
+        try:
+            final_url, page_candidates = fetch_html_metadata(
+                link,
+                expected_title=str(context.get("title") or story["title"]),
+            )
+        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
+            continue
+        for candidate in page_candidates:
+            if candidate.page_url is None:
+                candidate = ImageCandidate(
+                    url=candidate.url,
+                    origin=candidate.origin,
+                    base_score=candidate.base_score,
+                    alt=candidate.alt or str(context.get("title") or ""),
+                    width=candidate.width,
+                    height=candidate.height,
+                    page_url=final_url,
+                )
+            candidates.append((candidate, bool(context.get("is_main"))))
+
+    # Conserva la mejor puntuación por URL y recuerda si procede del elemento principal.
+    best_by_url: dict[str, tuple[ImageCandidate, bool, float]] = {}
+    for candidate, is_main in candidates:
+        pre_score = candidate_relevance(candidate, story["title"], main_context=is_main)
+        current = best_by_url.get(candidate.url)
+        if current is None or pre_score > current[2]:
+            best_by_url[candidate.url] = (candidate, is_main, pre_score)
+    ordered = sorted(best_by_url.values(), key=lambda item: item[2], reverse=True)
+
+    verified: list[dict[str, Any]] = []
+    for candidate, is_main, _ in ordered[:IMAGE_CANDIDATE_LIMIT]:
+        try:
+            result = fetch_verified_image(candidate, story["title"], main_context=is_main)
+        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError):
+            result = None
+        if result:
+            verified.append(result)
+            if result["score"] >= 132.0 and len(verified) >= 2:
+                break
+        if len(verified) >= 4:
+            break
+
+    updated = dict(story)
+    updated.pop("_image_contexts", None)
+    if not verified:
+        updated["thumbnail"] = None
+        updated["image_verified"] = False
+        return updated, None
+
+    selected = max(verified, key=lambda item: item["score"])
+    digest = hashlib.sha256(selected["payload"]).hexdigest()[:24]
+    filename = f"{digest}{selected['extension']}"
+    destination = MEDIA_DIR / filename
+    if not destination.exists():
+        fd, tmp_name = tempfile.mkstemp(prefix="image-", suffix=selected["extension"], dir=MEDIA_DIR)
+        try:
+            with os.fdopen(fd, "wb") as handle:
+                handle.write(selected["payload"])
+            os.replace(tmp_name, destination)
+        except Exception:
+            try:
+                os.unlink(tmp_name)
+            except FileNotFoundError:
+                pass
+            raise
+    updated["thumbnail"] = f"media/{filename}"
+    updated["image_verified"] = True
+    updated["image_origin"] = selected["origin"]
+    updated["image_width"] = selected["width"]
+    updated["image_height"] = selected["height"]
+    updated["image_alt"] = selected.get("alt") or story.get("title") or ""
+    return updated, selected["origin"]
+
+
+def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    MEDIA_DIR.mkdir(parents=True, exist_ok=True)
+    for child in MEDIA_DIR.iterdir():
+        if child.is_file():
+            child.unlink()
+        elif child.is_dir():
+            shutil.rmtree(child)
+
+    output: list[dict[str, Any] | None] = [None] * len(stories)
+    origins: dict[str, int] = {}
+    limit = min(len(stories), IMAGE_ENRICH_LIMIT)
+    with ThreadPoolExecutor(max_workers=IMAGE_WORKERS) as executor:
+        futures = {
+            executor.submit(enrich_one_story_image, stories[index]): index
+            for index in range(limit)
+        }
+        for future in as_completed(futures):
+            index = futures[future]
+            try:
+                updated, origin = future.result()
+            except Exception as exc:
+                updated = dict(stories[index])
+                updated.pop("_image_contexts", None)
+                updated["thumbnail"] = None
+                updated["image_verified"] = False
+                print(f"[aviso] Imagen #{index + 1}: {exc}")
+                origin = None
+            output[index] = updated
+            if origin:
+                origins[origin] = origins.get(origin, 0) + 1
+
+    for index in range(limit, len(stories)):
+        updated = dict(stories[index])
+        updated.pop("_image_contexts", None)
+        updated["thumbnail"] = None
+        updated["image_verified"] = False
+        output[index] = updated
+
+    final = [item for item in output if item is not None]
+    verified_count = sum(1 for item in final if item.get("image_verified"))
+    print(f"[ok] Previsualizaciones: {verified_count}/{len(final)} verificadas y almacenadas localmente")
+    return final, {
+        "verified": verified_count,
+        "total": len(final),
+        "cached_files": len(list(MEDIA_DIR.glob("*"))),
+        "origins": origins,
+    }
 
 def parse_iso_datetime(value: Any) -> dt.datetime | None:
     if not isinstance(value, str) or not value.strip():
@@ -776,6 +1700,17 @@ def fetch_meneame_entries() -> tuple[list[StoryEntry], list[str], list[dict[str,
                         "section": section,
                     },
                     thumbnail=valid_http_url(raw.get("thumbnail")),
+                    image_candidates=dedupe_image_candidates(
+                        [
+                            make_image_candidate(
+                                raw.get("thumbnail"),
+                                "meneame:list-thumbnail",
+                                64.0,
+                                alt=title,
+                                page_url=link,
+                            )
+                        ]
+                    ),
                     media_type=infer_meneame_media_type(link, title),
                 )
             )
@@ -787,23 +1722,70 @@ def fetch_meneame_entries() -> tuple[list[StoryEntry], list[str], list[dict[str,
     return entries, warnings, statuses
 
 
-def extract_feed_thumbnail(entry: Any) -> str | None:
-    for field_name in ("media_thumbnail", "media_content"):
+def extract_feed_image_candidates(entry: Any) -> tuple[ImageCandidate, ...]:
+    candidates: list[ImageCandidate | None] = []
+    for field_name, score in (("media_content", 98.0), ("media_thumbnail", 94.0)):
         media = entry.get(field_name)
-        if isinstance(media, list):
-            for item in reversed(media):
-                if isinstance(item, dict):
-                    candidate = valid_http_url(item.get("url"))
-                    if candidate:
-                        return candidate
+        if not isinstance(media, list):
+            continue
+        for item in media:
+            if not isinstance(item, dict):
+                continue
+            candidates.append(
+                make_image_candidate(
+                    item.get("url"),
+                    f"feed:{field_name}",
+                    score,
+                    alt=item.get("description") or item.get("title") or "",
+                    width=item.get("width") or 0,
+                    height=item.get("height") or 0,
+                    page_url=entry.get("link"),
+                )
+            )
     enclosure = entry.get("enclosures")
     if isinstance(enclosure, list):
         for item in enclosure:
-            if isinstance(item, dict) and str(item.get("type", "")).startswith("image/"):
-                candidate = valid_http_url(item.get("href") or item.get("url"))
-                if candidate:
-                    return candidate
-    return None
+            if not isinstance(item, dict):
+                continue
+            item_type = str(item.get("type", "")).lower()
+            href = item.get("href") or item.get("url")
+            if item_type.startswith("image/") or re.search(r"\.(?:jpe?g|png|gif|webp)(?:\?|$)", str(href), re.I):
+                candidates.append(make_image_candidate(href, "feed:enclosure", 96.0, page_url=entry.get("link")))
+    for field_name in ("summary", "description"):
+        for url, alt, width, height in extract_inline_images(entry.get(field_name), str(entry.get("link") or "")):
+            candidates.append(
+                make_image_candidate(
+                    url,
+                    f"feed:{field_name}-img",
+                    84.0,
+                    alt=alt,
+                    width=width,
+                    height=height,
+                    page_url=entry.get("link"),
+                )
+            )
+    content = entry.get("content")
+    if isinstance(content, list):
+        for block in content:
+            value = block.get("value") if isinstance(block, dict) else None
+            for url, alt, width, height in extract_inline_images(value, str(entry.get("link") or "")):
+                candidates.append(
+                    make_image_candidate(
+                        url,
+                        "feed:content-img",
+                        88.0,
+                        alt=alt,
+                        width=width,
+                        height=height,
+                        page_url=entry.get("link"),
+                    )
+                )
+    return dedupe_image_candidates(candidates)
+
+
+def extract_feed_thumbnail(entry: Any) -> str | None:
+    candidates = extract_feed_image_candidates(entry)
+    return candidates[0].url if candidates else None
 
 
 def clean_google_title(title: str, publisher: str | None) -> str:
@@ -883,6 +1865,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                 continue
             seen.add(dedupe_key)
 
+            image_candidates = extract_feed_image_candidates(raw)
             entries.append(
                 StoryEntry(
                     title=compact_text(title, 220),
@@ -897,7 +1880,8 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                         "editorial_section": editorial_section or "",
                         "editorial_feed": fallback_source,
                     },
-                    thumbnail=extract_feed_thumbnail(raw),
+                    thumbnail=image_candidates[0].url if image_candidates else None,
+                    image_candidates=image_candidates,
                     media_type="article",
                 )
             )
@@ -1005,29 +1989,74 @@ def reddit_access_token() -> str | None:
     return str(token).strip() if token else None
 
 
-def reddit_thumbnail(data: dict[str, Any]) -> str | None:
+def reddit_image_candidates(data: dict[str, Any]) -> tuple[ImageCandidate, ...]:
+    candidates: list[ImageCandidate | None] = []
+    title = str(data.get("title") or "")
     preview = data.get("preview")
     if isinstance(preview, dict):
         images = preview.get("images")
-        if isinstance(images, list) and images:
-            first = images[0]
-            if isinstance(first, dict):
-                resolutions = first.get("resolutions")
+        if isinstance(images, list):
+            for image in images:
+                if not isinstance(image, dict):
+                    continue
+                source = image.get("source")
+                if isinstance(source, dict):
+                    candidates.append(
+                        make_image_candidate(
+                            source.get("url"),
+                            "reddit:preview-source",
+                            122.0,
+                            alt=title,
+                            width=source.get("width") or 0,
+                            height=source.get("height") or 0,
+                        )
+                    )
+                resolutions = image.get("resolutions")
                 if isinstance(resolutions, list):
                     for resolution in reversed(resolutions):
                         if isinstance(resolution, dict):
-                            candidate = valid_http_url(resolution.get("url"))
-                            if candidate:
-                                return candidate
-                source = first.get("source")
-                if isinstance(source, dict):
-                    candidate = valid_http_url(source.get("url"))
-                    if candidate:
-                        return candidate
+                            candidates.append(
+                                make_image_candidate(
+                                    resolution.get("url"),
+                                    "reddit:preview-resolution",
+                                    118.0,
+                                    alt=title,
+                                    width=resolution.get("width") or 0,
+                                    height=resolution.get("height") or 0,
+                                )
+                            )
+    gallery = data.get("gallery_data")
+    metadata = data.get("media_metadata")
+    if isinstance(gallery, dict) and isinstance(metadata, dict):
+        for item in gallery.get("items", []) if isinstance(gallery.get("items"), list) else []:
+            media_id = str(item.get("media_id") or "") if isinstance(item, dict) else ""
+            media = metadata.get(media_id)
+            if not isinstance(media, dict):
+                continue
+            source = media.get("s")
+            if isinstance(source, dict):
+                candidates.append(
+                    make_image_candidate(
+                        source.get("u") or source.get("gif"),
+                        "reddit:gallery-source",
+                        123.0,
+                        alt=title,
+                        width=source.get("x") or 0,
+                        height=source.get("y") or 0,
+                    )
+                )
+    direct = data.get("url_overridden_by_dest") or data.get("url")
+    if re.search(r"\.(?:jpe?g|png|gif|webp)(?:\?|$)", str(direct), re.I):
+        candidates.append(make_image_candidate(direct, "reddit:direct-image", 121.0, alt=title))
     thumbnail = valid_http_url(data.get("thumbnail"))
-    if thumbnail and not thumbnail.endswith("default.png"):
-        return thumbnail
-    return None
+    if thumbnail and not thumbnail.endswith(("default.png", "self.png", "nsfw.png", "spoiler.png")):
+        candidates.append(make_image_candidate(thumbnail, "reddit:thumbnail", 88.0, alt=title))
+    return dedupe_image_candidates(candidates)
+
+
+def reddit_thumbnail(data: dict[str, Any]) -> str | None:
+    candidates = reddit_image_candidates(data)
+    return candidates[0].url if candidates else None
 
 
 def reddit_media_type(data: dict[str, Any]) -> str:
@@ -1097,6 +2126,7 @@ def fetch_reddit_group(
         if normalized_title in GENERIC_REDDIT_TITLES or normalized_title.startswith("yo elvr"):
             title = f"Meme destacado en r/{subreddit}"
         media_type = reddit_media_type(data)
+        image_candidates = reddit_image_candidates(data)
         metrics: dict[str, int | float | str] = {
             "upvotes": score,
             "comments": comments,
@@ -1113,7 +2143,8 @@ def fetch_reddit_group(
                 keywords=keywords(title),
                 social_points=reddit_social_points(score, comments, published_at),
                 metrics=metrics,
-                thumbnail=reddit_thumbnail(data),
+                thumbnail=image_candidates[0].url if image_candidates else None,
+                image_candidates=image_candidates,
                 media_type=media_type,
             )
         )
@@ -1153,27 +2184,74 @@ def fetch_reddit_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, 
     return entries, warnings, statuses
 
 
-def bluesky_thumbnail(embed: Any) -> tuple[str | None, str]:
+def bluesky_image_candidates(embed: Any, *, alt_context: str = "") -> tuple[tuple[ImageCandidate, ...], str]:
     if not isinstance(embed, dict):
-        return None, "text"
+        return (), "text"
     embed_type = str(embed.get("$type", ""))
     if "recordWithMedia" in embed_type:
-        return bluesky_thumbnail(embed.get("media"))
+        return bluesky_image_candidates(embed.get("media"), alt_context=alt_context)
+    candidates: list[ImageCandidate | None] = []
     if "images" in embed_type:
         images = embed.get("images")
-        if isinstance(images, list) and images:
-            first = images[0]
-            if isinstance(first, dict):
-                return valid_http_url(first.get("thumb") or first.get("fullsize")), "image"
-        return None, "image"
+        if isinstance(images, list):
+            for image in images:
+                if not isinstance(image, dict):
+                    continue
+                alt = image.get("alt") or alt_context
+                aspect = image.get("aspectRatio") if isinstance(image.get("aspectRatio"), dict) else {}
+                candidates.append(
+                    make_image_candidate(
+                        image.get("fullsize"),
+                        "bluesky:image-fullsize",
+                        122.0,
+                        alt=alt,
+                        width=aspect.get("width") or 0,
+                        height=aspect.get("height") or 0,
+                    )
+                )
+                candidates.append(
+                    make_image_candidate(
+                        image.get("thumb"),
+                        "bluesky:image-thumb",
+                        120.0,
+                        alt=alt,
+                        width=aspect.get("width") or 0,
+                        height=aspect.get("height") or 0,
+                    )
+                )
+        return dedupe_image_candidates(candidates), "image"
     if "video" in embed_type:
-        return valid_http_url(embed.get("thumbnail")), "video"
+        aspect = embed.get("aspectRatio") if isinstance(embed.get("aspectRatio"), dict) else {}
+        candidates.append(
+            make_image_candidate(
+                embed.get("thumbnail"),
+                "bluesky:video-thumbnail",
+                121.0,
+                alt=alt_context,
+                width=aspect.get("width") or 0,
+                height=aspect.get("height") or 0,
+            )
+        )
+        return dedupe_image_candidates(candidates), "video"
     if "external" in embed_type:
         external = embed.get("external")
         if isinstance(external, dict):
-            return valid_http_url(external.get("thumb")), "link"
-        return None, "link"
-    return None, "text"
+            candidates.append(
+                make_image_candidate(
+                    external.get("thumb"),
+                    "bluesky:external-card",
+                    105.0,
+                    alt=external.get("title") or external.get("description") or alt_context,
+                    page_url=external.get("uri"),
+                )
+            )
+        return dedupe_image_candidates(candidates), "link"
+    return (), "text"
+
+
+def bluesky_thumbnail(embed: Any) -> tuple[str | None, str]:
+    candidates, media_type = bluesky_image_candidates(embed)
+    return (candidates[0].url if candidates else None), media_type
 
 
 def bluesky_post_url(uri: str, handle: str) -> str | None:
@@ -1246,7 +2324,8 @@ def fetch_bluesky_entries(
             replies = max(0, int(post.get("replyCount") or 0))
             quotes = max(0, int(post.get("quoteCount") or 0))
             weighted = likes + reposts * 3 + replies * 2 + quotes * 3
-            thumbnail, media_type = bluesky_thumbnail(post.get("embed"))
+            image_candidates, media_type = bluesky_image_candidates(post.get("embed"), alt_context=text)
+            thumbnail = image_candidates[0].url if image_candidates else None
             if weighted < 8 and not thumbnail:
                 continue
             author = post.get("author") if isinstance(post.get("author"), dict) else {}
@@ -1271,6 +2350,7 @@ def fetch_bluesky_entries(
                         "quotes": quotes,
                     },
                     thumbnail=thumbnail,
+                    image_candidates=image_candidates,
                     media_type=media_type,
                     seed_trend=seed,
                 )
@@ -1339,14 +2419,45 @@ def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str
             replies = max(0, int(status.get("replies_count") or 0))
             weighted = favourites + boosts * 3 + replies * 2
             media = status.get("media_attachments")
-            thumbnail = None
+            media_candidates: list[ImageCandidate | None] = []
             media_type = "text"
             if isinstance(media, list) and media:
-                first = media[0]
-                if isinstance(first, dict):
-                    thumbnail = valid_http_url(first.get("preview_url") or first.get("url"))
-                    attachment_type = str(first.get("type", ""))
-                    media_type = "video" if attachment_type in {"video", "gifv"} else "image"
+                for attachment in media:
+                    if not isinstance(attachment, dict):
+                        continue
+                    attachment_type = str(attachment.get("type", ""))
+                    if attachment_type in {"video", "gifv"}:
+                        media_type = "video"
+                    elif media_type != "video":
+                        media_type = "image"
+                    meta = attachment.get("meta") if isinstance(attachment.get("meta"), dict) else {}
+                    small = meta.get("small") if isinstance(meta.get("small"), dict) else {}
+                    original = meta.get("original") if isinstance(meta.get("original"), dict) else {}
+                    alt = attachment.get("description") or content
+                    media_candidates.append(
+                        make_image_candidate(
+                            attachment.get("preview_url"),
+                            "mastodon:preview",
+                            121.0,
+                            alt=alt,
+                            width=small.get("width") or 0,
+                            height=small.get("height") or 0,
+                            page_url=link,
+                        )
+                    )
+                    media_candidates.append(
+                        make_image_candidate(
+                            attachment.get("url") or attachment.get("remote_url"),
+                            "mastodon:original",
+                            118.0,
+                            alt=alt,
+                            width=original.get("width") or 0,
+                            height=original.get("height") or 0,
+                            page_url=link,
+                        )
+                    )
+            image_candidates = dedupe_image_candidates(media_candidates)
+            thumbnail = image_candidates[0].url if image_candidates else None
             if weighted < 6 and not thumbnail:
                 continue
             account = status.get("account") if isinstance(status.get("account"), dict) else {}
@@ -1363,6 +2474,7 @@ def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str
                     social_points=mastodon_social_points(favourites, boosts, replies, published_at),
                     metrics={"favourites": favourites, "boosts": boosts, "replies": replies},
                     thumbnail=thumbnail,
+                    image_candidates=image_candidates,
                     media_type=media_type,
                 )
             )
@@ -1420,13 +2532,23 @@ def fetch_youtube_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]
         likes = parse_human_count(statistics.get("likeCount"))
         comments = parse_human_count(statistics.get("commentCount"))
         thumbnails = snippet.get("thumbnails") if isinstance(snippet.get("thumbnails"), dict) else {}
-        thumbnail = None
+        youtube_candidates: list[ImageCandidate | None] = []
+        score_by_size = {"maxres": 128.0, "standard": 126.0, "high": 124.0, "medium": 120.0, "default": 104.0}
         for key in ("maxres", "standard", "high", "medium", "default"):
             value = thumbnails.get(key)
             if isinstance(value, dict):
-                thumbnail = valid_http_url(value.get("url"))
-                if thumbnail:
-                    break
+                youtube_candidates.append(
+                    make_image_candidate(
+                        value.get("url"),
+                        f"youtube:{key}",
+                        score_by_size[key],
+                        alt=title,
+                        width=value.get("width") or 0,
+                        height=value.get("height") or 0,
+                    )
+                )
+        image_candidates = dedupe_image_candidates(youtube_candidates)
+        thumbnail = image_candidates[0].url if image_candidates else None
         channel = str(snippet.get("channelTitle", "")).strip()
         entries.append(
             StoryEntry(
@@ -1439,6 +2561,7 @@ def fetch_youtube_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]
                 social_points=youtube_social_points(views, likes, comments, published_at),
                 metrics={"views": views, "likes": likes, "comments": comments},
                 thumbnail=thumbnail,
+                image_candidates=image_candidates,
                 media_type="video",
             )
         )
@@ -1647,6 +2770,28 @@ def build_ranked(
         viral_score = max(1, min(100, round(100 * (1 - math.exp(-raw_score / 95.0)))))
         main = choose_main(items)
         thumbnail = main.thumbnail or next((item.thumbnail for item in items if item.thumbnail), None)
+        image_contexts = []
+        for item in sorted(
+            items,
+            key=lambda candidate: (
+                candidate is main,
+                bool(candidate.image_candidates or candidate.thumbnail),
+                candidate.social_points,
+            ),
+            reverse=True,
+        ):
+            image_contexts.append(
+                {
+                    "title": item.title,
+                    "link": item.link,
+                    "source": item.source,
+                    "platform": item.platform,
+                    "media_type": item.media_type,
+                    "thumbnail": item.thumbnail,
+                    "candidates": [serialize_candidate(candidate) for candidate in item.image_candidates],
+                    "is_main": item is main,
+                }
+            )
         media_type = main.media_type
         if media_type == "article":
             media_type = next(
@@ -1688,6 +2833,7 @@ def build_ranked(
                 "matched_x_trend": x_match.get("name") if x_match else None,
                 "published_at": main.published_at.isoformat().replace("+00:00", "Z") if main.published_at else None,
                 "thumbnail": thumbnail,
+                "_image_contexts": image_contexts,
                 "media_type": media_type,
                 "signals": signals[:5],
                 "metrics": main.metrics,
@@ -1755,6 +2901,7 @@ def build() -> dict[str, Any]:
 
     now = dt.datetime.now(dt.timezone.utc)
     ranked = build_ranked(entries, google_trends, x_trends)
+    ranked, image_summary = enrich_ranked_images(ranked)
     active_sources = sum(1 for status in source_status if status.get("ok") is True)
     configured_sources = sum(1 for status in source_status if status.get("ok") is not None)
 
@@ -1772,9 +2919,12 @@ def build() -> dict[str, Any]:
             "total": len(source_status),
             "entries_collected": len(entries),
         },
+        "image_summary": image_summary,
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
             "presencia en varias plataformas, Google/X Trends y afinidad editorial. "
+            "Las previsualizaciones se verifican, se asocian al artículo o publicación y se guardan "
+            "localmente; se descartan logos, imágenes pequeñas y candidatos genéricos. "
             "No predice ni garantiza likes futuros."
         ),
         "editorial_notice": (
