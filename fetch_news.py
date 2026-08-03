@@ -61,7 +61,7 @@ NEWS_SOURCES = (
     ("Menéame", "https://www.meneame.net/rss"),
 )
 GOOGLE_TRENDS_URL = "https://trends.google.com/trending/rss?geo=ES"
-BLUESKY_SEARCH_URL = "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts"
+BLUESKY_SEARCH_URL = "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
 X_TRENDS_URL = "https://api.x.com/2/trends/by/woeid/23424950"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
