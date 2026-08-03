@@ -15,7 +15,7 @@
     "total": 0,
     "entries_collected": 0
   },
-  "methodology": "Potencial viral heurístico; no predice ni garantiza likes futuros.",
+  "methodology": "Proyecto v2.7: TikTokApi opcional; ejecuta el workflow para generar datos reales.",
   "editorial_notice": "El panel enlaza a contenido de terceros para descubrimiento. Antes de republicar, verifica contexto, permisos, autoría, privacidad y seguridad de marca.",
   "image_summary": {
     "verified": 0,

@@ -8,6 +8,7 @@ Fuentes sin clave:
 - Mastodon (endpoints públicos de tendencias)
 
 Fuentes opcionales mediante secretos de GitHub:
+- TikTokApi no oficial (TIKTOK_MS_TOKEN; Playwright y localización española estimada)
 - Reddit Data API (REDDIT_CLIENT_ID y REDDIT_CLIENT_SECRET)
 - YouTube Data API (YOUTUBE_API_KEY)
 - X Trends API (X_BEARER_TOKEN; servicio de pago por uso)
@@ -20,6 +21,7 @@ garantiza likes futuros.
 
 from __future__ import annotations
 
+import asyncio
 import base64
 import calendar
 import datetime as dt
@@ -317,12 +319,14 @@ DEFAULT_REDDIT_GLOBAL = (
 
 USER_AGENT = os.getenv(
     "PULSO_USER_AGENT",
-    "PulsoNoticias/2.6 (+https://github.com/unzak/noticias-virales)",
+    "PulsoNoticias/2.7 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
 NEWS_MAX_AGE_HOURS = 72
 SOCIAL_MAX_AGE_HOURS = 48
 YOUTUBE_MAX_AGE_HOURS = 14 * 24
+TIKTOK_MAX_AGE_HOURS = 7 * 24
+TIKTOK_DEFAULT_COUNT = 40
 MAX_STORIES = 100
 MAX_NEWS_ITEMS_PER_SOURCE = 35
 IMAGE_ENRICH_LIMIT = 100
@@ -340,7 +344,7 @@ IMAGE_FETCH_TIMEOUT_SECONDS = 10
 BROWSER_USER_AGENT = os.getenv(
     "PULSO_IMAGE_USER_AGENT",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.6",
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.7",
 )
 
 STOPWORDS = set(
@@ -454,6 +458,7 @@ PLATFORM_LABELS = {
     "bluesky": "Bluesky",
     "mastodon": "Mastodon",
     "youtube": "YouTube",
+    "tiktok": "TikTok",
 }
 
 
@@ -1679,6 +1684,27 @@ def youtube_social_points(
     return min(65.0, points)
 
 
+def tiktok_social_points(
+    views: int,
+    likes: int,
+    comments: int,
+    shares: int,
+    saves: int,
+    published_at: dt.datetime | None,
+) -> float:
+    """Convierte las métricas visibles de TikTok en puntos comparables.
+
+    Los compartidos y guardados pesan más que un like porque suelen anticipar
+    mejor la capacidad de un vídeo para saltar a otras plataformas.
+    """
+    now = dt.datetime.now(dt.timezone.utc)
+    engagement = likes + comments * 4 + shares * 7 + saves * 3
+    weighted_velocity = views + engagement * 8
+    points = math.log10(views + 1) * 4.6 + math.log10(engagement + 1) * 8.8
+    points += velocity_bonus(weighted_velocity, published_at, now)
+    return min(70.0, points)
+
+
 
 def meneame_social_points(
     meneos: int,
@@ -2837,6 +2863,309 @@ def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str
     return entries, warnings, statuses
 
 
+def parse_tiktok_proxy(value: str) -> dict[str, str] | None:
+    """Convierte una URL de proxy en el formato esperado por Playwright.
+
+    Ejemplo aceptado: http://usuario:clave@host:puerto. El valor nunca se
+    imprime en los registros para evitar exponer credenciales.
+    """
+    raw = value.strip()
+    if not raw:
+        return None
+    parsed = urllib.parse.urlparse(raw if "://" in raw else f"http://{raw}")
+    if not parsed.hostname:
+        raise ValueError("TIKTOK_PROXY_URL no contiene un host válido")
+    scheme = parsed.scheme or "http"
+    server = f"{scheme}://{parsed.hostname}"
+    if parsed.port:
+        server += f":{parsed.port}"
+    proxy: dict[str, str] = {"server": server}
+    if parsed.username:
+        proxy["username"] = urllib.parse.unquote(parsed.username)
+    if parsed.password:
+        proxy["password"] = urllib.parse.unquote(parsed.password)
+    return proxy
+
+
+def parse_tiktok_datetime(value: Any) -> dt.datetime | None:
+    try:
+        timestamp = int(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if timestamp <= 0:
+        return None
+    try:
+        return dt.datetime.fromtimestamp(timestamp, tz=dt.timezone.utc)
+    except (OSError, OverflowError, ValueError):
+        return None
+
+
+def first_tiktok_url(value: Any) -> str | None:
+    """Busca la primera URL utilizable dentro de la estructura cambiante de TikTok."""
+    if isinstance(value, str):
+        cleaned = html.unescape(value).strip()
+        return cleaned if cleaned.startswith(("http://", "https://")) else None
+    if isinstance(value, list):
+        for item in value:
+            url = first_tiktok_url(item)
+            if url:
+                return url
+        return None
+    if isinstance(value, dict):
+        for key in ("urlList", "url_list", "downloadAddr", "playAddr", "url", "uri"):
+            url = first_tiktok_url(value.get(key))
+            if url:
+                return url
+        for item in value.values():
+            url = first_tiktok_url(item)
+            if url:
+                return url
+    return None
+
+
+def tiktok_image_candidates(data: dict[str, Any], title: str, link: str) -> tuple[ImageCandidate, ...]:
+    """Prioriza la portada original del vídeo o la primera imagen del carrusel."""
+    candidates: list[ImageCandidate | None] = []
+    image_post = data.get("imagePost") if isinstance(data.get("imagePost"), dict) else {}
+    images = image_post.get("images") if isinstance(image_post.get("images"), list) else []
+    for index, image in enumerate(images[:4]):
+        if not isinstance(image, dict):
+            continue
+        for key, score in (
+            ("imageURL", 136.0),
+            ("displayImage", 132.0),
+            ("ownerWatermarkImage", 118.0),
+            ("thumbnail", 112.0),
+        ):
+            url = first_tiktok_url(image.get(key))
+            candidates.append(
+                make_image_candidate(
+                    url,
+                    f"tiktok:image-post:{index}:{key}",
+                    score - index * 2,
+                    alt=title,
+                    page_url=link,
+                )
+            )
+
+    video = data.get("video") if isinstance(data.get("video"), dict) else {}
+    for key, score in (
+        ("originCover", 132.0),
+        ("cover", 128.0),
+        ("dynamicCover", 116.0),
+    ):
+        candidates.append(
+            make_image_candidate(
+                first_tiktok_url(video.get(key)),
+                f"tiktok:{key}",
+                score,
+                alt=title,
+                width=video.get("width") or 0,
+                height=video.get("height") or 0,
+                page_url=link,
+            )
+        )
+    return dedupe_image_candidates(candidates)
+
+
+def tiktok_title(data: dict[str, Any], username: str) -> str:
+    description = compact_text(str(data.get("desc") or "").strip(), 220)
+    if description:
+        return description
+    music = data.get("music") if isinstance(data.get("music"), dict) else {}
+    music_title = compact_text(str(music.get("title") or "").strip(), 100)
+    if music_title and username:
+        return f"{music_title} · vídeo de @{username}"
+    if username:
+        return f"Vídeo viral de @{username}"
+    return "Vídeo en tendencia en TikTok"
+
+
+async def collect_tiktok_trending(
+    ms_token: str,
+    *,
+    count: int,
+    proxy: dict[str, str] | None,
+) -> list[dict[str, Any]]:
+    """Consulta la página pública For You mediante TikTokApi y Playwright."""
+    from TikTokApi import TikTokApi
+
+    context_options: dict[str, Any] = {
+        "locale": "es-ES",
+        "timezone_id": "Europe/Madrid",
+        "geolocation": {"latitude": 40.4168, "longitude": -3.7038},
+        "permissions": ["geolocation"],
+        "viewport": {"width": 1365, "height": 768},
+        "user_agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/124.0.0.0 Safari/537.36"
+        ),
+    }
+    proxies = [proxy] if proxy else None
+    raw_items: list[dict[str, Any]] = []
+    async with TikTokApi() as api:
+        await api.create_sessions(
+            num_sessions=1,
+            headless=True,
+            ms_tokens=[ms_token],
+            proxies=proxies,
+            sleep_after=3,
+            starting_url="https://www.tiktok.com/foryou?lang=es",
+            context_options=context_options,
+            suppress_resource_load_types=["media", "font"],
+            browser="chromium",
+            timeout=45_000,
+            enable_session_recovery=True,
+            allow_partial_sessions=True,
+            min_sessions=1,
+        )
+        # TikTokApi 7.3.x fija US internamente. Se corrigen los parámetros de
+        # sesión después de crearla para pedir la experiencia española.
+        for session in api.sessions:
+            session.params.update(
+                {
+                    "region": "ES",
+                    "priority_region": "ES",
+                    "app_language": "es-ES",
+                    "browser_language": "es-ES",
+                    "language": "es-ES",
+                    "webcast_language": "es-ES",
+                    "tz_name": "Europe/Madrid",
+                }
+            )
+            if isinstance(session.headers, dict):
+                session.headers["accept-language"] = "es-ES,es;q=0.9"
+
+        async for video in api.trending.videos(count=count):
+            payload = video.as_dict
+            if isinstance(payload, dict):
+                raw_items.append(payload)
+    return raw_items
+
+
+def fetch_tiktok_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]]:
+    ms_token = os.getenv("TIKTOK_MS_TOKEN", "").strip()
+    if not ms_token:
+        return [], [], {
+            "name": "TikTok Trends España",
+            "ok": None,
+            "items": 0,
+            "note": "Añade TIKTOK_MS_TOKEN",
+        }
+
+    try:
+        count = max(10, min(60, int(os.getenv("TIKTOK_COUNT", str(TIKTOK_DEFAULT_COUNT)))))
+    except ValueError:
+        count = TIKTOK_DEFAULT_COUNT
+
+    proxy_raw = os.getenv("TIKTOK_PROXY_URL", "").strip()
+    try:
+        proxy = parse_tiktok_proxy(proxy_raw)
+    except ValueError as exc:
+        return [], [f"Configuración de TikTok no válida: {exc}"], {
+            "name": "TikTok Trends España",
+            "ok": False,
+            "items": 0,
+        }
+
+    try:
+        raw_items = asyncio.run(
+            collect_tiktok_trending(ms_token, count=count, proxy=proxy)
+        )
+    except Exception as exc:  # La librería puede cambiar cuando TikTok modifica su web.
+        message = compact_text(str(exc) or exc.__class__.__name__, 260)
+        return [], [f"No se pudo consultar TikTokApi: {message}"], {
+            "name": "TikTok Trends España",
+            "ok": False,
+            "items": 0,
+            "note": "TikTokApi bloqueado o sesión caducada",
+        }
+
+    now = dt.datetime.now(dt.timezone.utc)
+    cutoff = now - dt.timedelta(hours=TIKTOK_MAX_AGE_HOURS)
+    entries: list[StoryEntry] = []
+    seen_ids: set[str] = set()
+    for data in raw_items:
+        video_id = str(data.get("id") or data.get("aweme_id") or "").strip()
+        if not video_id or video_id in seen_ids:
+            continue
+        seen_ids.add(video_id)
+        author = data.get("author") if isinstance(data.get("author"), dict) else {}
+        username = str(author.get("uniqueId") or author.get("unique_id") or "").strip().lstrip("@")
+        title = tiktok_title(data, username)
+        if not title or is_blocked_content(title):
+            continue
+        published_at = parse_tiktok_datetime(data.get("createTime") or data.get("create_time"))
+        if published_at and published_at < cutoff:
+            continue
+        stats = data.get("stats") if isinstance(data.get("stats"), dict) else {}
+        if not stats and isinstance(data.get("statsV2"), dict):
+            stats = data["statsV2"]
+        views = parse_human_count(stats.get("playCount") or stats.get("play_count"))
+        likes = parse_human_count(stats.get("diggCount") or stats.get("digg_count"))
+        comments = parse_human_count(stats.get("commentCount") or stats.get("comment_count"))
+        shares = parse_human_count(stats.get("shareCount") or stats.get("share_count"))
+        saves = parse_human_count(stats.get("collectCount") or stats.get("collect_count"))
+        link_username = urllib.parse.quote(username, safe="._-") if username else "tiktok"
+        link = f"https://www.tiktok.com/@{link_username}/video/{urllib.parse.quote(video_id)}"
+        image_candidates = tiktok_image_candidates(data, title, link)
+        thumbnail = image_candidates[0].url if image_candidates else None
+        image_post = data.get("imagePost") if isinstance(data.get("imagePost"), dict) else {}
+        media_type = "image" if image_post.get("images") else "video"
+        explicit_region = str(
+            data.get("locationCreated")
+            or data.get("location_created")
+            or author.get("region")
+            or data.get("region")
+            or ""
+        ).strip().upper()
+        topic_tags = ["tiktok"]
+        if contains_phrase(title, ("curioso", "curiosidad", "insolito", "sorprendente")):
+            topic_tags.append("curiosidades")
+        entries.append(
+            StoryEntry(
+                title=title,
+                link=link,
+                source=f"TikTok · @{username}" if username else "TikTok España",
+                platform="tiktok",
+                published_at=published_at,
+                keywords=keywords(title),
+                social_points=tiktok_social_points(
+                    views, likes, comments, shares, saves, published_at
+                ),
+                metrics={
+                    "views": views,
+                    "likes": likes,
+                    "comments": comments,
+                    "shares": shares,
+                    "saves": saves,
+                    "video_id": video_id,
+                    "author": username,
+                    "topic_tags": topic_tags,
+                    "region_hint": explicit_region or "ES-localized",
+                    "region_mode": "proxy-es" if proxy else "locale-es",
+                },
+                thumbnail=thumbnail,
+                image_candidates=image_candidates,
+                media_type=media_type,
+            )
+        )
+
+    localisation_note = (
+        "Proxy español + locale ES"
+        if proxy
+        else "Locale ES; la IP de GitHub puede afectar la selección"
+    )
+    print(f"[ok] TikTokApi: {len(entries)} vídeos · {localisation_note}")
+    return entries, [], {
+        "name": "TikTok Trends España",
+        "ok": True,
+        "items": len(entries),
+        "note": localisation_note,
+    }
+
+
 def fetch_youtube_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]]:
     api_key = os.getenv("YOUTUBE_API_KEY", "").strip()
     if not api_key:
@@ -3006,6 +3335,8 @@ def editorial_fit(entry: StoryEntry) -> float:
     score -= min(12.0, contains_phrase(text, HARD_NEWS_TERMS) * 5.0)
     if entry.source.startswith("Reddit r/yo_elvr") or entry.source.startswith("Reddit r/MemesEnEspanol"):
         score += 4.0
+    if entry.platform == "tiktok":
+        score += 6.0
     return max(-18.0, min(22.0, score))
 
 
@@ -3041,6 +3372,12 @@ def entry_signal(entry: StoryEntry) -> str | None:
         return f"{format_metric(int(m.get('favourites', 0)))} favoritos · {format_metric(int(m.get('boosts', 0)))} impulsos en Mastodon"
     if entry.platform == "youtube":
         return f"{format_metric(int(m.get('views', 0)))} visualizaciones · {format_metric(int(m.get('likes', 0)))} likes en YouTube"
+    if entry.platform == "tiktok":
+        return (
+            f"{format_metric(int(m.get('views', 0)))} visualizaciones · "
+            f"{format_metric(int(m.get('likes', 0)))} likes · "
+            f"{format_metric(int(m.get('shares', 0)))} compartidos en TikTok"
+        )
     return None
 
 
@@ -3311,6 +3648,10 @@ def build() -> dict[str, Any]:
     warnings.extend(mastodon_warnings)
     source_status.extend(mastodon_status)
 
+    tiktok_entries, tiktok_warnings, tiktok_status = fetch_tiktok_entries()
+    warnings.extend(tiktok_warnings)
+    source_status.append(tiktok_status)
+
     youtube_entries, youtube_warnings, youtube_status = fetch_youtube_entries()
     warnings.extend(youtube_warnings)
     source_status.append(youtube_status)
@@ -3322,6 +3663,7 @@ def build() -> dict[str, Any]:
         *reddit_entries,
         *bluesky_entries,
         *mastodon_entries,
+        *tiktok_entries,
         *youtube_entries,
     ]
     if not entries:
@@ -3354,7 +3696,7 @@ def build() -> dict[str, Any]:
         "image_summary": image_summary,
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
-            "presencia en varias plataformas, Google/X Trends y afinidad editorial. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
+            "presencia en varias plataformas, Google/X Trends y afinidad editorial. Los vídeos de TikTok se incorporan con métricas públicas cuando TikTokApi está configurado. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
             "Las previsualizaciones se verifican, se asocian al artículo o publicación y se guardan "
             "localmente; se descartan logos, imágenes pequeñas y candidatos genéricos. "
             "No predice ni garantiza likes futuros."

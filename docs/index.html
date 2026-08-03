@@ -278,7 +278,7 @@ function visibleFor(story, filter){
   const platforms = story.platforms || [];
   if(filter === 'high') return Number(story.viral_score ?? story.score) >= 65;
   if(filter === 'editorial') return Boolean(story.curated_editorial);
-  if(filter === 'tiktok') return (story.topic_tags || []).includes('tiktok');
+  if(filter === 'tiktok') return platforms.includes('tiktok') || (story.topic_tags || []).includes('tiktok');
   if(filter === 'curiosidades') return (story.topic_tags || []).includes('curiosidades');
   if(filter === 'social') return platforms.some(p => p !== 'news');
   if(filter === 'visual') return ['video','image'].includes(story.media_type);
@@ -304,6 +304,7 @@ function storyCard(story, index){
   const sourceText = sources.length ? sources.slice(0,3).join(' · ') : 'Fuente original';
   const age = relativeAge(story.published_at);
   const rank = index + 1;
+  const openLabel = story.main_platform === 'tiktok' ? 'Ver TikTok ↗' : (story.media_type === 'video' ? 'Ver vídeo ↗' : 'Abrir noticia ↗');
   return `<article class="story" data-score="${score}" data-rank="${rank}">
     <div class="rank-rail" aria-label="Número ${rank}"><span class="rank-number"><span class="rank-hash">#</span>${String(rank).padStart(2,'0')}</span></div>
     ${visual}
@@ -317,7 +318,7 @@ function storyCard(story, index){
     <aside class="score-panel" aria-label="Potencial viral ${score} sobre 100">
       <div><div class="score-value">${score}</div><div class="score-caption">potencial viral</div></div>
       <div><div class="potential">${escapeHtml(potentialLabel(score))}</div><div class="meter"><div style="width:${score}%"></div></div></div>
-      <a class="open-button" href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">Abrir noticia ↗</a>
+      <a class="open-button" href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(openLabel)}</a>
     </aside>
   </article>`;
 }

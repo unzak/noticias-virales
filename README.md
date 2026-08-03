@@ -1,4 +1,4 @@
-# Pulso Viral v2.6 — radar social para España
+# Pulso Viral v2.7 — radar social para España
 
 Dashboard estático para detectar contenidos con **potencial editorial viral**:
 humor, curiosidades, animales, entretenimiento, televisión, deporte y formatos
@@ -35,6 +35,10 @@ filtros **Medios virales**, **TikTok** y **Curiosidades** para aislar estas piez
 
 ### Opcionales
 
+- **TikTok:** vídeos de la página pública «Para ti» mediante `TikTokApi`, con
+  visualizaciones, likes, comentarios, compartidos, guardados y portada.
+  Requiere el secreto `TIKTOK_MS_TOKEN`; para aproximar realmente el feed de
+  España desde GitHub Actions se recomienda además un proxy con salida española.
 - **Reddit:** votos, comentarios, recencia y publicaciones visuales de
   comunidades españolas y globales. Requiere credenciales OAuth.
 - **YouTube:** vídeos populares en España con visualizaciones, likes y
@@ -69,6 +73,8 @@ La selección se adapta a cada tipo de fuente:
 - **Mastodon:** compara los adjuntos y sus tamaños `preview` y `original`.
 - **YouTube:** prueba `maxres`, `standard`, `high` y tamaños inferiores hasta
   encontrar la mejor miniatura válida.
+- **TikTok:** utiliza la portada original del vídeo o la primera imagen del
+  carrusel, la descarga durante el workflow y nunca aloja el vídeo completo.
 
 Se rechazan logos, avatares, placeholders, píxeles de seguimiento, imágenes
 pequeñas, proporciones extremas y archivos excesivamente pesados. Entre los
@@ -98,7 +104,7 @@ Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
 
 ```bash
 git add -A
-git commit -m "Añadir noticias asociadas a Google Trends y modernizar el ranking"
+git commit -m "Añadir vídeos trending de TikTok España"
 git push origin main
 ```
 
@@ -108,6 +114,57 @@ El `push` inicia el workflow automáticamente. También se puede ejecutar desde:
 
 En **Settings → Pages**, la fuente debe estar configurada como
 **GitHub Actions**.
+
+
+## Activar TikTokApi
+
+La integración usa la librería no oficial `TikTokApi==7.3.3`. Esta librería
+controla Chromium mediante Playwright y puede dejar de funcionar temporalmente
+cuando TikTok cambia su web o activa una comprobación antibot. El workflow no
+intenta resolver captchas ni descargar los vídeos: solo recoge metadatos
+públicos, la portada y el enlace original.
+
+En GitHub abre:
+
+`Settings → Secrets and variables → Actions → Secrets → New repository secret`
+
+Crea este secreto obligatorio:
+
+```text
+TIKTOK_MS_TOKEN
+```
+
+En **Secret** pega únicamente el valor de la cookie `msToken` de una sesión
+abierta en `tiktok.com`; no pegues el texto `msToken=` ni el resto de cookies.
+El token puede caducar y tendrás que sustituirlo.
+
+Para que el resultado sea realmente geolocalizado en España desde los servidores
+de GitHub, añade opcionalmente un proxy con salida española:
+
+```text
+TIKTOK_PROXY_URL
+```
+
+Formato admitido:
+
+```text
+http://usuario:contraseña@servidor:puerto
+```
+
+Sin proxy, el código fuerza `es-ES`, zona horaria `Europe/Madrid`, geolocalización
+de Madrid y parámetros `region=ES`, pero la IP del runner todavía puede influir
+en la página «Para ti». Por eso el panel indica si la fuente funcionó en modo
+`locale-es` o `proxy-es`.
+
+Opcionalmente, en **Variables**, crea:
+
+```text
+TIKTOK_COUNT
+```
+
+Admite de 10 a 60 vídeos; el valor predeterminado es 40. Cuando existe
+`TIKTOK_MS_TOKEN`, GitHub Actions instala Chromium automáticamente antes de
+ejecutar el generador.
 
 ## Activar Reddit
 
@@ -186,7 +243,7 @@ antes el precio y el acceso disponibles en tu cuenta de desarrollador de X.
 
 El score, de 1 a 100, pondera:
 
-- votos, likes, reposts, comentarios, visualizaciones e impulsos;
+- votos, likes, reposts, comentarios, visualizaciones, compartidos, guardados e impulsos;
 - interacción por hora y antigüedad;
 - aparición del mismo tema en varias plataformas o fuentes;
 - aparición en una sección editorial viral o en «Lo más visto»;
@@ -224,6 +281,7 @@ Activa el entorno e instala las dependencias:
 source .venv/Scripts/activate 2>/dev/null || source .venv/bin/activate
 
 python -m pip install -r requirements.txt
+python -m playwright install chromium  # solo necesario si activas TikTok
 python fetch_news.py
 python -m http.server 8000 --directory docs
 ```
