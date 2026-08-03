@@ -1,4 +1,4 @@
-# Pulso Viral v2.5 — radar social para España
+# Pulso Viral v2.6 — radar social para España
 
 Dashboard estático para detectar contenidos con **potencial editorial viral**:
 humor, curiosidades, animales, entretenimiento, televisión, deporte y formatos
@@ -23,7 +23,7 @@ formatos compartibles.
   Antena 3, laSexta, Telecinco, MARCA, AS, Mundo Deportivo, 20minutos,
   elDiario.es, Público, El Confidencial, EL ESPAÑOL, HuffPost e Infobae.
 - Menéame mediante las secciones públicas **Populares** y **Más visitadas**.
-- Google Trends España mediante RSS.
+- Google Trends España mediante RSS, con volumen aproximado y hasta tres noticias relacionadas por término. La noticia principal de cada tendencia entra también en el ranking.
 - Bluesky mediante sus endpoints públicos.
 - Tendencias públicas de Mastodon en `masto.es` y `mastodon.social`.
 
@@ -81,9 +81,16 @@ imagen posiblemente incorrecta.
 
 El ranking publica hasta **100 noticias por actualización** y verifica las
 imágenes de las 100 posiciones. La interfaz muestra **una noticia por fila**. En escritorio, cada fila separa
-claramente la posición, la imagen, el titular y señales, y el score con el botón
+claramente el número `#`, la imagen, el titular y señales, y el score con el botón
 para abrir el original. En móvil se reorganiza en una sola columna sin perder
 la posición ni el potencial viral.
+
+Antes del ranking aparece el bloque **Google Trends España**. Para cada término
+muestra el volumen aproximado de búsquedas y enlaza la mejor noticia disponible:
+primero la historia asociada con mayor score dentro del radar y, si no existe,
+el primer artículo relacionado incluido por Google en su RSS. Google Trends no
+publica las visitas individuales de esos artículos, por lo que la interfaz la
+describe como noticia principal o destacada, no como una cifra de páginas vistas.
 
 ## Instalar esta versión en el repositorio
 
@@ -91,7 +98,7 @@ Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
 
 ```bash
 git add -A
-git commit -m "Ampliar radar a 100 noticias y mejorar Menéame"
+git commit -m "Añadir noticias asociadas a Google Trends y modernizar el ranking"
 git push origin main
 ```
 

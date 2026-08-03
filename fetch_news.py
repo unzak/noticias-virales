@@ -36,8 +36,10 @@ import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from html.parser import HTMLParser
+from email.utils import parsedate_to_datetime
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
@@ -315,7 +317,7 @@ DEFAULT_REDDIT_GLOBAL = (
 
 USER_AGENT = os.getenv(
     "PULSO_USER_AGENT",
-    "PulsoNoticias/2.5 (+https://github.com/unzak/noticias-virales)",
+    "PulsoNoticias/2.6 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
 NEWS_MAX_AGE_HOURS = 72
@@ -338,7 +340,7 @@ IMAGE_FETCH_TIMEOUT_SECONDS = 10
 BROWSER_USER_AGENT = os.getenv(
     "PULSO_IMAGE_USER_AGENT",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.5",
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.6",
 )
 
 STOPWORDS = set(
@@ -2122,11 +2124,46 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
     return entries, warnings, statuses
 
 
+def xml_local_name(tag: Any) -> str:
+    return str(tag or "").rsplit("}", 1)[-1].split(":")[-1]
+
+
+def xml_child_text(node: ET.Element, local_name: str) -> str:
+    for child in list(node):
+        if xml_local_name(child.tag) == local_name:
+            return html.unescape("".join(child.itertext()).strip())
+    return ""
+
+
+def parse_rss_datetime(value: str) -> dt.datetime | None:
+    if not value.strip():
+        return None
+    try:
+        parsed = parsedate_to_datetime(value.strip())
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=dt.timezone.utc)
+    return parsed.astimezone(dt.timezone.utc)
+
+
 def get_google_trends() -> tuple[list[dict[str, Any]], list[str], dict[str, Any]]:
+    """Descarga Trends y conserva sus artículos relacionados.
+
+    El RSS incluye volumen aproximado de búsquedas, una imagen representativa
+    y hasta varios ``ht:news_item``. Se conserva su orden y se toma el primer
+    artículo válido como noticia principal asociada por Google. El feed no
+    proporciona visitas de cada artículo, por lo que no se inventa ese dato.
+    """
     warnings: list[str] = []
     try:
-        feed = fetch_feed(GOOGLE_TRENDS_URL)
-    except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+        payload = fetch_bytes(GOOGLE_TRENDS_URL)
+        feed = feedparser.parse(payload)
+        root = ET.fromstring(payload)
+    except (
+        OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError,
+        ET.ParseError,
+    ) as exc:
         return [], [f"No se pudo descargar Google Trends: {exc}"], {
             "name": "Google Trends España",
             "ok": False,
@@ -2141,23 +2178,111 @@ def get_google_trends() -> tuple[list[dict[str, Any]], list[str], dict[str, Any]
 
     trends: list[dict[str, Any]] = []
     seen: set[str] = set()
-    for entry in feed.entries:
-        title = str(entry.get("title", "")).strip()
+    for item in root.iter():
+        if xml_local_name(item.tag) != "item":
+            continue
+        title = xml_child_text(item, "title").strip()
         normalized = normalize(title)
         if not normalized or normalized in seen:
             continue
         seen.add(normalized)
-        traffic_raw = entry.get("ht_approx_traffic") or entry.get("approx_traffic") or ""
+
+        traffic_raw = xml_child_text(item, "approx_traffic")
+        picture = valid_http_url(xml_child_text(item, "picture"))
+        picture_source = xml_child_text(item, "picture_source") or None
+        trend_url = valid_http_url(xml_child_text(item, "link"))
+        published_at = parse_rss_datetime(xml_child_text(item, "pubDate"))
+
+        related_news: list[dict[str, Any]] = []
+        for child in list(item):
+            if xml_local_name(child.tag) != "news_item":
+                continue
+            article_url = valid_http_url(xml_child_text(child, "news_item_url"))
+            article_title = compact_text(xml_child_text(child, "news_item_title"), 220)
+            article_source = compact_text(xml_child_text(child, "news_item_source"), 90)
+            article_snippet = compact_text(xml_child_text(child, "news_item_snippet"), 260)
+            if not article_url or not article_title:
+                continue
+            related_news.append(
+                {
+                    "title": article_title,
+                    "url": article_url,
+                    "source": article_source or None,
+                    "snippet": article_snippet or None,
+                }
+            )
+
+        top_news = related_news[0] if related_news else None
         trends.append(
             {
                 "name": title,
                 "traffic": parse_human_count(traffic_raw),
-                "traffic_label": str(traffic_raw).strip() or None,
+                "traffic_label": traffic_raw.strip() or None,
+                "trend_url": trend_url,
+                "published_at": published_at.isoformat().replace("+00:00", "Z") if published_at else None,
+                "picture": picture,
+                "picture_source": picture_source,
+                "news": related_news[:3],
+                "top_news": top_news,
             }
         )
+
     trends = trends[:30]
-    print(f"[ok] Google Trends: {len(trends)} tendencias")
-    return trends, warnings, {"name": "Google Trends España", "ok": True, "items": len(trends)}
+    with_news = sum(1 for trend in trends if trend.get("top_news"))
+    print(f"[ok] Google Trends: {len(trends)} tendencias · {with_news} con noticia asociada")
+    return trends, warnings, {
+        "name": "Google Trends España",
+        "ok": True,
+        "items": len(trends),
+        "note": f"{with_news} con noticia asociada",
+    }
+
+
+def build_google_trend_entries(trends: list[dict[str, Any]]) -> list[StoryEntry]:
+    """Convierte la noticia principal de cada tendencia en candidata al ranking."""
+    entries: list[StoryEntry] = []
+    for trend in trends:
+        article = trend.get("top_news") or {}
+        link = valid_http_url(article.get("url"))
+        title = compact_text(str(article.get("title") or ""), 220)
+        trend_name = compact_text(str(trend.get("name") or ""), 120)
+        if not link or not title or not trend_name or is_blocked_content(title):
+            continue
+
+        picture = valid_http_url(trend.get("picture"))
+        candidate = make_image_candidate(
+            picture,
+            "google-trends:picture",
+            74.0,
+            alt=title,
+            page_url=link,
+        ) if picture else None
+        image_candidates = dedupe_image_candidates((candidate,))
+        traffic = int(trend.get("traffic") or 0)
+        social_points = min(25.0, 6.0 + math.log10(traffic + 1) * 3.1)
+        entries.append(
+            StoryEntry(
+                title=title,
+                link=link,
+                source=str(article.get("source") or trend.get("picture_source") or "Google Trends"),
+                platform="news",
+                published_at=parse_iso_datetime(trend.get("published_at")),
+                keywords=keywords(f"{trend_name} {title}"),
+                social_points=social_points,
+                metrics={
+                    "google_trends_item": True,
+                    "trend_name": trend_name,
+                    "search_traffic": traffic,
+                    "search_traffic_label": trend.get("traffic_label"),
+                    "topic_tags": ["google-trends"],
+                },
+                thumbnail=image_candidates[0].url if image_candidates else None,
+                image_candidates=image_candidates,
+                media_type="article",
+                seed_trend=trend_name,
+            )
+        )
+    return entries
 
 
 def get_x_trends() -> tuple[list[dict[str, Any]], list[str], dict[str, Any]]:
@@ -2895,6 +3020,11 @@ def format_metric(value: int | float) -> str:
 
 def entry_signal(entry: StoryEntry) -> str | None:
     m = entry.metrics
+    if entry.platform == "news" and m.get("google_trends_item"):
+        label = f"Google Trends: {m.get('trend_name', entry.seed_trend or '')}"
+        if m.get("search_traffic_label"):
+            label += f" ({m['search_traffic_label']} búsquedas)"
+        return label
     if entry.platform == "news" and m.get("curated_editorial"):
         return f"Selección editorial: {m.get('editorial_feed', entry.source)}"
     if entry.platform == "meneame":
@@ -3086,6 +3216,66 @@ def build_ranked(
     return ranked[:MAX_STORIES]
 
 
+def build_google_trend_news(
+    trends: list[dict[str, Any]], stories: list[dict[str, Any]], limit: int = 12
+) -> list[dict[str, Any]]:
+    """Une cada término con la mejor noticia disponible en el radar.
+
+    Se prioriza la historia ya verificada y mejor puntuada del ranking. Cuando
+    no existe coincidencia, se usa el primer artículo relacionado que entrega
+    el RSS de Google Trends.
+    """
+    cards: list[dict[str, Any]] = []
+    for trend in trends[:limit]:
+        trend_name = str(trend.get("name") or "").strip()
+        normalized = normalize(trend_name)
+        matches = [
+            story for story in stories
+            if normalize(str(story.get("matched_google_trend") or "")) == normalized
+        ]
+        article: dict[str, Any] | None = None
+        if matches:
+            best = max(
+                matches,
+                key=lambda story: (
+                    int(story.get("viral_score") or story.get("score") or 0),
+                    story.get("published_at") or "",
+                ),
+            )
+            sources = best.get("sources") or []
+            article = {
+                "title": best.get("title"),
+                "url": best.get("link"),
+                "source": sources[0] if sources else "Fuente original",
+                "viral_score": int(best.get("viral_score") or best.get("score") or 0),
+                "thumbnail": best.get("thumbnail"),
+                "verified_image": bool(best.get("image_verified")),
+                "selection": "radar",
+            }
+        elif trend.get("top_news"):
+            top_news = trend["top_news"]
+            article = {
+                "title": top_news.get("title"),
+                "url": top_news.get("url"),
+                "source": top_news.get("source") or trend.get("picture_source") or "Fuente original",
+                "viral_score": None,
+                "thumbnail": trend.get("picture"),
+                "verified_image": False,
+                "selection": "google-rss",
+            }
+
+        cards.append(
+            {
+                "name": trend_name,
+                "traffic": int(trend.get("traffic") or 0),
+                "traffic_label": trend.get("traffic_label"),
+                "trend_url": trend.get("trend_url"),
+                "article": article,
+            }
+        )
+    return cards
+
+
 def build() -> dict[str, Any]:
     warnings: list[str] = []
     source_status: list[dict[str, Any]] = []
@@ -3101,6 +3291,7 @@ def build() -> dict[str, Any]:
     google_trends, trend_warnings, google_status = get_google_trends()
     warnings.extend(trend_warnings)
     source_status.append(google_status)
+    google_trend_entries = build_google_trend_entries(google_trends)
 
     x_trends, x_warnings, x_status = get_x_trends()
     warnings.extend(x_warnings)
@@ -3125,6 +3316,7 @@ def build() -> dict[str, Any]:
     source_status.append(youtube_status)
 
     entries = [
+        *google_trend_entries,
         *news_entries,
         *meneame_entries,
         *reddit_entries,
@@ -3140,6 +3332,7 @@ def build() -> dict[str, Any]:
     now = dt.datetime.now(dt.timezone.utc)
     ranked = build_ranked(entries, google_trends, x_trends)
     ranked, image_summary = enrich_ranked_images(ranked)
+    google_trend_news = build_google_trend_news(google_trends, ranked)
     active_sources = sum(1 for status in source_status if status.get("ok") is True)
     configured_sources = sum(1 for status in source_status if status.get("ok") is not None)
 
@@ -3148,6 +3341,7 @@ def build() -> dict[str, Any]:
         "trends_google": [item["name"] for item in google_trends[:20]],
         "trends_x": [item["name"] for item in x_trends[:20]],
         "trend_details": {"google": google_trends[:20], "x": x_trends[:20]},
+        "google_trend_news": google_trend_news,
         "stories": ranked,
         "warnings": warnings,
         "source_status": source_status,
@@ -3160,7 +3354,7 @@ def build() -> dict[str, Any]:
         "image_summary": image_summary,
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
-            "presencia en varias plataformas, Google/X Trends y afinidad editorial. "
+            "presencia en varias plataformas, Google/X Trends y afinidad editorial. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
             "Las previsualizaciones se verifican, se asocian al artículo o publicación y se guardan "
             "localmente; se descartan logos, imágenes pequeñas y candidatos genéricos. "
             "No predice ni garantiza likes futuros."
