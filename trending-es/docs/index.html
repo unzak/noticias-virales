@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pulso — Lo más viral de España</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12151c;
+    --ink-2:#1a1e28;
+    --paper:#ede8dd;
+    --paper-dim:#b7b2a5;
+    --heat:#c1440e;
+    --pulse:#3fa796;
+    --gold:#d4a537;
+    --line:#2a2e38;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Source Serif 4', serif;
+    min-height:100vh;
+  }
+  a{color:inherit;}
+
+  header{
+    padding:2.2rem 1.5rem 1.4rem;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--pulse);
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .eyebrow::before{
+    content:'';
+    width:7px;height:7px;border-radius:50%;
+    background:var(--heat);
+    box-shadow:0 0 0 0 rgba(193,68,14,0.6);
+    animation:beat 1.6s infinite;
+  }
+  @keyframes beat{
+    0%{box-shadow:0 0 0 0 rgba(193,68,14,0.55);}
+    70%{box-shadow:0 0 0 8px rgba(193,68,14,0);}
+    100%{box-shadow:0 0 0 0 rgba(193,68,14,0);}
+  }
+  h1{
+    font-family:'Archivo Black', sans-serif;
+    font-weight:400;
+    font-size:clamp(2rem, 5vw, 3.2rem);
+    margin:0.5rem 0 0.3rem;
+    letter-spacing:-0.01em;
+  }
+  .sub{
+    color:var(--paper-dim);
+    font-size:1rem;
+    max-width:38em;
+  }
+  .updated{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--paper-dim);
+    margin-top:0.8rem;
+  }
+
+  /* Marquee de tendencias */
+  .ticker-wrap{
+    border-bottom:1px solid var(--line);
+    background:var(--ink-2);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:0.6rem 0;
+  }
+  .ticker{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.82rem;
+    color:var(--gold);
+    animation:scroll 35s linear infinite;
+    padding-left:100%;
+  }
+  .ticker span{margin-right:2.5rem;}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:2rem 1.5rem 4rem;
+  }
+
+  .story{
+    display:grid;
+    grid-template-columns:3rem 1fr;
+    gap:1.1rem;
+    padding:1.4rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .rank{
+    font-family:'Archivo Black', sans-serif;
+    font-size:1.6rem;
+    color:var(--paper-dim);
+    line-height:1;
+  }
+  .story:nth-child(1) .rank{color:var(--heat);}
+  .story:nth-child(2) .rank{color:var(--gold);}
+  .story:nth-child(3) .rank{color:var(--pulse);}
+
+  .story h2{
+    font-size:1.15rem;
+    font-weight:600;
+    line-height:1.35;
+    margin:0 0 0.55rem;
+  }
+  .story h2 a{text-decoration:none;}
+  .story h2 a:hover{text-decoration:underline;text-decoration-color:var(--heat);}
+
+  .meta{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:0.9rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--paper-dim);
+  }
+  .badge{
+    padding:0.15rem 0.5rem;
+    border:1px solid var(--line);
+    border-radius:2px;
+  }
+  .badge.trend{border-color:var(--pulse);color:var(--pulse);}
+
+  .pulsebar{
+    margin-top:0.6rem;
+    height:5px;
+    background:var(--line);
+    border-radius:3px;
+    overflow:hidden;
+  }
+  .pulsebar-fill{
+    height:100%;
+    background:linear-gradient(90deg, var(--pulse), var(--heat));
+    border-radius:3px;
+  }
+
+  .empty, .error{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--paper-dim);
+    padding:3rem 0;
+    text-align:center;
+  }
+
+  footer{
+    text-align:center;
+    padding:2rem 1.5rem 3rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--paper-dim);
+  }
+  footer a{color:var(--pulse);}
+
+  @media (prefers-reduced-motion: reduce){
+    .ticker{animation:none;}
+    .eyebrow::before{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">En directo</div>
+  <h1>Pulso</h1>
+  <div class="sub">Lo que más se está moviendo ahora mismo en los medios y en Google Trends España, agrupado y puntuado automáticamente.</div>
+  <div class="updated" id="updated">Cargando última actualización…</div>
+</header>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">Cargando tendencias…</div>
+</div>
+
+<main id="main">
+  <div class="empty">Cargando noticias…</div>
+</main>
+
+<footer>
+  Datos: Google News España · Meneame · Google Trends España — se actualiza cada ~45 min vía GitHub Actions
+</footer>
+
+<script>
+async function load(){
+  const main = document.getElementById('main');
+  try{
+    const res = await fetch('./data.json?_=' + Date.now());
+    if(!res.ok) throw new Error('data.json no encontrado todavía');
+    const data = await res.json();
+
+    // Cabecera: hora de actualización
+    const updatedEl = document.getElementById('updated');
+    if(data.updated_at){
+      const d = new Date(data.updated_at);
+      updatedEl.textContent = 'Actualizado: ' + d.toLocaleString('es-ES', {dateStyle:'medium', timeStyle:'short'});
+    }
+
+    // Ticker de tendencias de Google
+    const tickerEl = document.getElementById('ticker');
+    if(data.trends_google && data.trends_google.length){
+      tickerEl.innerHTML = data.trends_google.map(t => `<span>▲ ${escapeHtml(t)}</span>`).join('');
+    } else {
+      tickerEl.innerHTML = '<span>Sin datos de Google Trends en esta actualización</span>';
+    }
+
+    // Lista de noticias
+    if(!data.stories || !data.stories.length){
+      main.innerHTML = '<div class="empty">Todavía no hay noticias generadas. Vuelve en un rato.</div>';
+      return;
+    }
+
+    const maxScore = Math.max(...data.stories.map(s => s.score));
+    main.innerHTML = data.stories.map((s, i) => {
+      const pct = maxScore ? Math.max(8, Math.round((s.score / maxScore) * 100)) : 0;
+      const trendBadge = s.matched_trend
+        ? `<span class="badge trend">Google Trends: ${escapeHtml(s.matched_trend)}</span>`
+        : '';
+      return `
+        <article class="story">
+          <div class="rank">${String(i+1).padStart(2,'0')}</div>
+          <div>
+            <h2><a href="${s.link}" target="_blank" rel="noopener">${escapeHtml(s.title)}</a></h2>
+            <div class="meta">
+              <span class="badge">${s.sources.length} fuente${s.sources.length===1?'':'s'}</span>
+              <span class="badge">${s.num_mentions} mención${s.num_mentions===1?'':'es'}</span>
+              <span>score ${s.score}</span>
+              ${trendBadge}
+            </div>
+            <div class="pulsebar"><div class="pulsebar-fill" style="width:${pct}%"></div></div>
+          </div>
+        </article>`;
+    }).join('');
+
+  } catch(err){
+    main.innerHTML = `<div class="error">Todavía no hay datos publicados (${escapeHtml(err.message)}).<br>El primer workflow de GitHub Actions tiene que ejecutarse al menos una vez.</div>`;
+  }
+}
+
+function escapeHtml(str){
+  return String(str).replace(/[&<>"']/g, m => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[m]));
+}
+
+load();
+</script>
+
+</body>
+</html>

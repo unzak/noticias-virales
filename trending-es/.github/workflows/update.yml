@@ -1,0 +1,39 @@
+name: Actualizar noticias trending
+
+on:
+  # Los minutos 0/45/90/135 dentro de un ciclo de 3h dan intervalos
+  # exactos de 45 minutos (60 y 45 no son divisibles entre sí, así que
+  # hace falta repartirlo en 4 líneas de cron para que cuadre).
+  schedule:
+    - cron: '0 0,3,6,9,12,15,18,21 * * *'
+    - cron: '45 0,3,6,9,12,15,18,21 * * *'
+    - cron: '30 1,4,7,10,13,16,19,22 * * *'
+    - cron: '15 2,5,8,11,14,17,20,23 * * *'
+  workflow_dispatch: {}  # permite lanzarlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Generar ranking de noticias
+        run: python fetch_news.py
+
+      - name: Commitear docs/data.json si ha cambiado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json
+          git diff --staged --quiet || git commit -m "Actualiza trending $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
