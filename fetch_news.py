@@ -1,8 +1,8 @@
 """Genera un ranking editorial de contenidos con potencial viral en España.
 
 Fuentes sin clave:
-- Google News España y búsquedas temáticas (RSS)
-- Menéame (RSS)
+- Google News España, búsquedas temáticas y secciones virales de medios españoles (RSS)
+- Menéame · Populares y Más visitadas (HTML público)
 - Google Trends España (RSS)
 - Bluesky (API pública)
 - Mastodon (endpoints públicos de tendencias)
@@ -33,6 +33,7 @@ import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
+from html.parser import HTMLParser
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Iterable
@@ -44,21 +45,127 @@ OUTPUT_PATH = ROOT / "docs" / "data.json"
 
 GOOGLE_NEWS_BASE = "https://news.google.com/rss"
 GOOGLE_NEWS_PARAMS = "hl=es&gl=ES&ceid=ES:es"
+
+
+def google_news_search_url(query: str) -> str:
+    return (
+        f"{GOOGLE_NEWS_BASE}/search?"
+        f"{urllib.parse.urlencode({'q': query})}&{GOOGLE_NEWS_PARAMS}"
+    )
+
+
+# Cada tupla contiene:
+# (nombre visible del feed, URL, impulso editorial, sección editorial).
+#
+# Las fuentes especializadas se consultan antes que los feeds genéricos para
+# que, cuando un artículo aparezca en ambos, conserve la señal de su sección
+# viral o de popularidad. Excepto el RSS oficial de EL PAÍS, las selecciones se
+# obtienen mediante Google News RSS restringido al dominio o ruta del medio;
+# así evitamos raspar directamente páginas editoriales frágiles.
 NEWS_SOURCES = (
-    ("Google News España", f"{GOOGLE_NEWS_BASE}?{GOOGLE_NEWS_PARAMS}"),
+    (
+        "EL PAÍS · Lo más visto",
+        "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/lo-mas-visto/portada",
+        12.0,
+        "Lo más visto",
+    ),
+    (
+        "EL PAÍS · Viral Internet",
+        google_news_search_url(
+            'site:elpais.com (viral OR "redes sociales" OR TikTok OR Instagram OR curioso)'
+        ),
+        8.0,
+        "Viral Internet y redes",
+    ),
+    (
+        "MARCA · Tiramillas",
+        google_news_search_url("site:marca.com/tiramillas"),
+        9.0,
+        "Tiramillas",
+    ),
+    (
+        "20minutos · Virales",
+        google_news_search_url(
+            "site:20minutos.es (viral OR virales OR TikTok OR Instagram OR curioso OR insólito)"
+        ),
+        9.0,
+        "Virales, redes y Gonzoo",
+    ),
+    (
+        "El HuffPost · Virales",
+        google_news_search_url("site:huffingtonpost.es/virales"),
+        10.0,
+        "Virales",
+    ),
+    (
+        "La Vanguardia · Cribeo Viral",
+        google_news_search_url("site:lavanguardia.com/cribeo/viral"),
+        10.0,
+        "Cribeo Viral",
+    ),
+    (
+        "AS · Tikitakas Viral",
+        google_news_search_url(
+            'site:as.com/tikitakas (viral OR TikTok OR Instagram OR "redes sociales")'
+        ),
+        9.0,
+        "Tikitakas Virales",
+    ),
+    (
+        "Antena 3 · Virales",
+        google_news_search_url("site:antena3.com/noticias/virales"),
+        9.0,
+        "Virales",
+    ),
+    (
+        "laSexta · Virales",
+        google_news_search_url("site:lasexta.com/noticias/virales"),
+        9.0,
+        "Virales",
+    ),
+    (
+        "Telecinco · Curioso y virales",
+        google_news_search_url(
+            'site:telecinco.es ("noticias virales" OR curioso OR viral)'
+        ),
+        8.0,
+        "Curioso y noticias virales",
+    ),
+    (
+        "EL ESPAÑOL · Virales",
+        google_news_search_url("site:elespanol.com/temas/virales"),
+        8.0,
+        "Virales",
+    ),
+    (
+        "Público · Tremending",
+        google_news_search_url("site:publico.es/tremending"),
+        8.0,
+        "Tremending",
+    ),
+    ("Google News España", f"{GOOGLE_NEWS_BASE}?{GOOGLE_NEWS_PARAMS}", 0.0, None),
     (
         "Google News · viral y curiosidades",
-        f"{GOOGLE_NEWS_BASE}/search?{urllib.parse.urlencode({'q': 'viral OR insólito OR curioso OR redes sociales'})}&{GOOGLE_NEWS_PARAMS}",
+        google_news_search_url("viral OR insólito OR curioso OR redes sociales"),
+        0.0,
+        None,
     ),
     (
         "Google News · entretenimiento",
-        f"{GOOGLE_NEWS_BASE}/search?{urllib.parse.urlencode({'q': 'televisión OR famosos OR reality OR vídeo viral'})}&{GOOGLE_NEWS_PARAMS}",
+        google_news_search_url("televisión OR famosos OR reality OR vídeo viral"),
+        0.0,
+        None,
     ),
     (
         "Google News · animales e historias",
-        f"{GOOGLE_NEWS_BASE}/search?{urllib.parse.urlencode({'q': 'animales OR mascotas OR historia viral'})}&{GOOGLE_NEWS_PARAMS}",
+        google_news_search_url("animales OR mascotas OR historia viral"),
+        0.0,
+        None,
     ),
-    ("Menéame", "https://www.meneame.net/rss"),
+)
+MENEAME_SECTIONS = (
+    ("Menéame · Populares", "https://www.meneame.net/popular", "popular"),
+    ("Menéame · Más visitadas", "https://www.meneame.net/top_visited", "top_visited"),
 )
 GOOGLE_TRENDS_URL = "https://trends.google.com/trending/rss?geo=ES"
 BLUESKY_SEARCH_URL = "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts"
@@ -85,13 +192,14 @@ DEFAULT_REDDIT_GLOBAL = (
 
 USER_AGENT = os.getenv(
     "PULSO_USER_AGENT",
-    "PulsoNoticias/2.0 (+https://github.com/unzak/noticias-virales)",
+    "PulsoNoticias/2.2 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
 NEWS_MAX_AGE_HOURS = 72
 SOCIAL_MAX_AGE_HOURS = 48
 YOUTUBE_MAX_AGE_HOURS = 14 * 24
 MAX_STORIES = 60
+MAX_NEWS_ITEMS_PER_SOURCE = 35
 
 STOPWORDS = set(
     """de la el en y a los que del las un por con no una su para es al lo
@@ -199,6 +307,7 @@ GENERIC_REDDIT_TITLES = {
 }
 PLATFORM_LABELS = {
     "news": "Medios",
+    "meneame": "Menéame",
     "reddit": "Reddit",
     "bluesky": "Bluesky",
     "mastodon": "Mastodon",
@@ -418,6 +527,266 @@ def youtube_social_points(
     return min(65.0, points)
 
 
+
+def meneame_social_points(
+    meneos: int,
+    comments: int,
+    clicks: int,
+    published_at: dt.datetime | None,
+    section: str,
+) -> float:
+    """Convierte las señales visibles de Menéame en puntos comparables."""
+    now = dt.datetime.now(dt.timezone.utc)
+    if section == "top_visited":
+        weighted = clicks + meneos * 7 + comments * 4
+        points = (
+            math.log10(clicks + 1) * 7.5
+            + math.log10(meneos + 1) * 7.0
+            + math.log10(comments + 1) * 4.0
+            + 3.0
+        )
+    else:
+        weighted = meneos * 8 + comments * 5 + clicks * 0.25
+        points = (
+            math.log10(meneos + 1) * 10.0
+            + math.log10(comments + 1) * 5.0
+            + math.log10(clicks + 1) * 2.5
+            + 4.0
+        )
+    points += velocity_bonus(weighted, published_at, now)
+    return min(58.0, points)
+
+
+def parse_meneame_count(text: str, label: str) -> int:
+    match = re.search(rf"([\d.]+)\s+{label}", text, flags=re.IGNORECASE)
+    if not match:
+        return 0
+    try:
+        return max(0, int(match.group(1).replace(".", "")))
+    except ValueError:
+        return 0
+
+
+class MeneamePageParser(HTMLParser):
+    """Extrae titulares y métricas de las listas públicas de Menéame.
+
+    Se apoya en elementos semánticos (h2/h3, enlaces y texto de métricas),
+    evitando selectores CSS frágiles ligados al diseño visual de la página.
+    """
+
+    def __init__(self, base_url: str) -> None:
+        super().__init__(convert_charrefs=True)
+        self.base_url = base_url
+        self.items: list[dict[str, Any]] = []
+        self._heading_tag: str | None = None
+        self._heading_link: str | None = None
+        self._heading_text: list[str] = []
+        self._current: dict[str, Any] | None = None
+
+    @staticmethod
+    def _attrs(attrs: list[tuple[str, str | None]]) -> dict[str, str]:
+        return {key: value or "" for key, value in attrs}
+
+    def _flush_current(self) -> None:
+        if not self._current:
+            return
+        title = " ".join(self._current.get("title_parts", [])).strip()
+        link = self._current.get("link")
+        text = " ".join(self._current.get("text_parts", []))
+        meneos = parse_meneame_count(text, r"meneos?")
+        comments = parse_meneame_count(text, r"comentarios?")
+        clicks = parse_meneame_count(text, r"clics?")
+        # Exige al menos una métrica para descartar encabezados de navegación.
+        if title and link and (meneos or comments or clicks):
+            self.items.append(
+                {
+                    "title": title,
+                    "link": link,
+                    "text": text,
+                    "meneos": meneos,
+                    "comments": comments,
+                    "clicks": clicks,
+                    "published_at": self._current.get("published_at"),
+                    "thumbnail": self._current.get("thumbnail"),
+                }
+            )
+        self._current = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = self._attrs(attrs)
+        if tag in {"h2", "h3"}:
+            self._flush_current()
+            self._heading_tag = tag
+            self._heading_link = None
+            self._heading_text = []
+            return
+
+        if self._heading_tag and tag == "a" and not self._heading_link:
+            href = values.get("href", "").strip()
+            if href and not href.startswith(("#", "javascript:")):
+                candidate = urllib.parse.urljoin(self.base_url, href)
+                parsed = urllib.parse.urlparse(candidate)
+                # Descarta enlaces de navegación, usuarios y categorías.
+                blocked_paths = (
+                    "/user/",
+                    "/m/",
+                    "/popular",
+                    "/top_visited",
+                    "/queue",
+                    "/search",
+                    "/login",
+                )
+                if parsed.scheme in {"http", "https"} and not any(
+                    parsed.path.startswith(path) for path in blocked_paths
+                ):
+                    self._heading_link = candidate
+            return
+
+        if not self._current:
+            return
+
+        if tag == "time":
+            raw_date = values.get("datetime") or values.get("data-time") or values.get("data-ts")
+            parsed_date = parse_iso_datetime(raw_date)
+            if not parsed_date and raw_date and raw_date.isdigit():
+                timestamp = int(raw_date)
+                if timestamp > 10_000_000_000:
+                    timestamp //= 1000
+                try:
+                    parsed_date = dt.datetime.fromtimestamp(timestamp, tz=dt.timezone.utc)
+                except (OverflowError, OSError, ValueError):
+                    parsed_date = None
+            if parsed_date:
+                self._current["published_at"] = parsed_date
+
+        if tag == "img" and not self._current.get("thumbnail"):
+            candidate = values.get("src") or values.get("data-src") or values.get("data-original")
+            if candidate:
+                self._current["thumbnail"] = valid_http_url(
+                    urllib.parse.urljoin(self.base_url, candidate)
+                )
+
+    def handle_endtag(self, tag: str) -> None:
+        if self._heading_tag == tag:
+            title = " ".join(self._heading_text).strip()
+            if title and self._heading_link:
+                self._current = {
+                    "title_parts": [title],
+                    "link": self._heading_link,
+                    "text_parts": [],
+                    "published_at": None,
+                    "thumbnail": None,
+                }
+            self._heading_tag = None
+            self._heading_link = None
+            self._heading_text = []
+
+    def handle_data(self, data: str) -> None:
+        value = " ".join(data.split())
+        if not value:
+            return
+        if self._heading_tag:
+            self._heading_text.append(value)
+        elif self._current:
+            self._current["text_parts"].append(value)
+
+    def close(self) -> None:
+        super().close()
+        self._flush_current()
+
+
+def infer_meneame_media_type(link: str, title: str) -> str:
+    value = f"{link} {normalize(title)}".lower()
+    if any(token in value for token in ("youtube.com", "youtu.be", "tiktok.com", "vimeo.com", " video ")):
+        return "video"
+    if re.search(r"\.(?:jpg|jpeg|png|gif|webp)(?:\?|$)", link, flags=re.IGNORECASE):
+        return "image"
+    return "article"
+
+
+def fetch_meneame_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
+    entries: list[StoryEntry] = []
+    warnings: list[str] = []
+    statuses: list[dict[str, Any]] = []
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=NEWS_MAX_AGE_HOURS)
+    seen: set[tuple[str, str]] = set()
+
+    for source_name, url, section in MENEAME_SECTIONS:
+        try:
+            page = fetch_bytes(
+                url,
+                headers={
+                    "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5",
+                    "Accept-Language": "es-ES,es;q=0.9",
+                },
+            ).decode("utf-8", errors="replace")
+            parser = MeneamePageParser(url)
+            parser.feed(page)
+            parser.close()
+            if not parser.items:
+                warnings.append(
+                    f"{source_name} no devolvió titulares parseables; puede haber cambiado su HTML."
+                )
+                statuses.append({"name": source_name, "ok": False, "items": 0})
+                continue
+        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+            warnings.append(f"No se pudo descargar {source_name}: {exc}")
+            statuses.append({"name": source_name, "ok": False, "items": 0})
+            continue
+
+        accepted = 0
+        for raw in parser.items:
+            title = compact_text(str(raw.get("title", "")).strip(), 220)
+            link = valid_http_url(raw.get("link"))
+            if not title or not link or is_blocked_content(title):
+                continue
+            published_at = raw.get("published_at")
+            if isinstance(published_at, dt.datetime) and published_at < cutoff:
+                continue
+            title_keywords = keywords(title)
+            if not title_keywords:
+                continue
+            dedupe_key = (normalize(title), source_name.casefold())
+            if dedupe_key in seen:
+                continue
+            seen.add(dedupe_key)
+
+            meneos = int(raw.get("meneos") or 0)
+            comments = int(raw.get("comments") or 0)
+            clicks = int(raw.get("clicks") or 0)
+            entries.append(
+                StoryEntry(
+                    title=title,
+                    link=link,
+                    source=source_name,
+                    platform="meneame",
+                    published_at=published_at if isinstance(published_at, dt.datetime) else None,
+                    keywords=title_keywords,
+                    social_points=meneame_social_points(
+                        meneos,
+                        comments,
+                        clicks,
+                        published_at if isinstance(published_at, dt.datetime) else None,
+                        section,
+                    ),
+                    metrics={
+                        "meneos": meneos,
+                        "comments": comments,
+                        "clicks": clicks,
+                        "section": section,
+                    },
+                    thumbnail=valid_http_url(raw.get("thumbnail")),
+                    media_type=infer_meneame_media_type(link, title),
+                )
+            )
+            accepted += 1
+
+        statuses.append({"name": source_name, "ok": True, "items": accepted})
+        print(f"[ok] {source_name}: {accepted} elementos")
+
+    return entries, warnings, statuses
+
+
 def extract_feed_thumbnail(entry: Any) -> str | None:
     for field_name in ("media_thumbnail", "media_content"):
         media = entry.get(field_name)
@@ -473,7 +842,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
     cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=NEWS_MAX_AGE_HOURS)
     seen: set[tuple[str, str]] = set()
 
-    for fallback_source, url in NEWS_SOURCES:
+    for fallback_source, url, editorial_boost, editorial_section in NEWS_SOURCES:
         try:
             feed = fetch_feed(url)
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
@@ -494,8 +863,11 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             if not raw_title or not link:
                 continue
 
+            is_google_news_feed = url.startswith(GOOGLE_NEWS_BASE)
             source = extract_publisher(raw, fallback_source)
-            title = clean_google_title(raw_title, source) if fallback_source.startswith("Google News") else raw_title
+            if is_google_news_feed and source == fallback_source and " - " in raw_title:
+                source = raw_title.rsplit(" - ", 1)[1].strip() or fallback_source
+            title = clean_google_title(raw_title, source) if is_google_news_feed else raw_title
             if is_blocked_content(title):
                 continue
             title_keywords = keywords(title)
@@ -519,11 +891,19 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                     platform="news",
                     published_at=published_at,
                     keywords=title_keywords,
+                    social_points=editorial_boost,
+                    metrics={
+                        "curated_editorial": bool(editorial_section),
+                        "editorial_section": editorial_section or "",
+                        "editorial_feed": fallback_source,
+                    },
                     thumbnail=extract_feed_thumbnail(raw),
                     media_type="article",
                 )
             )
             accepted += 1
+            if accepted >= MAX_NEWS_ITEMS_PER_SOURCE:
+                break
 
         statuses.append({"name": fallback_source, "ok": True, "items": accepted})
         print(f"[ok] {fallback_source}: {accepted} elementos")
@@ -1142,6 +1522,8 @@ def editorial_fit(entry: StoryEntry) -> float:
     score = 0.0
     if entry.platform != "news":
         score += 4.0
+    if entry.metrics.get("curated_editorial"):
+        score += 5.0
     if entry.media_type in {"image", "video"}:
         score += 6.0
     score += min(12.0, contains_phrase(text, VIRAL_TERMS) * 2.5)
@@ -1163,6 +1545,14 @@ def format_metric(value: int | float) -> str:
 
 def entry_signal(entry: StoryEntry) -> str | None:
     m = entry.metrics
+    if entry.platform == "news" and m.get("curated_editorial"):
+        return f"Selección editorial: {m.get('editorial_feed', entry.source)}"
+    if entry.platform == "meneame":
+        return (
+            f"{format_metric(int(m.get('meneos', 0)))} meneos · "
+            f"{format_metric(int(m.get('comments', 0)))} comentarios · "
+            f"{format_metric(int(m.get('clicks', 0)))} clics en Menéame"
+        )
     if entry.platform == "reddit":
         return f"{format_metric(int(m.get('upvotes', 0)))} votos · {format_metric(int(m.get('comments', 0)))} comentarios en Reddit"
     if entry.platform == "bluesky":
@@ -1203,6 +1593,15 @@ def build_ranked(
         items: list[StoryEntry] = cluster["items"]
         sources = sorted({item.source for item in items}, key=str.casefold)
         platforms = sorted({item.platform for item in items})
+        editorial_feeds = sorted(
+            {
+                str(item.metrics.get("editorial_feed", "")).strip()
+                for item in items
+                if item.metrics.get("curated_editorial")
+                and str(item.metrics.get("editorial_feed", "")).strip()
+            },
+            key=str.casefold,
+        )
         cluster_keywords = frozenset().union(*(item.keywords for item in items))
         google_match = match_trend(cluster_keywords, google_trends)
         x_match = match_trend(cluster_keywords, x_trends)
@@ -1281,6 +1680,8 @@ def build_ranked(
                 "platforms": platforms,
                 "platform_labels": [PLATFORM_LABELS.get(platform, platform.title()) for platform in platforms],
                 "main_platform": main.platform,
+                "curated_editorial": bool(editorial_feeds),
+                "editorial_feeds": editorial_feeds,
                 "num_mentions": len(items),
                 "matched_trend": google_match.get("name") if google_match else None,
                 "matched_google_trend": google_match.get("name") if google_match else None,
@@ -1308,6 +1709,10 @@ def build() -> dict[str, Any]:
     news_entries, news_warnings, news_status = fetch_news_entries()
     warnings.extend(news_warnings)
     source_status.extend(news_status)
+
+    meneame_entries, meneame_warnings, meneame_status = fetch_meneame_entries()
+    warnings.extend(meneame_warnings)
+    source_status.extend(meneame_status)
 
     google_trends, trend_warnings, google_status = get_google_trends()
     warnings.extend(trend_warnings)
@@ -1337,6 +1742,7 @@ def build() -> dict[str, Any]:
 
     entries = [
         *news_entries,
+        *meneame_entries,
         *reddit_entries,
         *bluesky_entries,
         *mastodon_entries,

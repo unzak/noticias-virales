@@ -13,10 +13,20 @@ formatos compartibles.
 ### Funcionan sin claves
 
 - Google News España y búsquedas temáticas mediante RSS.
-- Menéame mediante RSS.
+- Selecciones editoriales de medios españoles: EL PAÍS (incluido su RSS
+  oficial de «Lo más visto»), MARCA Tiramillas, 20minutos Virales, El HuffPost
+  Virales, Cribeo Viral, AS Tikitakas, Antena 3 Virales, laSexta Virales,
+  Telecinco Curioso/Virales, EL ESPAÑOL Virales y Público Tremending.
+- Menéame mediante las secciones públicas **Populares** y **Más visitadas**.
 - Google Trends España mediante RSS.
 - Bluesky mediante sus endpoints públicos.
 - Tendencias públicas de Mastodon en `masto.es` y `mastodon.social`.
+
+Las secciones editoriales, salvo el RSS oficial de «Lo más visto» de EL PAÍS,
+se consultan mediante búsquedas restringidas de Google News RSS. El panel no
+raspa directamente el HTML de esos medios y solo conserva titular, enlace,
+fecha, miniatura disponible y etiqueta de fuente. La interfaz incorpora el
+filtro **Medios virales** para aislar estas piezas.
 
 ### Opcionales
 
@@ -32,13 +42,21 @@ de “tendencias de España” para este uso. El acceso automatizado a páginas
 públicas requiere una aplicación de Meta, permisos aprobados y, según el caso,
 revisión de la aplicación. No se recomienda hacer scraping de Facebook.
 
+
+## Diseño de lectura
+
+La interfaz muestra **una noticia por fila**. En escritorio, cada fila separa
+claramente la posición, la imagen, el titular y señales, y el score con el botón
+para abrir el original. En móvil se reorganiza en una sola columna sin perder
+la posición ni el potencial viral.
+
 ## Instalar esta versión en el repositorio
 
 Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
 
 ```bash
 git add -A
-git commit -m "Añadir señales sociales y potencial viral"
+git commit -m "Mejorar lectura del radar viral"
 git push origin main
 ```
 
@@ -129,6 +147,7 @@ El score, de 1 a 100, pondera:
 - votos, likes, reposts, comentarios, visualizaciones e impulsos;
 - interacción por hora y antigüedad;
 - aparición del mismo tema en varias plataformas o fuentes;
+- aparición en una sección editorial viral o en «Lo más visto»;
 - coincidencia con Google Trends y, si está configurado, X Trends;
 - presencia de imagen o vídeo;
 - afinidad con entretenimiento, humor, animales, curiosidades y cultura popular;
