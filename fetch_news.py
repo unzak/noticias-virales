@@ -60,19 +60,97 @@ def google_news_search_url(query: str) -> str:
 
 
 # Cada tupla contiene:
-# (nombre visible del feed, URL, impulso editorial, sección editorial).
+# (nombre visible del feed, URL, impulso editorial, sección editorial, etiquetas).
 #
-# Las fuentes especializadas se consultan antes que los feeds genéricos para
-# que, cuando un artículo aparezca en ambos, conserve la señal de su sección
-# viral o de popularidad. Excepto el RSS oficial de EL PAÍS, las selecciones se
-# obtienen mediante Google News RSS restringido al dominio o ruta del medio;
-# así evitamos raspar directamente páginas editoriales frágiles.
+# Las búsquedas temáticas se agrupan por familias de medios para cubrir un
+# abanico amplio sin disparar el número de peticiones. Google News devuelve el
+# medio real en cada entrada, por lo que el panel sigue mostrando la cabecera
+# de origen y no el nombre del grupo de búsqueda.
+
+
+def google_news_sites_query(domains: Iterable[str], terms: str) -> str:
+    sites = " OR ".join(f"site:{domain}" for domain in domains)
+    return google_news_search_url(f"({terms}) ({sites})")
+
+
+MEDIA_TOPIC_GROUPS = (
+    (
+        "prensa nacional",
+        (
+            "elpais.com", "elmundo.es", "abc.es", "lavanguardia.com",
+            "20minutos.es", "elconfidencial.com", "elespanol.com",
+            "huffingtonpost.es",
+        ),
+    ),
+    (
+        "televisión y radio",
+        (
+            "rtve.es", "antena3.com", "lasexta.com", "telecinco.es",
+            "cuatro.com", "cope.es", "ondacero.es",
+        ),
+    ),
+    (
+        "medios digitales",
+        (
+            "eldiario.es", "publico.es", "larazon.es", "okdiario.com",
+            "vozpopuli.com", "infolibre.es", "libertaddigital.com",
+        ),
+    ),
+    (
+        "deportes y entretenimiento",
+        (
+            "marca.com", "as.com", "mundodeportivo.com", "sport.es",
+            "hola.com", "lecturas.com", "diezminutos.es", "semana.es",
+        ),
+    ),
+    (
+        "prensa regional",
+        (
+            "elperiodico.com", "heraldo.es", "levante-emv.com",
+            "lasprovincias.es", "ideal.es", "diariodesevilla.es",
+            "farodevigo.es",
+        ),
+    ),
+)
+
+
+def build_topic_sources() -> tuple[tuple[Any, ...], ...]:
+    sources: list[tuple[Any, ...]] = []
+    for group_name, domains in MEDIA_TOPIC_GROUPS:
+        sources.append(
+            (
+                f"TikTok · {group_name}",
+                google_news_sites_query(
+                    domains,
+                    'TikTok OR tiktoker OR "vídeo de TikTok" OR "video de TikTok"',
+                ),
+                9.0,
+                "TikTok",
+                ("tiktok",),
+            )
+        )
+        sources.append(
+            (
+                f"Curiosidades · {group_name}",
+                google_news_sites_query(
+                    domains,
+                    'curiosidades OR curioso OR curiosa OR insólito OR insolito OR sorprendente',
+                ),
+                8.0,
+                "Curiosidades",
+                ("curiosidades",),
+            )
+        )
+    return tuple(sources)
+
+
 NEWS_SOURCES = (
     (
         "EL PAÍS · Lo más visto",
         "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/lo-mas-visto/portada",
         12.0,
         "Lo más visto",
+        ("popular",),
     ),
     (
         "EL PAÍS · Viral Internet",
@@ -81,12 +159,14 @@ NEWS_SOURCES = (
         ),
         8.0,
         "Viral Internet y redes",
+        ("viral",),
     ),
     (
         "MARCA · Tiramillas",
         google_news_search_url("site:marca.com/tiramillas"),
         9.0,
         "Tiramillas",
+        ("viral", "curiosidades"),
     ),
     (
         "20minutos · Virales",
@@ -95,18 +175,21 @@ NEWS_SOURCES = (
         ),
         9.0,
         "Virales, redes y Gonzoo",
+        ("viral",),
     ),
     (
         "El HuffPost · Virales",
         google_news_search_url("site:huffingtonpost.es/virales"),
         10.0,
         "Virales",
+        ("viral",),
     ),
     (
         "La Vanguardia · Cribeo Viral",
         google_news_search_url("site:lavanguardia.com/cribeo/viral"),
         10.0,
         "Cribeo Viral",
+        ("viral",),
     ),
     (
         "AS · Tikitakas Viral",
@@ -115,18 +198,21 @@ NEWS_SOURCES = (
         ),
         9.0,
         "Tikitakas Virales",
+        ("viral",),
     ),
     (
         "Antena 3 · Virales",
         google_news_search_url("site:antena3.com/noticias/virales"),
         9.0,
         "Virales",
+        ("viral",),
     ),
     (
         "laSexta · Virales",
         google_news_search_url("site:lasexta.com/noticias/virales"),
         9.0,
         "Virales",
+        ("viral",),
     ),
     (
         "Telecinco · Curioso y virales",
@@ -135,37 +221,69 @@ NEWS_SOURCES = (
         ),
         8.0,
         "Curioso y noticias virales",
+        ("viral", "curiosidades"),
     ),
     (
         "EL ESPAÑOL · Virales",
         google_news_search_url("site:elespanol.com/temas/virales"),
         8.0,
         "Virales",
+        ("viral",),
     ),
     (
         "Público · Tremending",
         google_news_search_url("site:publico.es/tremending"),
         8.0,
         "Tremending",
+        ("viral",),
     ),
-    ("Google News España", f"{GOOGLE_NEWS_BASE}?{GOOGLE_NEWS_PARAMS}", 0.0, None),
+    (
+        "Infobae · Virales",
+        google_news_search_url(
+            'site:infobae.com/virales (TikTok OR curiosidades OR viral OR insólito)'
+        ),
+        10.0,
+        "Infobae Virales",
+        ("viral", "tiktok", "curiosidades"),
+    ),
+    (
+        "Infobae España · TikTok y curiosidades",
+        google_news_search_url(
+            'site:infobae.com/espana (TikTok OR curiosidades OR curioso OR viral)'
+        ),
+        9.0,
+        "TikTok y curiosidades",
+        ("tiktok", "curiosidades"),
+    ),
+    *build_topic_sources(),
+    ("Google News España", f"{GOOGLE_NEWS_BASE}?{GOOGLE_NEWS_PARAMS}", 0.0, None, ()),
     (
         "Google News · viral y curiosidades",
-        google_news_search_url("viral OR insólito OR curioso OR redes sociales"),
+        google_news_search_url("viral OR insólito OR curioso OR curiosidades OR redes sociales"),
         0.0,
         None,
+        ("viral", "curiosidades"),
+    ),
+    (
+        "Google News · TikTok",
+        google_news_search_url('TikTok OR tiktoker OR "vídeo de TikTok"'),
+        2.0,
+        "TikTok",
+        ("tiktok",),
     ),
     (
         "Google News · entretenimiento",
         google_news_search_url("televisión OR famosos OR reality OR vídeo viral"),
         0.0,
         None,
+        ("viral",),
     ),
     (
         "Google News · animales e historias",
         google_news_search_url("animales OR mascotas OR historia viral"),
         0.0,
         None,
+        ("viral",),
     ),
 )
 MENEAME_SECTIONS = (
@@ -197,18 +315,18 @@ DEFAULT_REDDIT_GLOBAL = (
 
 USER_AGENT = os.getenv(
     "PULSO_USER_AGENT",
-    "PulsoNoticias/2.4 (+https://github.com/unzak/noticias-virales)",
+    "PulsoNoticias/2.5 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
 NEWS_MAX_AGE_HOURS = 72
 SOCIAL_MAX_AGE_HOURS = 48
 YOUTUBE_MAX_AGE_HOURS = 14 * 24
-MAX_STORIES = 60
+MAX_STORIES = 100
 MAX_NEWS_ITEMS_PER_SOURCE = 35
-IMAGE_ENRICH_LIMIT = 50
-IMAGE_PAGE_CONTEXT_LIMIT = 2
+IMAGE_ENRICH_LIMIT = 100
+IMAGE_PAGE_CONTEXT_LIMIT = 3
 IMAGE_CANDIDATE_LIMIT = 5
-IMAGE_WORKERS = 8
+IMAGE_WORKERS = 10
 IMAGE_HTML_MAX_BYTES = 1_800_000
 IMAGE_FILE_MAX_BYTES = 2_500_000
 IMAGE_MIN_WIDTH = 300
@@ -220,7 +338,7 @@ IMAGE_FETCH_TIMEOUT_SECONDS = 10
 BROWSER_USER_AGENT = os.getenv(
     "PULSO_IMAGE_USER_AGENT",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.4",
+    "(KHTML, like Gecko) Chrome/124.0 Safari/537.36 PulsoNoticias/2.5",
 )
 
 STOPWORDS = set(
@@ -357,7 +475,7 @@ class StoryEntry:
     published_at: dt.datetime | None
     keywords: frozenset[str]
     social_points: float = 0.0
-    metrics: dict[str, int | float | str] = field(default_factory=dict)
+    metrics: dict[str, Any] = field(default_factory=dict)
     thumbnail: str | None = None
     image_candidates: tuple[ImageCandidate, ...] = ()
     media_type: str = "article"
@@ -982,6 +1100,39 @@ def fetch_html_metadata(url: str, *, expected_title: str = "", _depth: int = 0) 
     return final_url, candidates
 
 
+def resolve_meneame_destination(url: str, expected_title: str) -> str:
+    """Devuelve el artículo enlazado, no la ficha o portada de Menéame."""
+    target = public_fetch_url(url)
+    if not target:
+        return url
+    host = (urllib.parse.urlparse(target).hostname or "").lower()
+    if not (host == "meneame.net" or host.endswith(".meneame.net")):
+        return target
+    request = urllib.request.Request(
+        target,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.4",
+            "Accept-Language": "es-ES,es;q=0.9",
+            "Accept-Encoding": "identity",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=IMAGE_FETCH_TIMEOUT_SECONDS) as response:
+            final_url = public_fetch_url(response.geturl()) or target
+            if response.headers.get_content_type().lower() not in {"text/html", "application/xhtml+xml"}:
+                return final_url
+            payload = response.read(IMAGE_HTML_MAX_BYTES + 1)[:IMAGE_HTML_MAX_BYTES]
+            charset = response.headers.get_content_charset() or "utf-8"
+        parser = PageMetadataParser(final_url)
+        parser.feed(payload.decode(charset, errors="replace"))
+        parser.close()
+        external = select_external_article_link(parser.outbound_links, expected_title)
+        return external or final_url
+    except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError):
+        return target
+
+
 def image_dimensions_and_extension(data: bytes, content_type: str = "") -> tuple[int, int, str] | None:
     if len(data) < 24:
         return None
@@ -1031,18 +1182,23 @@ def image_dimensions_and_extension(data: bytes, content_type: str = "") -> tuple
     return None
 
 
+def image_origin_kind(origin: str) -> str:
+    return origin.split("destination:", 1)[-1]
+
+
 def candidate_relevance(candidate: ImageCandidate, story_title: str, *, main_context: bool = False) -> float:
     score = candidate.base_score + (8.0 if main_context else 0.0)
     descriptive = f"{candidate.alt} {urllib.parse.unquote(urllib.parse.urlparse(candidate.url).path)}"
     shared = keywords(descriptive) & keywords(story_title)
     score += min(18.0, len(shared) * 4.5)
-    if candidate.origin == "page:img" and not shared:
+    origin_kind = image_origin_kind(candidate.origin)
+    if origin_kind == "page:img" and not shared:
         score -= 42.0
-    elif candidate.origin == "page:main-img" and not shared:
+    elif origin_kind == "page:main-img" and not shared:
         score -= 20.0
-    elif candidate.origin == "page:article-img" and not shared:
+    elif origin_kind == "page:article-img" and not shared:
         score -= 6.0
-    elif candidate.origin == "link:preload" and not shared:
+    elif origin_kind == "link:preload" and not shared:
         score -= 24.0
     normalized_descriptor = normalize(descriptive)
     if any(term in normalized_descriptor for term in GENERIC_IMAGE_TERMS):
@@ -1102,9 +1258,10 @@ def fetch_verified_image(candidate: ImageCandidate, story_title: str, *, main_co
     shared = keywords(
         f"{verified.alt} {urllib.parse.unquote(urllib.parse.urlparse(verified.url).path)}"
     ) & keywords(story_title)
-    if verified.origin == "page:img" and not shared:
+    origin_kind = image_origin_kind(verified.origin)
+    if origin_kind == "page:img" and not shared:
         return None
-    if verified.origin in {"page:main-img", "link:preload"} and not shared and not main_context:
+    if origin_kind in {"page:main-img", "link:preload"} and not shared and not main_context:
         return None
     score = candidate_relevance(verified, story_title, main_context=main_context)
     if score < 45.0:
@@ -1153,6 +1310,47 @@ def deserialize_candidate(value: Any) -> ImageCandidate | None:
     )
 
 
+def destination_link_candidates(url: str | None, title: str) -> tuple[ImageCandidate, ...]:
+    """Candidatos derivados directamente del enlace destino de Menéame."""
+    link = public_fetch_url(url)
+    if not link:
+        return ()
+    parsed = urllib.parse.urlparse(link)
+    host = (parsed.hostname or "").lower()
+    candidates: list[ImageCandidate | None] = []
+    if re.search(r"\.(?:jpe?g|png|gif|webp)(?:$|\?)", link, flags=re.IGNORECASE):
+        candidates.append(
+            make_image_candidate(
+                link,
+                "destination:direct-image",
+                138.0,
+                alt=title,
+                page_url=link,
+            )
+        )
+    video_id = None
+    if host in {"youtu.be", "www.youtu.be"}:
+        video_id = parsed.path.strip("/").split("/")[0]
+    elif host.endswith("youtube.com"):
+        if parsed.path == "/watch":
+            video_id = urllib.parse.parse_qs(parsed.query).get("v", [None])[0]
+        elif parsed.path.startswith(("/shorts/", "/embed/")):
+            parts = [part for part in parsed.path.split("/") if part]
+            video_id = parts[1] if len(parts) > 1 else None
+    if video_id and re.fullmatch(r"[A-Za-z0-9_-]{6,20}", video_id):
+        for name, score in (("maxresdefault", 136.0), ("sddefault", 132.0), ("hqdefault", 126.0)):
+            candidates.append(
+                make_image_candidate(
+                    f"https://i.ytimg.com/vi/{video_id}/{name}.jpg",
+                    "destination:youtube-thumbnail",
+                    score,
+                    alt=title,
+                    page_url=link,
+                )
+            )
+    return dedupe_image_candidates(candidates)
+
+
 def _context_candidates(context: dict[str, Any], story_title: str) -> tuple[ImageCandidate, ...]:
     candidates: list[ImageCandidate | None] = [
         deserialize_candidate(item) for item in context.get("candidates", [])
@@ -1187,11 +1385,14 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
         if not isinstance(context, dict):
             continue
         is_main = bool(context.get("is_main"))
+        if context.get("force_destination_image"):
+            continue
         candidates.extend((candidate, is_main) for candidate in _context_candidates(context, story["title"]))
 
     page_contexts = sorted(
         [context for context in contexts if isinstance(context, dict)],
         key=lambda context: (
+            bool(context.get("force_destination_image")),
             bool(context.get("is_main")),
             context.get("platform") in {"news", "meneame"},
             bool(context.get("candidates")),
@@ -1208,6 +1409,14 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
         link = public_fetch_url(context.get("link"))
         if not link or link in fetched_pages:
             continue
+        if platform == "meneame":
+            candidates.extend(
+                (candidate, bool(context.get("is_main")))
+                for candidate in destination_link_candidates(
+                    link,
+                    str(context.get("title") or story["title"]),
+                )
+            )
         fetched_pages.add(link)
         try:
             final_url, page_candidates = fetch_html_metadata(
@@ -1217,11 +1426,28 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
             continue
         for candidate in page_candidates:
+            if platform == "meneame":
+                image_host = (urllib.parse.urlparse(candidate.url).hostname or "").lower()
+                page_host = (urllib.parse.urlparse(final_url).hostname or "").lower()
+                # Las miniaturas de la portada de Menéame viven en mnmstatic y
+                # pueden no coincidir con la imagen principal del artículo.
+                if image_host.endswith("mnmstatic.net") and not page_host.endswith("meneame.net"):
+                    continue
             if candidate.page_url is None:
                 candidate = ImageCandidate(
                     url=candidate.url,
-                    origin=candidate.origin,
-                    base_score=candidate.base_score,
+                    origin=(f"destination:{candidate.origin}" if platform == "meneame" else candidate.origin),
+                    base_score=candidate.base_score + (18.0 if platform == "meneame" else 0.0),
+                    alt=candidate.alt or str(context.get("title") or ""),
+                    width=candidate.width,
+                    height=candidate.height,
+                    page_url=final_url,
+                )
+            elif platform == "meneame":
+                candidate = ImageCandidate(
+                    url=candidate.url,
+                    origin=f"destination:{candidate.origin}",
+                    base_score=candidate.base_score + 18.0,
                     alt=candidate.alt or str(context.get("title") or ""),
                     width=candidate.width,
                     height=candidate.height,
@@ -1662,6 +1888,8 @@ def fetch_meneame_entries() -> tuple[list[StoryEntry], list[str], list[dict[str,
         for raw in parser.items:
             title = compact_text(str(raw.get("title", "")).strip(), 220)
             link = valid_http_url(raw.get("link"))
+            if link:
+                link = resolve_meneame_destination(link, title)
             if not title or not link or is_blocked_content(title):
                 continue
             published_at = raw.get("published_at")
@@ -1699,18 +1927,10 @@ def fetch_meneame_entries() -> tuple[list[StoryEntry], list[str], list[dict[str,
                         "clicks": clicks,
                         "section": section,
                     },
-                    thumbnail=valid_http_url(raw.get("thumbnail")),
-                    image_candidates=dedupe_image_candidates(
-                        [
-                            make_image_candidate(
-                                raw.get("thumbnail"),
-                                "meneame:list-thumbnail",
-                                64.0,
-                                alt=title,
-                                page_url=link,
-                            )
-                        ]
-                    ),
+                    # No reutilizamos la miniatura de la portada de Menéame.
+                    # La imagen se extrae posteriormente del artículo destino.
+                    thumbnail=None,
+                    image_candidates=(),
                     media_type=infer_meneame_media_type(link, title),
                 )
             )
@@ -1824,7 +2044,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
     cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=NEWS_MAX_AGE_HOURS)
     seen: set[tuple[str, str]] = set()
 
-    for fallback_source, url, editorial_boost, editorial_section in NEWS_SOURCES:
+    for fallback_source, url, editorial_boost, editorial_section, configured_tags in NEWS_SOURCES:
         try:
             feed = fetch_feed(url)
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
@@ -1866,6 +2086,12 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             seen.add(dedupe_key)
 
             image_candidates = extract_feed_image_candidates(raw)
+            detected_tags = {str(tag).strip().lower() for tag in configured_tags if str(tag).strip()}
+            normalized_title = normalize(title)
+            if "tiktok" in normalized_title or "tik tok" in normalized_title:
+                detected_tags.add("tiktok")
+            if any(term in normalized_title for term in ("curiosidad", "curioso", "curiosa", "insolito", "sorprendente")):
+                detected_tags.add("curiosidades")
             entries.append(
                 StoryEntry(
                     title=compact_text(title, 220),
@@ -1879,6 +2105,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                         "curated_editorial": bool(editorial_section),
                         "editorial_section": editorial_section or "",
                         "editorial_feed": fallback_source,
+                        "topic_tags": sorted(detected_tags),
                     },
                     thumbnail=image_candidates[0].url if image_candidates else None,
                     image_candidates=image_candidates,
@@ -2790,6 +3017,7 @@ def build_ranked(
                     "thumbnail": item.thumbnail,
                     "candidates": [serialize_candidate(candidate) for candidate in item.image_candidates],
                     "is_main": item is main,
+                    "force_destination_image": item.platform == "meneame",
                 }
             )
         media_type = main.media_type
@@ -2813,6 +3041,15 @@ def build_ranked(
         if len(platforms) >= 2:
             signals.append(f"Detectado en {len(platforms)} plataformas")
 
+        topic_tags = sorted(
+            {
+                str(tag).strip().lower()
+                for item in items
+                for tag in (item.metrics.get("topic_tags") or [])
+                if str(tag).strip()
+            }
+        )
+
         ranked.append(
             {
                 "title": main.title,
@@ -2827,6 +3064,7 @@ def build_ranked(
                 "main_platform": main.platform,
                 "curated_editorial": bool(editorial_feeds),
                 "editorial_feeds": editorial_feeds,
+                "topic_tags": topic_tags,
                 "num_mentions": len(items),
                 "matched_trend": google_match.get("name") if google_match else None,
                 "matched_google_trend": google_match.get("name") if google_match else None,

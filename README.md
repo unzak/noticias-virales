@@ -1,4 +1,4 @@
-# Pulso Viral v2.4 — radar social para España
+# Pulso Viral v2.5 — radar social para España
 
 Dashboard estático para detectar contenidos con **potencial editorial viral**:
 humor, curiosidades, animales, entretenimiento, televisión, deporte y formatos
@@ -16,7 +16,12 @@ formatos compartibles.
 - Selecciones editoriales de medios españoles: EL PAÍS (incluido su RSS
   oficial de «Lo más visto»), MARCA Tiramillas, 20minutos Virales, El HuffPost
   Virales, Cribeo Viral, AS Tikitakas, Antena 3 Virales, laSexta Virales,
-  Telecinco Curioso/Virales, EL ESPAÑOL Virales y Público Tremending.
+  Telecinco Curioso/Virales, EL ESPAÑOL Virales, Público Tremending e Infobae.
+- Búsquedas específicas de **TikTok** y **Curiosidades** en grupos de prensa
+  nacional, televisión y radio, medios digitales, deportes/entretenimiento y
+  prensa regional. Entre otros: EL PAÍS, El Mundo, ABC, La Vanguardia, RTVE,
+  Antena 3, laSexta, Telecinco, MARCA, AS, Mundo Deportivo, 20minutos,
+  elDiario.es, Público, El Confidencial, EL ESPAÑOL, HuffPost e Infobae.
 - Menéame mediante las secciones públicas **Populares** y **Más visitadas**.
 - Google Trends España mediante RSS.
 - Bluesky mediante sus endpoints públicos.
@@ -25,8 +30,8 @@ formatos compartibles.
 Las secciones editoriales, salvo el RSS oficial de «Lo más visto» de EL PAÍS,
 se consultan mediante búsquedas restringidas de Google News RSS. El panel no
 raspa directamente el HTML de esos medios y solo conserva titular, enlace,
-fecha, miniatura disponible y etiqueta de fuente. La interfaz incorpora el
-filtro **Medios virales** para aislar estas piezas.
+fecha, miniatura disponible y etiqueta de fuente. La interfaz incorpora los
+filtros **Medios virales**, **TikTok** y **Curiosidades** para aislar estas piezas.
 
 ### Opcionales
 
@@ -53,8 +58,11 @@ caducados, bloqueos de hotlink y miniaturas genéricas.
 
 La selección se adapta a cada tipo de fuente:
 
-- **Medios y Menéame:** consulta `og:image`, Twitter Card, Schema.org,
-  `media:content`, enclosures e imágenes del cuerpo del artículo.
+- **Medios:** consulta `og:image`, Twitter Card, Schema.org, `media:content`,
+  enclosures e imágenes del cuerpo del artículo.
+- **Menéame:** descarta expresamente la miniatura de la portada y resuelve el
+  enlace de la noticia. Solo después abre el artículo destino y extrae de allí
+  `og:image`, Twitter Card, Schema.org o la mejor imagen del cuerpo.
 - **Reddit:** prioriza la imagen original de `preview`, galerías y resoluciones
   alternativas antes que la miniatura pequeña.
 - **Bluesky:** usa imágenes, miniaturas de vídeo o tarjetas externas del embed.
@@ -69,9 +77,10 @@ la coincidencia del texto alternativo con el titular y una resolución adecuada.
 Si no hay una imagen fiable, el panel muestra un placeholder en vez de una
 imagen posiblemente incorrecta.
 
-## Diseño de lectura
+## Resultados y diseño de lectura
 
-La interfaz muestra **una noticia por fila**. En escritorio, cada fila separa
+El ranking publica hasta **100 noticias por actualización** y verifica las
+imágenes de las 100 posiciones. La interfaz muestra **una noticia por fila**. En escritorio, cada fila separa
 claramente la posición, la imagen, el titular y señales, y el score con el botón
 para abrir el original. En móvil se reorganiza en una sola columna sin perder
 la posición ni el potencial viral.
@@ -82,7 +91,7 @@ Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
 
 ```bash
 git add -A
-git commit -m "Verificar y almacenar previsualizaciones"
+git commit -m "Ampliar radar a 100 noticias y mejorar Menéame"
 git push origin main
 ```
 

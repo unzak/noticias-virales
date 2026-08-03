@@ -104,6 +104,7 @@
   .badge.cross{color:var(--mint);border-color:rgba(98,214,191,.45)}
   .badge.platform{color:var(--blue);border-color:rgba(117,167,255,.4)}
   .badge.image{color:var(--mint);border-color:rgba(98,214,191,.42);background:rgba(98,214,191,.06)}
+  .badge.topic{color:var(--purple);border-color:rgba(187,140,255,.48);background:rgba(187,140,255,.07)}
   .signals{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px;color:var(--muted);font-size:.73rem;line-height:1.3}
   .signals li{padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}
   .signals li::before{content:"↗";color:var(--mint);margin-right:6px;font-weight:900}
@@ -165,7 +166,7 @@
     <div>
       <div class="brand-kicker"><span class="live-dot"></span> Radar social España</div>
       <h1>Pulso Viral</h1>
-      <p class="lede">Ideas con potencial editorial para humor, curiosidades, animales, entretenimiento y vídeos compartibles. Ordenadas por interacción, velocidad, recencia y presencia en varias plataformas.</p>
+      <p class="lede">Hasta 100 ideas con potencial editorial para humor, curiosidades, animales, entretenimiento y vídeos compartibles. Ordenadas por interacción, velocidad, recencia y presencia en varias plataformas.</p>
     </div>
     <div class="updated" id="updated">Cargando actualización…</div>
   </div>
@@ -185,6 +186,8 @@
       <button class="filter active" data-filter="all">Todo</button>
       <button class="filter" data-filter="high">Potencial alto</button>
       <button class="filter" data-filter="editorial">Medios virales</button>
+      <button class="filter" data-filter="tiktok">TikTok</button>
+      <button class="filter" data-filter="curiosidades">Curiosidades</button>
       <button class="filter" data-filter="social">Social</button>
       <button class="filter" data-filter="visual">Vídeo / imagen</button>
       <button class="filter" data-filter="cross">Multiplataforma</button>
@@ -240,6 +243,8 @@ function visibleFor(story, filter){
   const platforms = story.platforms || [];
   if(filter === 'high') return Number(story.viral_score ?? story.score) >= 65;
   if(filter === 'editorial') return Boolean(story.curated_editorial);
+  if(filter === 'tiktok') return (story.topic_tags || []).includes('tiktok');
+  if(filter === 'curiosidades') return (story.topic_tags || []).includes('curiosidades');
   if(filter === 'social') return platforms.some(p => p !== 'news');
   if(filter === 'visual') return ['video','image'].includes(story.media_type);
   if(filter === 'cross') return platforms.length >= 2;
@@ -253,6 +258,7 @@ function storyCard(story, index){
   const trendBadge = trend ? `<span class="badge hot">En tendencia</span>` : '';
   const editorialBadge = story.curated_editorial ? `<span class="badge hot">Medio viral</span>` : '';
   const imageBadge = story.image_verified ? `<span class="badge image" title="${escapeHtml(story.image_origin || 'imagen asociada')}">Imagen verificada</span>` : '';
+  const topicBadges = (story.topic_tags || []).filter(tag => ['tiktok','curiosidades'].includes(tag)).map(tag => `<span class="badge topic">#${escapeHtml(tag === 'tiktok' ? 'TikTok' : 'Curiosidades')}</span>`).join('');
   const crossBadge = (story.platforms || []).length >= 2 ? `<span class="badge cross">${story.platforms.length} plataformas</span>` : '';
   const signals = (story.signals || []).slice(0,3).map(s => `<li>${escapeHtml(s)}</li>`).join('');
   const thumbnail = safeUrl(story.thumbnail);
@@ -269,7 +275,7 @@ function storyCard(story, index){
     <div class="content">
       <div class="eyebrow"><span class="fresh">● ${escapeHtml(age)}</span><span>${escapeHtml(mediaLabel(story.media_type))}</span></div>
       <h2><a href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(story.title)}</a></h2>
-      <div class="badges">${trendBadge}${editorialBadge}${imageBadge}${crossBadge}${platformBadges}</div>
+      <div class="badges">${trendBadge}${editorialBadge}${topicBadges}${imageBadge}${crossBadge}${platformBadges}</div>
       ${signals ? `<ul class="signals">${signals}</ul>` : ''}
       <div class="source-row"><span class="source-name" title="${escapeHtml(sources.join(' · '))}">Fuente: <strong>${escapeHtml(sourceText)}</strong></span></div>
     </div>
