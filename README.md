@@ -1,4 +1,4 @@
-# Pulso Viral v2.8 — radar social para España
+# Pulso Viral v2.7 — radar social para España
 
 Dashboard estático para detectar contenidos con **potencial editorial viral**:
 humor, curiosidades, animales, entretenimiento, televisión, deporte y formatos
@@ -27,12 +27,11 @@ formatos compartibles.
 - Bluesky mediante sus endpoints públicos.
 - Tendencias públicas de Mastodon en `masto.es` y `mastodon.social`.
 
-Las portadas activas de Cribeo Viral, Antena 3 Virales, laSexta Viral,
-EL ESPAÑOL Offbeat e Infobae Virales se leen ahora directamente. El extractor
-prioriza JSON-LD y titulares dentro de `main`/`article`, y usa una búsqueda
-restringida de Google News únicamente como respaldo si una portada cambia su
-HTML. El resto de selecciones continúa mediante RSS o Google News. La interfaz
-incorpora los filtros **Medios virales**, **TikTok** y **Curiosidades**.
+Las secciones editoriales, salvo el RSS oficial de «Lo más visto» de EL PAÍS,
+se consultan mediante búsquedas restringidas de Google News RSS. El panel no
+raspa directamente el HTML de esos medios y solo conserva titular, enlace,
+fecha, miniatura disponible y etiqueta de fuente. La interfaz incorpora los
+filtros **Medios virales**, **TikTok** y **Curiosidades** para aislar estas piezas.
 
 ### Opcionales
 
@@ -105,7 +104,7 @@ Sustituye los archivos del repositorio por los de esta carpeta y ejecuta:
 
 ```bash
 git add -A
-git commit -m "Corregir fuentes directas y estabilidad social"
+git commit -m "Añadir vídeos trending de TikTok España"
 git push origin main
 ```
 
@@ -163,30 +162,9 @@ Opcionalmente, en **Variables**, crea:
 TIKTOK_COUNT
 ```
 
-Admite de 10 a 30 vídeos; el valor predeterminado es 30. La librería utiliza
-30 en su ejemplo oficial y pedir más puede aumentar los rechazos del endpoint.
-Cuando existe `TIKTOK_MS_TOKEN`, GitHub Actions instala Chromium automáticamente
-antes de ejecutar el generador.
-
-La versión 2.8 elimina el `User-Agent` antiguo fijado manualmente, simplifica los
-parámetros regionales, prueba primero 30 resultados y repite con 12 si recibe
-una respuesta vacía. Si TikTok devuelve `statusCode: 10201`, el panel marca la
-fuente como fallida en vez de mostrar `[ok] 0 vídeos`. Aun así, `TikTokApi` es no
-oficial: un token renovado y una IP residencial española pueden seguir siendo
-necesarios, y GitHub Actions puede ser bloqueado por TikTok.
-
-## Diagnóstico de fuentes en la versión 2.8
-
-- Las secciones que antes devolvían cero por una consulta demasiado exacta de
-  Google News se consultan directamente y muestran si han usado el respaldo.
-- Bluesky reduce el número de búsquedas, pausa entre consultas y alterna el host
-  público con el AppView directo. Los 403/429 parciales se agrupan en un único
-  aviso y no invalidan los resultados ya obtenidos.
-- Mastodon prueba también `/api/v1/trends/links` cuando no encuentra suficientes
-  publicaciones en español. Un cero legítimo se muestra como «sin tendencias en
-  español», no como error de red.
-- TikTok devuelve estado fallido cuando la respuesta está vacía o aparece el
-  código 10201.
+Admite de 10 a 60 vídeos; el valor predeterminado es 40. Cuando existe
+`TIKTOK_MS_TOKEN`, GitHub Actions instala Chromium automáticamente antes de
+ejecutar el generador.
 
 ## Activar Reddit
 
