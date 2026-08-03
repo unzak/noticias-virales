@@ -1,52 +1,72 @@
-# Pulso — trending news España
+# Pulso — noticias en tendencia en España
 
-Dashboard que agrupa titulares de varios medios españoles, les pone una
-puntuación de "viralidad" y los muestra en una web, actualizándose solo
-cada ~45 minutos con GitHub Actions.
+Dashboard estático que agrupa titulares recientes, detecta temas repetidos y
+les asigna un **score heurístico** combinando:
 
-## Cómo ponerlo en marcha (10 minutos)
+- número de medios distintos;
+- número de menciones del tema;
+- recencia;
+- coincidencia con Google Trends España.
 
-1. **Crea un repo en GitHub** (puede ser privado o público) y sube esta
-   carpeta entera tal cual está:
-   ```bash
-   cd trending-es
-   git init
-   git add .
-   git commit -m "Primer commit: pulso de noticias"
-   git branch -M main
-   git remote add origin https://github.com/TU_USUARIO/TU_REPO.git
-   git push -u origin main
-   ```
+> El score no mide compartidos, visitas ni interacciones reales en redes sociales.
 
-2. **Activa GitHub Pages**: en el repo, ve a *Settings → Pages*, y en
-   "Build and deployment" elige *Deploy from a branch*, rama `main`,
-   carpeta `/docs`. Guarda. En 1-2 minutos tu dashboard estará en
-   `https://TU_USUARIO.github.io/TU_REPO/`.
+## Publicarlo en GitHub Pages
 
-3. **Lanza el workflow una vez a mano** para generar el primer
-   `data.json`: en el repo ve a la pestaña *Actions* → "Actualizar
-   noticias trending" → *Run workflow*. A partir de ahí se ejecutará
-   solo cada ~45 minutos.
+1. Sube esta carpeta completa a un repositorio de GitHub.
+2. Abre **Settings → Pages**.
+3. En **Build and deployment → Source**, selecciona **GitHub Actions**.
+4. Abre **Actions → Actualizar y publicar noticias trending**.
+5. Pulsa **Run workflow**, elige la rama `main` y vuelve a pulsar
+   **Run workflow**.
+6. Cuando termine en verde, abre el trabajo y entra en la URL mostrada en
+   **deployments**, o prueba:
+   `https://TU_USUARIO.github.io/TU_REPOSITORIO/`.
 
-4. Si el repo es **privado**: revisa en *Settings → Actions → General*
-   que los workflows tengan permiso de "Read and write permissions"
-   (para poder commitear `data.json` automáticamente).
+No selecciones `Deploy from a branch`: el workflow genera `docs/data.json` y
+publica la carpeta `docs` directamente como artefacto de GitHub Pages.
 
-## Notas
+No hacen falta tokens personales ni claves API. GitHub crea automáticamente el
+`GITHUB_TOKEN` temporal que necesita el despliegue.
 
-- **Fuentes**: Google News España (RSS) y Meneame (RSS), sin necesidad
-  de API key. Google Trends España se consulta con `pytrends`; esta
-  librería depende de una API no oficial de Google que a veces cambia,
-  así que el script está preparado para seguir funcionando (sin ese
-  dato extra) si Trends falla un día.
-- **Cómo se calcula el score**: nº de fuentes distintas × 10 + nº de
-  menciones × 2, con un extra de +25 si el tema coincide con algo en
-  tendencia en Google Trends España. Es un punto de partida simple:
-  puedes ajustar los pesos en `score_cluster()` dentro de
-  `fetch_news.py`.
-- **Añadir más medios**: añade entradas al diccionario `SOURCES` en
-  `fetch_news.py` con la URL del RSS de cada medio (El País, ABC, La
-  Vanguardia, Marca... casi todos tienen RSS público).
-- **Coste**: con la cadencia de 45 min configurada en el workflow, el
-  consumo mensual de minutos de GitHub Actions ronda 1.000-2.000 min,
-  dentro de la cuota gratuita incluso en repos privados.
+## Archivos principales
+
+- `fetch_news.py`: descarga, limpia, agrupa y puntúa las noticias.
+- `docs/index.html`: interfaz pública.
+- `docs/data.json`: marcador inicial; el workflow lo sustituye antes de publicar.
+- `.github/workflows/update.yml`: generación y despliegue manual, con cada push
+  relevante y cada ~45 minutos.
+
+## Probarlo localmente
+
+```bash
+python -m venv .venv
+```
+
+Activa el entorno:
+
+```bash
+# macOS / Linux
+source .venv/bin/activate
+
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
+
+Instala y ejecuta:
+
+```bash
+python -m pip install -r requirements.txt
+python fetch_news.py
+python -m http.server 8000 --directory docs
+```
+
+Abre `http://localhost:8000`.
+
+## Notas operativas
+
+- Si falla una fuente pero otra funciona, el panel se actualiza y deja el aviso
+  en el JSON desplegado.
+- Si fallan todas las fuentes de noticias, el job termina con error y GitHub
+  conserva el despliegue anterior.
+- Las ejecuciones programadas pueden retrasarse; el cron está desplazado del
+  minuto cero para reducir ese riesgo.
