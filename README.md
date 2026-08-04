@@ -1,8 +1,8 @@
 # Pulso Viral v3.0.1 — enfoque entretenimiento y contenido compartible
 
 Panel estático para detectar contenidos con potencial editorial viral en España.
-Publica hasta 150 resultados y exige que la fecha de publicación pueda
-verificarse dentro de las **últimas 24 horas**.
+La selección Cabronazi publica hasta 150 resultados; la vista sin filtro muestra
+todas las piezas cuya fecha pueda verificarse dentro de las **últimas 24 horas**.
 
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
 El ranking refuerza además las piezas vinculadas a España y descarta actualidad
@@ -11,6 +11,11 @@ La interfaz clara en rosa permite ordenar por prioridad, tiempo ascendente o
 tiempo descendente sin perder los filtros de periodo y categoría. Google
 Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
 propio en la interfaz.
+
+El menú superior separa `Selección Cabronazi`, con ranking editorial y
+diversidad, de `Sin filtro`, que muestra todas las piezas con fecha válida de
+las últimas 24 horas. La ausencia de imagen ya no elimina una noticia: el panel
+usa un placeholder rosa sin descargar archivos.
 
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
 
@@ -62,9 +67,9 @@ propio en la interfaz.
 Los enlaces de Google News se resuelven al artículo original antes de localizar
 la imagen. El panel enlaza directamente la mejor URL editorial del artículo,
 comparando sus tags `img` con `og:image`, Twitter Card y JSON-LD, sin descargar
-ni versionar archivos de terceros. Si no se encuentra ninguna URL de imagen
-utilizable o no puede resolverse el enlace original fuera de Google News, la
-noticia no se publica.
+ni versionar archivos de terceros. Si no se encuentra una URL utilizable, se
+muestra un placeholder ligero. En la selección editorial solo se descartan los
+envoltorios de Google News cuyo destino original no puede resolverse.
 
 ## Fuentes opcionales
 
@@ -155,7 +160,8 @@ Para Menéame se abre siempre el artículo original y se enlaza la imagen del
 destino, evitando la miniatura de Menéame. Los tags `img` de `article` y `main`
 se comparan por relevancia con la imagen declarada en los metadatos; banners,
 logos, píxeles y placeholders quedan excluidos. Las imágenes no se descargan
-en `docs/media/`.
+en `docs/media/`. Cuando el feed no proporciona una imagen fiable, la tarjeta
+indica `Sin imagen` y permanece en el listado.
 
 ## Instalar esta versión
 

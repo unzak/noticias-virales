@@ -2130,15 +2130,14 @@ def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, 
     processed = [item for item in output if item is not None]
     final = [
         item for item in processed
-        if item.get("image_linked")
-        and item.get("thumbnail")
-        and not _is_google_host(str(item.get("link") or ""))
+        if not _is_google_host(str(item.get("link") or ""))
     ]
-    linked_count = len(final)
-    discarded_without_image = len(processed) - linked_count
+    linked_count = sum(1 for item in final if item.get("image_linked") and item.get("thumbnail"))
+    placeholder_count = len(final) - linked_count
+    discarded_unresolved = len(processed) - len(final)
     print(
-        f"[ok] Previsualizaciones: {linked_count}/{len(processed)} enlazadas desde el artículo · "
-        f"{discarded_without_image} descartadas sin imagen"
+        f"[ok] Previsualizaciones: {linked_count}/{len(final)} enlazadas desde el artículo · "
+        f"{placeholder_count} con placeholder · {discarded_unresolved} descartadas sin destino original"
     )
     return final, {
         "verified": 0,
@@ -2146,7 +2145,9 @@ def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, 
         "generated": 0,
         "with_visual": sum(1 for item in final if item.get("thumbnail")),
         "total": len(final),
-        "discarded_without_image": discarded_without_image,
+        "placeholders": placeholder_count,
+        "discarded_without_image": 0,
+        "discarded_unresolved": discarded_unresolved,
         "cached_files": 0,
         "origins": origins,
     }
@@ -4811,6 +4812,53 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         hard_news_count += int("sucesos" in tags)
     return selected
 
+
+def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
+    """Serializa todas las piezas válidas de 24 h sin aplicar el ranking editorial."""
+    stories: list[dict[str, Any]] = []
+    for entry in entries:
+        tags = classify_topic_tags(entry.title, entry.metrics.get("topic_tags") or [])
+        if contains_phrase(entry.title, HARD_NEWS_TERMS):
+            tags.add("sucesos")
+        if contains_phrase(entry.title, POLITICS_TERMS):
+            tags.add("politica")
+        thumbnail = entry.thumbnail or next(
+            (candidate.url for candidate in entry.image_candidates if candidate.url),
+            None,
+        )
+        signal = entry_signal(entry)
+        base_score = max(0, min(100, round(float(entry.social_points or 0))))
+        stories.append({
+            "title": entry.title,
+            "link": entry.link,
+            "score": base_score,
+            "viral_score": base_score,
+            "raw_score": round(float(entry.social_points or 0), 1),
+            "sources": [entry.source],
+            "source_count": 1,
+            "platforms": [entry.platform],
+            "platform_labels": [PLATFORM_LABELS.get(entry.platform, entry.platform.title())],
+            "main_platform": entry.platform,
+            "curated_editorial": bool(entry.metrics.get("curated_editorial")),
+            "editorial_feeds": [entry.metrics.get("editorial_feed")] if entry.metrics.get("editorial_feed") else [],
+            "topic_tags": sorted(tags),
+            "general_category": general_category_for(tags),
+            "primary_tag": next((tag for tag in CABRONAZI_TAG_ORDER if tag in tags), "viral"),
+            "politics_related": "politica" in tags,
+            "hard_news_related": "sucesos" in tags,
+            "published_at": entry.published_at.isoformat().replace("+00:00", "Z") if entry.published_at else None,
+            "thumbnail": thumbnail,
+            "image_linked": bool(thumbnail),
+            "image_verified": False,
+            "image_origin": entry.image_candidates[0].origin if entry.image_candidates else None,
+            "image_alt": entry.title,
+            "media_type": entry.media_type,
+            "signals": [signal] if signal else [],
+            "cabronazi_affinity": 50,
+            "unfiltered": True,
+        })
+    return stories
+
 def build_google_trend_news(
     trends: list[dict[str, Any]],
     stories: list[dict[str, Any]],
@@ -4960,6 +5008,7 @@ def build() -> dict[str, Any]:
 
     ranked = build_ranked(entries, google_trends, x_trends, feedback_weights)
     ranked, image_summary = enrich_ranked_images(ranked)
+    unfiltered_stories = build_unfiltered_stories(entries)
     tag_distribution: dict[str, int] = {}
     for story in ranked:
         for tag in story.get("topic_tags") or []:
@@ -4999,6 +5048,7 @@ def build() -> dict[str, Any]:
         "trend_details": {"google": google_trends[:20], "x": x_trends[:20]},
         "google_trend_news": google_trend_news,
         "stories": ranked,
+        "unfiltered_stories": unfiltered_stories,
         "warnings": warnings,
         "source_status": source_status,
         "source_summary": {

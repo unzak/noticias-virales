@@ -47,6 +47,10 @@
   .updated{color:var(--muted);font-size:.82rem;white-space:nowrap;padding-top:4px}
 
   main{padding:26px 0 58px}
+  .view-switch{display:flex;align-items:center;justify-content:center;gap:15px;margin:0 0 22px;padding:9px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(117,35,73,.06)}
+  .view-tab{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px;cursor:pointer;font-size:.82rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+  .view-tab:hover,.view-tab.active{background:var(--hot);color:#fff}
+  .view-divider{color:#d9a9be;font-weight:900}
   .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
   .summary-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:14px;padding:15px;box-shadow:0 8px 24px rgba(117,35,73,.06)}
   .summary-card strong{display:block;font-size:1.5rem;letter-spacing:-.04em}
@@ -87,7 +91,7 @@
   .visual img{width:100%;height:100%;min-height:190px;object-fit:cover;display:block;transition:transform .25s ease}
   .story:hover .visual img{transform:scale(1.025)}
   .visual.placeholder{display:grid;place-items:center;background:radial-gradient(circle at 20% 10%,rgba(237,20,112,.28),transparent 60%),linear-gradient(145deg,#ffd7e9,#ef8fba)}
-  .placeholder-mark{font-size:3rem;font-weight:950;color:rgba(245,241,232,.22);letter-spacing:-.09em}
+  .placeholder-mark{font-size:1rem;font-weight:950;color:rgba(40,21,31,.48);letter-spacing:.08em;text-transform:uppercase}
   .media-tag{position:absolute;left:10px;bottom:10px;padding:5px 8px;border-radius:999px;background:rgba(11,12,16,.88);border:1px solid rgba(255,255,255,.16);font-size:.66rem;font-weight:850;text-transform:uppercase;letter-spacing:.08em}
   .content{padding:18px 20px;display:flex;flex-direction:column;min-width:0}
   .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--muted);font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
@@ -177,6 +181,11 @@
   </div>
 </header>
 <main class="shell">
+  <nav class="view-switch" aria-label="Tipo de selección">
+    <button class="view-tab active" type="button" data-view="selection">Selección Cabronazi</button>
+    <span class="view-divider" aria-hidden="true">|</span>
+    <button class="view-tab" type="button" data-view="unfiltered">Sin filtro</button>
+  </nav>
   <section class="summary-grid" aria-label="Resumen">
     <div class="summary-card"><strong id="storyCount">—</strong><span>oportunidades</span></div>
     <div class="summary-card"><strong id="highCount">—</strong><span>potencial alto</span></div>
@@ -229,6 +238,9 @@
 <script src="./runtime-config.js"></script>
 <script>
 let allStories = [];
+let selectionStories = [];
+let unfilteredStories = [];
+let currentView = 'selection';
 let currentFilter = 'all';
 let currentHours = 24;
 let currentSort = 'priority';
@@ -417,7 +429,7 @@ function storyCard(story, index){
   const thumbnail = safeUrl(story.thumbnail);
   const visual = thumbnail !== '#'
     ? `<div class="visual"><img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(story.image_alt || story.title || '')}" loading="lazy" decoding="async"><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`
-    : `<div class="visual placeholder"><div class="placeholder-mark">PV</div><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`;
+    : `<div class="visual placeholder"><div class="placeholder-mark">Sin imagen</div><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`;
   const sources = story.sources || [];
   const sourceText = sources.length ? sources.slice(0,3).join(' · ') : 'Fuente original';
   const age = relativeAge(story.published_at);
@@ -461,9 +473,19 @@ function renderStories(){
   storiesEl.innerHTML = visible.map(storyCard).join('');
   storiesEl.querySelectorAll('img').forEach(img => img.addEventListener('error', () => {
     const visual = img.closest('.visual');
-    if(visual){visual.classList.add('placeholder');visual.innerHTML = `<div class="placeholder-mark">PV</div><span class="media-tag">contenido</span>`}
+    if(visual){visual.classList.add('placeholder');visual.innerHTML = `<div class="placeholder-mark">Sin imagen</div><span class="media-tag">contenido</span>`}
   }, {once:true}));
   updateLearningStatus();
+}
+function setView(view){
+  currentView = view === 'unfiltered' ? 'unfiltered' : 'selection';
+  allStories = currentView === 'unfiltered' ? unfilteredStories : selectionStories;
+  currentFilter = 'all';
+  document.querySelectorAll('.view-tab').forEach(button => button.classList.toggle('active', button.dataset.view === currentView));
+  document.querySelectorAll('.filter').forEach(button => button.classList.toggle('active', button.dataset.filter === 'all'));
+  document.getElementById('storyCount').textContent = allStories.length;
+  document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
+  renderStories();
 }
 function renderSources(data){
   const panel = document.getElementById('sourcesPanel');
@@ -486,7 +508,9 @@ async function load(){
     const response = await fetch('./data.json?_=' + Date.now(), {cache:'no-store'});
     if(!response.ok) throw new Error('data.json no disponible');
     const data = await response.json();
-    allStories = Array.isArray(data.stories) ? data.stories : [];
+    selectionStories = Array.isArray(data.stories) ? data.stories : [];
+    unfilteredStories = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
+    allStories = currentView === 'unfiltered' ? unfilteredStories : selectionStories;
     const updated = data.updated_at ? new Date(data.updated_at) : null;
     document.getElementById('updated').textContent = updated && !Number.isNaN(updated.valueOf())
       ? `Actualizado ${updated.toLocaleString('es-ES',{dateStyle:'medium',timeStyle:'short'})}`
@@ -510,6 +534,10 @@ document.getElementById('filters').addEventListener('click', event => {
   currentFilter = button.dataset.filter;
   document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
   renderStories();
+});
+document.querySelector('.view-switch').addEventListener('click', event => {
+  const button = event.target.closest('[data-view]');
+  if(button) setView(button.dataset.view);
 });
 document.getElementById('timeRange').addEventListener('change', event => {
   currentHours = Number(event.target.value) || 24;
