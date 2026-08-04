@@ -90,8 +90,8 @@
     border-radius:999px;padding:9px 13px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:750
   }
   .filter:hover,.filter.active{border-color:var(--hot);color:var(--text);background:rgba(255,91,46,.1)}
-  .time-range{display:flex;align-items:center;gap:7px;flex:0 0 auto;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
-  .time-range select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:9px 30px 9px 10px;font:inherit;text-transform:none;letter-spacing:0;cursor:pointer}
+  .time-range,.sort-control{display:flex;align-items:center;gap:7px;flex:0 0 auto;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+  .time-range select,.sort-control select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:9px 30px 9px 10px;font:inherit;text-transform:none;letter-spacing:0;cursor:pointer}
   .count{color:var(--muted);font-size:.82rem;white-space:nowrap}
 
   .stories{display:flex;flex-direction:column;gap:12px}
@@ -236,6 +236,17 @@
           <option value="24" selected>Últimas 24 horas</option>
         </select>
       </label>
+      <label class="sort-control" for="sortBy">Ordenar
+        <select id="sortBy">
+          <option value="priority" selected>Prioridad</option>
+        </select>
+      </label>
+      <label class="sort-control" for="sortDirection">Dirección
+        <select id="sortDirection">
+          <option value="desc" selected>Descendente</option>
+          <option value="asc">Ascendente</option>
+        </select>
+      </label>
       <div class="filters" id="filters" aria-label="Filtros">
         <button class="filter active" data-filter="all">Todo</button>
         <button class="filter" data-filter="humor-curiosidades">Humor y curiosidades</button>
@@ -266,6 +277,8 @@
 let allStories = [];
 let currentFilter = 'all';
 let currentHours = 24;
+let currentSort = 'priority';
+let currentSortDirection = 'desc';
 const LEARNING_STORAGE_KEY = 'pulso-viral-learning-v1';
 const FEEDBACK_QUEUE_KEY = 'pulso-viral-feedback-queue-v1';
 const FEEDBACK_CLIENT_KEY = 'pulso-viral-feedback-client-v1';
@@ -478,7 +491,13 @@ function storyCard(story, index){
 }
 function renderStories(){
   const storiesEl = document.getElementById('stories');
-  const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => learnedScore(b) - learnedScore(a) || Number(b.viral_score || 0) - Number(a.viral_score || 0));
+  const direction = currentSortDirection === 'asc' ? 1 : -1;
+  const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => {
+    if(currentSort === 'priority'){
+      return direction * (learnedScore(a) - learnedScore(b) || Number(a.viral_score || 0) - Number(b.viral_score || 0));
+    }
+    return 0;
+  });
   document.getElementById('visibleCount').textContent = `${visible.length} resultado${visible.length === 1 ? '' : 's'}`;
   if(!visible.length){storiesEl.innerHTML = '<div class="empty">No hay resultados para este filtro en esta actualización.</div>';return}
   storiesEl.innerHTML = visible.map(storyCard).join('');
@@ -576,6 +595,14 @@ document.getElementById('filters').addEventListener('click', event => {
 });
 document.getElementById('timeRange').addEventListener('change', event => {
   currentHours = Number(event.target.value) || 24;
+  renderStories();
+});
+document.getElementById('sortBy').addEventListener('change', event => {
+  currentSort = event.target.value || 'priority';
+  renderStories();
+});
+document.getElementById('sortDirection').addEventListener('change', event => {
+  currentSortDirection = event.target.value === 'asc' ? 'asc' : 'desc';
   renderStories();
 });
 document.getElementById('stories').addEventListener('click', event => {

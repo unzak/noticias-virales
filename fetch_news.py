@@ -133,6 +133,22 @@ MEDIA_TOPIC_GROUPS = (
     ),
 )
 
+SPANISH_MEDIA_DOMAINS = tuple(dict.fromkeys(
+    domain
+    for _, domains in MEDIA_TOPIC_GROUPS
+    for domain in domains
+)) + (
+    "hola.com", "lecturas.com", "semana.es", "diezminutos.es",
+    "vanitatis.elconfidencial.com", "marca.com", "as.com",
+    "mundodeportivo.com", "formulatv.com", "vertele.eldiario.es",
+    "los40.com", "europafm.com", "divinity.es",
+)
+
+
+def spanish_topic_search(terms: str) -> str:
+    """Busca temas virales solo en medios con edición española."""
+    return google_news_sites_query(SPANISH_MEDIA_DOMAINS, terms)
+
 
 def build_topic_sources() -> tuple[tuple[Any, ...], ...]:
     sources: list[tuple[Any, ...]] = []
@@ -190,27 +206,27 @@ NEWS_SOURCES = (
     *build_topic_sources(),
     (
         "Google News · humor y memes",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'meme OR memes OR humor OR broma OR parodia OR gracioso OR divertido OR "hace reír"'
-        )),
+        ),
         7.0,
         "Humor y memes",
         ("humor", "memes"),
     ),
     (
         "Google News · animales y mascotas",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'perro OR gato OR mascota OR animales OR rescate animal OR "vídeo de animales"'
-        )),
+        ),
         7.0,
         "Animales y mascotas",
         ("animales",),
     ),
     (
         "Google News · famosos, televisión y realities",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'famosos OR celebridades OR television OR reality OR influencer OR streamer OR "momento viral"'
-        )),
+        ),
         6.0,
         "Famosos, televisión y realities",
         ("famosos", "television"),
@@ -236,63 +252,63 @@ NEWS_SOURCES = (
     ),
     (
         "Google News · insólito y WTF",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'insolito OR insólito OR sorprendente OR surrealista OR inesperado OR alucina OR "no da crédito"'
-        )),
+        ),
         8.0,
         "Insólito y sorprendente",
         ("insolito", "curiosidades"),
     ),
     (
         "Google News · redes y creadores",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'TikTok OR Instagram OR YouTube OR streamer OR influencer OR "arrasa en redes" OR "se hace viral"'
-        )),
+        ),
         7.0,
         "Redes y creadores",
         ("redes",),
     ),
     (
         "Google News · tecnología e IA curiosa",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             '"inteligencia artificial" OR robot OR gadget OR WhatsApp OR movil OR videojuego OR invento curioso'
-        )),
+        ),
         5.0,
         "Tecnología e IA",
         ("tecnologia",),
     ),
     (
         "Google News · deporte viral",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'futbolista OR aficionado OR celebración OR golazo OR vestuario OR grada OR "gesto deportivo" OR "se hace viral" deporte'
-        )),
+        ),
         6.0,
         "Deporte viral",
         ("deportes",),
     ),
     (
         "Google News · comida, viajes y trucos",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'comida OR receta OR restaurante OR viaje OR destino OR truco OR hogar OR "consejo viral"'
-        )),
+        ),
         4.0,
         "Lifestyle compartible",
         ("lifestyle",),
     ),
     (
         "Google News · historias positivas",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'historia emotiva OR gesto solidario OR reencuentro OR rescate OR sorpresa OR superación'
-        )),
+        ),
         6.0,
         "Historias positivas",
         ("historias",),
     ),
     (
         "Google News · videojuegos y nostalgia",
-        google_news_search_url(focused_news_query(
+        spanish_topic_search(
             'videojuegos OR gaming OR nostalgia OR "años 90" OR "años 2000" OR infancia OR retro'
-        )),
+        ),
         5.0,
         "Videojuegos y nostalgia",
         ("videojuegos", "nostalgia"),
@@ -498,14 +514,15 @@ POLITICS_TERMS = (
     "moncloa", "coalicion", "oposicion", "mocion", "decreto ley",
     "sanchez", "abascal", "feijoo", "podemos", "vox", "psoe", "pp ",
     "ultras", "saludo nazi", "embajada", "eurodiputado", "concejal",
-    "alcalde", "alcaldesa", "voto de la mujer",
+    "alcalde", "alcaldesa", "voto de la mujer", "ayuso", "inmigrante", "inmigracion",
+    "migratorio", "migratoria", "frontera con marruecos",
 )
 HARD_NEWS_TERMS = (
     "guerra", "ataque", "bombardeo", "asesinato", "muere", "muerte",
     "fallece", "accidente", "incendio", "violencia", "tribunal",
     "detenido", "detenida", "crisis", "delito", "homicidio",
     "desaparecido", "desaparecida", "herido", "herida", "catastrofe",
-    "feminicida", "violencia de genero", "ictus", "quimioterapia",
+    "feminicida", "violencia de genero", "ictus", "quimioterapia", "sequia",
 )
 INSTITUTIONAL_TERMS = (
     "boe", "ley", "impuesto", "presupuesto", "economia", "inflacion",
@@ -517,6 +534,28 @@ ROUTINE_CONTENT_TERMS = (
     "horoscopo de hoy", "comprobar sorteo", "resultado del sorteo",
     "avance del capitulo", "precio oficial y donde comprar",
     "programacion de television", "programacion tv", "el tiempo para hoy",
+    "programa de las fiestas", "horarios programa", "la aemet confirma",
+)
+SPAIN_TITLE_TERMS = (
+    "espana", "espanol", "espanola", "madrid", "barcelona", "valencia",
+    "sevilla", "malaga", "galicia", "andalucia", "canarias", "baleares",
+    "zaragoza", "bilbao", "asturias", "murcia", "alicante", "la liga",
+    "laliga", "seleccion espanola", "guardia civil",
+)
+FOREIGN_LOCAL_NEWS_TERMS = (
+    "mexico", "mexicano", "mexicana", "argentina", "argentino",
+    "colombia", "colombiano", "colombiana", "chile", "chileno", "chilena",
+    "peru", "peruano", "peruana", "ecuador", "venezuela", "uruguay",
+    "paraguay", "bolivia", "boca juniors", "river plate", "liga mx",
+    "casa de los famosos mexico", "masterchef mexico", "pesos argentinos",
+)
+SPAIN_PUBLISHER_TERMS = (
+    "la vanguardia", "antena 3", "lasexta", "20minutos", "el huffpost",
+    "telecinco", "publico", "los40", "el espanol", "infobae espana",
+    "el pais", "marca", "diario as", "as", "hola", "lecturas", "semana",
+    "diezminutos es", "vanitatis", "el mundo", "abc", "el confidencial",
+    "eldiario es", "la razon", "rtve", "europa press", "cadena ser", "cope",
+    "onda cero", "mundo deportivo", "formula tv", "vertele", "divinity",
 )
 
 CABRONAZI_TAG_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -734,7 +773,7 @@ def learned_news_sources(tags: Iterable[str]) -> tuple[tuple[Any, ...], ...]:
     return tuple(
         (
             f"Aprendizaje · {tag}",
-            google_news_search_url(focused_news_query(FEEDBACK_TAG_TERMS[tag])),
+            spanish_topic_search(FEEDBACK_TAG_TERMS[tag]),
             8.0,
             "Aprendizaje editorial",
             (tag, "viral"),
@@ -914,6 +953,25 @@ def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
         "strong_viral": strong_viral,
         "generic_news": generic_news,
     }
+
+
+def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool]:
+    """Estima si el contenido está dirigido a la audiencia española."""
+    item_list = list(items)
+    title_text = " ".join(item.title for item in item_list)
+    spain_hits = contains_phrase(title_text, SPAIN_TITLE_TERMS)
+    foreign_hits = contains_phrase(title_text, FOREIGN_LOCAL_NEWS_TERMS)
+    trusted_source = any(normalize(item.source) in SPAIN_PUBLISHER_TERMS for item in item_list)
+    score = min(12, spain_hits * 6) + (8 if trusted_source else -6) - min(18, foreign_hits * 9)
+    reasons: list[str] = []
+    if spain_hits:
+        reasons.append("tema vinculado a España")
+    if trusted_source:
+        reasons.append("medio español")
+    if foreign_hits:
+        reasons.append("actualidad local extranjera")
+    foreign_without_spanish_angle = bool(foreign_hits and not spain_hits)
+    return score, reasons, foreign_without_spanish_angle
 
 
 def valid_http_url(value: Any) -> str | None:
@@ -4503,6 +4561,17 @@ def build_ranked(
             "humor", "memes", "animales", "insolito", "redes", "reality",
             "videojuegos", "historias", "nostalgia",
         }
+        spain_score, spain_reasons, foreign_without_spanish_angle = spain_relevance(items)
+        entertainment_feed = any(
+            contains_phrase(feed, ("cribeo", "viral", "virales", "tiramillas", "tikitakas", "corazon", "entretenimiento"))
+            for feed in editorial_feeds
+        )
+        if foreign_without_spanish_angle:
+            continue
+        if spain_score < 0:
+            continue
+        if not explicit_shareable_angle and not entertainment_feed and spain_score < 12:
+            continue
         if profile["politics_hits"] and len(explicit_shareable_angle) < 2:
             continue
         if profile["hard_news_hits"] and len(explicit_shareable_angle) < 2:
@@ -4568,6 +4637,7 @@ def build_ranked(
             + learned_adjustment
             + historical_adjustment
             + precision_adjustment
+            + spain_score
         )
         # Curva de saturación: evita que muchos candidatos distintos acaben
         # empatados artificialmente en 100.
@@ -4641,6 +4711,8 @@ def build_ranked(
                 "raw_score": round(raw_score, 1),
                 "learned_adjustment": round(learned_adjustment, 1),
                 "editorial_precision_adjustment": round(precision_adjustment, 1),
+                "spain_relevance_score": spain_score,
+                "spain_relevance_reasons": spain_reasons,
                 "cabronazi_affinity": historical_score,
                 "cabronazi_historical_adjustment": historical_adjustment,
                 "cabronazi_match_reasons": historical_reasons,
@@ -4683,6 +4755,7 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
     selected: list[dict[str, Any]] = []
     deferred: list[dict[str, Any]] = []
     category_counts: dict[str, int] = {}
+    general_category_counts: dict[str, int] = {}
     source_counts: dict[str, int] = {}
     politics_count = 0
     hard_news_count = 0
@@ -4690,17 +4763,21 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
     for story in stories:
         tags = set(story.get("topic_tags") or [])
         primary = str(story.get("primary_tag") or "viral")
+        general_category = str(story.get("general_category") or "humor-curiosidades")
         sources = story.get("sources") or []
-        primary_source = str(sources[0] if sources else "Fuente original")
+        primary_source = normalize(str(sources[0] if sources else "Fuente original"))
         if "politica" in tags and politics_count >= 1:
             continue
         if "sucesos" in tags and hard_news_count >= 3:
+            continue
+        if general_category_counts.get(general_category, 0) >= 36:
             continue
         if category_counts.get(primary, 0) >= 18 or source_counts.get(primary_source, 0) >= 8:
             deferred.append(story)
             continue
         selected.append(story)
         category_counts[primary] = category_counts.get(primary, 0) + 1
+        general_category_counts[general_category] = general_category_counts.get(general_category, 0) + 1
         source_counts[primary_source] = source_counts.get(primary_source, 0) + 1
         politics_count += int("politica" in tags)
         hard_news_count += int("sucesos" in tags)
@@ -4711,11 +4788,20 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         if len(selected) >= limit:
             break
         tags = set(story.get("topic_tags") or [])
+        general_category = str(story.get("general_category") or "humor-curiosidades")
+        sources = story.get("sources") or []
+        primary_source = normalize(str(sources[0] if sources else "Fuente original"))
         if "politica" in tags and politics_count >= 1:
             continue
         if "sucesos" in tags and hard_news_count >= 3:
             continue
+        if general_category_counts.get(general_category, 0) >= 36:
+            continue
+        if source_counts.get(primary_source, 0) >= 10:
+            continue
         selected.append(story)
+        general_category_counts[general_category] = general_category_counts.get(general_category, 0) + 1
+        source_counts[primary_source] = source_counts.get(primary_source, 0) + 1
         politics_count += int("politica" in tags)
         hard_news_count += int("sucesos" in tags)
     return selected

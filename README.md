@@ -4,6 +4,12 @@ Panel estático para detectar contenidos con potencial editorial viral en Españ
 Publica hasta 150 resultados y exige que la fecha de publicación pueda
 verificarse dentro de las **últimas 24 horas**.
 
+Las búsquedas temáticas de Google News se limitan a medios con edición española.
+El ranking refuerza además las piezas vinculadas a España y descarta actualidad
+local extranjera sin un ángulo español, aunque el titular esté escrito en español.
+La interfaz permite ordenar la prioridad aprendida en sentido descendente o
+ascendente sin perder los filtros de periodo y categoría.
+
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
 
 ## Cambios de esta versión
