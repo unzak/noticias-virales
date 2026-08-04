@@ -995,6 +995,7 @@ GENERIC_IMAGE_TERMS = (
     "header", "footer", "newsletter", "subscription", "suscripcion", "pixel",
     "tracking", "analytics", "advert", "publicidad", "adsystem", "share-button",
     "social-share", "userpic", "gravatar", "emoji", "weather", "generic",
+    "spacer", "blank", "get_flash_player", "download_button",
 )
 
 
@@ -1941,7 +1942,13 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
             )
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
             continue
-        if bool(context.get("is_main")) and _is_google_host(link) and not _is_google_host(final_url):
+        if (
+            not _is_google_host(final_url)
+            and (
+                bool(context.get("is_main"))
+                or (not resolved_main_link and _is_google_host(str(story.get("link") or "")))
+            )
+        ):
             resolved_main_link = final_url
         if platform == "meneame":
             final_host = (urllib.parse.urlparse(final_url).hostname or "").lower()
@@ -1992,20 +1999,22 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
     if resolved_main_link:
         updated["link"] = resolved_main_link
 
-    # Se enlaza directamente la mejor URL encontrada en un tag <img> del
-    # artículo. Así evitamos descargar y versionar archivos de terceros. Si la
-    # página no expone un <img> utilizable, conservamos el mejor candidato del
-    # feed o de sus metadatos como respaldo remoto.
+    # Se conserva la URL remota y nunca se descarga la imagen. La puntuación
+    # compara los <img> del artículo con og:image, Twitter Card y JSON-LD: esto
+    # evita que el primer banner o píxel dentro de <article> gane por posición.
     selected_entry = next(
-        (entry for entry in ordered if entry[0].origin == "page:article-img"),
+        (
+            entry for entry in ordered
+            if entry[2] >= 45.0
+            and not any(
+                term in normalize(
+                    f"{entry[0].alt} {urllib.parse.unquote(urllib.parse.urlparse(entry[0].url).path)}"
+                )
+                for term in GENERIC_IMAGE_TERMS
+            )
+        ),
         None,
-    ) or next(
-        (entry for entry in ordered if entry[0].origin == "page:main-img"),
-        None,
-    ) or next(
-        (entry for entry in ordered if entry[0].origin == "page:img"),
-        None,
-    ) or (ordered[0] if ordered else None)
+    )
     if not selected_entry:
         updated["thumbnail"] = None
         updated["image_verified"] = False
@@ -2107,7 +2116,12 @@ def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, 
         output[index] = updated
 
     processed = [item for item in output if item is not None]
-    final = [item for item in processed if item.get("image_linked") and item.get("thumbnail")]
+    final = [
+        item for item in processed
+        if item.get("image_linked")
+        and item.get("thumbnail")
+        and not _is_google_host(str(item.get("link") or ""))
+    ]
     linked_count = len(final)
     discarded_without_image = len(processed) - linked_count
     print(

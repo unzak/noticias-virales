@@ -1,20 +1,195 @@
 {
-  "updated_at": "2026-08-04T15:29:15.266446Z",
+  "updated_at": "2026-08-04T15:50:37.712461Z",
   "trends_google": [
+    "atletismo",
+    "plaga",
+    "jéssica bouzas maneiro",
+    "oposición",
+    "nacho duato",
     "lewis hamilton",
     "aragón",
     "profesor",
     "john galliano",
-    "nasdaq 100",
-    "georgina rodríguez",
-    "colesterol",
-    "autocaravana",
-    "agua",
-    "matt damon"
+    "nasdaq 100"
   ],
   "trends_x": [],
   "trend_details": {
     "google": [
+      {
+        "name": "atletismo",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-04T15:30:00Z",
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHOjryPyqTjyVMfHk_t2fWtLDZRx0ryB6dMs9QCqY2JPny-8oLXM73n82rz-M",
+        "picture_source": "Infobae",
+        "news": [
+          {
+            "title": "Conmoción en el deporte por la muerte de una promesa del atletismo de 21 años",
+            "url": "https://www.infobae.com/deportes/2026/08/04/conmocion-en-el-deporte-por-la-muerte-de-una-promesa-del-atletismo-de-21-anos/",
+            "source": "Infobae",
+            "snippet": null
+          },
+          {
+            "title": "La joven promesa del atletismo, Natasha Ward, fallece repentinamente a los 21 años",
+            "url": "https://peopleenespanol.com/joven-promesa-atletismo-natasha-ward-fallece-21-anos-12032475",
+            "source": "People en Español",
+            "snippet": null
+          },
+          {
+            "title": "Luto en el mundo del deporte: una atleta murió repentinamente a los 21 años",
+            "url": "https://www.c5n.com/deportes/luto-el-mundo-del-deporte-una-atleta-murio-repentinamente-los-21-anos-n245270",
+            "source": "C5N",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Conmoción en el deporte por la muerte de una promesa del atletismo de 21 años",
+          "url": "https://www.infobae.com/deportes/2026/08/04/conmocion-en-el-deporte-por-la-muerte-de-una-promesa-del-atletismo-de-21-anos/",
+          "source": "Infobae",
+          "snippet": null
+        }
+      },
+      {
+        "name": "plaga",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-04T15:30:00Z",
+        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQOMl1rwWK3ogtf2i1u1Pg2ghHnaNNIxHhNQ2h5_wtsiwvE79qD7x7cYoajEWs",
+        "picture_source": "Vozpopuli",
+        "news": [
+          {
+            "title": "En hoteles, viviendas y transportes: esta plaga de insectos se propaga con el tráfico de personas y en Andalucía denuncian picaduras",
+            "url": "https://www.vozpopuli.com/actualidad/en-hoteles-viviendas-y-transportes-esta-plaga-de-insectos-se-propaga-con-el-trafico-de-personas-y-en-andalucia-denuncian-picaduras.html",
+            "source": "Vozpopuli",
+            "snippet": null
+          },
+          {
+            "title": "Por qué aumentan las chinches en verano y cómo prevenir que lleguen a tu hogar | Recomendaciones",
+            "url": "https://www.milenio.com/estilo/chinches-como-prevenirlas-en-verano-recomendaciones",
+            "source": "Milenio",
+            "snippet": null
+          },
+          {
+            "title": "Chinches en verano: así puedes evitar que invadan tu hogar durante la temporada de calor",
+            "url": "https://www.mediotiempo.com/actualidad/comunidad/chinches-verano-puedes-evitar-invadan-hogar-temporada-calor",
+            "source": "Mediotiempo",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "En hoteles, viviendas y transportes: esta plaga de insectos se propaga con el tráfico de personas y en Andalucía denuncian picaduras",
+          "url": "https://www.vozpopuli.com/actualidad/en-hoteles-viviendas-y-transportes-esta-plaga-de-insectos-se-propaga-con-el-trafico-de-personas-y-en-andalucia-denuncian-picaduras.html",
+          "source": "Vozpopuli",
+          "snippet": null
+        }
+      },
+      {
+        "name": "jéssica bouzas maneiro",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-04T15:30:00Z",
+        "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTtmcM-76ELf2ON3fFf4NPcExjnPrtcwVX9UVfQoCdI9FEg_2ZMEbqwBlAKsl0",
+        "picture_source": "La Voz de Galicia",
+        "news": [
+          {
+            "title": "Jéssica Bouzas arranca su gira americana con victoria en Toronto sobre Arseneault",
+            "url": "https://www.lavozdegalicia.es/noticia/deportes/2026/08/03/jessica-bouzas-arranca-gira-americana-victoria-toronto-sobre-arseneault/00031785743317668909526.htm",
+            "source": "La Voz de Galicia",
+            "snippet": null
+          },
+          {
+            "title": "Bouzas avanza y Bucsa cae",
+            "url": "https://as.com/tenis/masters_1000/bouzas-avanza-y-bucsa-cae-f202608-n/",
+            "source": "Diario AS",
+            "snippet": null
+          },
+          {
+            "title": "Bouzas y Bucsa, la cara y la cruz en Toronto",
+            "url": "https://www.puntodebreak.com/2026/08/03/bouzas-bucsa-cara-cruz-toronto",
+            "source": "Puntodebreak",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Jéssica Bouzas arranca su gira americana con victoria en Toronto sobre Arseneault",
+          "url": "https://www.lavozdegalicia.es/noticia/deportes/2026/08/03/jessica-bouzas-arranca-gira-americana-victoria-toronto-sobre-arseneault/00031785743317668909526.htm",
+          "source": "La Voz de Galicia",
+          "snippet": null
+        }
+      },
+      {
+        "name": "oposición",
+        "traffic": 100,
+        "traffic_label": "100+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-04T15:30:00Z",
+        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT14Cjkthb-iLzH6ZWLk14FtlMlpdQugSLaX2j23_aPHiEFOtbur_HCtI1APJA",
+        "picture_source": "ANPE Castilla La Mancha",
+        "news": [
+          {
+            "title": "NOVEDAD INTERINOS/AS. Fechas y Calendario de Adjudicaciones vacantes y publicación de bolsas. Vídeo ordenación Listas.",
+            "url": "https://anpecastillalamancha.es/notices/204668/NOVEDAD-INTERINOSAS.-Fechas-y-Calendario-de-Adjudicaciones-vacantes-y-publicaci%C3%B3n-de-bolsas.-V%C3%ADdeo-ordenaci%C3%B3n-Listas.",
+            "source": "ANPE Castilla La Mancha",
+            "snippet": null
+          },
+          {
+            "title": "Publicado el listado definitivo de seleccionados del concurso-oposición para el ingreso en el Cuerpo de Maestros de Castilla-La Mancha",
+            "url": "https://www.enciendecuenca.com/2026/07/31/publicado-el-listado-definitivo-de-seleccionados-del-concurso-oposicion-para-el-ingreso-en-el-cuerpo-de-maestros-de-castilla-la-mancha/",
+            "source": "Enciende Cuenca Noticias",
+            "snippet": null
+          },
+          {
+            "title": "BOLSAS MAESTRAS/OS 2026-27: Publicadas bolsas ordinarias y de reserva (Reclamaciones: hasta 5 agosto)",
+            "url": "https://ste-clm.com/bolsas-maes-prov-2026-27/",
+            "source": "STE-CLM",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "NOVEDAD INTERINOS/AS. Fechas y Calendario de Adjudicaciones vacantes y publicación de bolsas. Vídeo ordenación Listas.",
+          "url": "https://anpecastillalamancha.es/notices/204668/NOVEDAD-INTERINOSAS.-Fechas-y-Calendario-de-Adjudicaciones-vacantes-y-publicaci%C3%B3n-de-bolsas.-V%C3%ADdeo-ordenaci%C3%B3n-Listas.",
+          "source": "ANPE Castilla La Mancha",
+          "snippet": null
+        }
+      },
+      {
+        "name": "nacho duato",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-04T15:30:00Z",
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcDSX0VXgziuQb3O-hD9MHWieJtyiaAo1MsGTEz7KAEvMcrkBEYSJIUOoyRE4",
+        "picture_source": "Lecturas",
+        "news": [
+          {
+            "title": "Nacho Duato, sobre Rosalía: “Una bailarina tiene que estar seis o siete años, seis horas al día trabajando las puntas. Tú te subes a unas puntas y haces el ridículo”",
+            "url": "https://www.lecturas.com/actualidad/nacho-duato-carga-contra-rosalia-y-acaba-borrando-mensaje-bailarina-tiene-que-estar-seis-o-siete-anos-seis-horas-dia-trabajando-puntas-tu-te-subes-a-unas-puntas-y-haces-ridiculo_196622",
+            "source": "Lecturas",
+            "snippet": null
+          },
+          {
+            "title": "Nacho Duato arremete contra Rosalía por “mofarse” de la danza clásica: “Como bailarín me duele verte”",
+            "url": "https://www.lavanguardia.com/gente/20260803/11606703/nacho-duato-arremete-rosalia-mofarse-danza-clasica-bailarin-me-duele-verte.html",
+            "source": "La Vanguardia",
+            "snippet": null
+          },
+          {
+            "title": "Nacho Duato borra el vídeo en el que cargaba duramente contra Rosalía: \"Deja de hacer el ridículo\"",
+            "url": "https://www.telecinco.es/famosos/20260803/nacho-duato-borra-video-carga-duramente-rosalia-deja-hacer-ridiciulo_18_019874727.html",
+            "source": "Telecinco",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Nacho Duato, sobre Rosalía: “Una bailarina tiene que estar seis o siete años, seis horas al día trabajando las puntas. Tú te subes a unas puntas y haces el ridículo”",
+          "url": "https://www.lecturas.com/actualidad/nacho-duato-carga-contra-rosalia-y-acaba-borrando-mensaje-bailarina-tiene-que-estar-seis-o-siete-anos-seis-horas-dia-trabajando-puntas-tu-te-subes-a-unas-puntas-y-haces-ridiculo_196622",
+          "source": "Lecturas",
+          "snippet": null
+        }
+      },
       {
         "name": "lewis hamilton",
         "traffic": 100,
@@ -31,15 +206,15 @@
             "snippet": null
           },
           {
-            "title": "McLaren victory leaves 2026 F1 title race \"far from over\", says Martin Brundle",
-            "url": "https://www.motorsport.com/f1/news/mclaren-victory-leaves-2026-f1-title-race-far-from-over-says-martin-brundle/10843926/",
-            "source": "Motorsport.com",
+            "title": "Former F1 team boss questions 'ridiculous' Lewis Hamilton clothing",
+            "url": "https://racingnews365.com/former-f1-team-boss-questions-ridiculous-lewis-hamilton-clothing",
+            "source": "RacingNews365",
             "snippet": null
           },
           {
-            "title": "'It's still all to play for': Bernie Collins sees unexpected Formula 1 title twist",
-            "url": "https://www.planetf1.com/news/formula-1-title-race-bernie-collins-mercedes-opened-the-door",
-            "source": "PlanetF1",
+            "title": "Lewis Hamilton ridiculed for 'ridiculous clothing' by former F1 team boss",
+            "url": "https://www.gpfans.com/en/f1-news/1088605/lewis-hamilton-ridiculed-clothing-f1-team-boss-otmar-szafnauer/",
+            "source": "GPfans",
             "snippet": null
           }
         ],
@@ -52,8 +227,8 @@
       },
       {
         "name": "aragón",
-        "traffic": 100,
-        "traffic_label": "100+",
+        "traffic": 200,
+        "traffic_label": "200+",
         "trend_url": "https://trends.google.com/trending/rss?geo=ES",
         "published_at": "2026-08-04T15:00:00Z",
         "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRiKXjXQpyVADNC3khySoazpyf4qroF6-ZdvSoDV5DeVLpX89gkYUlI8d21fG0",
@@ -161,207 +336,32 @@
         "traffic_label": "100+",
         "trend_url": "https://trends.google.com/trending/rss?geo=ES",
         "published_at": "2026-08-04T14:50:00Z",
-        "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTxtrJ7vyKO80MKhoY6vO-fME5d6uH_J1BQtnOTqga2cUjAtEV-_LjTLF3c6FY",
-        "picture_source": "XTB",
+        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQdSSEE6kMq0QCp7v5sdwNd7cYn6Czd4ZDyrYAuCQCDMD1wl6rwQbMLUaUZJn4",
+        "picture_source": "Barron's",
         "news": [
           {
-            "title": "Peace in the Gulf: Hopes vs. Reality",
-            "url": "https://www.xtb.com/en/market-analysis/peace-in-the-gulf-hopes-vs-reality",
-            "source": "XTB",
+            "title": "Solid Earnings and Cheap Valuations Could Deliver Markets From Long Summer Pause",
+            "url": "https://www.barrons.com/articles/valuations-are-falling-while-the-s-p-500-is-flat-that-could-be-great-news-for-the-bulls-684a92a7",
+            "source": "Barron's",
             "snippet": null
           },
           {
-            "title": "Nasdaq 100 nears bull trap at 29,460 resistance: Live levels",
-            "url": "https://www.investing.com/news/stock-market-news/nasdaq-100-nears-bull-trap-at-29460-resistance-live-levels-93CH-4833085",
-            "source": "Investing.com",
+            "title": "Dow Jones Forecast: DJIA Nears All-Time Highs Once Again",
+            "url": "https://www.forex.com/ie/news-and-analysis/dow-jones-forecast-djia-nears-alltime-highs-once-again/",
+            "source": "FOREX.com",
             "snippet": null
           },
           {
-            "title": "The US500 is bouncing back, but what do the fundamentals tell us❓",
-            "url": "https://www.xtb.com/en/market-analysis/the-us500-is-bouncing-back-but-what-do-the-fundamentals-tell-us",
-            "source": "XTB",
+            "title": "US Market Outlook: Mixed Picture",
+            "url": "https://www.thehindubusinessline.com/portfolio/technical-analysis/us-market-outlook-mixed-picture/article71294101.ece",
+            "source": "BusinessLine",
             "snippet": null
           }
         ],
         "top_news": {
-          "title": "Peace in the Gulf: Hopes vs. Reality",
-          "url": "https://www.xtb.com/en/market-analysis/peace-in-the-gulf-hopes-vs-reality",
-          "source": "XTB",
-          "snippet": null
-        }
-      },
-      {
-        "name": "georgina rodríguez",
-        "traffic": 1000,
-        "traffic_label": "1000+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-04T14:20:00Z",
-        "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJExo4z7wzMtPbabW0Depy6AvVXenqLWfjK2k_PSb1NgXZdjdsoeTOxRbgUbg",
-        "picture_source": "HOLA",
-        "news": [
-          {
-            "title": "La tajante respuesta de Cristiano Ronaldo a Georgina Rodríguez tras las críticas a su físico: \"Es normal que te envidien\"",
-            "url": "https://www.hola.com/actualidad/20260804916324/cristiano-ronaldo-respuesta-georgina-rodriguez-criticas-cuerpo/",
-            "source": "HOLA",
-            "snippet": null
-          },
-          {
-            "title": "Georgina Rodríguez responde a los comentarios sobre su cuerpo: “El valor de una persona jamás puede depender de un físico ni de la opinión de desconocidos”",
-            "url": "https://elpais.com/gente/2026-08-04/georgina-rodriguez-responde-a-los-comentarios-sobre-su-cuerpo-el-valor-de-una-persona-jamas-puede-depender-de-un-fisico-ni-de-la-opinion-de-desconocidos.html",
-            "source": "EL PAÍS",
-            "snippet": null
-          },
-          {
-            "title": "Georgina Rodríguez, mujer de Cristiano: “Soy madre de 6 hijos maravillosos, 3 son niñas que algún día serán grandes mujeres. Y si hay algo que deseo enseñarles es que el valor de una persona jamás puede depender de un…",
-            "url": "https://www.lecturas.com/actualidad/georgina-mujer-cristiano-soy-madre-hijos-maravillosos-grandes-mujeres-ensenarles-valor-persona-jamas-depender-fisico_196659",
-            "source": "Lecturas",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "La tajante respuesta de Cristiano Ronaldo a Georgina Rodríguez tras las críticas a su físico: \"Es normal que te envidien\"",
-          "url": "https://www.hola.com/actualidad/20260804916324/cristiano-ronaldo-respuesta-georgina-rodriguez-criticas-cuerpo/",
-          "source": "HOLA",
-          "snippet": null
-        }
-      },
-      {
-        "name": "colesterol",
-        "traffic": 500,
-        "traffic_label": "500+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-04T14:20:00Z",
-        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSxZAnW9klKef58m2WhT0voVil4xCNLU5mDpWAnOrIQhwVDcBAzSwINBliIof0",
-        "picture_source": "El Correo",
-        "news": [
-          {
-            "title": "Baja a 30 años la edad para tomar pastillas contra el colesterol",
-            "url": "https://www.elcorreo.com/sociedad/baja-edad-anos-tomar-pastillas-colesterol-20260804122904-ntrc.html",
-            "source": "El Correo",
-            "snippet": null
-          },
-          {
-            "title": "La nueva guía de estatinas amplía de forma sustancial la población candidata a prevención cardiovascular primaria",
-            "url": "https://www.univadis.es/viewarticle/nueva-gu%C3%ADa-estatinas-ampl%C3%ADa-forma-sustancial-2026a1000pa7",
-            "source": "Univadis",
-            "snippet": null
-          },
-          {
-            "title": "Un estudio muestra que el colesterol LDL elevado causó 3,6 millones de muertes en el mundo en 2023",
-            "url": "https://www.infosalus.com/actualidad/noticia-estudio-muestra-colesterol-ldl-elevado-causo-36-millones-muertes-mundo-2023-20260803154013.html",
-            "source": "Infosalus",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "Baja a 30 años la edad para tomar pastillas contra el colesterol",
-          "url": "https://www.elcorreo.com/sociedad/baja-edad-anos-tomar-pastillas-colesterol-20260804122904-ntrc.html",
-          "source": "El Correo",
-          "snippet": null
-        }
-      },
-      {
-        "name": "autocaravana",
-        "traffic": 100,
-        "traffic_label": "100+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-04T14:20:00Z",
-        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTpJgrVVOjs2M_2TvEcBYJqb5-2Zb6uIsmWKvieiVTE2w-88sLR5Y27Wy1F8Zo",
-        "picture_source": "atresplayer",
-        "news": [
-          {
-            "title": "El negocio redondo del eclipse solar: hasta 6.000 euros por alquilar una habitación",
-            "url": "https://www.atresplayer.com/antena3/programas/espejo-publico/clips/el-negocio-redondo-del-eclipse-solar-hasta-6000-euros-por-alquilar-una-habitacion_6a7087092fec6e00072f137d/",
-            "source": "atresplayer",
-            "snippet": null
-          },
-          {
-            "title": "Las caravanas se convierten en alojamientos privilegiados para ver el eclipse",
-            "url": "https://www.abc.es/bienestar/caravanas-convierten-alojamientos-privilegiados-ver-eclipse-20260804165757-nt.html",
-            "source": "ABC",
-            "snippet": null
-          },
-          {
-            "title": "Agosto arranca con hoteles al 90% y previsión de lleno en Lugo: el turismo mantiene su crecimiento",
-            "url": "https://cadenaser.com/galicia/2026/08/03/agosto-arranca-con-hoteles-al-90-y-prevision-de-lleno-en-lugo-el-turismo-mantiene-su-crecimiento-radio-lugo/",
-            "source": "Cadena SER",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "El negocio redondo del eclipse solar: hasta 6.000 euros por alquilar una habitación",
-          "url": "https://www.atresplayer.com/antena3/programas/espejo-publico/clips/el-negocio-redondo-del-eclipse-solar-hasta-6000-euros-por-alquilar-una-habitacion_6a7087092fec6e00072f137d/",
-          "source": "atresplayer",
-          "snippet": null
-        }
-      },
-      {
-        "name": "agua",
-        "traffic": 1000,
-        "traffic_label": "1000+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-04T14:10:00Z",
-        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTUyOsQCmcqbBMAU0COtyZc2DbVvnDg_KvJPvlINEUFb1BpliAzxnghBYdpnYQ",
-        "picture_source": "EL PAÍS",
-        "news": [
-          {
-            "title": "Reactores parados, puertos vacíos: la gran sequía europea causa estragos en los grandes ríos del continente",
-            "url": "https://elpais.com/clima-y-medio-ambiente/2026-08-04/centrales-paradas-puertos-vacios-la-gran-sequia-europea-causa-estragos-en-los-grandes-rios-del-continente.html",
-            "source": "EL PAÍS",
-            "snippet": null
-          },
-          {
-            "title": "El bajo caudal de los grandes ríos de Europa compromete a las nucleares",
-            "url": "https://www.lavanguardia.com/natural/20260804/11605339/caudal-grandes-rios-europa-compromete-nucleares.html",
-            "source": "La Vanguardia",
-            "snippet": null
-          },
-          {
-            "title": "El verano bajo mínimos de los grandes ríos europeos obliga a alterar las rutas de los cruceros",
-            "url": "https://www.elmundo.es/ciencia/2026/08/04/6a704071e4d4d8ec058b457a.html",
-            "source": "El Mundo",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "Reactores parados, puertos vacíos: la gran sequía europea causa estragos en los grandes ríos del continente",
-          "url": "https://elpais.com/clima-y-medio-ambiente/2026-08-04/centrales-paradas-puertos-vacios-la-gran-sequia-europea-causa-estragos-en-los-grandes-rios-del-continente.html",
-          "source": "EL PAÍS",
-          "snippet": null
-        }
-      },
-      {
-        "name": "matt damon",
-        "traffic": 500,
-        "traffic_label": "500+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-04T14:10:00Z",
-        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRJOxBXzb5uHXe9jWEHh-NYaRD3efUHvvPEbA_93symstoZRAJ5WbEzqxxdz7E",
-        "picture_source": "Variety",
-        "news": [
-          {
-            "title": "PHOTOS: Dua Lipa, Callum Turner and More Red Carpet Pics August 2026",
-            "url": "https://variety.com/gallery/celebrity-pics-red-carpet-photos-august-2026/",
-            "source": "Variety",
-            "snippet": null
-          },
-          {
-            "title": "Nolan and 'The Odyssey' cast and crew visit Michelin-starred Seoul restaurant run by Netflix chef",
-            "url": "https://www.koreajoongangdaily.com/entertainment/nolan-and-the-odyssey-cast-and-crew-visit-michelinstarred-seoul-restaurant-run-by-netflix-chef/12804873",
-            "source": "Korea JoongAng Daily",
-            "snippet": null
-          },
-          {
-            "title": "Matt Damon, with a cool gaze",
-            "url": "https://www.sportschosun.com/en/celebrity/2026-08-03/202608030100013210000805",
-            "source": "스포츠조선",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "PHOTOS: Dua Lipa, Callum Turner and More Red Carpet Pics August 2026",
-          "url": "https://variety.com/gallery/celebrity-pics-red-carpet-photos-august-2026/",
-          "source": "Variety",
+          "title": "Solid Earnings and Cheap Valuations Could Deliver Markets From Long Summer Pause",
+          "url": "https://www.barrons.com/articles/valuations-are-falling-while-the-s-p-500-is-flat-that-could-be-great-news-for-the-bulls-684a92a7",
+          "source": "Barron's",
           "snippet": null
         }
       }
@@ -369,6 +369,49 @@
     "x": []
   },
   "google_trend_news": [
+    {
+      "name": "atletismo",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": {
+        "title": "Conmoción en el deporte por la muerte de una promesa del atletismo de 21 años",
+        "url": "https://www.infobae.com/deportes/2026/08/04/conmocion-en-el-deporte-por-la-muerte-de-una-promesa-del-atletismo-de-21-anos/",
+        "source": "Infobae",
+        "viral_score": 0,
+        "thumbnail": null,
+        "verified_image": false,
+        "selection": "trend-related-24h"
+      }
+    },
+    {
+      "name": "plaga",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
+    {
+      "name": "jéssica bouzas maneiro",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
+    {
+      "name": "oposición",
+      "traffic": 100,
+      "traffic_label": "100+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
+    {
+      "name": "nacho duato",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
     {
       "name": "lewis hamilton",
       "traffic": 100,
@@ -378,8 +421,8 @@
     },
     {
       "name": "aragón",
-      "traffic": 100,
-      "traffic_label": "100+",
+      "traffic": 200,
+      "traffic_label": "200+",
       "trend_url": "https://trends.google.com/trending/rss?geo=ES",
       "article": {
         "title": "Cuatro incendios forestales ponen en alerta a la provincia de Huesca: especial preocupación por el foco de Loporzano",
@@ -411,149 +454,15 @@
       "traffic_label": "100+",
       "trend_url": "https://trends.google.com/trending/rss?geo=ES",
       "article": null
-    },
-    {
-      "name": "georgina rodríguez",
-      "traffic": 1000,
-      "traffic_label": "1000+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "Georgina Rodríguez, mujer de Cristiano: “Soy madre de 6 hijos maravillosos, 3 son niñas que algún día serán grandes mujeres. Y si hay algo que deseo enseñarles es que el valor de una persona jamás puede depender de un…",
-        "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOSEtUSGNOTnlFbkFUWXRsa3Fic2pudzY1NXZzWHp3RHJHTDVGaDctX1k0RjgwRXV6NUg1TFA2N0hIZWkzYlluX0xsQ2hMN19HMzkyenBTMEFfQi12NG5halhVcVhBVVM5bV9HekdNU2d3ejB6RUYxMGVhd3cwMFJ6WjdYOGlrTTc3NWRlMURFZUw4TTcwOTFMTW1YSkVoaG53bVNmSTlibl93cVhiMElwV0VJN19OQTFnSXZsS2U4VlNsNnl4TjNmS2N4SGxYaV8zSFFnT2EyVXpzbVZ6VTlqY01TMkJoQktwQmJpcGZ4Yzg?oc=5",
-        "source": "Diez Minutos",
-        "viral_score": 65,
-        "thumbnail": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73342798/georgina-rodriguez-responde-criticas-cuerpo-consejo-cristiano-ronaldo/top&resize=980:*",
-        "verified_image": false,
-        "selection": "radar"
-      }
-    },
-    {
-      "name": "colesterol",
-      "traffic": 500,
-      "traffic_label": "500+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "Baja a 30 años la edad para tomar pastillas contra el colesterol",
-        "url": "https://www.elcorreo.com/sociedad/baja-edad-anos-tomar-pastillas-colesterol-20260804122904-ntrc.html",
-        "source": "El Correo",
-        "viral_score": 0,
-        "thumbnail": null,
-        "verified_image": false,
-        "selection": "trend-related-24h"
-      }
-    },
-    {
-      "name": "autocaravana",
-      "traffic": 100,
-      "traffic_label": "100+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": null
-    },
-    {
-      "name": "agua",
-      "traffic": 1000,
-      "traffic_label": "1000+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "La monologuista Omayra Cazorla alucina con lo que le cuestan dos botellas de agua en el aeropuerto: \"Entré con sed y salí con una hipoteca\"",
-        "url": "https://www.huffingtonpost.es/virales/la-monologuista-omayra-cazorla-alucina-le-cuestan-dos-botellas-agua-aeropuerto-entre-sed-sali-hipoteca-f202608.html?outputType=amp",
-        "source": "El HuffPost",
-        "viral_score": 63,
-        "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/07/29/la-monologuista-omayra-cazorla-en-el-aeropuerto-de-tenerife.jpeg",
-        "verified_image": false,
-        "selection": "radar"
-      }
-    },
-    {
-      "name": "matt damon",
-      "traffic": 500,
-      "traffic_label": "500+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": null
     }
   ],
   "stories": [
     {
-      "title": "Georgina Rodríguez, mujer de Cristiano: “Soy madre de 6 hijos maravillosos, 3 son niñas que algún día serán grandes mujeres. Y si hay algo que deseo enseñarles es que el valor de una persona jamás puede depender de un…",
-      "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxOSEtUSGNOTnlFbkFUWXRsa3Fic2pudzY1NXZzWHp3RHJHTDVGaDctX1k0RjgwRXV6NUg1TFA2N0hIZWkzYlluX0xsQ2hMN19HMzkyenBTMEFfQi12NG5halhVcVhBVVM5bV9HekdNU2d3ejB6RUYxMGVhd3cwMFJ6WjdYOGlrTTc3NWRlMURFZUw4TTcwOTFMTW1YSkVoaG53bVNmSTlibl93cVhiMElwV0VJN19OQTFnSXZsS2U4VlNsNnl4TjNmS2N4SGxYaV8zSFFnT2EyVXpzbVZ6VTlqY01TMkJoQktwQmJpcGZ4Yzg?oc=5",
-      "score": 65,
-      "viral_score": 65,
-      "raw_score": 101.0,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 44,
-      "cabronazi_historical_adjustment": -1.0,
-      "cabronazi_match_reasons": [
-        "criticas",
-        "indignacion"
-      ],
-      "sources": [
-        "Diez Minutos",
-        "Lecturas"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Corazón · Diez Minutos",
-        "Corazón · Lecturas"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "famosos",
-        "corazon"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 20.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 2,
-      "matched_trend": "georgina rodríguez",
-      "matched_google_trend": "georgina rodríguez",
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T15:13:00Z",
-      "thumbnail": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73342798/georgina-rodriguez-responde-criticas-cuerpo-consejo-cristiano-ronaldo/top&resize=980:*",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Corazón · Lecturas",
-        "Selección editorial: Corazón · Diez Minutos",
-        "Google Trends: georgina rodríguez (1000+)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · Lecturas",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "potential": "alto",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:main-img",
-      "image_width": 1920,
-      "image_height": 1280,
-      "image_alt": "georgina rodríguez y cristiano ronaldo"
-    },
-    {
-      "title": "La monologuista Omayra Cazorla alucina con lo que le cuestan dos botellas de agua en el aeropuerto: \"Entré con sed y salí con una hipoteca\"",
-      "link": "https://www.huffingtonpost.es/virales/la-monologuista-omayra-cazorla-alucina-le-cuestan-dos-botellas-agua-aeropuerto-entre-sed-sali-hipoteca-f202608.html?outputType=amp",
-      "score": 63,
-      "viral_score": 63,
-      "raw_score": 94.9,
+      "title": "Una llamada y un viaje inesperado: los dos hechos que demuestran que los Thyssen vuelven a ser una piña",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-04/tita-cervera-borja-thyssen-familia-unida-demanda-morabanc_4400925/",
+      "score": 64,
+      "viral_score": 64,
+      "raw_score": 97.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -564,7 +473,7 @@
       "cabronazi_historical_adjustment": -1.8,
       "cabronazi_match_reasons": [],
       "sources": [
-        "El HuffPost"
+        "Vanitatis"
       ],
       "source_count": 1,
       "platforms": [
@@ -576,52 +485,55 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "El HuffPost · Virales"
+        "Corazón · Vanitatis"
       ],
       "topic_tags": [
-        "trending",
         "viral",
-        "insolito"
+        "insolito",
+        "famosos",
+        "corazon",
+        "viajes"
       ],
       "general_category": "humor-curiosidades",
       "primary_tag": "insolito",
-      "cabronazi_fit": 17.5,
+      "cabronazi_fit": 42.5,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
-      "matched_trend": "agua",
-      "matched_google_trend": "agua",
+      "matched_trend": null,
+      "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T04:42:32Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/07/29/la-monologuista-omayra-cazorla-en-el-aeropuerto-de-tenerife.jpeg",
+      "published_at": "2026-08-04T15:40:00Z",
+      "thumbnail": "https://images.ecestaticos.com/efYBmKHkJLZzmone6LnQ0b3nfxI=/0x0:800x450/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fa6c%2F41d%2F083%2Fa6c41d083e36aff42f87512aa0312711.jpg",
       "media_type": "article",
       "signals": [
-        "Selección editorial: El HuffPost · Virales",
-        "Google Trends: agua (1000+)"
+        "Selección editorial: Corazón · Vanitatis"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales",
-        "editorial_feed": "El HuffPost · Virales",
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
         "topic_tags": [
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
+          "corazon",
+          "famosos",
+          "insolito",
+          "viajes"
+        ]
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "og:image",
+      "image_origin": "schema:image",
       "image_width": 0,
       "image_height": 0,
-      "image_alt": "La monologuista Omayra Cazorla alucina con lo que le cuestan dos botellas de agua en el aeropuerto: \"Entré con sed y salí con una hipoteca\""
+      "image_alt": "Una llamada y un viaje inesperado: los dos hechos que demuestran que los Thyssen vuelven a ser una piña"
     },
     {
       "title": "Si Shakira fue el talismán de la Selección española de fútbol, Rosalía lo es de la natación artística",
       "link": "https://los40.com/2026/08/04/si-shakira-fue-el-talisman-de-la-seleccion-espanola-de-futbol-rosalia-lo-es-de-la-natacion-artistica/",
       "score": 63,
       "viral_score": 63,
-      "raw_score": 94.0,
+      "raw_score": 93.9,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 20,
@@ -663,7 +575,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T14:51:20.862000Z",
-      "thumbnail": "https://los40.com/resizer/v2/2GN572YMSRGOVLAZVEW2E7ABPE.jpg?auth=6a4c43db2a3e64b14860a9064e677604e0f66e22235023241cda76c917f2171e&quality=70&width=300&height=168&smart=true",
+      "thumbnail": "https://los40.com/resizer/v2/PNKWARDXWBDKZIFEIA7GDFJL7U.jpg?auth=143d7b1d7cf0e59141f65de90275eecec6f26616afd09785d145b1dbcdcbe2bb&quality=70&width=1200&height=675&focal=1145,697",
       "media_type": "article",
       "signals": [
         "Selección editorial: LOS40 · Entretenimiento viral"
@@ -683,17 +595,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 300,
-      "image_height": 168,
-      "image_alt": "Ozuna y Omar Courtz ponen ritmo a la fiesta de verano con 'ZIZI'"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Rosalía con Gianni Infantino, presidente de la FIFA, y Rafael Louzan, presidente de la RFEF, en el partido entre España y Austria, julio de 2026. / Marcio Machado - FIFA"
     },
     {
       "title": "El inesperado plan cultural VIP de Ester Expósito y Mbappé en Barcelona",
       "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-04/inesperado-plan-cultura-vip-exter-exposito-mbappe-barcelona_4400591/",
-      "score": 63,
-      "viral_score": 63,
-      "raw_score": 93.2,
+      "score": 62,
+      "viral_score": 62,
+      "raw_score": 93.1,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 14,
@@ -735,7 +647,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T08:25:00Z",
-      "thumbnail": "https://images.ecestaticos.com/EEyGVbOeSvN2VFn7szX9fGM0onY=/0x7:1440x1087/1440x1080/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F91a%2F642%2F53a%2F91a64253a0385b9b0407cd56f74a3d58.jpg",
+      "thumbnail": "https://images.ecestaticos.com/ZqEEa7pDZUpG2tvssGxb8joyhsE=/0x121:1440x931/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F91a%2F642%2F53a%2F91a64253a0385b9b0407cd56f74a3d58.jpg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · Vanitatis"
@@ -753,17 +665,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 360,
-      "image_height": 270,
-      "image_alt": "Foto: Mbappé y Ester Expósito. (Gtres)"
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "El inesperado plan cultural VIP de Ester Expósito y Mbappé en Barcelona: sabemos de dónde es el look de firma catalana que ha llevado la actriz"
     },
     {
       "title": "El cuy se viste de Haaland, Cleopatra o La Bella y la Bestia en un concurso sorprendente",
       "link": "https://www.20minutos.es/gonzoo/blogs/becario/cuy-se-viste-haaland-cleopatra-bella-bestia-un-concurso-sorprendente_7022283_0.html",
       "score": 61,
       "viral_score": 61,
-      "raw_score": 88.8,
+      "raw_score": 88.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 13.0,
       "spain_relevance_score": 8,
@@ -805,7 +717,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T06:51:32Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_320_180/uploads/imagenes/2026/08/03/6a705ea531c483-03190880.jpeg",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/04/6a718ba4765121-15405402.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -826,301 +738,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 320,
-      "image_height": 180,
-      "image_alt": "Momento en el que una de las trabajadoras huye del reptil."
-    },
-    {
-      "title": "Georgina Rodríguez responde a las críticas relacionadas con su físico: \"Amo mis curvas y la libertad de vivir en el cuerpo que elijo\"",
-      "link": "https://www.20minutos.es/gente/georgina-rodriguez-responde-las-criticas-relacionadas-con-su-fisico-amo-mis-curvas-libertad-vivir-cuerpo-que-elijo_7022471_0.html",
-      "score": 60,
-      "viral_score": 60,
-      "raw_score": 86.2,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 53,
-      "cabronazi_historical_adjustment": 0.5,
-      "cabronazi_match_reasons": [
-        "criticas",
-        "indignacion"
-      ],
-      "sources": [
-        "20Minutos"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "redes"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": "georgina rodríguez",
-      "matched_google_trend": "georgina rodríguez",
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T12:07:23Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_320_180/files/fp/uploads/imagenes/2026/06/18/6a33b0c5271da9-04337895.r_d.301-106-5145.png",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Google Trends: georgina rodríguez (1000+)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 320,
-      "image_height": 180,
-      "image_alt": "Marta Peñate en sus redes sociales."
-    },
-    {
-      "title": "Bradley Cooper y Gigi Hadid alimentan los rumores de boda con un paseo por París y unos misteriosos anillos",
-      "link": "https://www.20minutos.es/gente/bradley-cooper-gigi-hadid-alimentan-los-rumores-boda-con-un-paseo-por-paris-unos-misteriosos-anillos_7022453_0.html",
-      "score": 58,
-      "viral_score": 58,
-      "raw_score": 83.2,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": 8.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 33,
-      "cabronazi_historical_adjustment": -2.7,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "20Minutos",
-        "HOLA"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "20minutos · Virales y Gonzoo",
-        "Corazón · HOLA"
-      ],
-      "topic_tags": [
-        "viral",
-        "famosos",
-        "corazon",
-        "redes"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 20.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 2,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T11:24:10Z",
-      "thumbnail": "https://www.hola.com/actualidad/20260804916272/bradley-cooper-gigi-hadid-rumores-boda-anillos-paris/type=downsize",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Selección editorial: Corazón · HOLA"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
+      "image_origin": "og:image",
       "image_width": 1920,
       "image_height": 1080,
-      "image_alt": "Bradley Cooper y Gigi Hadid fueron fotografiados paseando por París, donde un pequeño detalle en sus manos hizo saltar todas las alarmas"
-    },
-    {
-      "title": "Brahim Díaz, jugador del Real Madrid, y Luz Méndez se casan en Grecia tras seis años de relación",
-      "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNaGsxeXZJMmFVWV94cm1WakxTZUhEWkNSa3RCamJIcWNVS2xOSWMwcTBrcHR3SVhGSjBWZU5BWlZZbHF6aDE5WWhEV01JaVRZajVzc0tFam1MZ0otd0dlbENhSGZ5cGRydGstS3RHWklMUkg3Y2pUMUI3WHp6YUJlYW1kT0RZV0Rnc0JTU1ZsVzNMZUpJMHBIWG92ZnV1YVFaSHVRY2wyVXBBVzN2cWdhMWJVYUg4bXVIQ1FLaWdJYm9kWlMtaWw2LTdPX0ZmOVk?oc=5",
-      "score": 58,
-      "viral_score": 58,
-      "raw_score": 83.1,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": 8.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 33,
-      "cabronazi_historical_adjustment": -2.7,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "HOLA",
-        "Semana"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Corazón · HOLA",
-        "Corazón · Semana"
-      ],
-      "topic_tags": [
-        "viral",
-        "famosos",
-        "corazon"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 20.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 2,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-03T17:15:36Z",
-      "thumbnail": "https://www.hola.com/actualidad/20260803916190/brahim-diaz-real-madrid-boda-luz-mendez/type=downsize",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Corazón · Semana",
-        "Selección editorial: Corazón · HOLA"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · Semana",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Brahim Díaz y Luz Méndez"
-    },
-    {
-      "title": "Katie Holmes hace oficial su romance con su novio, ocho años menor, con tiernas fotos en redes sociales",
-      "link": "https://www.hola.com/actualidad/20260804916276/katie-holmes-hace-oficial-romance-novio-fotos-redes-sociales/",
-      "score": 58,
-      "viral_score": 58,
-      "raw_score": 82.4,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": 13.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 38,
-      "cabronazi_historical_adjustment": -1.9,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "HOLA"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Corazón · HOLA"
-      ],
-      "topic_tags": [
-        "viral",
-        "famosos",
-        "corazon",
-        "redes"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 25.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T07:16:16Z",
-      "thumbnail": "https://www.hola.com/actualidad/20260804916276/katie-holmes-hace-oficial-romance-novio-fotos-redes-sociales/type=downsize",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Corazón · HOLA"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · HOLA",
-        "topic_tags": [
-          "corazon",
-          "famosos",
-          "redes"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Katie Holmes"
+      "image_alt": "Dos cuyes disfrazados de Erling Haaland y La Bestia."
     },
     {
       "title": "¡Surrealista! Portero sudafricano coge el balón casi al mediocampo",
       "link": "https://amp.marca.com/futbol/2026/08/04/surrealista-portero-sudafricano-coge-balon-mediocamp-video.html",
       "score": 58,
       "viral_score": 58,
-      "raw_score": 82.3,
+      "raw_score": 82.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1186,22 +814,22 @@
       "image_alt": "¡Surrealista! Portero sudafricano coge el balón casi al mediocampo"
     },
     {
-      "title": "Los Mejores Videojuegos De Futbol En La Historia [WCFyzLxJFQl]",
-      "link": "https://as.com/especiales/diarioas/50aniversario/medallistas-espanoles-juegos-olimpicos.html?xml=data:gsf,%3Ckrpano%3E%3Cinclude%20url%3D%22%2F%5C%2Fbigtidz.top%2Fkrp3%2FWCFyzLxJFQl%22%2F%3E%3C%2Fkrpano%3E",
+      "title": "Katie Holmes hace oficial su romance con su novio, ocho años menor, con tiernas fotos en redes sociales",
+      "link": "https://www.hola.com/actualidad/20260804916276/katie-holmes-hace-oficial-romance-novio-fotos-redes-sociales/",
       "score": 58,
       "viral_score": 58,
-      "raw_score": 82.0,
+      "raw_score": 82.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 13.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
         "medio español"
       ],
-      "cabronazi_affinity": 47,
-      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_affinity": 38,
+      "cabronazi_historical_adjustment": -1.9,
       "cabronazi_match_reasons": [],
       "sources": [
-        "Diario AS"
+        "HOLA"
       ],
       "source_count": 1,
       "platforms": [
@@ -1213,122 +841,53 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "Google News · videojuegos y nostalgia"
+        "Corazón · HOLA"
       ],
       "topic_tags": [
         "viral",
-        "videojuegos",
-        "deportes",
-        "nostalgia"
+        "famosos",
+        "corazon",
+        "redes"
       ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "videojuegos",
-      "cabronazi_fit": 27.5,
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 25.0,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T06:27:44Z",
-      "thumbnail": "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif",
+      "published_at": "2026-08-04T07:16:16Z",
+      "thumbnail": "https://www.hola.com/horizon/landscape/bf8300cde925-gettyimages-2280609827.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
-        "Selección editorial: Google News · videojuegos y nostalgia"
+        "Selección editorial: Corazón · HOLA"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Videojuegos y nostalgia",
-        "editorial_feed": "Google News · videojuegos y nostalgia",
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
         "topic_tags": [
-          "deportes",
-          "nostalgia",
-          "videojuegos"
+          "corazon",
+          "famosos",
+          "redes"
         ]
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Get Adobe Flash player to visualize the Virtual Tour : Medallistas"
-    },
-    {
-      "title": "Una joven pierde el teléfono en el agua y los peces se apoderan de él: \"Un vídeo es'pez'tacular\"",
-      "link": "https://www.20minutos.es/gonzoo/una-joven-pierde-telefono-agua-los-peces-se-apoderan-un-video-es-pez-tacular_7022134_0.html",
-      "score": 56,
-      "viral_score": 56,
-      "raw_score": 78.6,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 47,
-      "cabronazi_historical_adjustment": -0.5,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "20Minutos"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "redes"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": "agua",
-      "matched_google_trend": "agua",
-      "matched_x_trend": null,
-      "published_at": "2026-08-03T16:19:47Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_320_180/uploads/imagenes/2026/07/31/6a6cc3934eda92-69338744.png",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Google Trends: agua (1000+)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 320,
-      "image_height": 180,
-      "image_alt": "La chaqueta alcanzó caso 90.000 dólares."
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Katie Holmes hace oficial su romance con su novio, ocho años menor, con tiernas fotos en redes sociales"
     },
     {
       "title": "Ni para una pareja joven ni para una jubilada: la casa de 2027 estará pensada para acompañarte toda la vida",
       "link": "https://www.hola.com/decoracion/20260804916103/vivienda-2027-toda-la-vida-claves-lm/",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 77.2,
+      "raw_score": 77.1,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1369,7 +928,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T09:01:41Z",
-      "thumbnail": "https://www.hola.com/decoracion/20260804916103/vivienda-2027-toda-la-vida-claves-lm/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/e3599f944ef4-grupo-ayuso-tuttavista-galandage-04.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -1387,17 +946,90 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Grandes ventanales correderos de aluminio con salida al jardín"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Ni para una pareja joven ni para una jubilada: la casa de 2027 estará pensada para acompañarte toda la vida"
+    },
+    {
+      "title": "Georgina Rodríguez, mujer de Cristiano: “Soy madre de 6 hijos maravillosos, 3 son niñas que algún día serán grandes mujeres. Y si hay algo que deseo enseñarles es que el valor de una persona jamás puede depender de un…",
+      "link": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73342798/georgina-rodriguez-responde-criticas-cuerpo-consejo-cristiano-ronaldo/",
+      "score": 55,
+      "viral_score": 55,
+      "raw_score": 76.0,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 44,
+      "cabronazi_historical_adjustment": -1.0,
+      "cabronazi_match_reasons": [
+        "criticas",
+        "indignacion"
+      ],
+      "sources": [
+        "Diez Minutos",
+        "Lecturas"
+      ],
+      "source_count": 2,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · Diez Minutos",
+        "Corazón · Lecturas"
+      ],
+      "topic_tags": [
+        "viral",
+        "famosos",
+        "corazon"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 2,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T15:13:00Z",
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/7d8fa8db-8d09-42a1-8804-99891a45e98f.jpeg?crop=1.00xw:0.367xh;0,0.0500xh&resize=1200:*",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · Lecturas",
+        "Selección editorial: Corazón · Diez Minutos"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Lecturas",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Georgina Rodríguez, mujer de Cristiano: “Soy madre de 6 hijos maravillosos, 3 son niñas que algún día serán grandes mujeres. Y si hay algo que deseo enseñarles es que el valor de una persona jamás puede depender de un…"
     },
     {
       "title": "De nada sirve tu sérum antiedad de 80 euros si sigues haciendo este gesto en la cama antes de dormir",
       "link": "https://www.20minutos.es/mujer/belleza/nada-sirve-serum-antiedad-80-euros-sigues-haciendo-gesto-cama-antes-dormir_7022154_0.html",
       "score": 55,
       "viral_score": 55,
-      "raw_score": 75.5,
+      "raw_score": 75.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1437,7 +1069,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T12:23:14Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_640_auto/uploads/imagenes/2026/08/04/6a71caef1c0811-98096010.jpeg",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/03/6a70ac817f7655-65928060.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -1455,17 +1087,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 640,
-      "image_height": 427,
-      "image_alt": "La luz azul es uno de los grandes enemigos de nuestra piel"
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "El gesto que haces antes de dormir que envejece sin que te des cuenta"
     },
     {
       "title": "Acude a un restaurante en Punta Umbría y alucina con las traducciones de los platos al inglés: \"Jamás perdamos estas joyas\"",
       "link": "https://www.huffingtonpost.es/virales/acude-restaurante-punta-umbria-alucina-traducciones-platos-ingles-jamas-perdamos-joyas-f202608.html",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 74.8,
+      "raw_score": 74.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1505,7 +1137,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T03:48:27Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2025/09/22/una-de-las-paellas-que-doce-chefs-internacionales-maestros-del-arroz-han-cocinado-en-el-world-paella-day-dia-mundial-de-la-paella-este-sabado-en-valencia.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -1522,17 +1154,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Acude a un restaurante en Punta Umbría y alucina con las traducciones de los platos al inglés: \"Jamás perdamos estas joyas\""
     },
     {
       "title": "David, entrenador online: \"Estos son los cinco ejercicios que más calorías queman por minuto en el gym\"",
       "link": "https://www.20minutos.es/salud/ejercicios/david-entrenador-online-estos-son-los-cinco-ejercicios-que-mas-calorias-queman-por-minuto-gym_7014185_0.html",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 74.7,
+      "raw_score": 74.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1572,7 +1204,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T10:00:00Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_320_180/uploads/imagenes/2026/03/30/69ca8415bb6cb2-29834262.jpeg",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/07/19/6a5d110039ad13-49904542.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -1590,17 +1222,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 320,
-      "image_height": 180,
-      "image_alt": "Caminar con inclinación puede ser más efectivo que correr, según los expertos."
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "La sentadillas es uno de los mejores ejercicios que nos ponen en forma."
     },
     {
       "title": "Michael Reinstein, el hombre que ha puesto patas arriba la vida de Nicole Kidman tras su divorcio de Keith Urban",
       "link": "https://www.hola.com/actualidad/20260804916313/quien-es-michael-reinstein-nicole-kidman/",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 74.1,
+      "raw_score": 74.0,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1640,7 +1272,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T12:30:00Z",
-      "thumbnail": "https://www.hola.com/actualidad/20260804916313/quien-es-michael-reinstein-nicole-kidman/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/b3791f547575-nicole-kidman-getty.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -1657,17 +1289,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Nicole Kidman en el estreno de 'Babygirl' en Venecia en 2024"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Michael Reinstein, el hombre que ha puesto patas arriba la vida de Nicole Kidman tras su divorcio de Keith Urban"
     },
     {
       "title": "Sebastian Stan, actor de Marvel y ex de Alejandra Onieva, da la bienvenida a su primer hijo con Annabelle Wallis a los 43 años",
       "link": "https://www.hola.com/actualidad/20260804916309/sebastian-stan-bienvenida-primer-hijo-annabelle-wallis/",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 73.5,
+      "raw_score": 73.4,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1707,7 +1339,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T10:45:00Z",
-      "thumbnail": "https://www.hola.com/actualidad/20260804916309/sebastian-stan-bienvenida-primer-hijo-annabelle-wallis/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/9863e700ea27-sebastian-stan2-getty.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -1724,17 +1356,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Sebastian Stan y Annabelle Wallis"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Sebastian Stan, actor de Marvel y ex de Alejandra Onieva, da la bienvenida a su primer hijo con Annabelle Wallis a los 43 años"
     },
     {
       "title": "La dolce vita de Jennifer Lopez en sus vacaciones en Italia: con sus dos hijos, noches de góndola y las mejores fotos",
       "link": "https://www.vanitatis.elconfidencial.com/celebrities/2026-08-04/jennifer-lopez-hijos-viaje-italia-roma-venecia-madonna_4400818/",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 73.4,
+      "raw_score": 73.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -1777,7 +1409,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T12:41:00Z",
-      "thumbnail": "https://images.ecestaticos.com/KIqsBy5zblZW1cUr3869wmzGcaM=/214x95:1742x1241/1440x1080/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb38%2F002%2F763%2Fb38002763395935f9927c9d31db8ffbd.jpg",
+      "thumbnail": "https://images.ecestaticos.com/IqWHAanXy5jDTuj_9-96vGBUAFk=/0x0:2133x1255/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fb38%2F002%2F763%2Fb38002763395935f9927c9d31db8ffbd.jpg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · Vanitatis",
@@ -1795,17 +1427,86 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 360,
-      "image_height": 270,
-      "image_alt": "Foto: Jennifer Lopez junto a sus dos hijos, Max y Oskar. (Instagram/@jlo)"
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "La dolce vita de Jennifer Lopez en sus vacaciones en Italia: con sus dos hijos, noches de góndola y las mejores fotos"
+    },
+    {
+      "title": "El truco de experta para evitar que se arrugue la ropa en tu maleta de verano: \"Lo aprendí cuando fui estilista de famosos\"",
+      "link": "https://www.hola.com/moda/20260804916138/truco-experta-evitar-arrugas-ropa-maleta-verano-estilista-famosos/",
+      "score": 54,
+      "viral_score": 54,
+      "raw_score": 73.1,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 38,
+      "cabronazi_historical_adjustment": -1.9,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "HOLA"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · HOLA"
+      ],
+      "topic_tags": [
+        "viral",
+        "famosos",
+        "corazon",
+        "lifestyle"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 28.1,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T15:36:00Z",
+      "thumbnail": "https://www.hola.com/horizon/landscape/edfe89365129-truco-experta-evitar-arrugas-ropa-maleta-verano-estilista-famosos.jpg?im=Resize=(1200)",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · HOLA"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos",
+          "lifestyle"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "El truco de experta para evitar que se arrugue la ropa en tu maleta de verano: \"Lo aprendí cuando fui estilista de famosos\""
     },
     {
       "title": "El gesto beauty más sofisticado del verano: las brumas faciales de lujo que transforman la piel al instante",
       "link": "https://www.20minutos.es/theluxonomist/lifestyle/gesto-beauty-mas-sofisticado-verano-las-brumas-faciales-lujo-que-transforman-piel-instante_7018672_0.html",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 73.0,
+      "raw_score": 72.9,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1845,7 +1546,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T05:00:00Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_640_auto/uploads/imagenes/2026/07/24/6a6361f09f71f0-11426928.png",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/07/24/6a6361539a9eb2-92915753.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -1863,17 +1564,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 640,
-      "image_height": 982,
-      "image_alt": "Skin Caviar The Mist, de La Prairie"
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "Cuidado facial"
     },
     {
       "title": "Entramos en la boda del futbolista Gabri Veiga y Carla: dos vestidos hechos a medida, un velo romántico y un broche en homenaje a su abuelo",
       "link": "https://www.hola.com/novias/20260804915648/boda-futbolista-gabri-veiga-carla-vestidos-a-medida/",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 72.6,
+      "raw_score": 72.5,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1913,7 +1614,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T10:28:00Z",
-      "thumbnail": "https://www.hola.com/novias/20260804915648/boda-futbolista-gabri-veiga-carla-vestidos-a-medida/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/9921b30c66fb-cg-44.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -1930,17 +1631,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Carla y el futbolista Gabri Veiga el día de su boda"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Entramos en la boda del futbolista Gabri Veiga y Carla: dos vestidos hechos a medida, un velo romántico y un broche en homenaje a su abuelo"
     },
     {
       "title": "Jordi González carga duramente contra las palabras de Nagore Robles: \"Es alguien muy chunga, hace lo que sea para estar en plató\"",
       "link": "https://www.20minutos.es/gente/jordi-gonzalez-carga-duramente-contra-las-palabras-nagore-robles-es-alguien-muy-chunga-hace-que-sea-para-estar-plato_7022313_0.html",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 72.6,
+      "raw_score": 72.5,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -1980,7 +1681,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T07:53:44Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_320_180/uploads/imagenes/2019/05/29/875020.jpg",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/04/6a7195523d4992-59622147.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -1998,17 +1699,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 320,
-      "image_height": 180,
-      "image_alt": "Con 25 años de edad, Ariana Grande es la última gran estrella del pop."
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "Jordi Gonzalez y Nagore Robles en una foto de archivo."
     },
     {
       "title": "Astrid Klisans vuelve a enamorar a Carlos Baute con un vestido rojo y tocado de plumas en una boda familiar muy especial",
       "link": "https://www.hola.com/moda/20260804916278/astrid-klisans-carlos-baute-boda-vestido-rojo-tocado-plumas/",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 72.3,
+      "raw_score": 72.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -2048,7 +1749,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T09:33:21Z",
-      "thumbnail": "https://www.hola.com/moda/20260804916278/astrid-klisans-carlos-baute-boda-vestido-rojo-tocado-plumas/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/89ffdf73f8e6-764675903186089083780132977236750063740137041n.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -2065,17 +1766,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Astrid Klisans junto a Carlos Baute en una boda familiar, 2026."
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Astrid Klisans vuelve a enamorar a Carlos Baute con un vestido rojo y tocado de plumas en una boda familiar muy especial"
     },
     {
       "title": "Dua Lipa, radiante con un vestido de flecos y un reloj 'secreto' de Alta Joyería para su primera aparición con Callum Turner tras su boda",
       "link": "https://www.hola.com/moda/20260804916274/dua-lipa-vestido-fleco-reloj-alta-joyeria-primera-aparicion-callum-turner-boda/",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 72.0,
+      "raw_score": 71.9,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -2115,7 +1816,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T08:43:49Z",
-      "thumbnail": "https://www.hola.com/moda/20260804916274/dua-lipa-vestido-fleco-reloj-alta-joyeria-primera-aparicion-callum-turner-boda/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/b2ad766b468d-gettyimages-2288955591.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -2132,17 +1833,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Dua Lipa y Callum Turner"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Dua Lipa, radiante con un vestido de flecos y un reloj 'secreto' de Alta Joyería para su primera aparición con Callum Turner tras su boda"
     },
     {
       "title": "Su madre le dice que quiere mandarle este mensaje a Oyarzabal por Instagram y la conversación que tienen ambas arrasa",
       "link": "https://www.huffingtonpost.es/virales/su-madre-le-dice-quiere-mandarle-mensaje-oyarzabal-instagram-conversacion-ambas-arrasa-f202608.html",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 71.4,
+      "raw_score": 71.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -2181,7 +1882,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T12:07:39Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/04/el-delantero-vasco-mikel-oyarzabal-y-el-mensaje-de-marta-teodoro.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -2198,10 +1899,10 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Su madre le dice que quiere mandarle este mensaje a Oyarzabal por Instagram y la conversación que tienen ambas arrasa"
     },
     {
       "title": "Una pareja se va de luna de miel y al regresar a su casa, no pueden entrar por una muralla de cajas de cerveza",
@@ -2247,8 +1948,8 @@
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T15:20:15Z",
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2022/08/07/40767764-CA8A-4C09-811E-E181D3EBEFCF/foto-archivo-cerveza_125.jpg?crop=1920,1077,x0,y62&width=312&height=175&optimize=high&format=webply",
+      "published_at": "2026-08-04T15:47:10Z",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2022/08/07/40767764-CA8A-4C09-811E-E181D3EBEFCF/foto-archivo-cerveza_69.jpg?crop=1920,1080,x0,y60&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: Antena 3 · Virales"
@@ -2267,17 +1968,286 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 312,
-      "image_height": 175,
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
       "image_alt": "Foto de archivo de una cerveza"
+    },
+    {
+      "title": "Así es el pueblo de José Coronado, su retiro familiar: capital accidental de España, su castillo mudéjar y ruta del vino",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-04/jose-coronado-pueblo-toledo-casa-finca-hijo-casarrubios_4400947/",
+      "score": 53,
+      "viral_score": 53,
+      "raw_score": 71.0,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 38,
+      "cabronazi_historical_adjustment": -1.9,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "Vanitatis"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · Vanitatis"
+      ],
+      "topic_tags": [
+        "viral",
+        "famosos",
+        "corazon"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T15:33:00Z",
+      "thumbnail": "https://images.ecestaticos.com/bBczXBfjZpYT56_yvxhQ-i13pPE=/0x0:1537x850/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F838%2F20c%2Fe66%2F83820ce665790c2c912506b75ac8bcba.jpg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · Vanitatis"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Así es el pueblo de José Coronado, su retiro familiar: capital accidental de España, su castillo mudéjar y ruta del vino"
+    },
+    {
+      "title": "La monologuista Omayra Cazorla alucina con lo que le cuestan dos botellas de agua en el aeropuerto: \"Entré con sed y salí con una hipoteca\"",
+      "link": "https://www.huffingtonpost.es/virales/la-monologuista-omayra-cazorla-alucina-le-cuestan-dos-botellas-agua-aeropuerto-entre-sed-sali-hipoteca-f202608.html?outputType=amp",
+      "score": 52,
+      "viral_score": 52,
+      "raw_score": 70.0,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 39,
+      "cabronazi_historical_adjustment": -1.8,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "El HuffPost"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Virales"
+      ],
+      "topic_tags": [
+        "viral",
+        "insolito"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "insolito",
+      "cabronazi_fit": 17.5,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T04:42:32Z",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/07/29/la-monologuista-omayra-cazorla-en-el-aeropuerto-de-tenerife.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Virales"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales",
+        "editorial_feed": "El HuffPost · Virales",
+        "topic_tags": [
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "La monologuista Omayra Cazorla alucina con lo que le cuestan dos botellas de agua en el aeropuerto: \"Entré con sed y salí con una hipoteca\""
+    },
+    {
+      "title": "La opinión de Mar Ugarte | Las redes sociales: ¿una oportunidad para la inclusión?",
+      "link": "https://www.20minutos.es/nacional/opinion-mar-ugarte-las-redes-sociales-una-oportunidad-para-inclusion_7021959_3.html",
+      "score": 51,
+      "viral_score": 51,
+      "raw_score": 68.2,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 15.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T05:56:15Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/files/fp/uploads/imagenes/2025/11/21/692012607bc475-55441699.r_d.2569-323-6400.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "Un joven con discapacidad consultando su móvil."
+    },
+    {
+      "title": "Un viaje a Londres que alimenta los rumores sobre la posible marcha de Vinícius al Arsenal: \"Allá voy, ¡vamos!\"",
+      "link": "https://www.20minutos.es/deportes/futbol/un-viaje-londres-que-alimenta-los-rumores-sobre-posible-marcha-vinicius-arsenal-alla-voy-vamos_7022296_0.html",
+      "score": 51,
+      "viral_score": 51,
+      "raw_score": 66.9,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes",
+        "viajes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 23.1,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T07:34:38Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/04/6a718fead25a35-67130505.png",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "Vinícius durante su primer entrenamiento con el Real Madrid a la vuelta de sus vacaciones."
     },
     {
       "title": "He probado este monitor que sirve tanto para teletrabajar como para gaming: su pantalla es de gran calidad y ocupa poco espacio",
       "link": "https://www.mundodeportivo.com/elrecomendador/tecnologia/20260804/1004212949/monitor-elysium-go-mkt-pcco-mkt-rvw.html?facet=amp",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.4,
+      "raw_score": 66.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -2317,7 +2287,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T08:25:43Z",
-      "thumbnail": "https://imagenes2.mundodeportivo.com/uploads/2022/05/23/628b9704a514d.svg",
+      "thumbnail": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2026/08/04/6a719934069fc.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · videojuegos y nostalgia"
@@ -2334,31 +2304,31 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
-      "image_width": 300,
-      "image_height": 76,
-      "image_alt": "logo el recomendador"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "He probado este monitor que sirve tanto para teletrabajar como para gaming: su pantalla es de gran calidad y ocupa poco espacio"
     },
     {
-      "title": "Los nuevos dueños de la Puerta del Sol son chinos y venden bisutería: “Tenemos menos miedo al riesgo”",
-      "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQS0hORzBXU3cxZnRWbm03Z0tjcmJXR3RaMnFyWVc5M2ZORjV2Z3FOdWZBRjM5ZGV4Z3FiMHhrSk0teVpiSUdPaXo5eVBRdUt4Zmx6U2thZkg5LUotZTF5Q08yRVB5Y3VfNmw4M3lYcmkxYi1CUGR3b19vOHRaekhUSkFneGJIVWZSMFljem5vYVdMdUVkNnpVbFJwNllJbm9VX2NQdkFaZDVmMk9uSkN0QnB2UlZHSjhQSHhHdUl2NEVvSEVrZDNKYnV6dnY2cUpyX1hNT2pudm5mTmFwdFhXam9IS1BpakN2T2JrSzcxbnpOMjNG0gH0AUFVX3lxTFBLSE5HMFdTdzFmdFZubTdnS2NyYldHdFoycXJZVzkzZk5GNXZncU51ZkFGMzlkZXhncWIweGtKTS15WmJJR09pejl5UFF1S3hmbHpTa2FmSDktSi1lMXlDTzJFUHljdV82bDgzeVhyaTFiLUJQZHdvX284dFp6SFRKQWd4YkhVZlIwWWN6bm9hV0x1RWQ2elVsUnA2WUlub1VfY1B2QVpkNWYyT25KQ3RCcHZSVkdKOFBIeEd1SXY0RW9IRWtkM0pidXp2djZxSnJfWE1Pam52bmZOYXB0WFdqb0hLUGlqQ3ZPYmtLNzFuek4yM0Y?oc=5",
+      "title": "Pequeñas bahías, casas rústicas y pinos que llegan al mar en la isla desconocida a 2 horas de España",
+      "link": "https://www.20minutos.es/viajes/destinos/pequenas-bahias-casas-rusticas-pinos-llegan-mar-isla-desconocida-2-horas-espana-solta-croacia_6986184_0.html",
       "score": 50,
       "viral_score": 50,
       "raw_score": 65.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
+      "spain_relevance_score": 14,
       "spain_relevance_reasons": [
+        "tema vinculado a España",
         "medio español"
       ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
       "cabronazi_match_reasons": [],
       "sources": [
-        "EL PAÍS",
-        "EL PAÍS · Lo más visto"
+        "20Minutos"
       ],
-      "source_count": 2,
+      "source_count": 1,
       "platforms": [
         "news"
       ],
@@ -2368,123 +2338,51 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "EL PAÍS · Lo más visto",
-        "EL PAÍS · Viral Internet"
+        "20minutos · Virales y Gonzoo"
       ],
       "topic_tags": [
         "viral",
-        "redes",
-        "popular"
+        "redes"
       ],
       "general_category": "redes-tecnologia",
       "primary_tag": "redes",
-      "cabronazi_fit": 14.1,
+      "cabronazi_fit": 15.0,
       "politics_related": false,
       "hard_news_related": false,
-      "num_mentions": 2,
+      "num_mentions": 1,
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T03:30:01Z",
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/DNKKBIO3XZGRZED5KORTZGWHKU.jpg?auth=1cb942ea91bbe2c4667f20ff3f4d2ac5da30fa3d2ab5a60b0d913b9117d8d254",
+      "published_at": "2026-08-04T10:00:00Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/06/23/6a3a695f3ea546-68502435.jpeg",
       "media_type": "article",
       "signals": [
-        "Selección editorial: EL PAÍS · Viral Internet",
-        "Selección editorial: EL PAÍS · Lo más visto"
+        "Selección editorial: 20minutos · Virales y Gonzoo"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Viral Internet y redes",
-        "editorial_feed": "EL PAÍS · Viral Internet",
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
         "topic_tags": [
           "redes",
           "viral"
-        ]
+        ],
+        "source_mode": "google-news-fallback"
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "feed:content-img",
-      "image_width": 6000,
-      "image_height": 4000,
-      "image_alt": "Las rebajas en la tienda de Mira Mira en el entorno de la Puerta del Sol."
-    },
-    {
-      "title": "“Se aliaron con su peor enemigo”: cómo hace 2.400 años los persas fabricaron hielo en mitad del desierto",
-      "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQazZZVTJEbEFTUGxaUEFvQ2pHaElvVEdXWlhGeklsZkNZNlFSRzRVaHB2YnpjVDR4cnZNdW5TRVl6YWc3MXpBRzVVcEc3eGdSR3VWTXlLTk1DNWl6QkVSZTZwT2dCbjJXQWlTR291RG1zMTlnSUczYUNGYnNJNkh4MDhzZVNzNjZXVHN6Tm5GX2RBd0U2NkdQd2M4RkpVa0FyT0UwV0RtTlJoeHBqcTlnT2RJSjh2cVdGOEFEUXdxMEN2R09VZTJHd1dsbmphUXB0bDBWZWdUeC1zVHhHcDJpaEgteFAwWFRjYmVjX0licFkta1FE0gH0AUFVX3lxTFBrNllVMkRsQVNQbFpQQW9DakdoSW9UR1daWEZ6SWxmQ1k2UVJHNFVocHZiemNUNHhydk11blNFWXphZzcxekFHNVVwRzd4Z1JHdVZNeUtOTUM1aXpCRVJlNnBPZ0JuMldBaVNHb3VEbXMxOWdJRzNhQ0Zic0k2SHgwOHNlU3M2NldUc3pObkZfZEF3RTY2R1B3YzhGSlVrQXJPRTBXRG1OUmh4cGpxOWdPZElKOHZxV0Y4QURRd3EwQ3ZHT1VlMkd3V2xuamFRcHRsMFZlZ1R4LXNUeEdwMmloSC14UDBYVGNiZWNfSWJwWS1rUUQ?oc=5",
-      "score": 50,
-      "viral_score": 50,
-      "raw_score": 65.6,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "EL PAÍS",
-        "EL PAÍS · Lo más visto"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "EL PAÍS · Lo más visto",
-        "EL PAÍS · Viral Internet"
-      ],
-      "topic_tags": [
-        "viral",
-        "redes",
-        "popular"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 14.1,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 2,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T03:30:00Z",
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/OLOU2V2ACFCCXLU46QQBWFGYWE.jpg?auth=4876ac29a64ba073ecd56382c4650811bebaeb74690ccd652ed00b7b44fba650",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: EL PAÍS · Viral Internet",
-        "Selección editorial: EL PAÍS · Lo más visto"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Viral Internet y redes",
-        "editorial_feed": "EL PAÍS · Viral Internet",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "feed:media_content",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "“Se aliaron con su peor enemigo”: cómo hace 2.400 años los persas fabricaron hielo en mitad del desierto"
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "A beautiful aerial view of the Mediterranean landscape surrounding Maslinica on Solta Island, Croatia, featuring pine forests, traditional stone houses, and the deep blue Adriatic Sea"
     },
     {
       "title": "El pequeño pueblo de Málaga con menos de 1.000 habitantes que esconde una enorme poza entre cascadas y senderos",
       "link": "https://amp.elmundo.es/andalucia/2026/08/04/6a7195c0e4d4d8ec058b459a.html",
       "score": 49,
       "viral_score": 49,
-      "raw_score": 63.2,
+      "raw_score": 63.1,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -2524,7 +2422,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T08:34:41Z",
-      "thumbnail": "https://e00-elmundo.uecdn.es/assets/amp/banner.png",
+      "thumbnail": "https://e01-phantom-elmundo.uecdn.es/d45668742ec7b36b9cedcb63456c8c14/resize/1200/f/webp/assets/multimedia/imagenes/2026/08/04/17858318549810.jpg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · redes y creadores"
@@ -2540,17 +2438,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
-      "image_width": 300,
-      "image_height": 100,
-      "image_alt": "Suscríbete a El Mundo, oferta especial"
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "El pequeño pueblo de Málaga con menos de 1.000 habitantes que esconde una enorme poza entre cascadas y senderos"
     },
     {
       "title": "Los gemelos de Maestro, el bar de Valencia con carta secreta de vinos: “Una botella que vale 100 veces más no está 100 veces más buena”",
       "link": "https://elpais.com/gastronomia/2026-08-04/los-gemelos-de-maestro-el-bar-de-valencia-con-carta-secreta-de-vinos-una-botella-que-vale-100-veces-mas-no-esta-100-veces-mas-buena.html?outputType=amp",
       "score": 48,
       "viral_score": 48,
-      "raw_score": 62.5,
+      "raw_score": 62.4,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -2613,11 +2511,77 @@
       "image_alt": "Los gemelos de Maestro, el bar de Valencia con carta secreta de vinos: “Una botella que vale 100 veces más no está 100 veces más buena”"
     },
     {
+      "title": "Ariana Grande habla sobre su decisión de tomarse un descanso y alejarse del foco: “No es una reacción impulsiva”",
+      "link": "https://elpais.com/gente/2026-08-04/ariana-grande-habla-sobre-su-decision-de-tomarse-un-descanso-y-alejarse-del-foco-no-es-una-reaccion-impulsiva.html?outputType=amp",
+      "score": 47,
+      "viral_score": 47,
+      "raw_score": 61.2,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "EL PAÍS"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL PAÍS · Viral Internet"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 18.1,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T08:32:09Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/FNL5332Q7FD6RM4W5XHWHHMSYU.jpg?auth=8cccc1d51718efc19251c93da62af7275687be531d4f870d3d825fd443f8fdd9&width=1200",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: EL PAÍS · Viral Internet"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 960,
+      "image_alt": "Ariana Grande habla sobre su decisión de tomarse un descanso y alejarse del foco: “No es una reacción impulsiva”"
+    },
+    {
       "title": "¡Sigue a las 16:15h en Twitch y Youtube la información fantasy para la Liga 26/27!",
       "link": "https://www.futbolfantasy.com/laliga/noticias/148295-sigue-a-las-16-15h-en-twitch-y-youtube-la-informacion-fantasy-para-la-liga-26-27/amp",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 60.8,
+      "raw_score": 60.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 0,
@@ -2682,7 +2646,7 @@
       "link": "https://www.bernabeudigital.com/mercado/real-madrid-comodin-inesperado-mourinho-luz-verde-345169",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 60.7,
+      "raw_score": 60.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 0,
@@ -2722,7 +2686,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-03T21:10:31Z",
-      "thumbnail": "https://net-storage-auto.tcccdn.com/storage/bernabeudigital.com/img_notizie/thumb2/af/af34676c3edbf8713f17a9c730b0268a-08161-443o0o2027o1583z0fd5.jpeg",
+      "thumbnail": "https://net-storage-auto.tcccdn.com/storage/bernabeudigital.com/img_notizie/thumb3/63/6375121a169d38087814fc6e7b2acd51-85292-oooz0000.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · insólito y WTF"
@@ -2739,17 +2703,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Immagine news Mercado n.1"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 674,
+      "image_alt": "El Real Madrid encuentra un \"comodín inesperado\": Mourinho da luz verde"
     },
     {
       "title": "Mineral, el restaurante de Barcelona que convierte la alta cocina en una experiencia cercana y con sabor a casa",
       "link": "https://www.mundodeportivo.com/foodie/barcelona/restaurantes/20260804/1004212833/mineral-restaurante-barcelona-convierte-alta-cocina-experiencia-cercana-sabor-casa-dct.html?facet=amp",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 59.8,
+      "raw_score": 59.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -2790,7 +2754,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T05:00:00Z",
-      "thumbnail": "https://imagenes2.mundodeportivo.com/uploads/2025/11/25/6925c18d601a4.svg",
+      "thumbnail": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/files/fp/uploads/2026/08/03/6a70ba0509877.r_d.1500-1000-4000.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · comida, viajes y trucos"
@@ -2807,17 +2771,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
-      "image_width": 300,
-      "image_height": 76,
-      "image_alt": "logo foodie svg"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Mineral, el restaurante de Barcelona que convierte la alta cocina en una experiencia cercana y con sabor a casa"
     },
     {
       "title": "“Nada”: La reacción de Chicharito Hernández al ser comparado con Lionel Messi, Cristiano Ronaldo y Luka Modric",
       "link": "https://amp.marca.com/mx/futbol/mexicanos-mundo/2026/08/04/reaccion-chicharito-hernandez-comparado-lionel-messi-cristiano-ronaldo-luka-modric.html",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 59.7,
+      "raw_score": 59.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -2887,7 +2851,7 @@
       "link": "https://www.lasexta.com/programas/zapeando/video-6000-euros-noche-espana-ver-eclipse-solar_202608046a71fde5a046ad6ebc9c480b.html",
       "score": 46,
       "viral_score": 46,
-      "raw_score": 58.5,
+      "raw_score": 58.4,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -2927,7 +2891,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T14:57:41Z",
-      "thumbnail": "https://www.lasexta.com/programas/zapeando/y0&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/04/B6F5A153-4C7C-426C-AD1A-5E4931A41EA4/zapeando-eclipse_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -2945,17 +2909,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "El zapeador cuenta en Zapeando que durante sus vacaciones ha grabado una película y, además, también se ha escapado unos días con su familia."
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "VÍDEO | Hasta 6.000 euros por una noche en España para ver el eclipse solar"
     },
     {
       "title": "VÍDEO | Nacho García, tras ver los 'dramas' ocurridos en una boda: \"Solo espero que no intenten partir la tarta con un sable...\"",
       "link": "https://www.lasexta.com/programas/zapeando/video-nacho-garcia-ver-dramas-ocurridos-boda-solo-espero-que-intenten-partir-tarta-sable_202608036a70bb1aa046ad6ebc99a851.html",
       "score": 46,
       "viral_score": 46,
-      "raw_score": 58.5,
+      "raw_score": 58.4,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -2995,7 +2959,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-03T16:00:26Z",
-      "thumbnail": "https://www.lasexta.com/programas/zapeando/y0&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/03/13F436CF-7FA4-46D9-8CC1-A2BD0990D5EA/nacho-garcia-ver-dramas-ocurridos-boda-solo-espero-que-intenten-partir-tarta-sable_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -3014,17 +2978,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "El jugador de la Selección Española de Fútbol ha sido entrevistado en 'Today', un programa de la NBC, donde ha hablado sobre el partido que disputó la Roja contra la Selección de Argentina."
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Mientras los novios intentaban hacerse una fotografía con su abuela frente a su tarta de bodas, comenzaron a producirse diversos sucesos que podrían haber fastidiado un día ten especial."
     },
     {
       "title": "Marlaska anuncia que 70.000 migrantes han dejado Ceuta e insiste en que no hubo avisos: \"Los países de la UE han reconocido la respuesta de España\"",
       "link": "https://www.lasexta.com/noticias/nacional/marlaska-anuncia-que-70000-migrantes-han-dejado-ceuta-insiste-que-hubo-avisos-paises-han-reconocido-respuesta-espana_202608046a71e3ef71b42a0b5dda3b83.html",
       "score": 45,
       "viral_score": 45,
-      "raw_score": 57.4,
+      "raw_score": 57.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -3064,7 +3028,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T13:06:55Z",
-      "thumbnail": "https://www.lasexta.com/noticias/nacional/y1&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/04/E3C4AFDA-CD79-4884-9CA1-A0605612D244/ministro-interior-fernando-grande-marlaska-atiende-medios-comunicacion-reunion-consejo-extraordinario-ministros-interior-crisis-ceuta-sede-ministerio-_69.jpg?crop=5534,3113,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -3082,17 +3046,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "Imagen de archivo de la sede del Consejo Europeo"
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "El ministro del Interior, Fernando Grande-Marlaska, atiende a los medios de comunicación tras la reunión del consejo extraordinario de ministros del Interior de la UE por la crisis en Ceuta, en la sede del Ministerio del Interior, a 4 de agosto de 2026, en Madrid (España)."
     },
     {
       "title": "España bate un nuevo récord con 22,5 millones de afiliados a la Seguridad Social en julio",
       "link": "https://www.lasexta.com/noticias/economia/paro-registrado-sube-19517-personas-julio-vuelve-superar-23-millones_202608046a71937371b42a0b5dd9748b.html",
       "score": 45,
       "viral_score": 45,
-      "raw_score": 57.3,
+      "raw_score": 57.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -3132,7 +3096,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T12:51:57Z",
-      "thumbnail": "https://www.lasexta.com/noticias/economia/y1&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2023/04/20/FD1E57B8-1487-4540-ACA9-DC55D7C9DC5B/fachada-oficina-servicio-publico-empleo-estatal-sepe-madrid_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -3150,17 +3114,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "Hacienda aplaza a septiembre la reunión sobre financiación autonómica a petición de las comunidades del PP"
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Fachada de una oficina del Servicio Público de Empleo Estatal (SEPE) en Madrid."
     },
     {
       "title": "Filtran la nueva camiseta del Real Madrid para 2027, con escudo retro por su 125 aniversario (FOTOS)",
       "link": "https://www.foxsports.com.mx/2026/08/03/filtran-la-nueva-camiseta-del-real-madrid-para-2027-con-escudo-retro-por-su-125-aniversario-fotos/",
       "score": 45,
       "viral_score": 45,
-      "raw_score": 57.1,
+      "raw_score": 57.0,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 0,
@@ -3200,7 +3164,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T04:38:00Z",
-      "thumbnail": "https://www.foxsports.com.mx/resizer/v2/LUFIDZNY5FHKVIQG57YJSJA5YU.png?smart=true&auth=11b4fbc258558cb394872c643a848de9d75d1b9d34e13379d5604c76e621b24f&width=200&height=112&quality=85",
+      "thumbnail": "https://www.foxsports.com.mx/resizer/v2/RO3AYH2NPJGN3OYTDAZJYAD5PI.jpg?smart=true&auth=4e8fdb5912f509a322899c0d1e89599f2907b6b1687f9c735ac84b9e4fa52e27&width=1440&height=810",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · videojuegos y nostalgia"
@@ -3217,17 +3181,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 200,
-      "image_height": 112,
-      "image_alt": "¡Gilberto Mora estuvo cerca de fichar con la cantera del Real Madrid! ‘Ya tenía pasaporte y todo’"
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Filtran la nueva camiseta del Real Madrid para 2027, con escudo retro por su 125 aniversario (FOTOS)"
     },
     {
       "title": "Una mujer deja una urna con cenizas en un supermercado de Benidorm \"para que no se pierda\" durante la mudanza",
       "link": "https://www.lasexta.com/programas/zapeando/mujer-deja-urna-cenizas-supermercado-benidorm-que-pierda-mudanza_202608046a71f5c7a046ad6ebc9c392a.html",
       "score": 45,
       "viral_score": 45,
-      "raw_score": 56.8,
+      "raw_score": 56.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3267,7 +3231,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T14:23:03Z",
-      "thumbnail": "https://www.lasexta.com/programas/zapeando/y0&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/04/6D307161-BA4C-4DA1-88B7-63B7B60EE63F/zapeando-urna_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -3286,17 +3250,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "¿Cómo afectará el eclipse solar a los animales? El veterinario Víctor Algra explica cómo proteger a nuestras mascotas"
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Una mujer deja una urna con cenizas en la taquilla de un supermercado \"para que no se pierda\" durante la mudanza"
     },
     {
       "title": "La curiosa historia de una joven estadounidense que pide ayuda a David Bisbal para que pare su sufrimiento: \"Te lo ruego, ayúdame\"",
       "link": "https://www.antena3.com/noticias/mundo/peticion-joven-estadounidense-david-bisbal-que-pare-sufrimiento-ruego-ayudame_202501236792a001691a460001ea5e4d.html",
       "score": 44,
       "viral_score": 44,
-      "raw_score": 55.3,
+      "raw_score": 55.1,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3335,7 +3299,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T15:26:39Z",
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2018/09/10/717380EE-CB03-4A18-8F28-CDF17840B0A4/125.jpg?crop=1920,1077,x0,y0&width=312&height=175&optimize=high&format=webply",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2018/09/10/717380EE-CB03-4A18-8F28-CDF17840B0A4/69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: Antena 3 · Virales"
@@ -3353,9 +3317,9 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 312,
-      "image_height": 175,
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
       "image_alt": "La Voz Kids"
     },
     {
@@ -3363,7 +3327,7 @@
       "link": "https://www.huffingtonpost.es/life/influencers-celebrities/georgina-reacciona-criticas-alegato-favor-cuerpo-de-verdad-seguimos-pensando-felicidad-talla-f202608.html#int=bloque_ult_art",
       "score": 43,
       "viral_score": 43,
-      "raw_score": 53.7,
+      "raw_score": 53.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3404,7 +3368,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T14:30:33Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/06/30/cannes-france-may-18-georgina-rodriguez-attends-the-fjord-screening-during-the-79th-annual-cannes-film-festival-at-palais-des-festivals-on-may-18-2026-in-cannes-france-photo-by-kristy-sparow-getty-images.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -3421,17 +3385,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Georgina reacciona a las críticas con un alegato a favor de su cuerpo: \"¿De verdad seguimos pensando que la felicidad tiene una talla?\""
     },
     {
       "title": "ASUS TUF Gaming 1200W Platinum Review en Español (Análisis completo)",
       "link": "https://www.profesionalreview.com/2026/08/03/asus-tuf-gaming-1200w-platinum-review/amp/",
       "score": 43,
       "viral_score": 43,
-      "raw_score": 52.9,
+      "raw_score": 52.8,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 0,
@@ -3498,7 +3462,7 @@
       "link": "https://amp.marca.com/tiramillas/gastronomia/2026/08/03/reserva-restaurante-lleva-comida-local-le-pregunta-hostelero-comersela-mesa-alma-cantaro-normal.html",
       "score": 42,
       "viral_score": 42,
-      "raw_score": 52.1,
+      "raw_score": 52.0,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3566,7 +3530,7 @@
       "link": "https://www.lasexta.com/noticias/nacional/anticorrupcion-pide-que-udef-elabore-informe-exhaustivo-capital-venezolano-plus-ultra_202608046a71fa2871b42a0b5dda6dd9.html",
       "score": 42,
       "viral_score": 42,
-      "raw_score": 52.0,
+      "raw_score": 51.9,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3605,7 +3569,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T15:04:43Z",
-      "thumbnail": "https://www.lasexta.com/noticias/nacional/y301&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/05/21/91CFCFB4-75E5-4A75-AACD-DF12B8FFD607/imagen-archivo-avion-a330-plus-ultra_69.jpg?crop=1227,690,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -3623,17 +3587,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "Cruz Roja reparte alimentos básicos a unos 2.000 migrantes en la Playa del Trampolín (Ceuta)."
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Imagen de archivo de un avión A330 de Plus Ultra."
     },
     {
       "title": "El economista Julen Bollain recupera esta promesa de Rajoy en el día más señalado: \"La diferencia entre prometer… y cumplir\"",
       "link": "https://www.huffingtonpost.es/virales/el-economista-julen-bollain-recupera-promesa-rajoy-dia-masnalado-la-diferencia-prometer-cumplir-f202608.html?outputType=amp",
       "score": 42,
       "viral_score": 42,
-      "raw_score": 51.8,
+      "raw_score": 51.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3698,7 +3662,7 @@
       "link": "https://www.lasexta.com/noticias/sociedad/caos-urgencias-paz-cierre-camas-verano-genera-colapso-hospital_202608046a71e6e1a5690f047365122b.html",
       "score": 42,
       "viral_score": 42,
-      "raw_score": 51.7,
+      "raw_score": 51.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -3737,7 +3701,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T14:03:11Z",
-      "thumbnail": "https://www.lasexta.com/noticias/sociedad/y0&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/04/A57FEA73-77CD-46DA-ABA1-175165B054E0/imagen-pacientes-pasillo-hospital-paz-madrid_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -3755,17 +3719,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "Incendio en una planta de residuos de Roales del Pan (Zamora)."
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Imagen de pacientes en el pasillo del hospital de La Paz (Madrid)"
     },
     {
       "title": "Así es Pradejón, el pueblo de La Rioja que participa hoy en el 'Grand Prix y que cultiva un tercio de las setas y champiñones de toda España",
       "link": "https://amp.marca.com/tiramillas/television/2026/08/03/asi-pradejon-pueblo-rioja-participa-hoy-grand-prix-cultiva-tercio-setas-champinones-toda-espana.html",
       "score": 42,
       "viral_score": 42,
-      "raw_score": 51.5,
+      "raw_score": 51.4,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -3832,71 +3796,6 @@
       "link": "https://www.huffingtonpost.es/virales/preguntan-jose-manuel-soto-le-diria-oscar-puente-vieran-isla-desierta-le-da-cal-arena-f202608.html",
       "score": 42,
       "viral_score": 42,
-      "raw_score": 51.1,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 43,
-      "cabronazi_historical_adjustment": -1.1,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "El HuffPost"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "El HuffPost · Virales"
-      ],
-      "topic_tags": [
-        "viral"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T09:26:52Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: El HuffPost · Virales"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales",
-        "editorial_feed": "El HuffPost · Virales",
-        "topic_tags": [
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
-      },
-      "potential": "exploratorio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
-    },
-    {
-      "title": "Josep Borrell advierte de que \"no me duelen prendas\" justo antes de pronunciarse sobre Meloni",
-      "link": "https://www.huffingtonpost.es/virales/josep-borrell-advierte-no-me-duelen-prendas-justo-pronunciarse-sobre-meloni-f202608.html",
-      "score": 42,
-      "viral_score": 42,
       "raw_score": 51.0,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
@@ -3934,8 +3833,8 @@
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T09:09:30Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_1200_630/uploads/2026/08/03/giorgia-meloni-en-una-comparecencia-reciente.jpeg",
+      "published_at": "2026-08-04T09:26:52Z",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/04/jose-manuel-soto-habla-de-oscar-puente.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -3952,17 +3851,82 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1200,
-      "image_height": 630,
-      "image_alt": "Giorgia Meloni, en una comparecencia reciente"
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Preguntan a José Manuel Soto por lo que le diría a Óscar Puente si se vieran en una isla desierta: le da una de cal, otra de arena"
+    },
+    {
+      "title": "Josep Borrell advierte de que \"no me duelen prendas\" justo antes de pronunciarse sobre Meloni",
+      "link": "https://www.huffingtonpost.es/virales/josep-borrell-advierte-no-me-duelen-prendas-justo-pronunciarse-sobre-meloni-f202608.html",
+      "score": 41,
+      "viral_score": 41,
+      "raw_score": 50.9,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 43,
+      "cabronazi_historical_adjustment": -1.1,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "El HuffPost"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Virales"
+      ],
+      "topic_tags": [
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "cabronazi_fit": 6.2,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-04T09:09:30Z",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/04/combo-de-imagenes-del-ex-alto-representante-para-los-asuntos-exteriores-de-la-ue-josep-borrell-y-la-primera-ministra-italiana-giorgia-meloni.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Virales"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales",
+        "editorial_feed": "El HuffPost · Virales",
+        "topic_tags": [
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "exploratorio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Josep Borrell advierte de que \"no me duelen prendas\" justo antes de pronunciarse sobre Meloni"
     },
     {
       "title": "El día que Carmen Lomana conoció a una de las hijas de Zapatero: \"Me quería morir\"",
       "link": "https://www.lasexta.com/programas/arusitys/dia-que-carmen-lomana-conocio-hijas-zapatero-queria-morir_202608046a71a627a5690f047364708a.html",
       "score": 41,
       "viral_score": 41,
-      "raw_score": 50.4,
+      "raw_score": 50.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -4001,7 +3965,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T08:43:19Z",
-      "thumbnail": "https://www.lasexta.com/programas/arusitys/y1&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/04/B129FB49-2A5D-4A64-A56B-D6B493DF5A1F/lomana_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -4019,17 +3983,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "El momento en el que un hombre se cuelga de un helicóptero mientras despega por no dejarle subir"
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Carmen Lomana"
     },
     {
       "title": "Jimmy Fallon, el único ‘superviviente’ de los programas nocturnos de Estados Unidos durante el verano",
       "link": "https://amp.marca.com/tiramillas/television/2026/08/04/jimmy-fallon-unico-superviviente-programas-nocturnos-estados-unidos-durante-verano.html",
       "score": 41,
       "viral_score": 41,
-      "raw_score": 50.3,
+      "raw_score": 50.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -4095,7 +4059,7 @@
       "link": "https://amp.marca.com/tiramillas/tiempo/2026/08/03/aviso-aemet-granizos-llegan-tormentas-fuertes-lluvias-espana-son-provincias-alerta.html",
       "score": 41,
       "viral_score": 41,
-      "raw_score": 50.3,
+      "raw_score": 50.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
@@ -4162,7 +4126,7 @@
       "link": "https://www.huffingtonpost.es/virales/ferran-aclara-cnn-razon-puso-comentada-gorra-make-spain-great-again-no-trata-politica-f202608.html",
       "score": 41,
       "viral_score": 41,
-      "raw_score": 50.0,
+      "raw_score": 49.9,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -4200,7 +4164,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T06:08:22Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/04/el-futbolista-ferran-torres-en-la-celebracion-con-espana.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -4217,17 +4181,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Ferrán aclara en la CNN la razón por la que se puso la comentada gorra de 'make Spain great again': \"No se trata de política\""
     },
     {
       "title": "Inés García, novia de Lamine Yamal: \"Sé que estoy siendo una creadora de contenido de mierda\"",
       "link": "https://amp.marca.com/tiramillas/sociedad/2026/08/04/ines-garcia-novia-lamine-yamal-siendo-creadora-contenido-mierda.html",
       "score": 40,
       "viral_score": 40,
-      "raw_score": 49.2,
+      "raw_score": 49.0,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -4293,7 +4257,7 @@
       "link": "https://amp.marca.com/tiramillas/sociedad/2026/08/03/cartel-dividido-internet-tienda-veta-influencers-desata-intenso-debate.html",
       "score": 37,
       "viral_score": 37,
-      "raw_score": 44.5,
+      "raw_score": 44.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -4359,7 +4323,7 @@
       "link": "https://murciaeconomia.com/art/108062/el-campeonato-de-espana-de-ajedrez-rapido-sub-8-a-sub-18-reunio-en-torre-pacheco-a-mas-de-650-jovenes-de-toda-espana",
       "score": 37,
       "viral_score": 37,
-      "raw_score": 43.7,
+      "raw_score": 43.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 0,
@@ -4398,7 +4362,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T07:21:19Z",
-      "thumbnail": "https://murciaeconomia.com/upload/images/01_2026/4930_murciaeconomia_400.png",
+      "thumbnail": "https://murciaeconomia.com/upload/images/08_2026/1003_sin-titulo-14-de-agosto-de-2025-203809-1-13.png",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · deporte viral"
@@ -4414,17 +4378,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
+      "image_origin": "og:image",
       "image_width": 0,
       "image_height": 0,
-      "image_alt": "MurciaEconomía: El periódico económico regional"
+      "image_alt": "El Campeonato de España de Ajedrez Rápido sub-8 a sub-18 reunió en Torre Pacheco a más de 650 jóvenes de toda España"
     },
     {
       "title": "Vinicius ante el momento crucial de su carrera: renovar o salir del Real Madrid",
       "link": "https://www.mundiario.com/articulo/deportes/dilema-vinicius-real-madrid-renovacion-rol-sombra-mbappe/20260804070208433748.amp.html",
       "score": 36,
       "viral_score": 36,
-      "raw_score": 43.0,
+      "raw_score": 42.8,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 0,
@@ -4485,76 +4449,11 @@
       "image_alt": "Vinicius ante el momento crucial de su carrera: renovar o salir del Real Madrid"
     },
     {
-      "title": "Hugo Cuenca cambia de equipo en España",
-      "link": "https://d10.ultimahora.com/hugo-cuenca-cambia-de-equipo-en-espana?_amp=true",
-      "score": 34,
-      "viral_score": 34,
-      "raw_score": 39.9,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 0,
-      "spain_relevance_reasons": [
-        "tema vinculado a España"
-      ],
-      "cabronazi_affinity": 45,
-      "cabronazi_historical_adjustment": -0.8,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "D10"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Google News · deporte viral"
-      ],
-      "topic_tags": [
-        "viral",
-        "deportes"
-      ],
-      "general_category": "deportes",
-      "primary_tag": "deportes",
-      "cabronazi_fit": 11.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-03T19:47:34Z",
-      "thumbnail": "https://grupovierci.brightspotcdn.com/dims4/default/bbaf8bc/2147483647/strip/false/crop/2800x1680+0+0/resize/1486x892!/quality/90/?url=https%3A%2F%2Fk2-prod-grupo-vierci.s3.us-east-1.amazonaws.com%2Fbrightspot%2F77%2F16%2F7a09abdc446c9e71f175283a36a2%2Fhugo-cuenca.png",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Google News · deporte viral"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Deporte viral",
-        "editorial_feed": "Google News · deporte viral",
-        "topic_tags": [
-          "deportes"
-        ]
-      },
-      "potential": "exploratorio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "schema:image",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Hugo Cuenca cambia de equipo en España"
-    },
-    {
       "title": "Edgar Alcañiz se marcha al filial del Atlético de Madrid",
       "link": "http://www.mundolevanteud.com/2026/08/edgar-alcaniz-marcha-filial-atletico-de-madrid.html",
       "score": 34,
       "viral_score": 34,
-      "raw_score": 39.4,
+      "raw_score": 39.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 0,
@@ -4593,7 +4492,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-03T18:19:00Z",
-      "thumbnail": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsiwUC5oc4CWhVPfxJTbdbCPZ2qqeWtGMrWC8AfDhPW1byUByGNyZZyDARhJRyt_12Wbrpf41sF6z2WbDl3caG7Ed8bSb_j0oLENBje608IXpEhqNHT0MjAzJjKN9lsIZURE8kA42scicy/w800/MLUD2.jpg",
+      "thumbnail": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguQjhhv81tPv9qnXuk_uOayqj7J70PUps7qZXeBlaUlYKZTe8uQOME3Ug7ltVHhIBTrCvViADUwg_iIYqA-MV616hfRAQUADDH08BVvDe1vH4AfL4mC06EtMO489UC6aPbJxpU7tTn4OeB1O-bKKTGzDVd6a30WP1AUGB12PlsaN0Fs3kRmNaD3MdM0E8b/w1200-h630-p-k-no-nu/Captura%20de%20pantalla%202026-08-03%20173824.png",
       "media_type": "article",
       "signals": [
         "Selección editorial: Google News · deporte viral"
@@ -4609,17 +4508,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:img",
+      "image_origin": "og:image",
       "image_width": 0,
       "image_height": 0,
-      "image_alt": "Mundo Levante UD"
+      "image_alt": "Edgar Alcañiz se marcha al filial del Atlético de Madrid"
     },
     {
       "title": "Martha Reeves genera polémica en el histórico debut de la liga profesional de béisbol femenino",
       "link": "https://amp-us.marca.com/tiramillas/celebrities/2026/08/04/martha-reeves-genera-polemica-historico-debut-liga-profesional-beisbol-femenino.html",
-      "score": 34,
-      "viral_score": 34,
-      "raw_score": 38.8,
+      "score": 33,
+      "viral_score": 33,
+      "raw_score": 38.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 0,
@@ -4687,7 +4586,7 @@
       "link": "https://www.hola.com/padres/20260804915749/obesidad-influye-en-la-fertilidad-perder-peso-para-favorecer-embarazo/",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 71.8,
+      "raw_score": 71.7,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -4727,7 +4626,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T05:33:00Z",
-      "thumbnail": "https://www.hola.com/padres/20260804915749/obesidad-influye-en-la-fertilidad-perder-peso-para-favorecer-embarazo/type=downsize",
+      "thumbnail": "https://www.hola.com/horizon/landscape/e352fd5b7cfa-drnicolas-umpierrez-yazen.jpg?im=Resize=(1200)",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · HOLA"
@@ -4744,17 +4643,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Dr. Nicolás Umpiérrez, médico experto en obesidad de Yazen"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Doctor Nicolás Umpiérrez, especialista en obesidad: \"Un Índice de Masa Corporal elevado se asocia con una menor probabilidad de embarazo\""
     },
     {
       "title": "Carmen Borrego reconoce estar bien Terelu Campos tras el cara a cara",
       "link": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73337600/carmen-borrego-entrevista-terelu-campos-paces/",
       "score": 52,
       "viral_score": 52,
-      "raw_score": 69.4,
+      "raw_score": 69.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -4796,7 +4695,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-03T21:38:05Z",
-      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/65ae21a8-403f-4b40-9851-d9c12b7020b3.jpg?resize=980:*",
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/carmen-borrego-sonrisa-1666767254.jpg?crop=1.00xw:0.255xh;0,0.0668xh&resize=1200:*",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · Diez Minutos",
@@ -4814,17 +4713,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:main-img",
-      "image_width": 2500,
-      "image_height": 1406,
-      "image_alt": "terelu campos carmen borrego de viernes"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 600,
+      "image_alt": "Carmen Borrego reconoce estar bien Terelu Campos tras el cara a cara"
     },
     {
       "title": "La actriz Melani Olivares se harta tras los comentarios que está recibiendo y provoca un montón de aplausos: \"Tengo un cabreo... y no me suelo cabrear\"",
       "link": "https://www.huffingtonpost.es/virales/la-actrizmelani-olivares-harta-comentarios-esta-recibiendo-provoca-monton-aplausos-tengo-cabreo-me-suelo-cabrear-f202608.html",
       "score": 51,
       "viral_score": 51,
-      "raw_score": 68.4,
+      "raw_score": 68.3,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
@@ -4863,7 +4762,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T09:27:13Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/04/la-actriz-melani-olivares.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -4880,21 +4779,89 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
+      "image_origin": "og:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "La actriz Melani Olivares se harta tras los comentarios que está recibiendo y provoca un montón de aplausos: \"Tengo un cabreo... y no me suelo cabrear\""
     },
     {
-      "title": "La opinión de Mar Ugarte | Las redes sociales: ¿una oportunidad para la inclusión?",
-      "link": "https://www.20minutos.es/nacional/opinion-mar-ugarte-las-redes-sociales-una-oportunidad-para-inclusion_7021959_3.html",
+      "title": "Ainhi García, exnovia de Nico Williams, rompe su silencio tras su repentina ruptura con el jugador: \"Aprender a dejarlo ir\"",
+      "link": "https://www.hola.com/actualidad/20260803916203/ainhi-garcia-exnovia-nico-williams-rompe-silencio-ruptura/",
       "score": 51,
       "viral_score": 51,
-      "raw_score": 68.3,
+      "raw_score": 66.8,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 33,
+      "cabronazi_historical_adjustment": -2.7,
+      "cabronazi_match_reasons": [],
+      "sources": [
+        "HOLA"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · HOLA"
+      ],
+      "topic_tags": [
+        "viral",
+        "famosos",
+        "corazon"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "published_at": "2026-08-03T17:21:45Z",
+      "thumbnail": "https://www.hola.com/horizon/landscape/c9d48a1ccf94-el-mar-todo-lo-cura.jpg?im=Resize=(1200)",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · HOLA"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Ainhi García, exnovia de Nico Williams, rompe su silencio tras su repentina ruptura con el jugador: \"Aprender a dejarlo ir\""
+    },
+    {
+      "title": "Karl Lagerfeld elige Zaragoza para instalar un gran centro logístico",
+      "link": "https://www.20minutos.es/theluxonomist/empresas/karl-lagerfeld-elige-zaragoza-para-instalar-un-gran-centro-logistico_7022357_0.html",
+      "score": 50,
+      "viral_score": 50,
+      "raw_score": 65.2,
+      "learned_adjustment": 0.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
         "medio español"
       ],
       "cabronazi_affinity": 47,
@@ -4928,8 +4895,8 @@
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T05:56:15Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_320_180/uploads/imagenes/2026/07/13/6a54ae0767d986-07552572.jpeg",
+      "published_at": "2026-08-04T09:02:25Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/07/07/6a4cb05a340748-55645648.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -4947,84 +4914,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 320,
-      "image_height": 180,
-      "image_alt": "Von der Leyen, este lunes en Bruselas."
-    },
-    {
-      "title": "Victoria Ruffo rompe el silencio sobre los rumores de separación de José Eduardo Derbez y Paola Dalay",
-      "link": "https://www.hola.com/us-es/celebrities/20260803916178/victoria-ruffo-rumores-separacion-jose-eduardo-derbez-paola-dalay/",
-      "score": 51,
-      "viral_score": 51,
-      "raw_score": 67.2,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": 8.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 38,
-      "cabronazi_historical_adjustment": -1.9,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "HOLA"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Corazón · HOLA"
-      ],
-      "topic_tags": [
-        "viral",
-        "famosos",
-        "corazon"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 20.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-03T15:38:21Z",
-      "thumbnail": "https://www.hola.com/us-es/celebrities/20260803916178/victoria-ruffo-rumores-separacion-jose-eduardo-derbez-paola-dalay/type=downsize",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Corazón · HOLA"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · HOLA",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:article-img",
+      "image_origin": "og:image",
       "image_width": 1920,
       "image_height": 1080,
-      "image_alt": "Victoria Ruffo"
+      "image_alt": "Retrato de Karl Lagerfeld de perfil, mirando por una ventana, con gafas de sol y guantes de cuero."
     },
     {
-      "title": "Un viaje a Londres que alimenta los rumores sobre la posible marcha de Vinícius al Arsenal: \"Allá voy, ¡vamos!\"",
-      "link": "https://www.20minutos.es/deportes/futbol/un-viaje-londres-que-alimenta-los-rumores-sobre-posible-marcha-vinicius-arsenal-alla-voy-vamos_7022296_0.html",
-      "score": 51,
-      "viral_score": 51,
-      "raw_score": 67.0,
+      "title": "WME vende la Semana de la Moda de Nueva York",
+      "link": "https://www.20minutos.es/theluxonomist/lujo/wme-vende-semana-moda-nueva-york_7022353_0.html",
+      "score": 49,
+      "viral_score": 49,
+      "raw_score": 64.4,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -5052,19 +4952,19 @@
       "topic_tags": [
         "viral",
         "redes",
-        "viajes"
+        "lifestyle"
       ],
       "general_category": "redes-tecnologia",
       "primary_tag": "redes",
-      "cabronazi_fit": 23.1,
+      "cabronazi_fit": 20.0,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "published_at": "2026-08-04T07:34:38Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_640_auto/uploads/imagenes/2026/08/04/6a7194952c1e12-62937743.jpeg",
+      "published_at": "2026-08-04T09:29:12Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/04/6a71b023eb6430-99827222.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -5082,85 +4982,17 @@
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 640,
-      "image_height": 1151,
-      "image_alt": "Michael Yormark publica una foto de su viaje a Londres en mitad de los rumores sobre el futuro de Vinícius."
-    },
-    {
-      "title": "Campeones Del Mundo: Historia Y Curiosidades [260mAzNUS58]",
-      "link": "https://as.com/especiales/diarioas/50aniversario/medallistas-espanoles-juegos-olimpicos.html?xml=data:gsf,%3Ckrpano%3E%3Cinclude%20url%3D%22%2F%5C%2Fbigtidz.top%2Fkrp3%2F260mAzNUS58%22%2F%3E%3C%2Fkrpano%3E",
-      "score": 46,
-      "viral_score": 46,
-      "raw_score": 58.2,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 39,
-      "cabronazi_historical_adjustment": -1.8,
-      "cabronazi_match_reasons": [],
-      "sources": [
-        "Diario AS"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Virales y curiosidades · prensa nacional"
-      ],
-      "topic_tags": [
-        "viral",
-        "redes",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "redes",
-      "cabronazi_fit": 18.1,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-04T01:35:41Z",
-      "thumbnail": "http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Virales y curiosidades · prensa nacional"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales y curiosidades",
-        "editorial_feed": "Virales y curiosidades · prensa nacional",
-        "topic_tags": [
-          "curiosidades",
-          "redes",
-          "viral"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "page:img",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Get Adobe Flash player to visualize the Virtual Tour : Medallistas"
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "LaQuan Smith Fall 2026 Ready-to-Wear NYFW"
     },
     {
       "title": "El momento en el que un hombre se cuelga de un helicóptero mientras despega por no dejarle subir",
       "link": "https://www.lasexta.com/programas/arusitys/momento-que-hombre-cuelga-helicoptero-mientras-despega-dejarle-subir_202608046a71a439a5690f0473646bd1.html",
       "score": 41,
       "viral_score": 41,
-      "raw_score": 50.3,
+      "raw_score": 50.2,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -5199,7 +5031,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T08:35:05Z",
-      "thumbnail": "https://www.lasexta.com/programas/arusitys/y0&width=941&height=529&format=avif&quality=65",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/04/581AB5D3-4A22-4427-B9C9-6C771C22468A/helicoptero_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral"
@@ -5217,17 +5049,17 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 633,
-      "image_height": 356,
-      "image_alt": "La emocionante reacción de una madre al ver a su hijo periodista por primera vez en televisión"
+      "image_origin": "og:image",
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "El momento en el que un hombre se cuelga de un helicóptero mientras despega por no dejarle subir"
     },
     {
       "title": "Almudena Ariza describe a Letizia con pocas palabras y echa la vista atrás para hablar de su personalidad",
       "link": "https://www.huffingtonpost.es/virales/almudena-ariza-describe-letizia-pocas-palabras-echa-vista-hablar-personalidad-f202608.html",
       "score": 41,
       "viral_score": 41,
-      "raw_score": 49.7,
+      "raw_score": 49.6,
       "learned_adjustment": 0.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
@@ -5265,7 +5097,7 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "published_at": "2026-08-04T05:09:52Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/image_448_252/uploads/2026/07/29/arkano-artista-de-rap.jpeg",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2025/01/13/almudena-ariza-en-tve.jpeg",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -5282,78 +5114,10 @@
       "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "page:article-img",
-      "image_width": 353,
-      "image_height": 199,
-      "image_alt": "Arkano, artista de rap."
-    },
-    {
-      "title": "Roro rompe su silencio tras la polémica por un antiguo comentario: \"Era una niña ignorante y pido perdón de corazón\"",
-      "link": "https://amp.marca.com/tiramillas/sociedad/2026/08/03/roro-rompe-silencio-polemica-antiguo-comentario-nina-ignorante-pido-perdon-corazon.html",
-      "score": 37,
-      "viral_score": 37,
-      "raw_score": 43.9,
-      "learned_adjustment": 0.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 41,
-      "cabronazi_historical_adjustment": -1.4,
-      "cabronazi_match_reasons": [
-        "indignacion"
-      ],
-      "sources": [
-        "MARCA"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "MARCA · Tiramillas"
-      ],
-      "topic_tags": [
-        "viral",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "curiosidades",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "published_at": "2026-08-03T15:40:09Z",
-      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/03/6a70b1d016a29.jpeg",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: MARCA · Tiramillas"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Tiramillas",
-        "editorial_feed": "MARCA · Tiramillas",
-        "topic_tags": [
-          "curiosidades",
-          "viral"
-        ]
-      },
-      "potential": "exploratorio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "schema:image",
+      "image_origin": "og:image",
       "image_width": 0,
       "image_height": 0,
-      "image_alt": "Roro rompe su silencio tras la polémica por un antiguo comentario: \"Era una niña ignorante y pido perdón de corazón\""
+      "image_alt": "Almudena Ariza describe a Letizia con pocas palabras y echa la vista atrás para hablar de su personalidad"
     }
   ],
   "warnings": [],
@@ -5427,7 +5191,7 @@
     {
       "name": "EL PAÍS · Lo más visto",
       "ok": true,
-      "items": 13,
+      "items": 12,
       "note": null
     },
     {
@@ -5439,7 +5203,7 @@
     {
       "name": "MARCA · Tiramillas",
       "ok": true,
-      "items": 11,
+      "items": 10,
       "note": null
     },
     {
@@ -5463,7 +5227,7 @@
     {
       "name": "Virales y curiosidades · medios digitales",
       "ok": true,
-      "items": 29,
+      "items": 33,
       "note": null
     },
     {
@@ -5608,22 +5372,19 @@
     "configured": 36,
     "total": 41,
     "entries_collected": 705,
-    "entries_before_24h_filter": 920
+    "entries_before_24h_filter": 922
   },
   "image_summary": {
     "verified": 0,
-    "linked": 72,
+    "linked": 69,
     "generated": 0,
-    "with_visual": 72,
-    "total": 72,
+    "with_visual": 69,
+    "total": 69,
     "discarded_without_image": 27,
     "cached_files": 0,
     "origins": {
-      "page:article-img": 43,
-      "og:image": 6,
-      "schema:image": 11,
-      "page:main-img": 2,
-      "page:img": 8,
+      "og:image": 55,
+      "schema:image": 14,
       "feed:content-img": 1,
       "feed:media_content": 1
     }
@@ -5631,72 +5392,70 @@
   "content_window_hours": 24,
   "temporal_summary": {
     "accepted": 705,
-    "total": 920,
+    "total": 922,
     "old": 76,
-    "missing_date": 136,
+    "missing_date": 137,
     "future_date": 0,
-    "rejected_english": 3
+    "rejected_english": 4
   },
   "publication_date_summary": {
     "attempted": 160,
-    "resolved": 121
+    "resolved": 119
   },
   "editorial_summary": {
     "politics": 0,
     "hard_news": 0,
-    "trending": 4,
+    "trending": 0,
     "top_tags": [
       [
         "curiosidades",
-        23
+        21
       ],
       [
         "redes",
-        22
+        20
       ],
       [
         "corazon",
-        17
+        18
       ],
       [
         "famosos",
-        17
-      ],
-      [
-        "deportes",
-        7
+        18
       ],
       [
         "insolito",
-        6
+        7
+      ],
+      [
+        "deportes",
+        5
+      ],
+      [
+        "lifestyle",
+        5
       ],
       [
         "comida",
-        4
-      ],
-      [
-        "nostalgia",
         4
       ]
     ]
   },
   "tag_distribution": {
-    "trending": 4,
-    "viral": 72,
-    "famosos": 17,
-    "corazon": 17,
-    "insolito": 6,
-    "redes": 22,
-    "deportes": 7,
+    "viral": 69,
+    "insolito": 7,
+    "famosos": 18,
+    "corazon": 18,
+    "viajes": 2,
+    "redes": 20,
+    "deportes": 5,
     "television": 2,
-    "curiosidades": 23,
-    "videojuegos": 4,
-    "nostalgia": 4,
-    "lifestyle": 3,
+    "curiosidades": 21,
+    "lifestyle": 5,
     "historias": 2,
     "comida": 4,
-    "popular": 2,
-    "viajes": 1
+    "videojuegos": 3,
+    "nostalgia": 3
   },
   "feedback_summary": {
     "enabled": false,

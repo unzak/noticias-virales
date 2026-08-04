@@ -58,9 +58,11 @@ descendente sin perder los filtros de periodo y categoría.
   realizan peticiones.
 
 Los enlaces de Google News se resuelven al artículo original antes de localizar
-la imagen. El panel enlaza directamente la mejor URL encontrada en un tag
-`img` del artículo, sin descargar ni versionar archivos de terceros. Si no se
-encuentra ninguna URL de imagen utilizable, la noticia no se publica.
+la imagen. El panel enlaza directamente la mejor URL editorial del artículo,
+comparando sus tags `img` con `og:image`, Twitter Card y JSON-LD, sin descargar
+ni versionar archivos de terceros. Si no se encuentra ninguna URL de imagen
+utilizable o no puede resolverse el enlace original fuera de Google News, la
+noticia no se publica.
 
 ## Fuentes opcionales
 
@@ -148,9 +150,10 @@ Antes de agrupar y puntuar, el generador:
 ## Previsualizaciones
 
 Para Menéame se abre siempre el artículo original y se enlaza la imagen del
-destino, evitando la miniatura de Menéame. Se priorizan los tags `img` situados
-dentro de `article` y `main`; como respaldo se usa la mejor URL remota del feed
-o de los metadatos. Las imágenes no se descargan en `docs/media/`.
+destino, evitando la miniatura de Menéame. Los tags `img` de `article` y `main`
+se comparan por relevancia con la imagen declarada en los metadatos; banners,
+logos, píxeles y placeholders quedan excluidos. Las imágenes no se descargan
+en `docs/media/`.
 
 ## Instalar esta versión
 
