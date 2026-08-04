@@ -4,8 +4,6 @@ Fuentes sin clave:
 - Google News España, búsquedas temáticas y secciones virales de medios españoles (RSS)
 - Menéame · Populares y Más visitadas (HTML público)
 - Google Trends España (RSS)
-- Bluesky (API pública)
-- Mastodon (endpoints públicos de tendencias)
 
 Fuentes opcionales mediante secretos de GitHub:
 - Reddit Data API (REDDIT_CLIENT_ID y REDDIT_CLIENT_SECRET)
@@ -39,6 +37,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from functools import lru_cache
 from html.parser import HTMLParser
 from email.utils import parsedate_to_datetime
 from dataclasses import dataclass, field, replace
@@ -406,9 +405,9 @@ FUTURE_CLOCK_SKEW_MINUTES = 20
 PUBLICATION_DATE_ENRICH_LIMIT = 160
 PUBLICATION_DATE_WORKERS = 10
 PUBLICATION_DATE_HTML_MAX_BYTES = 900_000
-MAX_STORIES = 100
+MAX_STORIES = 300
 MAX_NEWS_ITEMS_PER_SOURCE = 35
-IMAGE_ENRICH_LIMIT = 100
+IMAGE_ENRICH_LIMIT = 300
 IMAGE_PAGE_CONTEXT_LIMIT = 3
 IMAGE_CANDIDATE_LIMIT = 5
 IMAGE_WORKERS = 10
@@ -681,6 +680,10 @@ def valid_http_url(value: Any) -> str | None:
     if not isinstance(value, str) or not value.strip():
         return None
     value = html.unescape(value.strip())
+    if any(character.isspace() or ord(character) < 32 for character in value):
+        return None
+    if "[object object]" in value.lower():
+        return None
     parsed = urllib.parse.urlparse(value)
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         return None
@@ -1119,6 +1122,88 @@ def _decode_google_news_legacy_url(url: str) -> str | None:
     return public_fetch_url(candidate)
 
 
+@lru_cache(maxsize=512)
+def _decode_google_news_modern_url(url: str) -> str | None:
+    """Resuelve los envoltorios actuales de Google News al artículo original."""
+    target = public_fetch_url(url)
+    if not target or not _is_google_host(target):
+        return None
+    request = urllib.request.Request(
+        target,
+        headers={
+            "User-Agent": BROWSER_USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.4",
+            "Accept-Language": "es-ES,es;q=0.9",
+            "Accept-Encoding": "identity",
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=IMAGE_FETCH_TIMEOUT_SECONDS) as response:
+            document = response.read(IMAGE_HTML_MAX_BYTES + 1)[:IMAGE_HTML_MAX_BYTES].decode(
+                response.headers.get_content_charset() or "utf-8",
+                errors="replace",
+            )
+        article_id = re.search(r'data-n-a-id="([^"]+)"', document)
+        timestamp = re.search(r'data-n-a-ts="(\d+)"', document)
+        signature = re.search(r'data-n-a-sg="([^"]+)"', document)
+        if not (article_id and timestamp and signature):
+            return None
+        parameters = [
+            "garturlreq",
+            [[
+                "es-ES", "ES", ["FINANCE_TOP_INDICES", "WEB_TEST_1_0_0"],
+                None, None, 1, 1, "ES:es", None, 180,
+                None, None, None, None, None, 0, 1,
+            ]],
+            html.unescape(article_id.group(1)),
+            int(timestamp.group(1)),
+            html.unescape(signature.group(1)),
+        ]
+        rpc = [[["Fbv4je", json.dumps(parameters, separators=(",", ":")), None, "generic"]]]
+        payload = urllib.parse.urlencode(
+            {"f.req": json.dumps(rpc, separators=(",", ":"))}
+        ).encode("utf-8")
+        rpc_request = urllib.request.Request(
+            "https://news.google.com/_/DotsSplashUi/data/batchexecute",
+            data=payload,
+            headers={
+                "User-Agent": BROWSER_USER_AGENT,
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+                "Accept-Language": "es-ES,es;q=0.9",
+            },
+        )
+        with urllib.request.urlopen(rpc_request, timeout=IMAGE_FETCH_TIMEOUT_SECONDS) as response:
+            response_text = response.read(250_000).decode("utf-8", errors="replace")
+        for line in response_text.splitlines():
+            if not line.startswith("["):
+                continue
+            try:
+                rows = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            for row in rows if isinstance(rows, list) else []:
+                if not isinstance(row, list) or len(row) < 3 or not isinstance(row[2], str):
+                    continue
+                try:
+                    decoded = json.loads(row[2])
+                except json.JSONDecodeError:
+                    continue
+                if isinstance(decoded, list) and len(decoded) > 1 and decoded[0] == "garturlres":
+                    destination = public_fetch_url(decoded[1])
+                    if destination and not _is_google_host(destination):
+                        return destination
+    except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError):
+        return None
+    return None
+
+
+def resolve_google_news_destination(url: str) -> str | None:
+    target = public_fetch_url(url)
+    if not target or not _is_google_host(target):
+        return target
+    return _decode_google_news_legacy_url(target) or _decode_google_news_modern_url(target)
+
+
 def _is_google_host(url: str) -> bool:
     host = (urllib.parse.urlparse(url).hostname or "").lower()
     return host == "google.com" or host.endswith(".google.com") or host.startswith("news.google.")
@@ -1180,9 +1265,9 @@ def fetch_html_metadata(url: str, *, expected_title: str = "", _depth: int = 0) 
     target = public_fetch_url(url)
     if not target:
         return url, ()
-    legacy = _decode_google_news_legacy_url(target)
-    if legacy:
-        target = legacy
+    resolved = resolve_google_news_destination(target)
+    if resolved:
+        target = resolved
     request = urllib.request.Request(
         target,
         headers={
@@ -1514,6 +1599,7 @@ def _context_candidates(context: dict[str, Any], story_title: str) -> tuple[Imag
 def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
     contexts = story.get("_image_contexts") if isinstance(story.get("_image_contexts"), list) else []
     candidates: list[tuple[ImageCandidate, bool]] = []
+    resolved_main_link: str | None = None
     for context in contexts:
         if not isinstance(context, dict):
             continue
@@ -1558,6 +1644,8 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
             )
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
             continue
+        if bool(context.get("is_main")) and _is_google_host(link) and not _is_google_host(final_url):
+            resolved_main_link = final_url
         if platform == "meneame":
             final_host = (urllib.parse.urlparse(final_url).hostname or "").lower()
             if final_host == "meneame.net" or final_host.endswith(".meneame.net"):
@@ -1617,6 +1705,8 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
 
     updated = dict(story)
     updated.pop("_image_contexts", None)
+    if resolved_main_link:
+        updated["link"] = resolved_main_link
     if not verified:
         updated["thumbnail"] = None
         updated["image_verified"] = False
@@ -1900,6 +1990,9 @@ def fetch_publication_date(url: str) -> dt.datetime | None:
     target = public_fetch_url(url)
     if not target:
         return None
+    resolved = resolve_google_news_destination(target)
+    if resolved:
+        target = resolved
     request = urllib.request.Request(
         target,
         headers={
@@ -4379,6 +4472,8 @@ def build_google_trend_news(
                 if entry.platform == "news"
                 and normalize(entry.seed_trend or "") == normalized
                 and entry.published_at is not None
+                and not is_probably_english(entry.title)
+                and likely_spanish_link(entry.title, entry.description, entry.link)
             ]
             if candidates:
                 best_entry = max(
@@ -4395,6 +4490,14 @@ def build_google_trend_news(
                     "verified_image": False,
                     "selection": "trend-related-24h",
                 }
+
+        if article and not article.get("thumbnail"):
+            article["thumbnail"] = generated_story_image({
+                "title": article.get("title"),
+                "primary_tag": "trending",
+                "sources": [article.get("source") or "Google Trends"],
+            })
+            article["image_fallback"] = True
 
         cards.append(
             {
@@ -4429,15 +4532,18 @@ def build() -> dict[str, Any]:
     warnings.extend(x_warnings)
     source_status.append(x_status)
 
-    seed_trends = [str(item.get("name", "")) for item in [*google_trends[:8], *x_trends[:5]] if item.get("name")]
-
     reddit_entries, reddit_warnings, reddit_status = fetch_reddit_entries()
     warnings.extend(reddit_warnings)
     source_status.extend(reddit_status)
 
-    bluesky_entries, bluesky_warnings, bluesky_status = fetch_bluesky_entries(seed_trends)
-    warnings.extend(bluesky_warnings)
-    source_status.append(bluesky_status)
+    # Bluesky queda desactivado: no se realiza ninguna petición a su API.
+    bluesky_entries: list[StoryEntry] = []
+    source_status.append({
+        "name": "Bluesky",
+        "ok": None,
+        "items": 0,
+        "note": "Desactivado por configuración editorial",
+    })
 
     # Mastodon queda desactivado: no se realiza ninguna petición a instancias.
     mastodon_entries: list[StoryEntry] = []

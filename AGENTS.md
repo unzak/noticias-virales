@@ -13,7 +13,7 @@ Mantener un panel editorial estático para detectar contenidos con potencial vir
 - El generador principal es `fetch_news.py`.
 - Las dependencias están en `requirements.txt`.
 - El workflow está en `.github/workflows/update.yml`.
-- El panel publica como máximo 100 resultados.
+- El panel publica como máximo 300 resultados.
 - Solo admite contenidos cuya fecha pueda verificarse dentro de las últimas 24 horas.
 - La interfaz muestra una noticia por fila y usa numeración `#01`, `#02`, etc.
 - Google Trends debe mostrar cada tendencia con una noticia asociada cuando exista una noticia válida de las últimas 24 horas.
@@ -52,7 +52,7 @@ Conservar y revisar periódicamente:
 - búsquedas temáticas mediante Google News RSS;
 - Menéame `Populares` y `Más visitadas`;
 - Google Trends España y noticias relacionadas;
-- Bluesky y Mastodon públicos;
+- Bluesky y Mastodon permanecen desactivados y no realizan peticiones;
 - integraciones opcionales de Reddit, YouTube y X.
 
 No asumir que una fuente funciona porque devuelve HTTP 200. Registrar por fuente: elementos brutos, elementos válidos de 24 horas, fallos y fallback usado.

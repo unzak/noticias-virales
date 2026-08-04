@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-<defs><radialGradient id="g" cx="85%" cy="10%" r="80%"><stop offset="0" stop-color="#182d55"/><stop offset="1" stop-color="#101219"/></radialGradient></defs>
-<rect width="1200" height="675" fill="url(#g)"/><circle cx="1040" cy="90" r="210" fill="#75a7ff" opacity=".13"/>
-<rect x="72" y="72" width="94" height="10" rx="5" fill="#75a7ff"/><text x="72" y="135" class="brand">PULSO VIRAL</text>
-<text x="72" y="190" class="tag">#REDES</text><text x="72" y="250" class="headline">Santiago Korovsky mostró su</text><text x="72" y="322" class="headline">increíble viaje a Kenia: &quot;Fueron</text><text x="72" y="394" class="headline">cuarenta días y todas las</text><text x="72" y="466" class="headline">sensaciones…</text>
-<text x="72" y="610" class="footer">Vista editorial generada · abre la noticia para ver el contenido original</text>
-<style>.brand{font:900 30px Arial,sans-serif;fill:#f5f1e8;letter-spacing:5px}.tag{font:800 24px Arial,sans-serif;fill:#75a7ff;letter-spacing:2px}.headline{font:800 50px Arial,sans-serif;fill:#f5f1e8}.footer{font:500 19px Arial,sans-serif;fill:#aaa69d}</style></svg>

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-<defs><radialGradient id="g" cx="85%" cy="10%" r="80%"><stop offset="0" stop-color="#4b1720"/><stop offset="1" stop-color="#101219"/></radialGradient></defs>
-<rect width="1200" height="675" fill="url(#g)"/><circle cx="1040" cy="90" r="210" fill="#ff5b2e" opacity=".13"/>
-<rect x="72" y="72" width="94" height="10" rx="5" fill="#ff5b2e"/><text x="72" y="135" class="brand">PULSO VIRAL</text>
-<text x="72" y="190" class="tag">#HUMOR</text><text x="72" y="250" class="headline">Erling Haaland se corona rey de</text><text x="72" y="322" class="headline">los memes en las redes sociales:</text><text x="72" y="394" class="headline">el porqué de su arrollador éxito</text>
-<text x="72" y="610" class="footer">Vista editorial generada · abre la noticia para ver el contenido original</text>
-<style>.brand{font:900 30px Arial,sans-serif;fill:#f5f1e8;letter-spacing:5px}.tag{font:800 24px Arial,sans-serif;fill:#ff5b2e;letter-spacing:2px}.headline{font:800 50px Arial,sans-serif;fill:#f5f1e8}.footer{font:500 19px Arial,sans-serif;fill:#aaa69d}</style></svg>

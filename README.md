@@ -1,7 +1,7 @@
 # Pulso Viral v3.0.1 — enfoque entretenimiento y contenido compartible
 
 Panel estático para detectar contenidos con potencial editorial viral en España.
-Publica hasta 100 resultados y exige que la fecha de publicación pueda
+Publica hasta 300 resultados y exige que la fecha de publicación pueda
 verificarse dentro de las **últimas 24 horas**.
 
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
@@ -41,8 +41,13 @@ verificarse dentro de las **últimas 24 horas**.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
-- Búsquedas públicas de Bluesky. Mastodon está desactivado por configuración
-  editorial y no realiza peticiones.
+- Bluesky y Mastodon están desactivados por configuración editorial y no
+  realizan peticiones.
+
+Los enlaces de Google News se resuelven al artículo original antes de extraer
+la imagen. Se comparan los metadatos del medio y solo se guarda una imagen
+verificada en `docs/media/`; si el medio no ofrece una imagen fiable, se genera
+una tarjeta local como respaldo para que ninguna noticia quede sin visual.
 
 ## Fuentes opcionales
 
