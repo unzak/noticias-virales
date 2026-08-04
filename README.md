@@ -7,8 +7,8 @@ verificarse dentro de las **últimas 24 horas**.
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
 El ranking refuerza además las piezas vinculadas a España y descarta actualidad
 local extranjera sin un ángulo español, aunque el titular esté escrito en español.
-La interfaz permite ordenar la prioridad aprendida en sentido descendente o
-ascendente sin perder los filtros de periodo y categoría.
+La interfaz permite ordenar por prioridad, tiempo ascendente o tiempo
+descendente sin perder los filtros de periodo y categoría.
 
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
 
@@ -57,10 +57,10 @@ ascendente sin perder los filtros de periodo y categoría.
 - Bluesky y Mastodon están desactivados por configuración editorial y no
   realizan peticiones.
 
-Los enlaces de Google News se resuelven al artículo original antes de extraer
-la imagen. Se comparan los metadatos del medio y solo se guarda una imagen
-verificada en `docs/media/`; si el medio no ofrece una imagen fiable, se genera
-una tarjeta local como respaldo para que ninguna noticia quede sin visual.
+Los enlaces de Google News se resuelven al artículo original antes de localizar
+la imagen. El panel enlaza directamente la mejor URL encontrada en un tag
+`img` del artículo, sin descargar ni versionar archivos de terceros. Si no se
+encuentra ninguna URL de imagen utilizable, la noticia no se publica.
 
 ## Fuentes opcionales
 
@@ -147,12 +147,10 @@ Antes de agrupar y puntuar, el generador:
 
 ## Previsualizaciones
 
-Las imágenes se verifican y almacenan en `docs/media/`. Para Menéame se abre
-siempre el artículo original y se extrae la imagen del destino, evitando la
-miniatura de Menéame. Se descartan logos, avatares, placeholders, imágenes
-pequeñas y candidatos genéricos. Cuando no existe una imagen editorial fiable,
-se genera una tarjeta visual local con el titular y la categoría; se identifica
-como vista generada y no como imagen verificada.
+Para Menéame se abre siempre el artículo original y se enlaza la imagen del
+destino, evitando la miniatura de Menéame. Se priorizan los tags `img` situados
+dentro de `article` y `main`; como respaldo se usa la mejor URL remota del feed
+o de los metadatos. Las imágenes no se descargan en `docs/media/`.
 
 ## Instalar esta versión
 
@@ -189,7 +187,7 @@ Abre `http://localhost:8000`.
 - `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
-- `docs/media/`: imágenes verificadas.
+- `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
 - `.github/workflows/update.yml`: actualización y despliegue cada ~45 minutos.
 
 

@@ -239,12 +239,8 @@
       <label class="sort-control" for="sortBy">Ordenar
         <select id="sortBy">
           <option value="priority" selected>Prioridad</option>
-        </select>
-      </label>
-      <label class="sort-control" for="sortDirection">Dirección
-        <select id="sortDirection">
-          <option value="desc" selected>Descendente</option>
-          <option value="asc">Ascendente</option>
+          <option value="time-asc">Tiempo asc.</option>
+          <option value="time-desc">Tiempo desc.</option>
         </select>
       </label>
       <div class="filters" id="filters" aria-label="Filtros">
@@ -278,7 +274,6 @@ let allStories = [];
 let currentFilter = 'all';
 let currentHours = 24;
 let currentSort = 'priority';
-let currentSortDirection = 'desc';
 const LEARNING_STORAGE_KEY = 'pulso-viral-learning-v1';
 const FEEDBACK_QUEUE_KEY = 'pulso-viral-feedback-queue-v1';
 const FEEDBACK_CLIENT_KEY = 'pulso-viral-feedback-client-v1';
@@ -451,9 +446,9 @@ function storyCard(story, index){
   const trend = story.matched_google_trend || story.matched_x_trend;
   const trendBadge = trend ? `<span class="badge hot">En tendencia</span>` : '';
   const editorialBadge = story.curated_editorial ? `<span class="badge hot">Medio viral</span>` : '';
-  const imageBadge = story.image_verified
-    ? `<span class="badge image" title="${escapeHtml(story.image_origin || 'imagen asociada')}">Imagen verificada</span>`
-    : story.image_fallback ? `<span class="badge image">Vista generada</span>` : '';
+  const imageBadge = story.image_linked
+    ? `<span class="badge image" title="${escapeHtml(story.image_origin || 'imagen del artículo')}">Imagen enlazada</span>`
+    : '';
   const category = generalCategoryFor(story);
   const topicBadges = `<span class="badge topic">#${escapeHtml(generalCategoryLabels[category])}</span>`;
   const affinityBadge = affinity >= 65 ? `<span class="badge affinity" title="${escapeHtml(affinityReasons || 'Patrones del histórico de Cabronazi')}">Afinidad Cabronazi ${affinity}</span>` : '';
@@ -468,7 +463,7 @@ function storyCard(story, index){
   const age = relativeAge(story.published_at);
   const rank = index + 1;
   const openLabel = story.media_type === 'video' ? 'Ver vídeo ↗' : 'Abrir noticia ↗';
-  return `<article class="story" data-score="${score}" data-rank="${rank}">
+  return `<article class="story" data-score="${score}" data-rank="${rank}" data-published="${escapeHtml(story.published_at || '')}">
     <div class="rank-rail" aria-label="Número ${rank}"><span class="rank-number"><span class="rank-hash">#</span>${String(rank).padStart(2,'0')}</span></div>
     ${visual}
     <div class="content">
@@ -491,11 +486,14 @@ function storyCard(story, index){
 }
 function renderStories(){
   const storiesEl = document.getElementById('stories');
-  const direction = currentSortDirection === 'asc' ? 1 : -1;
   const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => {
     if(currentSort === 'priority'){
-      return direction * (learnedScore(a) - learnedScore(b) || Number(a.viral_score || 0) - Number(b.viral_score || 0));
+      return learnedScore(b) - learnedScore(a) || Number(b.viral_score || 0) - Number(a.viral_score || 0);
     }
+    const timeA = new Date(a.published_at || 0).valueOf();
+    const timeB = new Date(b.published_at || 0).valueOf();
+    if(currentSort === 'time-asc') return timeA - timeB;
+    if(currentSort === 'time-desc') return timeB - timeA;
     return 0;
   });
   document.getElementById('visibleCount').textContent = `${visible.length} resultado${visible.length === 1 ? '' : 's'}`;
@@ -599,10 +597,6 @@ document.getElementById('timeRange').addEventListener('change', event => {
 });
 document.getElementById('sortBy').addEventListener('change', event => {
   currentSort = event.target.value || 'priority';
-  renderStories();
-});
-document.getElementById('sortDirection').addEventListener('change', event => {
-  currentSortDirection = event.target.value === 'asc' ? 'asc' : 'desc';
   renderStories();
 });
 document.getElementById('stories').addEventListener('click', event => {

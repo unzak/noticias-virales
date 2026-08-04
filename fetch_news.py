@@ -28,7 +28,6 @@ import json
 import math
 import os
 import re
-import shutil
 import tempfile
 import time
 import unicodedata
@@ -1988,51 +1987,40 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
             best_by_url[candidate.url] = (candidate, is_main, pre_score)
     ordered = sorted(best_by_url.values(), key=lambda item: item[2], reverse=True)
 
-    verified: list[dict[str, Any]] = []
-    for candidate, is_main, _ in ordered[:IMAGE_CANDIDATE_LIMIT]:
-        try:
-            result = fetch_verified_image(candidate, story["title"], main_context=is_main)
-        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError):
-            result = None
-        if result:
-            verified.append(result)
-            if result["score"] >= 132.0 and len(verified) >= 2:
-                break
-        if len(verified) >= 4:
-            break
-
     updated = dict(story)
     updated.pop("_image_contexts", None)
     if resolved_main_link:
         updated["link"] = resolved_main_link
-    if not verified:
+
+    # Se enlaza directamente la mejor URL encontrada en un tag <img> del
+    # artículo. Así evitamos descargar y versionar archivos de terceros. Si la
+    # página no expone un <img> utilizable, conservamos el mejor candidato del
+    # feed o de sus metadatos como respaldo remoto.
+    selected_entry = next(
+        (entry for entry in ordered if entry[0].origin == "page:article-img"),
+        None,
+    ) or next(
+        (entry for entry in ordered if entry[0].origin == "page:main-img"),
+        None,
+    ) or next(
+        (entry for entry in ordered if entry[0].origin == "page:img"),
+        None,
+    ) or (ordered[0] if ordered else None)
+    if not selected_entry:
         updated["thumbnail"] = None
         updated["image_verified"] = False
+        updated["image_linked"] = False
         return updated, None
 
-    selected = max(verified, key=lambda item: item["score"])
-    digest = hashlib.sha256(selected["payload"]).hexdigest()[:24]
-    filename = f"{digest}{selected['extension']}"
-    destination = MEDIA_DIR / filename
-    if not destination.exists():
-        fd, tmp_name = tempfile.mkstemp(prefix="image-", suffix=selected["extension"], dir=MEDIA_DIR)
-        try:
-            with os.fdopen(fd, "wb") as handle:
-                handle.write(selected["payload"])
-            os.replace(tmp_name, destination)
-        except Exception:
-            try:
-                os.unlink(tmp_name)
-            except FileNotFoundError:
-                pass
-            raise
-    updated["thumbnail"] = f"media/{filename}"
-    updated["image_verified"] = True
-    updated["image_origin"] = selected["origin"]
-    updated["image_width"] = selected["width"]
-    updated["image_height"] = selected["height"]
-    updated["image_alt"] = selected.get("alt") or story.get("title") or ""
-    return updated, selected["origin"]
+    selected = selected_entry[0]
+    updated["thumbnail"] = selected.url
+    updated["image_verified"] = False
+    updated["image_linked"] = True
+    updated["image_origin"] = selected.origin
+    updated["image_width"] = selected.width
+    updated["image_height"] = selected.height
+    updated["image_alt"] = selected.alt or story.get("title") or ""
+    return updated, selected.origin
 
 
 def generated_story_image(story: dict[str, Any]) -> str:
@@ -2086,13 +2074,6 @@ def generated_story_image(story: dict[str, Any]) -> str:
 
 
 def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    MEDIA_DIR.mkdir(parents=True, exist_ok=True)
-    for child in MEDIA_DIR.iterdir():
-        if child.is_file():
-            child.unlink()
-        elif child.is_dir():
-            shutil.rmtree(child)
-
     output: list[dict[str, Any] | None] = [None] * len(stories)
     origins: dict[str, int] = {}
     limit = min(len(stories), IMAGE_ENRICH_LIMIT)
@@ -2110,6 +2091,7 @@ def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, 
                 updated.pop("_image_contexts", None)
                 updated["thumbnail"] = None
                 updated["image_verified"] = False
+                updated["image_linked"] = False
                 print(f"[aviso] Imagen #{index + 1}: {exc}")
                 origin = None
             output[index] = updated
@@ -2121,30 +2103,25 @@ def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, 
         updated.pop("_image_contexts", None)
         updated["thumbnail"] = None
         updated["image_verified"] = False
+        updated["image_linked"] = False
         output[index] = updated
 
-    final = [item for item in output if item is not None]
-    generated_count = 0
-    for item in final:
-        if item.get("thumbnail"):
-            item["image_fallback"] = False
-            continue
-        item["thumbnail"] = generated_story_image(item)
-        item["image_origin"] = "generated:editorial-placeholder"
-        item["image_alt"] = item.get("title") or "Vista editorial generada"
-        item["image_fallback"] = True
-        generated_count += 1
-    verified_count = sum(1 for item in final if item.get("image_verified"))
+    processed = [item for item in output if item is not None]
+    final = [item for item in processed if item.get("image_linked") and item.get("thumbnail")]
+    linked_count = len(final)
+    discarded_without_image = len(processed) - linked_count
     print(
-        f"[ok] Previsualizaciones: {verified_count}/{len(final)} verificadas · "
-        f"{generated_count} vistas editoriales generadas"
+        f"[ok] Previsualizaciones: {linked_count}/{len(processed)} enlazadas desde el artículo · "
+        f"{discarded_without_image} descartadas sin imagen"
     )
     return final, {
-        "verified": verified_count,
-        "generated": generated_count,
+        "verified": 0,
+        "linked": linked_count,
+        "generated": 0,
         "with_visual": sum(1 for item in final if item.get("thumbnail")),
         "total": len(final),
-        "cached_files": len(list(MEDIA_DIR.glob("*"))),
+        "discarded_without_image": discarded_without_image,
+        "cached_files": 0,
         "origins": origins,
     }
 
@@ -4874,14 +4851,6 @@ def build_google_trend_news(
                     "selection": "trend-related-24h",
                 }
 
-        if article and not article.get("thumbnail"):
-            article["thumbnail"] = generated_story_image({
-                "title": article.get("title"),
-                "primary_tag": "trending",
-                "sources": [article.get("source") or "Google Trends"],
-            })
-            article["image_fallback"] = True
-
         cards.append(
             {
                 "name": trend_name,
@@ -5028,8 +4997,8 @@ def build() -> dict[str, Any]:
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
             "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 24 horas. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
-            "Las previsualizaciones se verifican, se asocian al artículo o publicación y se guardan "
-            "localmente; se descartan logos, imágenes pequeñas y candidatos genéricos. "
+            "Las previsualizaciones enlazan directamente la mejor URL encontrada en los tags img "
+            "del artículo, sin descargar ni versionar la imagen de terceros. "
             "No predice ni garantiza likes futuros."
         ),
         "editorial_notice": (
