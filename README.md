@@ -15,7 +15,8 @@ propio en la interfaz.
 El menú superior separa `Selección Cabronazi`, con ranking editorial y
 diversidad, de `Sin filtro`, que muestra todas las piezas con fecha válida de
 las últimas 24 horas. La ausencia de imagen ya no elimina una noticia: el panel
-usa un placeholder rosa sin descargar archivos.
+abre el artículo, enlaza la URL de su imagen editorial y usa un placeholder rosa
+solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
 
@@ -160,8 +161,9 @@ Para Menéame se abre siempre el artículo original y se enlaza la imagen del
 destino, evitando la miniatura de Menéame. Los tags `img` de `article` y `main`
 se comparan por relevancia con la imagen declarada en los metadatos; banners,
 logos, píxeles y placeholders quedan excluidos. Las imágenes no se descargan
-en `docs/media/`. Cuando el feed no proporciona una imagen fiable, la tarjeta
-indica `Sin imagen` y permanece en el listado.
+en `docs/media/`. Este proceso también se aplica en paralelo a la vista sin
+filtro; cuando el artículo no proporciona una imagen fiable, la tarjeta indica
+`Sin imagen` y permanece en el listado.
 
 ## Instalar esta versión
 

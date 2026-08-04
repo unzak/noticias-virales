@@ -478,6 +478,7 @@ IMAGE_ENRICH_LIMIT = MAX_STORIES
 IMAGE_PAGE_CONTEXT_LIMIT = 3
 IMAGE_CANDIDATE_LIMIT = 5
 IMAGE_WORKERS = 10
+UNFILTERED_IMAGE_WORKERS = 12
 IMAGE_HTML_MAX_BYTES = 1_800_000
 IMAGE_FILE_MAX_BYTES = 2_500_000
 IMAGE_MIN_WIDTH = 300
@@ -1571,6 +1572,7 @@ def page_matches_story(document_title: str, expected_title: str, final_url: str)
     return path not in {"", "/"} and shared >= 1
 
 
+@lru_cache(maxsize=2048)
 def fetch_html_metadata(url: str, *, expected_title: str = "", _depth: int = 0) -> tuple[str, tuple[ImageCandidate, ...]]:
     target = public_fetch_url(url)
     if not target:
@@ -1907,6 +1909,7 @@ def _context_candidates(context: dict[str, Any], story_title: str) -> tuple[Imag
 
 
 def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
+    allow_article_img_fallback = bool(story.get("_allow_article_img_fallback"))
     contexts = story.get("_image_contexts") if isinstance(story.get("_image_contexts"), list) else []
     candidates: list[tuple[ImageCandidate, bool]] = []
     resolved_main_link: str | None = None
@@ -2008,6 +2011,7 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
 
     updated = dict(story)
     updated.pop("_image_contexts", None)
+    updated.pop("_allow_article_img_fallback", None)
     if resolved_main_link:
         updated["link"] = resolved_main_link
 
@@ -2027,6 +2031,29 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
         ),
         None,
     )
+    if not selected_entry and allow_article_img_fallback:
+        # En la vista completa prima la cobertura: enlaza el mejor <img> del
+        # artículo cuando no hay metadatos editoriales suficientemente fuertes.
+        # La imagen continúa siendo remota; aquí no se descarga su contenido.
+        selected_entry = next(
+            (
+                entry for entry in ordered
+                if image_origin_kind(entry[0].origin) in {
+                    "page:article-img",
+                    "page:main-img",
+                    "page:img",
+                }
+                and not any(
+                    term in normalize(
+                        f"{entry[0].alt} {urllib.parse.unquote(urllib.parse.urlparse(entry[0].url).path)}"
+                    )
+                    for term in GENERIC_IMAGE_TERMS
+                )
+                and (not entry[0].width or entry[0].width >= 240)
+                and (not entry[0].height or entry[0].height >= 120)
+            ),
+            None,
+        )
     if not selected_entry:
         updated["thumbnail"] = None
         updated["image_verified"] = False
@@ -4856,8 +4883,49 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
             "signals": [signal] if signal else [],
             "cabronazi_affinity": 50,
             "unfiltered": True,
+            "_allow_article_img_fallback": True,
+            "_image_contexts": [{
+                "title": entry.title,
+                "link": entry.link,
+                "source": entry.source,
+                "platform": entry.platform,
+                "media_type": entry.media_type,
+                "thumbnail": thumbnail,
+                "candidates": [serialize_candidate(candidate) for candidate in entry.image_candidates],
+                "is_main": True,
+                "force_destination_image": entry.platform == "meneame",
+            }],
         })
     return stories
+
+
+def enrich_unfiltered_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, int]]:
+    """Obtiene la URL de imagen del artículo para la vista completa, sin descargarla."""
+    output: list[dict[str, Any] | None] = [None] * len(stories)
+    with ThreadPoolExecutor(max_workers=UNFILTERED_IMAGE_WORKERS) as executor:
+        futures = {
+            executor.submit(enrich_one_story_image, story): index
+            for index, story in enumerate(stories)
+        }
+        for future in as_completed(futures):
+            index = futures[future]
+            try:
+                updated, _ = future.result()
+            except Exception:
+                updated = dict(stories[index])
+                updated.pop("_image_contexts", None)
+                updated.pop("_allow_article_img_fallback", None)
+            output[index] = updated
+
+    final = [item for item in output if item is not None]
+    linked = sum(1 for item in final if item.get("thumbnail"))
+    placeholders = len(final) - linked
+    resolved = sum(1 for item in final if not _is_google_host(str(item.get("link") or "")))
+    print(
+        f"[ok] Imágenes sin filtro: {linked}/{len(final)} enlazadas desde el artículo · "
+        f"{placeholders} con placeholder · {resolved} destinos originales"
+    )
+    return final, {"linked": linked, "placeholders": placeholders, "resolved_links": resolved, "total": len(final)}
 
 def build_google_trend_news(
     trends: list[dict[str, Any]],
@@ -5008,7 +5076,9 @@ def build() -> dict[str, Any]:
 
     ranked = build_ranked(entries, google_trends, x_trends, feedback_weights)
     ranked, image_summary = enrich_ranked_images(ranked)
-    unfiltered_stories = build_unfiltered_stories(entries)
+    unfiltered_stories, unfiltered_image_summary = enrich_unfiltered_images(
+        build_unfiltered_stories(entries)
+    )
     tag_distribution: dict[str, int] = {}
     for story in ranked:
         for tag in story.get("topic_tags") or []:
@@ -5059,6 +5129,7 @@ def build() -> dict[str, Any]:
             "entries_before_24h_filter": raw_entries_count,
         },
         "image_summary": image_summary,
+        "unfiltered_image_summary": unfiltered_image_summary,
         "content_window_hours": CONTENT_MAX_AGE_HOURS,
         "temporal_summary": temporal_summary,
         "publication_date_summary": publication_date_summary,
