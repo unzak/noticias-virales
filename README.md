@@ -13,7 +13,8 @@ verificarse dentro de las **últimas 24 horas**.
 - Se añaden búsquedas específicas para humor, memes, animales, famosos,
   televisión, realities, contenido insólito, redes, tecnología e IA,
   videojuegos, deporte viral, comida, viajes, historias positivas y nostalgia.
-- Se añade LOS40 como fuente especializada de entretenimiento y virales.
+- Se añaden LOS40 y cabeceras españolas de prensa del corazón como fuentes
+  especializadas de entretenimiento.
 - 20minutos, HuffPost, Telecinco, Público Tremending y LOS40 se consultan
   desde sus secciones directas, con Google News como respaldo.
 - Las consultas de Google News incluyen exclusiones de política, instituciones,
@@ -28,16 +29,20 @@ verificarse dentro de las **últimas 24 horas**.
   políticas y 5 de sucesos dentro del ranking.
 - Se aplican límites de diversidad para impedir que una sola categoría o un
   único medio monopolicen la lista.
-- La interfaz incorpora filtros y etiquetas `#Trending`, `#Humor`, `#Memes`,
-  `#Animales`, `#Famosos`, `#TV`, `#Reality`, `#Insólito`, `#Redes`,
-  `#Tecnología`, `#Gaming`, `#Deportes`, `#Comida`, `#Viajes`, `#Historias`,
-  `#Nostalgia` y `#Lifestyle`.
+- La interfaz engloba las etiquetas detalladas en seis categorías: `Humor y
+  curiosidades`, `Famosos y corazón`, `Redes y tecnología`, `Animales`,
+  `Deportes` y `Vida y bienestar`.
+- Cada noticia admite un voto positivo o negativo. El navegador aprende pesos
+  por categoría, fuente y etiquetas internas y reordena el panel sin alterar
+  el score editorial original.
 
 ## Fuentes sin claves
 
 - Secciones virales y de entretenimiento de EL PAÍS, MARCA Tiramillas,
   20minutos, HuffPost, Cribeo, AS Tikitakas, Antena 3, laSexta, Telecinco,
   EL ESPAÑOL, Público, Infobae y LOS40, entre otras.
+- Prensa del corazón: HOLA, Lecturas, Semana, Diez Minutos y Vanitatis mediante
+  búsquedas restringidas a sus dominios.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
@@ -57,6 +62,18 @@ una tarjeta local como respaldo para que ninguna noticia quede sin visual.
 - Tendencias de X: `X_BEARER_TOKEN`.
 
 El panel sigue funcionando sin estas claves.
+
+## Aprendizaje editorial local
+
+Los botones `Positivo` y `Negativo` alimentan un modelo ligero que suma o resta
+preferencia a las características de cada pieza: categoría general, cabecera y
+etiquetas editoriales detalladas. La prioridad aprendida se calcula sobre el
+score viral base y se utiliza para reordenar los resultados visibles.
+
+El estado se guarda en `localStorage`: permanece entre visitas, puede
+reiniciarse desde el panel y no sale del navegador. Por tanto, cada dispositivo
+aprende de sus propios votos. Para compartir el aprendizaje entre varios
+editores sería necesario incorporar un servicio de datos con autenticación.
 
 ## Selección editorial
 

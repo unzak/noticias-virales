@@ -193,6 +193,25 @@ NEWS_SOURCES = (
         "Famosos, televisión y realities",
         ("famosos", "television"),
     ),
+    *(
+        (
+            f"Corazón · {label}",
+            google_news_search_url(
+                f"site:{domain} (famosos OR pareja OR boda OR ruptura OR romance OR television) "
+                "when:1d -politica -gobierno -guerra"
+            ),
+            9.0,
+            "Prensa del corazón",
+            ("famosos", "corazon"),
+        )
+        for label, domain in (
+            ("HOLA", "hola.com"),
+            ("Lecturas", "lecturas.com"),
+            ("Semana", "semana.es"),
+            ("Diez Minutos", "diezminutos.es"),
+            ("Vanitatis", "vanitatis.elconfidencial.com"),
+        )
+    ),
     (
         "Google News · insólito y WTF",
         google_news_search_url(focused_news_query(
@@ -474,6 +493,7 @@ CABRONAZI_TAG_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("memes", ("meme", "memes", "plantilla viral", "reaccion viral", "se convierte en meme")),
     ("animales", ("animal", "animales", "perro", "gato", "mascota", "cachorro", "rescate animal", "zoo")),
     ("famosos", ("famoso", "famosa", "celebridad", "influencer", "streamer", "cantante", "actor", "actriz")),
+    ("corazon", ("prensa del corazon", "romance", "noviazgo", "pareja", "boda", "separacion", "divorcio", "ruptura", "embarazo", "expareja")),
     ("television", ("television", "programa", "presentador", "presentadora", "en directo", "plato", "concurso")),
     ("reality", ("reality", "supervivientes", "gran hermano", "tentaciones", "masterchef", "operacion triunfo")),
     ("insolito", ("insolito", "sorprendente", "sorprende", "sorprendio", "surrealista", "inesperado", "inesperada", "alucina", "no da credito", "wtf")),
@@ -489,12 +509,12 @@ CABRONAZI_TAG_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
 )
 CABRONAZI_CORE_TAGS = frozenset(tag for tag, _ in CABRONAZI_TAG_RULES)
 CABRONAZI_STRONG_TAGS = frozenset({
-    "humor", "memes", "animales", "famosos", "television", "reality",
+    "humor", "memes", "animales", "famosos", "corazon", "television", "reality",
     "insolito", "redes", "videojuegos", "deportes", "historias", "nostalgia",
 })
 CABRONAZI_TAG_ORDER = (
     "trending", "viral", "humor", "memes", "animales", "insolito",
-    "famosos", "television", "reality", "redes", "tecnologia",
+    "famosos", "corazon", "television", "reality", "redes", "tecnologia",
     "videojuegos", "deportes", "comida", "viajes", "historias",
     "nostalgia", "lifestyle", "tiktok", "curiosidades",
 )
@@ -638,6 +658,24 @@ def classify_topic_tags(text: str, configured: Iterable[str] = ()) -> set[str]:
     if any(term in normalized for term in ("curiosidad", "curioso", "curiosa", "insolito", "sorprendente", "surrealista")):
         tags.add("curiosidades")
     return tags
+
+
+GENERAL_CATEGORY_RULES: tuple[tuple[str, frozenset[str]], ...] = (
+    ("humor-curiosidades", frozenset({"humor", "memes", "insolito", "curiosidades"})),
+    ("famosos-corazon", frozenset({"famosos", "corazon", "television", "reality"})),
+    ("redes-tecnologia", frozenset({"redes", "tiktok", "tecnologia", "videojuegos"})),
+    ("animales", frozenset({"animales"})),
+    ("deportes", frozenset({"deportes"})),
+    ("vida-bienestar", frozenset({"comida", "viajes", "historias", "nostalgia", "lifestyle"})),
+)
+
+
+def general_category_for(tags: Iterable[str]) -> str:
+    tag_set = {str(tag) for tag in tags}
+    for category, category_tags in GENERAL_CATEGORY_RULES:
+        if tag_set & category_tags:
+            return category
+    return "humor-curiosidades"
 
 
 def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
@@ -4356,6 +4394,7 @@ def build_ranked(
                 "curated_editorial": bool(editorial_feeds),
                 "editorial_feeds": editorial_feeds,
                 "topic_tags": topic_tags,
+                "general_category": general_category_for(topic_tag_set),
                 "primary_tag": next((tag for tag in CABRONAZI_TAG_ORDER if tag in topic_tag_set and tag not in {"trending", "viral"}), "viral"),
                 "cabronazi_fit": round(fit_score, 1),
                 "politics_related": bool(profile["politics_hits"]),
