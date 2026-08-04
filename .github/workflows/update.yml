@@ -42,9 +42,6 @@ jobs:
       REDDIT_USER_AGENT: ${{ vars.REDDIT_USER_AGENT }}
       YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
       X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
-      TIKTOK_MS_TOKEN: ${{ secrets.TIKTOK_MS_TOKEN }}
-      TIKTOK_PROXY_URL: ${{ secrets.TIKTOK_PROXY_URL }}
-      TIKTOK_COUNT: ${{ vars.TIKTOK_COUNT }}
 
     steps:
       - name: Descargar repositorio
@@ -58,10 +55,6 @@ jobs:
 
       - name: Instalar dependencias
         run: python -m pip install --requirement requirements.txt
-
-      - name: Preparar Chromium para TikTokApi
-        if: env.TIKTOK_MS_TOKEN != ''
-        run: python -m playwright install --with-deps chromium
 
       - name: Comprobar sintaxis
         run: python -m py_compile fetch_news.py

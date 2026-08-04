@@ -193,7 +193,7 @@
     <div>
       <div class="brand-kicker"><span class="live-dot"></span> Radar social España</div>
       <h1>Pulso Viral</h1>
-      <p class="lede">Hasta 100 ideas con potencial editorial para humor, curiosidades, animales, entretenimiento y vídeos compartibles. Ordenadas por interacción, velocidad, recencia y presencia en varias plataformas.</p>
+      <p class="lede">Hasta 100 ideas de las últimas 24 horas, priorizadas para humor, memes, animales, famosos, televisión, contenido insólito, redes y entretenimiento. La política queda limitada a casos con un ángulo viral claro.</p>
     </div>
     <div class="updated" id="updated">Cargando actualización…</div>
   </div>
@@ -211,7 +211,7 @@
   <section class="trends-panel" id="googleTrendsPanel" hidden aria-labelledby="googleTrendsTitle">
     <div class="trends-heading">
       <div><div class="trends-kicker">Google Trends España</div><h2 id="googleTrendsTitle">Qué se busca y qué noticia lo explica</h2></div>
-      <p>La noticia mostrada es la principal relacionada por Google o la mejor puntuada en este radar. Google Trends no publica visitas de cada artículo.</p>
+      <p>Solo se enlaza una noticia cuando su fecha ha podido verificarse dentro de las últimas 24 horas. Google Trends no publica visitas de cada artículo.</p>
     </div>
     <div class="trend-news-list" id="googleTrendNews"></div>
   </section>
@@ -219,10 +219,17 @@
   <div class="toolbar">
     <div class="filters" id="filters" aria-label="Filtros">
       <button class="filter active" data-filter="all">Todo</button>
+      <button class="filter" data-filter="trending">#Trending</button>
       <button class="filter" data-filter="high">Potencial alto</button>
+      <button class="filter" data-filter="humor">Humor / Memes</button>
+      <button class="filter" data-filter="animales">Animales</button>
+      <button class="filter" data-filter="famosos">Famosos / TV</button>
+      <button class="filter" data-filter="insolito">Insólito</button>
+      <button class="filter" data-filter="redes">Redes</button>
+      <button class="filter" data-filter="tecnologia">Tecnología / IA</button>
+      <button class="filter" data-filter="deportes">Deportes</button>
+      <button class="filter" data-filter="lifestyle">Lifestyle</button>
       <button class="filter" data-filter="editorial">Medios virales</button>
-      <button class="filter" data-filter="tiktok">TikTok</button>
-      <button class="filter" data-filter="curiosidades">Curiosidades</button>
       <button class="filter" data-filter="social">Social</button>
       <button class="filter" data-filter="visual">Vídeo / imagen</button>
       <button class="filter" data-filter="cross">Multiplataforma</button>
@@ -239,7 +246,7 @@
   <div class="notice" id="notice">El score es una ayuda editorial: no garantiza likes. Comprueba contexto, derechos, autoría, privacidad y seguridad de marca antes de republicar contenido de terceros.</div>
 </main>
 
-<footer><div class="shell">Actualización automática cada ~45 minutos · Las métricas pertenecen a sus plataformas de origen y pueden cambiar · El panel enlaza a la publicación original.</div></footer>
+<footer><div class="shell">Actualización automática cada ~45 minutos · Solo últimas 24 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
 
 <script>
 let allStories = [];
@@ -274,12 +281,28 @@ function relativeAge(value){
   const days = Math.floor(hours / 24);
   return `Hace ${days} d`;
 }
+const tagLabels = {
+  trending:'Trending', viral:'Viral', humor:'Humor', memes:'Memes', animales:'Animales',
+  famosos:'Famosos', television:'TV', reality:'Reality', insolito:'Insólito', redes:'Redes',
+  tecnologia:'Tecnología', videojuegos:'Gaming', deportes:'Deportes', comida:'Comida',
+  viajes:'Viajes', historias:'Historias', nostalgia:'Nostalgia', lifestyle:'Lifestyle',
+  tiktok:'TikTok', curiosidades:'Curiosidades'
+};
+function storyTags(story){return new Set(story.topic_tags || [])}
 function visibleFor(story, filter){
   const platforms = story.platforms || [];
+  const tags = storyTags(story);
   if(filter === 'high') return Number(story.viral_score ?? story.score) >= 65;
+  if(filter === 'trending') return tags.has('trending');
+  if(filter === 'humor') return tags.has('humor') || tags.has('memes');
+  if(filter === 'animales') return tags.has('animales');
+  if(filter === 'famosos') return tags.has('famosos') || tags.has('television') || tags.has('reality');
+  if(filter === 'insolito') return tags.has('insolito') || tags.has('curiosidades');
+  if(filter === 'redes') return tags.has('redes') || tags.has('tiktok');
+  if(filter === 'tecnologia') return tags.has('tecnologia') || tags.has('videojuegos');
+  if(filter === 'deportes') return tags.has('deportes');
+  if(filter === 'lifestyle') return ['lifestyle','comida','viajes','historias','nostalgia'].some(tag => tags.has(tag));
   if(filter === 'editorial') return Boolean(story.curated_editorial);
-  if(filter === 'tiktok') return platforms.includes('tiktok') || (story.topic_tags || []).includes('tiktok');
-  if(filter === 'curiosidades') return (story.topic_tags || []).includes('curiosidades');
   if(filter === 'social') return platforms.some(p => p !== 'news');
   if(filter === 'visual') return ['video','image'].includes(story.media_type);
   if(filter === 'cross') return platforms.length >= 2;
@@ -293,7 +316,8 @@ function storyCard(story, index){
   const trendBadge = trend ? `<span class="badge hot">En tendencia</span>` : '';
   const editorialBadge = story.curated_editorial ? `<span class="badge hot">Medio viral</span>` : '';
   const imageBadge = story.image_verified ? `<span class="badge image" title="${escapeHtml(story.image_origin || 'imagen asociada')}">Imagen verificada</span>` : '';
-  const topicBadges = (story.topic_tags || []).filter(tag => ['tiktok','curiosidades'].includes(tag)).map(tag => `<span class="badge topic">#${escapeHtml(tag === 'tiktok' ? 'TikTok' : 'Curiosidades')}</span>`).join('');
+  const badgeOrder = ['trending','humor','memes','animales','insolito','famosos','television','reality','redes','tecnologia','videojuegos','deportes','comida','viajes','historias','nostalgia','lifestyle','tiktok','curiosidades'];
+  const topicBadges = badgeOrder.filter(tag => (story.topic_tags || []).includes(tag)).slice(0,4).map(tag => `<span class="badge topic">#${escapeHtml(tagLabels[tag] || tag)}</span>`).join('');
   const crossBadge = (story.platforms || []).length >= 2 ? `<span class="badge cross">${story.platforms.length} plataformas</span>` : '';
   const signals = (story.signals || []).slice(0,3).map(s => `<li>${escapeHtml(s)}</li>`).join('');
   const thumbnail = safeUrl(story.thumbnail);
@@ -304,7 +328,7 @@ function storyCard(story, index){
   const sourceText = sources.length ? sources.slice(0,3).join(' · ') : 'Fuente original';
   const age = relativeAge(story.published_at);
   const rank = index + 1;
-  const openLabel = story.main_platform === 'tiktok' ? 'Ver TikTok ↗' : (story.media_type === 'video' ? 'Ver vídeo ↗' : 'Abrir noticia ↗');
+  const openLabel = story.media_type === 'video' ? 'Ver vídeo ↗' : 'Abrir noticia ↗';
   return `<article class="story" data-score="${score}" data-rank="${rank}">
     <div class="rank-rail" aria-label="Número ${rank}"><span class="rank-number"><span class="rank-hash">#</span>${String(rank).padStart(2,'0')}</span></div>
     ${visual}
@@ -393,7 +417,7 @@ async function load(){
 
     const googleDetails = data.trend_details?.google || [];
     const google = googleDetails.slice(0,12).map(t => {
-      const target = t.top_news?.url || t.trend_url;
+      const target = t.trend_url;
       return `<a href="${escapeHtml(safeUrl(target))}" target="_blank" rel="noopener noreferrer">▲ ${escapeHtml(t.name)}</a>`;
     });
     const x = (data.trends_x || []).slice(0,8).map(t => `<span class="x">X · ${escapeHtml(t)}</span>`);
