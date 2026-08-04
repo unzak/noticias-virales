@@ -110,21 +110,6 @@ MEDIA_TOPIC_GROUPS = (
             "vozpopuli.com", "infolibre.es", "libertaddigital.com",
         ),
     ),
-    (
-        "deportes y entretenimiento",
-        (
-            "marca.com", "as.com", "mundodeportivo.com", "sport.es",
-            "hola.com", "lecturas.com", "diezminutos.es", "semana.es",
-        ),
-    ),
-    (
-        "prensa regional",
-        (
-            "elperiodico.com", "heraldo.es", "levante-emv.com",
-            "lasprovincias.es", "ideal.es", "diariodesevilla.es",
-            "farodevigo.es",
-        ),
-    ),
 )
 
 
@@ -133,26 +118,14 @@ def build_topic_sources() -> tuple[tuple[Any, ...], ...]:
     for group_name, domains in MEDIA_TOPIC_GROUPS:
         sources.append(
             (
-                f"TikTok · {group_name}",
+                f"Virales y curiosidades · {group_name}",
                 google_news_sites_query(
                     domains,
-                    'TikTok OR tiktoker OR "vídeo de TikTok" OR "video de TikTok"',
+                    'curiosidades OR curioso OR curiosa OR insólito OR insolito OR sorprendente OR surrealista OR viral OR reacción OR "arrasa en redes" OR "historia viral"',
                 ),
-                9.0,
-                "TikTok",
-                ("tiktok",),
-            )
-        )
-        sources.append(
-            (
-                f"Curiosidades · {group_name}",
-                google_news_sites_query(
-                    domains,
-                    'curiosidades OR curioso OR curiosa OR insólito OR insolito OR sorprendente',
-                ),
-                8.0,
-                "Curiosidades",
-                ("curiosidades",),
+                8.5,
+                "Virales y curiosidades",
+                ("viral", "redes", "curiosidades"),
             )
         )
     return tuple(sources)
@@ -185,24 +158,6 @@ NEWS_SOURCES = (
         ("viral", "curiosidades"),
     ),
     (
-        "20minutos · Virales",
-        google_news_search_url(focused_news_query(
-            'site:20minutos.es (viral OR memes OR TikTok OR Instagram OR curioso OR insolito)'
-        )),
-        9.0,
-        "Virales, redes y Gonzoo",
-        ("viral", "redes"),
-    ),
-    (
-        "El HuffPost · Virales",
-        google_news_search_url(focused_news_query(
-            'site:huffingtonpost.es/virales (viral OR humor OR curioso OR redes)'
-        )),
-        10.0,
-        "Virales",
-        ("viral",),
-    ),
-    (
         "AS · Tikitakas Viral",
         google_news_search_url(focused_news_query(
             'site:as.com/tikitakas (viral OR TikTok OR Instagram OR famosos OR television)'
@@ -210,33 +165,6 @@ NEWS_SOURCES = (
         9.0,
         "Tikitakas Virales",
         ("viral", "famosos"),
-    ),
-    (
-        "Telecinco · Curioso y virales",
-        google_news_search_url(focused_news_query(
-            'site:telecinco.es ("noticias virales" OR curioso OR viral OR reality OR famosos)'
-        )),
-        8.0,
-        "Curioso y noticias virales",
-        ("viral", "curiosidades", "television"),
-    ),
-    (
-        "Público · Tremending",
-        google_news_search_url(focused_news_query(
-            'site:publico.es/tremending (viral OR redes OR humor OR memes)'
-        )),
-        8.0,
-        "Tremending",
-        ("viral", "redes"),
-    ),
-    (
-        "LOS40 · Virales",
-        google_news_search_url(focused_news_query(
-            'site:los40.com (viral OR meme OR TikTok OR famosos OR television OR musica)'
-        )),
-        8.0,
-        "Virales y entretenimiento",
-        ("viral", "famosos", "redes"),
     ),
     *build_topic_sources(),
     (
@@ -296,7 +224,7 @@ NEWS_SOURCES = (
     (
         "Google News · deporte viral",
         google_news_search_url(focused_news_query(
-            '"momento viral" deporte OR celebración OR aficionado OR golazo OR reacción OR gesto deportivo'
+            'futbolista OR aficionado OR celebración OR golazo OR vestuario OR grada OR "gesto deportivo" OR "se hace viral" deporte'
         )),
         6.0,
         "Deporte viral",
@@ -363,6 +291,51 @@ DIRECT_SECTION_SOURCES = (
         ("viral", "curiosidades"),
     ),
     (
+        "20minutos · Virales y Gonzoo",
+        "20minutos",
+        "https://www.20minutos.es/gonzoo/",
+        google_news_search_url('site:20minutos.es (viral OR TikTok OR curioso OR insólito OR "redes sociales") when:1d'),
+        9.0,
+        "Virales, redes y Gonzoo",
+        ("viral", "redes"),
+    ),
+    (
+        "El HuffPost · Virales",
+        "El HuffPost",
+        "https://www.huffingtonpost.es/virales",
+        google_news_search_url('site:huffingtonpost.es/virales when:1d'),
+        10.0,
+        "Virales",
+        ("viral",),
+    ),
+    (
+        "Telecinco · Curioso y virales",
+        "Telecinco",
+        "https://www.telecinco.es/noticias/curioso/",
+        google_news_search_url('site:telecinco.es (curioso OR viral OR reality OR famosos OR memes) when:1d'),
+        8.0,
+        "Curioso y noticias virales",
+        ("viral", "curiosidades", "television"),
+    ),
+    (
+        "Público · Tremending",
+        "Público",
+        "https://www.publico.es/tremending",
+        google_news_search_url('site:publico.es/tremending when:1d'),
+        8.0,
+        "Tremending",
+        ("viral", "redes", "humor", "memes"),
+    ),
+    (
+        "LOS40 · Entretenimiento viral",
+        "LOS40",
+        "https://los40.com/",
+        google_news_search_url('site:los40.com (viral OR TikTok OR famosos OR música OR television) when:1d'),
+        8.0,
+        "Virales, música y entretenimiento",
+        ("viral", "famosos", "redes"),
+    ),
+    (
         "EL ESPAÑOL · Offbeat",
         "EL ESPAÑOL",
         "https://www.elespanol.com/offbeat/",
@@ -402,7 +375,7 @@ BLUESKY_SEARCH_URLS = (
 X_TRENDS_URL = "https://api.x.com/2/trends/by/woeid/23424950"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
-DEFAULT_MASTODON_INSTANCES = ("https://masto.es", "https://mastodon.social")
+DEFAULT_MASTODON_INSTANCES = ("https://masto.es",)
 DEFAULT_REDDIT_ES = (
     "spain",
     "Espana",
@@ -1945,9 +1918,13 @@ def filter_recent_entries(
     missing = 0
     old = 0
     future = 0
+    non_spanish = 0
     cutoff = now - dt.timedelta(hours=CONTENT_MAX_AGE_HOURS)
     future_limit = now + dt.timedelta(minutes=FUTURE_CLOCK_SKEW_MINUTES)
     for entry in entries:
+        if is_probably_english(entry.title):
+            non_spanish += 1
+            continue
         published_at = entry.published_at
         if published_at is None:
             missing += 1
@@ -1963,10 +1940,12 @@ def filter_recent_entries(
     print(
         f"[ok] Ventana de 24 h: {len(recent)}/{len(entries)} contenidos válidos · "
         f"{old} antiguos · {missing} sin fecha · {future} con fecha futura"
+        f" · {non_spanish} en inglés"
     )
     return recent, {
         "accepted": len(recent), "total": len(entries), "old": old,
         "missing_date": missing, "future_date": future,
+        "rejected_english": non_spanish,
     }
 
 
@@ -3589,6 +3568,37 @@ def looks_spanish(text: str) -> bool:
         "son", "fue", "han", "se", "su", "sus", "al", "y", "en",
     }
     return sum(token in common for token in tokens) >= 2
+
+
+def is_probably_english(text: str) -> bool:
+    """Rechaza titulares total o parcialmente ingleses con señales claras."""
+    normalized = normalize(text)
+    tokens = normalized.split()
+    if len(tokens) < 2:
+        return False
+    english_common = {
+        "the", "and", "but", "from", "with", "without", "this", "that",
+        "these", "those", "what", "how", "why", "when", "where", "who",
+        "after", "before", "into", "over", "under", "about", "your", "their",
+        "his", "her", "have", "has", "had", "will", "would", "could", "should",
+        "are", "was", "were", "been", "gets", "says", "new", "people", "video",
+        "man", "woman", "ready", "days", "ever", "front", "companions", "react",
+    }
+    spanish_common = {
+        "que", "para", "como", "pero", "porque", "cuando", "donde", "quien",
+        "una", "uno", "unos", "unas", "los", "las", "del", "por", "con",
+        "sin", "sobre", "entre", "desde", "hasta", "esta", "este", "son",
+        "fue", "han", "sus", "al", "muy", "tambien",
+    }
+    english_hits = sum(token in english_common for token in tokens)
+    spanish_hits = sum(token in spanish_common for token in tokens)
+    english_phrases = (
+        "have you ever", "in front of", "ready for", "this is", "what happens",
+        "how to", "the best", "goes viral", "caught on video", "people are",
+    )
+    if any(phrase in normalized for phrase in english_phrases):
+        return True
+    return english_hits >= 2 and english_hits > spanish_hits
 
 
 def likely_spanish_link(title: str, description: str, url: str) -> bool:

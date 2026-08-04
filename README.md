@@ -14,10 +14,13 @@ verificarse dentro de las **últimas 24 horas**.
   televisión, realities, contenido insólito, redes, tecnología e IA,
   videojuegos, deporte viral, comida, viajes, historias positivas y nostalgia.
 - Se añade LOS40 como fuente especializada de entretenimiento y virales.
+- 20minutos, HuffPost, Telecinco, Público Tremending y LOS40 se consultan
+  desde sus secciones directas, con Google News como respaldo.
 - Las consultas de Google News incluyen exclusiones de política, instituciones,
   guerra, tribunales y economía, además del filtro temporal de un día.
 - El clasificador asigna etiquetas editoriales automáticamente a partir del
   titular y de la sección de origen.
+- Los titulares total o parcialmente en inglés se descartan antes del ranking.
 - Las piezas políticas o de sucesos se descartan salvo que tengan un ángulo
   viral inequívoco. Incluso entonces quedan limitadas a un máximo de 3 piezas
   políticas y 5 de sucesos dentro del ranking.
