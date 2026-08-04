@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-<defs><radialGradient id="g" cx="85%" cy="10%" r="80%"><stop offset="0" stop-color="#35204c"/><stop offset="1" stop-color="#101219"/></radialGradient></defs>
-<rect width="1200" height="675" fill="url(#g)"/><circle cx="1040" cy="90" r="210" fill="#bb8cff" opacity=".13"/>
-<rect x="72" y="72" width="94" height="10" rx="5" fill="#bb8cff"/><text x="72" y="135" class="brand">PULSO VIRAL</text>
-<text x="72" y="190" class="tag">#FAMOSOS</text><text x="72" y="250" class="headline">Brahim Díaz, jugador del Real</text><text x="72" y="322" class="headline">Madrid, y Luz Méndez se casan en</text><text x="72" y="394" class="headline">Grecia tras seis años de relación</text>
-<text x="72" y="610" class="footer">Vista editorial generada · abre la noticia para ver el contenido original</text>
-<style>.brand{font:900 30px Arial,sans-serif;fill:#f5f1e8;letter-spacing:5px}.tag{font:800 24px Arial,sans-serif;fill:#bb8cff;letter-spacing:2px}.headline{font:800 50px Arial,sans-serif;fill:#f5f1e8}.footer{font:500 19px Arial,sans-serif;fill:#aaa69d}</style></svg>

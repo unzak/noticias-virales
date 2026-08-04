@@ -50,6 +50,7 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
 MEDIA_DIR = ROOT / "docs" / "media"
 RUNTIME_CONFIG_PATH = ROOT / "docs" / "runtime-config.js"
+PERFORMANCE_PROFILE_PATH = ROOT / "cabronazi_performance_profile.json"
 
 FEEDBACK_TAG_TERMS = {
     "humor": "humor OR broma OR comedia",
@@ -789,6 +790,60 @@ def general_category_for(tags: Iterable[str]) -> str:
         if tag_set & category_tags:
             return category
     return "humor-curiosidades"
+
+
+@lru_cache(maxsize=1)
+def load_performance_profile() -> dict[str, Any]:
+    try:
+        profile = json.loads(PERFORMANCE_PROFILE_PATH.read_text(encoding="utf-8"))
+        return profile if isinstance(profile, dict) else {}
+    except (OSError, ValueError, json.JSONDecodeError):
+        return {}
+
+
+def historical_affinity(
+    title: str,
+    tags: Iterable[str],
+    *,
+    has_visual: bool,
+    politics_related: bool,
+    hard_news_related: bool,
+) -> tuple[int, float, list[str]]:
+    """Compara una noticia con rasgos agregados del rendimiento de Cabronazi."""
+    profile = load_performance_profile()
+    if not profile:
+        return 50, 0.0, []
+    normalized = normalize(title)
+    tokens = [token for token in normalized.split() if len(token) >= 4 and token not in STOPWORDS]
+    title_features = set(tokens)
+    title_features.update(f"{left} {right}" for left, right in zip(tokens, tokens[1:]))
+    feature_weights = profile.get("feature_weights") or {}
+    matches = sorted(
+        ((feature, float(feature_weights.get(feature) or 0.0)) for feature in title_features if feature in feature_weights),
+        key=lambda item: abs(item[1]),
+        reverse=True,
+    )[:4]
+    category = general_category_for(tags)
+    category_weight = float((profile.get("category_weights") or {}).get(category) or 0.0)
+    pattern_matches: list[tuple[str, float]] = []
+    for pattern, terms in (profile.get("pattern_terms") or {}).items():
+        if any(normalize(str(term)) in normalized for term in terms):
+            pattern_matches.append((str(pattern), float((profile.get("pattern_weights") or {}).get(pattern) or 0.0)))
+    visual_bonus = 0.0
+    if has_visual:
+        visual_bonus = max(0.0, min(5.0, (float(profile.get("visual_prior") or 50.0) - 50.0) * 0.3))
+    affinity = 50.0 + category_weight * 0.8 + sum(weight for _, weight in matches) * 0.55
+    affinity += sum(weight for _, weight in pattern_matches) * 0.35 + visual_bonus
+    affinity_score = int(round(max(0.0, min(100.0, affinity))))
+    adjustment = max(-7.0, min(7.0, (affinity_score - 50) * 0.14))
+    # El histórico no puede convertir política o sucesos en la prioridad principal.
+    if politics_related or hard_news_related:
+        adjustment = min(adjustment, 2.0)
+    reasons = [feature for feature, weight in matches if weight > 1.0][:2]
+    reasons.extend(pattern for pattern, weight in pattern_matches if weight > 1.0 and pattern not in reasons)
+    if has_visual and visual_bonus >= 2.0:
+        reasons.append("potencial visual")
+    return affinity_score, round(adjustment, 1), reasons[:3]
 
 
 def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
@@ -4424,6 +4479,13 @@ def build_ranked(
         if not profile["specific_tags"] and not profile["trusted_viral_feed"] and social_score < 10 and len(sources) < 2:
             continue
         learned_category = general_category_for(set(profile["tags"]))
+        historical_score, historical_adjustment, historical_reasons = historical_affinity(
+            " ".join(item.title for item in items),
+            profile["tags"],
+            has_visual=any(item.thumbnail or item.image_candidates or item.media_type in {"image", "video"} for item in items),
+            politics_related=bool(profile["politics_hits"]),
+            hard_news_related=bool(profile["hard_news_hits"]),
+        )
         learned_adjustment = (
             max(-8.0, min(8.0, feedback_weights.get(f"category:{learned_category}", 0.0) * 2.0))
             + max(
@@ -4442,6 +4504,7 @@ def build_ranked(
             + recency_points(items, now)
             + fit_score
             + learned_adjustment
+            + historical_adjustment
         )
         # Curva de saturación: evita que muchos candidatos distintos acaben
         # empatados artificialmente en 100.
@@ -4514,6 +4577,9 @@ def build_ranked(
                 "viral_score": viral_score,
                 "raw_score": round(raw_score, 1),
                 "learned_adjustment": round(learned_adjustment, 1),
+                "cabronazi_affinity": historical_score,
+                "cabronazi_historical_adjustment": historical_adjustment,
+                "cabronazi_match_reasons": historical_reasons,
                 "sources": sources,
                 "source_count": len(sources),
                 "platforms": platforms,
@@ -4767,6 +4833,14 @@ def build() -> dict[str, Any]:
         f"{editorial_summary['hard_news']} sucesos · "
         + ", ".join(f"#{tag} {count}" for tag, count in editorial_summary["top_tags"][:5])
     )
+    performance_profile = load_performance_profile()
+    affinity_values = [int(story.get("cabronazi_affinity") or 50) for story in ranked]
+    print(
+        "[ok] Match Cabronazi: "
+        f"media {round(sum(affinity_values) / max(1, len(affinity_values)))} · "
+        f"{sum(value >= 65 for value in affinity_values)} afinidades altas · "
+        f"perfil de {int(performance_profile.get('posts_with_text') or 0)} posts con texto"
+    )
     google_trend_news = build_google_trend_news(google_trends, ranked, entries)
     active_sources = sum(1 for status in source_status if status.get("ok") is True)
     configured_sources = sum(1 for status in source_status if status.get("ok") is not None)
@@ -4794,6 +4868,13 @@ def build() -> dict[str, Any]:
         "editorial_summary": editorial_summary,
         "tag_distribution": tag_distribution,
         "feedback_summary": feedback_summary,
+        "performance_profile_summary": {
+            "enabled": bool(performance_profile),
+            "period": performance_profile.get("period"),
+            "posts": int(performance_profile.get("posts") or 0),
+            "posts_with_text": int(performance_profile.get("posts_with_text") or 0),
+            "kpi_weights": performance_profile.get("kpi_weights") or {},
+        },
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
             "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 24 horas. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "

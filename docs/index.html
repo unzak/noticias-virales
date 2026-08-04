@@ -131,6 +131,7 @@
   .badge.platform{color:var(--blue);border-color:rgba(117,167,255,.4)}
   .badge.image{color:var(--mint);border-color:rgba(98,214,191,.42);background:rgba(98,214,191,.06)}
   .badge.topic{color:var(--purple);border-color:rgba(187,140,255,.48);background:rgba(187,140,255,.07)}
+  .badge.affinity{color:#ffd166;border-color:rgba(255,209,102,.52);background:rgba(255,209,102,.08)}
   .signals{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px;color:var(--muted);font-size:.73rem;line-height:1.3}
   .signals li{padding:5px 8px;border-radius:8px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}
   .signals li::before{content:"↗";color:var(--mint);margin-right:6px;font-weight:900}
@@ -430,6 +431,8 @@ function storyCard(story, index){
   const score = learnedScore(story);
   const id = storyId(story);
   const currentVote = Number(learningState.votes[id] || 0);
+  const affinity = Math.max(0,Math.min(100,Number(story.cabronazi_affinity ?? 50)));
+  const affinityReasons = (story.cabronazi_match_reasons || []).join(' · ');
   const platforms = story.platform_labels || story.platforms || [];
   const platformBadges = platforms.slice(0,4).map(p => `<span class="badge platform">${escapeHtml(p)}</span>`).join('');
   const trend = story.matched_google_trend || story.matched_x_trend;
@@ -440,6 +443,7 @@ function storyCard(story, index){
     : story.image_fallback ? `<span class="badge image">Vista generada</span>` : '';
   const category = generalCategoryFor(story);
   const topicBadges = `<span class="badge topic">#${escapeHtml(generalCategoryLabels[category])}</span>`;
+  const affinityBadge = affinity >= 65 ? `<span class="badge affinity" title="${escapeHtml(affinityReasons || 'Patrones del histórico de Cabronazi')}">Afinidad Cabronazi ${affinity}</span>` : '';
   const crossBadge = (story.platforms || []).length >= 2 ? `<span class="badge cross">${story.platforms.length} plataformas</span>` : '';
   const signals = (story.signals || []).slice(0,3).map(s => `<li>${escapeHtml(s)}</li>`).join('');
   const thumbnail = safeUrl(story.thumbnail);
@@ -457,13 +461,13 @@ function storyCard(story, index){
     <div class="content">
       <div class="eyebrow"><span class="fresh">● ${escapeHtml(age)}</span><span>${escapeHtml(mediaLabel(story.media_type))}</span></div>
       <h2><a href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(story.title)}</a></h2>
-      <div class="badges">${trendBadge}${editorialBadge}${topicBadges}${imageBadge}${crossBadge}${platformBadges}</div>
+      <div class="badges">${trendBadge}${editorialBadge}${affinityBadge}${topicBadges}${imageBadge}${crossBadge}${platformBadges}</div>
       ${signals ? `<ul class="signals">${signals}</ul>` : ''}
       <div class="source-row"><span class="source-name" title="${escapeHtml(sources.join(' · '))}">Fuente: <strong>${escapeHtml(sourceText)}</strong></span></div>
     </div>
     <aside class="score-panel" aria-label="Prioridad personalizada ${score} sobre 100">
       <div><div class="score-value">${score}</div><div class="score-caption">${Object.keys(learningState.votes).length ? 'prioridad aprendida' : 'potencial viral'}</div></div>
-      <div><div class="potential">${escapeHtml(potentialLabel(score))} · base ${baseScore}</div><div class="meter"><div style="width:${score}%"></div></div></div>
+      <div><div class="potential">${escapeHtml(potentialLabel(score))} · afinidad ${affinity} · base ${baseScore}</div><div class="meter"><div style="width:${score}%"></div></div></div>
       <div class="feedback-controls" aria-label="Valorar utilidad editorial">
         <button class="vote-button positive${currentVote === 1 ? ' active' : ''}" type="button" data-vote="1" data-story-id="${id}" aria-pressed="${currentVote === 1}">+ Positivo</button>
         <button class="vote-button negative${currentVote === -1 ? ' active' : ''}" type="button" data-vote="-1" data-story-id="${id}" aria-pressed="${currentVote === -1}">− Negativo</button>

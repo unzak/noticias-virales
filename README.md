@@ -35,6 +35,8 @@ verificarse dentro de las **últimas 24 horas**.
 - Cada noticia admite un voto positivo o negativo. El navegador aprende pesos
   por categoría, fuente y etiquetas internas y reordena el panel sin alterar
   el score editorial original.
+- El ranking compara cada titular con un perfil agregado de 834 publicaciones
+  reales de Cabronazi y muestra la `Afinidad Cabronazi` de cada coincidencia.
 
 ## Fuentes sin claves
 
@@ -91,6 +93,26 @@ Para activarlo:
 3. Añade `SUPABASE_SERVICE_ROLE_KEY` como secreto de GitHub Actions.
 
 Sin esas variables se conserva automáticamente el aprendizaje local anterior.
+
+## Rendimiento histórico de Cabronazi
+
+`cabronazi_performance_profile.json` resume el informe de Meta del 1 de julio al
+3 de agosto de 2026 sin incluir el CSV original, identificadores ni métricas por
+publicación. El perfil se construye con 834 posts —560 con texto analizable— y
+usa este score: 40% compartidos sobre alcance, 25% interacción sobre alcance,
+15% alcance, 10% clics sobre alcance y 10% comentarios sobre alcance. El
+feedback negativo aplica una penalización adicional.
+
+El generador compara los titulares nuevos con categorías, patrones narrativos y
+términos del histórico. La coincidencia modifica el ranking un máximo de siete
+puntos y queda limitada a dos puntos positivos para política o sucesos. Por
+tanto, nunca puede saltarse los filtros editoriales, temporales o de diversidad.
+
+Para actualizar el perfil con una exportación posterior:
+
+```bash
+python tools/build_cabronazi_profile.py ruta/al/informe.csv
+```
 
 ## Selección editorial
 
@@ -154,6 +176,8 @@ Abre `http://localhost:8000`.
 ## Archivos
 
 - `fetch_news.py`: consulta, verifica fechas, clasifica, filtra, agrupa y puntúa.
+- `tools/build_cabronazi_profile.py`: genera el perfil agregado desde Meta.
+- `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
 - `docs/media/`: imágenes verificadas.
