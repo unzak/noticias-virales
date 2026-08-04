@@ -21,6 +21,8 @@ verificarse dentro de las **últimas 24 horas**.
 - El clasificador asigna etiquetas editoriales automáticamente a partir del
   titular y de la sección de origen.
 - Los titulares total o parcialmente en inglés se descartan antes del ranking.
+- La interfaz permite limitar el panel a la última hora, las últimas 4 horas
+  o las últimas 24 horas, sin relajar la ventana máxima de verificación.
 - Las piezas políticas o de sucesos se descartan salvo que tengan un ángulo
   viral inequívoco. Incluso entonces quedan limitadas a un máximo de 3 piezas
   políticas y 5 de sucesos dentro del ranking.
@@ -39,7 +41,8 @@ verificarse dentro de las **últimas 24 horas**.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
-- Bluesky y tendencias públicas de Mastodon.
+- Búsquedas públicas de Bluesky. Mastodon está desactivado por configuración
+  editorial y no realiza peticiones.
 
 ## Fuentes opcionales
 
@@ -77,7 +80,9 @@ Antes de agrupar y puntuar, el generador:
 Las imágenes se verifican y almacenan en `docs/media/`. Para Menéame se abre
 siempre el artículo original y se extrae la imagen del destino, evitando la
 miniatura de Menéame. Se descartan logos, avatares, placeholders, imágenes
-pequeñas y candidatos genéricos.
+pequeñas y candidatos genéricos. Cuando no existe una imagen editorial fiable,
+se genera una tarjeta visual local con el titular y la categoría; se identifica
+como vista generada y no como imagen verificada.
 
 ## Instalar esta versión
 

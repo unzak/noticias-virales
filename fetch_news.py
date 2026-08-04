@@ -1647,6 +1647,56 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
     return updated, selected["origin"]
 
 
+def generated_story_image(story: dict[str, Any]) -> str:
+    """Crea una tarjeta visual local cuando no existe una foto editorial fiable."""
+    title = compact_text(str(story.get("title") or "Pulso Viral"), 150)
+    words = title.split()
+    lines: list[str] = []
+    current: list[str] = []
+    for word in words:
+        candidate = " ".join([*current, word])
+        if current and len(candidate) > 34:
+            lines.append(" ".join(current))
+            current = [word]
+        else:
+            current.append(word)
+        if len(lines) >= 3:
+            break
+    if current and len(lines) < 4:
+        lines.append(" ".join(current))
+    if len(lines) == 4 and len(" ".join(words)) > len(" ".join(lines)):
+        lines[-1] = compact_text(lines[-1], 31).rstrip(".") + "…"
+
+    primary_tag = str(story.get("primary_tag") or "viral")
+    palette = {
+        "humor": ("#ff5b2e", "#4b1720"), "memes": ("#ffd15c", "#4a3512"),
+        "animales": ("#62d6bf", "#123c37"), "famosos": ("#bb8cff", "#35204c"),
+        "television": ("#75a7ff", "#182d55"), "insolito": ("#ff7f7f", "#4c1c2a"),
+        "redes": ("#75a7ff", "#182d55"), "tecnologia": ("#62d6bf", "#123c37"),
+        "deportes": ("#ffd15c", "#3d3513"), "lifestyle": ("#bb8cff", "#35204c"),
+    }
+    accent, glow = palette.get(primary_tag, ("#ff5b2e", "#4b1720"))
+    escaped_lines = [html.escape(line) for line in lines]
+    text_nodes = "".join(
+        f'<text x="72" y="{250 + index * 72}" class="headline">{line}</text>'
+        for index, line in enumerate(escaped_lines)
+    )
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+<defs><radialGradient id="g" cx="85%" cy="10%" r="80%"><stop offset="0" stop-color="{glow}"/><stop offset="1" stop-color="#101219"/></radialGradient></defs>
+<rect width="1200" height="675" fill="url(#g)"/><circle cx="1040" cy="90" r="210" fill="{accent}" opacity=".13"/>
+<rect x="72" y="72" width="94" height="10" rx="5" fill="{accent}"/><text x="72" y="135" class="brand">PULSO VIRAL</text>
+<text x="72" y="190" class="tag">#{html.escape(primary_tag.upper())}</text>{text_nodes}
+<text x="72" y="610" class="footer">Vista editorial generada · abre la noticia para ver el contenido original</text>
+<style>.brand{{font:900 30px Arial,sans-serif;fill:#f5f1e8;letter-spacing:5px}}.tag{{font:800 24px Arial,sans-serif;fill:{accent};letter-spacing:2px}}.headline{{font:800 50px Arial,sans-serif;fill:#f5f1e8}}.footer{{font:500 19px Arial,sans-serif;fill:#aaa69d}}</style></svg>'''
+    payload = svg.encode("utf-8")
+    digest = hashlib.sha256(payload).hexdigest()[:24]
+    filename = f"generated-{digest}.svg"
+    destination = MEDIA_DIR / filename
+    if not destination.exists():
+        destination.write_bytes(payload)
+    return f"media/{filename}"
+
+
 def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     MEDIA_DIR.mkdir(parents=True, exist_ok=True)
     for child in MEDIA_DIR.iterdir():
@@ -1686,10 +1736,25 @@ def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, 
         output[index] = updated
 
     final = [item for item in output if item is not None]
+    generated_count = 0
+    for item in final:
+        if item.get("thumbnail"):
+            item["image_fallback"] = False
+            continue
+        item["thumbnail"] = generated_story_image(item)
+        item["image_origin"] = "generated:editorial-placeholder"
+        item["image_alt"] = item.get("title") or "Vista editorial generada"
+        item["image_fallback"] = True
+        generated_count += 1
     verified_count = sum(1 for item in final if item.get("image_verified"))
-    print(f"[ok] Previsualizaciones: {verified_count}/{len(final)} verificadas y almacenadas localmente")
+    print(
+        f"[ok] Previsualizaciones: {verified_count}/{len(final)} verificadas · "
+        f"{generated_count} vistas editoriales generadas"
+    )
     return final, {
         "verified": verified_count,
+        "generated": generated_count,
+        "with_visual": sum(1 for item in final if item.get("thumbnail")),
         "total": len(final),
         "cached_files": len(list(MEDIA_DIR.glob("*"))),
         "origins": origins,
@@ -4374,9 +4439,14 @@ def build() -> dict[str, Any]:
     warnings.extend(bluesky_warnings)
     source_status.append(bluesky_status)
 
-    mastodon_entries, mastodon_warnings, mastodon_status = fetch_mastodon_entries()
-    warnings.extend(mastodon_warnings)
-    source_status.extend(mastodon_status)
+    # Mastodon queda desactivado: no se realiza ninguna petición a instancias.
+    mastodon_entries: list[StoryEntry] = []
+    source_status.append({
+        "name": "Mastodon",
+        "ok": None,
+        "items": 0,
+        "note": "Desactivado por configuración editorial",
+    })
 
     youtube_entries, youtube_warnings, youtube_status = fetch_youtube_entries()
     warnings.extend(youtube_warnings)
