@@ -1,7 +1,7 @@
 # Pulso Viral v3.0.1 — enfoque entretenimiento y contenido compartible
 
 Panel estático para detectar contenidos con potencial editorial viral en España.
-Publica hasta 300 resultados y exige que la fecha de publicación pueda
+Publica hasta 150 resultados y exige que la fecha de publicación pueda
 verificarse dentro de las **últimas 24 horas**.
 
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
@@ -104,9 +104,12 @@ usa este score: 40% compartidos sobre alcance, 25% interacción sobre alcance,
 feedback negativo aplica una penalización adicional.
 
 El generador compara los titulares nuevos con categorías, patrones narrativos y
-términos del histórico. La coincidencia modifica el ranking un máximo de siete
-puntos y queda limitada a dos puntos positivos para política o sucesos. Por
-tanto, nunca puede saltarse los filtros editoriales, temporales o de diversidad.
+expresiones del histórico. Para evitar falsos positivos, un nombre propio o un
+lugar aislado no eleva el ranking: la coincidencia debe estar respaldada por una
+categoría editorial y otro patrón, o por dos expresiones históricas. La afinidad
+modifica el ranking un máximo de siete puntos y no aporta puntos positivos a
+política o sucesos. Por tanto, nunca puede saltarse los filtros editoriales,
+temporales o de diversidad.
 
 Para actualizar el perfil con una exportación posterior:
 

@@ -446,9 +446,9 @@ FUTURE_CLOCK_SKEW_MINUTES = 20
 PUBLICATION_DATE_ENRICH_LIMIT = 160
 PUBLICATION_DATE_WORKERS = 10
 PUBLICATION_DATE_HTML_MAX_BYTES = 900_000
-MAX_STORIES = 300
+MAX_STORIES = 150
 MAX_NEWS_ITEMS_PER_SOURCE = 35
-IMAGE_ENRICH_LIMIT = 300
+IMAGE_ENRICH_LIMIT = MAX_STORIES
 IMAGE_PAGE_CONTEXT_LIMIT = 3
 IMAGE_CANDIDATE_LIMIT = 5
 IMAGE_WORKERS = 10
@@ -497,17 +497,26 @@ POLITICS_TERMS = (
     "partido politico", "diputado", "diputada", "parlamento",
     "moncloa", "coalicion", "oposicion", "mocion", "decreto ley",
     "sanchez", "abascal", "feijoo", "podemos", "vox", "psoe", "pp ",
+    "ultras", "saludo nazi", "embajada", "eurodiputado", "concejal",
+    "alcalde", "alcaldesa", "voto de la mujer",
 )
 HARD_NEWS_TERMS = (
     "guerra", "ataque", "bombardeo", "asesinato", "muere", "muerte",
     "fallece", "accidente", "incendio", "violencia", "tribunal",
     "detenido", "detenida", "crisis", "delito", "homicidio",
     "desaparecido", "desaparecida", "herido", "herida", "catastrofe",
+    "feminicida", "violencia de genero", "ictus", "quimioterapia",
 )
 INSTITUTIONAL_TERMS = (
     "boe", "ley", "impuesto", "presupuesto", "economia", "inflacion",
     "paro", "bolsa", "union europea", "ayuntamiento", "comunidad autonoma",
     "juzgado", "audiencia nacional", "tribunal supremo", "fiscalia",
+    "sancion", "multa", "practicas abusivas", "malversacion", "prevaricacion",
+)
+ROUTINE_CONTENT_TERMS = (
+    "horoscopo de hoy", "comprobar sorteo", "resultado del sorteo",
+    "avance del capitulo", "precio oficial y donde comprar",
+    "programacion de television", "programacion tv", "el tiempo para hoy",
 )
 
 CABRONAZI_TAG_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -815,30 +824,53 @@ def historical_affinity(
         return 50, 0.0, []
     normalized = normalize(title)
     tokens = [token for token in normalized.split() if len(token) >= 4 and token not in STOPWORDS]
-    title_features = set(tokens)
-    title_features.update(f"{left} {right}" for left, right in zip(tokens, tokens[1:]))
+    bigrams = {f"{left} {right}" for left, right in zip(tokens, tokens[1:])}
+    # Los nombres propios, lugares y temas coyunturales del CSV sobreajustan con
+    # facilidad. Solo se aceptan unigramas que pertenezcan al vocabulario
+    # editorial; el resto debe coincidir como expresión de dos palabras.
+    editorial_terms = {
+        token
+        for _, phrases in CABRONAZI_TAG_RULES
+        for phrase in phrases
+        for token in normalize(phrase).split()
+        if len(token) >= 4 and token not in STOPWORDS
+    }
+    editorial_terms.update(
+        token
+        for terms in (profile.get("pattern_terms") or {}).values()
+        for term in terms
+        for token in normalize(str(term)).split()
+        if len(token) >= 4 and token not in STOPWORDS
+    )
+    title_features = bigrams | {token for token in tokens if token in editorial_terms}
     feature_weights = profile.get("feature_weights") or {}
     matches = sorted(
         ((feature, float(feature_weights.get(feature) or 0.0)) for feature in title_features if feature in feature_weights),
         key=lambda item: abs(item[1]),
         reverse=True,
     )[:4]
-    category = general_category_for(tags)
-    category_weight = float((profile.get("category_weights") or {}).get(category) or 0.0)
+    tag_set = {str(tag) for tag in tags}
+    category = general_category_for(tag_set)
+    has_editorial_category = bool(tag_set & CABRONAZI_CORE_TAGS)
+    category_weight = float((profile.get("category_weights") or {}).get(category) or 0.0) if has_editorial_category else 0.0
     pattern_matches: list[tuple[str, float]] = []
     for pattern, terms in (profile.get("pattern_terms") or {}).items():
         if any(normalize(str(term)) in normalized for term in terms):
             pattern_matches.append((str(pattern), float((profile.get("pattern_weights") or {}).get(pattern) or 0.0)))
-    visual_bonus = 0.0
-    if has_visual:
-        visual_bonus = max(0.0, min(5.0, (float(profile.get("visual_prior") or 50.0) - 50.0) * 0.3))
-    affinity = 50.0 + category_weight * 0.8 + sum(weight for _, weight in matches) * 0.55
-    affinity += sum(weight for _, weight in pattern_matches) * 0.35 + visual_bonus
+    visual_bonus = 1.5 if has_visual else -2.0
+    affinity = 45.0 + category_weight * 0.9 + sum(weight for _, weight in matches) * 0.5
+    affinity += sum(weight for _, weight in pattern_matches) * 0.4 + visual_bonus
     affinity_score = int(round(max(0.0, min(100.0, affinity))))
-    adjustment = max(-7.0, min(7.0, (affinity_score - 50) * 0.14))
+    adjustment = max(-7.0, min(7.0, (affinity_score - 50) * 0.16))
+    positive_matches = sum(1 for _, weight in matches if weight > 1.0)
+    positive_patterns = sum(1 for _, weight in pattern_matches if weight > 1.0)
+    # Una coincidencia aislada no eleva el ranking: debe estar respaldada por
+    # una categoría editorial y otro patrón, o por dos expresiones históricas.
+    if not ((has_editorial_category and positive_matches + positive_patterns >= 1) or positive_matches >= 2):
+        adjustment = min(adjustment, 0.5)
     # El histórico no puede convertir política o sucesos en la prioridad principal.
     if politics_related or hard_news_related:
-        adjustment = min(adjustment, 2.0)
+        adjustment = min(adjustment, 0.0)
     reasons = [feature for feature, weight in matches if weight > 1.0][:2]
     reasons.extend(pattern for pattern, weight in pattern_matches if weight > 1.0 and pattern not in reasons)
     if has_visual and visual_bonus >= 2.0:
@@ -854,6 +886,7 @@ def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
         for tag in (item.metrics.get("topic_tags") or [])
     ]
     tags = classify_topic_tags(text, configured)
+    explicit_title_tags = classify_topic_tags(text)
     politics_hits = contains_phrase(text, POLITICS_TERMS)
     hard_news_hits = contains_phrase(text, HARD_NEWS_TERMS)
     institutional_hits = contains_phrase(text, INSTITUTIONAL_TERMS)
@@ -869,6 +902,7 @@ def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
     generic_news = all(item.platform == "news" for item in items) and not curated
     return {
         "tags": tags,
+        "explicit_title_tags": explicit_title_tags,
         "specific_tags": specific_tags,
         "politics_hits": politics_hits,
         "hard_news_hits": hard_news_hits,
@@ -4465,11 +4499,17 @@ def build_ranked(
         profile = cluster_editorial_profile(items)
         # La actualidad institucional solo entra cuando existe un ángulo viral
         # inequívoco. Así se evita que el feed general se convierta en portada política.
-        if profile["politics_hits"] and not profile["strong_viral"]:
+        explicit_shareable_angle = profile["explicit_title_tags"] & {
+            "humor", "memes", "animales", "insolito", "redes", "reality",
+            "videojuegos", "historias", "nostalgia",
+        }
+        if profile["politics_hits"] and len(explicit_shareable_angle) < 2:
             continue
-        if profile["hard_news_hits"] and not profile["strong_viral"]:
+        if profile["hard_news_hits"] and len(explicit_shareable_angle) < 2:
             continue
         if profile["institutional_hits"] and not profile["specific_tags"]:
+            continue
+        if contains_phrase(" ".join(item.title for item in items), ROUTINE_CONTENT_TERMS):
             continue
 
         fit_values = [editorial_fit(item) for item in items]
@@ -4477,6 +4517,22 @@ def build_ranked(
         # Una noticia genérica sin señales sociales ni una categoría compartible
         # no merece ocupar espacio aunque sea muy reciente.
         if not profile["specific_tags"] and not profile["trusted_viral_feed"] and social_score < 10 and len(sources) < 2:
+            continue
+        shareable_meneame_tags = profile["specific_tags"] & {
+            "humor", "memes", "animales", "famosos", "corazon", "reality",
+            "insolito", "redes", "videojuegos", "historias", "nostalgia",
+        }
+        if set(platforms) == {"meneame"} and not shareable_meneame_tags:
+            continue
+        if (
+            not profile["strong_viral"]
+            and not profile["trusted_viral_feed"]
+            and len(profile["specific_tags"]) < 2
+            and not google_match
+            and not x_match
+            and len(platforms) < 2
+            and social_score < 18
+        ):
             continue
         learned_category = general_category_for(set(profile["tags"]))
         historical_score, historical_adjustment, historical_reasons = historical_affinity(
@@ -4494,6 +4550,12 @@ def build_ranked(
             )
             + max(-6.0, min(6.0, sum(feedback_weights.get(f"tag:{tag}", 0.0) for tag in profile["tags"])))
         )
+        explicit_priority = profile["explicit_title_tags"] & CABRONAZI_STRONG_TAGS
+        precision_adjustment = min(15.0, len(explicit_priority) * 5.0)
+        if not explicit_priority:
+            precision_adjustment -= 5.0
+        if editorial_feeds:
+            precision_adjustment += 3.0
         raw_score = (
             8.0
             + social_score
@@ -4505,6 +4567,7 @@ def build_ranked(
             + fit_score
             + learned_adjustment
             + historical_adjustment
+            + precision_adjustment
         )
         # Curva de saturación: evita que muchos candidatos distintos acaben
         # empatados artificialmente en 100.
@@ -4577,6 +4640,7 @@ def build_ranked(
                 "viral_score": viral_score,
                 "raw_score": round(raw_score, 1),
                 "learned_adjustment": round(learned_adjustment, 1),
+                "editorial_precision_adjustment": round(precision_adjustment, 1),
                 "cabronazi_affinity": historical_score,
                 "cabronazi_historical_adjustment": historical_adjustment,
                 "cabronazi_match_reasons": historical_reasons,
@@ -4628,11 +4692,11 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         primary = str(story.get("primary_tag") or "viral")
         sources = story.get("sources") or []
         primary_source = str(sources[0] if sources else "Fuente original")
-        if "politica" in tags and politics_count >= 3:
+        if "politica" in tags and politics_count >= 1:
             continue
-        if "sucesos" in tags and hard_news_count >= 5:
+        if "sucesos" in tags and hard_news_count >= 3:
             continue
-        if category_counts.get(primary, 0) >= 24 or source_counts.get(primary_source, 0) >= 10:
+        if category_counts.get(primary, 0) >= 18 or source_counts.get(primary_source, 0) >= 8:
             deferred.append(story)
             continue
         selected.append(story)
@@ -4647,9 +4711,9 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         if len(selected) >= limit:
             break
         tags = set(story.get("topic_tags") or [])
-        if "politica" in tags and politics_count >= 3:
+        if "politica" in tags and politics_count >= 1:
             continue
-        if "sucesos" in tags and hard_news_count >= 5:
+        if "sucesos" in tags and hard_news_count >= 3:
             continue
         selected.append(story)
         politics_count += int("politica" in tags)
