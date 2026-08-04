@@ -2279,7 +2279,13 @@ def fetch_meneame_entries() -> tuple[list[StoryEntry], list[str], list[dict[str,
             title = compact_text(str(raw.get("title", "")).strip(), 220)
             link = valid_http_url(raw.get("link"))
             if link:
-                link = resolve_meneame_destination(link, title)
+                try:
+                    link = resolve_meneame_destination(link, title)
+                except Exception as exc:
+                    warnings.append(
+                        f"No se pudo resolver el destino de Menéame para «{title[:80]}»: "
+                        f"{type(exc).__name__}: {exc}"
+                    )
             if not title or not link or is_blocked_content(title):
                 continue
             published_at = raw.get("published_at")
@@ -2435,7 +2441,15 @@ SECTION_GENERIC_TITLES = {
 }
 
 
-def best_srcset_url(value: str | None) -> str | None:
+def best_srcset_url(value: str | None, base_url: str = "") -> str | None:
+    """Selecciona la variante de mayor resolución de un ``srcset``.
+
+    ``base_url`` es opcional para mantener compatibilidad con los parsers que
+    reciben URLs relativas y con los parsers de metadatos que necesitan una
+    URL absoluta. La definición anterior aceptaba dos argumentos, pero esta
+    segunda definición la sobrescribía en tiempo de ejecución y provocaba el
+    fallo al procesar determinadas páginas de Menéame.
+    """
     if not value:
         return None
     options: list[tuple[float, str]] = []
@@ -2443,7 +2457,8 @@ def best_srcset_url(value: str | None) -> str | None:
         bits = part.strip().split()
         if not bits:
             continue
-        url = bits[0]
+        raw_url = bits[0]
+        url = urllib.parse.urljoin(base_url, raw_url) if base_url else raw_url
         weight = 0.0
         if len(bits) > 1:
             descriptor = bits[-1].lower()
@@ -2457,7 +2472,8 @@ def best_srcset_url(value: str | None) -> str | None:
         options.append((weight, url))
     if not options:
         return None
-    return max(options, key=lambda item: item[0])[1]
+    selected = max(options, key=lambda item: item[0])[1]
+    return public_fetch_url(selected) if base_url else selected
 
 
 class SectionListingParser(HTMLParser):
