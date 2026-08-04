@@ -1,4 +1,4 @@
-# Pulso Viral v3.0 — enfoque entretenimiento y contenido compartible
+# Pulso Viral v3.0.1 — enfoque entretenimiento y contenido compartible
 
 Panel estático para detectar contenidos con potencial editorial viral en España.
 Publica hasta 100 resultados y exige que la fecha de publicación pueda
@@ -111,3 +111,8 @@ Abre `http://localhost:8000`.
 - `docs/data.json`: datos generados.
 - `docs/media/`: imágenes verificadas.
 - `.github/workflows/update.yml`: actualización y despliegue cada ~45 minutos.
+
+
+## Corrección 3.0.1
+
+Corrige una colisión entre dos definiciones de `best_srcset_url` que podía detener el workflow al resolver imágenes o enlaces de Menéame. La resolución de un destino individual de Menéame ahora también queda aislada para que una página inesperada no cancele toda la actualización.

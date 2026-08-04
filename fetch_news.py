@@ -794,14 +794,18 @@ def dedupe_image_candidates(candidates: Iterable[ImageCandidate | None]) -> tupl
     return tuple(sorted(best.values(), key=lambda item: item.base_score, reverse=True))
 
 
-def best_srcset_url(value: str, base_url: str) -> str | None:
+def best_srcset_url(value: str | None, base_url: str = "") -> str | None:
+    """Selecciona la variante de mayor resolución de un ``srcset``."""
+    if not value:
+        return None
     options: list[tuple[float, str]] = []
     for part in value.split(","):
         bits = part.strip().split()
         if not bits:
             continue
-        candidate = urllib.parse.urljoin(base_url, bits[0])
-        weight = 1.0
+        raw_url = bits[0]
+        candidate = urllib.parse.urljoin(base_url, raw_url) if base_url else raw_url
+        weight = 0.0
         if len(bits) > 1:
             descriptor = bits[-1].lower()
             try:
@@ -814,7 +818,8 @@ def best_srcset_url(value: str, base_url: str) -> str | None:
         options.append((weight, candidate))
     if not options:
         return None
-    return public_fetch_url(max(options, key=lambda item: item[0])[1])
+    selected = max(options, key=lambda item: item[0])[1]
+    return public_fetch_url(selected) if base_url else selected
 
 
 class InlineImageParser(HTMLParser):
@@ -1580,13 +1585,18 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
             )
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
             continue
+        if platform == "meneame":
+            final_host = (urllib.parse.urlparse(final_url).hostname or "").lower()
+            if final_host == "meneame.net" or final_host.endswith(".meneame.net"):
+                # Sin un destino externo fiable no se usa ninguna imagen de
+                # la ficha o portada de Menéame.
+                continue
         for candidate in page_candidates:
             if platform == "meneame":
                 image_host = (urllib.parse.urlparse(candidate.url).hostname or "").lower()
-                page_host = (urllib.parse.urlparse(final_url).hostname or "").lower()
                 # Las miniaturas de la portada de Menéame viven en mnmstatic y
                 # pueden no coincidir con la imagen principal del artículo.
-                if image_host.endswith("mnmstatic.net") and not page_host.endswith("meneame.net"):
+                if image_host == "mnmstatic.net" or image_host.endswith(".mnmstatic.net"):
                     continue
             if candidate.page_url is None:
                 candidate = ImageCandidate(
@@ -1893,6 +1903,7 @@ def enrich_missing_publication_dates(
     candidates.sort(
         key=lambda pair: (
             priority.get(pair[1].platform, 9),
+            0 if pair[1].metrics.get("google_trends_item") else 1,
             0 if pair[1].metrics.get("curated_editorial") else 1,
         )
     )
@@ -2439,41 +2450,6 @@ SECTION_GENERIC_TITLES = {
     "ver más", "ver mas", "más información", "mas informacion", "inicio",
     "noticias", "vídeos", "videos", "redes sociales", "publicidad",
 }
-
-
-def best_srcset_url(value: str | None, base_url: str = "") -> str | None:
-    """Selecciona la variante de mayor resolución de un ``srcset``.
-
-    ``base_url`` es opcional para mantener compatibilidad con los parsers que
-    reciben URLs relativas y con los parsers de metadatos que necesitan una
-    URL absoluta. La definición anterior aceptaba dos argumentos, pero esta
-    segunda definición la sobrescribía en tiempo de ejecución y provocaba el
-    fallo al procesar determinadas páginas de Menéame.
-    """
-    if not value:
-        return None
-    options: list[tuple[float, str]] = []
-    for part in value.split(","):
-        bits = part.strip().split()
-        if not bits:
-            continue
-        raw_url = bits[0]
-        url = urllib.parse.urljoin(base_url, raw_url) if base_url else raw_url
-        weight = 0.0
-        if len(bits) > 1:
-            descriptor = bits[-1].lower()
-            try:
-                if descriptor.endswith("w"):
-                    weight = float(descriptor[:-1])
-                elif descriptor.endswith("x"):
-                    weight = float(descriptor[:-1]) * 1000
-            except ValueError:
-                pass
-        options.append((weight, url))
-    if not options:
-        return None
-    selected = max(options, key=lambda item: item[0])[1]
-    return public_fetch_url(selected) if base_url else selected
 
 
 class SectionListingParser(HTMLParser):
@@ -4280,7 +4256,10 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
     return selected
 
 def build_google_trend_news(
-    trends: list[dict[str, Any]], stories: list[dict[str, Any]], limit: int = 12
+    trends: list[dict[str, Any]],
+    stories: list[dict[str, Any]],
+    recent_entries: list[StoryEntry] | None = None,
+    limit: int = 12,
 ) -> list[dict[str, Any]]:
     """Une cada término con la mejor noticia disponible en el radar.
 
@@ -4315,6 +4294,32 @@ def build_google_trend_news(
                 "verified_image": bool(best.get("image_verified")),
                 "selection": "radar",
             }
+        elif recent_entries:
+            # La noticia relacionada puede ser válida dentro de las 24 horas
+            # aunque los filtros editoriales o de diversidad la dejen fuera del
+            # ranking principal. Se conserva como contexto de la tendencia.
+            candidates = [
+                entry
+                for entry in recent_entries
+                if entry.platform == "news"
+                and normalize(entry.seed_trend or "") == normalized
+                and entry.published_at is not None
+            ]
+            if candidates:
+                best_entry = max(
+                    candidates,
+                    key=lambda entry: entry.published_at
+                    or dt.datetime.min.replace(tzinfo=dt.timezone.utc),
+                )
+                article = {
+                    "title": best_entry.title,
+                    "url": best_entry.link,
+                    "source": best_entry.source,
+                    "viral_score": 0,
+                    "thumbnail": None,
+                    "verified_image": False,
+                    "selection": "trend-related-24h",
+                }
 
         cards.append(
             {
@@ -4408,7 +4413,7 @@ def build() -> dict[str, Any]:
         f"{editorial_summary['hard_news']} sucesos · "
         + ", ".join(f"#{tag} {count}" for tag, count in editorial_summary["top_tags"][:5])
     )
-    google_trend_news = build_google_trend_news(google_trends, ranked)
+    google_trend_news = build_google_trend_news(google_trends, ranked, entries)
     active_sources = sum(1 for status in source_status if status.get("ok") is True)
     configured_sources = sum(1 for status in source_status if status.get("ok") is not None)
 
