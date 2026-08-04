@@ -4473,7 +4473,7 @@ def build_google_trend_news(
                 and normalize(entry.seed_trend or "") == normalized
                 and entry.published_at is not None
                 and not is_probably_english(entry.title)
-                and likely_spanish_link(entry.title, entry.description, entry.link)
+                and likely_spanish_link(entry.title, "", entry.link)
             ]
             if candidates:
                 best_entry = max(
