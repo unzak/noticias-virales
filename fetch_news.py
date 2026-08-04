@@ -259,6 +259,17 @@ NEWS_SOURCES = (
         ("insolito", "curiosidades"),
     ),
     (
+        "Google News · sucesos España",
+        google_news_search_url(
+            '(detenido OR detenida OR robo OR estafa OR accidente OR incendio OR desaparecido OR rescate OR delito OR "Guardia Civil") '
+            '(site:20minutos.es OR site:lavanguardia.com OR site:elespanol.com OR site:abc.es OR site:elmundo.es OR site:elconfidencial.com) '
+            'when:1d -política -gobierno -elecciones -guerra -economía'
+        ),
+        1.0,
+        "Sucesos en España",
+        ("sucesos",),
+    ),
+    (
         "Google News · redes y creadores",
         spanish_topic_search(
             'TikTok OR Instagram OR YouTube OR streamer OR influencer OR "arrasa en redes" OR "se hace viral"'
@@ -822,6 +833,7 @@ def classify_topic_tags(text: str, configured: Iterable[str] = ()) -> set[str]:
 
 
 GENERAL_CATEGORY_RULES: tuple[tuple[str, frozenset[str]], ...] = (
+    ("sucesos", frozenset({"sucesos"})),
     ("humor-curiosidades", frozenset({"humor", "memes", "insolito", "curiosidades"})),
     ("famosos-corazon", frozenset({"famosos", "corazon", "television", "reality"})),
     ("redes-tecnologia", frozenset({"redes", "tiktok", "tecnologia", "videojuegos"})),
@@ -4557,17 +4569,18 @@ def build_ranked(
             contains_phrase(feed, ("cribeo", "viral", "virales", "tiramillas", "tikitakas", "corazon", "entretenimiento"))
             for feed in editorial_feeds
         )
+        is_sucesos_feed = "sucesos" in profile["tags"]
         if foreign_without_spanish_angle:
             continue
         if spain_score < 0:
             continue
-        if not explicit_shareable_angle and not entertainment_feed and spain_score < 12:
+        if not explicit_shareable_angle and not entertainment_feed and not is_sucesos_feed and spain_score < 12:
             continue
         if profile["politics_hits"] and len(explicit_shareable_angle) < 2:
             continue
-        if profile["hard_news_hits"] and len(explicit_shareable_angle) < 2:
+        if profile["hard_news_hits"] and not is_sucesos_feed and len(explicit_shareable_angle) < 2:
             continue
-        if profile["institutional_hits"] and not profile["specific_tags"]:
+        if profile["institutional_hits"] and not is_sucesos_feed and not profile["specific_tags"]:
             continue
         if contains_phrase(" ".join(item.title for item in items), ROUTINE_CONTENT_TERMS):
             continue
@@ -4576,7 +4589,7 @@ def build_ranked(
         fit_score = max(fit_values) + max(0.0, sum(max(0.0, value) for value in fit_values) / max(1, len(fit_values)) * 0.25)
         # Una noticia genérica sin señales sociales ni una categoría compartible
         # no merece ocupar espacio aunque sea muy reciente.
-        if not profile["specific_tags"] and not profile["trusted_viral_feed"] and social_score < 10 and len(sources) < 2:
+        if not is_sucesos_feed and not profile["specific_tags"] and not profile["trusted_viral_feed"] and social_score < 10 and len(sources) < 2:
             continue
         shareable_meneame_tags = profile["specific_tags"] & {
             "humor", "memes", "animales", "famosos", "corazon", "reality",
@@ -4585,7 +4598,8 @@ def build_ranked(
         if set(platforms) == {"meneame"} and not shareable_meneame_tags:
             continue
         if (
-            not profile["strong_viral"]
+            not is_sucesos_feed
+            and not profile["strong_viral"]
             and not profile["trusted_viral_feed"]
             and len(profile["specific_tags"]) < 2
             and not google_match
@@ -4759,7 +4773,7 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         primary_source = normalize(str(sources[0] if sources else "Fuente original"))
         if "politica" in tags and politics_count >= 1:
             continue
-        if "sucesos" in tags and hard_news_count >= 3:
+        if "sucesos" in tags and hard_news_count >= 12:
             continue
         if general_category_counts.get(general_category, 0) >= 36:
             continue
@@ -4784,7 +4798,7 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         primary_source = normalize(str(sources[0] if sources else "Fuente original"))
         if "politica" in tags and politics_count >= 1:
             continue
-        if "sucesos" in tags and hard_news_count >= 3:
+        if "sucesos" in tags and hard_news_count >= 12:
             continue
         if general_category_counts.get(general_category, 0) >= 36:
             continue

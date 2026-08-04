@@ -7,8 +7,10 @@ verificarse dentro de las **últimas 24 horas**.
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
 El ranking refuerza además las piezas vinculadas a España y descarta actualidad
 local extranjera sin un ángulo español, aunque el titular esté escrito en español.
-La interfaz permite ordenar por prioridad, tiempo ascendente o tiempo
-descendente sin perder los filtros de periodo y categoría.
+La interfaz clara en rosa permite ordenar por prioridad, tiempo ascendente o
+tiempo descendente sin perder los filtros de periodo y categoría. Google
+Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
+propio en la interfaz.
 
 > El score es una heurística editorial. No predice ni garantiza likes, alcance o ingresos.
 
@@ -31,8 +33,8 @@ descendente sin perder los filtros de periodo y categoría.
 - La interfaz permite limitar el panel a la última hora, las últimas 4 horas
   o las últimas 24 horas, sin relajar la ventana máxima de verificación.
 - Las piezas políticas o de sucesos se descartan salvo que tengan un ángulo
-  viral inequívoco. Incluso entonces quedan limitadas a un máximo de 3 piezas
-  políticas y 5 de sucesos dentro del ranking.
+  viral inequívoco. La nueva consulta de sucesos en España permite hasta 12
+  piezas, siempre separadas en el filtro `Sucesos`; la política continúa residual.
 - Se aplican límites de diversidad para impedir que una sola categoría o un
   único medio monopolicen la lista.
 - La interfaz engloba las etiquetas detalladas en seis categorías: `Humor y
