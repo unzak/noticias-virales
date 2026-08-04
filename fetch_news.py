@@ -49,6 +49,27 @@ import feedparser
 ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
 MEDIA_DIR = ROOT / "docs" / "media"
+RUNTIME_CONFIG_PATH = ROOT / "docs" / "runtime-config.js"
+
+FEEDBACK_TAG_TERMS = {
+    "humor": "humor OR broma OR comedia",
+    "memes": "meme OR memes",
+    "animales": "animales OR mascotas",
+    "famosos": "famosos OR celebridades",
+    "corazon": "romance OR pareja OR boda OR ruptura",
+    "television": "television OR programa OR presentador",
+    "reality": "reality OR concurso",
+    "insolito": "insolito OR sorprendente OR surrealista",
+    "redes": "redes sociales OR influencer OR streamer",
+    "tecnologia": "tecnologia curiosa OR inteligencia artificial",
+    "videojuegos": "videojuegos OR gaming",
+    "deportes": "deporte viral OR celebracion deportiva",
+    "comida": "comida OR receta OR restaurante",
+    "viajes": "viajes OR turismo",
+    "historias": "historia positiva OR gesto emotivo",
+    "nostalgia": "nostalgia OR recuerda",
+    "lifestyle": "estilo de vida OR bienestar",
+}
 
 GOOGLE_NEWS_BASE = "https://news.google.com/rss"
 GOOGLE_NEWS_PARAMS = "hl=es&gl=ES&ceid=ES:es"
@@ -619,6 +640,98 @@ def fetch_json(
 ) -> Any:
     payload = fetch_bytes(url, headers=headers, data=data, method=method)
     return json.loads(payload.decode("utf-8"))
+
+
+def load_feedback_model() -> tuple[dict[str, float], list[str], dict[str, Any]]:
+    """Resume votos compartidos; falla en abierto cuando Supabase no está configurado."""
+    base_url = os.getenv("SUPABASE_URL", "").strip().rstrip("/")
+    service_key = os.getenv("SUPABASE_SERVICE_ROLE_KEY", "").strip()
+    if not base_url or not service_key:
+        return {}, [], {"enabled": False, "events": 0, "votes": 0}
+
+    cutoff = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=90)).isoformat()
+    query = urllib.parse.urlencode({
+        "select": "client_id,story_key,vote,category,source,tags,created_at",
+        "created_at": f"gte.{cutoff}",
+        "order": "created_at.desc",
+        "limit": "5000",
+    })
+    try:
+        events = fetch_json(
+            f"{base_url}/rest/v1/feedback_events?{query}",
+            headers={"apikey": service_key, "Authorization": f"Bearer {service_key}"},
+        )
+        if not isinstance(events, list):
+            raise ValueError("respuesta de feedback no válida")
+    except (OSError, ValueError, json.JSONDecodeError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+        print(f"[aviso] Aprendizaje compartido no disponible: {exc}")
+        return {}, [], {"enabled": True, "events": 0, "votes": 0, "error": str(exc)}
+
+    latest: dict[tuple[str, str], dict[str, Any]] = {}
+    client_counts: dict[str, int] = {}
+    for event in events:
+        client = str(event.get("client_id") or "")[:80]
+        story = str(event.get("story_key") or "")[:500]
+        if not client or not story or (client, story) in latest:
+            continue
+        # Una beta abierta no debe permitir que un navegador monopolice el modelo.
+        if client_counts.get(client, 0) >= 200:
+            continue
+        latest[(client, story)] = event
+        client_counts[client] = client_counts.get(client, 0) + 1
+
+    sums: dict[str, float] = {}
+    counts: dict[str, int] = {}
+    now = dt.datetime.now(dt.timezone.utc)
+    active_votes = 0
+    for event in latest.values():
+        vote = max(-1, min(1, int(event.get("vote") or 0)))
+        if not vote:
+            continue
+        active_votes += 1
+        try:
+            created = dt.datetime.fromisoformat(str(event.get("created_at", "")).replace("Z", "+00:00"))
+            age_days = max(0.0, (now - created).total_seconds() / 86400)
+        except (TypeError, ValueError):
+            age_days = 90.0
+        value = vote * math.exp(-age_days / 45.0)
+        tags = event.get("tags") if isinstance(event.get("tags"), list) else []
+        features = [
+            f"category:{str(event.get('category') or '').strip()}",
+            f"source:{normalize(str(event.get('source') or ''))}",
+            *(f"tag:{normalize(str(tag))}" for tag in tags[:6]),
+        ]
+        for feature in features:
+            if feature.endswith(":"):
+                continue
+            sums[feature] = sums.get(feature, 0.0) + value
+            counts[feature] = counts.get(feature, 0) + 1
+
+    weights = {
+        feature: max(-4.0, min(4.0, total / math.sqrt(max(1, counts[feature]))))
+        for feature, total in sums.items()
+    }
+    learned_tags = [
+        feature.removeprefix("tag:")
+        for feature, weight in sorted(weights.items(), key=lambda item: item[1], reverse=True)
+        if feature.startswith("tag:") and weight >= 0.35 and feature.removeprefix("tag:") in FEEDBACK_TAG_TERMS
+    ][:3]
+    print(f"[ok] Aprendizaje compartido: {len(events)} eventos · {active_votes} votos activos · {len(learned_tags)} búsquedas aprendidas")
+    return weights, learned_tags, {"enabled": True, "events": len(events), "votes": active_votes, "learned_tags": learned_tags}
+
+
+def learned_news_sources(tags: Iterable[str]) -> tuple[tuple[Any, ...], ...]:
+    return tuple(
+        (
+            f"Aprendizaje · {tag}",
+            google_news_search_url(focused_news_query(FEEDBACK_TAG_TERMS[tag])),
+            8.0,
+            "Aprendizaje editorial",
+            (tag, "viral"),
+        )
+        for tag in tags
+        if tag in FEEDBACK_TAG_TERMS
+    )
 
 
 def fetch_feed(url: str) -> Any:
@@ -3018,7 +3131,9 @@ def fetch_direct_section_entries(
             print(f"[ok] {status_name}: {accepted} elementos · {mode}")
     return entries, warnings, statuses
 
-def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
+def fetch_news_entries(
+    extra_sources: Iterable[tuple[Any, ...]] = (),
+) -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
     entries: list[StoryEntry] = []
     warnings: list[str] = []
     statuses: list[dict[str, Any]] = []
@@ -3030,7 +3145,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
     warnings.extend(direct_warnings)
     statuses.extend(direct_statuses)
 
-    for fallback_source, url, editorial_boost, editorial_section, configured_tags in NEWS_SOURCES:
+    for fallback_source, url, editorial_boost, editorial_section, configured_tags in (*NEWS_SOURCES, *extra_sources):
         try:
             feed = fetch_feed(url)
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
@@ -4245,9 +4360,11 @@ def build_ranked(
     entries: list[StoryEntry],
     google_trends: list[dict[str, Any]],
     x_trends: list[dict[str, Any]],
+    feedback_weights: dict[str, float] | None = None,
 ) -> list[dict[str, Any]]:
     now = dt.datetime.now(dt.timezone.utc)
     ranked: list[dict[str, Any]] = []
+    feedback_weights = feedback_weights or {}
 
     for cluster in cluster_entries(entries):
         items: list[StoryEntry] = cluster["items"]
@@ -4306,6 +4423,15 @@ def build_ranked(
         # no merece ocupar espacio aunque sea muy reciente.
         if not profile["specific_tags"] and not profile["trusted_viral_feed"] and social_score < 10 and len(sources) < 2:
             continue
+        learned_category = general_category_for(set(profile["tags"]))
+        learned_adjustment = (
+            max(-8.0, min(8.0, feedback_weights.get(f"category:{learned_category}", 0.0) * 2.0))
+            + max(
+                [0.0, *(max(-4.0, min(4.0, feedback_weights.get(f"source:{normalize(source)}", 0.0))) for source in sources)],
+                key=abs,
+            )
+            + max(-6.0, min(6.0, sum(feedback_weights.get(f"tag:{tag}", 0.0) for tag in profile["tags"])))
+        )
         raw_score = (
             8.0
             + social_score
@@ -4315,6 +4441,7 @@ def build_ranked(
             + trend_bonus
             + recency_points(items, now)
             + fit_score
+            + learned_adjustment
         )
         # Curva de saturación: evita que muchos candidatos distintos acaben
         # empatados artificialmente en 100.
@@ -4386,6 +4513,7 @@ def build_ranked(
                 "score": viral_score,
                 "viral_score": viral_score,
                 "raw_score": round(raw_score, 1),
+                "learned_adjustment": round(learned_adjustment, 1),
                 "sources": sources,
                 "source_count": len(sources),
                 "platforms": platforms,
@@ -4554,7 +4682,8 @@ def build() -> dict[str, Any]:
     warnings: list[str] = []
     source_status: list[dict[str, Any]] = []
 
-    news_entries, news_warnings, news_status = fetch_news_entries()
+    feedback_weights, learned_tags, feedback_summary = load_feedback_model()
+    news_entries, news_warnings, news_status = fetch_news_entries(learned_news_sources(learned_tags))
     warnings.extend(news_warnings)
     source_status.extend(news_status)
 
@@ -4616,7 +4745,7 @@ def build() -> dict[str, Any]:
             "Se conserva el data.json anterior para no vaciar el panel."
         )
 
-    ranked = build_ranked(entries, google_trends, x_trends)
+    ranked = build_ranked(entries, google_trends, x_trends, feedback_weights)
     ranked, image_summary = enrich_ranked_images(ranked)
     tag_distribution: dict[str, int] = {}
     for story in ranked:
@@ -4664,6 +4793,7 @@ def build() -> dict[str, Any]:
         "publication_date_summary": publication_date_summary,
         "editorial_summary": editorial_summary,
         "tag_distribution": tag_distribution,
+        "feedback_summary": feedback_summary,
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
             "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 24 horas. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
@@ -4694,9 +4824,20 @@ def write_json_atomic(data: dict[str, Any], output_path: Path = OUTPUT_PATH) -> 
         raise
 
 
+def write_runtime_config() -> None:
+    """Publica únicamente la configuración anónima destinada al navegador."""
+    config = {
+        "supabaseUrl": os.getenv("SUPABASE_URL", "").strip().rstrip("/"),
+        "supabaseAnonKey": os.getenv("SUPABASE_ANON_KEY", "").strip(),
+    }
+    payload = json.dumps(config, ensure_ascii=False).replace("</", "<\\/")
+    RUNTIME_CONFIG_PATH.write_text(f"window.PULSO_CONFIG = {payload};\n", encoding="utf-8")
+
+
 if __name__ == "__main__":
     result = build()
     write_json_atomic(result)
+    write_runtime_config()
     for warning in result["warnings"]:
         print(f"[aviso] {warning}")
     print(f"Escritos {len(result['stories'])} temas en {OUTPUT_PATH}")

@@ -260,11 +260,16 @@
 
 <footer><div class="shell">Actualización automática cada ~45 minutos · Solo últimas 24 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
 
+<script src="./runtime-config.js"></script>
 <script>
 let allStories = [];
 let currentFilter = 'all';
 let currentHours = 24;
 const LEARNING_STORAGE_KEY = 'pulso-viral-learning-v1';
+const FEEDBACK_QUEUE_KEY = 'pulso-viral-feedback-queue-v1';
+const FEEDBACK_CLIENT_KEY = 'pulso-viral-feedback-client-v1';
+const feedbackConfig = window.PULSO_CONFIG || {};
+let feedbackSyncFailed = false;
 let learningState = loadLearningState();
 
 function escapeHtml(value){
@@ -330,6 +335,40 @@ function loadLearningState(){
 function saveLearningState(){
   try{localStorage.setItem(LEARNING_STORAGE_KEY,JSON.stringify(learningState))}catch{}
 }
+function feedbackClientId(){
+  try{
+    let value = localStorage.getItem(FEEDBACK_CLIENT_KEY);
+    if(!value){value = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;localStorage.setItem(FEEDBACK_CLIENT_KEY,value)}
+    return value;
+  }catch{return `anonymous-${Date.now()}`}
+}
+function feedbackQueue(){
+  try{return JSON.parse(localStorage.getItem(FEEDBACK_QUEUE_KEY) || '[]')}catch{return []}
+}
+function enqueueFeedback(story,vote){
+  if(!feedbackConfig.supabaseUrl || !feedbackConfig.supabaseAnonKey) return;
+  const source = String((story.sources || [])[0] || 'Fuente original');
+  const event = {
+    event_id:crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
+    client_id:feedbackClientId(), story_key:String(story.link || story.title || '').slice(0,500),
+    vote, category:generalCategoryFor(story), source:source.slice(0,180),
+    tags:(story.topic_tags || []).slice(0,6), title:String(story.title || '').slice(0,240)
+  };
+  try{localStorage.setItem(FEEDBACK_QUEUE_KEY,JSON.stringify([...feedbackQueue(),event].slice(-100)))}catch{}
+  flushFeedbackQueue();
+}
+async function flushFeedbackQueue(){
+  const queue = feedbackQueue();
+  if(!queue.length || !feedbackConfig.supabaseUrl || !feedbackConfig.supabaseAnonKey) return;
+  try{
+    const response = await fetch(`${feedbackConfig.supabaseUrl}/rest/v1/feedback_events`,{
+      method:'POST',headers:{'Content-Type':'application/json','apikey':feedbackConfig.supabaseAnonKey,'Authorization':`Bearer ${feedbackConfig.supabaseAnonKey}`,'Prefer':'return=minimal'},
+      body:JSON.stringify(queue)
+    });
+    if(!response.ok) throw new Error(`HTTP ${response.status}`);
+    localStorage.removeItem(FEEDBACK_QUEUE_KEY);feedbackSyncFailed = false;updateLearningStatus();
+  }catch{feedbackSyncFailed = true;updateLearningStatus()}
+}
 function storyId(story){
   const value = String(story.link || story.title || 'noticia');
   let hash = 2166136261;
@@ -357,8 +396,8 @@ function learnedScore(story){
 function updateLearningStatus(){
   const count = Object.keys(learningState.votes).length;
   document.getElementById('learningStatus').textContent = count
-    ? `${count} voto${count === 1 ? '' : 's'} aplicado${count === 1 ? '' : 's'} · orden personalizado en este dispositivo`
-    : 'El ranking aprenderá de tus votos en este dispositivo.';
+    ? `${count} voto${count === 1 ? '' : 's'} aplicado${count === 1 ? '' : 's'} · ${feedbackSyncFailed ? 'guardado local; sincronización pendiente' : feedbackConfig.supabaseUrl ? 'aprendizaje compartido activo' : 'orden personalizado en este dispositivo'}`
+    : feedbackConfig.supabaseUrl ? 'Aprendizaje compartido activo: valora las noticias más útiles.' : 'El ranking aprenderá de tus votos en este dispositivo.';
   document.getElementById('resetLearning').hidden = count === 0;
 }
 function voteStory(story,vote){
@@ -372,6 +411,7 @@ function voteStory(story,vote){
   });
   if(next) learningState.votes[id] = next; else delete learningState.votes[id];
   saveLearningState();
+  enqueueFeedback(story,next);
   renderStories();
 }
 function storyTags(story){return new Set(story.topic_tags || [])}
@@ -547,6 +587,7 @@ document.getElementById('resetLearning').addEventListener('click', () => {
   renderStories();
 });
 load();
+flushFeedbackQueue();
 </script>
 </body>
 </html>

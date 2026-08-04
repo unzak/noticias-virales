@@ -63,17 +63,34 @@ una tarjeta local como respaldo para que ninguna noticia quede sin visual.
 
 El panel sigue funcionando sin estas claves.
 
-## Aprendizaje editorial local
+## Aprendizaje editorial
 
 Los botones `Positivo` y `Negativo` alimentan un modelo ligero que suma o resta
 preferencia a las características de cada pieza: categoría general, cabecera y
 etiquetas editoriales detalladas. La prioridad aprendida se calcula sobre el
 score viral base y se utiliza para reordenar los resultados visibles.
 
-El estado se guarda en `localStorage`: permanece entre visitas, puede
-reiniciarse desde el panel y no sale del navegador. Por tanto, cada dispositivo
-aprende de sus propios votos. Para compartir el aprendizaje entre varios
-editores sería necesario incorporar un servicio de datos con autenticación.
+La respuesta visual se guarda primero en `localStorage`, por lo que el panel
+sigue reaccionando aunque la red falle. Cuando Supabase está configurado, cada
+cambio de voto se registra también como evento compartido. En la siguiente
+actualización, `fetch_news.py` resume los votos más recientes, reduce
+progresivamente el peso de los antiguos y limita a 200 piezas la influencia de
+un mismo navegador. El resultado ajusta moderadamente el ranking y añade hasta
+tres búsquedas temáticas basadas en las etiquetas con mejor respuesta.
+
+La beta es abierta y no exige contraseña. La tabla solo concede al navegador
+permiso de inserción: la lectura completa queda reservada al workflow mediante
+la clave de servicio. Los límites editoriales, la ventana estricta de 24 horas,
+la diversidad y las reglas contra política y sucesos se aplican después del
+aprendizaje y no pueden ser anulados por los votos.
+
+Para activarlo:
+
+1. Ejecuta `supabase/schema.sql` en el editor SQL de un proyecto Supabase.
+2. Añade `SUPABASE_URL` y `SUPABASE_ANON_KEY` como variables del repositorio.
+3. Añade `SUPABASE_SERVICE_ROLE_KEY` como secreto de GitHub Actions.
+
+Sin esas variables se conserva automáticamente el aprendizaje local anterior.
 
 ## Selección editorial
 
