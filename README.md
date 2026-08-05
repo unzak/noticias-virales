@@ -140,11 +140,16 @@ sociales se descartan.
 
 Antes de agrupar y puntuar, el generador:
 
-1. Recupera las fechas ausentes desde el artículo destino.
+1. Recupera las fechas ausentes desde el `datePublished` del artículo destino,
+   priorizando el bloque cuyo URL coincide y contrastando la fecha codificada
+   en la propia URL para no usar fechas de noticias relacionadas.
 2. Descarta contenidos anteriores a 24 horas.
 3. Descarta contenidos sin fecha verificable.
 4. Descarta fechas futuras con más de 20 minutos de desviación.
 5. Conserva el despliegue anterior si ninguna fuente produce resultados válidos.
+
+La ingesta también excluye recetas, sorteos y loterías, contenidos centrados
+en precios, y programaciones, fiestas o agendas locales de escaso interés viral.
 
 ## Previsualizaciones
 
@@ -193,7 +198,7 @@ Abre `http://localhost:8000`.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
 - `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
-- `.github/workflows/update.yml`: actualización y despliegue cada 5 minutos en
+- `.github/workflows/update.yml`: actualización y despliegue cada 10 minutos en
   horario de Madrid, con pausa entre las 02:00 y las 05:59 y reanudación a las
   06:00.
 

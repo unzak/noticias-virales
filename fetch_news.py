@@ -523,6 +523,22 @@ ROUTINE_CONTENT_TERMS = (
     "programacion de television", "programacion tv", "el tiempo para hoy",
     "programa de las fiestas", "horarios programa", "la aemet confirma",
 )
+LOW_VALUE_CONTENT_TERMS = (
+    "receta", "recetas", "ingredientes",
+    "sorteo", "sorteos", "loteria", "euromillones", "bonoloto",
+    "la primitiva", "cupon de la once", "precio", "precios",
+    "cuanto cuesta", "tarifa", "tarifas",
+)
+RECIPE_INSTRUCTION_TERMS = ("como preparar", "como hacer")
+RECIPE_CONTEXT_TERMS = (
+    "cocina", "plato", "tarta", "pastel", "pollo", "arroz", "salsa",
+    "postre", "ensalada", "tortilla", "bizcocho", "sopa", "pasta",
+)
+LOCAL_PROGRAMMING_TERMS = ("programacion", "programa", "agenda", "horarios", "calendario")
+LOCAL_EVENT_TERMS = (
+    "fiestas", "feria", "patronales", "municipio", "localidad", "pueblo",
+    "actos", "eventos", "agenda cultural",
+)
 SPAIN_TITLE_TERMS = (
     "espana", "espanol", "espanola", "madrid", "barcelona", "valencia",
     "sevilla", "malaga", "galicia", "andalucia", "canarias", "baleares",
@@ -704,7 +720,14 @@ def contains_phrase(text: str, phrases: Iterable[str]) -> int:
 
 
 def is_blocked_content(text: str) -> bool:
-    return contains_phrase(text, BLOCKED_TERMS) > 0
+    if contains_phrase(text, BLOCKED_TERMS) or contains_phrase(text, LOW_VALUE_CONTENT_TERMS):
+        return True
+    if contains_phrase(text, RECIPE_INSTRUCTION_TERMS) and contains_phrase(text, RECIPE_CONTEXT_TERMS):
+        return True
+    return bool(
+        contains_phrase(text, LOCAL_PROGRAMMING_TERMS)
+        and contains_phrase(text, LOCAL_EVENT_TERMS)
+    )
 
 
 def classify_topic_tags(text: str, configured: Iterable[str] = ()) -> set[str]:
@@ -2271,22 +2294,84 @@ def is_within_content_window(
     return cutoff <= value <= future_limit
 
 
-def _jsonld_publication_dates(value: Any) -> list[dt.datetime]:
-    dates: list[dt.datetime] = []
+def _normalized_url_identity(value: Any) -> str:
+    url = valid_http_url(value)
+    if not url:
+        return ""
+    parsed = urllib.parse.urlparse(url)
+    host = (parsed.hostname or "").lower().removeprefix("www.")
+    path = urllib.parse.unquote(parsed.path).rstrip("/")
+    return f"{host}{path}"
+
+
+def _jsonld_publication_dates(
+    value: Any,
+    target_url: str,
+) -> tuple[list[dt.datetime], list[dt.datetime]]:
+    exact: list[dt.datetime] = []
+    fallback: list[dt.datetime] = []
     if isinstance(value, list):
         for item in value:
-            dates.extend(_jsonld_publication_dates(item))
-        return dates
+            child_exact, child_fallback = _jsonld_publication_dates(item, target_url)
+            exact.extend(child_exact)
+            fallback.extend(child_fallback)
+        return exact, fallback
     if not isinstance(value, dict):
-        return dates
-    for key in ("datePublished", "uploadDate", "dateCreated", "datepublished"):
-        parsed = parse_publication_date(value.get(key))
+        return exact, fallback
+
+    raw_type = value.get("@type")
+    types = (
+        {normalize(str(item)) for item in raw_type}
+        if isinstance(raw_type, list)
+        else {normalize(str(raw_type or ""))}
+    )
+    if types & {"article", "newsarticle", "reportagenewsarticle", "blogposting"}:
+        parsed = next(
+            (
+                parsed_date
+                for key in ("datePublished", "datepublished", "dateCreated", "uploadDate")
+                for parsed_date in (parse_publication_date(value.get(key)),)
+                if parsed_date
+            ),
+            None,
+        )
         if parsed:
-            dates.append(parsed)
+            raw_urls = [value.get("url")]
+            main_page = value.get("mainEntityOfPage")
+            if isinstance(main_page, dict):
+                raw_urls.extend((main_page.get("@id"), main_page.get("url")))
+            else:
+                raw_urls.append(main_page)
+            target_identity = _normalized_url_identity(target_url)
+            identities = {_normalized_url_identity(item) for item in raw_urls}
+            if target_identity and target_identity in identities:
+                exact.append(parsed)
+            else:
+                fallback.append(parsed)
+
     for child in value.values():
         if isinstance(child, (dict, list)):
-            dates.extend(_jsonld_publication_dates(child))
-    return dates
+            child_exact, child_fallback = _jsonld_publication_dates(child, target_url)
+            exact.extend(child_exact)
+            fallback.extend(child_fallback)
+    return exact, fallback
+
+
+def publication_day_from_url(url: str) -> dt.date | None:
+    path = urllib.parse.unquote(urllib.parse.urlparse(url).path)
+    match = re.search(r"(?:^|[/_-])(20\d{2})[/_-](\d{2})[/_-](\d{2})(?:[/_.-]|$)", path)
+    if match:
+        values = tuple(int(item) for item in match.groups())
+    else:
+        compact = re.search(r"(?:^|[/_-])(20\d{6})", path)
+        if not compact:
+            return None
+        raw = compact.group(1)
+        values = (int(raw[:4]), int(raw[4:6]), int(raw[6:8]))
+    try:
+        return dt.date(*values)
+    except ValueError:
+        return None
 
 
 class PublicationDateParser(HTMLParser):
@@ -2298,9 +2383,11 @@ class PublicationDateParser(HTMLParser):
         "datecreated", "uploadDate", "date",
     }
 
-    def __init__(self) -> None:
+    def __init__(self, target_url: str) -> None:
         super().__init__(convert_charrefs=True)
-        self.dates: list[dt.datetime] = []
+        self.target_url = target_url
+        self.meta_dates: list[dt.datetime] = []
+        self.time_dates: list[dt.datetime] = []
         self._jsonld_depth = 0
         self._jsonld_parts: list[str] = []
         self._jsonld_documents: list[str] = []
@@ -2309,10 +2396,11 @@ class PublicationDateParser(HTMLParser):
     def _attrs(attrs: list[tuple[str, str | None]]) -> dict[str, str]:
         return {key.lower(): value or "" for key, value in attrs}
 
-    def _add(self, value: Any) -> None:
+    @staticmethod
+    def _add(destination: list[dt.datetime], value: Any) -> None:
         parsed = parse_publication_date(value)
         if parsed:
-            self.dates.append(parsed)
+            destination.append(parsed)
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = self._attrs(attrs)
@@ -2326,10 +2414,13 @@ class PublicationDateParser(HTMLParser):
                 or values.get("itemprop") or ""
             ).strip().lower()
             if key in {item.lower() for item in self.DATE_KEYS}:
-                self._add(values.get("content") or values.get("value"))
+                self._add(self.meta_dates, values.get("content") or values.get("value"))
             return
         if tag == "time":
-            self._add(values.get("datetime") or values.get("data-time") or values.get("data-ts"))
+            self._add(
+                self.time_dates,
+                values.get("datetime") or values.get("data-time") or values.get("data-ts"),
+            )
 
     def handle_endtag(self, tag: str) -> None:
         if tag == "script" and self._jsonld_depth:
@@ -2343,13 +2434,18 @@ class PublicationDateParser(HTMLParser):
             self._jsonld_parts.append(data)
 
     def finish(self) -> list[dt.datetime]:
+        exact_jsonld: list[dt.datetime] = []
+        fallback_jsonld: list[dt.datetime] = []
         for document in self._jsonld_documents:
             try:
                 payload = json.loads(document.strip())
             except (json.JSONDecodeError, TypeError, ValueError):
                 continue
-            self.dates.extend(_jsonld_publication_dates(payload))
-        unique = sorted(set(self.dates), reverse=True)
+            exact, fallback = _jsonld_publication_dates(payload, self.target_url)
+            exact_jsonld.extend(exact)
+            fallback_jsonld.extend(fallback)
+        dates = exact_jsonld or self.meta_dates or fallback_jsonld or self.time_dates
+        unique = sorted(set(dates), reverse=True)
         return unique
 
 
@@ -2376,7 +2472,7 @@ def fetch_publication_date(url: str) -> dt.datetime | None:
             payload = response.read(PUBLICATION_DATE_HTML_MAX_BYTES + 1)[:PUBLICATION_DATE_HTML_MAX_BYTES]
     except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError):
         return None
-    parser = PublicationDateParser()
+    parser = PublicationDateParser(target)
     try:
         parser.feed(payload.decode("utf-8", errors="replace"))
         parser.close()
@@ -2384,6 +2480,13 @@ def fetch_publication_date(url: str) -> dt.datetime | None:
         return None
     now = dt.datetime.now(dt.timezone.utc)
     dates = [date for date in parser.finish() if date <= now + dt.timedelta(minutes=FUTURE_CLOCK_SKEW_MINUTES)]
+    url_day = publication_day_from_url(target)
+    if url_day:
+        matching_url_dates = [date for date in dates if date.date() == url_day]
+        if matching_url_dates:
+            return max(matching_url_dates)
+        # Evita rejuvenecer una URL antigua con fechas de módulos relacionados.
+        return dt.datetime.combine(url_day, dt.time(12), tzinfo=dt.timezone.utc)
     return max(dates, default=None)
 
 
