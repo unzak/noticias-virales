@@ -49,6 +49,7 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
 MEDIA_DIR = ROOT / "docs" / "media"
 PERFORMANCE_PROFILE_PATH = ROOT / "cabronazi_performance_profile.json"
+EDITORIAL_SELECTION_PROFILE_PATH = ROOT / "editorial_selection_profile.json"
 
 GOOGLE_NEWS_BASE = "https://news.google.com/rss"
 GOOGLE_NEWS_PARAMS = "hl=es&gl=ES&ceid=ES:es"
@@ -380,6 +381,17 @@ DIRECT_SECTION_SOURCES = (
         8.0,
         "Virales, música y entretenimiento",
         ("viral", "famosos", "redes"),
+    ),
+    (
+        "Mundo Deportivo · El Otro Mundo",
+        "Mundo Deportivo",
+        "https://www.mundodeportivo.com/elotromundo",
+        google_news_search_url(focused_news_query(
+            'site:mundodeportivo.com/elotromundo (gente OR television OR mascotas OR musica OR viral OR curioso)'
+        )),
+        10.0,
+        "El Otro Mundo",
+        ("viral", "famosos", "television", "animales", "curiosidades"),
     ),
     (
         "EL ESPAÑOL · Offbeat",
@@ -741,6 +753,65 @@ def load_performance_profile() -> dict[str, Any]:
         return profile if isinstance(profile, dict) else {}
     except (OSError, ValueError, json.JSONDecodeError):
         return {}
+
+
+@lru_cache(maxsize=1)
+def load_editorial_selection_profile() -> dict[str, Any]:
+    """Carga únicamente recuentos agregados del histórico seleccionado."""
+    try:
+        profile = json.loads(EDITORIAL_SELECTION_PROFILE_PATH.read_text(encoding="utf-8"))
+        return profile if isinstance(profile, dict) else {}
+    except (OSError, ValueError, json.JSONDecodeError):
+        return {}
+
+
+def editorial_selection_priority(items: Iterable["StoryEntry"]) -> tuple[float, list[str]]:
+    """Premia moderadamente dominios y secciones elegidos anteriormente."""
+    profile = load_editorial_selection_profile()
+    if not profile:
+        return 0.0, []
+    domain_counts = profile.get("domain_counts") or {}
+    section_counts = profile.get("section_counts") or {}
+    source_counts = profile.get("source_name_counts") or {}
+    maximum = float(profile.get("max_ranking_bonus") or 8.0)
+    best_bonus = 0.0
+    best_reason = ""
+
+    for item in items:
+        parsed = urllib.parse.urlparse(item.link)
+        host = (parsed.hostname or "").lower().removeprefix("www.")
+        if host.startswith("amp."):
+            host = host.removeprefix("amp.")
+        path = "/" + "/".join(part for part in parsed.path.lower().split("/") if part)
+
+        matched_section = next(
+            (
+                (section, int(count))
+                for section, count in section_counts.items()
+                if f"{host}{path}".startswith(str(section).lower())
+            ),
+            None,
+        )
+        if matched_section:
+            section, count = matched_section
+            bonus = min(maximum, 3.0 + math.log2(max(1, count)))
+            reason = f"Histórico editorial: {section} ({count} selecciones)"
+        else:
+            count = int(domain_counts.get(host) or 0)
+            bonus = min(6.0, 1.5 + math.log2(max(1, count))) if count else 0.0
+            reason = f"Histórico editorial: {host} ({count} selecciones)" if count else ""
+
+        source_name = normalize(item.source)
+        source_count = int(source_counts.get(source_name) or 0)
+        source_bonus = min(6.0, 1.5 + math.log2(max(1, source_count))) if source_count else 0.0
+        if source_bonus > bonus:
+            bonus = source_bonus
+            reason = f"Histórico editorial: {item.source} ({source_count} selecciones)"
+        if bonus > best_bonus:
+            best_bonus = bonus
+            best_reason = reason
+
+    return round(best_bonus, 1), [best_reason] if best_reason else []
 
 
 def historical_affinity(
@@ -4583,6 +4654,7 @@ def build_ranked(
             politics_related=bool(profile["politics_hits"]),
             hard_news_related=bool(profile["hard_news_hits"]),
         )
+        selection_bonus, selection_reasons = editorial_selection_priority(items)
         explicit_priority = profile["explicit_title_tags"] & CABRONAZI_STRONG_TAGS
         precision_adjustment = min(15.0, len(explicit_priority) * 5.0)
         if not explicit_priority:
@@ -4599,6 +4671,7 @@ def build_ranked(
             + recency_points(items, now)
             + fit_score
             + historical_adjustment
+            + selection_bonus
             + precision_adjustment
             + spain_score
         )
@@ -4650,6 +4723,7 @@ def build_ranked(
             signals.append(label)
         if len(platforms) >= 2:
             signals.append(f"Detectado en {len(platforms)} plataformas")
+        signals.extend(selection_reasons)
 
         topic_tag_set = set(profile["tags"])
         if google_match or x_match or len(platforms) >= 2 or social_score >= 24:
@@ -4678,6 +4752,8 @@ def build_ranked(
                 "cabronazi_affinity": historical_score,
                 "cabronazi_historical_adjustment": historical_adjustment,
                 "cabronazi_match_reasons": historical_reasons,
+                "editorial_selection_bonus": selection_bonus,
+                "editorial_selection_reasons": selection_reasons,
                 "sources": sources,
                 "source_count": len(sources),
                 "platforms": platforms,
@@ -5012,6 +5088,12 @@ def build() -> dict[str, Any]:
         )
 
     ranked = build_ranked(entries, google_trends, x_trends)
+    weighted_ranked = [story for story in ranked if float(story.get("editorial_selection_bonus") or 0) > 0]
+    if weighted_ranked:
+        print(
+            f"[ok] Histórico editorial: {len(weighted_ranked)}/{len(ranked)} seleccionadas con bonus · "
+            f"máximo {max(float(story['editorial_selection_bonus']) for story in weighted_ranked):.1f} puntos"
+        )
     ranked, image_summary = enrich_ranked_images(ranked)
     unfiltered_stories, unfiltered_image_summary = enrich_unfiltered_images(
         build_unfiltered_stories(entries)
@@ -5056,6 +5138,7 @@ def build() -> dict[str, Any]:
         + ", ".join(f"#{tag} {count}" for tag, count in editorial_summary["top_tags"][:5])
     )
     performance_profile = load_performance_profile()
+    selection_profile = load_editorial_selection_profile()
     affinity_values = [int(story.get("cabronazi_affinity") or 50) for story in ranked]
     print(
         "[ok] Match Cabronazi: "
@@ -5098,9 +5181,19 @@ def build() -> dict[str, Any]:
             "posts_with_text": int(performance_profile.get("posts_with_text") or 0),
             "kpi_weights": performance_profile.get("kpi_weights") or {},
         },
+        "editorial_selection_profile_summary": {
+            "enabled": bool(selection_profile),
+            "links": int(selection_profile.get("generated_from_links") or 0),
+            "editorial_links": int(selection_profile.get("editorial_links") or 0),
+            "social_links": int(selection_profile.get("social_links") or 0),
+            "prioritized_domains": len(selection_profile.get("domain_counts") or {}),
+            "prioritized_sections": len(selection_profile.get("section_counts") or {}),
+            "max_ranking_bonus": float(selection_profile.get("max_ranking_bonus") or 0.0),
+        },
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
             "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 24 horas. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
+            "Los dominios y secciones del histórico de selección editorial reciben un bonus limitado. "
             "Las previsualizaciones enlazan directamente la mejor URL encontrada en los tags img "
             "del artículo, sin descargar ni versionar la imagen de terceros. "
             "No predice ni garantiza likes futuros."

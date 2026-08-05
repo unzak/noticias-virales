@@ -16,9 +16,9 @@ se abren por defecto con las noticias más recientes primero. Google
 Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
 propio en la interfaz.
 
-El menú superior separa `Selección Cabronazi`, con ranking editorial y
-diversidad, de `Sin filtro`, que muestra todas las piezas con fecha válida de
-las últimas 24 horas. La ausencia de imagen ya no elimina una noticia: el panel
+El menú superior abre por defecto `Sin filtro`, que muestra todas las piezas con
+fecha válida de las últimas 24 horas, y deja `Selección Cabronazi`, con ranking
+editorial y diversidad, como segunda opción. La ausencia de imagen ya no elimina una noticia: el panel
 abre el artículo, enlaza la URL de su imagen editorial y usa un placeholder rosa
 solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 
@@ -59,6 +59,8 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   20minutos, HuffPost, Cribeo, AS Tikitakas, Antena 3, laSexta, Telecinco,
   EL ESPAÑOL, Público, Infobae España y LOS40, entre otras. La sección global
   de Infobae queda excluida para evitar actualidad local latinoamericana.
+- Mundo Deportivo `El Otro Mundo` se consulta directamente por su presencia
+  destacada en el histórico de selección editorial.
 - Prensa del corazón: HOLA, Lecturas, Semana, Diez Minutos y Vanitatis mediante
   búsquedas restringidas a sus dominios.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.
@@ -103,6 +105,12 @@ temporales o de diversidad.
 Los formatos narrativos claramente cómicos —expectativa contra realidad,
 errores, confusiones o situaciones absurdas que terminan mal— reciben una señal
 editorial propia cuando el histórico no contiene las mismas palabras exactas.
+
+`editorial_selection_profile.json` agrega 158 enlaces seleccionados manualmente
+en recuentos por dominio y sección, sin guardar las URLs originales. El ranking
+aplica un bonus máximo de ocho puntos: prioriza especialmente `El Otro Mundo` de
+Mundo Deportivo y `Tiramillas` de MARCA, pero no puede saltarse los filtros de
+España, idioma, fecha, diversidad o calidad editorial.
 
 Para actualizar el perfil con una exportación posterior:
 
@@ -175,10 +183,13 @@ Abre `http://localhost:8000`.
 - `fetch_news.py`: consulta, verifica fechas, clasifica, filtra, agrupa y puntúa.
 - `tools/build_cabronazi_profile.py`: genera el perfil agregado desde Meta.
 - `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
+- `editorial_selection_profile.json`: recuentos agregados de fuentes y secciones seleccionadas.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
 - `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
-- `.github/workflows/update.yml`: actualización y despliegue cada ~45 minutos.
+- `.github/workflows/update.yml`: actualización y despliegue cada 5 minutos en
+  horario de Madrid, con pausa entre las 02:00 y las 05:59 y reanudación a las
+  06:00.
 
 
 ## Corrección 3.0.1

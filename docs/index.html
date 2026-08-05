@@ -175,9 +175,9 @@
 </header>
 <main class="shell">
   <nav class="view-switch" aria-label="Tipo de selección">
-    <button class="view-tab active" type="button" data-view="selection">Selección Cabronazi</button>
+    <button class="view-tab active" type="button" data-view="unfiltered">Sin filtro</button>
     <span class="view-divider" aria-hidden="true">|</span>
-    <button class="view-tab" type="button" data-view="unfiltered">Sin filtro</button>
+    <button class="view-tab" type="button" data-view="selection">Selección Cabronazi</button>
   </nav>
   <section class="summary-grid" aria-label="Resumen">
     <div class="summary-card"><strong id="storyCount">—</strong><span>oportunidades</span></div>
@@ -224,13 +224,13 @@
   <div class="notice" id="notice">El score es una ayuda editorial: no garantiza likes. Comprueba contexto, derechos, autoría, privacidad y seguridad de marca antes de republicar contenido de terceros.</div>
 </main>
 
-<footer><div class="shell">Actualización automática cada ~45 minutos · Solo últimas 24 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
+<footer><div class="shell">Actualización cada 5 minutos, excepto de 02:00 a 06:00 · Solo últimas 24 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
 
 <script>
 let allStories = [];
 let selectionStories = [];
 let unfilteredStories = [];
-let currentView = 'selection';
+let currentView = 'unfiltered';
 let currentFilter = 'all';
 let currentHours = 24;
 let currentSort = 'time-desc';

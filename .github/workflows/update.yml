@@ -1,12 +1,10 @@
 name: Actualizar y publicar radar viral
 
 on:
-  # Cada 45 minutos, desplazado del minuto 0 para reducir retrasos por carga.
+  # Cada 5 minutos en horario de Madrid, con pausa entre las 02:00 y las 05:59.
   schedule:
-    - cron: '7 0,3,6,9,12,15,18,21 * * *'
-    - cron: '52 0,3,6,9,12,15,18,21 * * *'
-    - cron: '37 1,4,7,10,13,16,19,22 * * *'
-    - cron: '22 2,5,8,11,14,17,20,23 * * *'
+    - cron: '*/5 0-1,6-23 * * *'
+      timezone: 'Europe/Madrid'
   workflow_dispatch:
   push:
     branches:
@@ -15,6 +13,7 @@ on:
       - 'docs/**'
       - 'fetch_news.py'
       - 'cabronazi_performance_profile.json'
+      - 'editorial_selection_profile.json'
       - 'tools/build_cabronazi_profile.py'
       - 'requirements.txt'
       - '.github/workflows/update.yml'
