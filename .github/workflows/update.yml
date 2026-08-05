@@ -2,7 +2,8 @@ name: Actualizar y publicar radar viral
 
 on:
   schedule:
-    - cron: '7/15 0-1,6-23 * * *'
+    # Cada 15 minutos a :07, :22, :37 y :52 para evitar los minutos más saturados.
+    - cron: '7,22,37,52 0-1,6-23 * * *'
       timezone: 'Europe/Madrid'
 
   workflow_dispatch:
@@ -24,16 +25,9 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  update-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+  update:
+    name: Generar y empaquetar el radar
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -79,6 +73,23 @@ jobs:
         with:
           path: ./docs
 
+  deploy:
+    name: Publicar en GitHub Pages
+    needs: update
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Solo el despliegue se serializa. La generación de la siguiente ejecución
+    # puede comenzar aunque el despliegue anterior todavía esté terminando.
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+
+    steps:
       - name: Publicar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
