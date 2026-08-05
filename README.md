@@ -7,6 +7,9 @@ todas las piezas cuya fecha pueda verificarse dentro de las **últimas 24 horas*
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
 El ranking refuerza además las piezas vinculadas a España y descarta actualidad
 local extranjera sin un ángulo español, aunque el titular esté escrito en español.
+El filtro también excluye ediciones regionales mexicanas identificadas en las
+URL (por ejemplo, rutas `/mx/`, `/mexico/` y dominios `.mx`) antes de construir
+ambas vistas.
 La interfaz clara en rosa permite ordenar por prioridad, tiempo ascendente o
 tiempo descendente sin perder los filtros de periodo y categoría. Google
 Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
@@ -56,7 +59,8 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 
 - Secciones virales y de entretenimiento de EL PAÍS, MARCA Tiramillas,
   20minutos, HuffPost, Cribeo, AS Tikitakas, Antena 3, laSexta, Telecinco,
-  EL ESPAÑOL, Público, Infobae y LOS40, entre otras.
+  EL ESPAÑOL, Público, Infobae España y LOS40, entre otras. La sección global
+  de Infobae queda excluida para evitar actualidad local latinoamericana.
 - Prensa del corazón: HOLA, Lecturas, Semana, Diez Minutos y Vanitatis mediante
   búsquedas restringidas a sus dominios.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.

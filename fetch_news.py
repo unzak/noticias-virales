@@ -93,7 +93,8 @@ def google_news_search_url(query: str) -> str:
 
 CABRONAZI_QUERY_EXCLUSIONS = (
     '-politica -política -gobierno -elecciones -congreso -senado '
-    '-ministro -ministra -guerra -tribunal -economia -economía'
+    '-ministro -ministra -guerra -tribunal -economia -economía '
+    '-site:marca.com/mx -site:infobae.com/mexico -site:*.mx'
 )
 
 
@@ -411,15 +412,6 @@ DIRECT_SECTION_SOURCES = (
         ("viral", "curiosidades"),
     ),
     (
-        "Infobae · Virales",
-        "Infobae",
-        "https://www.infobae.com/virales/",
-        google_news_search_url(focused_news_query('site:infobae.com/virales (TikTok OR curiosidades OR viral OR insólito)')),
-        10.0,
-        "Virales",
-        ("viral", "tiktok", "curiosidades"),
-    ),
-    (
         "Infobae España · Virales",
         "Infobae España",
         "https://www.infobae.com/tag/virales-espana/",
@@ -559,6 +551,9 @@ FOREIGN_LOCAL_NEWS_TERMS = (
     "peru", "peruano", "peruana", "ecuador", "venezuela", "uruguay",
     "paraguay", "bolivia", "boca juniors", "river plate", "liga mx",
     "casa de los famosos mexico", "masterchef mexico", "pesos argentinos",
+    "seleccion mexicana", "chicharito", "cdmx", "liga mx", "televisa",
+    "tv azteca", "peso mexicano", "pesos mexicanos", "jalisco", "nuevo leon",
+    "claudia sheinbaum", "lopez obrador",
 )
 SPAIN_PUBLISHER_TERMS = (
     "la vanguardia", "antena 3", "lasexta", "20minutos", "el huffpost",
@@ -973,6 +968,16 @@ def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool
     title_text = " ".join(item.title for item in item_list)
     spain_hits = contains_phrase(title_text, SPAIN_TITLE_TERMS)
     foreign_hits = contains_phrase(title_text, FOREIGN_LOCAL_NEWS_TERMS)
+    mexico_regional_url = False
+    for item in item_list:
+        parsed = urllib.parse.urlparse(item.link)
+        host = (parsed.hostname or "").lower()
+        path_parts = [part.lower() for part in parsed.path.split("/") if part]
+        if host.endswith(".mx") or "mx" in path_parts or "mexico" in path_parts:
+            mexico_regional_url = True
+            break
+    if mexico_regional_url:
+        foreign_hits += 1
     trusted_source = any(normalize(item.source) in SPAIN_PUBLISHER_TERMS for item in item_list)
     score = min(12, spain_hits * 6) + (8 if trusted_source else -6) - min(18, foreign_hits * 9)
     reasons: list[str] = []
@@ -982,8 +987,45 @@ def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool
         reasons.append("medio español")
     if foreign_hits:
         reasons.append("actualidad local extranjera")
-    foreign_without_spanish_angle = bool(foreign_hits and not spain_hits)
+    if mexico_regional_url:
+        reasons.append("edición regional de México")
+    foreign_without_spanish_angle = mexico_regional_url or bool(foreign_hits and not spain_hits)
     return score, reasons, foreign_without_spanish_angle
+
+
+def filter_spain_focused_entries(entries: list["StoryEntry"]) -> tuple[list["StoryEntry"], int]:
+    """Retira actualidad local extranjera sin una relación explícita con España."""
+    accepted: list[StoryEntry] = []
+    rejected = 0
+    for entry in entries:
+        _, _, foreign_without_spanish_angle = spain_relevance((entry,))
+        if foreign_without_spanish_angle:
+            rejected += 1
+            continue
+        accepted.append(entry)
+    return accepted, rejected
+
+
+def filter_spain_focused_stories(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], int]:
+    """Repite el control geográfico tras resolver los destinos de Google News."""
+    accepted: list[dict[str, Any]] = []
+    rejected = 0
+    for story in stories:
+        sources = story.get("sources") if isinstance(story.get("sources"), list) else []
+        probe = StoryEntry(
+            title=str(story.get("title") or ""),
+            link=str(story.get("link") or ""),
+            source=str(sources[0] if sources else story.get("source") or ""),
+            platform=str(story.get("main_platform") or "news"),
+            published_at=None,
+            keywords=(),
+        )
+        _, _, foreign_without_spanish_angle = spain_relevance((probe,))
+        if foreign_without_spanish_angle:
+            rejected += 1
+            continue
+        accepted.append(story)
+    return accepted, rejected
 
 
 def valid_http_url(value: Any) -> str | None:
@@ -5068,6 +5110,15 @@ def build() -> dict[str, Any]:
     entries, publication_date_summary = enrich_missing_publication_dates(entries)
     now = dt.datetime.now(dt.timezone.utc)
     entries, temporal_summary = filter_recent_entries(entries, now)
+    accepted_before_spain_filter = len(entries)
+    entries, foreign_local_rejected = filter_spain_focused_entries(entries)
+    temporal_summary["accepted_before_spain_filter"] = accepted_before_spain_filter
+    temporal_summary["foreign_local_rejected"] = foreign_local_rejected
+    temporal_summary["accepted"] = len(entries)
+    print(
+        f"[ok] Enfoque España: {len(entries)}/{accepted_before_spain_filter} contenidos · "
+        f"{foreign_local_rejected} de actualidad local extranjera descartados"
+    )
     if not entries:
         raise RuntimeError(
             "No se obtuvo ningún contenido verificable de las últimas 24 horas. "
@@ -5079,6 +5130,25 @@ def build() -> dict[str, Any]:
     unfiltered_stories, unfiltered_image_summary = enrich_unfiltered_images(
         build_unfiltered_stories(entries)
     )
+    ranked, ranked_foreign_rejected = filter_spain_focused_stories(ranked)
+    unfiltered_stories, resolved_foreign_rejected = filter_spain_focused_stories(unfiltered_stories)
+    foreign_local_rejected += resolved_foreign_rejected
+    temporal_summary["foreign_local_rejected"] = foreign_local_rejected
+    temporal_summary["accepted"] = len(unfiltered_stories)
+    unfiltered_image_summary = {
+        "linked": sum(1 for story in unfiltered_stories if story.get("thumbnail")),
+        "placeholders": sum(1 for story in unfiltered_stories if not story.get("thumbnail")),
+        "resolved_links": sum(
+            1 for story in unfiltered_stories
+            if not _is_google_host(str(story.get("link") or ""))
+        ),
+        "total": len(unfiltered_stories),
+    }
+    if ranked_foreign_rejected or resolved_foreign_rejected:
+        print(
+            f"[ok] Destinos resueltos: {resolved_foreign_rejected} contenidos extranjeros "
+            f"adicionales descartados · {ranked_foreign_rejected} estaban en la selección"
+        )
     tag_distribution: dict[str, int] = {}
     for story in ranked:
         for tag in story.get("topic_tags") or []:
