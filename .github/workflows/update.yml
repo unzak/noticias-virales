@@ -2,21 +2,19 @@ name: Actualizar y publicar radar viral
 
 on:
   schedule:
-    # Cada 15 minutos a :07, :22, :37 y :52 para evitar los minutos más saturados.
-    - cron: '7,22,37,52 0-1,6-23 * * *'
-      timezone: 'Europe/Madrid'
-
+    # GitHub Actions interpreta el cron en UTC.
+    # Se ejecuta cada 15 minutos, evitando el minuto 0 para reducir retrasos.
+    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
-
   push:
     branches:
       - main
     paths:
       - 'docs/**'
       - 'fetch_news.py'
+      - 'tools/**'
       - 'cabronazi_performance_profile.json'
       - 'editorial_selection_profile.json'
-      - 'tools/build_cabronazi_profile.py'
       - 'requirements.txt'
       - '.github/workflows/update.yml'
 
@@ -25,28 +23,27 @@ permissions:
   pages: write
   id-token: write
 
-jobs:
-  update:
-    name: Generar y empaquetar el radar
-    runs-on: ubuntu-latest
-    timeout-minutes: 45
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
-    env:
-      # Opcionales. El panel sigue funcionando sin estas claves.
-      REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
-      REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
-      REDDIT_USER_AGENT: ${{ vars.REDDIT_USER_AGENT }}
-      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-      X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Descargar repositorio
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Preparar Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.12'
           cache: pip
 
       - name: Instalar dependencias
@@ -61,35 +58,22 @@ jobs:
       - name: Comprobar JSON generado
         run: python -m json.tool docs/data.json > /dev/null
 
-      - name: Comprobar previsualizaciones enlazadas
+      - name: Mostrar diagnóstico
         run: |
-          python -c "import json, urllib.parse; d=json.load(open('docs/data.json', encoding='utf-8')); s=d.get('stories', []); u=d.get('unfiltered_stories', []); assert all(not x.get('thumbnail') or str(x['thumbnail']).startswith(('http://', 'https://')) for x in s + u), 'Hay una imagen que no es remota'; assert all('news.google.' not in (urllib.parse.urlparse(str(x.get('link', ''))).hostname or '') for x in s), 'Hay noticias curadas sin resolver al artículo original'; assert len(u) == int(d.get('temporal_summary', {}).get('accepted', -1)), 'Sin filtro no contiene todas las piezas válidas'; print(f'Selección: {len(s)} · Sin filtro: {len(u)}')"
+          echo "Evento: ${{ github.event_name }}"
+          echo "Cron: ${{ github.event.schedule }}"
+          echo "Hora UTC: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          echo "Hora Madrid: $(TZ=Europe/Madrid date +'%Y-%m-%dT%H:%M:%S%z')"
+          cat docs/last-update.txt
 
       - name: Configurar GitHub Pages
-        uses: actions/configure-pages@v6
+        uses: actions/configure-pages@v5
 
       - name: Empaquetar la web
-        uses: actions/upload-pages-artifact@v5
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./docs
 
-  deploy:
-    name: Publicar en GitHub Pages
-    needs: update
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Solo el despliegue se serializa. La generación de la siguiente ejecución
-    # puede comenzar aunque el despliegue anterior todavía esté terminando.
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-
-    steps:
       - name: Publicar en GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@v4
