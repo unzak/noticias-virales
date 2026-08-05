@@ -124,13 +124,6 @@
   .meter div{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--mint),var(--yellow),var(--hot))}
   .open-button{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 10px;border-radius:10px;background:var(--text);color:var(--bg);font-size:.73rem;font-weight:900;text-decoration:none}
   .open-button:hover{background:var(--hot);color:white}
-  .feedback-controls{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:9px 0}
-  .vote-button{min-height:34px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--muted);cursor:pointer;font-size:.66rem;font-weight:850}
-  .vote-button:hover{border-color:var(--text);color:var(--text)}
-  .vote-button.positive.active{border-color:rgba(98,214,191,.7);background:rgba(98,214,191,.14);color:var(--mint)}
-  .vote-button.negative.active{border-color:rgba(255,107,122,.7);background:rgba(255,107,122,.12);color:var(--danger)}
-  .learning-status{display:flex;align-items:center;justify-content:flex-end;gap:9px;margin:-10px 0 18px;color:var(--muted);font-size:.72rem}
-  .reset-learning{border:0;background:none;color:var(--blue);cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:3px}
 
   .sources-panel{margin-top:25px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:18px}
   .sources-panel h3{margin:0 0 12px;font-size:1rem}
@@ -156,7 +149,7 @@
     .story{grid-template-columns:48px 155px minmax(0,1fr);min-height:170px}
     .visual,.visual img{min-height:170px}
     .score-panel{grid-column:2/-1;border-left:0;border-top:1px solid var(--line);padding:10px 14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;text-align:left}
-    .score-panel .score-value{font-size:1.65rem}.score-panel .score-caption,.potential{margin:0}.meter{margin:0}.feedback-controls{grid-column:1/-1;margin:0}.open-button{min-width:108px}
+    .score-panel .score-value{font-size:1.65rem}.score-panel .score-caption,.potential{margin:0}.meter{margin:0}.open-button{min-width:108px}
     .signals{display:none}
   }
   @media(max-width:560px){
@@ -204,9 +197,9 @@
       </label>
       <label class="sort-control" for="sortBy">Ordenar
         <select id="sortBy">
-          <option value="priority" selected>Prioridad</option>
+          <option value="priority">Prioridad</option>
           <option value="time-asc">Tiempo asc.</option>
-          <option value="time-desc">Tiempo desc.</option>
+          <option value="time-desc" selected>Tiempo desc.</option>
         </select>
       </label>
       <div class="filters" id="filters" aria-label="Filtros">
@@ -222,8 +215,6 @@
     </div>
     <div class="count" id="visibleCount"></div>
   </div>
-  <div class="learning-status"><span id="learningStatus">El ranking aprenderá de tus votos en este dispositivo.</span><button class="reset-learning" id="resetLearning" type="button" hidden>Reiniciar aprendizaje</button></div>
-
   <section class="stories" id="stories"><div class="empty">Analizando señales…</div></section>
   <section class="sources-panel" id="sourcesPanel" hidden>
     <h3>Estado de las fuentes</h3>
@@ -235,7 +226,6 @@
 
 <footer><div class="shell">Actualización automática cada ~45 minutos · Solo últimas 24 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
 
-<script src="./runtime-config.js"></script>
 <script>
 let allStories = [];
 let selectionStories = [];
@@ -243,13 +233,7 @@ let unfilteredStories = [];
 let currentView = 'selection';
 let currentFilter = 'all';
 let currentHours = 24;
-let currentSort = 'priority';
-const LEARNING_STORAGE_KEY = 'pulso-viral-learning-v1';
-const FEEDBACK_QUEUE_KEY = 'pulso-viral-feedback-queue-v1';
-const FEEDBACK_CLIENT_KEY = 'pulso-viral-feedback-client-v1';
-const feedbackConfig = window.PULSO_CONFIG || {};
-let feedbackSyncFailed = false;
-let learningState = loadLearningState();
+let currentSort = 'time-desc';
 
 function escapeHtml(value){
   return String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
@@ -307,94 +291,6 @@ function generalCategoryFor(story){
   ];
   return groups.find(([,values]) => values.some(tag => tags.has(tag)))?.[0] || 'humor-curiosidades';
 }
-function loadLearningState(){
-  try{
-    const parsed = JSON.parse(localStorage.getItem(LEARNING_STORAGE_KEY) || '{}');
-    return {votes:parsed.votes || {},weights:parsed.weights || {}};
-  }catch{return {votes:{},weights:{}}}
-}
-function saveLearningState(){
-  try{localStorage.setItem(LEARNING_STORAGE_KEY,JSON.stringify(learningState))}catch{}
-}
-function feedbackClientId(){
-  try{
-    let value = localStorage.getItem(FEEDBACK_CLIENT_KEY);
-    if(!value){value = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;localStorage.setItem(FEEDBACK_CLIENT_KEY,value)}
-    return value;
-  }catch{return `anonymous-${Date.now()}`}
-}
-function feedbackQueue(){
-  try{return JSON.parse(localStorage.getItem(FEEDBACK_QUEUE_KEY) || '[]')}catch{return []}
-}
-function enqueueFeedback(story,vote){
-  if(!feedbackConfig.supabaseUrl || !feedbackConfig.supabaseAnonKey) return;
-  const source = String((story.sources || [])[0] || 'Fuente original');
-  const event = {
-    event_id:crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`,
-    client_id:feedbackClientId(), story_key:String(story.link || story.title || '').slice(0,500),
-    vote, category:generalCategoryFor(story), source:source.slice(0,180),
-    tags:(story.topic_tags || []).slice(0,6), title:String(story.title || '').slice(0,240)
-  };
-  try{localStorage.setItem(FEEDBACK_QUEUE_KEY,JSON.stringify([...feedbackQueue(),event].slice(-100)))}catch{}
-  flushFeedbackQueue();
-}
-async function flushFeedbackQueue(){
-  const queue = feedbackQueue();
-  if(!queue.length || !feedbackConfig.supabaseUrl || !feedbackConfig.supabaseAnonKey) return;
-  try{
-    const response = await fetch(`${feedbackConfig.supabaseUrl}/rest/v1/feedback_events`,{
-      method:'POST',headers:{'Content-Type':'application/json','apikey':feedbackConfig.supabaseAnonKey,'Authorization':`Bearer ${feedbackConfig.supabaseAnonKey}`,'Prefer':'return=minimal'},
-      body:JSON.stringify(queue)
-    });
-    if(!response.ok) throw new Error(`HTTP ${response.status}`);
-    localStorage.removeItem(FEEDBACK_QUEUE_KEY);feedbackSyncFailed = false;updateLearningStatus();
-  }catch{feedbackSyncFailed = true;updateLearningStatus()}
-}
-function storyId(story){
-  const value = String(story.link || story.title || 'noticia');
-  let hash = 2166136261;
-  for(let index=0;index<value.length;index++){hash ^= value.charCodeAt(index);hash = Math.imul(hash,16777619)}
-  return `story-${(hash >>> 0).toString(16)}`;
-}
-function storyFeatures(story){
-  const source = String((story.sources || [])[0] || 'fuente').toLocaleLowerCase('es-ES');
-  const tags = (story.topic_tags || []).filter(tag => !['viral','trending'].includes(tag)).slice(0,4);
-  return [`category:${generalCategoryFor(story)}`,`source:${source}`,...tags.map(tag => `tag:${tag}`)];
-}
-function clamp(value,min,max){return Math.max(min,Math.min(max,value))}
-function learnedScore(story){
-  const base = Number(story.viral_score ?? story.score ?? 0);
-  const weights = learningState.weights;
-  const category = Number(weights[`category:${generalCategoryFor(story)}`] || 0);
-  const source = String((story.sources || [])[0] || 'fuente').toLocaleLowerCase('es-ES');
-  const sourceWeight = Number(weights[`source:${source}`] || 0);
-  const tagWeights = (story.topic_tags || []).map(tag => Number(weights[`tag:${tag}`] || 0));
-  const tagAverage = tagWeights.length ? tagWeights.reduce((sum,value) => sum + value,0) / tagWeights.length : 0;
-  const directVote = Number(learningState.votes[storyId(story)] || 0);
-  const adjustment = clamp(category * 2.2,-12,12) + clamp(sourceWeight * 1.2,-6,6) + clamp(tagAverage,-4,4) + directVote * 8;
-  return clamp(Math.round(base + adjustment),0,100);
-}
-function updateLearningStatus(){
-  const count = Object.keys(learningState.votes).length;
-  document.getElementById('learningStatus').textContent = count
-    ? `${count} voto${count === 1 ? '' : 's'} aplicado${count === 1 ? '' : 's'} · ${feedbackSyncFailed ? 'guardado local; sincronización pendiente' : feedbackConfig.supabaseUrl ? 'aprendizaje compartido activo' : 'orden personalizado en este dispositivo'}`
-    : feedbackConfig.supabaseUrl ? 'Aprendizaje compartido activo: valora las noticias más útiles.' : 'El ranking aprenderá de tus votos en este dispositivo.';
-  document.getElementById('resetLearning').hidden = count === 0;
-}
-function voteStory(story,vote){
-  const id = storyId(story);
-  const previous = Number(learningState.votes[id] || 0);
-  const next = previous === vote ? 0 : vote;
-  const delta = next - previous;
-  storyFeatures(story).forEach(feature => {
-    const updated = Number(learningState.weights[feature] || 0) + delta;
-    if(updated) learningState.weights[feature] = updated; else delete learningState.weights[feature];
-  });
-  if(next) learningState.votes[id] = next; else delete learningState.votes[id];
-  saveLearningState();
-  enqueueFeedback(story,next);
-  renderStories();
-}
 function storyTags(story){return new Set(story.topic_tags || [])}
 function withinTimeRange(story){
   const published = story.published_at ? new Date(story.published_at) : null;
@@ -408,9 +304,7 @@ function visibleFor(story, filter){
 }
 function storyCard(story, index){
   const baseScore = Math.max(0, Math.min(100, Number(story.viral_score ?? story.score ?? 0)));
-  const score = learnedScore(story);
-  const id = storyId(story);
-  const currentVote = Number(learningState.votes[id] || 0);
+  const score = baseScore;
   const affinity = Math.max(0,Math.min(100,Number(story.cabronazi_affinity ?? 50)));
   const affinityReasons = (story.cabronazi_match_reasons || []).join(' · ');
   const platforms = story.platform_labels || story.platforms || [];
@@ -446,12 +340,8 @@ function storyCard(story, index){
       <div class="source-row"><span class="source-name" title="${escapeHtml(sources.join(' · '))}">Fuente: <strong>${escapeHtml(sourceText)}</strong></span></div>
     </div>
     <aside class="score-panel" aria-label="Prioridad personalizada ${score} sobre 100">
-      <div><div class="score-value">${score}</div><div class="score-caption">${Object.keys(learningState.votes).length ? 'prioridad aprendida' : 'potencial viral'}</div></div>
+      <div><div class="score-value">${score}</div><div class="score-caption">potencial viral</div></div>
       <div><div class="potential">${escapeHtml(potentialLabel(score))} · afinidad ${affinity} · base ${baseScore}</div><div class="meter"><div style="width:${score}%"></div></div></div>
-      <div class="feedback-controls" aria-label="Valorar utilidad editorial">
-        <button class="vote-button positive${currentVote === 1 ? ' active' : ''}" type="button" data-vote="1" data-story-id="${id}" aria-pressed="${currentVote === 1}">+ Positivo</button>
-        <button class="vote-button negative${currentVote === -1 ? ' active' : ''}" type="button" data-vote="-1" data-story-id="${id}" aria-pressed="${currentVote === -1}">− Negativo</button>
-      </div>
       <a class="open-button" href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(openLabel)}</a>
     </aside>
   </article>`;
@@ -460,7 +350,7 @@ function renderStories(){
   const storiesEl = document.getElementById('stories');
   const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => {
     if(currentSort === 'priority'){
-      return learnedScore(b) - learnedScore(a) || Number(b.viral_score || 0) - Number(a.viral_score || 0);
+      return Number(b.viral_score || b.score || 0) - Number(a.viral_score || a.score || 0);
     }
     const timeA = new Date(a.published_at || 0).valueOf();
     const timeB = new Date(b.published_at || 0).valueOf();
@@ -475,7 +365,6 @@ function renderStories(){
     const visual = img.closest('.visual');
     if(visual){visual.classList.add('placeholder');visual.innerHTML = `<div class="placeholder-mark">Sin imagen</div><span class="media-tag">contenido</span>`}
   }, {once:true}));
-  updateLearningStatus();
 }
 function setView(view){
   currentView = view === 'unfiltered' ? 'unfiltered' : 'selection';
@@ -544,23 +433,10 @@ document.getElementById('timeRange').addEventListener('change', event => {
   renderStories();
 });
 document.getElementById('sortBy').addEventListener('change', event => {
-  currentSort = event.target.value || 'priority';
-  renderStories();
-});
-document.getElementById('stories').addEventListener('click', event => {
-  const button = event.target.closest('[data-vote]');
-  if(!button) return;
-  const story = allStories.find(item => storyId(item) === button.dataset.storyId);
-  if(story) voteStory(story,Number(button.dataset.vote));
-});
-document.getElementById('resetLearning').addEventListener('click', () => {
-  if(!window.confirm('¿Reiniciar todos los votos y preferencias aprendidas en este dispositivo?')) return;
-  learningState = {votes:{},weights:{}};
-  saveLearningState();
+  currentSort = event.target.value || 'time-desc';
   renderStories();
 });
 load();
-flushFeedbackQueue();
 </script>
 </body>
 </html>
