@@ -1,13 +1,12 @@
 name: Actualizar y publicar radar viral
 
 on:
-    # Cada 30 minutos en horario de Madrid, con pausa entre las 02:00 y las 05:59.
-  # GitHub programa en UTC. Un job previo aplica la pausa en horario de Madrid.
   schedule:
-    - cron: '*/30 0-1,6-23 * * *'
+    - cron: '7/15 0-1,6-23 * * *'
       timezone: 'Europe/Madrid'
-    - cron: '*/10 * * * *'
+
   workflow_dispatch:
+
   push:
     branches:
       - main
