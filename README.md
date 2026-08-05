@@ -60,8 +60,10 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   otras. La sección global de Infobae queda excluida para evitar
   actualidad local latinoamericana.
 - RSS oficiales de Mundo Deportivo `El Otro Mundo`, Infobae España, Telecinco,
-  EL ESPAÑOL y La Vanguardia. Las dos portadas generalistas entran sin impulso
-  ni etiquetas preasignadas: solo pasan si cumplen los criterios editoriales.
+  EL ESPAÑOL y La Vanguardia. Las dos portadas generalistas parten sin impulso
+  ni etiquetas preasignadas; solo después de superar el prefiltrado estricto
+  reciben el bonus de fuente editorial filtrada. Si una noticia coincide con
+  Google News, el grupo conserva como principal el enlace original del medio.
   El feed de Infobae utiliza su endpoint oficial de Arc porque la URL corta
   `/espana/rss` redirige actualmente a 404. Cribeo y EL ESPAÑOL `Offbeat` se
   excluyen porque han dejado de publicar.

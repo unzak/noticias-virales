@@ -174,14 +174,14 @@ NEWS_SOURCES = (
         "EL ESPAÑOL · Portada",
         "https://www.elespanol.com/rss",
         0.0,
-        "",
+        "Portada general filtrada",
         (),
     ),
     (
         "La Vanguardia · Portada",
         "https://www.lavanguardia.com/rss/home.xml",
         0.0,
-        "",
+        "Portada general filtrada",
         (),
     ),
     (
@@ -551,7 +551,7 @@ SPAIN_PUBLISHER_TERMS = (
 CABRONAZI_TAG_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("humor", ("humor", "gracioso", "divertido", "broma", "parodia", "chiste", "carcajada", "desternillante", "hace reir", "se rie", "risa", "risas", "parece chiste", "sale mal", "salio mal", "acaba mal", "por error", "metedura de pata", "batalla campal", "lo que le llego")),
     ("memes", ("meme", "memes", "plantilla viral", "reaccion viral", "se convierte en meme")),
-    ("animales", ("animal", "animales", "perro", "gato", "mascota", "cachorro", "rescate animal", "zoo")),
+    ("animales", ("animal", "animales", "perro", "perros", "gato", "gatos", "mascota", "mascotas", "cachorro", "cachorros", "rescate animal", "zoo")),
     ("famosos", ("famoso", "famosa", "celebridad", "influencer", "streamer", "cantante", "actor", "actriz")),
     ("corazon", ("prensa del corazon", "romance", "noviazgo", "pareja", "boda", "separacion", "divorcio", "ruptura", "embarazo", "expareja")),
     ("television", ("television", "programa", "presentador", "presentadora", "en directo", "plato", "concurso")),
@@ -722,13 +722,21 @@ def classify_topic_tags(text: str, configured: Iterable[str] = ()) -> set[str]:
 
 def is_general_front_page_candidate(title: str, tags: set[str]) -> bool:
     """Exige un ángulo compartible explícito en los RSS generalistas."""
-    front_page_politics = POLITICS_TERMS + ("sumar", "izquierda", "derecha")
+    front_page_politics = POLITICS_TERMS + (
+        "sumar", "izquierda", "derecha", "entrada masiva",
+    )
     if contains_phrase(title, front_page_politics):
         return False
-    if contains_phrase(title, HARD_NEWS_TERMS) or contains_phrase(title, INSTITUTIONAL_TERMS):
+    front_page_hard_news = HARD_NEWS_TERMS + (
+        "detiene", "armado", "armada", "hacha", "cuchillo", "agredir",
+        "autolesion", "hospitalizado", "hospitalizada",
+    )
+    if contains_phrase(title, front_page_hard_news) or contains_phrase(title, INSTITUTIONAL_TERMS):
         return False
 
-    strong_non_routine_tags = CABRONAZI_STRONG_TAGS - {"deportes"}
+    strong_non_routine_tags = CABRONAZI_STRONG_TAGS - {
+        "deportes", "historias", "nostalgia",
+    }
     if tags & strong_non_routine_tags:
         return True
 
@@ -961,7 +969,12 @@ def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool
             break
     if mexico_regional_url:
         foreign_hits += 1
-    trusted_source = any(normalize(item.source) in SPAIN_PUBLISHER_TERMS for item in item_list)
+    trusted_source = any(
+        normalized_source == publisher or normalized_source.startswith(f"{publisher} ")
+        for item in item_list
+        for normalized_source in (normalize(item.source),)
+        for publisher in SPAIN_PUBLISHER_TERMS
+    )
     score = min(12, spain_hits * 6) + (8 if trusted_source else -6) - min(18, foreign_hits * 9)
     reasons: list[str] = []
     if spain_hits:
@@ -4548,9 +4561,14 @@ def entry_signal(entry: StoryEntry) -> str | None:
 
 def choose_main(items: list[StoryEntry]) -> StoryEntry:
     news_items = [item for item in items if item.platform == "news"]
-    if news_items and len(items) > 1:
+    direct_news_items = [
+        item for item in news_items
+        if not _is_google_host(item.link)
+    ]
+    preferred_news_items = direct_news_items or news_items
+    if preferred_news_items and len(items) > 1:
         return max(
-            news_items,
+            preferred_news_items,
             key=lambda item: item.published_at or dt.datetime.min.replace(tzinfo=dt.timezone.utc),
         )
     return max(
