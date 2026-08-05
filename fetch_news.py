@@ -526,7 +526,10 @@ ROUTINE_CONTENT_TERMS = (
 LOW_VALUE_CONTENT_TERMS = (
     "receta", "recetas", "ingredientes",
     "sorteo", "sorteos", "loteria", "euromillones", "bonoloto",
-    "la primitiva", "cupon de la once", "precio", "precios",
+    "la primitiva", "cupon de la once", "super once", "sorteo de la once",
+    "numeros ganadores", "combinacion ganadora", "resultado de la once",
+    "trucos de cocina", "truco para cocinar", "cocinar", "coctel",
+    "granizado", "postre", "postres", "precio", "precios",
     "cuanto cuesta", "tarifa", "tarifas",
 )
 RECIPE_INSTRUCTION_TERMS = ("como preparar", "como hacer")
@@ -2558,6 +2561,12 @@ def filter_recent_entries(
             missing += 1
             continue
         value = published_at.astimezone(dt.timezone.utc)
+        url_day = publication_day_from_url(entry.link)
+        if url_day and url_day < cutoff.date():
+            # Una fecha antigua explícita en la URL prevalece sobre fechas
+            # recientes del RSS, que a veces representan una republicación.
+            old += 1
+            continue
         if value < cutoff:
             old += 1
             continue

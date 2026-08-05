@@ -142,7 +142,8 @@ Antes de agrupar y puntuar, el generador:
 
 1. Recupera las fechas ausentes desde el `datePublished` del artículo destino,
    priorizando el bloque cuyo URL coincide y contrastando la fecha codificada
-   en la propia URL para no usar fechas de noticias relacionadas.
+   en la propia URL para no usar fechas de noticias relacionadas. Una fecha
+   antigua explícita en la URL invalida también una fecha reciente del RSS.
 2. Descarta contenidos anteriores a 24 horas.
 3. Descarta contenidos sin fecha verificable.
 4. Descarta fechas futuras con más de 20 minutos de desviación.
