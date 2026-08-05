@@ -7,9 +7,9 @@ todas las piezas cuya fecha pueda verificarse dentro de las **últimas 24 horas*
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
 El ranking refuerza además las piezas vinculadas a España y descarta actualidad
 local extranjera sin un ángulo español, aunque el titular esté escrito en español.
-El filtro también excluye ediciones regionales mexicanas identificadas en las
-URL (por ejemplo, rutas `/mx/`, `/mexico/` y dominios `.mx`) antes de construir
-ambas vistas.
+El filtro también excluye medios y ediciones de Latinoamérica identificados por
+dominio territorial, URL o cabecera antes de construir ambas vistas. `Infobae`
+solo se conserva para su edición España bajo `/espana/`.
 La interfaz clara en rosa permite ordenar por prioridad, tiempo ascendente o
 tiempo descendente sin perder los filtros de periodo y categoría. Ambas vistas
 se abren por defecto con las noticias más recientes primero. Google
@@ -199,7 +199,7 @@ Abre `http://localhost:8000`.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
 - `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
-- `.github/workflows/update.yml`: actualización y despliegue cada 10 minutos en
+- `.github/workflows/update.yml`: actualización y despliegue cada 30 minutos en
   horario de Madrid, con pausa entre las 02:00 y las 05:59 y reanudación a las
   06:00.
 

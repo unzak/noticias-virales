@@ -566,6 +566,55 @@ SPAIN_PUBLISHER_TERMS = (
     "eldiario es", "la razon", "rtve", "europa press", "cadena ser", "cope",
     "onda cero", "mundo deportivo", "formula tv", "vertele", "divinity",
 )
+LATAM_DOMAIN_SUFFIXES = (
+    ".com.ar", ".com.mx", ".com.co", ".com.pe", ".com.uy", ".com.py",
+    ".com.pa", ".com.hn", ".com.cr", ".com.ec", ".com.ve", ".com.bo",
+    ".ar", ".mx", ".cl", ".co", ".pe", ".uy", ".py", ".pa", ".hn",
+    ".cr", ".ec", ".ve", ".bo", ".cu",
+)
+LATAM_MEDIA_DOMAINS = frozenset({
+    "la100.cienradios.com", "lmneuquen.com", "elimparcial.com",
+    "lasillarota.com", "revistagente.com", "lacasadelosfamososmexico.tv",
+    "diariopanorama.com", "reforma.com", "metroworldnews.com",
+    "quever.news", "univision.com", "pulzo.com", "altadensidad.com",
+    "televicentro.com", "heraldousa.com", "cnnespanol.cnn.com",
+    "espndeportes.espn.com", "diariodecuba.com", "latam.ign.com",
+    "eltiempomx.com",
+})
+LATAM_PUBLISHER_TERMS = (
+    "la 100", "reporte indigo", "lmneuquen", "el imparcial", "la gaceta",
+    "canal 13", "la silla rota", "tvn", "revista gente", "exitoina",
+    "mega cl", "la cuarta", "chilevision", "reforma", "el trece",
+    "tv azteca", "ciudad com ar", "biobiochile", "cooperativa",
+    "cadena 3 argentina", "tyc sports", "univision", "pulzo",
+    "cnn en espanol", "espn deportes", "metro world news", "reporte indigo",
+    "infobae", "caras", "fernanda tapia", "radio gol", "soy del millo",
+    "la capital", "diario del yaqui", "pulso diario san luis", "el horizonte",
+    "tvnotas", "revista clase", "ciudad magazine", "la cronica de hoy",
+    "diario san rafael", "la popu", "diario panorama", "revista para ti",
+    "basquet total", "ciudadccs", "catamarca ya", "mundo ejecutivo",
+    "diario ciudad victoria", "bitbol", "minuto neuquen", "tribuno de jujuy",
+    "diario el sol mendoza", "el universal", "cadena heat", "el chubut",
+    "mejorinformado", "la tecla", "region 360", "reconquista radios",
+    "periodico motivar", "la teja", "teletica", "diario de cuyo",
+    "reportero de iquique", "el grafico", "soy futbol", "reporteros en movimiento",
+    "diario deportivo el diez", "alta densidad", "unanimo deportes",
+    "critica sur", "el tabloide", "america tv", "diario democracia",
+    "sol play", "el 19 digital", "periodico digital centroamericano",
+    "jalisco tv", "integracion empresaria", "opinion de rafaela",
+    "inforama catamarca", "la verdad", "abcnoticias", "viveusa",
+    "d10", "eltrecetv", "fernandatapia", "qz noticias", "via szeta",
+    "0221", "24 horas el diario sin limites", "canal siete bahia blanca",
+    "el cronista", "diario de ciudad victoria", "esemanal", "holanews",
+    "mas encarnacion", "revista q", "record", "san juan 8", "televicentro",
+    "tendido7", "tiempo sur", "trespm", "vertigo politico", "senal news",
+    "prensario internacional", "yogonet", "focus gaming news", "levelup",
+    "la magia azul", "siempre en la noticia", "diauno", "el comercio",
+    "el espectador", "diario extra", "mirror us en espanol", "eltiempomx",
+    "argentina", "mexico", "chile", "colombia", "peru", "ecuador",
+    "paraguay", "panama", "honduras", "cuba", "uruguay", "bolivia",
+    "costa rica", "venezuela",
+)
 
 CABRONAZI_TAG_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("humor", ("humor", "gracioso", "divertido", "broma", "parodia", "chiste", "carcajada", "desternillante", "hace reir", "se rie", "risa", "risas", "parece chiste", "sale mal", "salio mal", "acaba mal", "por error", "metedura de pata", "batalla campal", "lo que le llego")),
@@ -979,12 +1028,44 @@ def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
     }
 
 
+def is_latin_american_media(source: str, link: str) -> bool:
+    parsed = urllib.parse.urlparse(link)
+    host = (parsed.hostname or "").lower().removeprefix("www.")
+    path = parsed.path.lower()
+    normalized_source = normalize(source)
+
+    if "infobae espana" in normalized_source:
+        return False
+    if host == "infobae.com" or host.endswith(".infobae.com"):
+        return not (
+            path == "/espana" or path.startswith("/espana/")
+            or "infobae espana" in normalized_source
+        )
+    if host == "amp-us.marca.com" or host.startswith("latam."):
+        return True
+    if host.endswith((".es", ".cat", ".eus")):
+        return False
+    raw_source = source.casefold()
+    source_domains = re.findall(r"[a-z0-9.-]+\.[a-z]{2,}", raw_source)
+    if (
+        any(domain.endswith(LATAM_DOMAIN_SUFFIXES) for domain in source_domains)
+        or any(domain in raw_source for domain in LATAM_MEDIA_DOMAINS)
+        or "amp-us.marca.com" in raw_source
+        or "latinoamerica" in normalized_source
+    ):
+        return True
+    if host in LATAM_MEDIA_DOMAINS or any(host.endswith(suffix) for suffix in LATAM_DOMAIN_SUFFIXES):
+        return True
+    return any(contains_phrase(normalized_source, (publisher,)) for publisher in LATAM_PUBLISHER_TERMS)
+
+
 def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool]:
     """Estima si el contenido está dirigido a la audiencia española."""
     item_list = list(items)
     title_text = " ".join(item.title for item in item_list)
     spain_hits = contains_phrase(title_text, SPAIN_TITLE_TERMS)
     foreign_hits = contains_phrase(title_text, FOREIGN_LOCAL_NEWS_TERMS)
+    latam_media = any(is_latin_american_media(item.source, item.link) for item in item_list)
     mexico_regional_url = False
     for item in item_list:
         parsed = urllib.parse.urlparse(item.link)
@@ -994,6 +1075,8 @@ def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool
             mexico_regional_url = True
             break
     if mexico_regional_url:
+        foreign_hits += 1
+    if latam_media:
         foreign_hits += 1
     trusted_source = any(
         normalized_source == publisher or normalized_source.startswith(f"{publisher} ")
@@ -1011,7 +1094,9 @@ def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool
         reasons.append("actualidad local extranjera")
     if mexico_regional_url:
         reasons.append("edición regional de México")
-    foreign_without_spanish_angle = mexico_regional_url or bool(foreign_hits and not spain_hits)
+    if latam_media:
+        reasons.append("medio latinoamericano")
+    foreign_without_spanish_angle = latam_media or mexico_regional_url or bool(foreign_hits and not spain_hits)
     return score, reasons, foreign_without_spanish_angle
 
 
