@@ -1,40 +1,442 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Radar de noticias actualizado automáticamente con GitHub Actions.">
-  <title>Radar viral</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light">
+<title>Pulso Viral — Radar social para España</title>
+<style>
+  :root{
+    --bg:#fff7fb;
+    --panel:#ffffff;
+    --panel-2:#fff0f7;
+    --text:#28151f;
+    --muted:#806b76;
+    --line:#efd5e2;
+    --hot:#ed1470;
+    --yellow:#a93e70;
+    --mint:#157b70;
+    --blue:#4264b5;
+    --purple:#9a3d86;
+    --danger:#c72d55;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 85% -10%, rgba(237,20,112,.15), transparent 33rem),
+      radial-gradient(circle at -10% 20%, rgba(255,190,218,.25), transparent 28rem),
+      var(--bg);
+    color:var(--text);
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  a{color:inherit}
+  button{font:inherit}
+  .shell{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  header{padding:38px 0 24px;border-bottom:1px solid var(--line)}
+  .topline{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
+  .brand-kicker{display:flex;align-items:center;gap:9px;color:var(--hot);font-weight:850;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
+  .live-dot{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 6px rgba(237,20,112,.12)}
+  h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.9;letter-spacing:-.065em;margin:16px 0 14px;max-width:850px}
+  .lede{margin:0;max-width:760px;color:var(--muted);font-size:clamp(1rem,2vw,1.16rem);line-height:1.55}
+  .updated{color:var(--muted);font-size:.82rem;white-space:nowrap;padding-top:4px}
+
+  main{padding:26px 0 58px}
+  .view-switch{display:flex;align-items:center;justify-content:center;gap:15px;margin:0 0 22px;padding:9px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(117,35,73,.06)}
+  .view-tab{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px;cursor:pointer;font-size:.82rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
+  .view-tab:hover,.view-tab.active{background:var(--hot);color:#fff}
+  .view-divider{color:#d9a9be;font-weight:900}
+  .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .summary-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:14px;padding:15px;box-shadow:0 8px 24px rgba(117,35,73,.06)}
+  .summary-card strong{display:block;font-size:1.5rem;letter-spacing:-.04em}
+  .summary-card span{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em}
+
+  .toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;margin:20px 0}
+  .toolbar-main{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
+  .filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+  .filters::-webkit-scrollbar{display:none}
+  .filter{
+    border:1px solid var(--line);background:var(--panel);color:var(--muted);
+    border-radius:999px;padding:9px 13px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:750
+  }
+  .filter:hover,.filter.active{border-color:var(--hot);color:var(--hot);background:rgba(237,20,112,.09)}
+  .time-range,.sort-control{display:flex;align-items:center;gap:7px;flex:0 0 auto;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
+  .time-range select,.sort-control select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:9px 30px 9px 10px;font:inherit;text-transform:none;letter-spacing:0;cursor:pointer}
+  .count{color:var(--muted);font-size:.82rem;white-space:nowrap}
+
+  .stories{display:flex;flex-direction:column;gap:12px}
+  .story{
+    position:relative;display:grid;grid-template-columns:64px 245px minmax(0,1fr) 142px;
+    min-height:190px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    background:linear-gradient(135deg,#fff,#fff8fb);
+    box-shadow:0 8px 24px rgba(117,35,73,.08);
+    transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease
+  }
+  .story:hover{transform:translateY(-2px);border-color:#e9a7c4;box-shadow:0 14px 34px rgba(117,35,73,.13)}
+  .story[data-rank="1"]{border-color:rgba(237,20,112,.52);box-shadow:0 12px 38px rgba(237,20,112,.09)}
+  .rank-rail{
+    display:flex;align-items:center;justify-content:center;
+    padding:12px 7px;border-right:1px solid var(--line);background:#fff0f7
+  }
+  .rank-number{display:flex;align-items:baseline;gap:1px;font-size:1.7rem;line-height:1;font-weight:950;letter-spacing:-.07em;color:var(--text)}
+  .rank-hash{font-size:.83rem;color:var(--muted);font-weight:900;letter-spacing:-.02em}
+  .story[data-rank="1"] .rank-number{color:var(--hot)}
+  .visual{position:relative;background:#0e1015;min-height:190px;overflow:hidden}
+  .visual::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.025);pointer-events:none}
+  .visual img{width:100%;height:100%;min-height:190px;object-fit:cover;display:block;transition:transform .25s ease}
+  .story:hover .visual img{transform:scale(1.025)}
+  .visual.placeholder{display:grid;place-items:center;background:radial-gradient(circle at 20% 10%,rgba(237,20,112,.28),transparent 60%),linear-gradient(145deg,#ffd7e9,#ef8fba)}
+  .placeholder-mark{font-size:1rem;font-weight:950;color:rgba(40,21,31,.48);letter-spacing:.08em;text-transform:uppercase}
+  .media-tag{position:absolute;left:10px;bottom:10px;z-index:1;padding:5px 8px;border-radius:999px;background:rgba(11,12,16,.9);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.66rem;font-weight:850;text-transform:uppercase;letter-spacing:.08em;text-shadow:0 1px 2px rgba(0,0,0,.65)}
+  .content{padding:18px 20px;display:flex;flex-direction:column;min-width:0}
+  .eyebrow{display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--muted);font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+  .eyebrow .fresh{color:var(--mint)}
+  h2{font-size:clamp(1.12rem,1.7vw,1.42rem);line-height:1.23;letter-spacing:-.022em;margin:0 0 10px;max-width:900px}
+  h2 a{text-decoration:none}
+  h2 a:hover{text-decoration:underline;text-decoration-color:var(--hot);text-decoration-thickness:3px;text-underline-offset:3px}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+  .badge{border:1px solid var(--line);border-radius:999px;padding:4px 8px;color:var(--muted);font-size:.68rem;font-weight:760}
+  .badge.hot{color:var(--hot);border-color:rgba(237,20,112,.5);background:rgba(237,20,112,.08)}
+  .badge.cross{color:var(--mint);border-color:rgba(98,214,191,.45)}
+  .badge.platform{color:var(--blue);border-color:rgba(117,167,255,.4)}
+  .badge.image{color:var(--mint);border-color:rgba(98,214,191,.42);background:rgba(98,214,191,.06)}
+  .badge.topic{color:var(--purple);border-color:rgba(187,140,255,.48);background:rgba(187,140,255,.07)}
+  .badge.affinity{color:#ffd166;border-color:rgba(255,209,102,.52);background:rgba(255,209,102,.08)}
+  .signals{list-style:none;padding:0;margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px;color:var(--muted);font-size:.73rem;line-height:1.3}
+  .signals li{padding:5px 8px;border-radius:8px;background:#fff2f8;border:1px solid var(--line)}
+  .signals li::before{content:"↗";color:var(--mint);margin-right:6px;font-weight:900}
+  .source-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:11px;border-top:1px solid var(--line);font-size:.75rem;color:var(--muted)}
+  .source-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .source-name strong{color:var(--text)}
+  .score-panel{
+    border-left:1px solid var(--line);padding:17px 14px;display:flex;flex-direction:column;
+    align-items:stretch;justify-content:center;background:#fff3f8;text-align:center
+  }
+  .score-panel .score-value{font-size:2.25rem;line-height:.95;font-weight:950;letter-spacing:-.07em;color:var(--yellow)}
+  .score-panel .score-caption{margin-top:6px;color:var(--muted);font-size:.62rem;line-height:1.25;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+  .potential{margin-top:10px;font-size:.73rem;font-weight:850;color:var(--text)}
+  .meter{height:6px;border-radius:99px;background:#efd8e3;overflow:hidden;margin:10px 0 13px}
+  .meter div{height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--mint),var(--yellow),var(--hot))}
+  .open-button{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 10px;border-radius:10px;background:var(--text);color:var(--bg);font-size:.73rem;font-weight:900;text-decoration:none}
+  .open-button:hover{background:var(--hot);color:white}
+
+  .sources-panel{margin-top:25px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);padding:18px}
+  .sources-panel h3{margin:0 0 12px;font-size:1rem}
+  .source-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .source-chip{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:var(--muted);font-size:.73rem}
+  .status-dot{width:7px;height:7px;border-radius:50%;background:var(--muted)}
+  .source-chip.ok .status-dot{background:var(--mint)}
+  .source-chip.off .status-dot{background:var(--yellow)}
+  .source-chip.fail .status-dot{background:var(--danger)}
+  details{margin-top:13px;color:var(--muted);font-size:.76rem}
+  details summary{cursor:pointer;color:var(--text);font-weight:750}
+  .notice{margin-top:20px;padding:14px 16px;border-left:3px solid var(--yellow);background:rgba(255,209,92,.06);color:var(--muted);font-size:.78rem;line-height:1.5}
+  .empty,.error{grid-column:1/-1;text-align:center;padding:70px 20px;border:1px dashed var(--line);border-radius:var(--radius);color:var(--muted)}
+
+  footer{border-top:1px solid var(--line);padding:26px 0 38px;color:var(--muted);font-size:.75rem;line-height:1.6}
+
+  @media(max-width:960px){
+    .story{grid-template-columns:54px 205px minmax(0,1fr) 118px}
+    .content{padding:16px}.score-panel{padding:15px 11px}.score-panel .score-value{font-size:2rem}
+  }
+  @media(max-width:760px){
+    .topline{display:block}.updated{margin-top:16px}.summary-grid{grid-template-columns:repeat(2,1fr)}
+    .story{grid-template-columns:48px 155px minmax(0,1fr);min-height:170px}
+    .visual,.visual img{min-height:170px}
+    .score-panel{grid-column:2/-1;border-left:0;border-top:1px solid var(--line);padding:10px 14px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;text-align:left}
+    .score-panel .score-value{font-size:1.65rem}.score-panel .score-caption,.potential{margin:0}.meter{margin:0}.open-button{min-width:108px}
+    .signals{display:none}
+  }
+  @media(max-width:560px){
+    .shell{padding:0 14px}header{padding-top:28px}.summary-grid{gap:8px}.summary-card{padding:12px}.toolbar{display:block}.toolbar-main{display:block}.time-range{margin-bottom:10px}.count{margin-top:10px}
+    .story{grid-template-columns:42px minmax(0,1fr)}
+    .rank-rail{grid-row:1/4}.visual{grid-column:2;height:180px;min-height:180px}.visual img{height:180px;min-height:180px}
+    .content{grid-column:2;padding:14px}.score-panel{grid-column:2;grid-template-columns:auto 1fr}.open-button{grid-column:1/-1}.score-panel .score-caption{display:none}
+    h2{font-size:1.08rem}.source-row{display:block}.source-name{display:block;margin-bottom:2px}
+  }
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}.story{transition:none}}
+</style>
 </head>
 <body>
-  <header class="hero">
+<header>
+  <div class="shell topline">
     <div>
-      <p class="eyebrow">ACTUALIZACIÓN AUTOMÁTICA</p>
-      <h1>Radar viral</h1>
-      <p class="subtitle">Noticias recientes ordenadas por actualidad.</p>
+      <div class="brand-kicker"><span class="live-dot"></span> Radar social España</div>
+      <h1>Pulso Viral</h1>
+      <p class="lede">Hasta 150 ideas de las últimas 24 horas, priorizadas para entretenimiento en España. Incluye sucesos como categoría independiente para que puedas mostrarlos u ocultarlos.</p>
     </div>
-    <div class="status" aria-live="polite">
-      <span id="status-dot" class="dot"></span>
-      <span id="status-text">Cargando datos…</span>
+    <div class="updated" id="updated">Cargando actualización…</div>
+  </div>
+</header>
+<main class="shell">
+  <nav class="view-switch" aria-label="Tipo de selección">
+    <button class="view-tab active" type="button" data-view="unfiltered">Sin filtro</button>
+    <span class="view-divider" aria-hidden="true">|</span>
+    <button class="view-tab" type="button" data-view="selection">Selección Cabronazi</button>
+  </nav>
+  <section class="summary-grid" aria-label="Resumen">
+    <div class="summary-card"><strong id="storyCount">—</strong><span>oportunidades</span></div>
+    <div class="summary-card"><strong id="highCount">—</strong><span>potencial alto</span></div>
+    <div class="summary-card"><strong id="sourceCount">—</strong><span>fuentes activas</span></div>
+    <div class="summary-card"><strong id="entryCount">—</strong><span>piezas analizadas</span></div>
+  </section>
+
+  <div class="toolbar">
+    <div class="toolbar-main">
+      <label class="time-range" for="timeRange">Periodo
+        <select id="timeRange">
+          <option value="1">Última hora</option>
+          <option value="4">Últimas 4 horas</option>
+          <option value="24" selected>Últimas 24 horas</option>
+        </select>
+      </label>
+      <label class="sort-control" for="sortBy">Ordenar
+        <select id="sortBy">
+          <option value="priority">Prioridad</option>
+          <option value="time-asc">Tiempo asc.</option>
+          <option value="time-desc" selected>Tiempo desc.</option>
+        </select>
+      </label>
+      <div class="filters" id="filters" aria-label="Filtros">
+        <button class="filter active" data-filter="all">Todo</button>
+        <button class="filter" data-filter="humor-curiosidades">Humor y curiosidades</button>
+        <button class="filter" data-filter="famosos-corazon">Famosos y corazón</button>
+        <button class="filter" data-filter="redes-tecnologia">Redes y tecnología</button>
+        <button class="filter" data-filter="animales">Animales</button>
+        <button class="filter" data-filter="deportes">Deportes</button>
+        <button class="filter" data-filter="vida-bienestar">Vida y bienestar</button>
+        <button class="filter" data-filter="sucesos">Sucesos</button>
+      </div>
     </div>
-  </header>
+    <div class="count" id="visibleCount"></div>
+  </div>
+  <section class="stories" id="stories"><div class="empty">Analizando señales…</div></section>
+  <section class="sources-panel" id="sourcesPanel" hidden>
+    <h3>Estado de las fuentes</h3>
+    <div class="source-chips" id="sourceChips"></div>
+    <details id="warningsBox" hidden><summary>Ver avisos de esta actualización</summary><ul id="warnings"></ul></details>
+  </section>
+  <div class="notice" id="notice">El score es una ayuda editorial: no garantiza likes. Comprueba contexto, derechos, autoría, privacidad y seguridad de marca antes de republicar contenido de terceros.</div>
+</main>
 
-  <main>
-    <section class="toolbar" aria-label="Información de actualización">
-      <div><strong>Última actualización</strong><span id="updated">—</span></div>
-      <div><strong>Noticias</strong><span id="count">—</span></div>
-      <button id="reload" type="button">Actualizar vista</button>
-    </section>
+<footer><div class="shell">Actualización cada 5 minutos, excepto de 02:00 a 06:00 · Solo últimas 24 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
 
-    <section id="stories" class="grid" aria-live="polite"></section>
-    <p id="empty" class="empty" hidden>No hay noticias disponibles en este momento.</p>
-  </main>
+<script>
+let allStories = [];
+let selectionStories = [];
+let unfilteredStories = [];
+let currentView = 'unfiltered';
+let currentFilter = 'all';
+let currentHours = 24;
+let currentSort = 'time-desc';
 
-  <footer>
-    Generado automáticamente mediante GitHub Actions y publicado en GitHub Pages.
-  </footer>
+function escapeHtml(value){
+  return String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
+}
+function safeUrl(value){
+  if(value === null || value === undefined || String(value).trim() === '') return '#';
+  try{
+    const url = new URL(String(value), window.location.href);
+    return ['http:','https:'].includes(url.protocol) ? url.href : '#';
+  }catch{return '#'}
+}
+function mediaLabel(type){
+  return ({video:'vídeo',image:'imagen',article:'artículo',link:'enlace',text:'social'})[type] || 'contenido';
+}
+function potentialLabel(score){
+  if(score >= 80) return 'Muy alto';
+  if(score >= 65) return 'Alto';
+  if(score >= 45) return 'Medio';
+  return 'Exploratorio';
+}
+function relativeAge(value){
+  const date = value ? new Date(value) : null;
+  if(!date || Number.isNaN(date.valueOf())) return 'Reciente';
+  const minutes = Math.max(0, Math.floor((Date.now() - date.valueOf()) / 60000));
+  if(minutes < 60) return `Hace ${Math.max(1, minutes)} min`;
+  const hours = Math.floor(minutes / 60);
+  if(hours < 24) return `Hace ${hours} h`;
+  const days = Math.floor(hours / 24);
+  return `Hace ${days} d`;
+}
+const tagLabels = {
+  trending:'Trending', viral:'Viral', humor:'Humor', memes:'Memes', animales:'Animales', sucesos:'Sucesos',
+  famosos:'Famosos', corazon:'Corazón', television:'TV', reality:'Reality', insolito:'Insólito', redes:'Redes',
+  tecnologia:'Tecnología', videojuegos:'Gaming', deportes:'Deportes', comida:'Comida',
+  viajes:'Viajes', historias:'Historias', nostalgia:'Nostalgia', lifestyle:'Lifestyle',
+  tiktok:'TikTok', curiosidades:'Curiosidades'
+};
+const generalCategoryLabels = {
+  'humor-curiosidades':'Humor y curiosidades',
+  'famosos-corazon':'Famosos y corazón',
+  'redes-tecnologia':'Redes y tecnología',
+  animales:'Animales', deportes:'Deportes', 'vida-bienestar':'Vida y bienestar', sucesos:'Sucesos'
+};
+function generalCategoryFor(story){
+  if(story.hard_news_related || storyTags(story).has('sucesos')) return 'sucesos';
+  if(generalCategoryLabels[story.general_category]) return story.general_category;
+  const tags = storyTags(story);
+  const groups = [
+    ['humor-curiosidades',['humor','memes','insolito','curiosidades']],
+    ['famosos-corazon',['famosos','corazon','television','reality']],
+    ['redes-tecnologia',['redes','tiktok','tecnologia','videojuegos']],
+    ['animales',['animales']],['deportes',['deportes']],
+    ['vida-bienestar',['comida','viajes','historias','nostalgia','lifestyle']],
+    ['sucesos',['sucesos']]
+  ];
+  return groups.find(([,values]) => values.some(tag => tags.has(tag)))?.[0] || 'humor-curiosidades';
+}
+function storyTags(story){return new Set(story.topic_tags || [])}
+function withinTimeRange(story){
+  const published = story.published_at ? new Date(story.published_at) : null;
+  if(!published || Number.isNaN(published.valueOf())) return false;
+  const ageMs = Date.now() - published.valueOf();
+  return ageMs >= -20 * 60000 && ageMs <= currentHours * 3600000;
+}
+function visibleFor(story, filter){
+  if(!withinTimeRange(story)) return false;
+  return filter === 'all' || generalCategoryFor(story) === filter;
+}
+function storyCard(story, index){
+  const baseScore = Math.max(0, Math.min(100, Number(story.viral_score ?? story.score ?? 0)));
+  const score = baseScore;
+  const affinity = Math.max(0,Math.min(100,Number(story.cabronazi_affinity ?? 50)));
+  const affinityReasons = (story.cabronazi_match_reasons || []).join(' · ');
+  const platforms = story.platform_labels || story.platforms || [];
+  const platformBadges = platforms.slice(0,4).map(p => `<span class="badge platform">${escapeHtml(p)}</span>`).join('');
+  const trend = story.matched_google_trend || story.matched_x_trend;
+  const trendBadge = trend ? `<span class="badge hot">En tendencia</span>` : '';
+  const editorialBadge = story.curated_editorial ? `<span class="badge hot">Medio viral</span>` : '';
+  const imageBadge = story.image_linked
+    ? `<span class="badge image" title="${escapeHtml(story.image_origin || 'imagen del artículo')}">Imagen enlazada</span>`
+    : '';
+  const category = generalCategoryFor(story);
+  const topicBadges = `<span class="badge topic">#${escapeHtml(generalCategoryLabels[category])}</span>`;
+  const affinityBadge = affinity >= 65 ? `<span class="badge affinity" title="${escapeHtml(affinityReasons || 'Patrones del histórico de Cabronazi')}">Afinidad Cabronazi ${affinity}</span>` : '';
+  const crossBadge = (story.platforms || []).length >= 2 ? `<span class="badge cross">${story.platforms.length} plataformas</span>` : '';
+  const signals = (story.signals || []).slice(0,3).map(s => `<li>${escapeHtml(s)}</li>`).join('');
+  const thumbnail = safeUrl(story.thumbnail);
+  const visual = thumbnail !== '#'
+    ? `<div class="visual"><img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(story.image_alt || story.title || '')}" loading="lazy" decoding="async"><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`
+    : `<div class="visual placeholder"><div class="placeholder-mark">Sin imagen</div><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`;
+  const sources = story.sources || [];
+  const sourceText = sources.length ? sources.slice(0,3).join(' · ') : 'Fuente original';
+  const age = relativeAge(story.published_at);
+  const rank = index + 1;
+  const openLabel = story.media_type === 'video' ? 'Ver vídeo ↗' : 'Abrir noticia ↗';
+  return `<article class="story" data-score="${score}" data-rank="${rank}" data-published="${escapeHtml(story.published_at || '')}">
+    <div class="rank-rail" aria-label="Número ${rank}"><span class="rank-number"><span class="rank-hash">#</span>${String(rank).padStart(2,'0')}</span></div>
+    ${visual}
+    <div class="content">
+      <div class="eyebrow"><span class="fresh">● ${escapeHtml(age)}</span><span>${escapeHtml(mediaLabel(story.media_type))}</span></div>
+      <h2><a href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(story.title)}</a></h2>
+      <div class="badges">${trendBadge}${editorialBadge}${affinityBadge}${topicBadges}${imageBadge}${crossBadge}${platformBadges}</div>
+      ${signals ? `<ul class="signals">${signals}</ul>` : ''}
+      <div class="source-row"><span class="source-name" title="${escapeHtml(sources.join(' · '))}">Fuente: <strong>${escapeHtml(sourceText)}</strong></span></div>
+    </div>
+    <aside class="score-panel" aria-label="Prioridad personalizada ${score} sobre 100">
+      <div><div class="score-value">${score}</div><div class="score-caption">potencial viral</div></div>
+      <div><div class="potential">${escapeHtml(potentialLabel(score))} · afinidad ${affinity} · base ${baseScore}</div><div class="meter"><div style="width:${score}%"></div></div></div>
+      <a class="open-button" href="${escapeHtml(safeUrl(story.link))}" target="_blank" rel="noopener noreferrer">${escapeHtml(openLabel)}</a>
+    </aside>
+  </article>`;
+}
+function renderStories(){
+  const storiesEl = document.getElementById('stories');
+  const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => {
+    if(currentSort === 'priority'){
+      return Number(b.viral_score || b.score || 0) - Number(a.viral_score || a.score || 0);
+    }
+    const timeA = new Date(a.published_at || 0).valueOf();
+    const timeB = new Date(b.published_at || 0).valueOf();
+    if(currentSort === 'time-asc') return timeA - timeB;
+    if(currentSort === 'time-desc') return timeB - timeA;
+    return 0;
+  });
+  document.getElementById('visibleCount').textContent = `${visible.length} resultado${visible.length === 1 ? '' : 's'}`;
+  if(!visible.length){storiesEl.innerHTML = '<div class="empty">No hay resultados para este filtro en esta actualización.</div>';return}
+  storiesEl.innerHTML = visible.map(storyCard).join('');
+  storiesEl.querySelectorAll('img').forEach(img => img.addEventListener('error', () => {
+    const visual = img.closest('.visual');
+    if(visual){visual.classList.add('placeholder');visual.innerHTML = `<div class="placeholder-mark">Sin imagen</div><span class="media-tag">contenido</span>`}
+  }, {once:true}));
+}
+function setView(view){
+  currentView = view === 'unfiltered' ? 'unfiltered' : 'selection';
+  allStories = currentView === 'unfiltered' ? unfilteredStories : selectionStories;
+  currentFilter = 'all';
+  document.querySelectorAll('.view-tab').forEach(button => button.classList.toggle('active', button.dataset.view === currentView));
+  document.querySelectorAll('.filter').forEach(button => button.classList.toggle('active', button.dataset.filter === 'all'));
+  document.getElementById('storyCount').textContent = allStories.length;
+  document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
+  renderStories();
+}
+function renderSources(data){
+  const panel = document.getElementById('sourcesPanel');
+  const statuses = data.source_status || [];
+  if(!statuses.length) return;
+  panel.hidden = false;
+  document.getElementById('sourceChips').innerHTML = statuses.map(s => {
+    const state = s.ok === true ? 'ok' : s.ok === false ? 'fail' : 'off';
+    const suffix = s.ok === null ? (s.note || 'No configurada') : `${Number(s.items || 0)} elementos`;
+    return `<span class="source-chip ${state}" title="${escapeHtml(suffix)}"><span class="status-dot"></span>${escapeHtml(s.name)}</span>`;
+  }).join('');
+  const warnings = data.warnings || [];
+  if(warnings.length){
+    document.getElementById('warningsBox').hidden = false;
+    document.getElementById('warnings').innerHTML = warnings.map(w => `<li>${escapeHtml(w)}</li>`).join('');
+  }
+}
+async function load(){
+  try{
+    const response = await fetch('./data.json?_=' + Date.now(), {cache:'no-store'});
+    if(!response.ok) throw new Error('data.json no disponible');
+    const data = await response.json();
+    selectionStories = Array.isArray(data.stories) ? data.stories : [];
+    unfilteredStories = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
+    allStories = currentView === 'unfiltered' ? unfilteredStories : selectionStories;
+    const updated = data.updated_at ? new Date(data.updated_at) : null;
+    document.getElementById('updated').textContent = updated && !Number.isNaN(updated.valueOf())
+      ? `Actualizado ${updated.toLocaleString('es-ES',{dateStyle:'medium',timeStyle:'short'})}`
+      : 'Esperando primera actualización';
 
-  <script src="app.js" defer></script>
+    const summary = data.source_summary || {};
+    document.getElementById('storyCount').textContent = allStories.length;
+    document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
+    document.getElementById('sourceCount').textContent = summary.active ?? '—';
+    document.getElementById('entryCount').textContent = summary.entries_collected ?? '—';
+    if(data.editorial_notice) document.getElementById('notice').textContent = data.editorial_notice;
+    renderStories();
+    renderSources(data);
+  }catch(error){
+    document.getElementById('stories').innerHTML = `<div class="error">No se pudieron cargar los datos: ${escapeHtml(error.message)}.<br>Ejecuta el workflow de GitHub Actions al menos una vez.</div>`;
+  }
+}
+document.getElementById('filters').addEventListener('click', event => {
+  const button = event.target.closest('[data-filter]');
+  if(!button) return;
+  currentFilter = button.dataset.filter;
+  document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+  renderStories();
+});
+document.querySelector('.view-switch').addEventListener('click', event => {
+  const button = event.target.closest('[data-view]');
+  if(button) setView(button.dataset.view);
+});
+document.getElementById('timeRange').addEventListener('change', event => {
+  currentHours = Number(event.target.value) || 24;
+  renderStories();
+});
+document.getElementById('sortBy').addEventListener('change', event => {
+  currentSort = event.target.value || 'time-desc';
+  renderStories();
+});
+load();
+</script>
 </body>
 </html>

@@ -1,6 +1,55 @@
 {
   "version": 1,
-  "description": "Criterios editoriales iniciales.",
-  "maximum_stories": 40,
-  "language": "es"
+  "source": "Agregado de WEBSCHRISTIAN.txt",
+  "generated_from_links": 158,
+  "editorial_links": 67,
+  "social_links": 91,
+  "domain_counts": {
+    "mundodeportivo.com": 20,
+    "marca.com": 18,
+    "20minutos.es": 5,
+    "huffingtonpost.es": 4,
+    "lavanguardia.com": 3,
+    "elmundo.es": 3,
+    "los40.com": 2,
+    "rtve.es": 1,
+    "hola.com": 1,
+    "lasexta.com": 1,
+    "elnacional.cat": 1,
+    "ondacero.es": 1
+  },
+  "section_counts": {
+    "mundodeportivo.com/elotromundo": 15,
+    "mundodeportivo.com/vaya-mundo": 2,
+    "mundodeportivo.com/tressesenta": 2,
+    "marca.com/tiramillas": 15,
+    "marca.com/combates-ufc": 3,
+    "20minutos.es/gente": 2,
+    "huffingtonpost.es/virales": 4,
+    "lavanguardia.com/gente": 2,
+    "lavanguardia.com/television": 1,
+    "infobae.com/espana": 1
+  },
+  "source_name_counts": {
+    "mundo deportivo": 20,
+    "marca": 18,
+    "20minutos": 5,
+    "el huffpost": 4,
+    "la vanguardia": 3,
+    "el mundo": 3,
+    "los40": 2,
+    "rtve": 1,
+    "hola": 1,
+    "lasexta": 1,
+    "el nacional": 1,
+    "onda cero": 1,
+    "infobae espana": 1
+  },
+  "social_platform_counts": {
+    "x.com": 55,
+    "facebook.com": 18,
+    "instagram.com": 17,
+    "tiktok.com": 1
+  },
+  "max_ranking_bonus": 8.0
 }

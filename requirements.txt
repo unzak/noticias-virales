@@ -1,1 +1,1 @@
-# El proyecto usa únicamente la biblioteca estándar de Python.
+feedparser==6.0.11
