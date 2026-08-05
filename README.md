@@ -56,11 +56,15 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 ## Fuentes sin claves
 
 - Secciones virales y de entretenimiento de EL PAÍS, MARCA Tiramillas,
-  20minutos, HuffPost, Cribeo, AS Tikitakas, Antena 3, laSexta, Telecinco,
-  EL ESPAÑOL, Público, Infobae España y LOS40, entre otras. La sección global
-  de Infobae queda excluida para evitar actualidad local latinoamericana.
-- Mundo Deportivo `El Otro Mundo` se consulta directamente por su presencia
-  destacada en el histórico de selección editorial.
+  20minutos, HuffPost, AS Tikitakas, Antena 3, laSexta, Público y LOS40, entre
+  otras. La sección global de Infobae queda excluida para evitar
+  actualidad local latinoamericana.
+- RSS oficiales de Mundo Deportivo `El Otro Mundo`, Infobae España, Telecinco,
+  EL ESPAÑOL y La Vanguardia. Las dos portadas generalistas entran sin impulso
+  ni etiquetas preasignadas: solo pasan si cumplen los criterios editoriales.
+  El feed de Infobae utiliza su endpoint oficial de Arc porque la URL corta
+  `/espana/rss` redirige actualmente a 404. Cribeo y EL ESPAÑOL `Offbeat` se
+  excluyen porque han dejado de publicar.
 - Prensa del corazón: HOLA, Lecturas, Semana, Diez Minutos y Vanitatis mediante
   búsquedas restringidas a sus dominios.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.

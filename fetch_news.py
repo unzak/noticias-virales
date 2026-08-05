@@ -150,6 +150,41 @@ def build_topic_sources() -> tuple[tuple[Any, ...], ...]:
 
 NEWS_SOURCES = (
     (
+        "Mundo Deportivo · El Otro Mundo",
+        "https://www.mundodeportivo.com/feed/rss/elotromundo",
+        10.0,
+        "El Otro Mundo",
+        ("viral", "famosos", "television", "animales", "curiosidades"),
+    ),
+    (
+        "Infobae España · Virales",
+        "https://www.infobae.com/arc/outboundfeeds/rss/category/espana/?outputType=xml",
+        9.0,
+        "Virales España",
+        ("viral", "tiktok", "curiosidades"),
+    ),
+    (
+        "Telecinco · RSS",
+        "https://www.telecinco.es/rss.xml",
+        5.0,
+        "Telecinco",
+        ("television",),
+    ),
+    (
+        "EL ESPAÑOL · Portada",
+        "https://www.elespanol.com/rss",
+        0.0,
+        "",
+        (),
+    ),
+    (
+        "La Vanguardia · Portada",
+        "https://www.lavanguardia.com/rss/home.xml",
+        0.0,
+        "",
+        (),
+    ),
+    (
         "EL PAÍS · Lo más visto",
         "https://feeds.elpais.com/mrss-s/pages/ep/site/elpais.com/section/lo-mas-visto/portada",
         5.0,
@@ -306,19 +341,15 @@ NEWS_SOURCES = (
     ),
 )
 
+GENERAL_FRONT_PAGE_SOURCES = frozenset({
+    "EL ESPAÑOL · Portada",
+    "La Vanguardia · Portada",
+})
+
 # Secciones editoriales que se leen directamente desde la portada del medio.
 # Google News queda como respaldo si una portada cambia temporalmente su HTML.
 # Tupla: (estado, medio, URL directa, URL de respaldo, impulso, sección, etiquetas).
 DIRECT_SECTION_SOURCES = (
-    (
-        "La Vanguardia · Cribeo Viral",
-        "La Vanguardia",
-        "https://www.lavanguardia.com/cribeo/viral",
-        google_news_search_url(focused_news_query("site:lavanguardia.com/cribeo/viral")),
-        10.0,
-        "Cribeo Viral",
-        ("viral", "curiosidades"),
-    ),
     (
         "Antena 3 · Virales",
         "Antena 3",
@@ -356,15 +387,6 @@ DIRECT_SECTION_SOURCES = (
         ("viral",),
     ),
     (
-        "Telecinco · Curioso y virales",
-        "Telecinco",
-        "https://www.telecinco.es/noticias/curioso/",
-        google_news_search_url('site:telecinco.es (curioso OR viral OR reality OR famosos OR memes) when:1d'),
-        8.0,
-        "Curioso y noticias virales",
-        ("viral", "curiosidades", "television"),
-    ),
-    (
         "Público · Tremending",
         "Público",
         "https://www.publico.es/tremending",
@@ -381,35 +403,6 @@ DIRECT_SECTION_SOURCES = (
         8.0,
         "Virales, música y entretenimiento",
         ("viral", "famosos", "redes"),
-    ),
-    (
-        "Mundo Deportivo · El Otro Mundo",
-        "Mundo Deportivo",
-        "https://www.mundodeportivo.com/elotromundo",
-        google_news_search_url(focused_news_query(
-            'site:mundodeportivo.com/elotromundo (gente OR television OR mascotas OR musica OR viral OR curioso)'
-        )),
-        10.0,
-        "El Otro Mundo",
-        ("viral", "famosos", "television", "animales", "curiosidades"),
-    ),
-    (
-        "EL ESPAÑOL · Offbeat",
-        "EL ESPAÑOL",
-        "https://www.elespanol.com/offbeat/",
-        google_news_search_url(focused_news_query("site:elespanol.com/offbeat")),
-        9.0,
-        "Offbeat",
-        ("viral", "curiosidades"),
-    ),
-    (
-        "Infobae España · Virales",
-        "Infobae España",
-        "https://www.infobae.com/tag/virales-espana/",
-        google_news_search_url(focused_news_query('site:infobae.com/espana (TikTok OR curiosidades OR curioso OR viral)')),
-        9.0,
-        "Virales España",
-        ("viral", "tiktok", "curiosidades"),
     ),
 )
 MENEAME_SECTIONS = (
@@ -725,6 +718,23 @@ def classify_topic_tags(text: str, configured: Iterable[str] = ()) -> set[str]:
     if any(term in normalized for term in ("curiosidad", "curioso", "curiosa", "insolito", "sorprendente", "surrealista")):
         tags.add("curiosidades")
     return tags
+
+
+def is_general_front_page_candidate(title: str, tags: set[str]) -> bool:
+    """Exige un ángulo compartible explícito en los RSS generalistas."""
+    front_page_politics = POLITICS_TERMS + ("sumar", "izquierda", "derecha")
+    if contains_phrase(title, front_page_politics):
+        return False
+    if contains_phrase(title, HARD_NEWS_TERMS) or contains_phrase(title, INSTITUTIONAL_TERMS):
+        return False
+
+    strong_non_routine_tags = CABRONAZI_STRONG_TAGS - {"deportes"}
+    if tags & strong_non_routine_tags:
+        return True
+
+    # Deportes, comida, viajes o tecnología solo entran desde una portada
+    # general si el propio titular aporta además varias señales virales.
+    return bool(tags & CABRONAZI_CORE_TAGS) and contains_phrase(title, VIRAL_TERMS) >= 2
 
 
 GENERAL_CATEGORY_RULES: tuple[tuple[str, frozenset[str]], ...] = (
@@ -3368,6 +3378,13 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             if not title_keywords:
                 continue
 
+            detected_tags = classify_topic_tags(title, configured_tags)
+            if (
+                fallback_source in GENERAL_FRONT_PAGE_SOURCES
+                and not is_general_front_page_candidate(title, detected_tags)
+            ):
+                continue
+
             published_at = parse_published(raw)
             if published_at and published_at < cutoff:
                 continue
@@ -3378,7 +3395,6 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             seen.add(dedupe_key)
 
             image_candidates = extract_feed_image_candidates(raw)
-            detected_tags = classify_topic_tags(title, configured_tags)
             entries.append(
                 StoryEntry(
                     title=compact_text(title, 220),
