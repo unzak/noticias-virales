@@ -2,7 +2,8 @@ name: Actualizar y publicar radar viral
 
 on:
   schedule:
-    # Cada 15 minutos en horario de Madrid.
+    # Cada 15 minutos, durante las 24 horas, en horario de Madrid.
+    # Se evita el minuto 0 porque GitHub suele tener más carga al inicio de la hora.
     - cron: '7,22,37,52 * * * *'
       timezone: 'Europe/Madrid'
 
@@ -20,23 +21,16 @@ on:
       - 'requirements.txt'
       - '.github/workflows/update.yml'
 
-# Necesario para poder guardar los archivos generados en el repositorio
-# y para desplegar GitHub Pages.
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
 jobs:
   update:
-    name: Generar, guardar y empaquetar el radar
+    name: Generar y empaquetar el radar
     runs-on: ubuntu-latest
     timeout-minutes: 45
-
-    # Evita que dos actualizaciones simultáneas intenten hacer push a main.
-    concurrency:
-      group: radar-update
-      cancel-in-progress: false
 
     env:
       # Opcionales. El panel sigue funcionando sin estas claves.
@@ -49,10 +43,6 @@ jobs:
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v5
-        with:
-          ref: main
-          fetch-depth: 0
-          persist-credentials: true
 
       - name: Preparar Python
         uses: actions/setup-python@v6
@@ -76,23 +66,6 @@ jobs:
         run: |
           python -c "import json, urllib.parse; d=json.load(open('docs/data.json', encoding='utf-8')); s=d.get('stories', []); u=d.get('unfiltered_stories', []); assert all(not x.get('thumbnail') or str(x['thumbnail']).startswith(('http://', 'https://')) for x in s + u), 'Hay una imagen que no es remota'; assert all('news.google.' not in (urllib.parse.urlparse(str(x.get('link', ''))).hostname or '') for x in s), 'Hay noticias curadas sin resolver al artículo original'; assert len(u) == int(d.get('temporal_summary', {}).get('accepted', -1)), 'Sin filtro no contiene todas las piezas válidas'; print(f'Selección: {len(s)} · Sin filtro: {len(u)}')"
 
-      - name: Guardar actualización en el repositorio
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add -A docs/
-
-          if git diff --cached --quiet; then
-            echo "No hay cambios nuevos que guardar."
-          else
-            git commit -m "Actualizar radar viral [skip ci]"
-            git push origin HEAD:main
-          fi
-
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v6
 
@@ -111,6 +84,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
+    # Solo el despliegue se serializa. La generación de la siguiente ejecución
+    # puede comenzar aunque el despliegue anterior todavía esté terminando.
     concurrency:
       group: pages
       cancel-in-progress: false
