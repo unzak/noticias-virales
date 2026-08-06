@@ -1,0 +1,75 @@
+name: Programador interno cada 15 minutos
+
+on:
+  schedule:
+    # GitHub solo tiene que crear una ejecución programada por hora.
+    # El minuto 13 evita el comienzo exacto de la hora.
+    - cron: '13 * * * *'
+
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+# Evita que dos programadores horarios se solapen.
+concurrency:
+  group: programador-interno-cada-15-minutos
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    name: Actualización ${{ matrix.label }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: inmediata
+            environment: scheduler-now
+
+          - label: a los 15 minutos
+            environment: scheduler-15
+
+          - label: a los 30 minutos
+            environment: scheduler-30
+
+          - label: a los 45 minutos
+            environment: scheduler-45
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    # GitHub aplica aquí el temporizador configurado en Settings.
+    environment:
+      name: ${{ matrix.environment }}
+      deployment: false
+
+    steps:
+      - name: Lanzar update.yml
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          API_URL: ${{ github.api_url }}
+
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          echo "Environment: ${{ matrix.environment }}"
+          echo "Hora del disparo: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+
+          curl \
+            --fail-with-body \
+            --silent \
+            --show-error \
+            --request POST \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2026-03-10" \
+            --header "Content-Type: application/json" \
+            "${API_URL}/repos/${REPOSITORY}/actions/workflows/update.yml/dispatches" \
+            --data '{"ref":"main"}'
+
+          echo
+          echo "update.yml lanzado correctamente"
