@@ -3,8 +3,10 @@ name: Actualizar y publicar radar viral
 on:
   # Cada 30 minutos en horario de Madrid, con pausa entre las 02:00 y las 05:59.
   schedule:
-    - cron: '*/30* * *'
-    
+    - cron: '0 * * * *'
+    - cron: '15 * * * *'
+    - cron: '30 * * * *'
+    - cron: '45 * * * *'
   workflow_dispatch:
   push:
     branches:
