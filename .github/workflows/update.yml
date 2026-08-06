@@ -1,6 +1,6 @@
 name: Actualizar y publicar radar viral
 
-oon:
+on:
   schedule:
     # Cuatro eventos separados para poder comprobar cuál omite GitHub.
     - cron: '7 * * * *'
@@ -48,7 +48,7 @@ jobs:
           echo "Cron recibido: ${{ github.event.schedule }}"
           echo "Run ID: ${{ github.run_id }}"
           echo "Hora UTC de inicio: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          
+
       - name: Descargar repositorio
         uses: actions/checkout@v5
 
