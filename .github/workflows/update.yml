@@ -1,15 +1,11 @@
 name: Actualizar y publicar radar viral
 
 on:
+  # Cada 30 minutos en horario de Madrid, con pausa entre las 02:00 y las 05:59.
   schedule:
-    # Cuatro eventos separados para poder comprobar cuál omite GitHub.
-    - cron: '7 * * * *'
-    - cron: '22 * * * *'
-    - cron: '37 * * * *'
-    - cron: '52 * * * *'
-
+    - cron: '*/30* * *'
+    
   workflow_dispatch:
-
   push:
     branches:
       - main
@@ -27,9 +23,16 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  update:
-    name: Generar y empaquetar el radar
+  update-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
@@ -42,13 +45,6 @@ jobs:
       X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
 
     steps:
-      - name: Diagnóstico del disparo
-        run: |
-          echo "Evento: ${{ github.event_name }}"
-          echo "Cron recibido: ${{ github.event.schedule }}"
-          echo "Run ID: ${{ github.run_id }}"
-          echo "Hora UTC de inicio: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-
       - name: Descargar repositorio
         uses: actions/checkout@v5
 
@@ -82,23 +78,6 @@ jobs:
         with:
           path: ./docs
 
-  deploy:
-    name: Publicar en GitHub Pages
-    needs: update
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    # Solo el despliegue se serializa. La generación de la siguiente ejecución
-    # puede comenzar aunque el despliegue anterior todavía esté terminando.
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-
-    steps:
       - name: Publicar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
