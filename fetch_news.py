@@ -706,6 +706,7 @@ PLATFORM_LABELS = {
     "bluesky": "Bluesky",
     "mastodon": "Mastodon",
     "youtube": "YouTube",
+    "forocoches": "ForoCoches",
 }
 
 
@@ -1112,7 +1113,7 @@ def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool
         foreign_hits += 1
     if latam_media:
         foreign_hits += 1
-    trusted_source = any(
+    trusted_source = any(item.platform == "forocoches" for item in item_list) or any(
         normalized_source == publisher or normalized_source.startswith(f"{publisher} ")
         for item in item_list
         for normalized_source in (normalize(item.source),)
@@ -2092,6 +2093,16 @@ def _context_candidates(context: dict[str, Any], story_title: str) -> tuple[Imag
 
 
 def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str | None]:
+    if str(story.get("main_platform") or "") == "forocoches":
+        updated = dict(story)
+        updated.pop("_image_contexts", None)
+        updated.pop("_allow_article_img_fallback", None)
+        updated["thumbnail"] = "media/forocoches.svg"
+        updated["image_verified"] = True
+        updated["image_linked"] = True
+        updated["image_origin"] = "local:forocoches"
+        updated["image_alt"] = "FOROCOCHES"
+        return updated, "local:forocoches"
     allow_article_img_fallback = bool(story.get("_allow_article_img_fallback"))
     contexts = story.get("_image_contexts") if isinstance(story.get("_image_contexts"), list) else []
     candidates: list[tuple[ImageCandidate, bool]] = []
@@ -4719,24 +4730,64 @@ def match_trend(cluster_keywords: frozenset[str], trends: list[dict[str, Any]]) 
 
 
 def get_forocoches_trends() -> tuple[list[dict[str, Any]], list[str], dict[str, Any]]:
-    """Obtiene señales públicas; nunca convierte un hilo en noticia autónoma."""
+    """Obtiene hilos públicos con fecha verificable y señales de ranking."""
     try:
         raw = fetch_forocoches_trending(limit=30, timeout=HTTP_TIMEOUT_SECONDS)
     except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError) as exc:
         warning = f"No se pudieron consultar los trending de ForoCoches: {exc}"
         return [], [warning], {"name": "ForoCoches Trending", "ok": False, "items": 0}
-    trends = [
-        item for item in raw
-        if not is_blocked_content(str(item.get("name") or ""))
-        and not is_probably_english(str(item.get("name") or ""))
-    ]
-    print(f"[ok] ForoCoches Trending: {len(trends)}/{len(raw)} señales editoriales válidas")
+    now = dt.datetime.now(dt.timezone.utc)
+    trends = []
+    for item in raw:
+        title = str(item.get("name") or "")
+        published = parse_iso_datetime(item.get("published_at"))
+        if (
+            not published
+            or not is_within_content_window(published, now)
+            or is_blocked_content(title)
+            or is_probably_english(title)
+        ):
+            continue
+        trends.append(item)
+    print(f"[ok] ForoCoches Trending: {len(trends)}/{len(raw)} hilos válidos de 24 h")
     return trends, [], {
         "name": "ForoCoches Trending",
         "ok": True,
         "items": len(trends),
-        "note": "Solo refuerzan noticias con fecha verificada",
+        "note": "Hilos trending con fecha de creación verificada",
     }
+
+
+def build_forocoches_entries(trends: list[dict[str, Any]]) -> list[StoryEntry]:
+    entries: list[StoryEntry] = []
+    for item in trends:
+        title = compact_text(str(item.get("name") or ""), 220)
+        link = valid_http_url(item.get("url"))
+        published_at = parse_iso_datetime(item.get("published_at"))
+        if not title or not link or not published_at:
+            continue
+        rank = max(1, int(item.get("rank") or 30))
+        tags = classify_topic_tags(title, ("viral", "curiosidades"))
+        entries.append(StoryEntry(
+            title=title,
+            link=link,
+            source="ForoCoches Trending",
+            platform="forocoches",
+            published_at=published_at,
+            keywords=keywords(title),
+            social_points=max(8.0, 30.0 - rank * 0.7),
+            metrics={
+                "rank": rank,
+                "thread_id": str(item.get("thread_id") or ""),
+                "topic_tags": sorted(tags),
+                "curated_editorial": True,
+                "editorial_feed": "ForoCoches Trending",
+            },
+            thumbnail="media/forocoches.svg",
+            media_type="link",
+            seed_trend=title,
+        ))
+    return entries
 
 
 def recency_points(items: list[StoryEntry], now: dt.datetime) -> float:
@@ -4814,6 +4865,8 @@ def entry_signal(entry: StoryEntry) -> str | None:
         return f"{format_metric(int(m.get('favourites', 0)))} favoritos · {format_metric(int(m.get('boosts', 0)))} impulsos en Mastodon"
     if entry.platform == "youtube":
         return f"{format_metric(int(m.get('views', 0)))} visualizaciones · {format_metric(int(m.get('likes', 0)))} likes en YouTube"
+    if entry.platform == "forocoches":
+        return f"Trending #{int(m.get('rank') or 0)} en ForoCoches"
     return None
 
 
@@ -5356,6 +5409,7 @@ def build() -> dict[str, Any]:
     forocoches_trends, forocoches_warnings, forocoches_status = get_forocoches_trends()
     warnings.extend(forocoches_warnings)
     source_status.append(forocoches_status)
+    forocoches_entries = build_forocoches_entries(forocoches_trends)
 
     reddit_entries, reddit_warnings, reddit_status = fetch_reddit_entries()
     warnings.extend(reddit_warnings)
@@ -5387,6 +5441,7 @@ def build() -> dict[str, Any]:
         *google_trend_entries,
         *news_entries,
         *meneame_entries,
+        *forocoches_entries,
         *reddit_entries,
         *bluesky_entries,
         *mastodon_entries,

@@ -76,8 +76,10 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
 - La Razón Sociedad mediante su RSS público, sometido a los mismos filtros.
-- ForoCoches Trending como señal de ranking: sus hilos no se publican como
-  noticias autónomas y solo refuerzan artículos con fecha verificable.
+- ForoCoches Trending como fuente visible: cada hilo cuya fecha de creación
+  pueda verificarse dentro de las últimas 24 horas se publica con su título y
+  enlace originales, usando una imagen local fija identificada como FOROCOCHES.
+  Los temas también actúan como señal para noticias coincidentes.
 - Bluesky y Mastodon están desactivados por configuración editorial y no
   realizan peticiones.
 
@@ -205,8 +207,9 @@ Abre `http://localhost:8000`.
 
 - `fetch_news.py`: consulta, verifica fechas, clasifica, filtra, agrupa y puntúa.
 - `tools/build_cabronazi_profile.py`: genera el perfil agregado desde Meta.
-- `tools/fetch_forocoches_trending.py`: obtiene las señales públicas del ranking
-  de ForoCoches; puede ejecutarse de forma independiente con `--limit`.
+- `tools/fetch_forocoches_trending.py`: obtiene los hilos públicos del ranking,
+  abre cada hilo para verificar la fecha del primer mensaje y puede ejecutarse
+  de forma independiente con `--limit`.
 - `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
 - `editorial_selection_profile.json`: recuentos agregados de fuentes y secciones seleccionadas.
 - `docs/index.html`: interfaz del panel.

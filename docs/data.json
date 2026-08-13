@@ -1,16 +1,16 @@
 {
-  "updated_at": "2026-08-13T09:32:22.527196Z",
+  "updated_at": "2026-08-13T09:57:13.238929Z",
   "trends_google": [
+    "tresoldi",
+    "raquel perera",
+    "tomate",
     "agencia internacional de la energía",
     "crimen de tauste",
     "riglos",
     "tribunal superior de justicia de extremadura",
     "héctor fort",
     "embalse de valdemurrio",
-    "marc pubill",
-    "13 de agosto",
-    "ifomo",
-    "giorgi tsitaishvili"
+    "marc pubill"
   ],
   "trends_x": [],
   "trends_forocoches": [
@@ -23,20 +23,125 @@
     "Tremenda la CHARCADA y PAKADA del ECLIPSE.",
     "Pixel 11 Pro a 1199€ revienta al iPhone. Tiembla Apple",
     "Que habeis sentido cuando habéis visto el eclipse al 100% [tema serio]",
-    "Balance de ciegos post eclipse",
     "Pelea masiva a la salida del Starlite Marbella",
     "Lladós se la saca sobres los PACOS del Eclipse",
     "He cargado el aire acondicionado en 15 €",
-    "Marruecos quiere suspender el acuerdo de extradición con España",
+    "Joven pide ayuda rescatar cuerpo de su madre entre escombros a la vista+ojossensibles",
     "Qué lástima la gente que no ha hecho un esfuerzo por ver el eclipse",
     "Jajajaj La nueva moda entre los jóvenes: competición de farmear aura. :roto2:",
     "El problema de las pensiones solucionado Tema Serio",
     "Solo puedes elegir UNA de estas zonas de España Y NUNCA más puedes salir de ELLA",
     "+1 si ya estás pensando en ir a Cádiz en 2027",
-    "El tomate 15 años después ..."
+    "El tomate 15 años después ...",
+    "Test de IQ muy rápido y muy preciso +Eclipse"
   ],
   "trend_details": {
     "google": [
+      {
+        "name": "tresoldi",
+        "traffic": 100,
+        "traffic_label": "100+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-13T09:40:00Z",
+        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR_1Om6DXbXnBdgNGOnoY-gY3Zmfze4Q1Mii4U8IxGaex7x-wTE87ZH6d0Jtdo",
+        "picture_source": "Flashscore.com",
+        "news": [
+          {
+            "title": "Tresoldi looking for growth with Club Brugge as big fish watch on",
+            "url": "https://www.flashscore.com/news/soccer-jupiler-pro-league-tresoldi-looking-for-growth-with-club-brugge-as-big-fish-watch-on/bmzyCrH7/",
+            "source": "Flashscore.com",
+            "snippet": null
+          },
+          {
+            "title": "Barcelona make contact with German striker’s camp as potential alternative for top target",
+            "url": "https://barcauniversal.com/barcelona-make-contact-with-german-strikers-camp-as-potential-alternative-for-top-target/",
+            "source": "Barca Universal",
+            "snippet": null
+          },
+          {
+            "title": "Sources: Barcelona “accelerating” €50m transfer, Man United & Chelsea also in the mix",
+            "url": "https://www.caughtoffside.com/2026/08/13/nicolo-tresoldi-transfer-barca-chelsea-united/",
+            "source": "CaughtOffside",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Tresoldi looking for growth with Club Brugge as big fish watch on",
+          "url": "https://www.flashscore.com/news/soccer-jupiler-pro-league-tresoldi-looking-for-growth-with-club-brugge-as-big-fish-watch-on/bmzyCrH7/",
+          "source": "Flashscore.com",
+          "snippet": null
+        }
+      },
+      {
+        "name": "raquel perera",
+        "traffic": 100,
+        "traffic_label": "100+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-13T09:40:00Z",
+        "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbARecBVeU3ky3MrXDyPm7WNJvvwKYL1tmKzp2BY2BYZnYUmgJuPONCcGroRQ",
+        "picture_source": "OkDiario",
+        "news": [
+          {
+            "title": "Raquel Perera desvela la diferencia que mantiene con Alejandro Sanz sobre su hijo adolescente: «No le puede...",
+            "url": "https://okdiario.com/cool/famosos/raquel-perera-desvela-diferencia-que-mantiene-alejandro-sanz-sobre-hijo-adolescente-no-puedes-dejar-ser-tan-libre-19169254",
+            "source": "OkDiario",
+            "snippet": null
+          },
+          {
+            "title": "El \"estrés y la ansiedad\" que generan en Raquel Perera la educación de sus hijos con Alejandro Sanz: \"En alerta\"",
+            "url": "https://www.cadena100.es/trending-topic/noticias/estres-ansiedad-generan-raquel-perera-educacion-hijos-alejandro-sanz-alerta-20260813_154081.html",
+            "source": "Cadena 100",
+            "snippet": null
+          },
+          {
+            "title": "La carta que Raquel Perera, ex de Alejandro Sanz, ha escrito a sus dos hijos: \"Puede que yo me llevara la parte más dura de la ruptura, pero fue triste para los dos\"",
+            "url": "https://www.eleconomista.es/informalia/famosos/noticias/14007727/08/26/la-carta-que-raquel-perera-ex-de-alejandro-sanz-ha-escrito-a-sus-dos-hijos-puede-que-yo-me-llevara-la-parte-mas-dura-de-la-ruptura-pero-fue-triste-para-los-dos.html",
+            "source": "El Economista",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Raquel Perera desvela la diferencia que mantiene con Alejandro Sanz sobre su hijo adolescente: «No le puede...",
+          "url": "https://okdiario.com/cool/famosos/raquel-perera-desvela-diferencia-que-mantiene-alejandro-sanz-sobre-hijo-adolescente-no-puedes-dejar-ser-tan-libre-19169254",
+          "source": "OkDiario",
+          "snippet": null
+        }
+      },
+      {
+        "name": "tomate",
+        "traffic": 100,
+        "traffic_label": "100+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-13T09:30:00Z",
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkQwClaPM1su8UK7L_AKhpWMwPJkemL4jo0cc0Z-qOO0GIcUe5UL8pVuA1nYI",
+        "picture_source": "Top Santé",
+        "news": [
+          {
+            "title": "Tomate : un chef étoilé partage sa technique toute simple pour en décupler les saveurs",
+            "url": "https://www.topsante.com/nutrition_et_recettes/tomate-un-chef-etoile-partage-sa-technique-toute-simple-pour-en-decupler-les-saveurs-982500",
+            "source": "Top Santé",
+            "snippet": null
+          },
+          {
+            "title": "Cuisiner la tomate : 3 recettes divines du chef étoilé Arnaud Faye",
+            "url": "https://www.lepoint.fr/saisons/cuisiner-la-tomate-3-recettes-du-chef-3-etoiles-arnaud-faye-3YERAD65ORAIJACGRSSG3NAW6I/",
+            "source": "Le Point",
+            "snippet": null
+          },
+          {
+            "title": "La “tomate mania” s’empare officiellement de l’été",
+            "url": "https://www.tatlerasia.com/dining/food/tomato-summer-trend-fr",
+            "source": "Tatler Asia",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Tomate : un chef étoilé partage sa technique toute simple pour en décupler les saveurs",
+          "url": "https://www.topsante.com/nutrition_et_recettes/tomate-un-chef-etoile-partage-sa-technique-toute-simple-pour-en-decupler-les-saveurs-982500",
+          "source": "Top Santé",
+          "snippet": null
+        }
+      },
       {
         "name": "agencia internacional de la energía",
         "traffic": 100,
@@ -109,19 +214,13 @@
       },
       {
         "name": "riglos",
-        "traffic": 200,
-        "traffic_label": "200+",
+        "traffic": 500,
+        "traffic_label": "500+",
         "trend_url": "https://trends.google.com/trending/rss?geo=ES",
         "published_at": "2026-08-13T09:10:00Z",
-        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2e2BQvSMnTVIzFGvE_CSFAS2darZLqI6ooL52riB1D7hUhzP_Aba_S8GJwhE",
-        "picture_source": "heraldo.es",
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5aU5orlW88BhIBGBtiP3rmSdaHgOQ5-1mAeIO2siP3PjiSlgdOreV1L1a10s",
+        "picture_source": "EL PAÍS",
         "news": [
-          {
-            "title": "La Guardia Civil detiene a un hombre de 28 años como presunto autor del incendio de Las Peñas de Riglos",
-            "url": "https://www.heraldo.es/noticias/aragon/huesca/2026/08/13/guardia-civil-detiene-hombre-28-anos-presunto-autor-incendio-penas-riglos-2044463.html",
-            "source": "heraldo.es",
-            "snippet": null
-          },
           {
             "title": "Detenido un hombre de 28 años por el incendio en Las Peñas de Riglos (Huesca)",
             "url": "https://elpais.com/espana/2026-08-13/detenido-un-hombre-de-28-anos-por-el-incendio-en-las-penas-de-riglos-huesca.html",
@@ -129,16 +228,22 @@
             "snippet": null
           },
           {
-            "title": "Preocupación en Riglos (Huesca) por el avance de las llamas hacia San Juan de la Peña",
-            "url": "https://www.diariosur.es/sucesos/preocupacin-riglos-huesca-avance-llamas-juan-20260813085507-vi.html",
-            "source": "Diario Sur",
+            "title": "Los últimos desalojados de Botaya por el incendio en Huesca: \"El humo era tan negro y denso que no se veía a más de 30 metros\"",
+            "url": "https://www.heraldo.es/noticias/aragon/huesca/2026/08/12/los-ultimos-desalojados-botaya-por-incendio-huesca-humo-era-tan-negro-denso-que-no-se-veia-mas-30-metros-2044436.html",
+            "source": "heraldo.es",
+            "snippet": null
+          },
+          {
+            "title": "El incendio de Riglos deja una noche “muy complicada” y preocupa su avance hacia Puente la Reina",
+            "url": "https://www.eldiario.es/aragon/sociedad/incendio-riglos-deja-noche-complicada-preocupa-avance-puente-reina_1_13444333.html",
+            "source": "elDiario.es",
             "snippet": null
           }
         ],
         "top_news": {
-          "title": "La Guardia Civil detiene a un hombre de 28 años como presunto autor del incendio de Las Peñas de Riglos",
-          "url": "https://www.heraldo.es/noticias/aragon/huesca/2026/08/13/guardia-civil-detiene-hombre-28-anos-presunto-autor-incendio-penas-riglos-2044463.html",
-          "source": "heraldo.es",
+          "title": "Detenido un hombre de 28 años por el incendio en Las Peñas de Riglos (Huesca)",
+          "url": "https://elpais.com/espana/2026-08-13/detenido-un-hombre-de-28-anos-por-el-incendio-en-las-penas-de-riglos-huesca.html",
+          "source": "EL PAÍS",
           "snippet": null
         }
       },
@@ -169,8 +274,8 @@
             "snippet": null
           },
           {
-            "title": "El Elche califica como \"rumor de mercado\" el posible regreso de Héctor Fort",
-            "url": "https://www.mundodeportivo.com/futbol/fc-barcelona/20260812/1004215429/elche-califica-rumor-mercado-posible-regreso-hector-fort.html",
+            "title": "Héctor Fort lo tiene claro: traspaso y objetivo Premier League",
+            "url": "https://www.mundodeportivo.com/futbol/fc-barcelona/20260813/1004215643/hector-fort-claro-traspaso-objetivo-premier-league.html",
             "source": "Mundo Deportivo",
             "snippet": null
           },
@@ -210,9 +315,9 @@
             "snippet": null
           },
           {
-            "title": "Localizan el cuerpo sin vida de una mujer de 52 años en el embalse de Valdemurio, en Quirós",
-            "url": "https://www.lavozdeasturias.es/noticia/asturias/2026/08/13/localizan-cuerpo-vida-mujer-52-anos-embalse-valdemurio-quiros/00031786602842985790573.htm",
-            "source": "La Voz de Asturias",
+            "title": "Muere una mujer en un pantano de Asturias tras darse un baño después de haber acudido a ver el eclipse",
+            "url": "https://www.larazon.es/sociedad/muere-mujer-pantano-asturias-darse-bano-despues-haber-acudido-ver-eclipse_202608136a7d8bc7a5690f0473776b7a.html",
+            "source": "La Razón",
             "snippet": null
           }
         ],
@@ -257,111 +362,6 @@
           "source": "Football365",
           "snippet": null
         }
-      },
-      {
-        "name": "13 de agosto",
-        "traffic": 100,
-        "traffic_label": "100+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-13T08:30:00Z",
-        "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQAsP2JEVdZAzslJYp7bhQzxlKIFYLWy5badRKq1xX1MjH9gSkxvRW0hdws0cs",
-        "picture_source": "HOLA",
-        "news": [
-          {
-            "title": "Horóscopo de hoy, jueves 13 de agosto, descubre tu predicción diaria gratis",
-            "url": "https://www.hola.com/horoscopo/20260812916129/horoscopo-de-hoy-jueves-13-de-agosto/",
-            "source": "HOLA",
-            "snippet": null
-          },
-          {
-            "title": "Aries, Tauro, Géminis, Cáncer, Leo, Virgo, Libra, Escorpio, Sagitario, Capricornio, Acuario y Piscis: así será este jueves 13 de agosto",
-            "url": "https://www.vanitatis.elconfidencial.com/horoscopo/2026-08-13/horoscopo-hoy-que-dicen-astros-jueves-13-agosto-1qrt_4404334/",
-            "source": "Vanitatis",
-            "snippet": null
-          },
-          {
-            "title": "El horóscopo de hoy, jueves 13 de agosto de 2026: predicciones diarias con la Luna en Virgo, favorable para Tauro y Capricornio",
-            "url": "https://www.mujerhoy.com/horoscopo/horoscopo-diario-hoy-jueves-13-agosto-2026-predicciones-zodiaco-salud-dinero-amor-20260813140847-nt.html",
-            "source": "Mujerhoy",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "Horóscopo de hoy, jueves 13 de agosto, descubre tu predicción diaria gratis",
-          "url": "https://www.hola.com/horoscopo/20260812916129/horoscopo-de-hoy-jueves-13-de-agosto/",
-          "source": "HOLA",
-          "snippet": null
-        }
-      },
-      {
-        "name": "ifomo",
-        "traffic": 100,
-        "traffic_label": "100+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-13T08:30:00Z",
-        "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcToEvsKxLCdI9Ex1LeaAC2ZNEbE-4ZT0ZjH4F-yszM7KksX7fjAUGIIEVHUo3E",
-        "picture_source": "El Diario Montañés",
-        "news": [
-          {
-            "title": "Una persecución desde Campuzano acaba con dos menores denunciados y el conductor huido",
-            "url": "https://www.eldiariomontanes.es/torrelavega/persecucion-campuzano-acaba-dos-menores-denunciados-conductor-20260812125856-nt.html",
-            "source": "El Diario Montañés",
-            "snippet": null
-          },
-          {
-            "title": "Fugado un conductor tras una persecución a 145 km/h en un SEAT Ibiza implicado en un robo",
-            "url": "https://www.ondacero.es/emisoras/cantabria/noticias/fugado-conductor-persecucion-145-kmh-seat-ibiza-implicado-robo_202608136a7d813e71b42a0b5decccd4.html",
-            "source": "Onda Cero",
-            "snippet": null
-          },
-          {
-            "title": "Persecución policial desde Torrelavega a Las Presillas con termina en siniestro con dos menores detenidos y un tercer joven que logró huir",
-            "url": "https://www.radiostudio88.com/articulo/destacados/persecucion-torrelavega-presillas-dos-jovenes-detenidos-tercero-que-logro-huir/20260812120202027064.html",
-            "source": "Radio Studio 88",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "Una persecución desde Campuzano acaba con dos menores denunciados y el conductor huido",
-          "url": "https://www.eldiariomontanes.es/torrelavega/persecucion-campuzano-acaba-dos-menores-denunciados-conductor-20260812125856-nt.html",
-          "source": "El Diario Montañés",
-          "snippet": null
-        }
-      },
-      {
-        "name": "giorgi tsitaishvili",
-        "traffic": 200,
-        "traffic_label": "200+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-13T08:30:00Z",
-        "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSozcjlKpInXcgXviSy_Br0W3WAjkeNdGcNfet97Ev9yhDx_gRYUfCKAcQ4CWQ",
-        "picture_source": "MARCA",
-        "news": [
-          {
-            "title": "El Rayo ha cerrado el fichaje de Giorgi Tsitaishvili",
-            "url": "https://www.marca.com/futbol/rayo/2026/08/13/rayo-cerrado-fichaje-giorgi-tsitaishvili.html",
-            "source": "MARCA",
-            "snippet": null
-          },
-          {
-            "title": "OFICIAL: Giorgi Tsitaishvili, nuevo jugador del Rayo Vallecano",
-            "url": "https://unionrayo.es/oficial-giorgi-tsitaishvili-nuevo-jugador-del-rayo-vallecano/",
-            "source": "Unión Rayo",
-            "snippet": null
-          },
-          {
-            "title": "Un nuevo atacante para el Rayo Vallecano",
-            "url": "https://www.fichajes.com/a1273152868731810707-un-nuevo-atacante-para-el-rayo-vallecano",
-            "source": "Fichajes.com",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "El Rayo ha cerrado el fichaje de Giorgi Tsitaishvili",
-          "url": "https://www.marca.com/futbol/rayo/2026/08/13/rayo-cerrado-fichaje-giorgi-tsitaishvili.html",
-          "source": "MARCA",
-          "snippet": null
-        }
       }
     ],
     "x": [],
@@ -370,125 +370,174 @@
         "rank": 1,
         "thread_id": "10775058",
         "name": "El ECLIPSE SOLAR 100% es lo MÁS ESPECTACULAR que he visto en la VIDA",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775058"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775058",
+        "published_at": "2026-08-12T20:44:00+02:00"
       },
       {
         "rank": 2,
         "thread_id": "10774489",
         "name": "Bros facturando 500k al mes con 18 años",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774489"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774489",
+        "published_at": "2026-08-12T15:21:00+02:00"
       },
       {
         "rank": 3,
         "thread_id": "10774830",
         "name": "WISMICHU vende TODO. BANCARROTA a la vista?",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774830"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774830",
+        "published_at": "2026-08-12T19:06:00+02:00"
       },
       {
         "rank": 4,
         "thread_id": "10774920",
         "name": "Pongamos fotos del eclipse...",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774920"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774920",
+        "published_at": "2026-08-12T19:58:00+02:00"
       },
       {
         "rank": 5,
         "thread_id": "10774635",
         "name": "ALIEXPRESS te quita ARANCELES: ¡a partir del 17 de agosto!",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774635"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774635",
+        "published_at": "2026-08-12T16:57:00+02:00"
       },
       {
         "rank": 6,
         "thread_id": "10774541",
         "name": "Marcos Llorente otra vez haciendo el rídiculo en redes +Eclipse",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774541"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774541",
+        "published_at": "2026-08-12T15:57:00+02:00"
       },
       {
         "rank": 7,
         "thread_id": "10775330",
         "name": "Tremenda la CHARCADA y PAKADA del ECLIPSE.",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775330"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775330",
+        "published_at": "2026-08-12T23:24:00+02:00"
       },
       {
         "rank": 8,
         "thread_id": "10774578",
         "name": "Pixel 11 Pro a 1199€ revienta al iPhone. Tiembla Apple",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774578"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774578",
+        "published_at": "2026-08-12T16:20:00+02:00"
       },
       {
         "rank": 9,
         "thread_id": "10775282",
         "name": "Que habeis sentido cuando habéis visto el eclipse al 100% [tema serio]",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775282"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775282",
+        "published_at": "2026-08-12T22:50:00+02:00"
       },
       {
         "rank": 10,
-        "thread_id": "10775125",
-        "name": "Balance de ciegos post eclipse",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775125"
+        "thread_id": "10775549",
+        "name": "Pelea masiva a la salida del Starlite Marbella",
+        "url": "https://forocoches.com/foro/showthread.php?t=10775549",
+        "published_at": "2026-08-13T08:23:00+02:00"
       },
       {
         "rank": 11,
-        "thread_id": "10775549",
-        "name": "Pelea masiva a la salida del Starlite Marbella",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775549"
+        "thread_id": "10775499",
+        "name": "Lladós se la saca sobres los PACOS del Eclipse",
+        "url": "https://forocoches.com/foro/showthread.php?t=10775499",
+        "published_at": "2026-08-13T04:17:00+02:00"
       },
       {
         "rank": 12,
-        "thread_id": "10775499",
-        "name": "Lladós se la saca sobres los PACOS del Eclipse",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775499"
-      },
-      {
-        "rank": 13,
         "thread_id": "10775163",
         "name": "He cargado el aire acondicionado en 15 €",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775163"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775163",
+        "published_at": "2026-08-12T21:28:00+02:00"
       },
       {
         "rank": 14,
-        "thread_id": "10774801",
-        "name": "Marruecos quiere suspender el acuerdo de extradición con España",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774801"
+        "thread_id": "10775366",
+        "name": "Joven pide ayuda rescatar cuerpo de su madre entre escombros a la vista+ojossensibles",
+        "url": "https://forocoches.com/foro/showthread.php?t=10775366",
+        "published_at": "2026-08-12T23:49:00+02:00"
       },
       {
         "rank": 15,
         "thread_id": "10775514",
         "name": "Qué lástima la gente que no ha hecho un esfuerzo por ver el eclipse",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775514"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775514",
+        "published_at": "2026-08-13T06:36:00+02:00"
       },
       {
         "rank": 16,
         "thread_id": "10775594",
         "name": "Jajajaj La nueva moda entre los jóvenes: competición de farmear aura. :roto2:",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775594"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775594",
+        "published_at": "2026-08-13T09:32:00+02:00"
       },
       {
         "rank": 17,
         "thread_id": "10774409",
         "name": "El problema de las pensiones solucionado Tema Serio",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774409"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774409",
+        "published_at": "2026-08-12T14:25:00+02:00"
       },
       {
         "rank": 18,
         "thread_id": "10774487",
         "name": "Solo puedes elegir UNA de estas zonas de España Y NUNCA más puedes salir de ELLA",
-        "url": "https://forocoches.com/foro/showthread.php?t=10774487"
+        "url": "https://forocoches.com/foro/showthread.php?t=10774487",
+        "published_at": "2026-08-12T15:19:00+02:00"
       },
       {
         "rank": 19,
         "thread_id": "10775301",
         "name": "+1 si ya estás pensando en ir a Cádiz en 2027",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775301"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775301",
+        "published_at": "2026-08-12T23:03:00+02:00"
       },
       {
         "rank": 20,
         "thread_id": "10775213",
         "name": "El tomate 15 años después ...",
-        "url": "https://forocoches.com/foro/showthread.php?t=10775213"
+        "url": "https://forocoches.com/foro/showthread.php?t=10775213",
+        "published_at": "2026-08-12T22:01:00+02:00"
+      },
+      {
+        "rank": 21,
+        "thread_id": "10774835",
+        "name": "Test de IQ muy rápido y muy preciso +Eclipse",
+        "url": "https://forocoches.com/foro/showthread.php?t=10774835",
+        "published_at": "2026-08-12T19:08:00+02:00"
       }
     ]
   },
   "google_trend_news": [
+    {
+      "name": "tresoldi",
+      "traffic": 100,
+      "traffic_label": "100+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
+    {
+      "name": "raquel perera",
+      "traffic": 100,
+      "traffic_label": "100+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": {
+        "title": "Raquel Perera desvela la diferencia que mantiene con Alejandro Sanz sobre su hijo adolescente: «No le puede...",
+        "url": "https://okdiario.com/cool/famosos/raquel-perera-desvela-diferencia-que-mantiene-alejandro-sanz-sobre-hijo-adolescente-no-puedes-dejar-ser-tan-libre-19169254",
+        "source": "OkDiario",
+        "viral_score": 0,
+        "thumbnail": null,
+        "verified_image": false,
+        "selection": "trend-related-24h"
+      }
+    },
+    {
+      "name": "tomate",
+      "traffic": 100,
+      "traffic_label": "100+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
     {
       "name": "agencia internacional de la energía",
       "traffic": 100,
@@ -513,13 +562,13 @@
     },
     {
       "name": "riglos",
-      "traffic": 200,
-      "traffic_label": "200+",
+      "traffic": 500,
+      "traffic_label": "500+",
       "trend_url": "https://trends.google.com/trending/rss?geo=ES",
       "article": {
-        "title": "La Guardia Civil detiene a un hombre de 28 años como presunto autor del incendio de Las Peñas de Riglos",
-        "url": "https://www.heraldo.es/noticias/aragon/huesca/2026/08/13/guardia-civil-detiene-hombre-28-anos-presunto-autor-incendio-penas-riglos-2044463.html",
-        "source": "heraldo.es",
+        "title": "Detenido un hombre de 28 años por el incendio en Las Peñas de Riglos (Huesca)",
+        "url": "https://elpais.com/espana/2026-08-13/detenido-un-hombre-de-28-anos-por-el-incendio-en-las-penas-de-riglos-huesca.html",
+        "source": "EL PAÍS",
         "viral_score": 0,
         "thumbnail": null,
         "verified_image": false,
@@ -561,139 +610,89 @@
       "traffic_label": "200+",
       "trend_url": "https://trends.google.com/trending/rss?geo=ES",
       "article": null
-    },
-    {
-      "name": "13 de agosto",
-      "traffic": 100,
-      "traffic_label": "100+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "El eclipse solar del 12 de agosto de 2026 en España, en imágenes",
-        "url": "https://elpais.com/ciencia/2026-08-12/el-eclipse-solar-de-agosto-en-espana-en-imagenes.html",
-        "source": "EL PAÍS · Lo más visto",
-        "viral_score": 65,
-        "thumbnail": "https://imagenes.elpais.com/resizer/v2/QQTYBFOTPRCRHMUHT44RUGRDN4.jpg?auth=fa269e60caa72931723178b277372cfa9ca39c9fd804a272bb31cbca95fd6730&width=1200",
-        "verified_image": false,
-        "selection": "radar"
-      }
-    },
-    {
-      "name": "ifomo",
-      "traffic": 100,
-      "traffic_label": "100+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "Una persecución desde Campuzano acaba con dos menores denunciados y el conductor huido",
-        "url": "https://www.eldiariomontanes.es/torrelavega/persecucion-campuzano-acaba-dos-menores-denunciados-conductor-20260812125856-nt.html",
-        "source": "El Diario Montañés",
-        "viral_score": 0,
-        "thumbnail": null,
-        "verified_image": false,
-        "selection": "trend-related-24h"
-      }
-    },
-    {
-      "name": "giorgi tsitaishvili",
-      "traffic": 200,
-      "traffic_label": "200+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "El Rayo ha cerrado el fichaje de Giorgi Tsitaishvili",
-        "url": "https://www.marca.com/futbol/rayo/2026/08/13/rayo-cerrado-fichaje-giorgi-tsitaishvili.html",
-        "source": "MARCA",
-        "viral_score": 0,
-        "thumbnail": null,
-        "verified_image": false,
-        "selection": "trend-related-24h"
-      }
     }
   ],
   "stories": [
     {
-      "title": "Marruecos vuelve a exigir la devolución rápida de sus menores desde Ceuta e insta a España a \"asumir sus responsabilidades\"",
-      "link": "https://efe.com/espana/marruecos-espana-menores-ceuta/",
-      "score": 76,
-      "viral_score": 76,
-      "raw_score": 134.2,
+      "title": "El mapa de las fotos del eclipse: así se vivió en distintos lugares de España",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774920",
+      "score": 71,
+      "viral_score": 71,
+      "raw_score": 118.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
         "tema vinculado a España",
         "medio español"
       ],
-      "cabronazi_affinity": 47,
-      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_affinity": 43,
+      "cabronazi_historical_adjustment": -1.1,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.8,
-      "editorial_selection_reasons": [
-        "Histórico editorial: 20Minutos (5 selecciones)"
-      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
       "sources": [
-        "20Minutos",
-        "Menéame · Populares"
+        "EL PAÍS",
+        "ForoCoches Trending"
       ],
       "source_count": 2,
       "platforms": [
-        "meneame",
+        "forocoches",
         "news"
       ],
       "platform_labels": [
-        "Menéame",
+        "ForoCoches",
         "Medios"
       ],
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
+        "EL PAÍS · Viral Internet",
+        "ForoCoches Trending"
       ],
       "topic_tags": [
         "trending",
         "viral",
-        "redes"
+        "redes",
+        "curiosidades"
       ],
-      "general_category": "redes-tecnologia",
+      "general_category": "humor-curiosidades",
       "primary_tag": "redes",
-      "cabronazi_fit": 14.1,
+      "cabronazi_fit": 14.8,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 2,
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-12T14:06:41Z",
-      "thumbnail": "https://efe.com/wp-content/uploads/2026/08/marruecos-espana-menores-ceuta.webp",
+      "matched_forocoches_trend": "Pongamos fotos del eclipse...",
+      "published_at": "2026-08-13T08:48:41Z",
+      "thumbnail": null,
       "media_type": "article",
       "signals": [
-        "183 meneos · 157 comentarios · 1.2 k clics en Menéame",
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Detectado en 2 plataformas",
-        "Histórico editorial: 20Minutos (5 selecciones)"
+        "Trending #4 en ForoCoches",
+        "Selección editorial: EL PAÍS · Viral Internet",
+        "Trending en ForoCoches #4: Pongamos fotos del eclipse...",
+        "Detectado en 2 plataformas"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
         "topic_tags": [
           "redes",
           "viral"
-        ],
-        "source_mode": "google-news-fallback"
+        ]
       },
       "potential": "alto",
       "image_verified": false,
-      "image_linked": true,
-      "image_origin": "destination:og:image",
-      "image_width": 900,
-      "image_height": 591,
-      "image_alt": "Marruecos vuelve a exigir a España la devolución de sus menores desde Ceuta"
+      "image_linked": false
     },
     {
       "title": "El eclipse obliga a frenar las operaciones de los medios aéreos en el incendio de Niebla: “Es una orden para toda España”",
       "link": "https://www.infobae.com/espana/2026/08/12/el-eclipse-obliga-a-frenar-las-operaciones-de-los-medios-aereos-en-el-incendio-de-niebla-es-una-orden-para-toda-espana/",
       "score": 70,
       "viral_score": 70,
-      "raw_score": 115.8,
+      "raw_score": 115.7,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -771,11 +770,95 @@
       "image_alt": "El eclipse obliga a frenar las operaciones de los medios aéreos en el incendio de Niebla: “Es una orden para toda España”"
     },
     {
+      "title": "Eclipse solar, en directo | Las mejores imágenes y cómo se vivió desde España el fenómeno del 12 de agosto",
+      "link": "https://www.lavanguardia.com/vida/20260813/11613024/eclipse-total-sol-espana-reacciones-imagenes-ultima-hora-hoy-en-directo.html",
+      "score": 70,
+      "viral_score": 70,
+      "raw_score": 114.6,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 43,
+      "cabronazi_historical_adjustment": -1.1,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.1,
+      "editorial_selection_reasons": [
+        "Histórico editorial: lavanguardia.com (3 selecciones)"
+      ],
+      "sources": [
+        "EL ESPAÑOL · Portada",
+        "EL PAÍS · Lo más visto",
+        "Infobae España · Virales",
+        "La Vanguardia · Portada"
+      ],
+      "source_count": 4,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL ESPAÑOL · Portada",
+        "EL PAÍS · Lo más visto",
+        "Infobae España · Virales",
+        "La Vanguardia · Portada"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "television",
+        "tiktok",
+        "curiosidades",
+        "popular"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "television",
+      "cabronazi_fit": 13.9,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 5,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-13T09:25:51Z",
+      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/13/6a7d930469060.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales",
+        "Selección editorial: EL PAÍS · Lo más visto",
+        "Selección editorial: La Vanguardia · Portada",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Histórico editorial: lavanguardia.com (3 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada general filtrada",
+        "editorial_feed": "La Vanguardia · Portada",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "potential": "alto",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Eclipse solar, en directo | Las mejores imágenes y cómo se vivió desde España el fenómeno del 12 de agosto"
+    },
+    {
       "title": "Brian May, astrofísico y guitarrista de Queen, entusiasmado con el eclipse solar en España: \"Me siento un privilegiado\"",
       "link": "https://www.mundodeportivo.com/elotromundo/gente/20260813/1004215640/brian-may-astrofisico-guitarrista-queen-entusiasmado-eclipse-solar-espana-me-siento-privilegiado-dct.html",
-      "score": 68,
-      "viral_score": 68,
-      "raw_score": 109.3,
+      "score": 70,
+      "viral_score": 70,
+      "raw_score": 114.5,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -809,6 +892,7 @@
         "Mundo Deportivo · El Otro Mundo"
       ],
       "topic_tags": [
+        "trending",
         "viral",
         "animales",
         "famosos",
@@ -825,7 +909,7 @@
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
       "published_at": "2026-08-13T09:23:43Z",
       "thumbnail": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2026/08/13/6a7d8cfe240f7.png",
       "media_type": "article",
@@ -833,6 +917,7 @@
         "Selección editorial: Mundo Deportivo · El Otro Mundo",
         "Selección editorial: El HuffPost · Virales",
         "Selección editorial: Corazón · HOLA",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
         "Histórico editorial: mundodeportivo.com/elotromundo (15 selecciones)"
       ],
       "metrics": {
@@ -856,397 +941,87 @@
       "image_alt": "Brian May, astrofísico y guitarrista de Queen, entusiasmado con el eclipse solar en España: \"Me siento un privilegiado\""
     },
     {
-      "title": "Úrsula Corberó cumple 37 años: así ha cambiado la actriz",
-      "link": "https://www.mundodeportivo.com/elotromundo/gente/20260813/1004215631/ursula-corbero-cumple-37-anos-asi-cambiado-actriz-inicios-hoy-dct.html",
-      "score": 66,
-      "viral_score": 66,
-      "raw_score": 103.2,
-      "editorial_precision_adjustment": 8.0,
+      "title": "Los expertos advierten sobre el eclipse solar: estos son los pasos que hay que seguir para fotografiarlo sin dañar la cámara del móvil",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775530",
+      "score": 64,
+      "viral_score": 64,
+      "raw_score": 96.0,
+      "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
         "medio español"
       ],
-      "cabronazi_affinity": 39,
-      "cabronazi_historical_adjustment": -1.8,
+      "cabronazi_affinity": 43,
+      "cabronazi_historical_adjustment": -1.1,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 6.9,
-      "editorial_selection_reasons": [
-        "Histórico editorial: mundodeportivo.com/elotromundo (15 selecciones)"
-      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
       "sources": [
-        "Mundo Deportivo · El Otro Mundo",
+        "ForoCoches Trending",
         "Vanitatis"
       ],
       "source_count": 2,
       "platforms": [
+        "forocoches",
         "news"
       ],
       "platform_labels": [
+        "ForoCoches",
         "Medios"
       ],
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
         "Corazón · Vanitatis",
-        "Mundo Deportivo · El Otro Mundo"
+        "ForoCoches Trending"
       ],
       "topic_tags": [
+        "trending",
         "viral",
-        "animales",
         "famosos",
         "corazon",
-        "television",
+        "tecnologia",
         "curiosidades"
       ],
       "general_category": "humor-curiosidades",
-      "primary_tag": "animales",
-      "cabronazi_fit": 30.1,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 2,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T08:38:59Z",
-      "thumbnail": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2026/08/13/6a7d81eb11456.png",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Mundo Deportivo · El Otro Mundo",
-        "Selección editorial: Corazón · Vanitatis",
-        "Histórico editorial: mundodeportivo.com/elotromundo (15 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "El Otro Mundo",
-        "editorial_feed": "Mundo Deportivo · El Otro Mundo",
-        "topic_tags": [
-          "animales",
-          "curiosidades",
-          "famosos",
-          "television",
-          "viral"
-        ]
-      },
-      "potential": "alto",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1200,
-      "image_height": 675,
-      "image_alt": "Úrsula Corberó cumple 37 años: así ha cambiado la actriz"
-    },
-    {
-      "title": "El eclipse solar del 12 de agosto de 2026 en España, en imágenes",
-      "link": "https://elpais.com/ciencia/2026-08-12/el-eclipse-solar-de-agosto-en-espana-en-imagenes.html",
-      "score": 65,
-      "viral_score": 65,
-      "raw_score": 99.1,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.0,
-      "editorial_selection_reasons": [
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "sources": [
-        "EL PAÍS · Lo más visto",
-        "Infobae España · Virales"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "EL PAÍS · Lo más visto",
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "tiktok",
-        "curiosidades",
-        "popular"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "tiktok",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 3,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T08:50:01Z",
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/QQTYBFOTPRCRHMUHT44RUGRDN4.jpg?auth=fa269e60caa72931723178b277372cfa9ca39c9fd804a272bb31cbca95fd6730&width=1200",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Infobae España · Virales",
-        "Selección editorial: EL PAÍS · Lo más visto",
-        "Google Trends: 13 de agosto (100+)",
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Lo más visto",
-        "editorial_feed": "EL PAÍS · Lo más visto",
-        "topic_tags": [
-          "popular"
-        ]
-      },
-      "potential": "alto",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1200,
-      "image_height": 800,
-      "image_alt": "El eclipse solar del 12 de agosto de 2026 en España, en imágenes"
-    },
-    {
-      "title": "Eclipse solar total, en directo: así se vivió en España el fenómeno y última hora",
-      "link": "https://www.lavanguardia.com/vida/20260813/11613024/eclipse-total-sol-espana-reacciones-imagenes-ultima-hora-hoy-en-directo.html",
-      "score": 65,
-      "viral_score": 65,
-      "raw_score": 99.0,
-      "editorial_precision_adjustment": 8.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 42,
-      "cabronazi_historical_adjustment": -1.3,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.1,
-      "editorial_selection_reasons": [
-        "Histórico editorial: lavanguardia.com (3 selecciones)"
-      ],
-      "sources": [
-        "EL ESPAÑOL · Portada",
-        "La Vanguardia · Portada",
-        "LOS40"
-      ],
-      "source_count": 3,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "EL ESPAÑOL · Portada",
-        "La Vanguardia · Portada",
-        "LOS40 · Entretenimiento viral"
-      ],
-      "topic_tags": [
-        "viral",
-        "famosos",
-        "television",
-        "redes"
-      ],
-      "general_category": "famosos-corazon",
       "primary_tag": "famosos",
-      "cabronazi_fit": 19.3,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 3,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T09:08:57Z",
-      "thumbnail": "https://los40.com/resizer/v2/UHOOQO6BZ5DJDPEDXEAU2HENCY.jpg?auth=c1b52180256abb7c8caea5627705df1d4ac09726322200d67cc273978db72c90&quality=70&width=1200&height=675&focal=2800,1936",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: LOS40 · Entretenimiento viral",
-        "Selección editorial: La Vanguardia · Portada",
-        "Selección editorial: EL ESPAÑOL · Portada",
-        "Histórico editorial: lavanguardia.com (3 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Portada general filtrada",
-        "editorial_feed": "La Vanguardia · Portada",
-        "topic_tags": [
-          "television"
-        ]
-      },
-      "potential": "alto",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1200,
-      "image_height": 675,
-      "image_alt": "Eclipse solar total 2026 desde Valencia. / Europa Press News"
-    },
-    {
-      "title": "Así le hemos contado el paso del eclipse solar del 12 de agosto por España",
-      "link": "https://elpais.com/ciencia/2026-08-12/ultima-hora-del-eclipse-solar-de-agosto-en-espana-en-directo.html",
-      "score": 61,
-      "viral_score": 61,
-      "raw_score": 90.2,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.0,
-      "editorial_selection_reasons": [
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "sources": [
-        "EL PAÍS · Lo más visto",
-        "Infobae España · Virales"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "EL PAÍS · Lo más visto",
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "tiktok",
-        "curiosidades",
-        "popular"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "tiktok",
-      "cabronazi_fit": 6.2,
+      "cabronazi_fit": 24.2,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 2,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
+      "matched_trend": null,
+      "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-12T21:46:25Z",
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/SOI45SF3KVC2PE3RFNPBWCE6SY.jpg?auth=f33348726a47fb79dbd804fa83899061c5857132ec4aa6c204803aab7d2eacc8&width=1200",
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-12T10:17:00Z",
+      "thumbnail": null,
       "media_type": "article",
       "signals": [
-        "Selección editorial: Infobae España · Virales",
-        "Selección editorial: EL PAÍS · Lo más visto",
-        "Google Trends: 13 de agosto (100+)",
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
+        "Trending #29 en ForoCoches",
+        "Selección editorial: Corazón · Vanitatis",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Detectado en 2 plataformas"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Lo más visto",
-        "editorial_feed": "EL PAÍS · Lo más visto",
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
         "topic_tags": [
-          "popular"
+          "corazon",
+          "famosos",
+          "tecnologia"
         ]
       },
       "potential": "medio",
       "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1200,
-      "image_height": 675,
-      "image_alt": "Así le hemos contado el paso del eclipse solar del 12 de agosto por España"
-    },
-    {
-      "title": "Eclipse solar total del 12 de agosto, en directo: última hora, dónde verlo en España, horarios y recomendaciones",
-      "link": "https://www.larazon.es/sociedad/eclipse-solar-total-2026-directo-ultima-hora-donde-verlo-horarios-recomendaciones_202608126a7c835ba046ad6ebcad975c.html",
-      "score": 61,
-      "viral_score": 61,
-      "raw_score": 89.2,
-      "editorial_precision_adjustment": 8.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 42,
-      "cabronazi_historical_adjustment": -1.3,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 0.0,
-      "editorial_selection_reasons": [],
-      "sources": [
-        "La Razón · Sociedad"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "La Razón · Sociedad"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "television"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "television",
-      "cabronazi_fit": 15.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-12T22:29:45Z",
-      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/12/356A14B4-55AF-4508-BF10-0061B6253954/98.jpg?crop=4000,2251,x0,y208&width=1900&height=1069&optimize=low&format=webply",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: La Razón · Sociedad",
-        "Google Trends: 13 de agosto (100+)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad filtrada",
-        "editorial_feed": "La Razón · Sociedad",
-        "topic_tags": [
-          "television"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1900,
-      "image_height": 1069,
-      "image_alt": "Eclipse solar en Maderuelo, Segovia"
+      "image_linked": false
     },
     {
       "title": "El eclipse 'apaga' España y altera la vida animal: aves que buscan refugio, insectos 'congelados' y murciélagos que dejan de volar",
       "link": "https://www.elespanol.com/enclave-ods/historias/20260813/eclipse-apaga-espana-altera-vida-animal-aves-buscan-refugio-insectos-congelados-murcielagos-dejan-volar/1003744351446_0.html",
       "score": 60,
       "viral_score": 60,
-      "raw_score": 87.6,
+      "raw_score": 87.5,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -1313,26 +1088,26 @@
       "image_alt": "El eclipse 'apaga' España y altera la vida animal: aves que buscan refugio, insectos 'congelados' y murciélagos que dejan de volar"
     },
     {
-      "title": "Adiós a la incertidumbre, conoce las condiciones climáticas en Valencia este 13 de agosto",
-      "link": "https://www.infobae.com/espana/2026/08/13/adios-a-la-incertidumbre-conoce-las-condiciones-climaticas-en-valencia-este-13-de-agosto/",
-      "score": 58,
-      "viral_score": 58,
-      "raw_score": 82.9,
+      "title": "Cuándo será el próximo eclipse solar total visible desde España: fecha y claves del fenómeno de 2027",
+      "link": "https://los40.com/2026/08/13/cuando-sera-el-proximo-eclipse-total-de-sol-visible-desde-espana-fecha-y-claves-del-fenomeno-de-2027/",
+      "score": 56,
+      "viral_score": 56,
+      "raw_score": 77.2,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
         "tema vinculado a España",
         "medio español"
       ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_affinity": 38,
+      "cabronazi_historical_adjustment": -1.9,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.0,
+      "editorial_selection_bonus": 2.5,
       "editorial_selection_reasons": [
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
+        "Histórico editorial: los40.com (2 selecciones)"
       ],
       "sources": [
-        "Infobae España · Virales"
+        "LOS40"
       ],
       "source_count": 1,
       "platforms": [
@@ -1344,206 +1119,57 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "Infobae España · Virales"
+        "LOS40 · Entretenimiento viral"
       ],
       "topic_tags": [
         "trending",
         "viral",
-        "tiktok",
-        "curiosidades"
+        "famosos",
+        "redes"
       ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "tiktok",
-      "cabronazi_fit": 6.2,
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
+      "matched_trend": null,
+      "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T03:33:51Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/XW2EASZJSJFPTL4AW32U4U3FLA.png?auth=4208b117b9f7319fe4651ea425ad4071dd076b89adc5b485a8fc406475e05121&smart=true&width=1200&height=900&quality=85",
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-13T07:51:00Z",
+      "thumbnail": "https://los40.com/resizer/v2/UHOOQO6BZ5DJDPEDXEAU2HENCY.jpg?auth=c1b52180256abb7c8caea5627705df1d4ac09726322200d67cc273978db72c90&quality=70&width=1200&height=675&focal=2800,1936",
       "media_type": "article",
       "signals": [
-        "Selección editorial: Infobae España · Virales",
-        "Google Trends: 13 de agosto (100+)",
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
+        "Selección editorial: LOS40 · Entretenimiento viral",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Histórico editorial: los40.com (2 selecciones)"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
         "topic_tags": [
-          "curiosidades",
-          "tiktok",
+          "famosos",
+          "redes",
           "viral"
-        ]
+        ],
+        "source_mode": "direct-section"
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Adiós a la incertidumbre, conoce las condiciones climáticas en Valencia este 13 de agosto"
-    },
-    {
-      "title": "Estado de las reservas del agua en los embalses españoles hoy jueves 13 de agosto",
-      "link": "https://www.infobae.com/espana/2026/08/13/estado-de-las-reservas-del-agua-en-los-embalses-espanoles-hoy-jueves-13-de-agosto/",
-      "score": 56,
-      "viral_score": 56,
-      "raw_score": 77.4,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.0,
-      "editorial_selection_reasons": [
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "sources": [
-        "Infobae España · Virales"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "tiktok",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "tiktok",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T05:16:10Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/55GWGNA3P5FU7HG3GDJQXQYQPY.png?auth=840a5ef91692078cdccc658a4cb14f69eb0e9c3ca28fe1d42e116ab4cec04148&smart=true&width=1200&height=900&quality=85",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Infobae España · Virales",
-        "Google Trends: 13 de agosto (100+)",
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
-        "topic_tags": [
-          "curiosidades",
-          "tiktok",
-          "viral"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Estado de las reservas del agua en los embalses españoles hoy jueves 13 de agosto"
-    },
-    {
-      "title": "Cotización del euro frente al dólar hoy 13 de agosto",
-      "link": "https://www.infobae.com/espana/2026/08/13/cotizacion-del-euro-frente-al-dolar-hoy-13-de-agosto/",
-      "score": 56,
-      "viral_score": 56,
-      "raw_score": 77.4,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.0,
-      "editorial_selection_reasons": [
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "sources": [
-        "Infobae España · Virales"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "tiktok",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "tiktok",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T05:15:52Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/ESK62KO465BPPJHALZ2MW52HZI.jpg?auth=07bf53b2db812406e917e930f5264d5cd0382e62de46b4cd3b6e6a47e5917685&smart=true&width=1200&height=900&quality=85",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Infobae España · Virales",
-        "Google Trends: 13 de agosto (100+)",
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
-        "topic_tags": [
-          "curiosidades",
-          "tiktok",
-          "viral"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Cotización del euro frente al dólar hoy 13 de agosto"
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Eclipse solar total 2026 desde Valencia. / Europa Press News"
     },
     {
       "title": "El eclipse total de Sol emociona a España al dejar un anochecer anticipado y breve en una jornada para la historia",
       "link": "https://www.lasexta.com/noticias/ciencia-tecnologia/eclipse-total-sol-emociona-espana-dejar-anochecer-anticipado-breve-jornada-historia_202608126a7cd2dfa5690f04737696f5.html",
       "score": 55,
       "viral_score": 55,
-      "raw_score": 75.7,
+      "raw_score": 75.6,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -1614,86 +1240,81 @@
       "image_alt": "Eclipse de Sol visto este miércoles en Corbera d\"Ebre."
     },
     {
-      "title": "Cupón Diario de la Once: comprueba los ganadores del 12 de agosto",
-      "link": "https://www.infobae.com/espana/2026/08/12/cupon-diario-de-la-once-comprueba-los-ganadores-del-12-de-agosto/",
+      "title": "Donde mete los Teresa Herrera el Real Madrid?",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775502",
       "score": 55,
       "viral_score": 55,
       "raw_score": 75.4,
       "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
+      "spain_relevance_score": 14,
       "spain_relevance_reasons": [
+        "tema vinculado a España",
         "medio español"
       ],
       "cabronazi_affinity": 46,
       "cabronazi_historical_adjustment": -0.6,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.0,
-      "editorial_selection_reasons": [
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
-      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
       "sources": [
-        "Infobae España · Virales"
+        "ForoCoches Trending"
       ],
       "source_count": 1,
       "platforms": [
-        "news"
+        "forocoches"
       ],
       "platform_labels": [
-        "Medios"
+        "ForoCoches"
       ],
-      "main_platform": "news",
+      "main_platform": "forocoches",
       "curated_editorial": true,
       "editorial_feeds": [
-        "Infobae España · Virales"
+        "ForoCoches Trending"
       ],
       "topic_tags": [
         "trending",
         "viral",
-        "tiktok",
         "curiosidades"
       ],
       "general_category": "humor-curiosidades",
-      "primary_tag": "tiktok",
-      "cabronazi_fit": 6.2,
+      "primary_tag": "curiosidades",
+      "cabronazi_fit": 12.5,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
-      "matched_trend": "13 de agosto",
-      "matched_google_trend": "13 de agosto",
+      "matched_trend": null,
+      "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-12T23:16:10Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/2HJ4HXQNI5FV7AE23L5Z44GFTQ.png?auth=6097dfc80447b79a943e44316ec96708db2b30bb8c410b3c1f782696c778203d&smart=true&width=1200&height=900&quality=85",
-      "media_type": "article",
+      "matched_forocoches_trend": "Donde mete los Teresa Herrera el Real Madrid?",
+      "published_at": "2026-08-13T02:30:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "media_type": "link",
       "signals": [
-        "Selección editorial: Infobae España · Virales",
-        "Google Trends: 13 de agosto (100+)",
-        "Histórico editorial: infobae.com/espana (1 selecciones)"
+        "Trending #22 en ForoCoches",
+        "Trending en ForoCoches #22: Donde mete los Teresa Herrera el Real Madrid?"
       ],
       "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
+        "rank": 22,
+        "thread_id": "10775502",
         "topic_tags": [
           "curiosidades",
-          "tiktok",
           "viral"
-        ]
+        ],
+        "curated_editorial": true,
+        "editorial_feed": "ForoCoches Trending"
       },
       "potential": "medio",
-      "image_verified": false,
+      "image_verified": true,
       "image_linked": true,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Cupón Diario de la Once: comprueba los ganadores del 12 de agosto"
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES"
     },
     {
       "title": "Así han visto los famosos el eclipse solar total en España: del intento fallido de Isa Pantoja a las vistas de playa de Sonsoles Ónega y Laura Escanes",
       "link": "https://www.infobae.com/espana/2026/08/12/asi-han-visto-los-famosos-el-eclipse-solar-total-en-espana-del-intento-fallido-de-isa-pantoja-a-las-vistas-de-playa-de-sonsoles-onega-y-laura-escanes/",
       "score": 55,
       "viral_score": 55,
-      "raw_score": 75.3,
+      "raw_score": 75.2,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -1767,11 +1388,305 @@
       "image_alt": "Así han visto los famosos el eclipse solar total en España: del intento fallido de Isa Pantoja a las vistas de playa de Sonsoles Ónega y Laura Escanes"
     },
     {
+      "title": "Solo puedes elegir UNA de estas zonas de España Y NUNCA más puedes salir de ELLA",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774487",
+      "score": 55,
+      "viral_score": 55,
+      "raw_score": 75.0,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "curiosidades"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "curiosidades",
+      "cabronazi_fit": 12.5,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "Solo puedes elegir UNA de estas zonas de España Y NUNCA más puedes salir de ELLA",
+      "published_at": "2026-08-12T13:19:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "media_type": "link",
+      "signals": [
+        "Trending #18 en ForoCoches",
+        "Trending en ForoCoches #18: Solo puedes elegir UNA de estas zonas de España Y NUNCA más puedes salir de ELLA"
+      ],
+      "metrics": {
+        "rank": 18,
+        "thread_id": "10774487",
+        "topic_tags": [
+          "curiosidades",
+          "viral"
+        ],
+        "curated_editorial": true,
+        "editorial_feed": "ForoCoches Trending"
+      },
+      "potential": "medio",
+      "image_verified": true,
+      "image_linked": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES"
+    },
+    {
+      "title": "Los consejos de Brian May para ver el eclipse solar: \"Basta un solo error para arruinarte la vista de por vida\"",
+      "link": "https://los40.com/2026/08/12/los-consejos-de-brian-may-para-ver-el-eclipse-solar-basta-un-solo-error-para-arruinarte-la-vista-de-por-vida/",
+      "score": 53,
+      "viral_score": 53,
+      "raw_score": 72.4,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 38,
+      "cabronazi_historical_adjustment": -1.9,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 2.5,
+      "editorial_selection_reasons": [
+        "Histórico editorial: los40.com (2 selecciones)"
+      ],
+      "sources": [
+        "LOS40"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "LOS40 · Entretenimiento viral"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "famosos",
+        "redes"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "El ECLIPSE SOLAR 100% es lo MÁS ESPECTACULAR que he visto en la VIDA",
+      "published_at": "2026-08-12T10:14:03Z",
+      "thumbnail": "https://los40.com/resizer/v2/WJ7MI42YNJH7LNSSP5AAGMCOD4.jpg?auth=8f83d1196952fd7b2635a83f779fee55b583fb575696f281b30c91a7c6746b3e&quality=70&width=1200&height=675&focal=2004,964",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: LOS40 · Entretenimiento viral",
+        "Trending en ForoCoches #1: El ECLIPSE SOLAR 100% es lo MÁS ESPECTACULAR que he visto en la VIDA",
+        "Histórico editorial: los40.com (2 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "topic_tags": [
+          "famosos",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Sir Brian May (Queen) en el GP de F1 de Silverstone, 5 de julio de 2026. / Jacob King - PA Images"
+    },
+    {
+      "title": "Así le hemos contado el paso del eclipse solar del 12 de agosto por España",
+      "link": "https://elpais.com/ciencia/2026-08-12/ultima-hora-del-eclipse-solar-de-agosto-en-espana-en-directo.html",
+      "score": 53,
+      "viral_score": 53,
+      "raw_score": 72.1,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.0,
+      "editorial_selection_reasons": [
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "sources": [
+        "EL PAÍS · Lo más visto",
+        "Infobae España · Virales"
+      ],
+      "source_count": 2,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL PAÍS · Lo más visto",
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "tiktok",
+        "curiosidades",
+        "popular"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "tiktok",
+      "cabronazi_fit": 6.2,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 2,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-12T21:46:25Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/SOI45SF3KVC2PE3RFNPBWCE6SY.jpg?auth=f33348726a47fb79dbd804fa83899061c5857132ec4aa6c204803aab7d2eacc8&width=1200",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales",
+        "Selección editorial: EL PAÍS · Lo más visto",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Lo más visto",
+        "editorial_feed": "EL PAÍS · Lo más visto",
+        "topic_tags": [
+          "popular"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 675,
+      "image_alt": "Así le hemos contado el paso del eclipse solar del 12 de agosto por España"
+    },
+    {
+      "title": "Eclipse solar total del 12 de agosto, en directo: última hora, dónde verlo en España, horarios y recomendaciones",
+      "link": "https://www.larazon.es/sociedad/eclipse-solar-total-2026-directo-ultima-hora-donde-verlo-horarios-recomendaciones_202608126a7c835ba046ad6ebcad975c.html",
+      "score": 53,
+      "viral_score": 53,
+      "raw_score": 71.2,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 42,
+      "cabronazi_historical_adjustment": -1.3,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
+      "sources": [
+        "La Razón · Sociedad"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "La Razón · Sociedad"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "television"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "television",
+      "cabronazi_fit": 15.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-12T22:29:45Z",
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/12/356A14B4-55AF-4508-BF10-0061B6253954/98.jpg?crop=4000,2251,x0,y208&width=1900&height=1069&optimize=low&format=webply",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: La Razón · Sociedad",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1900,
+      "image_height": 1069,
+      "image_alt": "Eclipse solar en Maderuelo, Segovia"
+    },
+    {
       "title": "Científicos descubren a delfines cazando con herramientas y utilizando técnicas enseñadas de generación en generación",
       "link": "https://www.infobae.com/espana/2026/08/13/cientificos-descubren-a-delfines-cazando-con-herramientas-y-utilizando-tecnicas-ensenadas-de-generacion-en-generacion/",
       "score": 52,
       "viral_score": 52,
-      "raw_score": 69.3,
+      "raw_score": 69.1,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1842,86 +1757,11 @@
       "image_alt": "Científicos descubren a delfines cazando con herramientas y utilizando técnicas enseñadas de generación en generación"
     },
     {
-      "title": "Marruecos amenaza a España con suspender el acuerdo de extradición: \"Devuélvannos a los menores\"",
-      "link": "https://www.lasexta.com/noticias/internacional/marruecos-amenaza-espana-suspender-acuerdo-extradicion-devuelvannos-menores_202608136a7d7286a046ad6ebcaeba3f.html",
-      "score": 52,
-      "viral_score": 52,
-      "raw_score": 68.8,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 43,
-      "cabronazi_historical_adjustment": -1.1,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 1.5,
-      "editorial_selection_reasons": [
-        "Histórico editorial: lasexta.com (1 selecciones)"
-      ],
-      "sources": [
-        "laSexta"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "laSexta · Viral"
-      ],
-      "topic_tags": [
-        "trending",
-        "viral",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "curiosidades",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": "Marruecos quiere suspender el acuerdo de extradición con España",
-      "published_at": "2026-08-13T07:30:14Z",
-      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/13/B24C9241-96F3-4EE9-B573-17E13410577A/multitud-menores-migrantes-esperan-filiacion-frente-jefatura-superior-policia-nacional-ceuta_69.jpg?crop=4032,2268,x0,y213&width=1280&height=720&optimize=low&format=webply",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: laSexta · Viral",
-        "Trending en ForoCoches #14: Marruecos quiere suspender el acuerdo de extradición con España",
-        "Histórico editorial: lasexta.com (1 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Viral y vídeos virales",
-        "editorial_feed": "laSexta · Viral",
-        "topic_tags": [
-          "curiosidades",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1280,
-      "image_height": 720,
-      "image_alt": "Multitud de menores migrantes esperan para su filiación frente a la Jefatura Superior de la Policía Nacional en Ceuta"
-    },
-    {
       "title": "Helppet: conectando a mascotas",
       "link": "https://www.lavanguardia.com/dinero/20260813/11612800/helppet-conectar-mascotas-perdidas.html",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.5,
+      "raw_score": 66.3,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1987,11 +1827,165 @@
       "image_alt": "Helppet: conectando a mascotas"
     },
     {
+      "title": "El eclipse solar total que detuvo España y nos tuvo a todos mirando al cielo: campos, azoteas y miradores repletos de espectadores que celebraron entre aplausos y lágrimas",
+      "link": "https://www.infobae.com/espana/2026/08/13/el-eclipse-solar-total-que-detuvo-espana-y-nos-tuvo-a-todos-mirando-al-cielo-campos-azoteas-y-miradores-repletos-de-espectadores-que-celebraron-entre-aplausos-y-lagrimas/",
+      "score": 49,
+      "viral_score": 49,
+      "raw_score": 64.9,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_match_reasons": [
+        "identificacion"
+      ],
+      "editorial_selection_bonus": 3.0,
+      "editorial_selection_reasons": [
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "tiktok",
+        "curiosidades"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "tiktok",
+      "cabronazi_fit": 6.2,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-13T03:30:00Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/GF45GBOQOJAMZIAEQPSKQUKXHQ.JPG?auth=fe32661b15321d00752cbe5d7f89d62aa300368af6e67c1d0bd7ada50deb1fe2&smart=true&width=1200&height=900&quality=85",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "El eclipse solar total que detuvo España y nos tuvo a todos mirando al cielo: campos, azoteas y miradores repletos de espectadores que celebraron entre aplausos y lágrimas"
+    },
+    {
+      "title": "El eclipse solar que tendrá lugar al sur de España en 2027 es el mismo que ayudó a científicos británicos a confirmar la Teoría de la Relatividad de Einstein en 1919",
+      "link": "https://www.infobae.com/espana/2026/08/12/el-eclipse-solar-que-tendra-lugar-al-sur-de-espana-en-2027-es-el-mismo-que-ayudo-a-cientificos-britanicos-a-confirmar-la-teoria-de-la-relatividad-de-einstein-en-1919/",
+      "score": 49,
+      "viral_score": 49,
+      "raw_score": 63.5,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.0,
+      "editorial_selection_reasons": [
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "tiktok",
+        "curiosidades"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "tiktok",
+      "cabronazi_fit": 6.2,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-12T23:28:02Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/JI7FNHL4KVG6JD7MPLTXYWOSFM.JPG?auth=d5afcf1192e96a593ac4e5ce8f9fc0c7cd9be9e141707fc3a27eff07df67f994&smart=true&width=1200&height=900&quality=85",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "El eclipse solar que tendrá lugar al sur de España en 2027 es el mismo que ayudó a científicos británicos a confirmar la Teoría de la Relatividad de Einstein en 1919"
+    },
+    {
       "title": "Marcos Llorente vuelve a las polémicas y se pronuncia sobre el eclipse: “Este es el único que voy a ver hoy, qué pesadilla”",
       "link": "https://www.infobae.com/espana/2026/08/12/marcos-llorente-vuelve-a-las-polemicas-y-se-pronuncia-sobre-el-eclipse-este-es-el-unico-que-voy-a-ver-hoy-que-pesadilla/",
       "score": 49,
       "viral_score": 49,
-      "raw_score": 63.3,
+      "raw_score": 63.2,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2064,93 +2058,20 @@
       "image_alt": "Marcos Llorente vuelve a las polémicas y se pronuncia sobre el eclipse: “Este es el único que voy a ver hoy, qué pesadilla”"
     },
     {
-      "title": "El rastro de un narcosubmarino hundido hace año y medio permite interceptar 1,6 toneladas de cocaína",
-      "link": "https://elpais.com/espana/2026-08-12/el-rastro-de-un-narcosubmarino-hundido-hace-ano-y-medio-permite-interceptar-16-toneladas-de-cocaina.html",
+      "title": "Andalucía abre una investigación tras la aparición de serpientes bajo las camas de varios pacientes en el Hospital Alto Guadalquivir de Andújar (Jaén)",
+      "link": "https://www.infobae.com/espana/2026/08/13/andalucia-abre-una-investigacion-tras-la-aparicion-de-serpientes-bajo-las-camas-de-varios-pacientes-en-el-hospital-alto-guadalquivir-de-andujar-jaen/",
       "score": 48,
       "viral_score": 48,
-      "raw_score": 62.6,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 0.0,
-      "editorial_selection_reasons": [],
-      "sources": [
-        "EL PAÍS",
-        "EL PAÍS · Lo más visto"
-      ],
-      "source_count": 2,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "EL PAÍS · Lo más visto",
-        "EL PAÍS · Viral Internet"
-      ],
-      "topic_tags": [
-        "viral",
-        "redes",
-        "popular"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 14.1,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 2,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-12T12:42:34Z",
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/HLVC7KHI3NIPHE7ZJV547OQJUM.jpg?auth=14ecfbe27dae1c3fec98f12ae46f5719c174ae01b19336c26929c53e8d97ffd4&width=1200",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: EL PAÍS · Viral Internet",
-        "Selección editorial: EL PAÍS · Lo más visto"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Lo más visto",
-        "editorial_feed": "EL PAÍS · Lo más visto",
-        "topic_tags": [
-          "popular"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1200,
-      "image_height": 800,
-      "image_alt": "El rastro de un narcosubmarino hundido hace año y medio permite interceptar 1,6 toneladas de cocaína"
-    },
-    {
-      "title": "El eclipse solar total que detuvo España y nos tuvo a todos mirando al cielo: campos, azoteas y miradores repletos de espectadores que celebraron entre aplausos y lágrimas",
-      "link": "https://www.infobae.com/espana/2026/08/13/el-eclipse-solar-total-que-detuvo-espana-y-nos-tuvo-a-todos-mirando-al-cielo-campos-azoteas-y-miradores-repletos-de-espectadores-que-celebraron-entre-aplausos-y-lagrimas/",
-      "score": 47,
-      "viral_score": 47,
-      "raw_score": 59.7,
+      "raw_score": 61.6,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
         "tema vinculado a España",
         "medio español"
       ],
-      "cabronazi_affinity": 47,
-      "cabronazi_historical_adjustment": -0.5,
-      "cabronazi_match_reasons": [
-        "identificacion"
-      ],
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_match_reasons": [],
       "editorial_selection_bonus": 3.0,
       "editorial_selection_reasons": [
         "Histórico editorial: infobae.com/espana (1 selecciones)"
@@ -2185,8 +2106,8 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T03:30:00Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/GF45GBOQOJAMZIAEQPSKQUKXHQ.JPG?auth=fe32661b15321d00752cbe5d7f89d62aa300368af6e67c1d0bd7ada50deb1fe2&smart=true&width=1200&height=900&quality=85",
+      "published_at": "2026-08-13T09:54:55Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/EL4QWMZPRFFHDPTY7ISBOA6CYE.jpg?auth=da013e75e4a0f264801d133b97b39dfec77bef07e2939ae5ae7073936e8923be&smart=true&width=1200&height=900&quality=85",
       "media_type": "article",
       "signals": [
         "Selección editorial: Infobae España · Virales",
@@ -2208,14 +2129,163 @@
       "image_origin": "schema:primaryImageOfPage",
       "image_width": 0,
       "image_height": 0,
-      "image_alt": "El eclipse solar total que detuvo España y nos tuvo a todos mirando al cielo: campos, azoteas y miradores repletos de espectadores que celebraron entre aplausos y lágrimas"
+      "image_alt": "Andalucía abre una investigación tras la aparición de serpientes bajo las camas de varios pacientes en el Hospital Alto Guadalquivir de Andújar (Jaén)"
+    },
+    {
+      "title": "Adiós a la incertidumbre, conoce las condiciones climáticas en Valencia este 13 de agosto",
+      "link": "https://www.infobae.com/espana/2026/08/13/adios-a-la-incertidumbre-conoce-las-condiciones-climaticas-en-valencia-este-13-de-agosto/",
+      "score": 47,
+      "viral_score": 47,
+      "raw_score": 59.5,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.0,
+      "editorial_selection_reasons": [
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "viral",
+        "tiktok",
+        "curiosidades"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "tiktok",
+      "cabronazi_fit": 6.2,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-13T03:33:51Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/XW2EASZJSJFPTL4AW32U4U3FLA.png?auth=4208b117b9f7319fe4651ea425ad4071dd076b89adc5b485a8fc406475e05121&smart=true&width=1200&height=900&quality=85",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales",
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Adiós a la incertidumbre, conoce las condiciones climáticas en Valencia este 13 de agosto"
+    },
+    {
+      "title": "Por tierra, mar y aire: los lugares desde donde se ha podido ver el eclipse solar total de 2026",
+      "link": "https://www.infobae.com/espana/2026/08/12/por-tierra-mar-y-aire-los-lugares-desde-donde-se-ha-podido-ver-el-eclipse-solar-total-de-2026/",
+      "score": 46,
+      "viral_score": 46,
+      "raw_score": 59.3,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.0,
+      "editorial_selection_reasons": [
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "tiktok",
+        "curiosidades"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "tiktok",
+      "cabronazi_fit": 6.2,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "\"foto\" del eclipse solar con el móvil",
+      "published_at": "2026-08-13T05:03:07Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/JEMRMRR55BCKJAF5OHKPWCTCWY.JPG?auth=fe064f75c08b3271b9fe004edb5aa78f71d7e5c50e6a723a1235961d754229be&smart=true&width=1200&height=900&quality=85",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales",
+        "Trending en ForoCoches #29: \"foto\" del eclipse solar con el móvil",
+        "Histórico editorial: infobae.com/espana (1 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Por tierra, mar y aire: los lugares desde donde se ha podido ver el eclipse solar total de 2026"
     },
     {
       "title": "La contundente reacción de Angelina Jolie a la recaída al alcohol de Brad Pitt: \"Es quien es\"",
-      "link": "https://www.huffingtonpost.es/life/influencers-celebrities/la-contundente-reaccion-angelina-jolie-recaida-alcohol-brad-pitt-es-f202608.html#int=bloque_ult_art",
+      "link": "https://www.huffingtonpost.es/life/influencers-celebrities/la-contundente-reaccion-angelina-jolie-recaida-alcohol-brad-pitt-es-f202608.html",
       "score": 46,
       "viral_score": 46,
-      "raw_score": 59.1,
+      "raw_score": 59.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2281,86 +2351,15 @@
       "image_alt": "La contundente reacción de Angelina Jolie a la recaída al alcohol de Brad Pitt: \"Es quien es\""
     },
     {
-      "title": "Un hombre lleva el \"todo lo que puedas comer\" al extremo y arrasa con todas las langostas del bufé",
-      "link": "https://www.lasexta.com/programas/arusitys/hombre-lleva-todo-que-puedas-comer-extremo-arrasa-todas-langostas-bufe_202608136a7d843aa5690f0473775c23.html",
-      "score": 43,
-      "viral_score": 43,
-      "raw_score": 53.9,
+      "title": "Marruecos amenaza a España con suspender el acuerdo de extradición: \"Devuélvannos a los menores\"",
+      "link": "https://www.lasexta.com/noticias/internacional/marruecos-amenaza-espana-suspender-acuerdo-extradicion-devuelvannos-menores_202608136a7d7286a046ad6ebcaeba3f.html",
+      "score": 46,
+      "viral_score": 46,
+      "raw_score": 58.8,
       "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
+      "spain_relevance_score": 14,
       "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 1.5,
-      "editorial_selection_reasons": [
-        "Histórico editorial: lasexta.com (1 selecciones)"
-      ],
-      "sources": [
-        "laSexta"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "laSexta · Viral"
-      ],
-      "topic_tags": [
-        "viral",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "curiosidades",
-      "cabronazi_fit": 6.2,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T08:45:46Z",
-      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/13/35C6A1D0-1344-498F-B0E7-ABFB6B744978/arusers-langosta_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: laSexta · Viral",
-        "Histórico editorial: lasexta.com (1 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Viral y vídeos virales",
-        "editorial_feed": "laSexta · Viral",
-        "topic_tags": [
-          "curiosidades",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "potential": "exploratorio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1280,
-      "image_height": 720,
-      "image_alt": "Un hombre lleva el \"todo lo que puedas comer\" al extremo y arrasa con todas las langostas del bufé"
-    },
-    {
-      "title": "Hegseth afirma que EEUU no descarta una intervención militar en Cuba: \"Todas las opciones están sobre la mesa\"",
-      "link": "https://www.lasexta.com/noticias/internacional/hegseth-afirma-que-eeuu-descarta-intervencion-militar-cuba-todas-opciones-estan-mesa_202608136a7d632ea046ad6ebcaea777.html",
-      "score": 43,
-      "viral_score": 43,
-      "raw_score": 52.6,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
+        "tema vinculado a España",
         "medio español"
       ],
       "cabronazi_affinity": 43,
@@ -2399,8 +2398,8 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "matched_forocoches_trend": null,
-      "published_at": "2026-08-13T06:24:46Z",
-      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/13/8310933D-AEBF-4EE5-AB3B-88BD422C66A4/secretario-defensa-pete-hegseth-despacho-oval-casa-blanca_69.jpg?crop=1024,576,x0,y53&width=1280&height=720&optimize=low&format=webply",
+      "published_at": "2026-08-13T07:30:14Z",
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages01/2026/08/13/B24C9241-96F3-4EE9-B573-17E13410577A/multitud-menores-migrantes-esperan-filiacion-frente-jefatura-superior-policia-nacional-ceuta_69.jpg?crop=4032,2268,x0,y213&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
         "Selección editorial: laSexta · Viral",
@@ -2416,36 +2415,35 @@
         ],
         "source_mode": "direct-section"
       },
-      "potential": "exploratorio",
+      "potential": "medio",
       "image_verified": false,
       "image_linked": true,
       "image_origin": "og:image",
       "image_width": 1280,
       "image_height": 720,
-      "image_alt": "El secretario de Defensa, Pete Hegseth, en el Despacho Oval de la Casa Blanca."
+      "image_alt": "Multitud de menores migrantes esperan para su filiación frente a la Jefatura Superior de la Policía Nacional en Ceuta"
     },
     {
-      "title": "Los consejos de Brian May para ver el eclipse solar: \"Basta un solo error para arruinarte la vista de por vida\"",
-      "link": "https://los40.com/2026/08/12/los-consejos-de-brian-may-para-ver-el-eclipse-solar-basta-un-solo-error-para-arruinarte-la-vista-de-por-vida/",
-      "score": 53,
-      "viral_score": 53,
-      "raw_score": 72.5,
+      "title": "El rastro de un narcosubmarino hundido hace año y medio permite interceptar 1,6 toneladas de cocaína",
+      "link": "https://elpais.com/espana/2026-08-12/el-rastro-de-un-narcosubmarino-hundido-hace-ano-y-medio-permite-interceptar-16-toneladas-de-cocaina.html",
+      "score": 48,
+      "viral_score": 48,
+      "raw_score": 62.5,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
         "medio español"
       ],
-      "cabronazi_affinity": 38,
-      "cabronazi_historical_adjustment": -1.9,
+      "cabronazi_affinity": 51,
+      "cabronazi_historical_adjustment": 0.2,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 2.5,
-      "editorial_selection_reasons": [
-        "Histórico editorial: los40.com (2 selecciones)"
-      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
       "sources": [
-        "LOS40"
+        "EL PAÍS",
+        "EL PAÍS · Lo más visto"
       ],
-      "source_count": 1,
+      "source_count": 2,
       "platforms": [
         "news"
       ],
@@ -2455,53 +2453,132 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "LOS40 · Entretenimiento viral"
+        "EL PAÍS · Lo más visto",
+        "EL PAÍS · Viral Internet"
       ],
       "topic_tags": [
-        "trending",
         "viral",
-        "famosos",
-        "redes"
+        "redes",
+        "popular"
       ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 20.0,
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 14.1,
       "politics_related": false,
       "hard_news_related": false,
-      "num_mentions": 1,
+      "num_mentions": 2,
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": "El ECLIPSE SOLAR 100% es lo MÁS ESPECTACULAR que he visto en la VIDA",
-      "published_at": "2026-08-12T10:14:03Z",
-      "thumbnail": "https://los40.com/resizer/v2/WJ7MI42YNJH7LNSSP5AAGMCOD4.jpg?auth=8f83d1196952fd7b2635a83f779fee55b583fb575696f281b30c91a7c6746b3e&quality=70&width=1200&height=675&focal=2004,964",
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-12T12:42:34Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/HLVC7KHI3NIPHE7ZJV547OQJUM.jpg?auth=14ecfbe27dae1c3fec98f12ae46f5719c174ae01b19336c26929c53e8d97ffd4&width=1200",
       "media_type": "article",
       "signals": [
-        "Selección editorial: LOS40 · Entretenimiento viral",
-        "Trending en ForoCoches #1: El ECLIPSE SOLAR 100% es lo MÁS ESPECTACULAR que he visto en la VIDA",
-        "Histórico editorial: los40.com (2 selecciones)"
+        "Selección editorial: EL PAÍS · Viral Internet",
+        "Selección editorial: EL PAÍS · Lo más visto"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales, música y entretenimiento",
-        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "editorial_section": "Lo más visto",
+        "editorial_feed": "EL PAÍS · Lo más visto",
         "topic_tags": [
-          "famosos",
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
+          "popular"
+        ]
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
       "image_origin": "og:image",
       "image_width": 1200,
-      "image_height": 675,
-      "image_alt": "Sir Brian May (Queen) en el GP de F1 de Silverstone, 5 de julio de 2026. / Jacob King - PA Images"
+      "image_height": 800,
+      "image_alt": "El rastro de un narcosubmarino hundido hace año y medio permite interceptar 1,6 toneladas de cocaína"
     }
   ],
   "unfiltered_stories": [
+    {
+      "title": "Raquel Perera desvela la diferencia que mantiene con Alejandro Sanz sobre su hijo adolescente: «No le puede...",
+      "link": "https://okdiario.com/cool/famosos/raquel-perera-desvela-diferencia-que-mantiene-alejandro-sanz-sobre-hijo-adolescente-no-puedes-dejar-ser-tan-libre-19169254",
+      "score": 12,
+      "viral_score": 12,
+      "raw_score": 12.2,
+      "sources": [
+        "OkDiario"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": false,
+      "editorial_feeds": [],
+      "topic_tags": [
+        "google-trends"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T17:30:49Z",
+      "thumbnail": "https://okdiario.com/img/2026/08/12/imagen_recortada-2026-08-12t161158.788.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image:secure_url",
+      "image_alt": "Raquel Perera desvela la diferencia que mantiene con Alejandro Sanz sobre su hijo adolescente: «No le puede...",
+      "media_type": "article",
+      "signals": [
+        "Google Trends: raquel perera (100+ búsquedas)"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1800,
+      "image_height": 1013
+    },
+    {
+      "title": "Tomate : un chef étoilé partage sa technique toute simple pour en décupler les saveurs",
+      "link": "https://www.topsante.com/nutrition_et_recettes/tomate-un-chef-etoile-partage-sa-technique-toute-simple-pour-en-decupler-les-saveurs-982500",
+      "score": 12,
+      "viral_score": 12,
+      "raw_score": 12.2,
+      "sources": [
+        "Top Santé"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": false,
+      "editorial_feeds": [],
+      "topic_tags": [
+        "comida",
+        "google-trends"
+      ],
+      "general_category": "vida-bienestar",
+      "primary_tag": "comida",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T09:05:00Z",
+      "thumbnail": "https://sf1.topsante.com/wp-content/uploads/topsante/2026/08/tomate-un-chef-etoile-partage-sa-technique-toute-simple-pour-en-decupler-les-saveurs.jpeg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Tomate : un chef étoilé partage sa technique toute simple pour en décupler les saveurs",
+      "media_type": "article",
+      "signals": [
+        "Google Trends: tomate (100+ búsquedas)"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1280,
+      "image_height": 800
+    },
     {
       "title": "¿Quién es Carlota Sánchez, la hija detenida por el asesinato a cuchilladas de sus padres en Tauste?",
       "link": "https://www.elcorreo.com/sociedad/carlota-sanchez-hija-detenida-asesinato-cuchilladas-padres-20260812190341-ntrc.html",
@@ -2546,13 +2623,13 @@
       "image_height": 840
     },
     {
-      "title": "La Guardia Civil detiene a un hombre de 28 años como presunto autor del incendio de Las Peñas de Riglos",
-      "link": "https://www.heraldo.es/noticias/aragon/huesca/2026/08/13/guardia-civil-detiene-hombre-28-anos-presunto-autor-incendio-penas-riglos-2044463.html",
-      "score": 13,
-      "viral_score": 13,
-      "raw_score": 13.1,
+      "title": "Detenido un hombre de 28 años por el incendio en Las Peñas de Riglos (Huesca)",
+      "link": "https://elpais.com/espana/2026-08-13/detenido-un-hombre-de-28-anos-por-el-incendio-en-las-penas-de-riglos-huesca.html",
+      "score": 14,
+      "viral_score": 14,
+      "raw_score": 14.4,
       "sources": [
-        "heraldo.es"
+        "EL PAÍS"
       ],
       "source_count": 1,
       "platforms": [
@@ -2572,20 +2649,20 @@
       "primary_tag": "viral",
       "politics_related": false,
       "hard_news_related": true,
-      "published_at": "2026-08-13T08:13:03Z",
-      "thumbnail": "https://imagenes.heraldo.es/files/image_1920_1080/uploads/imagenes/2026/08/12/6a7caf7d23bb55-98552001.jpeg",
+      "published_at": "2026-08-13T07:57:04Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/NGXFM2LHXVP4BLX7D6FD3XQOVA.jpg?auth=7878873cf20c5fcdbf41699e10077a886881903048bdf2abca3cd93232f2a4ed&width=1200",
       "image_linked": true,
       "image_verified": false,
       "image_origin": "og:image",
-      "image_alt": "Imágenes del incendio en las Peñas de Riglos.",
+      "image_alt": "Detenido un hombre de 28 años por el incendio en Las Peñas de Riglos (Huesca)",
       "media_type": "article",
       "signals": [
-        "Google Trends: riglos (200+ búsquedas)"
+        "Google Trends: riglos (500+ búsquedas)"
       ],
       "cabronazi_affinity": 50,
       "unfiltered": true,
-      "image_width": 1920,
-      "image_height": 1080
+      "image_width": 1200,
+      "image_height": 801
     },
     {
       "title": "Se acelera la salida del Barça de Héctor Fort",
@@ -2622,129 +2699,6 @@
       "media_type": "article",
       "signals": [
         "Google Trends: héctor fort (200+ búsquedas)"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 0,
-      "image_height": 0
-    },
-    {
-      "title": "Horóscopo de hoy, jueves 13 de agosto, descubre tu predicción diaria gratis",
-      "link": "https://www.hola.com/horoscopo/20260812916129/horoscopo-de-hoy-jueves-13-de-agosto/",
-      "score": 12,
-      "viral_score": 12,
-      "raw_score": 12.2,
-      "sources": [
-        "HOLA"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": false,
-      "editorial_feeds": [],
-      "topic_tags": [
-        "google-trends"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T23:00:00Z",
-      "thumbnail": "https://www.hola.com/horizon/landscape/30fe8ac8dd74-jueves.jpg?im=Resize=(1200)",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "Horóscopo de hoy, jueves 13 de agosto, descubre tu predicción diaria gratis",
-      "media_type": "article",
-      "signals": [
-        "Google Trends: 13 de agosto (100+ búsquedas)"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 1200,
-      "image_height": 675
-    },
-    {
-      "title": "Una persecución desde Campuzano acaba con dos menores denunciados y el conductor huido",
-      "link": "https://www.eldiariomontanes.es/torrelavega/persecucion-campuzano-acaba-dos-menores-denunciados-conductor-20260812125856-nt.html",
-      "score": 12,
-      "viral_score": 12,
-      "raw_score": 12.2,
-      "sources": [
-        "El Diario Montañés"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": false,
-      "editorial_feeds": [],
-      "topic_tags": [
-        "google-trends"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T10:58:56Z",
-      "thumbnail": "https://s1.ppllstatics.com/eldiariomontanes/www/multimedia/local/2026/08/12/coche-estrellado-RK8hYTsb2asIIa7hwDOQDNP-1200x840@Diario%20Montanes.jpeg",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "Una persecución desde Campuzano acaba con dos menores denunciados y el conductor huido",
-      "media_type": "article",
-      "signals": [
-        "Google Trends: ifomo (100+ búsquedas)"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 1200,
-      "image_height": 840
-    },
-    {
-      "title": "El Rayo ha cerrado el fichaje de Giorgi Tsitaishvili",
-      "link": "https://www.marca.com/futbol/rayo/2026/08/13/rayo-cerrado-fichaje-giorgi-tsitaishvili.html",
-      "score": 13,
-      "viral_score": 13,
-      "raw_score": 13.1,
-      "sources": [
-        "MARCA"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": false,
-      "editorial_feeds": [],
-      "topic_tags": [
-        "google-trends"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-13T06:38:41Z",
-      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/13/6a7d66485eae8.jpeg",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "schema:image",
-      "image_alt": "El Rayo ha cerrado el fichaje de Giorgi Tsitaishvili",
-      "media_type": "article",
-      "signals": [
-        "Google Trends: giorgi tsitaishvili (200+ búsquedas)"
       ],
       "cabronazi_affinity": 50,
       "unfiltered": true,
@@ -3282,49 +3236,6 @@
       "image_height": 1080
     },
     {
-      "title": "La contundente reacción de Angelina Jolie a la recaída al alcohol de Brad Pitt: \"Es quien es\"",
-      "link": "https://www.huffingtonpost.es/life/influencers-celebrities/la-contundente-reaccion-angelina-jolie-recaida-alcohol-brad-pitt-es-f202608.html#int=bloque_ult_art",
-      "score": 10,
-      "viral_score": 10,
-      "raw_score": 10.0,
-      "sources": [
-        "El HuffPost"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "El HuffPost · Virales"
-      ],
-      "topic_tags": [
-        "viral"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-13T07:36:46Z",
-      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/13/angelina-jolie-en-la-premiere-de-coutures-en-febrero-de-2026.jpeg",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "La contundente reacción de Angelina Jolie a la recaída al alcohol de Brad Pitt: \"Es quien es\"",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: El HuffPost · Virales"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 0,
-      "image_height": 0
-    },
-    {
       "title": "Nick Reiner, acusado por un gran jurado del asesinato de sus padres Rob y Michele Reiner",
       "link": "https://www.huffingtonpost.es/life/influencers-celebrities/nick-reiner-acusado-gran-jurado-asesinato-padresrob-michele-reiner-f202608.html#int=bloque_ult_art",
       "score": 10,
@@ -3359,6 +3270,49 @@
       "image_verified": false,
       "image_origin": "og:image",
       "image_alt": "Nick Reiner, acusado por un gran jurado del asesinato de sus padres Rob y Michele Reiner",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Virales"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
+      "title": "La contundente reacción de Angelina Jolie a la recaída al alcohol de Brad Pitt: \"Es quien es\"",
+      "link": "https://www.huffingtonpost.es/life/influencers-celebrities/la-contundente-reaccion-angelina-jolie-recaida-alcohol-brad-pitt-es-f202608.html",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "El HuffPost"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Virales"
+      ],
+      "topic_tags": [
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T07:36:46Z",
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/13/angelina-jolie-en-la-premiere-de-coutures-en-febrero-de-2026.jpeg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "La contundente reacción de Angelina Jolie a la recaída al alcohol de Brad Pitt: \"Es quien es\"",
       "media_type": "article",
       "signals": [
         "Selección editorial: El HuffPost · Virales"
@@ -3463,53 +3417,6 @@
       "image_height": 0
     },
     {
-      "title": "Los denunciantes del 'caso ático' piden el expediente completo, las \"comunicaciones\" entre altos cargos de Ayuso y que declare la vendedora",
-      "link": "https://www.publico.es/politica/tribunales/denunciantes-caso-atico-piden-expediente-completo-comunicaciones-altos-cargos-ayuso-declare-vendedora.html",
-      "score": 8,
-      "viral_score": 8,
-      "raw_score": 8.0,
-      "sources": [
-        "Público"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Público · Tremending"
-      ],
-      "topic_tags": [
-        "humor",
-        "memes",
-        "politica",
-        "redes",
-        "viral"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": true,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T19:30:00Z",
-      "thumbnail": "https://www.publico.es/files/og_thumbnail/uploads/2026/08/12/6a7c882fb077f.jpeg",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "Los denunciantes del 'caso ático' piden el expediente completo, las \"comunicaciones\" entre altos cargos de Ayuso y que declare la vendedora",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Público · Tremending"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 0,
-      "image_height": 0
-    },
-    {
       "title": "Entidades sociales denuncian violencia policial contra migrantes en Ceuta: \"Los tratan como ganado\"",
       "link": "https://www.publico.es/sociedad/migracion/entidades-sociales-denuncian-violencia-policial-migrantes-ceuta-tratan-ganado.html",
       "score": 8,
@@ -3547,6 +3454,53 @@
       "image_verified": false,
       "image_origin": "og:image",
       "image_alt": "Entidades sociales denuncian violencia policial contra migrantes en Ceuta: \"Los tratan como ganado\"",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Público · Tremending"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
+      "title": "Los denunciantes del 'caso ático' piden el expediente completo, las \"comunicaciones\" entre altos cargos de Ayuso y que declare la vendedora",
+      "link": "https://www.publico.es/politica/tribunales/denunciantes-caso-atico-piden-expediente-completo-comunicaciones-altos-cargos-ayuso-declare-vendedora.html",
+      "score": 8,
+      "viral_score": 8,
+      "raw_score": 8.0,
+      "sources": [
+        "Público"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Público · Tremending"
+      ],
+      "topic_tags": [
+        "humor",
+        "memes",
+        "politica",
+        "redes",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": true,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T19:30:00Z",
+      "thumbnail": "https://www.publico.es/files/og_thumbnail/uploads/2026/08/12/6a7c882fb077f.jpeg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Los denunciantes del 'caso ático' piden el expediente completo, las \"comunicaciones\" entre altos cargos de Ayuso y que declare la vendedora",
       "media_type": "article",
       "signals": [
         "Selección editorial: Público · Tremending"
@@ -4339,6 +4293,143 @@
       "image_height": 675
     },
     {
+      "title": "Andalucía abre una investigación tras la aparición de serpientes bajo las camas de varios pacientes en el Hospital Alto Guadalquivir de Andújar (Jaén)",
+      "link": "https://www.infobae.com/espana/2026/08/13/andalucia-abre-una-investigacion-tras-la-aparicion-de-serpientes-bajo-las-camas-de-varios-pacientes-en-el-hospital-alto-guadalquivir-de-andujar-jaen/",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "tiktok",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T09:54:55Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/EL4QWMZPRFFHDPTY7ISBOA6CYE.jpg?auth=da013e75e4a0f264801d133b97b39dfec77bef07e2939ae5ae7073936e8923be&smart=true&width=1200&height=900&quality=85",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_alt": "Andalucía abre una investigación tras la aparición de serpientes bajo las camas de varios pacientes en el Hospital Alto Guadalquivir de Andújar (Jaén)",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
+      "title": "Dónde se sitúan los nuevos radares de la DGT en Soria, Segovia y Albacete",
+      "link": "https://www.infobae.com/espana/2026/08/13/donde-se-situan-los-nuevos-radares-de-la-dgt-en-soria-segovia-y-albacete/",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "tiktok",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T09:52:39Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/YJN4YZ2PHZCHVAUQYWJ3K65BJE.jpg?auth=a2b35edaaa24f9f27fcb0976d590c11cf94f8402b65b486bfc1145fa1e2a186a&smart=true&width=1200&height=900&quality=85",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_alt": "Dónde se sitúan los nuevos radares de la DGT en Soria, Segovia y Albacete",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
+      "title": "El Gobierno confirma la muerte de un español en el terremoto de magnitud 7,4 de Colombia",
+      "link": "https://www.infobae.com/espana/2026/08/13/el-gobierno-confirma-la-muerte-de-un-espanol-en-el-terremoto-de-magnitud-74-de-colombia/",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "Infobae España · Virales"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Infobae España · Virales"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "politica",
+        "sucesos",
+        "tiktok",
+        "viral"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "politics_related": true,
+      "hard_news_related": true,
+      "published_at": "2026-08-13T09:51:00Z",
+      "thumbnail": "https://www.infobae.com/resizer/v2/M7Z3TFTNLRGSPLNVCU5PB6LWQQ.jpg?auth=1bb2d577f4829bb7a3a7e04e4fae5a4980f9e54999b9ea4320525f5f4c7de440&smart=true&width=1200&height=900&quality=85",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "schema:primaryImageOfPage",
+      "image_alt": "El Gobierno confirma la muerte de un español en el terremoto de magnitud 7,4 de Colombia",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Infobae España · Virales"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
       "title": "El ejercicio de cardio ideal para hacer en verano que quema más calorías y mejora la coordinación",
       "link": "https://www.infobae.com/espana/2026/08/13/ni-gimnasio-ni-pilates-el-ejercicio-de-cardio-ideal-para-hacer-en-verano/",
       "score": 9,
@@ -4419,53 +4510,6 @@
       "image_verified": false,
       "image_origin": "schema:primaryImageOfPage",
       "image_alt": "El pueblo del Pirineo catalán que abre las puertas al Parque Natural de las Capçaleres del Ter i del Freser: es perfecto para huir del calor y de las aglomeraciones",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Infobae España · Virales"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 0,
-      "image_height": 0
-    },
-    {
-      "title": "El Gobierno confirma la muerte de un español en el terremoto de magnitud 7,4 de Colombia",
-      "link": "https://www.infobae.com/espana/2026/08/13/el-gobierno-confirma-la-muerte-de-un-espanol-en-el-terremoto-de-magnitud-74-de-colombia/",
-      "score": 9,
-      "viral_score": 9,
-      "raw_score": 9.0,
-      "sources": [
-        "Infobae España · Virales"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "curiosidades",
-        "politica",
-        "sucesos",
-        "tiktok",
-        "viral"
-      ],
-      "general_category": "sucesos",
-      "primary_tag": "viral",
-      "politics_related": true,
-      "hard_news_related": true,
-      "published_at": "2026-08-13T09:08:20Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/M7Z3TFTNLRGSPLNVCU5PB6LWQQ.jpg?auth=1bb2d577f4829bb7a3a7e04e4fae5a4980f9e54999b9ea4320525f5f4c7de440&smart=true&width=1200&height=900&quality=85",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_alt": "El Gobierno confirma la muerte de un español en el terremoto de magnitud 7,4 de Colombia",
       "media_type": "article",
       "signals": [
         "Selección editorial: Infobae España · Virales"
@@ -5835,96 +5879,6 @@
       "image_height": 0
     },
     {
-      "title": "Andrés Degar, arquitecto, compara las casas españolas y estadounidenses: “En España están construidas para durar generaciones”",
-      "link": "https://www.infobae.com/espana/2026/08/12/andres-degar-arquitecto-compara-las-casas-espanolas-y-estadounidenses-en-espana-estan-construidas-para-durar-generaciones/",
-      "score": 9,
-      "viral_score": 9,
-      "raw_score": 9.0,
-      "sources": [
-        "Infobae España · Virales"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "curiosidades",
-        "tiktok",
-        "viral"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T18:37:01Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/TZVNAS3WM5DI3HMRBZMPUH3BW4.png?auth=a124767e83376b2206dbea1e44f666fee79f56402072c7ecfc2bc51b6468e6b0&smart=true&width=1200&height=900&quality=85",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_alt": "Andrés Degar, arquitecto, compara las casas españolas y estadounidenses: “En España están construidas para durar generaciones”",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Infobae España · Virales"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 0,
-      "image_height": 0
-    },
-    {
-      "title": "Google desplegará tres nuevos cables submarinos en América Latina para un internet más rápido",
-      "link": "https://www.infobae.com/tecno/2026/08/12/google-desplegara-tres-nuevos-cables-submarinos-en-america-latina-para-un-internet-mas-rapido/",
-      "score": 9,
-      "viral_score": 9,
-      "raw_score": 9.0,
-      "sources": [
-        "Infobae España · Virales"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Infobae España · Virales"
-      ],
-      "topic_tags": [
-        "curiosidades",
-        "tiktok",
-        "viral"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T18:00:00Z",
-      "thumbnail": "https://www.infobae.com/resizer/v2/FFPIKAWWOVBE3L2CGQC4HBKM2Q.png?auth=b3d13ac3dbb3e16aa6d72621f9d13a805a8ecee13be1c972c66fb3850ff2ea08&smart=true&width=1200&height=900&quality=85",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "schema:primaryImageOfPage",
-      "image_alt": "Google desplegará tres nuevos cables submarinos en América Latina para un internet más rápido",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Infobae España · Virales"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 0,
-      "image_height": 0
-    },
-    {
       "title": "Leila León rompe su silencio sobre el romance de Atamán y Andrea Canel, de ‘LIDLT’: “Me pareció falso”",
       "link": "https://www.telecinco.es/famosos/20260813/leila-leon-habla-sobre-romance-ataman-andrea-canel-isla-tentaciones_18_019941738.html",
       "score": 5,
@@ -6141,7 +6095,7 @@
       "image_height": 960
     },
     {
-      "title": "Eclipse solar total, en directo: así se vivió en España el fenómeno y última hora",
+      "title": "Eclipse solar, en directo | Las mejores imágenes y cómo se vivió desde España el fenómeno del 12 de agosto",
       "link": "https://www.lavanguardia.com/vida/20260813/11613024/eclipse-total-sol-espana-reacciones-imagenes-ultima-hora-hoy-en-directo.html",
       "score": 0,
       "viral_score": 0,
@@ -6168,12 +6122,12 @@
       "primary_tag": "television",
       "politics_related": false,
       "hard_news_related": false,
-      "published_at": "2026-08-13T09:08:57Z",
-      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/13/6a7d6fba0fcd1.jpeg",
+      "published_at": "2026-08-13T09:25:51Z",
+      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/13/6a7d930469060.jpeg",
       "image_linked": true,
       "image_verified": false,
       "image_origin": "og:image",
-      "image_alt": "Eclipse solar total, en directo: así se vivió en España el fenómeno y última hora",
+      "image_alt": "Eclipse solar, en directo | Las mejores imágenes y cómo se vivió desde España el fenómeno del 12 de agosto",
       "media_type": "article",
       "signals": [
         "Selección editorial: La Vanguardia · Portada"
@@ -6341,12 +6295,53 @@
       "primary_tag": "television",
       "politics_related": false,
       "hard_news_related": true,
-      "published_at": "2026-08-13T09:25:19Z",
+      "published_at": "2026-08-13T09:55:17Z",
       "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/12/C09BE5AE-D56B-4576-BC81-E78D3C324BB3/98.jpg?crop=5542,3118,x0,y288&width=1900&height=1069&optimize=low&format=webply",
       "image_linked": true,
       "image_verified": false,
       "image_origin": "og:image",
       "image_alt": "LA PALMA DEL CONDANDO (HUELVA), 12/08/2026.- Incendio junto al embalse del Corumbel Bajo en La Palma del Condado, Huelva, este miércoles. El dispositivo que combate desde hace cinco días el incendio forestal de Niebla (Huelva), que ha alcanzado ya las 28.000 hectáreas afectadas, afronta una jornada marcada una vez más por la complejidad y por los cambios de viento a la que, además, se suman las restricciones impuestas a los medios aéreos por el eclipse. EFE/Alberto Díaz",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: La Razón · Sociedad"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1900,
+      "image_height": 1069
+    },
+    {
+      "title": "Rescatadas otras cuatro personas de la sierra de Madrid que habían ido a ver el eclipse",
+      "link": "https://www.larazon.es/sociedad/rescatadas-otras-cuatro-personas-sierra-madrid-que-habian-ido-ver-eclipse_202608136a7d90a971b42a0b5dece7fd.html",
+      "score": 2,
+      "viral_score": 2,
+      "raw_score": 2.0,
+      "sources": [
+        "La Razón · Sociedad"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "La Razón · Sociedad"
+      ],
+      "topic_tags": [],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T09:38:49Z",
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/13/8EF8A7FD-CD63-4EF3-9FDB-F586A1DC4207/rescatadas-otras-cuatro-personas-sierra-madrid-que-habian-ido-ver-eclipse_98.jpg?crop=409,230,x0,y4&width=1900&height=1069&optimize=low&format=webply",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Rescatadas otras cuatro personas de la sierra de Madrid que habían ido a ver el eclipse",
       "media_type": "article",
       "signals": [
         "Selección editorial: La Razón · Sociedad"
@@ -6904,47 +6899,6 @@
       "image_height": 1069
     },
     {
-      "title": "Cae el «arquitecto financiero» de la cocaína en la Costa del Sol",
-      "link": "https://www.larazon.es/sociedad/cae-arquitecto-financiero-cocaina-costa-sol_202608126a7ca0bba5690f0473764d38.html",
-      "score": 2,
-      "viral_score": 2,
-      "raw_score": 2.0,
-      "sources": [
-        "La Razón · Sociedad"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "La Razón · Sociedad"
-      ],
-      "topic_tags": [],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T16:35:07Z",
-      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/03/97D11A92-D8B0-4E9E-B124-A83CA1079BEB/policia-nacional-detiene-hombre-agredir-sexualmente-mujer-que-explotaba_98.jpg?crop=3456,1944,x0,y179&width=1900&height=1069&optimize=low&format=webply",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "Policía Nacional",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: La Razón · Sociedad"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 1900,
-      "image_height": 1069
-    },
-    {
       "title": "¿Dónde ver el eclipse solar en España? Mapa de visibilidad por horas en cada punto del país",
       "link": "https://elpais.com/ciencia/2026-08-12/donde-ver-el-eclipse-solar-en-espana-mapa-con-la-hora-y-la-visibilidad-en-cada-punto-del-pais.html",
       "score": 5,
@@ -7234,7 +7188,7 @@
       "image_alt": "Todos con Count Binface",
       "media_type": "article",
       "signals": [
-        "256 meneos · 24 comentarios · 613 clics en Menéame"
+        "258 meneos · 24 comentarios · 616 clics en Menéame"
       ],
       "cabronazi_affinity": 50,
       "unfiltered": true,
@@ -7242,50 +7196,11 @@
       "image_height": 864
     },
     {
-      "title": "Marruecos vuelve a exigir a España la devolución de sus menores desde Ceuta",
-      "link": "https://efe.com/espana/marruecos-espana-menores-ceuta/",
-      "score": 58,
-      "viral_score": 58,
-      "raw_score": 58.0,
-      "sources": [
-        "Menéame · Populares"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "meneame"
-      ],
-      "platform_labels": [
-        "Menéame"
-      ],
-      "main_platform": "meneame",
-      "curated_editorial": false,
-      "editorial_feeds": [],
-      "topic_tags": [],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-12T13:52:54Z",
-      "thumbnail": "https://efe.com/wp-content/uploads/2026/08/marruecos-espana-menores-ceuta.webp",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "destination:og:image",
-      "image_alt": "Marruecos vuelve a exigir a España la devolución de sus menores desde Ceuta",
-      "media_type": "article",
-      "signals": [
-        "183 meneos · 157 comentarios · 1.2 k clics en Menéame"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 900,
-      "image_height": 591
-    },
-    {
       "title": "El eclipse total contra los dos millones de terraplanistas de España",
       "link": "https://www.elindependiente.com/futuro/2026/08/12/eclipse-solar-total-espana-12-agosto-terraplanismo/",
-      "score": 57,
-      "viral_score": 57,
-      "raw_score": 57.2,
+      "score": 58,
+      "viral_score": 58,
+      "raw_score": 57.6,
       "sources": [
         "Menéame · Populares"
       ],
@@ -7312,7 +7227,7 @@
       "image_alt": "El eclipse total contra los dos millones de terraplanistas de España",
       "media_type": "article",
       "signals": [
-        "113 meneos · 76 comentarios · 1.9 k clics en Menéame"
+        "121 meneos · 78 comentarios · 2 k clics en Menéame"
       ],
       "cabronazi_affinity": 50,
       "unfiltered": true,
@@ -7351,7 +7266,7 @@
       "image_alt": "Todos con Count Binface",
       "media_type": "article",
       "signals": [
-        "196 meneos · 24 comentarios · 2.7 k clics en Menéame"
+        "197 meneos · 24 comentarios · 2.7 k clics en Menéame"
       ],
       "cabronazi_affinity": 50,
       "unfiltered": true,
@@ -7390,12 +7305,1234 @@
       "image_alt": "Coches parados en el Huerna para ver el eclipse. | DGT",
       "media_type": "article",
       "signals": [
-        "186 meneos · 25 comentarios · 2.3 k clics en Menéame"
+        "186 meneos · 26 comentarios · 2.3 k clics en Menéame"
       ],
       "cabronazi_affinity": 50,
       "unfiltered": true,
       "image_width": 0,
       "image_height": 0
+    },
+    {
+      "title": "El ECLIPSE SOLAR 100% es lo MÁS ESPECTACULAR que he visto en la VIDA",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775058",
+      "score": 29,
+      "viral_score": 29,
+      "raw_score": 29.3,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T18:44:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #1 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Bros facturando 500k al mes con 18 años",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774489",
+      "score": 29,
+      "viral_score": 29,
+      "raw_score": 28.6,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T13:21:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #2 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "WISMICHU vende TODO. BANCARROTA a la vista?",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774830",
+      "score": 28,
+      "viral_score": 28,
+      "raw_score": 27.9,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T17:06:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #3 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Pongamos fotos del eclipse...",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774920",
+      "score": 27,
+      "viral_score": 27,
+      "raw_score": 27.2,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T17:58:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #4 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "ALIEXPRESS te quita ARANCELES: ¡a partir del 17 de agosto!",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774635",
+      "score": 26,
+      "viral_score": 26,
+      "raw_score": 26.5,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T14:57:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #5 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Marcos Llorente otra vez haciendo el rídiculo en redes +Eclipse",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774541",
+      "score": 26,
+      "viral_score": 26,
+      "raw_score": 25.8,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T13:57:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #6 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Tremenda la CHARCADA y PAKADA del ECLIPSE.",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775330",
+      "score": 25,
+      "viral_score": 25,
+      "raw_score": 25.1,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T21:24:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #7 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Pixel 11 Pro a 1199€ revienta al iPhone. Tiembla Apple",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774578",
+      "score": 24,
+      "viral_score": 24,
+      "raw_score": 24.4,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "tecnologia",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T14:20:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #8 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Que habeis sentido cuando habéis visto el eclipse al 100% [tema serio]",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775282",
+      "score": 24,
+      "viral_score": 24,
+      "raw_score": 23.7,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T20:50:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #9 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Pelea masiva a la salida del Starlite Marbella",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775549",
+      "score": 23,
+      "viral_score": 23,
+      "raw_score": 23.0,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T06:23:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #10 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Lladós se la saca sobres los PACOS del Eclipse",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775499",
+      "score": 22,
+      "viral_score": 22,
+      "raw_score": 22.3,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T02:17:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #11 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "He cargado el aire acondicionado en 15 €",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775163",
+      "score": 22,
+      "viral_score": 22,
+      "raw_score": 21.6,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T19:28:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #12 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Joven pide ayuda rescatar cuerpo de su madre entre escombros a la vista+ojossensibles",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775366",
+      "score": 20,
+      "viral_score": 20,
+      "raw_score": 20.2,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T21:49:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #14 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Qué lástima la gente que no ha hecho un esfuerzo por ver el eclipse",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775514",
+      "score": 20,
+      "viral_score": 20,
+      "raw_score": 19.5,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T04:36:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #15 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Jajajaj La nueva moda entre los jóvenes: competición de farmear aura. :roto2:",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775594",
+      "score": 19,
+      "viral_score": 19,
+      "raw_score": 18.8,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "lifestyle",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T07:32:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #16 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "El problema de las pensiones solucionado Tema Serio",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774409",
+      "score": 18,
+      "viral_score": 18,
+      "raw_score": 18.1,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T12:25:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #17 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Solo puedes elegir UNA de estas zonas de España Y NUNCA más puedes salir de ELLA",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774487",
+      "score": 17,
+      "viral_score": 17,
+      "raw_score": 17.4,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T13:19:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #18 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "+1 si ya estás pensando en ir a Cádiz en 2027",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775301",
+      "score": 17,
+      "viral_score": 17,
+      "raw_score": 16.7,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T21:03:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #19 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "El tomate 15 años después ...",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775213",
+      "score": 16,
+      "viral_score": 16,
+      "raw_score": 16.0,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T20:01:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #20 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Test de IQ muy rápido y muy preciso +Eclipse",
+      "link": "https://forocoches.com/foro/showthread.php?t=10774835",
+      "score": 15,
+      "viral_score": 15,
+      "raw_score": 15.3,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T17:08:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #21 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Donde mete los Teresa Herrera el Real Madrid?",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775502",
+      "score": 15,
+      "viral_score": 15,
+      "raw_score": 14.6,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T02:30:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #22 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "\"He tenido chicos de prácticas más pendientes del móvil que de lo que les explico\"",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775534",
+      "score": 14,
+      "viral_score": 14,
+      "raw_score": 13.9,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "tecnologia",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T06:08:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #23 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "No he visto el eclipse por orgullo y ahora me arrepiento",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775270",
+      "score": 13,
+      "viral_score": 13,
+      "raw_score": 13.2,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T20:45:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #24 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Nino Bravo, 28 años.",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775614",
+      "score": 12,
+      "viral_score": 12,
+      "raw_score": 12.5,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T07:51:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #25 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Vengo completamente abrumado después de ver el ECLIPSE. Somos insignificantes",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775200",
+      "score": 12,
+      "viral_score": 12,
+      "raw_score": 11.8,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T19:53:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #26 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "El rebaño del eclipse",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775555",
+      "score": 11,
+      "viral_score": 11,
+      "raw_score": 11.1,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T06:32:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #27 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "Advertencia a los shurs antes de que paséis fotos al forero \"cuck\" ilici89",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775413",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.4,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-12T22:43:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #28 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "\"foto\" del eclipse solar con el móvil",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775530",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 9.7,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "tecnologia",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T05:45:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #29 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
+    },
+    {
+      "title": "¿Este ROLEX es de POBRES?",
+      "link": "https://forocoches.com/foro/showthread.php?t=10775559",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "ForoCoches Trending"
+      ],
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-13T06:38:00Z",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_verified": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "FOROCOCHES",
+      "media_type": "link",
+      "signals": [
+        "Trending #30 en ForoCoches"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
     }
   ],
   "warnings": [],
@@ -7421,7 +8558,7 @@
     {
       "name": "El HuffPost · Virales",
       "ok": true,
-      "items": 19,
+      "items": 18,
       "note": "directo + respaldo Google News"
     },
     {
@@ -7487,7 +8624,7 @@
     {
       "name": "MARCA · Tiramillas",
       "ok": true,
-      "items": 11,
+      "items": 10,
       "note": null
     },
     {
@@ -7511,7 +8648,7 @@
     {
       "name": "Virales y curiosidades · medios digitales",
       "ok": true,
-      "items": 26,
+      "items": 28,
       "note": null
     },
     {
@@ -7541,7 +8678,7 @@
     {
       "name": "Corazón · Lecturas",
       "ok": true,
-      "items": 24,
+      "items": 23,
       "note": null
     },
     {
@@ -7601,7 +8738,7 @@
     {
       "name": "Google News · historias positivas",
       "ok": true,
-      "items": 6,
+      "items": 5,
       "note": null
     },
     {
@@ -7635,8 +8772,8 @@
     {
       "name": "ForoCoches Trending",
       "ok": true,
-      "items": 30,
-      "note": "Solo refuerzan noticias con fecha verificada"
+      "items": 29,
+      "note": "Hilos trending con fecha de creación verificada"
     },
     {
       "name": "Reddit",
@@ -7667,62 +8804,58 @@
     "active": 39,
     "configured": 39,
     "total": 44,
-    "entries_collected": 603,
-    "entries_before_24h_filter": 850
+    "entries_collected": 628,
+    "entries_before_24h_filter": 877
   },
   "image_summary": {
     "verified": 0,
-    "linked": 25,
+    "linked": 23,
     "generated": 0,
-    "with_visual": 25,
+    "with_visual": 23,
     "total": 25,
-    "placeholders": 0,
+    "placeholders": 2,
     "discarded_without_image": 0,
-    "discarded_unresolved": 79,
+    "discarded_unresolved": 76,
     "cached_files": 0,
     "origins": {
-      "og:image": 15,
-      "destination:og:image": 1,
-      "schema:primaryImageOfPage": 9
+      "og:image": 12,
+      "schema:primaryImageOfPage": 9,
+      "local:forocoches": 2
     }
   },
   "unfiltered_image_summary": {
-    "linked": 111,
+    "linked": 138,
     "placeholders": 0,
-    "resolved_links": 111,
-    "total": 111
+    "resolved_links": 138,
+    "total": 138
   },
   "content_window_hours": 24,
   "temporal_summary": {
-    "accepted": 111,
-    "total": 850,
-    "old": 77,
-    "missing_date": 10,
+    "accepted": 138,
+    "total": 877,
+    "old": 76,
+    "missing_date": 11,
     "future_date": 0,
-    "rejected_english": 2,
-    "accepted_before_spain_filter": 761,
-    "foreign_local_rejected": 158
+    "rejected_english": 3,
+    "accepted_before_spain_filter": 787,
+    "foreign_local_rejected": 159
   },
   "publication_date_summary": {
     "attempted": 122,
-    "resolved": 112
+    "resolved": 111
   },
   "editorial_summary": {
     "politics": 0,
     "hard_news": 1,
-    "trending": 12,
+    "trending": 15,
     "top_tags": [
       [
         "curiosidades",
-        17
+        18
       ],
       [
         "tiktok",
         11
-      ],
-      [
-        "animales",
-        4
       ],
       [
         "famosos",
@@ -7733,11 +8866,15 @@
         4
       ],
       [
-        "television",
-        4
+        "animales",
+        3
       ],
       [
         "popular",
+        3
+      ],
+      [
+        "television",
         3
       ],
       [
@@ -7747,17 +8884,18 @@
     ]
   },
   "tag_distribution": {
-    "trending": 12,
+    "trending": 15,
     "viral": 25,
     "redes": 4,
+    "curiosidades": 18,
     "tiktok": 11,
-    "curiosidades": 17,
     "sucesos": 1,
-    "animales": 4,
+    "television": 3,
+    "popular": 3,
+    "animales": 3,
     "famosos": 4,
     "corazon": 2,
-    "television": 4,
-    "popular": 3,
+    "tecnologia": 1,
     "historias": 1,
     "viajes": 1,
     "nostalgia": 1

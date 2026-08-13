@@ -309,7 +309,7 @@ function storyCard(story, index){
   const affinityReasons = (story.cabronazi_match_reasons || []).join(' · ');
   const platforms = story.platform_labels || story.platforms || [];
   const platformBadges = platforms.slice(0,4).map(p => `<span class="badge platform">${escapeHtml(p)}</span>`).join('');
-  const trend = story.matched_google_trend || story.matched_x_trend;
+  const trend = story.matched_google_trend || story.matched_x_trend || story.matched_forocoches_trend || story.main_platform === 'forocoches';
   const trendBadge = trend ? `<span class="badge hot">En tendencia</span>` : '';
   const editorialBadge = story.curated_editorial ? `<span class="badge hot">Medio viral</span>` : '';
   const imageBadge = story.image_linked

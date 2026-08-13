@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">FOROCOCHES</title>
+  <desc id="desc">Imagen identificativa para hilos trending de ForoCoches</desc>
+  <rect width="1200" height="675" fill="#243846"/>
+  <rect x="42" y="42" width="1116" height="591" rx="34" fill="#2f4b5d" stroke="#8fb2c5" stroke-width="4"/>
+  <circle cx="600" cy="255" r="112" fill="#f4a62a"/>
+  <path d="M510 270h180l-19-48c-7-18-24-30-44-30h-54c-20 0-37 12-44 30l-19 48Zm-15 0h210c22 0 40 18 40 40v54h-44v-29H499v29h-44v-54c0-22 18-40 40-40Zm38 25a19 19 0 1 1 0 38 19 19 0 0 1 0-38Zm134 0a19 19 0 1 1 0 38 19 19 0 0 1 0-38Z" fill="#243846"/>
+  <text x="600" y="500" text-anchor="middle" fill="#fff" font-family="Arial,Helvetica,sans-serif" font-size="88" font-weight="900" letter-spacing="7">FOROCOCHES</text>
+  <text x="600" y="557" text-anchor="middle" fill="#c6d8e2" font-family="Arial,Helvetica,sans-serif" font-size="28" font-weight="700" letter-spacing="4">TRENDING</text>
+</svg>
