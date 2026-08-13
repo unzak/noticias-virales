@@ -1,0 +1,19 @@
+name: Actualizar radar viral · segundo turno
+
+on:
+  schedule:
+    # Segundo turno, 30 minutos después del principal, en horario de Madrid.
+    - cron: '37 * * * *'
+      timezone: 'Europe/Madrid'
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  update:
+    uses: ./.github/workflows/update.yml
+    secrets: inherit

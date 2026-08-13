@@ -30,7 +30,7 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   política y actualidad institucional.
 - Se añaden búsquedas específicas para humor, memes, animales, famosos,
   televisión, realities, contenido insólito, redes, tecnología e IA,
-  videojuegos, deporte viral, comida, viajes, historias positivas y nostalgia.
+  videojuegos, deporte viral, comida, historias positivas y nostalgia.
 - Se añaden LOS40 y cabeceras españolas de prensa del corazón como fuentes
   especializadas de entretenimiento.
 - 20minutos, HuffPost, Telecinco, Público Tremending y LOS40 se consultan
@@ -40,6 +40,8 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - El clasificador asigna etiquetas editoriales automáticamente a partir del
   titular y de la sección de origen.
 - Los titulares total o parcialmente en inglés se descartan antes del ranking.
+- Los artículos de viajes, turismo, hoteles, aeropuertos y vuelos se descartan
+  antes de construir tanto la selección como la vista completa.
 - La interfaz permite limitar el panel a la última hora, las últimas 4 horas
   o las últimas 24 horas, sin relajar la ventana máxima de verificación.
 - Las noticias meteorológicas se descartan en toda la ingesta, incluidas las
@@ -80,8 +82,8 @@ Los enlaces de Google News se resuelven al artículo original antes de localizar
 la imagen. El panel enlaza directamente la mejor URL editorial del artículo,
 comparando sus tags `img` con `og:image`, Twitter Card y JSON-LD, sin descargar
 ni versionar archivos de terceros. Si no se encuentra una URL utilizable, se
-muestra un placeholder ligero. En la selección editorial solo se descartan los
-envoltorios de Google News cuyo destino original no puede resolverse.
+muestra un placeholder ligero. En ambas vistas se descartan los envoltorios de
+Google News cuyo destino original no puede resolverse.
 
 ## Fuentes opcionales
 
@@ -154,8 +156,9 @@ Antes de agrupar y puntuar, el generador:
 4. Descarta fechas futuras con más de 20 minutos de desviación.
 5. Conserva el despliegue anterior si ninguna fuente produce resultados válidos.
 
-La ingesta también excluye recetas, sorteos y loterías, contenidos centrados
-en precios, y programaciones, fiestas o agendas locales de escaso interés viral.
+La ingesta también excluye recetas, sorteos y loterías, viajes y turismo,
+contenidos centrados en precios, y programaciones, fiestas o agendas locales de
+escaso interés viral.
 
 ## Previsualizaciones
 
@@ -204,8 +207,11 @@ Abre `http://localhost:8000`.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
 - `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
-- `.github/workflows/update.yml`: generación cada 15 minutos, a los minutos
-  `:07`, `:22`, `:37` y `:52`, durante las 24 horas y en horario de Madrid.
+- `.github/workflows/update.yml`: generación principal a las `:07` de cada hora
+  y definición reutilizable del proceso completo.
+- `.github/workflows/update-half-hour.yml`: segundo turno a las `:37`, separado
+  para que GitHub no agrupe varios cron del mismo workflow. Juntos solicitan una
+  actualización cada 30 minutos, durante las 24 horas y en horario de Madrid.
   Solo el despliegue de GitHub Pages se serializa, para que una generación larga
   no bloquee el siguiente disparo programado.
 

@@ -313,9 +313,9 @@ NEWS_SOURCES = (
         ("deportes",),
     ),
     (
-        "Google News · comida, viajes y trucos",
+        "Google News · comida y trucos",
         spanish_topic_search(
-            'comida OR receta OR restaurante OR viaje OR destino OR truco OR hogar OR "consejo viral"'
+            'comida OR restaurante OR truco OR hogar OR "consejo viral" -viaje -viajes -turismo -hotel -vuelo'
         ),
         4.0,
         "Lifestyle compartible",
@@ -530,6 +530,13 @@ WEATHER_CONTENT_TERMS = (
     "ola de calor", "ola de frio", "borrasca", "anticiclon", "isobara",
     "temperaturas", "lluvias", "tormentas", "granizo", "nevadas",
     "dana", "clima",
+)
+TRAVEL_CONTENT_TERMS = (
+    "viaje", "viajes", "viajar", "viajero", "viajera", "viajeros",
+    "turismo", "turista", "turistas", "vacaciones", "escapada",
+    "guia de viaje", "destino turistico", "destinos turisticos",
+    "hotel", "hoteles", "aeropuerto", "aeropuertos", "vuelo", "vuelos",
+    "aerolinea", "aerolineas", "crucero", "cruceros",
 )
 LOW_VALUE_CONTENT_TERMS = (
     "receta", "recetas", "ingredientes",
@@ -784,6 +791,7 @@ def is_blocked_content(text: str) -> bool:
         contains_phrase(text, BLOCKED_TERMS)
         or contains_phrase(text, LOW_VALUE_CONTENT_TERMS)
         or contains_phrase(text, WEATHER_CONTENT_TERMS)
+        or contains_phrase(text, TRAVEL_CONTENT_TERMS)
     ):
         return True
     if contains_phrase(text, RECIPE_INSTRUCTION_TERMS) and contains_phrase(text, RECIPE_CONTEXT_TERMS):
@@ -4323,6 +4331,8 @@ def is_probably_english(text: str) -> bool:
         "his", "her", "have", "has", "had", "will", "would", "could", "should",
         "are", "was", "were", "been", "gets", "says", "new", "people", "video",
         "man", "woman", "ready", "days", "ever", "front", "companions", "react",
+        "for", "to", "of", "in", "is", "as", "at", "students", "wait",
+        "results", "released", "first", "last", "best", "worst", "star",
     }
     spanish_common = {
         "que", "para", "como", "pero", "porque", "cuando", "donde", "quien",
@@ -4338,7 +4348,9 @@ def is_probably_english(text: str) -> bool:
     )
     if any(phrase in normalized for phrase in english_phrases):
         return True
-    return english_hits >= 2 and english_hits > spanish_hits
+    # Evita falsos positivos cuando el titular español solo cita una obra o
+    # nombre propio en inglés, por ejemplo «The Office».
+    return english_hits >= 2 and english_hits > spanish_hits and not looks_spanish(text)
 
 
 def likely_spanish_link(title: str, description: str, url: str) -> bool:
@@ -5169,15 +5181,30 @@ def enrich_unfiltered_images(stories: list[dict[str, Any]]) -> tuple[list[dict[s
                 updated.pop("_allow_article_img_fallback", None)
             output[index] = updated
 
-    final = [item for item in output if item is not None]
+    processed = [item for item in output if item is not None]
+    # La vista sin filtro es la predeterminada: tampoco debe publicar
+    # envoltorios de Google News. Sin destino real el enlace queda roto y no
+    # existe una imagen editorial fiable que se pueda asociar a la noticia.
+    final = [
+        item for item in processed
+        if not _is_google_host(str(item.get("link") or ""))
+    ]
+    discarded_unresolved = len(processed) - len(final)
     linked = sum(1 for item in final if item.get("thumbnail"))
     placeholders = len(final) - linked
     resolved = sum(1 for item in final if not _is_google_host(str(item.get("link") or "")))
     print(
         f"[ok] Imágenes sin filtro: {linked}/{len(final)} enlazadas desde el artículo · "
-        f"{placeholders} con placeholder · {resolved} destinos originales"
+        f"{placeholders} con placeholder · {resolved} destinos originales · "
+        f"{discarded_unresolved} descartadas sin resolver"
     )
-    return final, {"linked": linked, "placeholders": placeholders, "resolved_links": resolved, "total": len(final)}
+    return final, {
+        "linked": linked,
+        "placeholders": placeholders,
+        "resolved_links": resolved,
+        "discarded_unresolved": discarded_unresolved,
+        "total": len(final),
+    }
 
 def build_google_trend_news(
     trends: list[dict[str, Any]],

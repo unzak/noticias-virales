@@ -2,12 +2,14 @@ name: Actualizar y publicar radar viral
 
 on:
   schedule:
-    # Cada 15 minutos, durante las 24 horas, en horario de Madrid.
-    # Se evita el minuto 0 porque GitHub suele tener más carga al inicio de la hora.
-    - cron: '7,22,37,52 * * * *'
+    # Primer turno de cada hora. El segundo vive en update-half-hour.yml para
+    # evitar que GitHub agrupe u omita varios cron del mismo workflow.
+    - cron: '7 * * * *'
       timezone: 'Europe/Madrid'
 
   workflow_dispatch:
+
+  workflow_call:
 
   push:
     branches:
@@ -20,6 +22,7 @@ on:
       - 'tools/build_cabronazi_profile.py'
       - 'requirements.txt'
       - '.github/workflows/update.yml'
+      - '.github/workflows/update-half-hour.yml'
 
 permissions:
   contents: read
@@ -64,7 +67,7 @@ jobs:
 
       - name: Comprobar previsualizaciones enlazadas
         run: |
-          python -c "import json, urllib.parse; d=json.load(open('docs/data.json', encoding='utf-8')); s=d.get('stories', []); u=d.get('unfiltered_stories', []); assert all(not x.get('thumbnail') or str(x['thumbnail']).startswith(('http://', 'https://')) for x in s + u), 'Hay una imagen que no es remota'; assert all('news.google.' not in (urllib.parse.urlparse(str(x.get('link', ''))).hostname or '') for x in s), 'Hay noticias curadas sin resolver al artículo original'; assert len(u) == int(d.get('temporal_summary', {}).get('accepted', -1)), 'Sin filtro no contiene todas las piezas válidas'; print(f'Selección: {len(s)} · Sin filtro: {len(u)}')"
+          python -c "import json, urllib.parse; d=json.load(open('docs/data.json', encoding='utf-8')); s=d.get('stories', []); u=d.get('unfiltered_stories', []); assert all(not x.get('thumbnail') or str(x['thumbnail']).startswith(('http://', 'https://')) for x in s + u), 'Hay una imagen que no es remota'; assert all('news.google.' not in (urllib.parse.urlparse(str(x.get('link', ''))).hostname or '') for x in s + u), 'Hay noticias sin resolver al artículo original'; assert len(u) == int(d.get('temporal_summary', {}).get('accepted', -1)), 'Sin filtro no contiene todas las piezas válidas'; print(f'Selección: {len(s)} · Sin filtro: {len(u)}')"
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v6
