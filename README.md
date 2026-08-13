@@ -42,9 +42,10 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Los titulares total o parcialmente en inglés se descartan antes del ranking.
 - La interfaz permite limitar el panel a la última hora, las últimas 4 horas
   o las últimas 24 horas, sin relajar la ventana máxima de verificación.
-- Las piezas políticas o de sucesos se descartan salvo que tengan un ángulo
-  viral inequívoco. La nueva consulta de sucesos en España permite hasta 12
-  piezas, siempre separadas en el filtro `Sucesos`; la política continúa residual.
+- Las noticias meteorológicas se descartan en toda la ingesta, incluidas las
+  previsiones, alertas y piezas sobre AEMET, temperaturas, lluvias o borrascas.
+- Los sucesos españoles disponen de una consulta y un impulso editorial propios,
+  con hasta 24 piezas separadas en el filtro `Sucesos`; la política continúa residual.
 - Se aplican límites de diversidad para impedir que una sola categoría o un
   único medio monopolicen la lista.
 - La interfaz engloba las etiquetas detalladas en seis categorías: `Humor y
@@ -135,6 +136,10 @@ La actualidad institucional solo entra cuando concurren señales adicionales,
 como una imagen o vídeo, interacción social, presencia en varias plataformas o
 una categoría viral clara. Los artículos genéricos sin categoría ni señales
 sociales se descartan.
+
+El clima se excluye de todas las vistas. Los sucesos en España cuentan con un
+impulso específico y un cupo ampliado, manteniendo el bloqueo de contenido
+gráfico y los límites por fuente para evitar que una cabecera monopolice el panel.
 
 ## Ventana temporal
 

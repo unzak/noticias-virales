@@ -277,11 +277,11 @@ NEWS_SOURCES = (
     (
         "Google News · sucesos España",
         google_news_search_url(
-            '(detenido OR detenida OR robo OR estafa OR accidente OR incendio OR desaparecido OR rescate OR delito OR "Guardia Civil") '
+            '(detenido OR detenida OR robo OR atraco OR estafa OR accidente OR incendio OR desaparecido OR rescate OR delito OR agresion OR pelea OR "Guardia Civil") '
             '(site:20minutos.es OR site:lavanguardia.com OR site:elespanol.com OR site:abc.es OR site:elmundo.es OR site:elconfidencial.com) '
-            'when:1d -política -gobierno -elecciones -guerra -economía'
+            'when:1d -política -gobierno -elecciones -guerra -economía -clima -tiempo -AEMET -meteorología'
         ),
-        1.0,
+        7.0,
         "Sucesos en España",
         ("sucesos",),
     ),
@@ -522,6 +522,14 @@ ROUTINE_CONTENT_TERMS = (
     "avance del capitulo", "precio oficial y donde comprar",
     "programacion de television", "programacion tv", "el tiempo para hoy",
     "programa de las fiestas", "horarios programa", "la aemet confirma",
+)
+WEATHER_CONTENT_TERMS = (
+    "aemet", "agencia estatal de meteorologia", "prevision meteorologica",
+    "prevision del tiempo", "pronostico del tiempo", "alerta meteorologica",
+    "aviso meteorologico", "mapa del tiempo", "el tiempo para hoy",
+    "ola de calor", "ola de frio", "borrasca", "anticiclon", "isobara",
+    "temperaturas", "lluvias", "tormentas", "granizo", "nevadas",
+    "dana", "clima",
 )
 LOW_VALUE_CONTENT_TERMS = (
     "receta", "recetas", "ingredientes",
@@ -772,7 +780,11 @@ def contains_phrase(text: str, phrases: Iterable[str]) -> int:
 
 
 def is_blocked_content(text: str) -> bool:
-    if contains_phrase(text, BLOCKED_TERMS) or contains_phrase(text, LOW_VALUE_CONTENT_TERMS):
+    if (
+        contains_phrase(text, BLOCKED_TERMS)
+        or contains_phrase(text, LOW_VALUE_CONTENT_TERMS)
+        or contains_phrase(text, WEATHER_CONTENT_TERMS)
+    ):
         return True
     if contains_phrase(text, RECIPE_INSTRUCTION_TERMS) and contains_phrase(text, RECIPE_CONTEXT_TERMS):
         return True
@@ -4705,6 +4717,8 @@ def editorial_fit(entry: StoryEntry) -> float:
         score += 5.0
     if tags & {"famosos", "television", "reality", "redes"}:
         score += 3.0
+    if "sucesos" in tags:
+        score += 14.0
 
     politics_hits = contains_phrase(entry.title, POLITICS_TERMS)
     hard_hits = contains_phrase(entry.title, HARD_NEWS_TERMS)
@@ -4713,7 +4727,7 @@ def editorial_fit(entry: StoryEntry) -> float:
     if politics_hits:
         score -= 10.0 if strong_angle else 34.0
     if hard_hits:
-        score -= 9.0 if strong_angle else 28.0
+        score -= 4.0 if "sucesos" in tags else (9.0 if strong_angle else 28.0)
     score -= min(20.0, institutional_hits * 10.0)
 
     if entry.source.startswith("Reddit r/yo_elvr") or entry.source.startswith("Reddit r/MemesEnEspanol"):
@@ -4892,6 +4906,7 @@ def build_ranked(
             precision_adjustment -= 5.0
         if editorial_feeds:
             precision_adjustment += 3.0
+        sucesos_priority_bonus = 12.0 if is_sucesos_feed else 0.0
         raw_score = (
             8.0
             + social_score
@@ -4905,6 +4920,7 @@ def build_ranked(
             + selection_bonus
             + precision_adjustment
             + spain_score
+            + sucesos_priority_bonus
         )
         # Curva de saturación: evita que muchos candidatos distintos acaben
         # empatados artificialmente en 100.
@@ -5037,7 +5053,7 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         primary_source = normalize(str(sources[0] if sources else "Fuente original"))
         if "politica" in tags and politics_count >= 1:
             continue
-        if "sucesos" in tags and hard_news_count >= 12:
+        if "sucesos" in tags and hard_news_count >= 24:
             continue
         if general_category_counts.get(general_category, 0) >= 36:
             continue
@@ -5062,7 +5078,7 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
         primary_source = normalize(str(sources[0] if sources else "Fuente original"))
         if "politica" in tags and politics_count >= 1:
             continue
-        if "sucesos" in tags and hard_news_count >= 12:
+        if "sucesos" in tags and hard_news_count >= 24:
             continue
         if general_category_counts.get(general_category, 0) >= 36:
             continue
