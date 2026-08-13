@@ -45,6 +45,8 @@ from typing import Any, Iterable
 
 import feedparser
 
+from tools.fetch_forocoches_trending import fetch_forocoches_trending
+
 ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
 MEDIA_DIR = ROOT / "docs" / "media"
@@ -182,6 +184,13 @@ NEWS_SOURCES = (
         "https://www.lavanguardia.com/rss/home.xml",
         0.0,
         "Portada general filtrada",
+        (),
+    ),
+    (
+        "La Razón · Sociedad",
+        "http://www.larazon.es/rss/sociedad.xml",
+        2.0,
+        "Sociedad filtrada",
         (),
     ),
     (
@@ -538,6 +547,10 @@ TRAVEL_CONTENT_TERMS = (
     "hotel", "hoteles", "aeropuerto", "aeropuertos", "vuelo", "vuelos",
     "aerolinea", "aerolineas", "crucero", "cruceros",
 )
+FESTIVAL_CONTENT_TERMS = (
+    "festival", "festivales", "festival de musica", "festival de cine",
+    "cartel del festival", "abono del festival",
+)
 LOW_VALUE_CONTENT_TERMS = (
     "receta", "recetas", "ingredientes",
     "sorteo", "sorteos", "loteria", "euromillones", "bonoloto",
@@ -792,6 +805,7 @@ def is_blocked_content(text: str) -> bool:
         or contains_phrase(text, LOW_VALUE_CONTENT_TERMS)
         or contains_phrase(text, WEATHER_CONTENT_TERMS)
         or contains_phrase(text, TRAVEL_CONTENT_TERMS)
+        or contains_phrase(text, FESTIVAL_CONTENT_TERMS)
     ):
         return True
     if contains_phrase(text, RECIPE_INSTRUCTION_TERMS) and contains_phrase(text, RECIPE_CONTEXT_TERMS):
@@ -4704,6 +4718,27 @@ def match_trend(cluster_keywords: frozenset[str], trends: list[dict[str, Any]]) 
     return None
 
 
+def get_forocoches_trends() -> tuple[list[dict[str, Any]], list[str], dict[str, Any]]:
+    """Obtiene señales públicas; nunca convierte un hilo en noticia autónoma."""
+    try:
+        raw = fetch_forocoches_trending(limit=30, timeout=HTTP_TIMEOUT_SECONDS)
+    except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError) as exc:
+        warning = f"No se pudieron consultar los trending de ForoCoches: {exc}"
+        return [], [warning], {"name": "ForoCoches Trending", "ok": False, "items": 0}
+    trends = [
+        item for item in raw
+        if not is_blocked_content(str(item.get("name") or ""))
+        and not is_probably_english(str(item.get("name") or ""))
+    ]
+    print(f"[ok] ForoCoches Trending: {len(trends)}/{len(raw)} señales editoriales válidas")
+    return trends, [], {
+        "name": "ForoCoches Trending",
+        "ok": True,
+        "items": len(trends),
+        "note": "Solo refuerzan noticias con fecha verificada",
+    }
+
+
 def recency_points(items: list[StoryEntry], now: dt.datetime) -> float:
     dates = [item.published_at for item in items if item.published_at]
     if not dates:
@@ -4808,6 +4843,7 @@ def build_ranked(
     entries: list[StoryEntry],
     google_trends: list[dict[str, Any]],
     x_trends: list[dict[str, Any]],
+    forocoches_trends: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     now = dt.datetime.now(dt.timezone.utc)
     ranked: list[dict[str, Any]] = []
@@ -4828,6 +4864,7 @@ def build_ranked(
         cluster_keywords = frozenset().union(*(item.keywords for item in items))
         google_match = match_trend(cluster_keywords, google_trends)
         x_match = match_trend(cluster_keywords, x_trends)
+        forocoches_match = match_trend(cluster_keywords, forocoches_trends)
         if not google_match:
             seed_names = {normalize(item.seed_trend or "") for item in items if item.seed_trend}
             google_match = next(
@@ -4853,6 +4890,8 @@ def build_ranked(
             trend_bonus += 20.0 + min(8.0, math.log10(int(google_match.get("traffic") or 0) + 1) * 1.6)
         if x_match:
             trend_bonus += 18.0 + min(8.0, math.log10(int(x_match.get("tweet_count") or 0) + 1) * 1.5)
+        if forocoches_match:
+            trend_bonus += max(5.0, 14.0 - float(forocoches_match.get("rank") or 30) * 0.3)
         profile = cluster_editorial_profile(items)
         # La actualidad institucional solo entra cuando existe un ángulo viral
         # inequívoco. Así se evita que el feed general se convierta en portada política.
@@ -4900,6 +4939,7 @@ def build_ranked(
             and len(profile["specific_tags"]) < 2
             and not google_match
             and not x_match
+            and not forocoches_match
             and len(platforms) < 2
             and social_score < 18
         ):
@@ -4980,12 +5020,17 @@ def build_ranked(
             if x_match.get("tweet_count"):
                 label += f" ({format_metric(int(x_match['tweet_count']))} posts)"
             signals.append(label)
+        if forocoches_match:
+            signals.append(
+                f"Trending en ForoCoches #{int(forocoches_match.get('rank') or 0)}: "
+                f"{forocoches_match['name']}"
+            )
         if len(platforms) >= 2:
             signals.append(f"Detectado en {len(platforms)} plataformas")
         signals.extend(selection_reasons)
 
         topic_tag_set = set(profile["tags"])
-        if google_match or x_match or len(platforms) >= 2 or social_score >= 24:
+        if google_match or x_match or forocoches_match or len(platforms) >= 2 or social_score >= 24:
             topic_tag_set.add("trending")
         if profile["specific_tags"] or editorial_feeds:
             topic_tag_set.add("viral")
@@ -5030,6 +5075,7 @@ def build_ranked(
                 "matched_trend": google_match.get("name") if google_match else None,
                 "matched_google_trend": google_match.get("name") if google_match else None,
                 "matched_x_trend": x_match.get("name") if x_match else None,
+                "matched_forocoches_trend": forocoches_match.get("name") if forocoches_match else None,
                 "published_at": main.published_at.isoformat().replace("+00:00", "Z") if main.published_at else None,
                 "thumbnail": thumbnail,
                 "_image_contexts": image_contexts,
@@ -5307,6 +5353,10 @@ def build() -> dict[str, Any]:
     warnings.extend(x_warnings)
     source_status.append(x_status)
 
+    forocoches_trends, forocoches_warnings, forocoches_status = get_forocoches_trends()
+    warnings.extend(forocoches_warnings)
+    source_status.append(forocoches_status)
+
     reddit_entries, reddit_warnings, reddit_status = fetch_reddit_entries()
     warnings.extend(reddit_warnings)
     source_status.extend(reddit_status)
@@ -5361,7 +5411,7 @@ def build() -> dict[str, Any]:
             "Se conserva el data.json anterior para no vaciar el panel."
         )
 
-    ranked = build_ranked(entries, google_trends, x_trends)
+    ranked = build_ranked(entries, google_trends, x_trends, forocoches_trends)
     weighted_ranked = [story for story in ranked if float(story.get("editorial_selection_bonus") or 0) > 0]
     if weighted_ranked:
         print(
@@ -5428,7 +5478,12 @@ def build() -> dict[str, Any]:
         "updated_at": now.isoformat().replace("+00:00", "Z"),
         "trends_google": [item["name"] for item in google_trends[:20]],
         "trends_x": [item["name"] for item in x_trends[:20]],
-        "trend_details": {"google": google_trends[:20], "x": x_trends[:20]},
+        "trends_forocoches": [item["name"] for item in forocoches_trends[:20]],
+        "trend_details": {
+            "google": google_trends[:20],
+            "x": x_trends[:20],
+            "forocoches": forocoches_trends[:20],
+        },
         "google_trend_news": google_trend_news,
         "stories": ranked,
         "unfiltered_stories": unfiltered_stories,

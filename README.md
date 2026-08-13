@@ -75,6 +75,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
+- La Razón Sociedad mediante su RSS público, sometido a los mismos filtros.
+- ForoCoches Trending como señal de ranking: sus hilos no se publican como
+  noticias autónomas y solo refuerzan artículos con fecha verificable.
 - Bluesky y Mastodon están desactivados por configuración editorial y no
   realizan peticiones.
 
@@ -156,7 +159,7 @@ Antes de agrupar y puntuar, el generador:
 4. Descarta fechas futuras con más de 20 minutos de desviación.
 5. Conserva el despliegue anterior si ninguna fuente produce resultados válidos.
 
-La ingesta también excluye recetas, sorteos y loterías, viajes y turismo,
+La ingesta también excluye recetas, festivales, sorteos y loterías, viajes y turismo,
 contenidos centrados en precios, y programaciones, fiestas o agendas locales de
 escaso interés viral.
 
@@ -202,6 +205,8 @@ Abre `http://localhost:8000`.
 
 - `fetch_news.py`: consulta, verifica fechas, clasifica, filtra, agrupa y puntúa.
 - `tools/build_cabronazi_profile.py`: genera el perfil agregado desde Meta.
+- `tools/fetch_forocoches_trending.py`: obtiene las señales públicas del ranking
+  de ForoCoches; puede ejecutarse de forma independiente con `--limit`.
 - `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
 - `editorial_selection_profile.json`: recuentos agregados de fuentes y secciones seleccionadas.
 - `docs/index.html`: interfaz del panel.

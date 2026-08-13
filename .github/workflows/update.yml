@@ -20,6 +20,7 @@ on:
       - 'cabronazi_performance_profile.json'
       - 'editorial_selection_profile.json'
       - 'tools/build_cabronazi_profile.py'
+      - 'tools/fetch_forocoches_trending.py'
       - 'requirements.txt'
       - '.github/workflows/update.yml'
       - '.github/workflows/update-half-hour.yml'
@@ -57,7 +58,7 @@ jobs:
         run: python -m pip install --requirement requirements.txt
 
       - name: Comprobar sintaxis
-        run: python -m py_compile fetch_news.py tools/build_cabronazi_profile.py
+        run: python -m py_compile fetch_news.py tools/build_cabronazi_profile.py tools/fetch_forocoches_trending.py
 
       - name: Generar ranking viral
         run: python fetch_news.py
