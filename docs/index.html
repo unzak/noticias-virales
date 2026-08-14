@@ -178,6 +178,8 @@
     <button class="view-tab active" type="button" data-view="unfiltered">Sin filtro</button>
     <span class="view-divider" aria-hidden="true">|</span>
     <button class="view-tab" type="button" data-view="selection">Selección Cabronazi</button>
+    <span class="view-divider" aria-hidden="true">|</span>
+    <button class="view-tab" type="button" data-view="forocoches">Trending ForoCoches</button>
   </nav>
   <section class="summary-grid" aria-label="Resumen">
     <div class="summary-card"><strong id="storyCount">—</strong><span>oportunidades</span></div>
@@ -230,6 +232,7 @@
 let allStories = [];
 let selectionStories = [];
 let unfilteredStories = [];
+let forocochesStories = [];
 let currentView = 'unfiltered';
 let currentFilter = 'all';
 let currentHours = 24;
@@ -299,6 +302,7 @@ function withinTimeRange(story){
   return ageMs >= -20 * 60000 && ageMs <= currentHours * 3600000;
 }
 function visibleFor(story, filter){
+  if(currentView === 'forocoches') return true;
   if(!withinTimeRange(story)) return false;
   return filter === 'all' || generalCategoryFor(story) === filter;
 }
@@ -326,7 +330,7 @@ function storyCard(story, index){
     : `<div class="visual placeholder"><div class="placeholder-mark">Sin imagen</div><span class="media-tag">${escapeHtml(mediaLabel(story.media_type))}</span></div>`;
   const sources = story.sources || [];
   const sourceText = sources.length ? sources.slice(0,3).join(' · ') : 'Fuente original';
-  const age = relativeAge(story.published_at);
+  const age = currentView === 'forocoches' ? 'Trending ahora' : relativeAge(story.published_at);
   const rank = index + 1;
   const openLabel = story.media_type === 'video' ? 'Ver vídeo ↗' : 'Abrir noticia ↗';
   return `<article class="story" data-score="${score}" data-rank="${rank}" data-published="${escapeHtml(story.published_at || '')}">
@@ -349,6 +353,7 @@ function storyCard(story, index){
 function renderStories(){
   const storiesEl = document.getElementById('stories');
   const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => {
+    if(currentView === 'forocoches') return Number(a.forocoches_rank || 999) - Number(b.forocoches_rank || 999);
     if(currentSort === 'priority'){
       return Number(b.viral_score || b.score || 0) - Number(a.viral_score || a.score || 0);
     }
@@ -367,11 +372,15 @@ function renderStories(){
   }, {once:true}));
 }
 function setView(view){
-  currentView = view === 'unfiltered' ? 'unfiltered' : 'selection';
-  allStories = currentView === 'unfiltered' ? unfilteredStories : selectionStories;
+  currentView = ['unfiltered','selection','forocoches'].includes(view) ? view : 'unfiltered';
+  allStories = currentView === 'unfiltered' ? unfilteredStories : currentView === 'forocoches' ? forocochesStories : selectionStories;
   currentFilter = 'all';
   document.querySelectorAll('.view-tab').forEach(button => button.classList.toggle('active', button.dataset.view === currentView));
   document.querySelectorAll('.filter').forEach(button => button.classList.toggle('active', button.dataset.filter === 'all'));
+  const dedicatedForocoches = currentView === 'forocoches';
+  document.querySelector('.time-range').hidden = dedicatedForocoches;
+  document.querySelector('.sort-control').hidden = dedicatedForocoches;
+  document.getElementById('filters').hidden = dedicatedForocoches;
   document.getElementById('storyCount').textContent = allStories.length;
   document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
   renderStories();
@@ -399,7 +408,8 @@ async function load(){
     const data = await response.json();
     selectionStories = Array.isArray(data.stories) ? data.stories : [];
     unfilteredStories = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
-    allStories = currentView === 'unfiltered' ? unfilteredStories : selectionStories;
+    forocochesStories = Array.isArray(data.forocoches_stories) ? data.forocoches_stories : [];
+    allStories = currentView === 'unfiltered' ? unfilteredStories : currentView === 'forocoches' ? forocochesStories : selectionStories;
     const updated = data.updated_at ? new Date(data.updated_at) : null;
     document.getElementById('updated').textContent = updated && !Number.isNaN(updated.valueOf())
       ? `Actualizado ${updated.toLocaleString('es-ES',{dateStyle:'medium',timeStyle:'short'})}`

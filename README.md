@@ -3,6 +3,8 @@
 Panel estático para detectar contenidos con potencial editorial viral en España.
 La selección Cabronazi publica hasta 150 resultados; la vista sin filtro muestra
 todas las piezas cuya fecha pueda verificarse dentro de las **últimas 24 horas**.
+Una tercera vista, `Trending ForoCoches`, muestra por separado todos los hilos del
+ranking público actual, en su orden original y sin comprobar su fecha.
 
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
 El ranking refuerza además las piezas vinculadas a España y descarta actualidad
@@ -76,10 +78,10 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
 - La Razón Sociedad mediante su RSS público, sometido a los mismos filtros.
-- ForoCoches Trending como fuente visible: cada hilo cuya fecha de creación
-  pueda verificarse dentro de las últimas 24 horas se publica con su título y
-  enlace originales, usando una imagen local fija identificada como FOROCOCHES.
-  Los temas también actúan como señal para noticias coincidentes.
+- ForoCoches Trending como vista independiente: no mezcla sus hilos con `Sin
+  filtro` ni con `Selección Cabronazi`; publica el ranking actual completo con
+  sus títulos, enlaces y la imagen local FOROCOCHES, sin verificar fechas. Los
+  temas también actúan como señal para noticias coincidentes.
 - Bluesky y Mastodon están desactivados por configuración editorial y no
   realizan peticiones.
 

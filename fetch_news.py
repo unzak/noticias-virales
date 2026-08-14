@@ -4730,64 +4730,55 @@ def match_trend(cluster_keywords: frozenset[str], trends: list[dict[str, Any]]) 
 
 
 def get_forocoches_trends() -> tuple[list[dict[str, Any]], list[str], dict[str, Any]]:
-    """Obtiene hilos públicos con fecha verificable y señales de ranking."""
+    """Obtiene todos los hilos del ranking público actual, sin validar su fecha."""
     try:
         raw = fetch_forocoches_trending(limit=30, timeout=HTTP_TIMEOUT_SECONDS)
     except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, ValueError) as exc:
         warning = f"No se pudieron consultar los trending de ForoCoches: {exc}"
         return [], [warning], {"name": "ForoCoches Trending", "ok": False, "items": 0}
-    now = dt.datetime.now(dt.timezone.utc)
-    trends = []
-    for item in raw:
-        title = str(item.get("name") or "")
-        published = parse_iso_datetime(item.get("published_at"))
-        if (
-            not published
-            or not is_within_content_window(published, now)
-            or is_blocked_content(title)
-            or is_probably_english(title)
-        ):
-            continue
-        trends.append(item)
-    print(f"[ok] ForoCoches Trending: {len(trends)}/{len(raw)} hilos válidos de 24 h")
-    return trends, [], {
+    print(f"[ok] ForoCoches Trending: {len(raw)} hilos actuales")
+    return raw, [], {
         "name": "ForoCoches Trending",
         "ok": True,
-        "items": len(trends),
-        "note": "Hilos trending con fecha de creación verificada",
+        "items": len(raw),
+        "note": "Ranking actual completo, sin verificación de fecha",
     }
 
 
-def build_forocoches_entries(trends: list[dict[str, Any]]) -> list[StoryEntry]:
-    entries: list[StoryEntry] = []
+def build_forocoches_stories(trends: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    stories: list[dict[str, Any]] = []
     for item in trends:
         title = compact_text(str(item.get("name") or ""), 220)
         link = valid_http_url(item.get("url"))
-        published_at = parse_iso_datetime(item.get("published_at"))
-        if not title or not link or not published_at:
+        if not title or not link:
             continue
         rank = max(1, int(item.get("rank") or 30))
         tags = classify_topic_tags(title, ("viral", "curiosidades"))
-        entries.append(StoryEntry(
-            title=title,
-            link=link,
-            source="ForoCoches Trending",
-            platform="forocoches",
-            published_at=published_at,
-            keywords=keywords(title),
-            social_points=max(8.0, 30.0 - rank * 0.7),
-            metrics={
-                "rank": rank,
-                "thread_id": str(item.get("thread_id") or ""),
-                "topic_tags": sorted(tags),
-                "curated_editorial": True,
-                "editorial_feed": "ForoCoches Trending",
-            },
-            thumbnail="media/forocoches.svg",
-            media_type="link",
-            seed_trend=title,
-        ))
-    return entries
+        score = max(35, 86 - rank)
+        stories.append({
+            "title": title,
+            "link": link,
+            "sources": ["ForoCoches Trending"],
+            "platforms": ["forocoches"],
+            "platform_labels": ["ForoCoches"],
+            "main_platform": "forocoches",
+            "published_at": None,
+            "viral_score": score,
+            "raw_score": score,
+            "cabronazi_affinity": 50,
+            "topic_tags": sorted(tags),
+            "general_category": "humor-curiosidades",
+            "thumbnail": "media/forocoches.svg",
+            "image_linked": True,
+            "image_origin": "local:forocoches",
+            "image_alt": f"ForoCoches: {title}",
+            "media_type": "link",
+            "matched_forocoches_trend": title,
+            "forocoches_rank": rank,
+            "thread_id": str(item.get("thread_id") or ""),
+            "signals": [f"Trending #{rank} en ForoCoches"],
+        })
+    return stories
 
 
 def recency_points(items: list[StoryEntry], now: dt.datetime) -> float:
@@ -5409,7 +5400,7 @@ def build() -> dict[str, Any]:
     forocoches_trends, forocoches_warnings, forocoches_status = get_forocoches_trends()
     warnings.extend(forocoches_warnings)
     source_status.append(forocoches_status)
-    forocoches_entries = build_forocoches_entries(forocoches_trends)
+    forocoches_stories = build_forocoches_stories(forocoches_trends)
 
     reddit_entries, reddit_warnings, reddit_status = fetch_reddit_entries()
     warnings.extend(reddit_warnings)
@@ -5441,7 +5432,6 @@ def build() -> dict[str, Any]:
         *google_trend_entries,
         *news_entries,
         *meneame_entries,
-        *forocoches_entries,
         *reddit_entries,
         *bluesky_entries,
         *mastodon_entries,
@@ -5533,15 +5523,16 @@ def build() -> dict[str, Any]:
         "updated_at": now.isoformat().replace("+00:00", "Z"),
         "trends_google": [item["name"] for item in google_trends[:20]],
         "trends_x": [item["name"] for item in x_trends[:20]],
-        "trends_forocoches": [item["name"] for item in forocoches_trends[:20]],
+        "trends_forocoches": [item["name"] for item in forocoches_trends],
         "trend_details": {
             "google": google_trends[:20],
             "x": x_trends[:20],
-            "forocoches": forocoches_trends[:20],
+            "forocoches": forocoches_trends,
         },
         "google_trend_news": google_trend_news,
         "stories": ranked,
         "unfiltered_stories": unfiltered_stories,
+        "forocoches_stories": forocoches_stories,
         "warnings": warnings,
         "source_status": source_status,
         "source_summary": {

@@ -68,7 +68,7 @@ jobs:
 
       - name: Comprobar previsualizaciones enlazadas
         run: |
-          python -c "import json, urllib.parse; d=json.load(open('docs/data.json', encoding='utf-8')); s=d.get('stories', []); u=d.get('unfiltered_stories', []); assert all(not x.get('thumbnail') or str(x['thumbnail']).startswith(('http://', 'https://')) or str(x['thumbnail']) == 'media/forocoches.svg' for x in s + u), 'Hay una imagen no permitida'; assert all('news.google.' not in (urllib.parse.urlparse(str(x.get('link', ''))).hostname or '') for x in s + u), 'Hay noticias sin resolver al artículo original'; assert len(u) == int(d.get('temporal_summary', {}).get('accepted', -1)), 'Sin filtro no contiene todas las piezas válidas'; print(f'Selección: {len(s)} · Sin filtro: {len(u)}')"
+          python -c "import json, urllib.parse; d=json.load(open('docs/data.json', encoding='utf-8')); s=d.get('stories', []); u=d.get('unfiltered_stories', []); f=d.get('forocoches_stories', []); assert all(not x.get('thumbnail') or str(x['thumbnail']).startswith(('http://', 'https://')) or str(x['thumbnail']) == 'media/forocoches.svg' for x in s + u + f), 'Hay una imagen no permitida'; assert all('news.google.' not in (urllib.parse.urlparse(str(x.get('link', ''))).hostname or '') for x in s + u), 'Hay noticias sin resolver al artículo original'; assert len(u) == int(d.get('temporal_summary', {}).get('accepted', -1)), 'Sin filtro no contiene todas las piezas válidas'; assert all(x.get('main_platform') == 'forocoches' and x.get('thumbnail') == 'media/forocoches.svg' for x in f), 'La vista ForoCoches contiene fichas inválidas'; print(f'Selección: {len(s)} · Sin filtro: {len(u)} · ForoCoches: {len(f)}')"
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v6
