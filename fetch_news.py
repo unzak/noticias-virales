@@ -598,7 +598,7 @@ LATAM_DOMAIN_SUFFIXES = (
     ".com.ar", ".com.mx", ".com.co", ".com.pe", ".com.uy", ".com.py",
     ".com.pa", ".com.hn", ".com.cr", ".com.ec", ".com.ve", ".com.bo",
     ".ar", ".mx", ".cl", ".co", ".pe", ".uy", ".py", ".pa", ".hn",
-    ".cr", ".ec", ".ve", ".bo", ".cu",
+    ".cr", ".ec", ".ve", ".bo", ".cu", ".do",
 )
 LATAM_MEDIA_DOMAINS = frozenset({
     "la100.cienradios.com", "lmneuquen.com", "elimparcial.com",
@@ -607,7 +607,7 @@ LATAM_MEDIA_DOMAINS = frozenset({
     "quever.news", "univision.com", "pulzo.com", "altadensidad.com",
     "televicentro.com", "heraldousa.com", "cnnespanol.cnn.com",
     "espndeportes.espn.com", "diariodecuba.com", "latam.ign.com",
-    "eltiempomx.com",
+    "eltiempomx.com", "lasestrellas.tv", "espn.com.do",
 })
 LATAM_PUBLISHER_TERMS = (
     "la 100", "reporte indigo", "lmneuquen", "el imparcial", "la gaceta",

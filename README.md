@@ -12,6 +12,8 @@ local extranjera sin un ángulo español, aunque el titular esté escrito en esp
 El filtro también excluye medios y ediciones de Latinoamérica identificados por
 dominio territorial, URL o cabecera antes de construir ambas vistas. `Infobae`
 solo se conserva para su edición España bajo `/espana/`.
+También se reconocen explícitamente `lasestrellas.tv` y los dominios de
+República Dominicana (`.do`).
 La interfaz clara en rosa permite ordenar por prioridad, tiempo ascendente o
 tiempo descendente sin perder los filtros de periodo y categoría. Ambas vistas
 se abren por defecto con las noticias más recientes primero. Google
