@@ -49,6 +49,7 @@ from tools.fetch_forocoches_trending import fetch_forocoches_trending
 
 ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
+HISTORY_PATH = ROOT / "docs" / "history.json"
 MEDIA_DIR = ROOT / "docs" / "media"
 PERFORMANCE_PROFILE_PATH = ROOT / "cabronazi_performance_profile.json"
 EDITORIAL_SELECTION_PROFILE_PATH = ROOT / "editorial_selection_profile.json"
@@ -449,17 +450,18 @@ USER_AGENT = os.getenv(
     "PulsoNoticias/3.0 (+https://github.com/unzak/noticias-virales)",
 )
 HTTP_TIMEOUT_SECONDS = 25
-CONTENT_MAX_AGE_HOURS = 24
-NEWS_MAX_AGE_HOURS = CONTENT_MAX_AGE_HOURS
-SOCIAL_MAX_AGE_HOURS = CONTENT_MAX_AGE_HOURS
-YOUTUBE_MAX_AGE_HOURS = CONTENT_MAX_AGE_HOURS
+FETCH_MAX_AGE_HOURS = 3
+CONTENT_MAX_AGE_HOURS = 72
+DEFAULT_PANEL_AGE_HOURS = 24
+NEWS_MAX_AGE_HOURS = FETCH_MAX_AGE_HOURS
+SOCIAL_MAX_AGE_HOURS = FETCH_MAX_AGE_HOURS
+YOUTUBE_MAX_AGE_HOURS = FETCH_MAX_AGE_HOURS
 FUTURE_CLOCK_SKEW_MINUTES = 20
 PUBLICATION_DATE_ENRICH_LIMIT = 160
 PUBLICATION_DATE_WORKERS = 10
 PUBLICATION_DATE_HTML_MAX_BYTES = 900_000
-MAX_STORIES = 150
 MAX_NEWS_ITEMS_PER_SOURCE = 35
-IMAGE_ENRICH_LIMIT = MAX_STORIES
+IMAGE_ENRICH_LIMIT = 150
 IMAGE_PAGE_CONTEXT_LIMIT = 3
 IMAGE_CANDIDATE_LIMIT = 5
 IMAGE_WORKERS = 10
@@ -735,6 +737,58 @@ class StoryEntry:
     image_candidates: tuple[ImageCandidate, ...] = ()
     media_type: str = "article"
     seed_trend: str | None = None
+
+
+def serialize_history_entry(entry: StoryEntry) -> dict[str, Any]:
+    return {
+        "title": entry.title,
+        "link": entry.link,
+        "source": entry.source,
+        "platform": entry.platform,
+        "published_at": (
+            entry.published_at.isoformat().replace("+00:00", "Z")
+            if entry.published_at else None
+        ),
+        "social_points": entry.social_points,
+        "metrics": entry.metrics,
+        "thumbnail": entry.thumbnail,
+        "image_candidates": [serialize_candidate(item) for item in entry.image_candidates],
+        "media_type": entry.media_type,
+        "seed_trend": entry.seed_trend,
+    }
+
+
+def deserialize_history_entry(value: Any) -> StoryEntry | None:
+    if not isinstance(value, dict):
+        return None
+    title = compact_text(str(value.get("title") or ""), 260)
+    link = valid_http_url(value.get("link"))
+    published_at = parse_iso_datetime(value.get("published_at"))
+    if not title or not link or published_at is None:
+        return None
+    candidates = [
+        candidate
+        for item in value.get("image_candidates") or []
+        if (candidate := deserialize_candidate(item)) is not None
+    ]
+    metrics = value.get("metrics") if isinstance(value.get("metrics"), dict) else {}
+    return StoryEntry(
+        title=title,
+        link=link,
+        source=compact_text(str(
+            value.get("source")
+            or next(iter(value.get("sources") or []), "Fuente original")
+        ), 120),
+        platform=str(value.get("platform") or value.get("main_platform") or "news"),
+        published_at=published_at,
+        keywords=keywords(title),
+        social_points=float(value.get("social_points") or value.get("raw_score") or 0),
+        metrics=metrics,
+        thumbnail=valid_http_url(value.get("thumbnail")),
+        image_candidates=tuple(candidates),
+        media_type=str(value.get("media_type") or "article"),
+        seed_trend=str(value.get("seed_trend") or "") or None,
+    )
 
 
 def env_list(name: str, default: Iterable[str]) -> tuple[str, ...]:
@@ -2385,6 +2439,119 @@ def parse_iso_datetime(value: Any) -> dt.datetime | None:
         return None
 
 
+def history_public_url(filename: str) -> str | None:
+    configured = os.getenv("PULSO_HISTORY_URL", "").strip()
+    if configured:
+        if filename == HISTORY_PATH.name:
+            return valid_http_url(configured)
+        return valid_http_url(urllib.parse.urljoin(configured, filename))
+    repository = os.getenv("GITHUB_REPOSITORY", "").strip()
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
+        return None
+    owner, repo = repository.split("/", 1)
+    return f"https://{owner}.github.io/{repo}/{filename}"
+
+
+def load_history_entries() -> tuple[list[StoryEntry], str]:
+    payload: Any = None
+    source = "vacío"
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        for filename in (HISTORY_PATH.name, OUTPUT_PATH.name):
+            url = history_public_url(filename)
+            if not url:
+                continue
+            try:
+                payload = fetch_json(url)
+                source = url
+                break
+            except (OSError, ValueError, urllib.error.URLError, urllib.error.HTTPError):
+                continue
+    if payload is None:
+        for path in (HISTORY_PATH, OUTPUT_PATH):
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8"))
+                source = str(path)
+                break
+            except (OSError, ValueError):
+                continue
+    raw_entries = []
+    if isinstance(payload, dict):
+        raw_entries = payload.get("entries") or payload.get("unfiltered_stories") or []
+    entries = [deserialize_history_entry(item) for item in raw_entries]
+    valid = [entry for entry in entries if entry is not None]
+    print(f"[ok] Historial previo: {len(valid)} entradas desde {source}")
+    return valid, source
+
+
+def dedupe_history_entries(entries: list[StoryEntry]) -> list[StoryEntry]:
+    """Une URL idénticas y titulares equivalentes antes de reconstruir el panel."""
+    by_identity: dict[str, StoryEntry] = {}
+    without_identity: list[StoryEntry] = []
+    for entry in entries:
+        identity = _normalized_url_identity(entry.link)
+        if not identity:
+            without_identity.append(entry)
+            continue
+        previous = by_identity.get(identity)
+        if previous is None or (
+            entry.published_at or dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+        ) > (
+            previous.published_at or dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+        ):
+            by_identity[identity] = entry
+    unique = [*by_identity.values(), *without_identity]
+    return [choose_main(cluster["items"]) for cluster in cluster_entries(unique)]
+
+
+def write_history_atomic(entries: list[StoryEntry], now: dt.datetime) -> None:
+    payload = {
+        "updated_at": now.isoformat().replace("+00:00", "Z"),
+        "retention_hours": CONTENT_MAX_AGE_HOURS,
+        "fetch_window_hours": FETCH_MAX_AGE_HOURS,
+        "entries": [serialize_history_entry(entry) for entry in entries],
+    }
+    write_json_atomic(payload, HISTORY_PATH)
+
+
+def update_history_from_published_stories(
+    entries: list[StoryEntry], stories: list[dict[str, Any]]
+) -> list[StoryEntry]:
+    """Conserva solo destinos publicados y reutiliza sus enlaces e imágenes resueltos."""
+    by_title = {
+        normalize(str(story.get("title") or "")): story
+        for story in stories
+        if story.get("title")
+    }
+    output: list[StoryEntry] = []
+    for entry in entries:
+        story = by_title.get(normalize(entry.title))
+        if not story:
+            continue
+        resolved_link = valid_http_url(story.get("link")) or entry.link
+        resolved_thumbnail = valid_http_url(story.get("thumbnail")) or entry.thumbnail
+        candidates = entry.image_candidates
+        if resolved_thumbnail and all(
+            candidate.url != resolved_thumbnail for candidate in candidates
+        ):
+            candidates = (
+                ImageCandidate(
+                    url=resolved_thumbnail,
+                    origin=str(story.get("image_origin") or "history"),
+                    base_score=90.0,
+                    alt=entry.title,
+                    page_url=resolved_link,
+                ),
+                *candidates,
+            )
+        output.append(replace(
+            entry,
+            link=resolved_link,
+            thumbnail=resolved_thumbnail,
+            image_candidates=candidates,
+        ))
+    return output
+
+
 
 
 def parse_publication_date(value: Any) -> dt.datetime | None:
@@ -2418,11 +2585,11 @@ def is_within_content_window(
     published_at: dt.datetime | None,
     now: dt.datetime,
 ) -> bool:
-    """Exige fecha conocida y una antigüedad máxima estricta de 24 horas."""
+    """Exige fecha conocida dentro de la ventana consultada en este update."""
     if published_at is None:
         return False
     value = published_at.astimezone(dt.timezone.utc)
-    cutoff = now - dt.timedelta(hours=CONTENT_MAX_AGE_HOURS)
+    cutoff = now - dt.timedelta(hours=FETCH_MAX_AGE_HOURS)
     future_limit = now + dt.timedelta(minutes=FUTURE_CLOCK_SKEW_MINUTES)
     return cutoff <= value <= future_limit
 
@@ -2674,13 +2841,14 @@ def enrich_missing_publication_dates(
 def filter_recent_entries(
     entries: list[StoryEntry],
     now: dt.datetime,
+    max_age_hours: int = CONTENT_MAX_AGE_HOURS,
 ) -> tuple[list[StoryEntry], dict[str, int]]:
     recent: list[StoryEntry] = []
     missing = 0
     old = 0
     future = 0
     non_spanish = 0
-    cutoff = now - dt.timedelta(hours=CONTENT_MAX_AGE_HOURS)
+    cutoff = now - dt.timedelta(hours=max_age_hours)
     future_limit = now + dt.timedelta(minutes=FUTURE_CLOCK_SKEW_MINUTES)
     for entry in entries:
         if is_probably_english(entry.title):
@@ -2705,7 +2873,7 @@ def filter_recent_entries(
             continue
         recent.append(entry)
     print(
-        f"[ok] Ventana de 24 h: {len(recent)}/{len(entries)} contenidos válidos · "
+        f"[ok] Ventana de {max_age_hours} h: {len(recent)}/{len(entries)} contenidos válidos · "
         f"{old} antiguos · {missing} sin fecha · {future} con fecha futura"
         f" · {non_spanish} en inglés"
     )
@@ -5134,7 +5302,7 @@ def build_ranked(
         key=lambda item: (item["raw_score"], item.get("published_at") or ""),
         reverse=True,
     )
-    return diversify_ranked(ranked, MAX_STORIES)
+    return diversify_ranked(ranked, len(ranked))
 
 
 def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
@@ -5195,7 +5363,7 @@ def diversify_ranked(stories: list[dict[str, Any]], limit: int) -> list[dict[str
 
 
 def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
-    """Serializa todas las piezas válidas de 24 h sin aplicar el ranking editorial."""
+    """Serializa el historial válido de 72 h sin aplicar el ranking editorial."""
     stories: list[dict[str, Any]] = []
     for entry in entries:
         tags = classify_topic_tags(entry.title, entry.metrics.get("topic_tags") or [])
@@ -5309,12 +5477,16 @@ def build_google_trend_news(
     término se muestra sin noticia asociada.
     """
     cards: list[dict[str, Any]] = []
+    trend_cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(
+        hours=DEFAULT_PANEL_AGE_HOURS
+    )
     for trend in trends[:limit]:
         trend_name = str(trend.get("name") or "").strip()
         normalized = normalize(trend_name)
         matches = [
             story for story in stories
             if normalize(str(story.get("matched_google_trend") or "")) == normalized
+            and (parse_iso_datetime(story.get("published_at")) or trend_cutoff) >= trend_cutoff
         ]
         article: dict[str, Any] | None = None
         if matches:
@@ -5345,6 +5517,7 @@ def build_google_trend_news(
                 if entry.platform == "news"
                 and normalize(entry.seed_trend or "") == normalized
                 and entry.published_at is not None
+                and entry.published_at >= trend_cutoff
                 and not is_probably_english(entry.title)
                 and likely_spanish_link(entry.title, "", entry.link)
             ]
@@ -5440,19 +5613,31 @@ def build() -> dict[str, Any]:
     raw_entries_count = len(entries)
     entries, publication_date_summary = enrich_missing_publication_dates(entries)
     now = dt.datetime.now(dt.timezone.utc)
-    entries, temporal_summary = filter_recent_entries(entries, now)
+    entries, _fetch_temporal_summary = filter_recent_entries(
+        entries, now, FETCH_MAX_AGE_HOURS
+    )
+    entries, current_foreign_rejected = filter_spain_focused_entries(entries)
+    current_entries_count = len(entries)
+    history_entries, history_source = load_history_entries()
+    entries = dedupe_history_entries([*history_entries, *entries])
+    entries, temporal_summary = filter_recent_entries(
+        entries, now, CONTENT_MAX_AGE_HOURS
+    )
     accepted_before_spain_filter = len(entries)
-    entries, foreign_local_rejected = filter_spain_focused_entries(entries)
+    entries, historical_foreign_rejected = filter_spain_focused_entries(entries)
+    foreign_local_rejected = current_foreign_rejected + historical_foreign_rejected
     temporal_summary["accepted_before_spain_filter"] = accepted_before_spain_filter
     temporal_summary["foreign_local_rejected"] = foreign_local_rejected
     temporal_summary["accepted"] = len(entries)
+    temporal_summary["fetch_window_hours"] = FETCH_MAX_AGE_HOURS
+    temporal_summary["fetched_this_update"] = current_entries_count
     print(
         f"[ok] Enfoque España: {len(entries)}/{accepted_before_spain_filter} contenidos · "
         f"{foreign_local_rejected} de actualidad local extranjera descartados"
     )
     if not entries:
         raise RuntimeError(
-            "No se obtuvo ningún contenido verificable de las últimas 24 horas. "
+            "No se obtuvo ningún contenido verificable de las últimas 72 horas. "
             "Se conserva el data.json anterior para no vaciar el panel."
         )
 
@@ -5518,6 +5703,10 @@ def build() -> dict[str, Any]:
     google_trend_news = build_google_trend_news(google_trends, ranked, entries)
     active_sources = sum(1 for status in source_status if status.get("ok") is True)
     configured_sources = sum(1 for status in source_status if status.get("ok") is not None)
+    published_history_entries = update_history_from_published_stories(
+        entries, unfiltered_stories
+    )
+    write_history_atomic(published_history_entries, now)
 
     return {
         "updated_at": now.isoformat().replace("+00:00", "Z"),
@@ -5540,11 +5729,20 @@ def build() -> dict[str, Any]:
             "configured": configured_sources,
             "total": len(source_status),
             "entries_collected": len(entries),
-            "entries_before_24h_filter": raw_entries_count,
+            "entries_before_fetch_filter": raw_entries_count,
+        },
+        "history_summary": {
+            "entries": len(published_history_entries),
+            "retention_hours": CONTENT_MAX_AGE_HOURS,
+            "fetch_window_hours": FETCH_MAX_AGE_HOURS,
+            "previous_source": history_source,
+            "previous_entries": len(history_entries),
+            "fetched_this_update": current_entries_count,
         },
         "image_summary": image_summary,
         "unfiltered_image_summary": unfiltered_image_summary,
         "content_window_hours": CONTENT_MAX_AGE_HOURS,
+        "default_panel_window_hours": DEFAULT_PANEL_AGE_HOURS,
         "temporal_summary": temporal_summary,
         "publication_date_summary": publication_date_summary,
         "editorial_summary": editorial_summary,
@@ -5567,10 +5765,12 @@ def build() -> dict[str, Any]:
         },
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
-            "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 24 horas. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking. "
+            "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 72 horas; el panel muestra 24 horas por defecto. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking cuando no superan 24 horas. "
             "Los dominios y secciones del histórico de selección editorial reciben un bonus limitado. "
             "Las previsualizaciones enlazan directamente la mejor URL encontrada en los tags img "
             "del artículo, sin descargar ni versionar la imagen de terceros. "
+            "Cada actualización consulta una ventana solapada de tres horas, fusiona el resultado "
+            "con un historial móvil de 72 horas y elimina URLs o titulares equivalentes. "
             "No predice ni garantiza likes futuros."
         ),
         "editorial_notice": (

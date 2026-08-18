@@ -30,6 +30,12 @@ permissions:
   pages: write
   id-token: write
 
+# Serializa generación y despliegue para que cada ejecución pueda fusionar el
+# history.json publicado por la anterior sin perder noticias entre carreras.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   update:
     name: Generar y empaquetar el radar
@@ -64,7 +70,9 @@ jobs:
         run: python fetch_news.py
 
       - name: Comprobar JSON generado
-        run: python -m json.tool docs/data.json > /dev/null
+        run: |
+          python -m json.tool docs/data.json > /dev/null
+          python -m json.tool docs/history.json > /dev/null
 
       - name: Comprobar previsualizaciones enlazadas
         run: |
@@ -87,12 +95,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
-    # Solo el despliegue se serializa. La generación de la siguiente ejecución
-    # puede comenzar aunque el despliegue anterior todavía esté terminando.
-    concurrency:
-      group: pages
-      cancel-in-progress: false
 
     steps:
       - name: Publicar en GitHub Pages

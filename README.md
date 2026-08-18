@@ -1,8 +1,9 @@
 # Pulso Viral v3.0.1 — enfoque entretenimiento y contenido compartible
 
 Panel estático para detectar contenidos con potencial editorial viral en España.
-La selección Cabronazi publica hasta 150 resultados; la vista sin filtro muestra
-todas las piezas cuya fecha pueda verificarse dentro de las **últimas 24 horas**.
+La vista sin filtro y la selección editorial se construyen sobre un historial
+móvil con todas las piezas cuya fecha pueda verificarse dentro de las **últimas
+72 horas**, sin imponer un límite global de resultados.
 Una tercera vista, `Trending ForoCoches`, muestra por separado todos los hilos del
 ranking público actual, en su orden original y sin comprobar su fecha.
 
@@ -20,8 +21,8 @@ se abren por defecto con las noticias más recientes primero. Google
 Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
 propio en la interfaz.
 
-El menú superior abre por defecto `Sin filtro`, que muestra todas las piezas con
-fecha válida de las últimas 24 horas, y deja `Selección Cabronazi`, con ranking
+El menú superior abre por defecto `Sin filtro`, limitado visualmente a las piezas
+de las últimas 24 horas, y deja `Selección Cabronazi`, con ranking
 editorial y diversidad, como segunda opción. La ausencia de imagen ya no elimina una noticia: el panel
 abre el artículo, enlaza la URL de su imagen editorial y usa un placeholder rosa
 solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
@@ -46,8 +47,11 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Los titulares total o parcialmente en inglés se descartan antes del ranking.
 - Los artículos de viajes, turismo, hoteles, aeropuertos y vuelos se descartan
   antes de construir tanto la selección como la vista completa.
-- La interfaz permite limitar el panel a la última hora, las últimas 4 horas
-  o las últimas 24 horas, sin relajar la ventana máxima de verificación.
+- La interfaz permite limitar el panel a la última hora, las últimas 4, 24, 48
+  o 72 horas. Se abre por defecto en 24 horas.
+- Cada update consulta una ventana solapada de 3 horas, la fusiona con
+  `docs/history.json`, elimina duplicados y poda automáticamente lo anterior a
+  72 horas.
 - Las noticias meteorológicas se descartan en toda la ingesta, incluidas las
   previsiones, alertas y piezas sobre AEMET, temperaturas, lluvias o borrascas.
 - Los sucesos españoles disponen de una consulta y un impulso editorial propios,
@@ -160,10 +164,13 @@ Antes de agrupar y puntuar, el generador:
    priorizando el bloque cuyo URL coincide y contrastando la fecha codificada
    en la propia URL para no usar fechas de noticias relacionadas. Una fecha
    antigua explícita en la URL invalida también una fecha reciente del RSS.
-2. Descarta contenidos anteriores a 24 horas.
-3. Descarta contenidos sin fecha verificable.
-4. Descarta fechas futuras con más de 20 minutos de desviación.
-5. Conserva el despliegue anterior si ninguna fuente produce resultados válidos.
+2. En cada update admite novedades de las últimas 3 horas y las fusiona con el
+   historial previamente publicado.
+3. Deduplica por destino canónico y por equivalencia de titulares.
+4. Descarta del historial contenidos anteriores a 72 horas.
+5. Descarta contenidos sin fecha verificable.
+6. Descarta fechas futuras con más de 20 minutos de desviación.
+7. Conserva el despliegue anterior si ninguna fuente produce resultados válidos.
 
 La ingesta también excluye recetas, festivales, sorteos y loterías, viajes y turismo,
 contenidos centrados en precios, y programaciones, fiestas o agendas locales de
@@ -218,14 +225,15 @@ Abre `http://localhost:8000`.
 - `editorial_selection_profile.json`: recuentos agregados de fuentes y secciones seleccionadas.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
+- `docs/history.json`: historial móvil generado de las últimas 72 horas.
 - `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
 - `.github/workflows/update.yml`: generación principal a las `:07` de cada hora
   y definición reutilizable del proceso completo.
 - `.github/workflows/update-half-hour.yml`: segundo turno a las `:37`, separado
   para que GitHub no agrupe varios cron del mismo workflow. Juntos solicitan una
   actualización cada 30 minutos, durante las 24 horas y en horario de Madrid.
-  Solo el despliegue de GitHub Pages se serializa, para que una generación larga
-  no bloquee el siguiente disparo programado.
+  La generación y el despliegue se serializan con el grupo `pages` para que cada
+  ejecución fusione el historial publicado por la anterior sin perder noticias.
 
 
 ## Corrección 3.0.1
