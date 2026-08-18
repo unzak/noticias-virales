@@ -38,8 +38,11 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   videojuegos, deporte viral, comida, historias positivas y nostalgia.
 - Se añaden LOS40 y cabeceras españolas de prensa del corazón como fuentes
   especializadas de entretenimiento.
-- 20minutos, HuffPost, Telecinco, Público Tremending y LOS40 se consultan
-  desde sus secciones directas, con Google News como respaldo.
+- HuffPost se consulta desde su RSS de portada y Antena 3 desde los RSS oficiales
+  de Noticias y Sociedad. Lecturas y Semana prueban primero sus RSS; si el medio
+  bloquea la petición, se conserva Google News como respaldo.
+- 20minutos, Público Tremending y LOS40 se consultan desde sus secciones
+  directas, con Google News como respaldo.
 - Las consultas de Google News incluyen exclusiones de política, instituciones,
   guerra, tribunales y economía, además del filtro temporal de un día.
 - El clasificador asigna etiquetas editoriales automáticamente a partir del
@@ -78,8 +81,8 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   El feed de Infobae utiliza su endpoint oficial de Arc porque la URL corta
   `/espana/rss` redirige actualmente a 404. Cribeo y EL ESPAÑOL `Offbeat` se
   excluyen porque han dejado de publicar.
-- Prensa del corazón: HOLA, Lecturas, Semana, Diez Minutos y Vanitatis mediante
-  búsquedas restringidas a sus dominios.
+- Prensa del corazón: Lecturas y Semana mediante RSS con respaldo restringido a
+  su dominio; HOLA, Diez Minutos y Vanitatis mediante búsquedas restringidas.
 - Búsquedas temáticas restringidas a medios españoles mediante Google News RSS.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.

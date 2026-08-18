@@ -269,8 +269,6 @@ NEWS_SOURCES = (
         )
         for label, domain in (
             ("HOLA", "hola.com"),
-            ("Lecturas", "lecturas.com"),
-            ("Semana", "semana.es"),
             ("Diez Minutos", "diezminutos.es"),
             ("Vanitatis", "vanitatis.elconfidencial.com"),
         )
@@ -355,19 +353,37 @@ GENERAL_FRONT_PAGE_SOURCES = frozenset({
     "EL ESPAÑOL · Portada",
     "La Vanguardia · Portada",
 })
+GENERAL_DIRECT_FEED_SOURCES = frozenset({
+    "Antena 3 · Noticias RSS",
+    "El HuffPost · Portada RSS",
+})
+PRIMARY_RSS_OFFICIAL_HOSTS = {
+    "Antena 3 · Noticias RSS": "antena3.com",
+    "Antena 3 · Sociedad RSS": "antena3.com",
+    "El HuffPost · Portada RSS": "huffingtonpost.es",
+}
 
-# Secciones editoriales que se leen directamente desde la portada del medio.
-# Google News queda como respaldo si una portada cambia temporalmente su HTML.
-# Tupla: (estado, medio, URL directa, URL de respaldo, impulso, sección, etiquetas).
+# Secciones editoriales que se leen desde RSS o desde la portada del medio.
+# Google News queda como respaldo si la fuente principal no aporta novedades.
+# Tupla: (estado, medio, URL principal, URL de respaldo, impulso, sección, etiquetas).
 DIRECT_SECTION_SOURCES = (
     (
-        "Antena 3 · Virales",
+        "Antena 3 · Sociedad RSS",
         "Antena 3",
-        "https://www.antena3.com/noticias/virales/",
-        google_news_search_url(focused_news_query("site:antena3.com/noticias/virales")),
-        9.0,
-        "Virales",
-        ("viral",),
+        "https://www.antena3.com/rss/348696.xml",
+        google_news_search_url(focused_news_query("site:antena3.com/noticias/sociedad")),
+        5.0,
+        "Sociedad y sucesos filtrados",
+        ("sucesos",),
+    ),
+    (
+        "Antena 3 · Noticias RSS",
+        "Antena 3",
+        "https://www.antena3.com/rss/348680.xml",
+        google_news_search_url(focused_news_query("site:antena3.com/noticias")),
+        2.0,
+        "Noticias generales filtradas",
+        (),
     ),
     (
         "laSexta · Viral",
@@ -388,13 +404,37 @@ DIRECT_SECTION_SOURCES = (
         ("viral", "redes"),
     ),
     (
-        "El HuffPost · Virales",
+        "El HuffPost · Portada RSS",
         "El HuffPost",
-        "https://www.huffingtonpost.es/virales",
-        google_news_search_url('site:huffingtonpost.es/virales when:1d'),
+        "https://www.huffingtonpost.es/feeds/index.xml",
+        google_news_search_url('site:huffingtonpost.es when:1d'),
         10.0,
-        "Virales",
-        ("viral",),
+        "Portada RSS filtrada",
+        (),
+    ),
+    (
+        "Lecturas · RSS",
+        "Lecturas",
+        "https://www.lecturas.com/feeds/rss",
+        google_news_search_url(
+            "site:lecturas.com (famosos OR pareja OR boda OR ruptura OR romance OR television) "
+            "when:1d -politica -gobierno -guerra"
+        ),
+        9.0,
+        "Prensa del corazón",
+        ("famosos", "corazon"),
+    ),
+    (
+        "Semana · RSS",
+        "Semana",
+        "https://www.semana.es/feeds/rss",
+        google_news_search_url(
+            "site:semana.es (famosos OR pareja OR boda OR ruptura OR romance OR television) "
+            "when:1d -politica -gobierno -guerra"
+        ),
+        9.0,
+        "Prensa del corazón",
+        ("famosos", "corazon"),
     ),
     (
         "Público · Tremending",
@@ -2479,8 +2519,19 @@ def load_history_entries() -> tuple[list[StoryEntry], str]:
         raw_entries = payload.get("entries") or payload.get("unfiltered_stories") or []
     entries = [deserialize_history_entry(item) for item in raw_entries]
     valid = [entry for entry in entries if entry is not None]
+    valid = [entry for entry in valid if not is_stale_rss_fallback_entry(entry)]
     print(f"[ok] Historial previo: {len(valid)} entradas desde {source}")
     return valid, source
+
+
+def is_stale_rss_fallback_entry(entry: StoryEntry) -> bool:
+    """Elimina respaldos antiguos atribuidos al RSS pero resueltos a otro medio."""
+    feed_name = str(entry.metrics.get("editorial_feed") or "")
+    official_host = PRIMARY_RSS_OFFICIAL_HOSTS.get(feed_name)
+    if not official_host or entry.metrics.get("source_mode") != "google-news-fallback":
+        return False
+    host = (urllib.parse.urlparse(entry.link).hostname or "").lower().removeprefix("www.")
+    return host != official_host
 
 
 def dedupe_history_entries(entries: list[StoryEntry]) -> list[StoryEntry]:
@@ -3527,6 +3578,34 @@ def clean_section_title(value: str) -> str:
     return value.strip(" -–—|·")
 
 
+def is_rss_source_url(url: str) -> bool:
+    path = urllib.parse.urlparse(url).path.casefold().rstrip("/")
+    return path.endswith((".xml", "/feeds/rss")) or "/rss/" in path
+
+
+def parse_direct_feed(feed: Any) -> list[dict[str, Any]]:
+    """Convierte un RSS editorial en el formato común de una portada directa."""
+    candidates: list[dict[str, Any]] = []
+    for raw in feed.entries:
+        title = clean_section_title(str(raw.get("title") or ""))
+        link = valid_http_url(raw.get("link"))
+        if not title or not link:
+            continue
+        images = extract_feed_image_candidates(raw)
+        candidates.append({
+            "title": title,
+            "link": link,
+            "published_at": parse_published(raw),
+            "image": images[0].url if images else None,
+            "image_alt": images[0].alt if images else title,
+            "image_width": images[0].width if images else 0,
+            "image_height": images[0].height if images else 0,
+            "score": 30,
+            "origin": "rss",
+        })
+    return candidates
+
+
 def parse_section_listing(payload: bytes, section_url: str) -> list[dict[str, Any]]:
     parser = SectionListingParser(section_url)
     parser.feed(payload.decode("utf-8", errors="replace"))
@@ -3667,15 +3746,19 @@ def fetch_direct_section_entries(
     for status_name, publisher, section_url, fallback_url, boost, section, tags in DIRECT_SECTION_SOURCES:
         direct_items: list[dict[str, Any]] = []
         direct_error: Exception | None = None
+        primary_mode = "RSS" if is_rss_source_url(section_url) else "directo"
         try:
-            payload = fetch_bytes(
-                section_url,
-                headers={
-                    "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5",
-                    "Accept-Language": "es-ES,es;q=0.9",
-                },
-            )
-            direct_items = parse_section_listing(payload, section_url)
+            if is_rss_source_url(section_url):
+                direct_items = parse_direct_feed(fetch_feed(section_url))
+            else:
+                payload = fetch_bytes(
+                    section_url,
+                    headers={
+                        "Accept": "text/html,application/xhtml+xml;q=0.9,*/*;q=0.5",
+                        "Accept-Language": "es-ES,es;q=0.9",
+                    },
+                )
+                direct_items = parse_section_listing(payload, section_url)
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
             direct_error = exc
 
@@ -3693,6 +3776,11 @@ def fetch_direct_section_entries(
                 continue
             seen.add(key)
             detected_tags = classify_topic_tags(title, tags)
+            if (
+                status_name in GENERAL_DIRECT_FEED_SOURCES
+                and not is_general_front_page_candidate(title, detected_tags)
+            ):
+                continue
             candidate = make_image_candidate(
                 item.get("image"),
                 f"section:{item.get('origin', 'html')}",
@@ -3717,7 +3805,7 @@ def fetch_direct_section_entries(
                         "editorial_section": section,
                         "editorial_feed": status_name,
                         "topic_tags": sorted(detected_tags),
-                        "source_mode": "direct-section",
+                        "source_mode": "rss" if primary_mode == "RSS" else "direct-section",
                     },
                     thumbnail=image_candidates[0].url if image_candidates else None,
                     image_candidates=image_candidates,
@@ -3728,8 +3816,9 @@ def fetch_direct_section_entries(
             if accepted >= MAX_NEWS_ITEMS_PER_SOURCE:
                 break
 
-        mode = "directo"
-        if accepted < 5:
+        mode = primary_mode
+        fallback_threshold = 1 if primary_mode == "RSS" else 5
+        if accepted < fallback_threshold:
             fallback = feed_fallback_for_section(
                 status_name=status_name,
                 fallback_url=fallback_url,
@@ -3743,12 +3832,20 @@ def fetch_direct_section_entries(
             entries.extend(fallback)
             accepted += len(fallback)
             if fallback:
-                mode = "directo + respaldo Google News" if direct_items else "respaldo Google News"
+                mode = (
+                    f"{primary_mode} + respaldo Google News"
+                    if direct_items else "respaldo Google News"
+                )
 
-        if accepted == 0:
+        if accepted == 0 and direct_items and direct_error is None:
+            note = f"{primary_mode} accesible, sin artículos válidos de {NEWS_MAX_AGE_HOURS} h"
+            statuses.append({"name": status_name, "ok": True, "items": 0, "note": note})
+            print(f"[sin resultados] {status_name}: 0 elementos · {note}")
+        elif accepted == 0:
             note = "La portada no devolvió artículos y el respaldo tampoco"
             if direct_error:
-                note = f"Portada inaccesible: {compact_text(str(direct_error), 120)}"
+                label = "RSS" if primary_mode == "RSS" else "Portada"
+                note = f"{label} inaccesible: {compact_text(str(direct_error), 120)}"
             warnings.append(f"{status_name}: {note}")
             statuses.append({"name": status_name, "ok": False, "items": 0, "note": note})
             print(f"[aviso] {status_name}: 0 elementos · {note}")

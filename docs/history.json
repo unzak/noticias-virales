@@ -1,48 +1,80 @@
 {
-  "updated_at": "2026-08-18T11:48:39.245144Z",
+  "updated_at": "2026-08-18T12:29:45.939900Z",
   "retention_hours": 72,
   "fetch_window_hours": 3,
   "entries": [
     {
-      "title": "Un des producteurs d'OSS 117 et une figure de Dior meurent dans un accident à Airvault près de Thouars",
-      "link": "https://www.ici.fr/nouvelle-aquitaine/deux-sevres-79/airvault/le-producteur-d-oss-117-et-une-grande-responsable-chez-dior-meurt-dans-un-accident-a-airvault-pres-de-thouars-3976463",
-      "source": "ici.fr",
+      "title": "Nicolas Altmayer, producteur d’« OSS 117 », et sa compagne, Mathilde Favier, cadre chez Dior meurent dans un accident de la route",
+      "link": "https://www.lemonde.fr/disparitions/article/2026/08/18/nicolas-altmayer-producteur-de-oss-117-et-sa-compagne-mathilde-favier-meurent-dans-un-accident-de-la-route-dans-les-deux-sevres_6749044_3382.html",
+      "source": "Le Monde.fr",
       "platform": "news",
-      "published_at": "2026-08-18T09:41:01Z",
-      "social_points": 13.139907778003515,
+      "published_at": "2026-08-18T11:06:39Z",
+      "social_points": 14.369496950188463,
       "metrics": {
         "google_trends_item": true,
         "trend_name": "mathilde favier",
-        "search_traffic": 200,
-        "search_traffic_label": "200+",
+        "search_traffic": 500,
+        "search_traffic_label": "500+",
         "trend_published_at": "2026-08-18T11:40:00Z",
         "topic_tags": [
           "google-trends"
         ]
       },
-      "thumbnail": "https://www.ici.fr/pikapi/images/c4f99b04-dd74-47ab-addd-c53e2541e72c/1200x630?webp=false",
+      "thumbnail": "https://img.lemde.fr/2026/08/18/0/0/6000/4000/1440/960/60/0/b827c2f_upload-1-rbs3ibufrfiy-000-86l749d.jpg",
       "image_candidates": [
         {
-          "url": "https://www.ici.fr/pikapi/images/c4f99b04-dd74-47ab-addd-c53e2541e72c/1200x630?webp=false",
+          "url": "https://img.lemde.fr/2026/08/18/0/0/6000/4000/1440/960/60/0/b827c2f_upload-1-rbs3ibufrfiy-000-86l749d.jpg",
           "origin": "og:image",
           "base_score": 90.0,
-          "alt": "Un des producteurs d'OSS 117 et une figure de Dior meurent dans un accident à Airvault près de Thouars",
+          "alt": "Nicolas Altmayer, producteur d’« OSS 117 », et sa compagne, Mathilde Favier, cadre chez Dior meurent dans un accident de la route",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.ici.fr/nouvelle-aquitaine/deux-sevres-79/airvault/le-producteur-d-oss-117-et-une-grande-responsable-chez-dior-meurt-dans-un-accident-a-airvault-pres-de-thouars-3976463"
+          "page_url": "https://www.lemonde.fr/disparitions/article/2026/08/18/nicolas-altmayer-producteur-de-oss-117-et-sa-compagne-mathilde-favier-meurent-dans-un-accident-de-la-route-dans-les-deux-sevres_6749044_3382.html"
         },
         {
-          "url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQEFK_LLKtvgGBeBe84f8w8ZsDHr_CdI5qVMrqNIVXjveM0pLTqyxUtwfua-gs",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfymv0y6Mik8Hdg8xBfsN7fT46NLHNBNUZxbdIOWFWwmtqYLCGqECfDGSGoUI",
           "origin": "google-trends:picture",
           "base_score": 74.0,
-          "alt": "Un des producteurs d'OSS 117 et une figure de Dior meurent dans un accident à Airvault près de Thouars",
+          "alt": "Nicolas Altmayer, producteur d’« OSS 117 », et sa compagne, Mathilde Favier, cadre chez Dior meurent dans un accident de la route",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.ici.fr/nouvelle-aquitaine/deux-sevres-79/airvault/le-producteur-d-oss-117-et-une-grande-responsable-chez-dior-meurt-dans-un-accident-a-airvault-pres-de-thouars-3976463"
+          "page_url": "https://www.lemonde.fr/disparitions/article/2026/08/18/nicolas-altmayer-producteur-de-oss-117-et-sa-compagne-mathilde-favier-meurent-dans-un-accident-de-la-route-dans-les-deux-sevres_6749044_3382.html"
         }
       ],
       "media_type": "article",
       "seed_trend": "mathilde favier"
+    },
+    {
+      "title": "Hacienda embarga las dietas municipales al concejal de Vox en Segovia que se quiso \"sacar el ciruelo\" en un pleno",
+      "link": "https://www.eldiario.es/castilla-y-leon/provincias/segovia/hacienda-embarga-dietas-municipales-concejal-vox-segovia-quiso-sacar-ciruelo-pleno_1_13453184.html",
+      "source": "elDiario.es",
+      "platform": "news",
+      "published_at": "2026-08-18T10:27:54Z",
+      "social_points": 13.139907778003515,
+      "metrics": {
+        "google_trends_item": true,
+        "trend_name": "concejal",
+        "search_traffic": 200,
+        "search_traffic_label": "200+",
+        "trend_published_at": "2026-08-18T12:20:00Z",
+        "topic_tags": [
+          "google-trends"
+        ]
+      },
+      "thumbnail": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0GX4mQjF-cX-90D14un9ob2-YTF-VaqPhUY59PyYdZhybVUWgZoFXicdMMJM",
+      "image_candidates": [
+        {
+          "url": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT0GX4mQjF-cX-90D14un9ob2-YTF-VaqPhUY59PyYdZhybVUWgZoFXicdMMJM",
+          "origin": "google-trends:picture",
+          "base_score": 74.0,
+          "alt": "Hacienda embarga las dietas municipales al concejal de Vox en Segovia que se quiso \"sacar el ciruelo\" en un pleno",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.eldiario.es/castilla-y-leon/provincias/segovia/hacienda-embarga-dietas-municipales-concejal-vox-segovia-quiso-sacar-ciruelo-pleno_1_13453184.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": "concejal"
     },
     {
       "title": "Yan Makoundou, el décimo del Barcelona",
@@ -149,6 +181,37 @@
       "seed_trend": null
     },
     {
+      "title": "Comienza en EEUU el juicio contra Facebook e Instagram que podría cambiar para siempre las redes sociales",
+      "link": "https://www.huffingtonpost.es/tecnologia/comienza-eeuu-juicio-facebook-e-instagram-cambiar-siempre-redes-sociales-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T09:48:55Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [
+          "redes"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/17/mark-zuckerberg-ceo-de-meta-saliendo-del-juzgado-de-los-angeles-en-febrero-de-este-2026.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/17/mark-zuckerberg-ceo-de-meta-saliendo-del-juzgado-de-los-angeles-en-febrero-de-este-2026.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Comienza en EEUU el juicio contra Facebook e Instagram que podría cambiar para siempre las redes sociales",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/tecnologia/comienza-eeuu-juicio-facebook-e-instagram-cambiar-siempre-redes-sociales-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Un periódico francés lleva a Lorca a su portada con seis palabras y una foto que son para levantarse y aplaudir",
       "link": "https://www.huffingtonpost.es/virales/un-periodico-frances-lleva-lorca-portada-seis-palabras-foto-son-levantarse-aplaudir-f202608.html",
       "source": "El HuffPost",
@@ -215,11 +278,157 @@
       "seed_trend": null
     },
     {
+      "title": "El suelo de Granada no deja de temblar y registra seis movimientos fuertes en menos de una hora",
+      "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
+      "source": "20minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T12:26:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84213874b224-80040696.webp",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84213874b224-80040696.webp",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El suelo de Granada no deja de temblar y registra seis movimientos fuertes en menos de una hora",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "'Outer Banks': 5 claves que debes recordar antes de ver la quinta y última temporada de la serie juvenil más popular de Netflix",
+      "link": "https://www.hola.com/actualidad/20260818918151/outer-banks-netflix-5-claves-temporada-5-final/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-18T12:22:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos",
+          "nostalgia"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/1d21fe18aab0-aaaaqbca7jj2xch6akmeosh8ssrvoseir8sqwaeug1lxp7j7c2skmu34uefdfso9wjbg1kk2wbxefun.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/1d21fe18aab0-aaaaqbca7jj2xch6akmeosh8ssrvoseir8sqwaeug1lxp7j7c2skmu34uefdfso9wjbg1kk2wbxefun.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "'Outer Banks': 5 claves que debes recordar antes de ver la quinta y última temporada de la serie juvenil más popular de Netflix",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/actualidad/20260818918151/outer-banks-netflix-5-claves-temporada-5-final/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Francia prioriza los drones, la guerra eléctrica o la industria nacional y da más control al Estado en la actualización de su ley militar",
+      "link": "https://www.infobae.com/espana/2026/08/18/francia-prioriza-los-drones-la-guerra-electrica-o-la-industria-nacional-y-da-mas-control-al-estado-en-la-actualizacion-de-su-ley-militar/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-18T12:19:05Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/YVZCBF7QRJCYXAOIKL4R6W2KRI.JPG?auth=0ed8991a636e0d5269b887a16d4f3c1c103e535a304e64e26a47a1e6b1c90b8e&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/YVZCBF7QRJCYXAOIKL4R6W2KRI.JPG?auth=0ed8991a636e0d5269b887a16d4f3c1c103e535a304e64e26a47a1e6b1c90b8e&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Francia prioriza los drones, la guerra eléctrica o la industria nacional y da más control al Estado en la actualización de su ley militar",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/francia-prioriza-los-drones-la-guerra-electrica-o-la-industria-nacional-y-da-mas-control-al-estado-en-la-actualizacion-de-su-ley-militar/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/YVZCBF7QRJCYXAOIKL4R6W2KRI.JPG?auth=0ed8991a636e0d5269b887a16d4f3c1c103e535a304e64e26a47a1e6b1c90b8e&smart=true&width=8640&height=5760",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 8640,
+          "height": 5760,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/francia-prioriza-los-drones-la-guerra-electrica-o-la-industria-nacional-y-da-mas-control-al-estado-en-la-actualizacion-de-su-ley-militar/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El cambio de sexo no sirve para que los maltratadores eludan sus condenas: el Supremo avala que no permite anular una sentencia previa de violencia de género",
+      "link": "https://www.infobae.com/espana/2026/08/18/el-cambio-de-sexo-no-sirve-para-que-los-maltratadores-eludan-sus-condenas-el-supremo-avala-que-no-permite-anular-una-sentencia-previa-de-violencia-de-genero/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-18T12:17:19Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/E6HEEVPIENBATLLFRNIMBQK32Y.jpg?auth=2aafdf21212a9d4d7d5dde24958912af3918c5c662a8fb06457134fd7e87fd97&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/E6HEEVPIENBATLLFRNIMBQK32Y.jpg?auth=2aafdf21212a9d4d7d5dde24958912af3918c5c662a8fb06457134fd7e87fd97&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "El cambio de sexo no sirve para que los maltratadores eludan sus condenas: el Supremo avala que no permite anular una sentencia previa de violencia de género",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/el-cambio-de-sexo-no-sirve-para-que-los-maltratadores-eludan-sus-condenas-el-supremo-avala-que-no-permite-anular-una-sentencia-previa-de-violencia-de-genero/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/E6HEEVPIENBATLLFRNIMBQK32Y.jpg?auth=2aafdf21212a9d4d7d5dde24958912af3918c5c662a8fb06457134fd7e87fd97&smart=true&width=6000&height=4000",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 6000,
+          "height": 4000,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/el-cambio-de-sexo-no-sirve-para-que-los-maltratadores-eludan-sus-condenas-el-supremo-avala-que-no-permite-anular-una-sentencia-previa-de-violencia-de-genero/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Un nuevo terremoto de 4.8 en Granada y varias réplicas de hasta 4.2 ha dejado al menos tres heridos leves",
       "link": "https://www.infobae.com/espana/2026/08/18/nuevo-terremoto-de-46-de-magnitud-en-granada-con-epicentro-en-alhendin/",
       "source": "Infobae España · Virales",
       "platform": "news",
-      "published_at": "2026-08-18T11:48:17Z",
+      "published_at": "2026-08-18T12:16:04Z",
       "social_points": 9.0,
       "metrics": {
         "curated_editorial": true,
@@ -259,6 +468,370 @@
           "width": 593,
           "height": 314,
           "page_url": "https://www.infobae.com/espana/2026/08/18/nuevo-terremoto-de-46-de-magnitud-en-granada-con-epicentro-en-alhendin/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Por qué hay tantos terremotos en Granada: un “enjambre sísmico”, escasa profundidad y un movimiento de 4 a 5 milímetros al año",
+      "link": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-18T12:15:04Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/AONSFOJGYFA5ZM5T4M7356AEBI.JPG?auth=4c21320b5885413d44d4c6a7204f6ddcd81c0c2bcd923691ad672ed140ab600e&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/AONSFOJGYFA5ZM5T4M7356AEBI.JPG?auth=4c21320b5885413d44d4c6a7204f6ddcd81c0c2bcd923691ad672ed140ab600e&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Por qué hay tantos terremotos en Granada: un “enjambre sísmico”, escasa profundidad y un movimiento de 4 a 5 milímetros al año",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/AONSFOJGYFA5ZM5T4M7356AEBI.JPG?auth=4c21320b5885413d44d4c6a7204f6ddcd81c0c2bcd923691ad672ed140ab600e&smart=true&width=4349&height=2899",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 4349,
+          "height": 2899,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/IU2QT44LDJDFTOT6567R5PJYMU.jpg?auth=3093c967047090ce4677d5f9e64febd387c17052048cc5c15bda6b7ef4a28dfc&smart=true&width=5453&height=3636",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Daños provocados por el terremoto el pasado sábado en Armilla, Granada. (EFE/ Pepe Torres)",
+          "width": 5453,
+          "height": 3636,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/25XIYOAFZBFFFBWMMMPDVJXBDU.jpg?auth=d3b1f3af03729be3c4d4ed5ce844c3264268c18227d0cfd77f0a420e2cabf142&smart=true&width=1200&height=1600",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Daños en una vivienda de Granada tras el terremoto de magnitud 4,7 este martes. (EFE)",
+          "width": 1200,
+          "height": 1600,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/FNAQ3UQBQZAKLHDIGXOAIG2K5U.JPG?auth=8bee47a04ef329bcd4c0dabab754e896f99955ddc21c70979073b8f8a76167db&smart=true&width=4500&height=3000",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Desperfectos tras el terremoto este martes en Granada. (Reuters/Fermín Rodríguez)",
+          "width": 4500,
+          "height": 3000,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Hasta 13 días de batería y más de 100 modos de entrenamiento: todo ello en el Samsung Galaxy Fit3",
+      "link": "https://www.20minutos.es/ofertas-descuentos/hasta-13-dias-bateria-mas-100-modos-entrenamiento-todo-ello-samsung-galaxy-fit3_7026765_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T12:00:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84118ac0d8d4-33757626.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84118ac0d8d4-33757626.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Hasta 13 días de batería y más de 100 modos de entrenamiento: todo ello en el Samsung Galaxy Fit3",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/ofertas-descuentos/hasta-13-dias-bateria-mas-100-modos-entrenamiento-todo-ello-samsung-galaxy-fit3_7026765_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Una serie de terremotos con magnitudes de hasta 4,8 vuelve a sacudir Granada y su área metropolitana",
+      "link": "https://www.20minutos.es/andalucia/granada/un-nuevo-terremoto-magnitud-4-6-vuelve-sacudir-granada-su-area-metropolitana_7026802_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T11:59:17Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a841dd9d68410-12891231.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a841dd9d68410-12891231.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Una serie de terremotos con magnitudes de hasta 4,8 vuelve a sacudir Granada y su área metropolitana",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/andalucia/granada/un-nuevo-terremoto-magnitud-4-6-vuelve-sacudir-granada-su-area-metropolitana_7026802_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Un obrero con experiencia te explica por qué decidir los azulejos y el váter antes de empezar las obras en la vivienda baja el gasto de la reforma",
+      "link": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-18T11:54:04Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/CBTSJO4U45CNNDCL4D2Q7RJLAQ.jpg?auth=210416529d81aa9b0407acbcf75b8e2eb536dddfce744840e3331d7f5862f8c0&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/CBTSJO4U45CNNDCL4D2Q7RJLAQ.jpg?auth=210416529d81aa9b0407acbcf75b8e2eb536dddfce744840e3331d7f5862f8c0&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Un obrero con experiencia te explica por qué decidir los azulejos y el váter antes de empezar las obras en la vivienda baja el gasto de la reforma",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/CBTSJO4U45CNNDCL4D2Q7RJLAQ.jpg?auth=210416529d81aa9b0407acbcf75b8e2eb536dddfce744840e3331d7f5862f8c0&smart=true&width=1920&height=1080",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 1920,
+          "height": 1080,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/ZRQFYLFECFFG3A7EVLJMP4EZPI.png?auth=e97adc7a712322118be52bc355049061f17ab550d3fda4f2908d9169ebfb80fb&smart=true&width=2752&height=1536",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Un obrero instala ladrillos en la pared exterior de una vivienda en construcción, junto a otros trabajadores y materiales de obra. (Imagen Ilustrativa Infobae)",
+          "width": 2752,
+          "height": 1536,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/LY6C5XEVAVH27NOUE5YQ5PTSHY.png?auth=67797e29f6a2b1b60a5242b03b99b39fc7884a218674a88aba31fae71b560d88&smart=true&width=1408&height=768",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Colección de lavabos con diseños únicos en mármol, piedra, mosaico y cerámica, ofreciendo opciones para modernizar cualquier baño sin necesidad de obras mayores. (Imagen Ilustrativa Infobae)",
+          "width": 1408,
+          "height": 768,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/TWW5SVHKKJCWPFNEW3CFCK2HXY.png?auth=b44b3b4f587012fa700559e6c854c3ff46cc182f8685318706d32790906ef75f&smart=true&width=1536&height=2752",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Infobae ilustra cómo transformar cocina y comedor en espacios cálidos y funcionales este invierno con cambios sencillos en mobiliario, utensilios y organización, sin necesidad de obras. (Imagen Ilustrativa Infobae)",
+          "width": 1536,
+          "height": 2752,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El nuevo terremoto de Granada sorprende a los jugadores del Arenas de Armilla durante el entrenamiento: así fue el tenso momento",
+      "link": "https://www.20minutos.es/deportes/futbol/nuevo-terremoto-granada-sorprende-los-jugadores-arenas-armilla-durante-entrenamiento-asi-fue-tenso-momento_7026893_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T11:53:15Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a8445038d7037-24735062.png",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a8445038d7037-24735062.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El nuevo terremoto de Granada sorprende a los jugadores del Arenas de Armilla durante el entrenamiento: así fue el tenso momento",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/deportes/futbol/nuevo-terremoto-granada-sorprende-los-jugadores-arenas-armilla-durante-entrenamiento-asi-fue-tenso-momento_7026893_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Alejandra Osborne y su \"verano diferente\": el vestido blanco con escote y aberturas que potencia el bronceado",
+      "link": "https://www.hola.com/moda/20260818918572/alejandra-osborne-vestido-blanco-verano-escote-bronceado/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-18T11:50:36Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/a65114f70deb-77889918018612874090015425293783544671449073n.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/a65114f70deb-77889918018612874090015425293783544671449073n.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Alejandra Osborne y su \"verano diferente\": el vestido blanco con escote y aberturas que potencia el bronceado",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/moda/20260818918572/alejandra-osborne-vestido-blanco-verano-escote-bronceado/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Guardiola se sincera sobre la obsesión que ha marcado su vida profesional y catapultó su divorcio: “La amo increíblemente, pero perdimos la pasión”",
+      "link": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-18T11:50:03Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "corazon",
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/QIAP2M5QJFHONHKWVKRWBXU5GE.jpg?auth=83ca83226552f6318a28ff91c0a6f9da8e8812d4bc8cde7d9cd1b262bf0d49b3&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/QIAP2M5QJFHONHKWVKRWBXU5GE.jpg?auth=83ca83226552f6318a28ff91c0a6f9da8e8812d4bc8cde7d9cd1b262bf0d49b3&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Guardiola se sincera sobre la obsesión que ha marcado su vida profesional y catapultó su divorcio: “La amo increíblemente, pero perdimos la pasión”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/QIAP2M5QJFHONHKWVKRWBXU5GE.jpg?auth=83ca83226552f6318a28ff91c0a6f9da8e8812d4bc8cde7d9cd1b262bf0d49b3&smart=true&width=1920&height=1080",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 1920,
+          "height": 1080,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/3NNLTMHP5HT2AG2VUPUB27VGTM.jpg?auth=082d06a70cade64131c335014f9bccd54ae0ab027e72dc78515405b05318989b&smart=true&width=3159&height=2260",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Pep Guardiola y Cristina Serra en una imagen de archivo, 2024 (REUTERS/Andrew Boyers).",
+          "width": 3159,
+          "height": 2260,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/2OK4EU5H2BGARKFZZYMBYUSKKY.webp?auth=235adff393e8d002d1d90d96192f5c4cd42a644eaeb6bd116b83a739c653c370&smart=true&width=779&height=1024",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Pep Guardiola, con su padre, sus hijos y su ex, Cristina Serra, (City_XTRA).",
+          "width": 779,
+          "height": 1024,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La Policía arresta a un hombre en la Feria de Málaga que habría apuñalado a un joven por intentar ligar con su novia",
+      "link": "https://www.infobae.com/espana/2026/08/18/la-policia-arresta-a-un-hombre-en-la-feria-de-malaga-que-habria-apunalado-a-un-joven-por-intentar-ligar-con-su-novia/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-18T11:49:27Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/SWWBUJ3CCJDBBD2EEOYBXTOBXI.jpg?auth=146a9d3e0f0bbafd9358a139af8b14a4da310cf241300a6191921ad515bb10ce&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/SWWBUJ3CCJDBBD2EEOYBXTOBXI.jpg?auth=146a9d3e0f0bbafd9358a139af8b14a4da310cf241300a6191921ad515bb10ce&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "La Policía arresta a un hombre en la Feria de Málaga que habría apuñalado a un joven por intentar ligar con su novia",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/la-policia-arresta-a-un-hombre-en-la-feria-de-malaga-que-habria-apunalado-a-un-joven-por-intentar-ligar-con-su-novia/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/SWWBUJ3CCJDBBD2EEOYBXTOBXI.jpg?auth=146a9d3e0f0bbafd9358a139af8b14a4da310cf241300a6191921ad515bb10ce&smart=true&width=2048&height=1366",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 2048,
+          "height": 1366,
+          "page_url": "https://www.infobae.com/espana/2026/08/18/la-policia-arresta-a-un-hombre-en-la-feria-de-malaga-que-habria-apunalado-a-un-joven-por-intentar-ligar-con-su-novia/"
         }
       ],
       "media_type": "article",
@@ -453,98 +1026,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/tecnologia/moviles-dispositivos/apple-filtra-airpods-camaras-confirma-secretos-mejor-guardados_7026886_0.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Guardiola se sincera sobre el motivo de su divorcio en su documental: “La amo increíblemente, pero perdimos la pasión”",
-      "link": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/",
-      "source": "Infobae España · Virales",
-      "platform": "news",
-      "published_at": "2026-08-18T11:43:56Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
-        "topic_tags": [
-          "corazon",
-          "curiosidades",
-          "tiktok",
-          "viral"
-        ]
-      },
-      "thumbnail": "https://www.infobae.com/resizer/v2/QIAP2M5QJFHONHKWVKRWBXU5GE.jpg?auth=83ca83226552f6318a28ff91c0a6f9da8e8812d4bc8cde7d9cd1b262bf0d49b3&smart=true&width=1200&height=900&quality=85",
-      "image_candidates": [
-        {
-          "url": "https://www.infobae.com/resizer/v2/QIAP2M5QJFHONHKWVKRWBXU5GE.jpg?auth=83ca83226552f6318a28ff91c0a6f9da8e8812d4bc8cde7d9cd1b262bf0d49b3&smart=true&width=1200&height=900&quality=85",
-          "origin": "schema:primaryImageOfPage",
-          "base_score": 90.0,
-          "alt": "Guardiola se sincera sobre el motivo de su divorcio en su documental: “La amo increíblemente, pero perdimos la pasión”",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/QIAP2M5QJFHONHKWVKRWBXU5GE.jpg?auth=83ca83226552f6318a28ff91c0a6f9da8e8812d4bc8cde7d9cd1b262bf0d49b3&smart=true&width=1920&height=1080",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 1920,
-          "height": 1080,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/3NNLTMHP5HT2AG2VUPUB27VGTM.jpg?auth=082d06a70cade64131c335014f9bccd54ae0ab027e72dc78515405b05318989b&smart=true&width=3159&height=2260",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "Pep Guardiola y Cristina Serra en una imagen de archivo, 2024 (REUTERS/Andrew Boyers).",
-          "width": 3159,
-          "height": 2260,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/2OK4EU5H2BGARKFZZYMBYUSKKY.webp?auth=235adff393e8d002d1d90d96192f5c4cd42a644eaeb6bd116b83a739c653c370&smart=true&width=779&height=1024",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "Pep Guardiola, con su padre, sus hijos y su ex, Cristina Serra, (City_XTRA).",
-          "width": 779,
-          "height": 1024,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "El suelo de Granada no deja de temblar y registra seis movimientos fuertes en menos de una hora",
-      "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
-      "source": "20minutos",
-      "platform": "news",
-      "published_at": "2026-08-18T11:43:00Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84213874b224-80040696.webp",
-      "image_candidates": [
-        {
-          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84213874b224-80040696.webp",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "El suelo de Granada no deja de temblar y registra seis movimientos fuertes en menos de una hora",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html"
         }
       ],
       "media_type": "article",
@@ -1013,74 +1494,6 @@
       "seed_trend": null
     },
     {
-      "title": "Un obrero con experiencia te explica por qué decidir los azulejos y el váter antes de empezar las obras en la vivienda baja el gasto de la reforma",
-      "link": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/",
-      "source": "Infobae España · Virales",
-      "platform": "news",
-      "published_at": "2026-08-18T10:54:13Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
-        "topic_tags": [
-          "curiosidades",
-          "tiktok",
-          "viral"
-        ]
-      },
-      "thumbnail": "https://www.infobae.com/resizer/v2/CBTSJO4U45CNNDCL4D2Q7RJLAQ.jpg?auth=210416529d81aa9b0407acbcf75b8e2eb536dddfce744840e3331d7f5862f8c0&smart=true&width=1200&height=900&quality=85",
-      "image_candidates": [
-        {
-          "url": "https://www.infobae.com/resizer/v2/CBTSJO4U45CNNDCL4D2Q7RJLAQ.jpg?auth=210416529d81aa9b0407acbcf75b8e2eb536dddfce744840e3331d7f5862f8c0&smart=true&width=1200&height=900&quality=85",
-          "origin": "schema:primaryImageOfPage",
-          "base_score": 90.0,
-          "alt": "Un obrero con experiencia te explica por qué decidir los azulejos y el váter antes de empezar las obras en la vivienda baja el gasto de la reforma",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/CBTSJO4U45CNNDCL4D2Q7RJLAQ.jpg?auth=210416529d81aa9b0407acbcf75b8e2eb536dddfce744840e3331d7f5862f8c0&smart=true&width=1920&height=1080",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 1920,
-          "height": 1080,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/ZRQFYLFECFFG3A7EVLJMP4EZPI.png?auth=e97adc7a712322118be52bc355049061f17ab550d3fda4f2908d9169ebfb80fb&smart=true&width=2752&height=1536",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "Un obrero instala ladrillos en la pared exterior de una vivienda en construcción, junto a otros trabajadores y materiales de obra. (Imagen Ilustrativa Infobae)",
-          "width": 2752,
-          "height": 1536,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/LY6C5XEVAVH27NOUE5YQ5PTSHY.png?auth=67797e29f6a2b1b60a5242b03b99b39fc7884a218674a88aba31fae71b560d88&smart=true&width=1408&height=768",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "Colección de lavabos con diseños únicos en mármol, piedra, mosaico y cerámica, ofreciendo opciones para modernizar cualquier baño sin necesidad de obras mayores. (Imagen Ilustrativa Infobae)",
-          "width": 1408,
-          "height": 768,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/TWW5SVHKKJCWPFNEW3CFCK2HXY.png?auth=b44b3b4f587012fa700559e6c854c3ff46cc182f8685318706d32790906ef75f&smart=true&width=1536&height=2752",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "Infobae ilustra cómo transformar cocina y comedor en espacios cálidos y funcionales este invierno con cambios sencillos en mobiliario, utensilios y organización, sin necesidad de obras. (Imagen Ilustrativa Infobae)",
-          "width": 1536,
-          "height": 2752,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "Pep Guardiola habla por primera vez de su separación de Cristina Serra y revela las razones: \"Perdimos la pasión\"",
       "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/pep-guardiola-habla-divorcio-cristina-serra-confirma-razones-pasion_4407660/",
       "source": "Vanitatis",
@@ -1210,38 +1623,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.hola.com/actualidad/20260818918545/helena-resano-hija-emma-cumple-24-foto/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Un nuevo terremoto de magnitud 4,6 vuelve a sacudir Granada",
-      "link": "https://www.20minutos.es/andalucia/granada/un-nuevo-terremoto-magnitud-4-6-vuelve-sacudir-granada-su-area-metropolitana_7026802_0.html",
-      "source": "20minutos",
-      "platform": "news",
-      "published_at": "2026-08-18T08:55:52Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a841dd9d68410-12891231.jpeg",
-      "image_candidates": [
-        {
-          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a841dd9d68410-12891231.jpeg",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Un nuevo terremoto de magnitud 4,6 vuelve a sacudir Granada",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.20minutos.es/andalucia/granada/un-nuevo-terremoto-magnitud-4-6-vuelve-sacudir-granada-su-area-metropolitana_7026802_0.html"
         }
       ],
       "media_type": "article",
@@ -1507,6 +1888,38 @@
       "seed_trend": null
     },
     {
+      "title": "Inés Ballester regresa con encuentros en cuatro peluquerías que combinan peinados con historias personales",
+      "link": "https://www.20minutos.es/television/ines-ballester-regresa-con-encuentros-cuatro-peluquerias-que-combinan-peinados-con-historias-personales_7026836_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T10:06:46Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a8427419b7961-02505335.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a8427419b7961-02505335.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Inés Ballester regresa con encuentros en cuatro peluquerías que combinan peinados con historias personales",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/television/ines-ballester-regresa-con-encuentros-cuatro-peluquerias-que-combinan-peinados-con-historias-personales_7026836_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Inés García y Lamine Yamal, los nuevos Beckham: se visten a juego con un guiño al icónico estilo de los 2000",
       "link": "https://www.hola.com/moda/20260818918528/ines-garcia-lamine-yamal-look-juego-nuevos-beckham/",
       "source": "HOLA",
@@ -1532,6 +1945,38 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.hola.com/moda/20260818918528/ines-garcia-lamine-yamal-look-juego-nuevos-beckham/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Desalojo preventivo en la Alhambra tras la nueva serie de terremotos de Granada",
+      "link": "https://www.20minutos.es/andalucia/granada/desalojo-preventivo-alhambra-tras-terremoto-granada-sus-fuertes-replicas_7026841_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T10:03:21Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/06/23/6a39ec8ec731f5-08174380.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/06/23/6a39ec8ec731f5-08174380.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Desalojo preventivo en la Alhambra tras la nueva serie de terremotos de Granada",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/andalucia/granada/desalojo-preventivo-alhambra-tras-terremoto-granada-sus-fuertes-replicas_7026841_0.html"
         }
       ],
       "media_type": "article",
@@ -1746,50 +2191,40 @@
       "seed_trend": null
     },
     {
-      "title": "El Gobierno cifra en 2.168 los menores migrantes identificados en Ceuta desde la entrada masiva",
-      "link": "https://www.infobae.com/espana/2026/08/18/el-gobierno-cifra-en-2168-los-menores-migrantes-identificados-en-ceuta-desde-la-entrada-masiva/",
-      "source": "Infobae España · Virales",
+      "title": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
+      "link": "https://www.antena3.com/noticias/sociedad/interior-cifra-2168-menores-edad-identificados-ceuta_202608186a842ecb71b42a0b5df5d1a6.html",
+      "source": "Antena 3",
       "platform": "news",
-      "published_at": "2026-08-18T09:38:52Z",
-      "social_points": 9.0,
+      "published_at": "2026-08-18T10:07:07Z",
+      "social_points": 5.0,
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
         "topic_tags": [
-          "curiosidades",
-          "tiktok",
-          "viral"
-        ]
+          "sucesos"
+        ],
+        "source_mode": "direct-section"
       },
-      "thumbnail": "https://www.infobae.com/resizer/v2/K3WZYVEWYJANDESCY3KO6NIOLE.jpg?auth=3ad85c3acc4b72bc39ccb067080adc1edc1d8ab282de6148ed7b46656797c70f&smart=true&width=1200&height=900&quality=85",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/08/18/EFA157E8-BA4C-40B9-9D7C-4CD61614BB21/interior-cifra-2168-menores-edad-identificados-ceuta_69.jpg?crop=1920,1080,x0,y11&width=1280&height=720&optimize=low&format=webply",
       "image_candidates": [
         {
-          "url": "https://www.infobae.com/resizer/v2/K3WZYVEWYJANDESCY3KO6NIOLE.jpg?auth=3ad85c3acc4b72bc39ccb067080adc1edc1d8ab282de6148ed7b46656797c70f&smart=true&width=1200&height=900&quality=85",
-          "origin": "schema:primaryImageOfPage",
+          "url": "https://fotografias.antena3.com/clipping/cmsimages01/2026/08/18/EFA157E8-BA4C-40B9-9D7C-4CD61614BB21/interior-cifra-2168-menores-edad-identificados-ceuta_69.jpg?crop=1920,1080,x0,y11&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
           "base_score": 90.0,
-          "alt": "El Gobierno cifra en 2.168 los menores migrantes identificados en Ceuta desde la entrada masiva",
+          "alt": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/el-gobierno-cifra-en-2168-los-menores-migrantes-identificados-en-ceuta-desde-la-entrada-masiva/"
+          "page_url": "https://www.antena3.com/noticias/sociedad/interior-cifra-2168-menores-edad-identificados-ceuta_202608186a842ecb71b42a0b5df5d1a6.html"
         },
         {
-          "url": "https://www.infobae.com/resizer/v2/K3WZYVEWYJANDESCY3KO6NIOLE.jpg?auth=3ad85c3acc4b72bc39ccb067080adc1edc1d8ab282de6148ed7b46656797c70f&smart=true&width=4032&height=3024",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 4032,
-          "height": 3024,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/el-gobierno-cifra-en-2168-los-menores-migrantes-identificados-en-ceuta-desde-la-entrada-masiva/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/SIDQ4K272RAEPETN2BUEFSXJFI.jpg?auth=a8a095eb8d4f4d3da0990f731d9ab7bec377ae480c1145ddef1407516e3d844c&smart=true&width=1920&height=1080",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "",
-          "width": 1920,
-          "height": 1080,
-          "page_url": "https://www.infobae.com/espana/2026/08/18/el-gobierno-cifra-en-2168-los-menores-migrantes-identificados-en-ceuta-desde-la-entrada-masiva/"
+          "url": "https://dpvclip.antena3.com/assets3/2026/08/18/96211FA5-2B24-48DD-8E1F-AC5B26B36CC7/640x360.mp4",
+          "origin": "section:rss",
+          "base_score": 94.0,
+          "alt": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/interior-cifra-2168-menores-edad-identificados-ceuta_202608186a842ecb71b42a0b5df5d1a6.html"
         }
       ],
       "media_type": "article",
@@ -2067,45 +2502,6 @@
       "seed_trend": null
     },
     {
-      "title": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
-      "link": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html",
-      "source": "La Vanguardia · Portada",
-      "platform": "news",
-      "published_at": "2026-08-18T11:18:14Z",
-      "social_points": 0.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Portada general filtrada",
-        "editorial_feed": "La Vanguardia · Portada",
-        "topic_tags": [
-          "television"
-        ]
-      },
-      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2026/08/18/6a84399309f15.r_d.2240-1494-0.jpeg",
-      "image_candidates": [
-        {
-          "url": "https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2026/08/18/6a84399309f15.r_d.2240-1494-0.jpeg",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html"
-        },
-        {
-          "url": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/18/6a843f43aba55.jpeg",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "Juls Janeiro afirma no arrepentirse de “nada” en sus declaraciones sobre Belén Esteban: “La vida hay que tomársela con humor”",
       "link": "https://amp.marca.com/tiramillas/television/2026/08/18/juls-janeiro-afirma-arrepentirse-declaraciones-sobre-belen-esteban-vida-hay-tomarsela-humor.html",
       "source": "MARCA",
@@ -2295,6 +2691,40 @@
           "width": 1440,
           "height": 810,
           "page_url": "https://www.lasexta.com/programas/arusitys/reaccion-ramon-garcia-cuando-invitado-dice-que-saca-dientes-navaja-joder-que-tarde-estais-dando_202608186a841b7671b42a0b5df5a8d0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "«Difícil volver» | Pep Guardiola se plantea una sorprendente retirada, ya que el exentrenador del Manchester City, agotado, sugiere que puede que NUNCA regrese al fútbol",
+      "link": "https://www.goal.com/es/listados/dificil-volver-u-pep-guardiola-se-plantea-una-sorprendente-retirada-ya-que-el-exentrenador-del-manchester-city-agotado-sugiere-que-puede-que-nunca-regrese-al-futbol/blt1b9cd73bca3ef9c2",
+      "source": "Goal.com",
+      "platform": "news",
+      "published_at": "2026-08-18T11:51:50Z",
+      "social_points": 8.5,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales y curiosidades",
+        "editorial_feed": "Virales y curiosidades · prensa nacional",
+        "topic_tags": [
+          "curiosidades",
+          "deportes",
+          "insolito",
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://assets.goal.com/images/v3/getty-2277165819/crop/MM5DGMZWHA5DCOBZGU5G433XMU5DAORRG43A====/GettyImages-2277165819.jpg",
+      "image_candidates": [
+        {
+          "url": "https://assets.goal.com/images/v3/getty-2277165819/crop/MM5DGMZWHA5DCOBZGU5G433XMU5DAORRG43A====/GettyImages-2277165819.jpg",
+          "origin": "og:image:secure_url",
+          "base_score": 90.0,
+          "alt": "«Difícil volver» | Pep Guardiola se plantea una sorprendente retirada, ya que el exentrenador del Manchester City, agotado, sugiere que puede que NUNCA regrese al fútbol",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.goal.com/es/listados/dificil-volver-u-pep-guardiola-se-plantea-una-sorprendente-retirada-ya-que-el-exentrenador-del-manchester-city-agotado-sugiere-que-puede-que-nunca-regrese-al-futbol/blt1b9cd73bca3ef9c2"
         }
       ],
       "media_type": "article",
@@ -2609,6 +3039,133 @@
       "seed_trend": null
     },
     {
+      "title": "Eider Sánchez, nutricionista de Policlínica Gipuzkoa: \"El jugo de pepinillos, el aliado inesperado de los deportistas para combatir los calambres musculares\"",
+      "link": "https://sevillabuenasnoticias.com/eider-sanchez-nutricionista-de-policlinica-gipuzkoa-el-jugo-de-pepinillos-el-aliado-inesperado-de-los-deportistas-para-combatir-los-calambres-musculares/",
+      "source": "Sevilla Buenas Noticias",
+      "platform": "news",
+      "published_at": "2026-08-18T12:22:43Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Insólito y sorprendente",
+        "editorial_feed": "Google News · insólito y WTF",
+        "topic_tags": [
+          "curiosidades",
+          "insolito"
+        ]
+      },
+      "thumbnail": "https://static.comunicae.com/photos/notas/1274209/Eider-Sanchez-350x350.jpg",
+      "image_candidates": [
+        {
+          "url": "https://static.comunicae.com/photos/notas/1274209/Eider-Sanchez-350x350.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Eider Sánchez, nutricionista de Policlínica Gipuzkoa: \"El jugo de pepinillos, el aliado inesperado de los deportistas para combatir los calambres musculares\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://sevillabuenasnoticias.com/eider-sanchez-nutricionista-de-policlinica-gipuzkoa-el-jugo-de-pepinillos-el-aliado-inesperado-de-los-deportistas-para-combatir-los-calambres-musculares/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Un colaborador de 'Espejo Público' trata de insultar a Mónica García llamándola \"ama de casa\" y sale escaldado: \"Es de un machismo obsceno\"",
+      "link": "https://www.publico.es/tremending/colaborador-espejo-publico-trata-insultar-monica-garcia-llamandola-ama-casa-sale-escaldado-machismo-obsceno.html",
+      "source": "Diario Público",
+      "platform": "news",
+      "published_at": "2026-08-18T11:20:54Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tremending",
+        "editorial_feed": "Público · Tremending",
+        "topic_tags": [
+          "humor",
+          "memes",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://www.publico.es/files/og_thumbnail/uploads/2026/08/18/6a8439a074504.png",
+      "image_candidates": [
+        {
+          "url": "https://www.publico.es/files/og_thumbnail/uploads/2026/08/18/6a8439a074504.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un colaborador de 'Espejo Público' trata de insultar a Mónica García llamándola \"ama de casa\" y sale escaldado: \"Es de un machismo obsceno\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.publico.es/tremending/colaborador-espejo-publico-trata-insultar-monica-garcia-llamandola-ama-casa-sale-escaldado-machismo-obsceno.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La deuda pública alcanza un nuevo máximo de 1,76 billones en junio, aunque su peso sobre el PIB sigue cayendo",
+      "link": "https://elpais.com/economia/2026-08-18/la-deuda-publica-alcanza-un-nuevo-maximo-de-176-billones-en-junio-aunque-su-peso-sobre-el-pib-sigue-cayendo.html?outputType=amp",
+      "source": "EL PAÍS",
+      "platform": "news",
+      "published_at": "2026-08-18T10:54:53Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/SHJMD4C3MRAN7LZ727G7GUSNPE.jpg?auth=363a6078602622b990602cc0fd09d0876a3f3e352148dda807d86205af413212&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/SHJMD4C3MRAN7LZ727G7GUSNPE.jpg?auth=363a6078602622b990602cc0fd09d0876a3f3e352148dda807d86205af413212&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La deuda pública alcanza un nuevo máximo de 1,76 billones en junio, aunque su peso sobre el PIB sigue cayendo",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://elpais.com/economia/2026-08-18/la-deuda-publica-alcanza-un-nuevo-maximo-de-176-billones-en-junio-aunque-su-peso-sobre-el-pib-sigue-cayendo.html?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El timo del guardia civil falso y reincidente: engañaba a mujeres para acceder a subastas de pisos y coches",
+      "link": "https://elpais.com/espana/madrid/2026-08-18/el-timo-del-guardia-civil-falso-y-reincidente-enganaba-a-mujeres-para-acceder-a-subastas-de-pisos-y-coches.html?outputType=amp",
+      "source": "EL PAÍS",
+      "platform": "news",
+      "published_at": "2026-08-18T10:53:18Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/SEUCJKDBY5D55DSRH73WQBMGZ4.jpg?auth=bca62c3628aa6b48817c24b19a12e90c0d3914c320a2291d9b424f726a585238&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/SEUCJKDBY5D55DSRH73WQBMGZ4.jpg?auth=bca62c3628aa6b48817c24b19a12e90c0d3914c320a2291d9b424f726a585238&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El timo del guardia civil falso y reincidente: engañaba a mujeres para acceder a subastas de pisos y coches",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://elpais.com/espana/madrid/2026-08-18/el-timo-del-guardia-civil-falso-y-reincidente-enganaba-a-mujeres-para-acceder-a-subastas-de-pisos-y-coches.html?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "El club gastronómico",
       "link": "https://elpais.com/television/series/el-club-gastronomico/?outputType=amp",
       "source": "EL PAÍS",
@@ -2634,6 +3191,37 @@
           "width": 0,
           "height": 0,
           "page_url": "https://elpais.com/television/series/el-club-gastronomico/?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El lado más paranormal de Kaia Gerber: un exorcismo cuando era niña y agua bendita para rodar ‘American Horror Story’",
+      "link": "https://elpais.com/gente/2026-08-18/el-lado-mas-paranormal-de-kaia-gerber-un-exorcismo-cuando-era-nina-y-agua-bendita-para-rodar-american-horror-story.html?outputType=amp",
+      "source": "EL PAÍS",
+      "platform": "news",
+      "published_at": "2026-08-18T10:24:10Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/UU5UOHBRPBEMDNCRBSUUQVJIJQ.jpg?auth=e8669a8f4dcc9990c51f6917f2ffafe155f34e54b80ce1183d706df390cdaeb9&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/UU5UOHBRPBEMDNCRBSUUQVJIJQ.jpg?auth=e8669a8f4dcc9990c51f6917f2ffafe155f34e54b80ce1183d706df390cdaeb9&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El lado más paranormal de Kaia Gerber: un exorcismo cuando era niña y agua bendita para rodar ‘American Horror Story’",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://elpais.com/gente/2026-08-18/el-lado-mas-paranormal-de-kaia-gerber-un-exorcismo-cuando-era-nina-y-agua-bendita-para-rodar-american-horror-story.html?outputType=amp"
         }
       ],
       "media_type": "article",
@@ -2667,6 +3255,37 @@
           "width": 0,
           "height": 0,
           "page_url": "https://los40.com/2026/08/18/eclipse-lunar-parcial-2026-cuando-es-y-desde-donde-se-podra-ver/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Los hijos de Robin Williams reactivan la cuenta de Instagram del actor en el que habría sido su 75º cumpleaños: “Queremos que sea un lugar seguro”",
+      "link": "https://elpais.com/gente/2026-08-18/los-hijos-de-robin-williams-reactivan-la-cuenta-de-instagram-del-actor-en-el-que-habria-sido-su-75-cumpleanos-queremos-que-sea-un-lugar-seguro.html?outputType=amp",
+      "source": "EL PAÍS",
+      "platform": "news",
+      "published_at": "2026-08-18T10:03:09Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Redes y creadores",
+        "editorial_feed": "Google News · redes y creadores",
+        "topic_tags": [
+          "famosos",
+          "redes"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/FSMCPP4HEFEUDF75VLTJN6TW5Q.jpg?auth=d4c7abe48cb262f8669c4611ab3443e0743ef08b25a7fef1c0c531f2366b9f78&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/FSMCPP4HEFEUDF75VLTJN6TW5Q.jpg?auth=d4c7abe48cb262f8669c4611ab3443e0743ef08b25a7fef1c0c531f2366b9f78&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Los hijos de Robin Williams reactivan la cuenta de Instagram del actor en el que habría sido su 75º cumpleaños: “Queremos que sea un lugar seguro”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://elpais.com/gente/2026-08-18/los-hijos-de-robin-williams-reactivan-la-cuenta-de-instagram-del-actor-en-el-que-habria-sido-su-75-cumpleanos-queremos-que-sea-un-lugar-seguro.html?outputType=amp"
         }
       ],
       "media_type": "article",
@@ -2760,6 +3379,40 @@
           "width": 0,
           "height": 0,
           "page_url": "https://elpais.com/deportes/resultados/futbol/previa_conference_league/2026_2027/directo/playoff-a-1-6a7cc0b37324125/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Una directora general del PP de Aragón publica un tuit negacionista y xenófobo con el fuego en Riglos y las redes estallan: \"Odio y racismo no apagan incendios\"",
+      "link": "https://www.publico.es/tremending/directora-pp-aragon-usa-fuego-riglos-lanzar-mensaje-negacionista-xenofobo-redes-contestan-odio-racismo-sirven-apagar-incendios.html",
+      "source": "Diario Público",
+      "platform": "news",
+      "published_at": "2026-08-18T09:27:19Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tremending",
+        "editorial_feed": "Público · Tremending",
+        "topic_tags": [
+          "humor",
+          "memes",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://www.publico.es/files/og_thumbnail/files/fp/uploads/2026/08/18/6a841e38a6716.r_d.1118-675-0.png",
+      "image_candidates": [
+        {
+          "url": "https://www.publico.es/files/og_thumbnail/files/fp/uploads/2026/08/18/6a841e38a6716.r_d.1118-675-0.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Una directora general del PP de Aragón publica un tuit negacionista y xenófobo con el fuego en Riglos y las redes estallan: \"Odio y racismo no apagan incendios\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.publico.es/tremending/directora-pp-aragon-usa-fuego-riglos-lanzar-mensaje-negacionista-xenofobo-redes-contestan-odio-racismo-sirven-apagar-incendios.html"
         }
       ],
       "media_type": "article",
@@ -2899,6 +3552,66 @@
       "seed_trend": null
     },
     {
+      "title": "Un incendio forestal en Vila-seca moviliza cinco dotaciones para evitar que alcance la A-7",
+      "link": "https://www.lavanguardia.com/local/tarragona/20260818/11616005/incendio-forestal-vila-seca-moviliza-cinco-dotaciones-evitar-alcance-7.html",
+      "source": "La Vanguardia",
+      "platform": "news",
+      "published_at": "2026-08-18T12:07:09Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sucesos en España",
+        "editorial_feed": "Google News · sucesos España",
+        "topic_tags": [
+          "sucesos"
+        ]
+      },
+      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2025/04/30/6811f84eac237.r_d.481-347.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2025/04/30/6811f84eac237.r_d.481-347.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un incendio forestal en Vila-seca moviliza cinco dotaciones para evitar que alcance la A-7",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lavanguardia.com/local/tarragona/20260818/11616005/incendio-forestal-vila-seca-moviliza-cinco-dotaciones-evitar-alcance-7.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El conductor que atropelló al cliclista en la Volta a Portugal afirma que le aseguraron que podía pasar por la vía del accidente",
+      "link": "https://www.lavanguardia.com/deportes/ciclismo/20260818/11615998/conductor-atropello-cliclista-volta-portugal-afirma-le-aseguraron-podia-pasar-accidente.html",
+      "source": "La Vanguardia",
+      "platform": "news",
+      "published_at": "2026-08-18T12:06:25Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sucesos en España",
+        "editorial_feed": "Google News · sucesos España",
+        "topic_tags": [
+          "sucesos"
+        ]
+      },
+      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/14/6a7f457c9fb7a.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/14/6a7f457c9fb7a.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El conductor que atropelló al cliclista en la Volta a Portugal afirma que le aseguraron que podía pasar por la vía del accidente",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lavanguardia.com/deportes/ciclismo/20260818/11615998/conductor-atropello-cliclista-volta-portugal-afirma-le-aseguraron-podia-pasar-accidente.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Juzgan a Meta por fomentar la adicción de menores a las redes sociales con Facebook e Instagram",
       "link": "https://www.diaridetarragona.com/economia/268698/estados-unidos-juzga-meta-fomentar-adiccion-redes-sociales-menores_amp.html",
       "source": "Diari de Tarragona",
@@ -3004,37 +3717,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.trendencias.com/redes-sociales/caida-influencers-asi-estalla-chispa-audiencia-harta-unas-vidas-aparentemente-perfectas/amp"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Los hijos de Robin Williams reactivan la cuenta de Instagram del actor en el que habría sido su 75º cumpleaños: “Queremos que sea un lugar seguro”",
-      "link": "https://elpais.com/gente/2026-08-18/los-hijos-de-robin-williams-reactivan-la-cuenta-de-instagram-del-actor-en-el-que-habria-sido-su-75-cumpleanos-queremos-que-sea-un-lugar-seguro.html?outputType=amp",
-      "source": "EL PAÍS",
-      "platform": "news",
-      "published_at": "2026-08-18T10:03:09Z",
-      "social_points": 7.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Redes y creadores",
-        "editorial_feed": "Google News · redes y creadores",
-        "topic_tags": [
-          "famosos",
-          "redes"
-        ]
-      },
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/FSMCPP4HEFEUDF75VLTJN6TW5Q.jpg?auth=d4c7abe48cb262f8669c4611ab3443e0743ef08b25a7fef1c0c531f2366b9f78&width=1200",
-      "image_candidates": [
-        {
-          "url": "https://imagenes.elpais.com/resizer/v2/FSMCPP4HEFEUDF75VLTJN6TW5Q.jpg?auth=d4c7abe48cb262f8669c4611ab3443e0743ef08b25a7fef1c0c531f2366b9f78&width=1200",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Los hijos de Robin Williams reactivan la cuenta de Instagram del actor en el que habría sido su 75º cumpleaños: “Queremos que sea un lugar seguro”",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://elpais.com/gente/2026-08-18/los-hijos-de-robin-williams-reactivan-la-cuenta-de-instagram-del-actor-en-el-que-habria-sido-su-75-cumpleanos-queremos-que-sea-un-lugar-seguro.html?outputType=amp"
         }
       ],
       "media_type": "article",
@@ -3243,6 +3925,36 @@
       "seed_trend": null
     },
     {
+      "title": "Un futbolista francés de Cagliari está en coma inducido tras estar a punto de ahogarse en una piscina",
+      "link": "https://www.gamereactor.es/un-futbolista-frances-de-cagliari-ha-entrado-en-coma-inducido-tras-estar-a-punto-de-ahogarse-en-una-piscina-1769873/",
+      "source": "Gamereactor",
+      "platform": "news",
+      "published_at": "2026-08-18T11:25:22Z",
+      "social_points": 6.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Deporte viral",
+        "editorial_feed": "Google News · deporte viral",
+        "topic_tags": [
+          "deportes"
+        ]
+      },
+      "thumbnail": "https://www.gamereactor.es/media/12/_4971273b.jpg",
+      "image_candidates": [
+        {
+          "url": "https://www.gamereactor.es/media/12/_4971273b.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un futbolista francés de Cagliari está en coma inducido tras estar a punto de ahogarse en una piscina",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.gamereactor.es/un-futbolista-frances-de-cagliari-ha-entrado-en-coma-inducido-tras-estar-a-punto-de-ahogarse-en-una-piscina-1769873/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Gran Hermano: Alejandra Majluf fue eliminada tras un mano a mano con Luana",
       "link": "https://www.ellitoral.com/show/granhermano-eliminacion-alejandramajluf-manoamano-luana-nominados-votacionpublico_0_SS3VkRLOKM.html",
       "source": "El Litoral",
@@ -3300,6 +4012,128 @@
           "width": 0,
           "height": 0,
           "page_url": "https://amp.periodicodeibiza.es/vips/quiosco-rosa/2026/08/18/2691101/estos-son-famosos-han-dejado-ver-pacha-mes-agosto.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Robbie Williams cumple un sueño de infancia con el lanzamiento de un exclusivo cromo «brilli-brilli» de Port Vale y Panini",
+      "link": "https://www.goal.com/es/listados/robbie-williams-cumple-un-sueno-de-infancia-con-el-lanzamiento-de-un-exclusivo-cromo-brilli-brilli-de-port-vale-y-panini/blt39a34d087a3ea214",
+      "source": "Goal.com",
+      "platform": "news",
+      "published_at": "2026-08-18T12:27:31Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Videojuegos y nostalgia",
+        "editorial_feed": "Google News · videojuegos y nostalgia",
+        "topic_tags": [
+          "nostalgia",
+          "videojuegos"
+        ]
+      },
+      "thumbnail": "https://assets.goal.com/images/v3/getty-1965143943/crop/MM5DGNRZGY5DEMBXHE5G433XMU5DOMRRHIZDCMA=/GettyImages-1965143943.jpg",
+      "image_candidates": [
+        {
+          "url": "https://assets.goal.com/images/v3/getty-1965143943/crop/MM5DGNRZGY5DEMBXHE5G433XMU5DOMRRHIZDCMA=/GettyImages-1965143943.jpg",
+          "origin": "og:image:secure_url",
+          "base_score": 90.0,
+          "alt": "Robbie Williams cumple un sueño de infancia con el lanzamiento de un exclusivo cromo «brilli-brilli» de Port Vale y Panini",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.goal.com/es/listados/robbie-williams-cumple-un-sueno-de-infancia-con-el-lanzamiento-de-un-exclusivo-cromo-brilli-brilli-de-port-vale-y-panini/blt39a34d087a3ea214"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Isabel Pantoja se ha reencontrado con una persona muy importante de su pasado: \"Las cosas entre ellas están muy bien\"",
+      "link": "https://www.telecinco.es/famosos/20260818/isabel-pantoja-reencuentro-persona-importante-pasado-cosas-entre-ellas-bien_18_019973028.html",
+      "source": "Telecinco · RSS",
+      "platform": "news",
+      "published_at": "2026-08-18T12:04:07Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Telecinco",
+        "editorial_feed": "Telecinco · RSS",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "thumbnail": "https://album.mediaset.es/eimg/2026/08/18/isabel-pantoja-se-ha-reencontrado-con-una-persona-muy-importante-de-su-pasado-las-cosas-entre-ellas_cdb6.jpg",
+      "image_candidates": [
+        {
+          "url": "https://album.mediaset.es/eimg/2026/08/18/isabel-pantoja-se-ha-reencontrado-con-una-persona-muy-importante-de-su-pasado-las-cosas-entre-ellas_cdb6.jpg",
+          "origin": "feed:enclosure",
+          "base_score": 96.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.telecinco.es/famosos/20260818/isabel-pantoja-reencuentro-persona-importante-pasado-cosas-entre-ellas-bien_18_019973028.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El importante papel de Gloria González para que Sandra Barrios conociera a su nueva ilusión: “Hice de Cupido”",
+      "link": "https://www.telecinco.es/famosos/20260818/gloria-gonzalez-cuenta-como-presento-sandra-barrios-nueva-ilusion-gh-duo_18_019972956.html",
+      "source": "Telecinco · RSS",
+      "platform": "news",
+      "published_at": "2026-08-18T11:36:00Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Telecinco",
+        "editorial_feed": "Telecinco · RSS",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "thumbnail": "https://album.mediaset.es/eimg/2026/08/18/el-importante-papel-de-gloria-gonzalez-para-que-sandra-barrios-conociera-a-su-nueva-ilusion-yo-puedo_5d6a.jpg",
+      "image_candidates": [
+        {
+          "url": "https://album.mediaset.es/eimg/2026/08/18/el-importante-papel-de-gloria-gonzalez-para-que-sandra-barrios-conociera-a-su-nueva-ilusion-yo-puedo_5d6a.jpg",
+          "origin": "feed:enclosure",
+          "base_score": 96.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.telecinco.es/famosos/20260818/gloria-gonzalez-cuenta-como-presento-sandra-barrios-nueva-ilusion-gh-duo_18_019972956.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Hacia la puesta de sol: El legendario Warren Spector anuncia su retirada del desarrollo de videojuegos",
+      "link": "https://www.gamereactor.es/warren-spector-director-de-thief-deus-ex-y-disney-epic-mickey-se-retira-del-mundo-de-los-videojuegos-1769733/",
+      "source": "Gamereactor",
+      "platform": "news",
+      "published_at": "2026-08-18T11:31:15Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Videojuegos y nostalgia",
+        "editorial_feed": "Google News · videojuegos y nostalgia",
+        "topic_tags": [
+          "nostalgia",
+          "videojuegos"
+        ]
+      },
+      "thumbnail": "https://www.gamereactor.es/media/40/_4864023b.jpg",
+      "image_candidates": [
+        {
+          "url": "https://www.gamereactor.es/media/40/_4864023b.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Hacia la puesta de sol: El legendario Warren Spector anuncia su retirada del desarrollo de videojuegos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.gamereactor.es/warren-spector-director-de-thief-deus-ex-y-disney-epic-mickey-se-retira-del-mundo-de-los-videojuegos-1769733/"
         }
       ],
       "media_type": "article",
@@ -3398,31 +4232,40 @@
       "seed_trend": null
     },
     {
-      "title": "Warren Spector, director de Thief, Deus Ex y Disney Epic Mickey, se retira del mundo de los videojuegos",
-      "link": "https://www.gamereactor.es/warren-spector-director-de-thief-deus-ex-y-disney-epic-mickey-se-retira-del-mundo-de-los-videojuegos-1769733/",
-      "source": "Gamereactor",
+      "title": "Retrasos en varías líneas de Rodalíes por el atropello a una persona entre Vilanova i la Geltrú y Sitges",
+      "link": "https://www.antena3.com/noticias/sociedad/retrasos-varias-lineas-rodalies-atropello-persona-vilanova-geltru-sitges_202608186a843249a5690f047380578b.html",
+      "source": "Antena 3",
       "platform": "news",
-      "published_at": "2026-08-18T08:58:12Z",
+      "published_at": "2026-08-18T10:22:01Z",
       "social_points": 5.0,
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Videojuegos y nostalgia",
-        "editorial_feed": "Google News · videojuegos y nostalgia",
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
         "topic_tags": [
-          "nostalgia",
-          "videojuegos"
-        ]
+          "sucesos"
+        ],
+        "source_mode": "direct-section"
       },
-      "thumbnail": "https://www.gamereactor.es/media/40/_4864023b.jpg",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/01/22/0EC060CC-1698-412D-A19C-A83B6740A9CC/imagen-trenes-rodalies_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
       "image_candidates": [
         {
-          "url": "https://www.gamereactor.es/media/40/_4864023b.jpg",
+          "url": "https://fotografias.antena3.com/clipping/cmsimages01/2026/01/22/0EC060CC-1698-412D-A19C-A83B6740A9CC/imagen-trenes-rodalies_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
           "origin": "og:image",
           "base_score": 90.0,
-          "alt": "Warren Spector, director de Thief, Deus Ex y Disney Epic Mickey, se retira del mundo de los videojuegos",
+          "alt": "Retrasos en varías líneas de Rodalíes por el atropello a una persona entre Vilanova i la Geltrú y Sitges",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.gamereactor.es/warren-spector-director-de-thief-deus-ex-y-disney-epic-mickey-se-retira-del-mundo-de-los-videojuegos-1769733/"
+          "page_url": "https://www.antena3.com/noticias/sociedad/retrasos-varias-lineas-rodalies-atropello-persona-vilanova-geltru-sitges_202608186a843249a5690f047380578b.html"
+        },
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages01/2026/01/22/0EC060CC-1698-412D-A19C-A83B6740A9CC/imagen-trenes-rodalies_96.jpg?crop=1920,1080,x0,y99&width=1200&height=675&optimize=low&format=webply",
+          "origin": "section:rss",
+          "base_score": 94.0,
+          "alt": "Retrasos en varías líneas de Rodalíes por el atropello a una persona entre Vilanova i la Geltrú y Sitges",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/retrasos-varias-lineas-rodalies-atropello-persona-vilanova-geltru-sitges_202608186a843249a5690f047380578b.html"
         }
       ],
       "media_type": "article",
@@ -3461,11 +4304,50 @@
       "seed_trend": null
     },
     {
+      "title": "Juan Roig, presidente de Mercadona, sobre pagar 1.000 euros por un móvil: «Creo que es mucho más valioso producir un litro de leche bueno», y pone de relieve el valor de la alimentación",
+      "link": "https://www.larazon.es/sociedad/juan-roig-presidente-mercadona-pagar-1000-euros-movil-creo-que-mucho-mas-valioso-producir-litro-leche-bueno-pone-relieve-valor-alimentacion_202608186a844e86a046ad6ebcb82ee9.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-18T12:22:30Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": [
+          "tecnologia"
+        ]
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/03/20/29853410-96B0-4C9F-B1CB-14425BEBF91F/juan-roig-defiende-idea-cuidar-empleados_98.jpg?crop=1242,699,x19,y0&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/03/20/29853410-96B0-4C9F-B1CB-14425BEBF91F/juan-roig-defiende-idea-cuidar-empleados_98.jpg?crop=1242,699,x19,y0&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Juan Roig, presidente de Mercadona, sobre pagar 1.000 euros por un móvil: «Creo que es mucho más valioso producir un litro de leche bueno», y pone de relieve el valor de la alimentación",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/juan-roig-presidente-mercadona-pagar-1000-euros-movil-creo-que-mucho-mas-valioso-producir-litro-leche-bueno-pone-relieve-valor-alimentacion_202608186a844e86a046ad6ebcb82ee9.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/03/20/29853410-96B0-4C9F-B1CB-14425BEBF91F/juan-roig-defiende-idea-cuidar-empleados_96.jpg?crop=1243,699,x19,y0&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/juan-roig-presidente-mercadona-pagar-1000-euros-movil-creo-que-mucho-mas-valioso-producir-litro-leche-bueno-pone-relieve-valor-alimentacion_202608186a844e86a046ad6ebcb82ee9.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Terremoto en Granada, en directo: última hora de los seísmos, réplicas, heridos y daños",
       "link": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-seismos-replicas-heridos-danos_202608186a84404ea5690f0473807273.html",
       "source": "La Razón · Sociedad",
       "platform": "news",
-      "published_at": "2026-08-18T11:40:19Z",
+      "published_at": "2026-08-18T12:20:17Z",
       "social_points": 2.0,
       "metrics": {
         "curated_editorial": true,
@@ -3877,6 +4759,54 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.larazon.es/sociedad/espana-registra-254730-hectareas-quemadas-17-agosto-menos-que-2025_202608186a841cd2a046ad6ebcb7c471.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
+      "link": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html",
+      "source": "La Vanguardia · Portada",
+      "platform": "news",
+      "published_at": "2026-08-18T11:18:14Z",
+      "social_points": 0.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada general filtrada",
+        "editorial_feed": "La Vanguardia · Portada",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/18/6a844baa8f4a3.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/18/6a844baa8f4a3.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html"
+        },
+        {
+          "url": "https://www.lavanguardia.com/files/og_thumbnail/files/fp/uploads/2026/08/18/6a84399309f15.r_d.2240-1494-0.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html"
+        },
+        {
+          "url": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/18/6a843f43aba55.jpeg",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html"
         }
       ],
       "media_type": "article",
