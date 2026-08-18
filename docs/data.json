@@ -1,20 +1,19 @@
 {
-  "updated_at": "2026-08-18T12:29:45.939900Z",
+  "updated_at": "2026-08-18T12:53:14.601529Z",
   "trends_google": [
+    "telenovela",
+    "francho serrano",
+    "gamper",
     "concejal",
     "a beautiful obsession",
+    "el campello",
     "real federación española de fútbol",
     "alexander sørloth",
     "mathilde favier",
-    "petróleo",
-    "gonzalo plata",
-    "sacyr",
-    "cabañuelas",
-    "viktor tsygankov"
+    "petróleo"
   ],
   "trends_x": [],
   "trends_forocoches": [
-    "FINLANDIA se HUNDE desde que gobierna la DERECHA (no se podía saber)",
     "He tenido una hija con una mujer india y respondo preguntas",
     "AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
     "Luz verde de Flick al plan B al 9, sería Harry Kane",
@@ -30,23 +29,129 @@
     "Estás son las CALIDADES de un MG ZS por debajo",
     "Me acabo de gastar 4k en un MacBook y respondo preguntas",
     "Dejarías de trabajar por 1450 al mes en 12 pagas ?",
-    "En qué ha mejorado Madrid con Ayuso?",
+    "PAULA MARTÍNEZ la NUEVA VOZ DEL ESPECTADOR DEL CHIRINGUITO ¿ALBERTOO?",
+    "Me pillan los alambres en 400km? +Neumáticos",
     "Esta FOTO está editada o es verdad???",
     "Alguien tiene un TDI con 500.000km???",
     "Un saludo a la gente que se compró una tele 8K",
-    "Vas en kayak y te encuentras esto",
     "617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
-    "Cuándo es a las hijas de los demás VS cuando es a tu hija",
     "Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
     "Alguna vez te ha pasado algo que no puedes explicar? tema serio",
     "me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
     "Es imposible que pasen más cosas en un vídeo",
     "Dime una peli guapa para verme no posterior a 2005",
     "Vuelvo de vacaciones y sorpresa.... +OKUPAS",
-    "Las puertas son mentira"
+    "Os acordais de Pablo Casado",
+    "Las puertas son mentira",
+    "La mentira de la masia"
   ],
   "trend_details": {
     "google": [
+      {
+        "name": "telenovela",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-18T12:40:00Z",
+        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRzW-FMXgc9RXgI5U2Ksk7s70E0NC-mypAWukIE8gB5doRYgtY7tj6BVfgiMwc",
+        "picture_source": "Diez Minutos",
+        "news": [
+          {
+            "title": "De 'Cristal', a 'La usurpadora', las telenovelas que marcaron una época en los años 90",
+            "url": "https://www.diezminutos.es/telenovela/otras/a73352973/telenovelas-mas-exitosas-anos-90-cristal-la-usurpadora/",
+            "source": "Diez Minutos",
+            "snippet": null
+          },
+          {
+            "title": "Grabaron Telenovela Mexicana en África",
+            "url": "https://elorbe.com/orbita-de-estrellas/2026/08/17/grabaron-telenovela-mexicana-en-africa.html",
+            "source": "Periódico El Orbe.",
+            "snippet": null
+          },
+          {
+            "title": "Sale a la luz la causa de la muerte de la actriz Hayden Panettiere con solo 36 años",
+            "url": "https://as.com/meristation/cine/sale-a-la-luz-la-causa-de-la-muerte-de-la-actriz-hayden-panettiere-con-solo-36-anos-f202608-n/",
+            "source": "Diario AS",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "De 'Cristal', a 'La usurpadora', las telenovelas que marcaron una época en los años 90",
+          "url": "https://www.diezminutos.es/telenovela/otras/a73352973/telenovelas-mas-exitosas-anos-90-cristal-la-usurpadora/",
+          "source": "Diez Minutos",
+          "snippet": null
+        }
+      },
+      {
+        "name": "francho serrano",
+        "traffic": 100,
+        "traffic_label": "100+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-18T12:40:00Z",
+        "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSn50Ra5KyRJ0yvvrJb0WnMGag2sk7jE1ooinCZXT5dO9hYg6S92g69L2x8DC8",
+        "picture_source": "El Periódico de Aragón",
+        "news": [
+          {
+            "title": "Francho Serrano maneja una buena oferta y tiene pie y medio fuera del Real Zaragoza",
+            "url": "https://www.elperiodicodearagon.com/real-zaragoza/2026/08/17/francho-serrano-maneja-buena-oferta-133438903.html",
+            "source": "El Periódico de Aragón",
+            "snippet": null
+          },
+          {
+            "title": "Vuelta al trabajo con cerca de 300 zaragocistas en la Ciudad Deportiva",
+            "url": "https://www.realzaragoza.com/noticias/vuelta-al-trabajo-con-cerca-de-300-zaragocistas-en-la-ciudad-deportiva",
+            "source": "Real Zaragoza",
+            "snippet": null
+          },
+          {
+            "title": "Escudero y Monzón ausentes en el entrenamiento a puerta abierta del Real Zaragoza",
+            "url": "https://www.heraldo.es/noticias/deportes/futbol/real-zaragoza/2026/08/18/escudero-monzon-ausentes-entrenamiento-puerta-abierta-real-zaragoza-2045538.html",
+            "source": "heraldo.es",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Francho Serrano maneja una buena oferta y tiene pie y medio fuera del Real Zaragoza",
+          "url": "https://www.elperiodicodearagon.com/real-zaragoza/2026/08/17/francho-serrano-maneja-buena-oferta-133438903.html",
+          "source": "El Periódico de Aragón",
+          "snippet": null
+        }
+      },
+      {
+        "name": "gamper",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-18T12:30:00Z",
+        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw1Def30h-Y2szCAt_8QcAU6BkaAqpf2KaS1iiUFGwrNZDfpytVAwGSs15rQE",
+        "picture_source": "FC Barcelona",
+        "news": [
+          {
+            "title": "Session looking ahead to the Gamper",
+            "url": "https://www.fcbarcelona.com/en/football/first-team/news/4561805/session-looking-ahead-to-the-gamper",
+            "source": "FC Barcelona",
+            "snippet": null
+          },
+          {
+            "title": "Mobility and accessibility for the 61st Estrella Damm Gamper Festival",
+            "url": "https://www.fcbarcelona.com/en/club/news/4561329/mobility-and-accessibility-for-the-61st-estrella-damm-gamper-festival",
+            "source": "FC Barcelona",
+            "snippet": null
+          },
+          {
+            "title": "La Festa del Gamper Estrella Damm, live on Barça Play and YouTube",
+            "url": "https://www.fcbarcelona.com/en/news/4561063/la-festa-del-gamper-estrella-damm-live-on-barca-play-and-youtube",
+            "source": "FC Barcelona",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Session looking ahead to the Gamper",
+          "url": "https://www.fcbarcelona.com/en/football/first-team/news/4561805/session-looking-ahead-to-the-gamper",
+          "source": "FC Barcelona",
+          "snippet": null
+        }
+      },
       {
         "name": "concejal",
         "traffic": 200,
@@ -118,6 +223,41 @@
         }
       },
       {
+        "name": "el campello",
+        "traffic": 200,
+        "traffic_label": "200+",
+        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+        "published_at": "2026-08-18T12:10:00Z",
+        "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR0lFyQexO8ljnid3hn3XXMMEQ_jgRaXAUVdrI7-uBKfohGjputUyQBVcCComA",
+        "picture_source": "Cadena SER",
+        "news": [
+          {
+            "title": "Evacuadas varias familias por un incendio en El Campello",
+            "url": "https://cadenaser.com/comunitat-valenciana/2026/08/18/evacuadas-varias-familias-por-un-incendio-en-el-campello-radio-alicante/",
+            "source": "Cadena SER",
+            "snippet": null
+          },
+          {
+            "title": "Un incendio doméstico obliga a evacuar varias viviendas en El Campello",
+            "url": "https://www.abc.es/espana/comunidad-valenciana/alicante/incendio-domestico-obliga-evacuar-varias-viviendas-campello-20260818124543-nt.html",
+            "source": "ABC",
+            "snippet": null
+          },
+          {
+            "title": "Un incendio en una vivienda de El Campello obliga a evacuar a varias familias",
+            "url": "https://www.informacion.es/sucesos/sucesos-en-alicante/2026/08/18/incendio-vivienda-campello-obliga-evacuar-133451663.html",
+            "source": "Información",
+            "snippet": null
+          }
+        ],
+        "top_news": {
+          "title": "Evacuadas varias familias por un incendio en El Campello",
+          "url": "https://cadenaser.com/comunitat-valenciana/2026/08/18/evacuadas-varias-familias-por-un-incendio-en-el-campello-radio-alicante/",
+          "source": "Cadena SER",
+          "snippet": null
+        }
+      },
+      {
         "name": "real federación española de fútbol",
         "traffic": 100,
         "traffic_label": "100+",
@@ -133,15 +273,15 @@
             "snippet": null
           },
           {
-            "title": "A partir de este miércoles, a la venta las entradas para los partidos de España en Sevilla y Oviedo",
-            "url": "https://rfef.es/es/noticias/ya-la-venta-las-entradas-para-los-primeros-partidos-de-espana-como-campeona-del-mundo",
-            "source": "RFEF",
-            "snippet": null
-          },
-          {
             "title": "Abonados y Carnet Oviedista tendrán venta preferente para el España–República Checa",
             "url": "https://www.realoviedo.es/noticias/abonados-y-carnet-oviedista-tendran-venta-preferente-para-el-espana-republica-checa",
             "source": "Real Oviedo",
+            "snippet": null
+          },
+          {
+            "title": "Los socios del Real Oviedo, con derecho preferente para las entradas de España",
+            "url": "https://as.com/futbol/segunda/los-socios-del-real-oviedo-con-derecho-preferente-para-las-entradas-de-espana-f202608-n/",
+            "source": "Diario AS",
             "snippet": null
           }
         ],
@@ -189,8 +329,8 @@
       },
       {
         "name": "mathilde favier",
-        "traffic": 500,
-        "traffic_label": "500+",
+        "traffic": 1000,
+        "traffic_label": "1000+",
         "trend_url": "https://trends.google.com/trending/rss?geo=ES",
         "published_at": "2026-08-18T11:40:00Z",
         "picture": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQEFK_LLKtvgGBeBe84f8w8ZsDHr_CdI5qVMrqNIVXjveM0pLTqyxUtwfua-gs",
@@ -203,15 +343,15 @@
             "snippet": null
           },
           {
-            "title": "Nicolas Altmayer, producteur d’« OSS 117 », et sa compagne, Mathilde Favier, cadre chez Dior meurent dans un accident de la route",
+            "title": "Nicolas Altmayer, producteur d’« OSS 117 », et sa compagne, Mathilde Favier, cadre chez Dior, meurent dans un accident de la route",
             "url": "https://www.lemonde.fr/disparitions/article/2026/08/18/nicolas-altmayer-producteur-de-oss-117-et-sa-compagne-mathilde-favier-meurent-dans-un-accident-de-la-route-dans-les-deux-sevres_6749044_3382.html",
             "source": "Le Monde.fr",
             "snippet": null
           },
           {
-            "title": "Mort du producteur d'\"OSS 117\" Nicolas Altmayer et de la figure de Dior Mathilde Favier dans un accident de la circulation",
-            "url": "https://www.bfmtv.com/people/mort-du-producteur-nicolas-altmayer-et-de-la-figure-de-la-mode-mathilde-favier-dans-un-accident-de-la-circulation_AN-202608180281.html",
-            "source": "BFM",
+            "title": "Nicolas Altmayer, producteur d’OSS 117, et une figure de Dior, Mathilde Favier, sont morts dans un accident de la route",
+            "url": "https://www.lefigaro.fr/cinema/nicolas-altmayer-producteur-d-oss-117-et-une-figure-de-dior-mathilde-favier-sont-morts-dans-un-accident-de-la-route-20260818",
+            "source": "Le Figaro",
             "snippet": null
           }
         ],
@@ -256,245 +396,111 @@
           "source": "Expansión",
           "snippet": null
         }
-      },
-      {
-        "name": "gonzalo plata",
-        "traffic": 200,
-        "traffic_label": "200+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-18T11:20:00Z",
-        "picture": "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT-PlmwOWWEAKLVcPqYMByfqGpWfZJTVMIZUpQcNIz6bXppfd7TreJokBRyxvY",
-        "picture_source": "Noticias de Gipuzkoa",
-        "news": [
-          {
-            "title": "La Real Sociedad se interesa por Gonzalo Plata",
-            "url": "https://www.noticiasdegipuzkoa.eus/reala/mercado-de-fichajes/2026/08/18/real-sociedad-interesa-fichaje-gonzalo-plata-flamengo-11446437.html",
-            "source": "Noticias de Gipuzkoa",
-            "snippet": null
-          },
-          {
-            "title": "Gonzalo Plata puede volver a España",
-            "url": "https://www.fichajes.com/a8268434983617071978-gonzalo-plata-puede-volver-a-espana",
-            "source": "Fichajes.com",
-            "snippet": null
-          },
-          {
-            "title": "Clube de Regatas do Flamengo - Cruzeiro | Pronóstico y cuotas 20.08.2026",
-            "url": "https://as.com/apuestas/pronosticos/cr-flamengo-vs-cruzeiro-pronostico-20-08-2026/",
-            "source": "Diario AS",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "La Real Sociedad se interesa por Gonzalo Plata",
-          "url": "https://www.noticiasdegipuzkoa.eus/reala/mercado-de-fichajes/2026/08/18/real-sociedad-interesa-fichaje-gonzalo-plata-flamengo-11446437.html",
-          "source": "Noticias de Gipuzkoa",
-          "snippet": null
-        }
-      },
-      {
-        "name": "sacyr",
-        "traffic": 100,
-        "traffic_label": "100+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-18T11:20:00Z",
-        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSL_y8PdaE_F1juMGYKkVNw8yrmyVqgUX031TrSOwax71Z05KdLdw99c6lYajk",
-        "picture_source": "Expansión",
-        "news": [
-          {
-            "title": "ACS, FCC, Acciona y Sacyr disparan a récord sus pedidos",
-            "url": "https://www.expansion.com/empresas/inmobiliario/2026/08/18/6a837658e5fdea8e758b457b.html",
-            "source": "Expansión",
-            "snippet": null
-          },
-          {
-            "title": "La Primera de Expansión sobre ACS, FCC, Acciona, Sacyr, Ferrovial y Cox",
-            "url": "https://www.expansion.com/podcasts/la-primera-de-expansion/2026/08/18/6a83ef64468aebe4228b458e.html",
-            "source": "Expansión",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "ACS, FCC, Acciona y Sacyr disparan a récord sus pedidos",
-          "url": "https://www.expansion.com/empresas/inmobiliario/2026/08/18/6a837658e5fdea8e758b457b.html",
-          "source": "Expansión",
-          "snippet": null
-        }
-      },
-      {
-        "name": "cabañuelas",
-        "traffic": 200,
-        "traffic_label": "200+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-18T11:10:00Z",
-        "picture": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQyFiWfMZ6xcdAZJ0qDb3QYalrJPyMztGk4tdRmHB97JgOsocEW66RW2scthmQ",
-        "picture_source": "OkDiario",
-        "news": [
-          {
-            "title": "Las cabañuelas de Jorge Rey confirman el pronóstico: \"una ventana de mayor actividad tormentosa en el noreste peninsular\"",
-            "url": "https://okdiario.com/sociedad/cabanuelas-jorge-rey-confirman-pronostico-ventana-mayor-actividad-tormentosa-noreste-peninsular-19552068",
-            "source": "OkDiario",
-            "snippet": null
-          },
-          {
-            "title": "Las Cabañuelas de Jorge Rey confirman el pronóstico del 14 al 16 de agosto: \"Calor persistente en el centro con 32–37 °C y una ventana de mayor actividad tormentosa en el noreste peninsular\"",
-            "url": "https://www.lecturas.com/diario/cabanuelas-jorge-rey-confirman-pronostico-14-16-agosto-calor-persistente-centro-3237-c-ventana-mayor-actividad-tormentosa-noreste-peninsular_197092",
-            "source": "Lecturas",
-            "snippet": null
-          },
-          {
-            "title": "Otoño muy cálido: Jorge Rey alerta sobre tendencias atmosféricas calurosas",
-            "url": "https://nuevocronica.es/otono-muy-calido-jorge-rey-alerta-sobre-tendencias-atmosfericas-calurosas",
-            "source": "nuevocronica.es",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "Las cabañuelas de Jorge Rey confirman el pronóstico: \"una ventana de mayor actividad tormentosa en el noreste peninsular\"",
-          "url": "https://okdiario.com/sociedad/cabanuelas-jorge-rey-confirman-pronostico-ventana-mayor-actividad-tormentosa-noreste-peninsular-19552068",
-          "source": "OkDiario",
-          "snippet": null
-        }
-      },
-      {
-        "name": "viktor tsygankov",
-        "traffic": 200,
-        "traffic_label": "200+",
-        "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-        "published_at": "2026-08-18T11:00:00Z",
-        "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBBggMFdtZHlKQQtBq5f3GV371JPodG7y5hPxVlTrXxexMgmeW-17RGeibCWM",
-        "picture_source": "Diario AS",
-        "news": [
-          {
-            "title": "Tsygankov publica unos mensajes privados del Girona y le abren un expediente",
-            "url": "https://as.com/futbol/videos/tsygankov-publica-unos-mensajes-privados-del-girona-algun-dia-hablare-f202608-v/",
-            "source": "Diario AS",
-            "snippet": null
-          },
-          {
-            "title": "Tsygankov y la rebelión del vestuario del Girona: seis futbolistas en la rampa de salida",
-            "url": "https://www.marca.com/futbol/girona/2026/08/17/tsygankov-cara-visible-incertidumbre-girona.html",
-            "source": "MARCA",
-            "snippet": null
-          },
-          {
-            "title": "Tsygankov, de protegido de Pere Guardiola a rebelde en el Girona",
-            "url": "https://www.elperiodico.com/es/deportes/20260817/tsygankov-protegido-pere-guardiola-rebelde-133435545",
-            "source": "El Periódico",
-            "snippet": null
-          }
-        ],
-        "top_news": {
-          "title": "Tsygankov publica unos mensajes privados del Girona y le abren un expediente",
-          "url": "https://as.com/futbol/videos/tsygankov-publica-unos-mensajes-privados-del-girona-algun-dia-hablare-f202608-v/",
-          "source": "Diario AS",
-          "snippet": null
-        }
       }
     ],
     "x": [],
     "forocoches": [
       {
         "rank": 1,
-        "thread_id": "10779355",
-        "name": "FINLANDIA se HUNDE desde que gobierna la DERECHA (no se podía saber)",
-        "url": "https://forocoches.com/foro/showthread.php?t=10779355"
-      },
-      {
-        "rank": 2,
         "thread_id": "10779889",
         "name": "He tenido una hija con una mujer india y respondo preguntas",
         "url": "https://forocoches.com/foro/showthread.php?t=10779889"
       },
       {
-        "rank": 3,
+        "rank": 2,
         "thread_id": "10780000",
         "name": "AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
         "url": "https://forocoches.com/foro/showthread.php?t=10780000"
       },
       {
-        "rank": 4,
+        "rank": 3,
         "thread_id": "10779857",
         "name": "Luz verde de Flick al plan B al 9, sería Harry Kane",
         "url": "https://forocoches.com/foro/showthread.php?t=10779857"
       },
       {
-        "rank": 5,
+        "rank": 4,
         "thread_id": "10779815",
         "name": "Mi novia me sigue ocultando que habla por WhatsApp con su ex",
         "url": "https://forocoches.com/foro/showthread.php?t=10779815"
       },
       {
-        "rank": 6,
+        "rank": 5,
         "thread_id": "10780105",
         "name": "Otro terremoto en Granada",
         "url": "https://forocoches.com/foro/showthread.php?t=10780105"
       },
       {
-        "rank": 7,
+        "rank": 6,
         "thread_id": "10780030",
         "name": "vengo de la gasolinera y se ve el reflejo del pais sin dudas",
         "url": "https://forocoches.com/foro/showthread.php?t=10780030"
       },
       {
-        "rank": 8,
+        "rank": 7,
         "thread_id": "10780174",
         "name": "Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
         "url": "https://forocoches.com/foro/showthread.php?t=10780174"
       },
       {
-        "rank": 9,
+        "rank": 8,
         "thread_id": "10779426",
         "name": "Aprendamos del sistema de educación suizo",
         "url": "https://forocoches.com/foro/showthread.php?t=10779426"
       },
       {
-        "rank": 10,
+        "rank": 9,
         "thread_id": "10779991",
         "name": "La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
         "url": "https://forocoches.com/foro/showthread.php?t=10779991"
       },
       {
-        "rank": 11,
+        "rank": 10,
         "thread_id": "10780078",
         "name": "Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
         "url": "https://forocoches.com/foro/showthread.php?t=10780078"
       },
       {
-        "rank": 12,
+        "rank": 11,
         "thread_id": "10779950",
         "name": "Guantazo a Periodista en Ceuta +roto2",
         "url": "https://forocoches.com/foro/showthread.php?t=10779950"
       },
       {
-        "rank": 13,
+        "rank": 12,
         "thread_id": "10780144",
         "name": "SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
         "url": "https://forocoches.com/foro/showthread.php?t=10780144"
       },
       {
-        "rank": 14,
+        "rank": 13,
         "thread_id": "10780068",
         "name": "Estás son las CALIDADES de un MG ZS por debajo",
         "url": "https://forocoches.com/foro/showthread.php?t=10780068"
       },
       {
-        "rank": 15,
+        "rank": 14,
         "thread_id": "10779917",
         "name": "Me acabo de gastar 4k en un MacBook y respondo preguntas",
         "url": "https://forocoches.com/foro/showthread.php?t=10779917"
       },
       {
-        "rank": 16,
+        "rank": 15,
         "thread_id": "10779758",
         "name": "Dejarías de trabajar por 1450 al mes en 12 pagas ?",
         "url": "https://forocoches.com/foro/showthread.php?t=10779758"
       },
       {
+        "rank": 16,
+        "thread_id": "10780011",
+        "name": "PAULA MARTÍNEZ la NUEVA VOZ DEL ESPECTADOR DEL CHIRINGUITO ¿ALBERTOO?",
+        "url": "https://forocoches.com/foro/showthread.php?t=10780011"
+      },
+      {
         "rank": 17,
-        "thread_id": "10779534",
-        "name": "En qué ha mejorado Madrid con Ayuso?",
-        "url": "https://forocoches.com/foro/showthread.php?t=10779534"
+        "thread_id": "10779684",
+        "name": "Me pillan los alambres en 400km? +Neumáticos",
+        "url": "https://forocoches.com/foro/showthread.php?t=10779684"
       },
       {
         "rank": 18,
@@ -516,67 +522,88 @@
       },
       {
         "rank": 21,
-        "thread_id": "10780036",
-        "name": "Vas en kayak y te encuentras esto",
-        "url": "https://forocoches.com/foro/showthread.php?t=10780036"
-      },
-      {
-        "rank": 22,
         "thread_id": "10780123",
         "name": "617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
         "url": "https://forocoches.com/foro/showthread.php?t=10780123"
       },
       {
-        "rank": 23,
-        "thread_id": "10779365",
-        "name": "Cuándo es a las hijas de los demás VS cuando es a tu hija",
-        "url": "https://forocoches.com/foro/showthread.php?t=10779365"
-      },
-      {
-        "rank": 24,
+        "rank": 22,
         "thread_id": "10780099",
         "name": "Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
         "url": "https://forocoches.com/foro/showthread.php?t=10780099"
       },
       {
-        "rank": 25,
+        "rank": 23,
         "thread_id": "10779617",
         "name": "Alguna vez te ha pasado algo que no puedes explicar? tema serio",
         "url": "https://forocoches.com/foro/showthread.php?t=10779617"
       },
       {
-        "rank": 26,
+        "rank": 24,
         "thread_id": "10780097",
         "name": "me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
         "url": "https://forocoches.com/foro/showthread.php?t=10780097"
       },
       {
-        "rank": 27,
+        "rank": 25,
         "thread_id": "10780117",
         "name": "Es imposible que pasen más cosas en un vídeo",
         "url": "https://forocoches.com/foro/showthread.php?t=10780117"
       },
       {
-        "rank": 28,
+        "rank": 26,
         "thread_id": "10779844",
         "name": "Dime una peli guapa para verme no posterior a 2005",
         "url": "https://forocoches.com/foro/showthread.php?t=10779844"
       },
       {
-        "rank": 29,
+        "rank": 27,
         "thread_id": "10779973",
         "name": "Vuelvo de vacaciones y sorpresa.... +OKUPAS",
         "url": "https://forocoches.com/foro/showthread.php?t=10779973"
       },
       {
-        "rank": 30,
+        "rank": 28,
+        "thread_id": "10780083",
+        "name": "Os acordais de Pablo Casado",
+        "url": "https://forocoches.com/foro/showthread.php?t=10780083"
+      },
+      {
+        "rank": 29,
         "thread_id": "10779818",
         "name": "Las puertas son mentira",
         "url": "https://forocoches.com/foro/showthread.php?t=10779818"
+      },
+      {
+        "rank": 30,
+        "thread_id": "10780064",
+        "name": "La mentira de la masia",
+        "url": "https://forocoches.com/foro/showthread.php?t=10780064"
       }
     ]
   },
   "google_trend_news": [
+    {
+      "name": "telenovela",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
+    {
+      "name": "francho serrano",
+      "traffic": 100,
+      "traffic_label": "100+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
+    {
+      "name": "gamper",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": null
+    },
     {
       "name": "concejal",
       "traffic": 200,
@@ -600,6 +627,21 @@
       "article": null
     },
     {
+      "name": "el campello",
+      "traffic": 200,
+      "traffic_label": "200+",
+      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
+      "article": {
+        "title": "Evacuadas varias familias por un incendio en El Campello",
+        "url": "https://cadenaser.com/comunitat-valenciana/2026/08/18/evacuadas-varias-familias-por-un-incendio-en-el-campello-radio-alicante/",
+        "source": "Cadena SER",
+        "viral_score": 0,
+        "thumbnail": null,
+        "verified_image": false,
+        "selection": "trend-related-24h"
+      }
+    },
+    {
       "name": "real federación española de fútbol",
       "traffic": 100,
       "traffic_label": "100+",
@@ -615,10 +657,18 @@
     },
     {
       "name": "mathilde favier",
-      "traffic": 500,
-      "traffic_label": "500+",
+      "traffic": 1000,
+      "traffic_label": "1000+",
       "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": null
+      "article": {
+        "title": "Mueren en accidente de coche Mathilde Favier, directora de Dior, y su marido, el productor Nicolas Altmayer",
+        "url": "https://www.20minutos.es/gente/mueren-accidente-coche-mathilde-favier-directora-dior-su-marido-productor-nicolas-altmayer_7026923_0.html",
+        "source": "20Minutos",
+        "viral_score": 66,
+        "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/files/fp/uploads/imagenes/2026/08/18/6a844e4e5c4e32-52591782.r_d.982-735-9213.jpeg",
+        "verified_image": false,
+        "selection": "radar"
+      }
     },
     {
       "name": "petróleo",
@@ -626,51 +676,87 @@
       "traffic_label": "100+",
       "trend_url": "https://trends.google.com/trending/rss?geo=ES",
       "article": null
-    },
-    {
-      "name": "gonzalo plata",
-      "traffic": 200,
-      "traffic_label": "200+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": {
-        "title": "La Real Sociedad se interesa por Gonzalo Plata",
-        "url": "https://www.noticiasdegipuzkoa.eus/reala/mercado-de-fichajes/2026/08/18/real-sociedad-interesa-fichaje-gonzalo-plata-flamengo-11446437.html",
-        "source": "Noticias de Gipuzkoa",
-        "viral_score": 0,
-        "thumbnail": null,
-        "verified_image": false,
-        "selection": "trend-related-24h"
-      }
-    },
-    {
-      "name": "sacyr",
-      "traffic": 100,
-      "traffic_label": "100+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": null
-    },
-    {
-      "name": "cabañuelas",
-      "traffic": 200,
-      "traffic_label": "200+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": null
-    },
-    {
-      "name": "viktor tsygankov",
-      "traffic": 200,
-      "traffic_label": "200+",
-      "trend_url": "https://trends.google.com/trending/rss?geo=ES",
-      "article": null
     }
   ],
   "stories": [
+    {
+      "title": "Mueren en accidente de coche Mathilde Favier, directora de Dior, y su marido, el productor Nicolas Altmayer",
+      "link": "https://www.20minutos.es/gente/mueren-accidente-coche-mathilde-favier-directora-dior-su-marido-productor-nicolas-altmayer_7026923_0.html",
+      "score": 66,
+      "viral_score": 66,
+      "raw_score": 103.1,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 43,
+      "cabronazi_historical_adjustment": -1.1,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.8,
+      "editorial_selection_reasons": [
+        "Histórico editorial: 20Minutos (5 selecciones)"
+      ],
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · sucesos España"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "sucesos"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "cabronazi_fit": 18.8,
+      "politics_related": false,
+      "hard_news_related": true,
+      "num_mentions": 1,
+      "matched_trend": "mathilde favier",
+      "matched_google_trend": "mathilde favier",
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T12:26:37Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/files/fp/uploads/imagenes/2026/08/18/6a844e4e5c4e32-52591782.r_d.982-735-9213.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · sucesos España",
+        "Google Trends: mathilde favier (1000+)",
+        "Histórico editorial: 20Minutos (5 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sucesos en España",
+        "editorial_feed": "Google News · sucesos España",
+        "topic_tags": [
+          "sucesos"
+        ]
+      },
+      "potential": "alto",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "2277152352"
+    },
     {
       "title": "Marc Giró, sobre su infancia: \"Mis padres eran como hippies, eran comunistas y estaban en contra de Norteamérica\"",
       "link": "https://www.mundodeportivo.com/elotromundo/television/20260818/1004217155/marc-giro-sincera-sobre-infancia-mis-padres-hippies-comunistas-estaban-norteamerica-dct.html",
       "score": 65,
       "viral_score": 65,
-      "raw_score": 98.8,
+      "raw_score": 98.7,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -749,7 +835,7 @@
       "link": "https://www.20minutos.es/deportes/futbol/nuevo-terremoto-granada-sorprende-los-jugadores-arenas-armilla-durante-entrenamiento-asi-fue-tenso-momento_7026893_0.html",
       "score": 64,
       "viral_score": 64,
-      "raw_score": 97.4,
+      "raw_score": 97.6,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -798,7 +884,7 @@
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Trending en ForoCoches #6: Otro terremoto en Granada",
+        "Trending en ForoCoches #5: Otro terremoto en Granada",
         "Histórico editorial: 20minutos.es (5 selecciones)"
       ],
       "metrics": {
@@ -824,7 +910,7 @@
       "link": "https://amp.marca.com/futbol/bundesliga/2026/08/18/insolito-le-rechaza-autografo-hlozek-hoffenheim-publica-video.html",
       "score": 61,
       "viral_score": 61,
-      "raw_score": 89.2,
+      "raw_score": 89.1,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -899,7 +985,7 @@
       "link": "https://www.lavanguardia.com/local/madrid/20260818/11615826/pillado-simulando-agente-guardia-civil-estafar-mas-135-000-euros.html",
       "score": 61,
       "viral_score": 61,
-      "raw_score": 88.8,
+      "raw_score": 88.7,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -972,7 +1058,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/rodri-sobre-su-infancia-en-mi-casa-estaban-hartos-de-que-yo-viviera-tanto-el-futbol/",
       "score": 58,
       "viral_score": 58,
-      "raw_score": 83.0,
+      "raw_score": 82.9,
       "editorial_precision_adjustment": 13.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1045,11 +1131,84 @@
       "image_alt": "Rodri, sobre su infancia: “En mi casa estaban hartos de que yo viviera tanto el fútbol”"
     },
     {
+      "title": "Juls Janeiro afirma no arrepentirse de “nada” en sus declaraciones sobre Belén Esteban: “La vida hay que tomársela con humor”",
+      "link": "https://amp.marca.com/tiramillas/television/2026/08/18/juls-janeiro-afirma-arrepentirse-declaraciones-sobre-belen-esteban-vida-hay-tomarsela-humor.html",
+      "score": 58,
+      "viral_score": 58,
+      "raw_score": 82.1,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 43,
+      "cabronazi_historical_adjustment": -1.1,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 6.9,
+      "editorial_selection_reasons": [
+        "Histórico editorial: marca.com/tiramillas (15 selecciones)"
+      ],
+      "sources": [
+        "MARCA"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "MARCA · Tiramillas"
+      ],
+      "topic_tags": [
+        "viral",
+        "humor",
+        "curiosidades"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "humor",
+      "cabronazi_fit": 20.6,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T08:53:29Z",
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/18/6a841cc69df5b.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: MARCA · Tiramillas",
+        "Histórico editorial: marca.com/tiramillas (15 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tiramillas",
+        "editorial_feed": "MARCA · Tiramillas",
+        "topic_tags": [
+          "curiosidades",
+          "humor",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Juls Janeiro afirma no arrepentirse de “nada” en sus declaraciones sobre Belén Esteban: “La vida hay que tomársela con humor”"
+    },
+    {
       "title": "'Outer Banks': 5 claves que debes recordar antes de ver la quinta y última temporada de la serie juvenil más popular de Netflix",
       "link": "https://www.hola.com/actualidad/20260818918151/outer-banks-netflix-5-claves-temporada-5-final/",
       "score": 58,
       "viral_score": 58,
-      "raw_score": 82.2,
+      "raw_score": 82.0,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1119,84 +1278,11 @@
       "image_alt": "'Outer Banks': 5 claves que debes recordar antes de ver la quinta y última temporada de la serie juvenil más popular de Netflix"
     },
     {
-      "title": "Juls Janeiro afirma no arrepentirse de “nada” en sus declaraciones sobre Belén Esteban: “La vida hay que tomársela con humor”",
-      "link": "https://amp.marca.com/tiramillas/television/2026/08/18/juls-janeiro-afirma-arrepentirse-declaraciones-sobre-belen-esteban-vida-hay-tomarsela-humor.html",
-      "score": 58,
-      "viral_score": 58,
-      "raw_score": 82.2,
-      "editorial_precision_adjustment": 8.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 43,
-      "cabronazi_historical_adjustment": -1.1,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 6.9,
-      "editorial_selection_reasons": [
-        "Histórico editorial: marca.com/tiramillas (15 selecciones)"
-      ],
-      "sources": [
-        "MARCA"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "MARCA · Tiramillas"
-      ],
-      "topic_tags": [
-        "viral",
-        "humor",
-        "curiosidades"
-      ],
-      "general_category": "humor-curiosidades",
-      "primary_tag": "humor",
-      "cabronazi_fit": 20.6,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T08:53:29Z",
-      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/18/6a841cc69df5b.jpeg",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: MARCA · Tiramillas",
-        "Histórico editorial: marca.com/tiramillas (15 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Tiramillas",
-        "editorial_feed": "MARCA · Tiramillas",
-        "topic_tags": [
-          "curiosidades",
-          "humor",
-          "viral"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "schema:image",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "Juls Janeiro afirma no arrepentirse de “nada” en sus declaraciones sobre Belén Esteban: “La vida hay que tomársela con humor”"
-    },
-    {
       "title": "La trágica historia real detrás de 'La fiera': el accidente que marcó el rodaje de la nueva película que llega a Netflix",
       "link": "https://www.20minutos.es/cinemania/noticias/fiera-netflix-tragica-historia-real-carlos-cuevas-miguel-bernardeau_7024215_0.html",
       "score": 57,
       "viral_score": 57,
-      "raw_score": 81.2,
+      "raw_score": 81.1,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1262,11 +1348,84 @@
       "image_alt": "'La fiera'"
     },
     {
+      "title": "Facebook, Instagram y WhatsApp, a juicio: Meta enfrenta la demanda millonaria por presuntamente causar adicción en menores",
+      "link": "https://www.20minutos.es/internacional/facebook-instagram-whatsapp-juicio-meta-enfrenta-demanda-millonaria-por-presuntamente-causar-adiccion-menores_7026839_0.html",
+      "score": 57,
+      "viral_score": 57,
+      "raw_score": 80.2,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.8,
+      "editorial_selection_reasons": [
+        "Histórico editorial: 20Minutos (5 selecciones)"
+      ],
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes",
+        "tecnologia"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 20.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T12:38:56Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/03/25/69c4201e5ed615-68405944.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo",
+        "Histórico editorial: 20Minutos (5 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "El CEO de Meta, Mark Zuckerberg, a su salida de una sesión del juicio."
+    },
+    {
       "title": "Un incendio forestal en Vila-seca moviliza cinco dotaciones para evitar que alcance la A-7",
       "link": "https://www.lavanguardia.com/local/tarragona/20260818/11616005/incendio-forestal-vila-seca-moviliza-cinco-dotaciones-evitar-alcance-7.html",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 78.1,
+      "raw_score": 78.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1336,7 +1495,7 @@
       "link": "https://www.lavanguardia.com/deportes/ciclismo/20260818/11615998/conductor-atropello-cliclista-volta-portugal-afirma-le-aseguraron-podia-pasar-accidente.html",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 78.1,
+      "raw_score": 78.0,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1406,7 +1565,7 @@
       "link": "https://elpais.com/gente/2026-08-18/los-hijos-de-robin-williams-reactivan-la-cuenta-de-instagram-del-actor-en-el-que-habria-sido-su-75-cumpleanos-queremos-que-sea-un-lugar-seguro.html?outputType=amp",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 77.9,
+      "raw_score": 77.8,
       "editorial_precision_adjustment": 13.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1471,11 +1630,85 @@
       "image_alt": "Los hijos de Robin Williams reactivan la cuenta de Instagram del actor en el que habría sido su 75º cumpleaños: “Queremos que sea un lugar seguro”"
     },
     {
+      "title": "Coches dañados, toldos caídos, fachadas afectadas... las imágenes tras el nuevo terremoto de Granada",
+      "link": "https://www.20minutos.es/andalucia/granada/coches-danados-toldos-caidos-fachadas-afectadas-las-imagenes-tras-nuevo-terremoto-granada_7026844_0.html",
+      "score": 56,
+      "viral_score": 56,
+      "raw_score": 77.6,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 51,
+      "cabronazi_historical_adjustment": 0.2,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.8,
+      "editorial_selection_reasons": [
+        "Histórico editorial: 20minutos.es (5 selecciones)"
+      ],
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "trending",
+        "viral",
+        "redes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 15.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": "Otro terremoto en Granada",
+      "published_at": "2026-08-18T10:14:47Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a8429368df0b5-65610950.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo",
+        "Trending en ForoCoches #5: Otro terremoto en Granada",
+        "Histórico editorial: 20minutos.es (5 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "Coches terremoto granada"
+    },
+    {
       "title": "Un conductor ingresa en prisión provisional por abandonar a su amigo en un accidente mortal en Mollerusa",
       "link": "https://www.20minutos.es/cataluna/lleida/un-conductor-ingresa-prision-provisional-por-abandonar-su-amigo-un-accidente-mortal-mollerusa_7026792_0.html",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 77.7,
+      "raw_score": 77.6,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1541,25 +1774,23 @@
       "image_alt": "Un vehículo de los Mossos d’Esquadra en Barcelona, Catalunya (España)."
     },
     {
-      "title": "Coches dañados, toldos caídos, fachadas afectadas... las imágenes tras el nuevo terremoto de Granada",
-      "link": "https://www.20minutos.es/andalucia/granada/coches-danados-toldos-caidos-fachadas-afectadas-las-imagenes-tras-nuevo-terremoto-granada_7026844_0.html",
+      "title": "Retrasos en varías líneas de Rodalíes por el atropello a una persona entre Vilanova i la Geltrú y Sitges",
+      "link": "https://www.antena3.com/noticias/sociedad/retrasos-varias-lineas-rodalies-atropello-persona-vilanova-geltru-sitges_202608186a843249a5690f047380578b.html",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 77.5,
+      "raw_score": 77.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
         "medio español"
       ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
+      "cabronazi_affinity": 46,
+      "cabronazi_historical_adjustment": -0.6,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.8,
-      "editorial_selection_reasons": [
-        "Histórico editorial: 20minutos.es (5 selecciones)"
-      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
       "sources": [
-        "20Minutos"
+        "Antena 3"
       ],
       "source_count": 1,
       "platforms": [
@@ -1571,55 +1802,51 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
+        "Antena 3 · Sociedad RSS"
       ],
       "topic_tags": [
-        "trending",
         "viral",
-        "redes"
+        "sucesos"
       ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "cabronazi_fit": 23.8,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
       "matched_trend": null,
       "matched_google_trend": null,
       "matched_x_trend": null,
-      "matched_forocoches_trend": "Otro terremoto en Granada",
-      "published_at": "2026-08-18T10:14:47Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a8429368df0b5-65610950.jpeg",
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T10:22:01Z",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/01/22/0EC060CC-1698-412D-A19C-A83B6740A9CC/imagen-trenes-rodalies_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
       "media_type": "article",
       "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Trending en ForoCoches #6: Otro terremoto en Granada",
-        "Histórico editorial: 20minutos.es (5 selecciones)"
+        "Selección editorial: Antena 3 · Sociedad RSS"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
         "topic_tags": [
-          "redes",
-          "viral"
+          "sucesos"
         ],
-        "source_mode": "google-news-fallback"
+        "source_mode": "direct-section"
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
       "image_origin": "og:image",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Coches terremoto granada"
+      "image_width": 1280,
+      "image_height": 720,
+      "image_alt": "Imagen de trenes de Rodalies"
     },
     {
       "title": "Persecución de película por el Baix Llobregat: huye de Sant Boi, arrolla a un ciclista y acaba detenido en Gavà",
       "link": "https://www.lavanguardia.com/elllobregat/sucesos/20260818/11615849/persecucion-pelicula-baix-llobregat-huye-sant-boi-arrolla-ciclista-acaba-detenido-gava.html",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 77.5,
+      "raw_score": 77.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1685,79 +1912,11 @@
       "image_alt": "Persecución de película por el Baix Llobregat: huye de Sant Boi, arrolla a un ciclista y acaba detenido en Gavà"
     },
     {
-      "title": "Retrasos en varías líneas de Rodalíes por el atropello a una persona entre Vilanova i la Geltrú y Sitges",
-      "link": "https://www.antena3.com/noticias/sociedad/retrasos-varias-lineas-rodalies-atropello-persona-vilanova-geltru-sitges_202608186a843249a5690f047380578b.html",
-      "score": 56,
-      "viral_score": 56,
-      "raw_score": 77.4,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 46,
-      "cabronazi_historical_adjustment": -0.6,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 0.0,
-      "editorial_selection_reasons": [],
-      "sources": [
-        "Antena 3"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Antena 3 · Sociedad RSS"
-      ],
-      "topic_tags": [
-        "viral",
-        "sucesos"
-      ],
-      "general_category": "sucesos",
-      "primary_tag": "viral",
-      "cabronazi_fit": 23.8,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T10:22:01Z",
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/01/22/0EC060CC-1698-412D-A19C-A83B6740A9CC/imagen-trenes-rodalies_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Antena 3 · Sociedad RSS"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad y sucesos filtrados",
-        "editorial_feed": "Antena 3 · Sociedad RSS",
-        "topic_tags": [
-          "sucesos"
-        ],
-        "source_mode": "direct-section"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1280,
-      "image_height": 720,
-      "image_alt": "Imagen de trenes de Rodalies"
-    },
-    {
       "title": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
       "link": "https://www.antena3.com/noticias/sociedad/interior-cifra-2168-menores-edad-identificados-ceuta_202608186a842ecb71b42a0b5df5d1a6.html",
       "score": 56,
       "viral_score": 56,
-      "raw_score": 77.4,
+      "raw_score": 77.2,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1825,7 +1984,7 @@
       "link": "https://www.huffingtonpost.es/tecnologia/comienza-eeuu-juicio-facebook-e-instagram-cambiar-siempre-redes-sociales-f202608.html",
       "score": 55,
       "viral_score": 55,
-      "raw_score": 75.8,
+      "raw_score": 75.7,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1896,7 +2055,7 @@
       "link": "https://www.20minutos.es/tecnologia/aplicaciones/youtube-cambia-reglas-asi-contara-ahora-visualizacion-video_7026784_0.html",
       "score": 55,
       "viral_score": 55,
-      "raw_score": 75.7,
+      "raw_score": 75.6,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -1968,7 +2127,7 @@
       "link": "https://www.hola.com/actualidad/20260818918554/patricia-cerezo-y-kiko-gamez-luna-miel-nepal-tras-boda-repleta-rostros-conocidos/",
       "score": 55,
       "viral_score": 55,
-      "raw_score": 75.5,
+      "raw_score": 75.4,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2040,7 +2199,7 @@
       "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/pep-guardiola-habla-divorcio-cristina-serra-confirma-razones-pasion_4407660/",
       "score": 54,
       "viral_score": 54,
-      "raw_score": 74.6,
+      "raw_score": 74.5,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2109,7 +2268,7 @@
       "link": "https://www.eldebate.com/gente/20260818/rodri-esta-barcelona-sorprende-desvelar-cual-comida-favorita_450260.html",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 72.2,
+      "raw_score": 72.1,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 0,
       "spain_relevance_reasons": [
@@ -2180,7 +2339,7 @@
       "link": "https://www.hola.com/actualidad/20260818918568/nick-reiner-no-podra-acceder-al-dinero-de-su-familia/",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 71.6,
+      "raw_score": 71.5,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2254,7 +2413,7 @@
       "link": "https://www.20minutos.es/cataluna/barcelona/barcelona-quintuplica-las-ayudas-comunidades-para-prohibir-pisos-turisticos-tras-su-exito_7026870_0.html",
       "score": 53,
       "viral_score": 53,
-      "raw_score": 71.5,
+      "raw_score": 71.4,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -2323,11 +2482,80 @@
       "image_alt": "Dos jóvenes acceden a un piso turístico en Barcelona"
     },
     {
+      "title": "El sérum coreano que está arrasando en TikTok: Deep Vita A Retinol Sérum de Medicube",
+      "link": "https://www.elespanol.com/imprescindibles/20260818/serum-coreano-arrasando-tiktok-deep-vita-retinol-serum-medicube/1003744356365_0.html",
+      "score": 52,
+      "viral_score": 52,
+      "raw_score": 69.3,
+      "editorial_precision_adjustment": 8.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 47,
+      "cabronazi_historical_adjustment": -0.5,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
+      "sources": [
+        "El Español"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · redes y creadores"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes",
+        "tiktok"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 15.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T12:24:17Z",
+      "thumbnail": "https://s3.elespanol.com/k/imgp/cms/elespanol/11337167.jpg?p=f:jpeg/w:1706/h:960&h=xxT-d1s5",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · redes y creadores"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Redes y creadores",
+        "editorial_feed": "Google News · redes y creadores",
+        "topic_tags": [
+          "redes",
+          "tiktok"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1706,
+      "image_height": 960,
+      "image_alt": "El sérum coreano que está arrasando en TikTok: Deep Vita A Retinol Sérum de Medicube"
+    },
+    {
       "title": "Guardiola se sincera sobre la obsesión que ha marcado su vida profesional y catapultó su divorcio: “La amo increíblemente, pero perdimos la pasión”",
       "link": "https://www.infobae.com/espana/2026/08/18/guardiola-se-sincera-sobre-el-motivo-de-su-divorcio-en-su-documental-la-amo-increiblemente-pero-perdimos-la-pasion/",
       "score": 52,
       "viral_score": 52,
-      "raw_score": 69.4,
+      "raw_score": 69.3,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2402,7 +2630,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/cristiano-ronaldo-y-georgina-rodriguez-blindan-su-matrimonio-firmaron-la-separacion-de-bienes-antes-de-casarse/",
       "score": 52,
       "viral_score": 52,
-      "raw_score": 69.4,
+      "raw_score": 69.3,
       "editorial_precision_adjustment": 8.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2477,7 +2705,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/nuevo-terremoto-de-46-de-magnitud-en-granada-con-epicentro-en-alhendin/",
       "score": 51,
       "viral_score": 51,
-      "raw_score": 67.8,
+      "raw_score": 67.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2526,7 +2754,7 @@
       "media_type": "article",
       "signals": [
         "Selección editorial: Infobae España · Virales",
-        "Trending en ForoCoches #6: Otro terremoto en Granada",
+        "Trending en ForoCoches #5: Otro terremoto en Granada",
         "Histórico editorial: infobae.com/espana (1 selecciones)"
       ],
       "metrics": {
@@ -2552,7 +2780,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/jose-andres-chef-el-truco-para-preparar-el-chuleton-perfecto-es-atemperar-primero-el-interior-y-terminarlo-despues-a-fuego-fuerte/",
       "score": 51,
       "viral_score": 51,
-      "raw_score": 67.3,
+      "raw_score": 67.2,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2625,82 +2853,11 @@
       "image_alt": "José Andrés, chef: “El truco para preparar el chuletón perfecto es atemperar primero el interior y terminarlo después a fuego fuerte”"
     },
     {
-      "title": "El timo del guardia civil falso y reincidente: engañaba a mujeres para acceder a subastas de pisos y coches",
-      "link": "https://elpais.com/espana/madrid/2026-08-18/el-timo-del-guardia-civil-falso-y-reincidente-enganaba-a-mujeres-para-acceder-a-subastas-de-pisos-y-coches.html?outputType=amp",
-      "score": 51,
-      "viral_score": 51,
-      "raw_score": 67.1,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 14,
-      "spain_relevance_reasons": [
-        "tema vinculado a España",
-        "medio español"
-      ],
-      "cabronazi_affinity": 54,
-      "cabronazi_historical_adjustment": 0.6,
-      "cabronazi_match_reasons": [
-        "guardia civil"
-      ],
-      "editorial_selection_bonus": 0.0,
-      "editorial_selection_reasons": [],
-      "sources": [
-        "EL PAÍS"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "EL PAÍS · Viral Internet"
-      ],
-      "topic_tags": [
-        "viral",
-        "redes"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T10:53:18Z",
-      "thumbnail": "https://imagenes.elpais.com/resizer/v2/SEUCJKDBY5D55DSRH73WQBMGZ4.jpg?auth=bca62c3628aa6b48817c24b19a12e90c0d3914c320a2291d9b424f726a585238&width=1200",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: EL PAÍS · Viral Internet"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Viral Internet y redes",
-        "editorial_feed": "EL PAÍS · Viral Internet",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1200,
-      "image_height": 677,
-      "image_alt": "El timo del guardia civil falso y reincidente: engañaba a mujeres para acceder a subastas de pisos y coches"
-    },
-    {
       "title": "Alejandra Osborne y su \"verano diferente\": el vestido blanco con escote y aberturas que potencia el bronceado",
       "link": "https://www.hola.com/moda/20260818918572/alejandra-osborne-vestido-blanco-verano-escote-bronceado/",
       "score": 51,
       "viral_score": 51,
-      "raw_score": 67.0,
+      "raw_score": 66.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2768,11 +2925,82 @@
       "image_alt": "Alejandra Osborne y su \"verano diferente\": el vestido blanco con escote y aberturas que potencia el bronceado"
     },
     {
-      "title": "Así es el didgeridoo, el instrumento de más de 1.000 años que utilizaron en el exorcismo de Kaia Gerber, hija de Cindy Crawford",
-      "link": "https://www.hola.com/actualidad/20260818918578/didgeridoo-instrumento-utilizado-exorcismo-kaia-gerber-hija-cindy-crawford/",
+      "title": "El timo del guardia civil falso y reincidente: engañaba a mujeres para acceder a subastas de pisos y coches",
+      "link": "https://elpais.com/espana/madrid/2026-08-18/el-timo-del-guardia-civil-falso-y-reincidente-enganaba-a-mujeres-para-acceder-a-subastas-de-pisos-y-coches.html?outputType=amp",
       "score": 51,
       "viral_score": 51,
       "raw_score": 66.9,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 14,
+      "spain_relevance_reasons": [
+        "tema vinculado a España",
+        "medio español"
+      ],
+      "cabronazi_affinity": 54,
+      "cabronazi_historical_adjustment": 0.6,
+      "cabronazi_match_reasons": [
+        "guardia civil"
+      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
+      "sources": [
+        "EL PAÍS"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL PAÍS · Viral Internet"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 15.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T10:53:18Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/SEUCJKDBY5D55DSRH73WQBMGZ4.jpg?auth=bca62c3628aa6b48817c24b19a12e90c0d3914c320a2291d9b424f726a585238&width=1200",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: EL PAÍS · Viral Internet"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1200,
+      "image_height": 677,
+      "image_alt": "El timo del guardia civil falso y reincidente: engañaba a mujeres para acceder a subastas de pisos y coches"
+    },
+    {
+      "title": "Así es el didgeridoo, el instrumento de más de 1.000 años que utilizaron en el exorcismo de Kaia Gerber, hija de Cindy Crawford",
+      "link": "https://www.hola.com/actualidad/20260818918578/didgeridoo-instrumento-utilizado-exorcismo-kaia-gerber-hija-cindy-crawford/",
+      "score": 50,
+      "viral_score": 50,
+      "raw_score": 66.8,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2844,7 +3072,7 @@
       "link": "https://www.hola.com/actualidad/20260818918561/alejandro-sanz-abre-el-album-de-su-verano-mas-especial-junto-a-sus-cuatro-hijos-y-stephanie-cayo/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.8,
+      "raw_score": 66.6,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2916,7 +3144,7 @@
       "link": "https://www.hola.com/actualidad/20260818918545/helena-resano-hija-emma-cumple-24-foto/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.5,
+      "raw_score": 66.4,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -2988,7 +3216,7 @@
       "link": "https://los40.com/2026/08/18/eclipse-lunar-parcial-2026-cuando-es-y-desde-donde-se-podra-ver/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.4,
+      "raw_score": 66.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3062,7 +3290,7 @@
       "link": "https://www.hola.com/moda/20260818918528/ines-garcia-lamine-yamal-look-juego-nuevos-beckham/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.4,
+      "raw_score": 66.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3134,7 +3362,7 @@
       "link": "https://los40.com/2026/08/18/wisin-anuncia-la-creacion-de-la-universidad-del-perreo-udp-y-no-faltan-reacciones-donde-me-matriculo/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.1,
+      "raw_score": 65.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3204,83 +3432,11 @@
       "image_alt": "Wisin, en el Suenos Music Festival 2025, en Chicago. / Daniel Boczarski"
     },
     {
-      "title": "El suelo de Granada no deja de temblar y registra seis movimientos fuertes en menos de una hora",
-      "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
-      "score": 50,
-      "viral_score": 50,
-      "raw_score": 66.0,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.8,
-      "editorial_selection_reasons": [
-        "Histórico editorial: 20minutos.es (5 selecciones)"
-      ],
-      "sources": [
-        "20minutos"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
-      ],
-      "topic_tags": [
-        "viral",
-        "redes"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T12:26:00Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84213874b224-80040696.webp",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Histórico editorial: 20minutos.es (5 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Terremoto granada 18/08"
-    },
-    {
       "title": "Becky G se sincera sobre Karol G: \"Se le nota un gran esmero en cada detalle que prepara\"",
       "link": "https://los40.com/2026/08/18/becky-g-se-sincera-sobre-karol-g-se-le-nota-un-gran-esmero-en-cada-detalle-que-prepara/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.0,
+      "raw_score": 65.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3354,7 +3510,7 @@
       "link": "https://los40.com/2026/08/18/bad-bunny-vuelve-a-puerto-rico-para-cerrar-su-debi-tirar-mas-fotos-world-tour-con-dos-ultimos-conciertos-cerramos-en-casa/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.0,
+      "raw_score": 65.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3424,91 +3580,21 @@
       "image_alt": "Bad Bunny, concierto en Madrid 2026. / Artist"
     },
     {
-      "title": "Hasta 13 días de batería y más de 100 modos de entrenamiento: todo ello en el Samsung Galaxy Fit3",
-      "link": "https://www.20minutos.es/ofertas-descuentos/hasta-13-dias-bateria-mas-100-modos-entrenamiento-todo-ello-samsung-galaxy-fit3_7026765_0.html",
+      "title": "Mango ha rebajado a 17 euros el vestido que mi mejor amiga me copió para ir a todos los eventos este verano: largo, fresquito y elegante",
+      "link": "https://www.vanitatis.elconfidencial.com/estilo/moda/2026-08-18/mango-vestido-satinado-rebajas-eventos-verano-elegante-1qrt_4403805/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 65.8,
+      "raw_score": 65.1,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
         "medio español"
       ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.8,
-      "editorial_selection_reasons": [
-        "Histórico editorial: 20minutos.es (5 selecciones)"
+      "cabronazi_affinity": 39,
+      "cabronazi_historical_adjustment": -1.8,
+      "cabronazi_match_reasons": [
+        "identificacion"
       ],
-      "sources": [
-        "20Minutos"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
-      ],
-      "topic_tags": [
-        "viral",
-        "redes"
-      ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T12:00:00Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84118ac0d8d4-33757626.jpeg",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Histórico editorial: 20minutos.es (5 selecciones)"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Usuario portando el Samsung Galaxy Fit3"
-    },
-    {
-      "title": "Alberto Caballero, creador de 'Aquí no hay quien viva': \"Nos habría gustado un final más alegre, pero estábamos demasiado enfadados\"",
-      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/alberto-caballero-aqui-no-hay-quien-viva-20-anos-final-serie-entrevista_4383723/",
-      "score": 49,
-      "viral_score": 49,
-      "raw_score": 64.8,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 42,
-      "cabronazi_historical_adjustment": -1.3,
-      "cabronazi_match_reasons": [],
       "editorial_selection_bonus": 0.0,
       "editorial_selection_reasons": [],
       "sources": [
@@ -3541,8 +3627,8 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T09:43:00Z",
-      "thumbnail": "https://images.ecestaticos.com/LIbXLD2TdE0X9PYvQBKZ4hl9JlU=/0x0:1920x1080/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd3d%2Fb98%2Fc54%2Fd3db98c5498d5399f9ff1473bee98272.jpg",
+      "published_at": "2026-08-18T12:40:00Z",
+      "thumbnail": "https://images.ecestaticos.com/ub9KH2Bs1R5VTWcH697kMsGWs8Q=/0x0:1600x900/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fa1a%2Fb2e%2F55f%2Fa1ab2e55f20b8aed53869fb30d1f04ba.jpg",
       "media_type": "article",
       "signals": [
         "Selección editorial: Corazón · Vanitatis"
@@ -3562,83 +3648,14 @@
       "image_origin": "schema:image",
       "image_width": 0,
       "image_height": 0,
-      "image_alt": "Alberto Caballero, creador de 'Aquí no hay quien viva', 20 años después: \"Nos habría gustado un final más alegre, pero estábamos demasiado enfadados\""
-    },
-    {
-      "title": "La reflexión de Alejandro Sanz sobre fingir para caerle bien a la gente: \"No se puede ser empático con todo el mundo, hay gente que no merece tu empatía\"",
-      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/alejandro-sanz-empatia-reflexion-autenticidad-relaciones-rencor-personalidad-1qrt_4407579/",
-      "score": 49,
-      "viral_score": 49,
-      "raw_score": 64.7,
-      "editorial_precision_adjustment": -2.0,
-      "spain_relevance_score": 8,
-      "spain_relevance_reasons": [
-        "medio español"
-      ],
-      "cabronazi_affinity": 42,
-      "cabronazi_historical_adjustment": -1.3,
-      "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 0.0,
-      "editorial_selection_reasons": [],
-      "sources": [
-        "Vanitatis"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Corazón · Vanitatis"
-      ],
-      "topic_tags": [
-        "viral",
-        "famosos",
-        "corazon"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "famosos",
-      "cabronazi_fit": 20.0,
-      "politics_related": false,
-      "hard_news_related": false,
-      "num_mentions": 1,
-      "matched_trend": null,
-      "matched_google_trend": null,
-      "matched_x_trend": null,
-      "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T09:28:00Z",
-      "thumbnail": "https://images.ecestaticos.com/lnnBwITqN8URcmnvo-6qLWvMdKE=/0x0:1920x1280/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F9ef%2Fcba%2F703%2F9efcba7038afeed57f86bef8fec6e5bf.jpg",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Corazón · Vanitatis"
-      ],
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · Vanitatis",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "potential": "medio",
-      "image_verified": false,
-      "image_linked": true,
-      "image_origin": "schema:image",
-      "image_width": 0,
-      "image_height": 0,
-      "image_alt": "La reflexión de Alejandro Sanz sobre fingir para caerle bien a la gente: \"No se puede ser empático con todo el mundo, hay gente que no merece tu empatía\""
+      "image_alt": "Mango ha rebajado a 17 euros el vestido que mi mejor amiga me copió para ir a todos los eventos este verano: largo, fresquito y elegante"
     },
     {
       "title": "La Policía arresta a un hombre en la Feria de Málaga que habría apuñalado a un joven por intentar ligar con su novia",
       "link": "https://www.infobae.com/espana/2026/08/18/la-policia-arresta-a-un-hombre-en-la-feria-de-malaga-que-habria-apunalado-a-un-joven-por-intentar-ligar-con-su-novia/",
       "score": 48,
       "viral_score": 48,
-      "raw_score": 61.4,
+      "raw_score": 61.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -3712,7 +3729,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/la-revista-foreign-policy-sobre-ceuta-espana-deberia-hacer-lo-correcto-y-devolver-este-territorio-geopoliticamente-insignificante-a-marruecos/",
       "score": 48,
       "viral_score": 48,
-      "raw_score": 61.4,
+      "raw_score": 61.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 14,
       "spain_relevance_reasons": [
@@ -3786,7 +3803,7 @@
       "link": "https://elpais.com/economia/2026-08-18/la-deuda-publica-alcanza-un-nuevo-maximo-de-176-billones-en-junio-aunque-su-peso-sobre-el-pib-sigue-cayendo.html?outputType=amp",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 60.7,
+      "raw_score": 60.5,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3854,7 +3871,7 @@
       "link": "https://elpais.com/television/series/el-club-gastronomico/?outputType=amp",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 60.6,
+      "raw_score": 60.4,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3922,7 +3939,7 @@
       "link": "https://elpais.com/gente/2026-08-18/el-lado-mas-paranormal-de-kaia-gerber-un-exorcismo-cuando-era-nina-y-agua-bendita-para-rodar-american-horror-story.html?outputType=amp",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 60.5,
+      "raw_score": 60.4,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -3990,7 +4007,7 @@
       "link": "https://elpais.com/deportes/resultados/futbol/previa_conference_league/2026_2027/directo/playoff-a-1-6a7cc0b37324125/",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 60.2,
+      "raw_score": 60.1,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4058,7 +4075,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/la-justicia-avala-el-despido-de-una-trabajadora-de-un-supermercado-por-llevarse-carne-sin-pagar-valorada-en-14-euros/",
       "score": 47,
       "viral_score": 47,
-      "raw_score": 59.9,
+      "raw_score": 59.8,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4133,7 +4150,7 @@
       "link": "https://amp.marca.com/tiramillas/2026/08/18/neymar-presente-clase-ballet-hija-video.html",
       "score": 46,
       "viral_score": 46,
-      "raw_score": 58.8,
+      "raw_score": 58.6,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4204,7 +4221,7 @@
       "link": "https://www.huffingtonpost.es/virales/un-periodico-frances-lleva-lorca-portada-seis-palabras-foto-son-levantarse-aplaudir-f202608.html",
       "score": 45,
       "viral_score": 45,
-      "raw_score": 57.5,
+      "raw_score": 57.4,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4274,7 +4291,7 @@
       "link": "https://www.huffingtonpost.es/life/influencers-celebrities/la-estrategia-de-nicole-kidman-para-irse-de-rave-en-ibiza-a-veces-llevo-una-peluca-para-esconderme-f202608.html#int=bloque_ult_art",
       "score": 45,
       "viral_score": 45,
-      "raw_score": 56.3,
+      "raw_score": 56.1,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4342,9 +4359,9 @@
     {
       "title": "La reacción de Ramón García cuando un invitado dice que se saca los dientes con una navaja: \"Joder, qué tarde me estáis dando\"",
       "link": "https://www.lasexta.com/programas/arusitys/reaccion-ramon-garcia-cuando-invitado-dice-que-saca-dientes-navaja-joder-que-tarde-estais-dando_202608186a841b7671b42a0b5df5a8d0.html",
-      "score": 45,
-      "viral_score": 45,
-      "raw_score": 56.0,
+      "score": 44,
+      "viral_score": 44,
+      "raw_score": 55.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4403,7 +4420,7 @@
         ],
         "source_mode": "direct-section"
       },
-      "potential": "medio",
+      "potential": "exploratorio",
       "image_verified": false,
       "image_linked": true,
       "image_origin": "og:image",
@@ -4416,7 +4433,7 @@
       "link": "https://www.lasexta.com/programas/arusitys/maria-pombo-carga-que-critican-bad-bunny-que-pesados-sois-que-calor-dais_202608186a841d59a046ad6ebcb7c5c4.html",
       "score": 43,
       "viral_score": 43,
-      "raw_score": 52.9,
+      "raw_score": 52.8,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4488,7 +4505,7 @@
       "link": "https://www.hola.com/actualidad/20260818918531/broncano-muestra-nuevo-teatro-de-la-revuelta/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 66.0,
+      "raw_score": 65.9,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4556,11 +4573,83 @@
       "image_alt": "David Broncano muestra el nuevo teatro de 'La Revuelta' y aclara si habrá más novedades"
     },
     {
+      "title": "Hasta 13 días de batería y más de 100 modos de entrenamiento: todo ello en el Samsung Galaxy Fit3",
+      "link": "https://www.20minutos.es/ofertas-descuentos/hasta-13-dias-bateria-mas-100-modos-entrenamiento-todo-ello-samsung-galaxy-fit3_7026765_0.html",
+      "score": 50,
+      "viral_score": 50,
+      "raw_score": 65.7,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 51,
+      "cabronazi_historical_adjustment": 0.2,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 3.8,
+      "editorial_selection_reasons": [
+        "Histórico editorial: 20minutos.es (5 selecciones)"
+      ],
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "viral",
+        "redes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "cabronazi_fit": 15.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T12:00:00Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84118ac0d8d4-33757626.jpeg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo",
+        "Histórico editorial: 20minutos.es (5 selecciones)"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "og:image",
+      "image_width": 1920,
+      "image_height": 1080,
+      "image_alt": "Usuario portando el Samsung Galaxy Fit3"
+    },
+    {
       "title": "Una serie de terremotos con magnitudes de hasta 4,8 vuelve a sacudir Granada y su área metropolitana",
       "link": "https://www.20minutos.es/andalucia/granada/un-nuevo-terremoto-magnitud-4-6-vuelve-sacudir-granada-su-area-metropolitana_7026802_0.html",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 65.8,
+      "raw_score": 65.7,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4632,7 +4721,7 @@
       "link": "https://www.hola.com/actualidad/20260818918525/kaia-gerber-sometida-exorcismo-cuando-era-nina/",
       "score": 50,
       "viral_score": 50,
-      "raw_score": 65.8,
+      "raw_score": 65.7,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4700,25 +4789,23 @@
       "image_alt": "Kaia Gerber, hija de Cindy Crawford, revela que fue sometida a un exorcismo cuando era niña: \"He estado atormentada toda mi vida\""
     },
     {
-      "title": "Apple filtra sin querer sus AirPods con cámaras y confirma uno de sus secretos mejor guardados",
-      "link": "https://www.20minutos.es/tecnologia/moviles-dispositivos/apple-filtra-airpods-camaras-confirma-secretos-mejor-guardados_7026886_0.html",
-      "score": 50,
-      "viral_score": 50,
-      "raw_score": 65.7,
+      "title": "Alberto Caballero, creador de 'Aquí no hay quien viva': \"Nos habría gustado un final más alegre, pero estábamos demasiado enfadados\"",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/alberto-caballero-aqui-no-hay-quien-viva-20-anos-final-serie-entrevista_4383723/",
+      "score": 49,
+      "viral_score": 49,
+      "raw_score": 64.6,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
         "medio español"
       ],
-      "cabronazi_affinity": 51,
-      "cabronazi_historical_adjustment": 0.2,
+      "cabronazi_affinity": 42,
+      "cabronazi_historical_adjustment": -1.3,
       "cabronazi_match_reasons": [],
-      "editorial_selection_bonus": 3.8,
-      "editorial_selection_reasons": [
-        "Histórico editorial: 20minutos.es (5 selecciones)"
-      ],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
       "sources": [
-        "20Minutos"
+        "Vanitatis"
       ],
       "source_count": 1,
       "platforms": [
@@ -4730,15 +4817,16 @@
       "main_platform": "news",
       "curated_editorial": true,
       "editorial_feeds": [
-        "20minutos · Virales y Gonzoo"
+        "Corazón · Vanitatis"
       ],
       "topic_tags": [
         "viral",
-        "redes"
+        "famosos",
+        "corazon"
       ],
-      "general_category": "redes-tecnologia",
-      "primary_tag": "redes",
-      "cabronazi_fit": 15.0,
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
       "politics_related": false,
       "hard_news_related": false,
       "num_mentions": 1,
@@ -4746,37 +4834,104 @@
       "matched_google_trend": null,
       "matched_x_trend": null,
       "matched_forocoches_trend": null,
-      "published_at": "2026-08-18T11:44:14Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2025/11/28/692970faa2fd65-67166359.png",
+      "published_at": "2026-08-18T09:43:00Z",
+      "thumbnail": "https://images.ecestaticos.com/LIbXLD2TdE0X9PYvQBKZ4hl9JlU=/0x0:1920x1080/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd3d%2Fb98%2Fc54%2Fd3db98c5498d5399f9ff1473bee98272.jpg",
       "media_type": "article",
       "signals": [
-        "Selección editorial: 20minutos · Virales y Gonzoo",
-        "Histórico editorial: 20minutos.es (5 selecciones)"
+        "Selección editorial: Corazón · Vanitatis"
       ],
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
         "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "google-news-fallback"
+          "corazon",
+          "famosos"
+        ]
       },
       "potential": "medio",
       "image_verified": false,
       "image_linked": true,
-      "image_origin": "og:image",
-      "image_width": 1920,
-      "image_height": 1080,
-      "image_alt": "Los buscados AirPods Pro 3."
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "Alberto Caballero, creador de 'Aquí no hay quien viva', 20 años después: \"Nos habría gustado un final más alegre, pero estábamos demasiado enfadados\""
+    },
+    {
+      "title": "La reflexión de Alejandro Sanz sobre fingir para caerle bien a la gente: \"No se puede ser empático con todo el mundo, hay gente que no merece tu empatía\"",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/alejandro-sanz-empatia-reflexion-autenticidad-relaciones-rencor-personalidad-1qrt_4407579/",
+      "score": 49,
+      "viral_score": 49,
+      "raw_score": 64.6,
+      "editorial_precision_adjustment": -2.0,
+      "spain_relevance_score": 8,
+      "spain_relevance_reasons": [
+        "medio español"
+      ],
+      "cabronazi_affinity": 42,
+      "cabronazi_historical_adjustment": -1.3,
+      "cabronazi_match_reasons": [],
+      "editorial_selection_bonus": 0.0,
+      "editorial_selection_reasons": [],
+      "sources": [
+        "Vanitatis"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · Vanitatis"
+      ],
+      "topic_tags": [
+        "viral",
+        "famosos",
+        "corazon"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "cabronazi_fit": 20.0,
+      "politics_related": false,
+      "hard_news_related": false,
+      "num_mentions": 1,
+      "matched_trend": null,
+      "matched_google_trend": null,
+      "matched_x_trend": null,
+      "matched_forocoches_trend": null,
+      "published_at": "2026-08-18T09:28:00Z",
+      "thumbnail": "https://images.ecestaticos.com/lnnBwITqN8URcmnvo-6qLWvMdKE=/0x0:1920x1280/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F9ef%2Fcba%2F703%2F9efcba7038afeed57f86bef8fec6e5bf.jpg",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · Vanitatis"
+      ],
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "potential": "medio",
+      "image_verified": false,
+      "image_linked": true,
+      "image_origin": "schema:image",
+      "image_width": 0,
+      "image_height": 0,
+      "image_alt": "La reflexión de Alejandro Sanz sobre fingir para caerle bien a la gente: \"No se puede ser empático con todo el mundo, hay gente que no merece tu empatía\""
     },
     {
       "title": "Carlos Torretta habla como nunca de su matrimonio con Marta Ortega: \"Sé que la saco de quicio un millón de veces al día\"",
       "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-18/marta-ortega-inditex-carlos-torretta-marido-matrimonio-habla-quicio_4407542/",
       "score": 49,
       "viral_score": 49,
-      "raw_score": 64.5,
+      "raw_score": 64.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4845,7 +5000,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/por-que-hay-tantos-terremotos-en-granada-un-enjambre-sismico-escasa-profundidad-y-un-movimiento-de-4-a-5-milimetros-al-ano/",
       "score": 44,
       "viral_score": 44,
-      "raw_score": 55.6,
+      "raw_score": 55.4,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -4918,7 +5073,7 @@
       "link": "https://www.infobae.com/espana/2026/08/18/un-obrero-con-experiencia-te-explica-por-que-decidir-los-azulejos-y-el-vater-antes-de-empezar-las-obras-en-la-vivienda-baja-el-gasto-de-la-reforma/",
       "score": 44,
       "viral_score": 44,
-      "raw_score": 55.5,
+      "raw_score": 55.3,
       "editorial_precision_adjustment": -2.0,
       "spain_relevance_score": 8,
       "spain_relevance_reasons": [
@@ -5028,6 +5183,48 @@
       "unfiltered": true,
       "image_width": 1440,
       "image_height": 720
+    },
+    {
+      "title": "Evacuadas varias familias por un incendio en El Campello",
+      "link": "https://cadenaser.com/comunitat-valenciana/2026/08/18/evacuadas-varias-familias-por-un-incendio-en-el-campello-radio-alicante/",
+      "score": 13,
+      "viral_score": 13,
+      "raw_score": 13.1,
+      "sources": [
+        "Cadena SER"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": false,
+      "editorial_feeds": [],
+      "topic_tags": [
+        "google-trends",
+        "sucesos"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": true,
+      "published_at": "2026-08-18T11:32:26Z",
+      "thumbnail": "https://cadenaser.com/resizer/v2/RADGYC7T25E7TPQDNJXSD2AYQI.jpeg?auth=c26081158826d9bfb263fc039fc00f7ab7e401b8c73ccfeb7e916dc6c06aceab&quality=70&width=1200&height=675&focal=1001,736",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Evacuadas varias familias por un incendio en El Campello",
+      "media_type": "article",
+      "signals": [
+        "Google Trends: el campello (200+ búsquedas)"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
     },
     {
       "title": "Hacienda embarga las dietas municipales al concejal de Vox en Segovia que se quiso \"sacar el ciruelo\" en un pleno",
@@ -5152,6 +5349,299 @@
       "unfiltered": true,
       "image_width": 0,
       "image_height": 0
+    },
+    {
+      "title": "Rosa Villacastín da el corte del día a Arantxa Sánchez en 'Mañaneros 360' en TVE: \"Muchas gafas, pero de ver poco\"",
+      "link": "https://eltelevisero.huffingtonpost.es/2026/08/rosa-villacastin-da-el-corte-del-dia-a-arantxa-sanchez-en-mananeros-360-en-tve-muchas-gafas-pero-de-ver-poco/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "El Televisero"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [
+        "politica"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": true,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:22:18Z",
+      "thumbnail": "https://eltelevisero.huffingtonpost.es/wp-content/uploads/2026/08/arantxa-rosa-1.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image:secure_url",
+      "image_alt": "Arantxa Sánchez y Rosa Villacastín en 'Mañaneros 360'.",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 676
+    },
+    {
+      "title": "Juan Jesús Vivas, presidente de Ceuta: “la ciudad está en peligro y no vamos a rendirnos”",
+      "link": "https://noticiastrabajo.huffingtonpost.es/politica/juan-jesus-vivas-presidente-de-ceuta-la-ciudad-esta-en-peligro-y-no-vamos-a-rendirnos/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "Noticiastrabajo"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [
+        "politica"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": true,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:05:00Z",
+      "thumbnail": "https://s3.noticiastrabajo.huffingtonpost.es/cdn/posts/53452/monica-garcia-juan-vivas-252236-og-1200-675.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Juan Jesús Vivas, presidente de Ceuta: “la ciudad está en peligro y no vamos a rendirnos”",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
+    },
+    {
+      "title": "90 años del asesinato de Lorca: TVE lanza el tráiler de su nueva docuserie sobre uno de los episodios más enigmáticos del franquismo",
+      "link": "https://eltelevisero.huffingtonpost.es/2026/08/90-anos-del-asesinato-de-lorca-tve-lanza-el-trailer-de-su-nueva-docuserie-sobre-uno-de-los-episodios-mas-enigmaticos-del-franquismo/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "El Televisero"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [
+        "sucesos"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": true,
+      "published_at": "2026-08-18T11:35:15Z",
+      "thumbnail": "https://eltelevisero.huffingtonpost.es/wp-content/uploads/2026/08/lorca-horas-perdidas-1.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image:secure_url",
+      "image_alt": "Imágenes de 'Lorca, las horas perdidas'",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 676
+    },
+    {
+      "title": "Pelotazo en audiencias para 'El Chiringuito' en su debut en Mediaset: Supera a los canales principales y encumbra a Energy",
+      "link": "https://eltelevisero.huffingtonpost.es/2026/08/pelotazo-en-audiencias-para-el-chiringuito-en-su-debut-en-mediaset-supera-a-los-canales-principales-y-encumbra-a-energy/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "El Televisero"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T11:04:56Z",
+      "thumbnail": "https://eltelevisero.huffingtonpost.es/wp-content/uploads/2026/08/josep-17ag-1.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image:secure_url",
+      "image_alt": "Josep Pedrerol en 'El Chiringuito'",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 676
+    },
+    {
+      "title": "La deuda pública marca un nuevo máximo después de aumentar en 64.400 millones desde enero",
+      "link": "https://noticiastrabajo.huffingtonpost.es/economia/la-deuda-publica-marca-un-nuevo-maximo-despues-de-aumentar-en-64400-millones-desde-enero/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "Noticiastrabajo"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T11:03:12Z",
+      "thumbnail": "https://s3.noticiastrabajo.huffingtonpost.es/cdn/posts/53450/jose-luis-escriva-252234-og-1200-675.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "La deuda pública marca un nuevo máximo después de aumentar en 64.400 millones desde enero",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
+    },
+    {
+      "title": "Un jubilado es condenado a devolver 9.560 euros al INSS por el despido improcedente de un compañero",
+      "link": "https://noticiastrabajo.huffingtonpost.es/economia/pensiones/un-jubilado-es-condenado-a-devolver-9560-euros-al-inss-por-el-despido-improcedente-de-un-companero/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "Noticiastrabajo"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T10:48:33Z",
+      "thumbnail": "https://s3.noticiastrabajo.huffingtonpost.es/cdn/posts/53449/cartel-seguridad-social-252233-og-1200-675.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Un jubilado es condenado a devolver 9.560 euros al INSS por el despido improcedente de un compañero",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
+    },
+    {
+      "title": "Destapan el gran fraude ‘Made in Europe’: se activan las alarmas con la primera fábrica clandestina de bolsas de nicotina",
+      "link": "https://noticiastrabajo.huffingtonpost.es/amp/sociedad/destapan-gran-fraude-made-europa-activan-alarmas-primera-fabrica-clandestina-bolsas-nicotina/",
+      "score": 10,
+      "viral_score": 10,
+      "raw_score": 10.0,
+      "sources": [
+        "Noticiastrabajo"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "El HuffPost · Portada RSS"
+      ],
+      "topic_tags": [],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T10:13:55Z",
+      "thumbnail": "https://s3.noticiastrabajo.huffingtonpost.es/cdn/posts/53448/mano-cogiendo-bolsa-nicotina-252227-og-1200-675.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Destapan el gran fraude ‘Made in Europe’: se activan las alarmas con la primera fábrica clandestina de bolsas de nicotina",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: El HuffPost · Portada RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
     },
     {
       "title": "La táctica de Nicole Kidman para irse de 'rave' en Ibiza: \"A veces llevo una peluca para esconderme\"",
@@ -5331,7 +5821,7 @@
       "image_height": 675
     },
     {
-      "title": "El suelo de Granada no deja de temblar y registra seis movimientos fuertes en menos de una hora",
+      "title": "Sigue la rueda de prensa de la alcaldesa de Granada",
       "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
       "score": 9,
       "viral_score": 9,
@@ -5352,14 +5842,15 @@
         "20minutos · Virales y Gonzoo"
       ],
       "topic_tags": [
+        "politica",
         "redes",
         "viral"
       ],
       "general_category": "redes-tecnologia",
       "primary_tag": "viral",
-      "politics_related": false,
+      "politics_related": true,
       "hard_news_related": false,
-      "published_at": "2026-08-18T12:26:00Z",
+      "published_at": "2026-08-18T12:50:00Z",
       "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a84213874b224-80040696.webp",
       "image_linked": true,
       "image_verified": false,
@@ -5373,6 +5864,228 @@
       "unfiltered": true,
       "image_width": 1920,
       "image_height": 1080
+    },
+    {
+      "title": "Fabiola Martínez insiste tras las declaraciones de Bertín Osborne: \"Después de tantos años de matrimonio, no sé a qué viene ahora un comentario así\"",
+      "link": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73462652/fabiola-martinez-declaraciones-bertin-osborne-matrimonio-amor/",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "Diez Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · Diez Minutos"
+      ],
+      "topic_tags": [
+        "corazon",
+        "famosos"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:47:11Z",
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/4ebcdddd-d696-4224-8208-6c67fb5e4fa6.jpg?crop=1.00xw:0.334xh;0,0.0586xh&resize=1200:*",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Fabiola Martínez insiste tras las declaraciones de Bertín Osborne: \"Después de tantos años de matrimonio, no sé a qué viene ahora un comentario así\"",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · Diez Minutos"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 600
+    },
+    {
+      "title": "Mango ha rebajado a 17 euros el vestido que mi mejor amiga me copió para ir a todos los eventos este verano: largo, fresquito y elegante",
+      "link": "https://www.vanitatis.elconfidencial.com/estilo/moda/2026-08-18/mango-vestido-satinado-rebajas-eventos-verano-elegante-1qrt_4403805/",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "Vanitatis"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · Vanitatis"
+      ],
+      "topic_tags": [
+        "corazon",
+        "famosos"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:40:00Z",
+      "thumbnail": "https://images.ecestaticos.com/ub9KH2Bs1R5VTWcH697kMsGWs8Q=/0x0:1600x900/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fa1a%2Fb2e%2F55f%2Fa1ab2e55f20b8aed53869fb30d1f04ba.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "schema:image",
+      "image_alt": "Mango ha rebajado a 17 euros el vestido que mi mejor amiga me copió para ir a todos los eventos este verano: largo, fresquito y elegante",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · Vanitatis"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
+      "title": "Los guardias civiles critican la respuesta del Gobierno en Ceuta: \"Han pasado 19 días y ahora es cuando se levantan tiendas\"",
+      "link": "https://www.20minutos.es/ceuta/los-guardias-civiles-critican-respuesta-gobierno-ceuta-han-pasado-19-dias-ahora-es-cuando-se-levantan-tiendas_7026931_0.html",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "politica",
+        "redes",
+        "viral"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "viral",
+      "politics_related": true,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:39:51Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a841c1a6f51c3-39554350.jpeg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Montaje de carpas para inmigrantes en Ceuta",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1920,
+      "image_height": 1080
+    },
+    {
+      "title": "Facebook, Instagram y WhatsApp, a juicio: Meta enfrenta la demanda millonaria por presuntamente causar adicción en menores",
+      "link": "https://www.20minutos.es/internacional/facebook-instagram-whatsapp-juicio-meta-enfrenta-demanda-millonaria-por-presuntamente-causar-adiccion-menores_7026839_0.html",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "20minutos · Virales y Gonzoo"
+      ],
+      "topic_tags": [
+        "redes",
+        "tecnologia",
+        "viral"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:38:56Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/03/25/69c4201e5ed615-68405944.jpeg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "El CEO de Meta, Mark Zuckerberg, a su salida de una sesión del juicio.",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: 20minutos · Virales y Gonzoo"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1920,
+      "image_height": 1080
+    },
+    {
+      "title": "La nueva película de Atresmedia será una comedia romántica sobre Nino Bravo protagonizada por Alberto San Juan",
+      "link": "https://www.diezminutos.es/teleprograma/series-tv/a73461920/libre-pelicula-nino-bravo-reparto-estreno-atresmedia/",
+      "score": 9,
+      "viral_score": 9,
+      "raw_score": 9.0,
+      "sources": [
+        "Diez Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Corazón · Diez Minutos"
+      ],
+      "topic_tags": [
+        "corazon",
+        "famosos"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "famosos",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:29:56Z",
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/c66b1c74-4f59-4258-8538-c7c03efa8957.jpg?crop=1.00xw:0.757xh;0,0.0614xh&resize=1200:*",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "La nueva película de Atresmedia será una comedia romántica sobre Nino Bravo protagonizada por Alberto San Juan",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Corazón · Diez Minutos"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 600
     },
     {
       "title": "'Outer Banks': 5 claves que debes recordar antes de ver la quinta y última temporada de la serie juvenil más popular de Netflix",
@@ -6483,11 +7196,11 @@
       "politics_related": true,
       "hard_news_related": true,
       "published_at": "2026-08-18T11:19:04Z",
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a843e08b9ab52-35310870.jpeg",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/files/fp/uploads/imagenes/2026/08/18/6a84529ed14482-40091776.r_d.701-700-12000.jpeg",
       "image_linked": true,
       "image_verified": false,
       "image_origin": "og:image",
-      "image_alt": "Feijóo reclama al Gobierno sensibilidad con Ceuta: \"Nadie es capaz de entender la indolencia ante este caos\"",
+      "image_alt": "El presidente del Partido Popular, Alberto Núñez Feijóo, interviene en el centenario del nacimiento de Leopoldo Calvo-Sotelo en Ribadeo (Lugo).",
       "media_type": "article",
       "signals": [
         "Selección editorial: 20minutos · Virales y Gonzoo"
@@ -7517,49 +8230,6 @@
       "unfiltered": true,
       "image_width": 0,
       "image_height": 0
-    },
-    {
-      "title": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
-      "link": "https://www.antena3.com/noticias/sociedad/interior-cifra-2168-menores-edad-identificados-ceuta_202608186a842ecb71b42a0b5df5d1a6.html",
-      "score": 5,
-      "viral_score": 5,
-      "raw_score": 5.0,
-      "sources": [
-        "Antena 3"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "Antena 3 · Sociedad RSS"
-      ],
-      "topic_tags": [
-        "sucesos"
-      ],
-      "general_category": "sucesos",
-      "primary_tag": "viral",
-      "politics_related": false,
-      "hard_news_related": true,
-      "published_at": "2026-08-18T10:07:07Z",
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/08/18/EFA157E8-BA4C-40B9-9D7C-4CD61614BB21/interior-cifra-2168-menores-edad-identificados-ceuta_69.jpg?crop=1920,1080,x0,y11&width=1280&height=720&optimize=low&format=webply",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: Antena 3 · Sociedad RSS"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 1280,
-      "image_height": 720
     },
     {
       "title": "'Flat brows': así es la tendencia coreana de cejas rectas y naturales que arrasa esta temporada",
@@ -8820,6 +9490,50 @@
       "image_height": 677
     },
     {
+      "title": "Anthropic va camino de superar los 56.100 millones en ingresos al año antes de salir a Bolsa",
+      "link": "https://cincodias.elpais.com/companias/2026-08-18/anthropic-va-camino-de-superar-los-56100-millones-en-ingresos-al-ano-antes-de-salir-a-bolsa.html?outputType=amp",
+      "score": 8,
+      "viral_score": 8,
+      "raw_score": 8.0,
+      "sources": [
+        "Cinco Días"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL PAÍS · Viral Internet"
+      ],
+      "topic_tags": [
+        "redes",
+        "viral"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T10:40:34Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/PPKK3ASEVZM5TMHWB75VJE3QYE.jpg?auth=05cbc18faccc6dc9af47d409ede7f3215b164c766c2bffa8b17892f24ce6679e&width=1200",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Anthropic va camino de superar los 56.100 millones en ingresos al año antes de salir a Bolsa",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: EL PAÍS · Viral Internet"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 800
+    },
+    {
       "title": "El club gastronómico",
       "link": "https://elpais.com/television/series/el-club-gastronomico/?outputType=amp",
       "score": 8,
@@ -8906,6 +9620,53 @@
       "unfiltered": true,
       "image_width": 1200,
       "image_height": 800
+    },
+    {
+      "title": "El mensaje de Wladimir Klitschko, expareja de Hayden Panettiere, tras la muerte de la actriz: “Me aseguraré de que nuestra hija recuerde la persona que fue”",
+      "link": "https://elpais.com/gente/2026-08-18/el-mensaje-de-wladimir-klitschko-expareja-de-hayden-panettiere-tras-la-muerte-de-la-actriz-me-asegurare-de-que-nuestra-hija-recuerde-la-persona-que-fue.html?outputType=amp",
+      "score": 8,
+      "viral_score": 8,
+      "raw_score": 8.0,
+      "sources": [
+        "elpais.com"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL PAÍS · Viral Internet"
+      ],
+      "topic_tags": [
+        "corazon",
+        "famosos",
+        "redes",
+        "sucesos",
+        "viral"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": true,
+      "published_at": "2026-08-18T10:22:57Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/2HNHL2UWUREE3I62D64MELYUGI.jpg?auth=0b8a8164ca734c02523f8d4c59f0bdfd8b33ee8362ee1fd73d4fec150b2c6f96&width=1200",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "El mensaje de Wladimir Klitschko, expareja de Hayden Panettiere, tras la muerte de la actriz: “Me aseguraré de que nuestra hija recuerde la persona que fue”",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: EL PAÍS · Viral Internet"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 799
     },
     {
       "title": "Eclipse lunar parcial 2026: cuándo es y desde dónde se podrá ver",
@@ -9358,6 +10119,137 @@
       "image_height": 675
     },
     {
+      "title": "Mueren en accidente de coche Mathilde Favier, directora de Dior, y su marido, el productor Nicolas Altmayer",
+      "link": "https://www.20minutos.es/gente/mueren-accidente-coche-mathilde-favier-directora-dior-su-marido-productor-nicolas-altmayer_7026923_0.html",
+      "score": 7,
+      "viral_score": 7,
+      "raw_score": 7.0,
+      "sources": [
+        "20Minutos"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · sucesos España"
+      ],
+      "topic_tags": [
+        "sucesos"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": true,
+      "published_at": "2026-08-18T12:26:37Z",
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/files/fp/uploads/imagenes/2026/08/18/6a844e4e5c4e32-52591782.r_d.982-735-9213.jpeg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "2277152352",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · sucesos España"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1920,
+      "image_height": 1080
+    },
+    {
+      "title": "El sérum coreano que está arrasando en TikTok: Deep Vita A Retinol Sérum de Medicube",
+      "link": "https://www.elespanol.com/imprescindibles/20260818/serum-coreano-arrasando-tiktok-deep-vita-retinol-serum-medicube/1003744356365_0.html",
+      "score": 7,
+      "viral_score": 7,
+      "raw_score": 7.0,
+      "sources": [
+        "El Español"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · redes y creadores"
+      ],
+      "topic_tags": [
+        "redes",
+        "tiktok"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:24:17Z",
+      "thumbnail": "https://s3.elespanol.com/k/imgp/cms/elespanol/11337167.jpg?p=f:jpeg/w:1706/h:960&h=xxT-d1s5",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "El sérum coreano que está arrasando en TikTok: Deep Vita A Retinol Sérum de Medicube",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · redes y creadores"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1706,
+      "image_height": 960
+    },
+    {
+      "title": "Brian Hickerson, el novio de Hayden Panettiere condenado por violencia doméstica contra ella, elimina su Instagram",
+      "link": "https://www.elespanol.com/corazon/celebrities/20260818/brian-hickerson-novio-hayden-panettiere-condenado-violencia-domestica-elimina-instagram/1003744356278_0.html",
+      "score": 7,
+      "viral_score": 7,
+      "raw_score": 7.0,
+      "sources": [
+        "El Español"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · redes y creadores"
+      ],
+      "topic_tags": [
+        "redes",
+        "sucesos"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "redes",
+      "politics_related": false,
+      "hard_news_related": true,
+      "published_at": "2026-08-18T12:11:34Z",
+      "thumbnail": "https://s3.elespanol.com/k/imgp/cms/elespanol/11337143.jpg?p=f:jpeg/c:720:406:nowe:0:64/w:1706/h:960&h=lIuJiAaK",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Brian Hickerson, el novio de Hayden Panettiere condenado por violencia doméstica contra ella, elimina su Instagram",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · redes y creadores"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1706,
+      "image_height": 960
+    },
+    {
       "title": "Un incendio forestal en Vila-seca moviliza cinco dotaciones para evitar que alcance la A-7",
       "link": "https://www.lavanguardia.com/local/tarragona/20260818/11616005/incendio-forestal-vila-seca-moviliza-cinco-dotaciones-evitar-alcance-7.html",
       "score": 7,
@@ -9442,6 +10334,48 @@
       "unfiltered": true,
       "image_width": 1200,
       "image_height": 675
+    },
+    {
+      "title": "HOY NOS VISITA EL PRESIDENTE DE LA UIC Y FESTEJAMOS LOS 10 AÑOS DE PANICAFE | RDC 41",
+      "link": "https://www.youtube.com/live/nypL-zqm0vY?si=64VDY2LZmVIRrCLI&cbrd=1&ucbcb=1",
+      "score": 7,
+      "viral_score": 7,
+      "raw_score": 7.0,
+      "sources": [
+        "InfoNegocios"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · redes y creadores"
+      ],
+      "topic_tags": [
+        "politica",
+        "redes"
+      ],
+      "general_category": "redes-tecnologia",
+      "primary_tag": "redes",
+      "politics_related": true,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T11:33:01Z",
+      "thumbnail": null,
+      "image_linked": false,
+      "image_verified": false,
+      "image_origin": null,
+      "image_alt": "HOY NOS VISITA EL PRESIDENTE DE LA UIC Y FESTEJAMOS LOS 10 AÑOS DE PANICAFE | RDC 41",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · redes y creadores"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true
     },
     {
       "title": "Juzgan a Meta por fomentar la adicción de menores a las redes sociales con Facebook e Instagram",
@@ -9916,6 +10850,49 @@
       "image_height": 1080
     },
     {
+      "title": "Deportes Tolima se pone la camiseta del departamento: 29 toneladas de ayudas y colecta para damnificados",
+      "link": "https://tolimaonline.com/deportes-tolima-se-pone-la-camiseta-del-departamento-29-toneladas-de-ayudas-y-colecta-para-damnificados/",
+      "score": 6,
+      "viral_score": 6,
+      "raw_score": 6.0,
+      "sources": [
+        "Tolima Online"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · deporte viral"
+      ],
+      "topic_tags": [
+        "deportes"
+      ],
+      "general_category": "deportes",
+      "primary_tag": "deportes",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:01:19Z",
+      "thumbnail": "https://i0.wp.com/tolimaonline.com/wp-content/uploads/2026/08/Incendios-Forestales-2.jpeg?fit=675%2C565&ssl=1",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "schema:image",
+      "image_alt": "Deportes Tolima se pone la camiseta del departamento: 29 toneladas de ayudas y colecta para damnificados",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · deporte viral"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 0,
+      "image_height": 0
+    },
+    {
       "title": "Un futbolista francés de Cagliari está en coma inducido tras estar a punto de ahogarse en una piscina",
       "link": "https://www.gamereactor.es/un-futbolista-frances-de-cagliari-ha-entrado-en-coma-inducido-tras-estar-a-punto-de-ahogarse-en-una-piscina-1769873/",
       "score": 6,
@@ -9957,6 +10934,49 @@
       "unfiltered": true,
       "image_width": 1920,
       "image_height": 1080
+    },
+    {
+      "title": "Burela hace del surf una ola de deporte, igualdad y futuro en A Marosa",
+      "link": "https://www.aquidiario.com/a-marina-lucense/burela/burela-hace-surf-ola-deporte-igualdad-futuro-marosa/20260818125321050480.amp.html",
+      "score": 6,
+      "viral_score": 6,
+      "raw_score": 6.0,
+      "sources": [
+        "AQUÍ Diario"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · deporte viral"
+      ],
+      "topic_tags": [
+        "deportes"
+      ],
+      "general_category": "deportes",
+      "primary_tag": "deportes",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T10:53:21Z",
+      "thumbnail": "https://www.aquidiario.com/media/aquidiario/images/2026/08/18/2026081812495727148.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Burela hace del surf una ola de deporte, igualdad y futuro en A Marosa",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · deporte viral"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
     },
     {
       "title": "Gran Hermano: Alejandra Majluf fue eliminada tras un mano a mano con Luana",
@@ -10309,6 +11329,49 @@
       "image_height": 0
     },
     {
+      "title": "Un nuevo terremoto de magnitud 4,8 sacude Granada y deja tres personas con heridas leves",
+      "link": "https://elpais.com/espana/2026-08-18/un-nuevo-terremoto-de-magnitud-46-sacude-granada.html",
+      "score": 5,
+      "viral_score": 5,
+      "raw_score": 5.0,
+      "sources": [
+        "EL PAÍS · Lo más visto"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "EL PAÍS · Lo más visto"
+      ],
+      "topic_tags": [
+        "popular"
+      ],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T10:52:26Z",
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/QZA3OIESONCSTG3AOJDXFTPHUQ.jpg?auth=e5fced39e27a405cd21edffcf9cacab5a7851e850c29b932b53a69c9df7a28f0&width=1200",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Un nuevo terremoto de magnitud 4,8 sacude Granada y deja tres personas con heridas leves",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: EL PAÍS · Lo más visto"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1200,
+      "image_height": 675
+    },
+    {
       "title": "Intel planea llevar su tecnología bLLC de caché extendida a portátiles gaming para competir con AMD 3D V-Cache",
       "link": "https://www.geeknetic.es/Noticia/39789/Intel-planea-llevar-su-tecnologia-bLLC-de-cache-extendida-a-portatiles-gaming-para-competir-con-AMD-3D-V-Cache.html",
       "score": 5,
@@ -10396,6 +11459,92 @@
       "image_height": 720
     },
     {
+      "title": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
+      "link": "https://www.antena3.com/noticias/sociedad/interior-cifra-2168-menores-edad-identificados-ceuta_202608186a842ecb71b42a0b5df5d1a6.html",
+      "score": 5,
+      "viral_score": 5,
+      "raw_score": 5.0,
+      "sources": [
+        "Antena 3"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Antena 3 · Sociedad RSS"
+      ],
+      "topic_tags": [
+        "sucesos"
+      ],
+      "general_category": "sucesos",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": true,
+      "published_at": "2026-08-18T10:07:07Z",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/08/18/EFA157E8-BA4C-40B9-9D7C-4CD61614BB21/interior-cifra-2168-menores-edad-identificados-ceuta_69.jpg?crop=1920,1080,x0,y11&width=1280&height=720&optimize=low&format=webply",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Interior cifra en 2.168 los menores de edad identificados en Ceuta",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Antena 3 · Sociedad RSS"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1280,
+      "image_height": 720
+    },
+    {
+      "title": "Avería de ETECSA deja a cubanos con Nauta Hogar sin recargas ni pagos",
+      "link": "https://www.periodicocubano.com/averia-de-etecsa-deja-a-cubanos-con-nauta-hogar-sin-recargas-ni-pagos/",
+      "score": 4,
+      "viral_score": 4,
+      "raw_score": 4.0,
+      "sources": [
+        "Periódico Cubano"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "Google News · comida y trucos"
+      ],
+      "topic_tags": [
+        "lifestyle"
+      ],
+      "general_category": "vida-bienestar",
+      "primary_tag": "lifestyle",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:18:35Z",
+      "thumbnail": "https://www.periodicocubano.com/wp-content/uploads/2025/10/Piden-que-Etecsa-baje-precios-durante-la-emergencia-por-Melissa.jpg",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Avería de ETECSA deja a cubanos con Nauta Hogar sin recargas ni pagos",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: Google News · comida y trucos"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1280,
+      "image_height": 720
+    },
+    {
       "title": "Rodri, que ya está en Barcelona, sorprende al desvelar cuál es su comida favorita",
       "link": "https://www.eldebate.com/gente/20260818/rodri-esta-barcelona-sorprende-desvelar-cual-comida-favorita_450260.html",
       "score": 4,
@@ -10441,6 +11590,90 @@
       "image_height": 630
     },
     {
+      "title": "Terremoto en Granada, en directo: última hora de los seísmos, réplicas, heridos y daños",
+      "link": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-seismos-replicas-heridos-danos_202608186a84404ea5690f0473807273.html",
+      "score": 2,
+      "viral_score": 2,
+      "raw_score": 2.0,
+      "sources": [
+        "La Razón · Sociedad"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "La Razón · Sociedad"
+      ],
+      "topic_tags": [
+        "television"
+      ],
+      "general_category": "famosos-corazon",
+      "primary_tag": "television",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:52:32Z",
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/18/DC227802-E67E-44BD-9894-A1CA76950F6C/98.jpg?crop=4500,2532,x0,y236&width=1900&height=1069&optimize=low&format=webply",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Terremoto en Granada, en directo: última hora de los seísmos, réplicas, heridos y daños",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: La Razón · Sociedad"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1900,
+      "image_height": 1069
+    },
+    {
+      "title": "Buscan al conductor que se ha dado a la fuga tras atropellar a un conocido empresario de Malagón (Ciudad Real)",
+      "link": "https://www.larazon.es/sociedad/buscan-conductor-que-dado-fuga-atropellar-conocido-empresario-malagon-ciudad-real_202608186a8453f2a5690f0473809b94.html",
+      "score": 2,
+      "viral_score": 2,
+      "raw_score": 2.0,
+      "sources": [
+        "La Razón · Sociedad"
+      ],
+      "source_count": 1,
+      "platforms": [
+        "news"
+      ],
+      "platform_labels": [
+        "Medios"
+      ],
+      "main_platform": "news",
+      "curated_editorial": true,
+      "editorial_feeds": [
+        "La Razón · Sociedad"
+      ],
+      "topic_tags": [],
+      "general_category": "humor-curiosidades",
+      "primary_tag": "viral",
+      "politics_related": false,
+      "hard_news_related": false,
+      "published_at": "2026-08-18T12:45:38Z",
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/05/03/9DD355F5-E079-403B-8A89-E4A1FE0A640A/vehiculo-guardia-civil_98.jpg?crop=930,523,x0,y13&width=1900&height=1069&optimize=low&format=webply",
+      "image_linked": true,
+      "image_verified": false,
+      "image_origin": "og:image",
+      "image_alt": "Vehículo de la Guardia Civil.",
+      "media_type": "article",
+      "signals": [
+        "Selección editorial: La Razón · Sociedad"
+      ],
+      "cabronazi_affinity": 50,
+      "unfiltered": true,
+      "image_width": 1900,
+      "image_height": 1069
+    },
+    {
       "title": "Juan Roig, presidente de Mercadona, sobre pagar 1.000 euros por un móvil: «Creo que es mucho más valioso producir un litro de leche bueno», y pone de relieve el valor de la alimentación",
       "link": "https://www.larazon.es/sociedad/juan-roig-presidente-mercadona-pagar-1000-euros-movil-creo-que-mucho-mas-valioso-producir-litro-leche-bueno-pone-relieve-valor-alimentacion_202608186a844e86a046ad6ebcb82ee9.html",
       "score": 2,
@@ -10475,49 +11708,6 @@
       "image_verified": false,
       "image_origin": "og:image",
       "image_alt": "Juan Roig defiende la idea de cuidar a los empleados",
-      "media_type": "article",
-      "signals": [
-        "Selección editorial: La Razón · Sociedad"
-      ],
-      "cabronazi_affinity": 50,
-      "unfiltered": true,
-      "image_width": 1900,
-      "image_height": 1069
-    },
-    {
-      "title": "Terremoto en Granada, en directo: última hora de los seísmos, réplicas, heridos y daños",
-      "link": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-seismos-replicas-heridos-danos_202608186a84404ea5690f0473807273.html",
-      "score": 2,
-      "viral_score": 2,
-      "raw_score": 2.0,
-      "sources": [
-        "La Razón · Sociedad"
-      ],
-      "source_count": 1,
-      "platforms": [
-        "news"
-      ],
-      "platform_labels": [
-        "Medios"
-      ],
-      "main_platform": "news",
-      "curated_editorial": true,
-      "editorial_feeds": [
-        "La Razón · Sociedad"
-      ],
-      "topic_tags": [
-        "television"
-      ],
-      "general_category": "famosos-corazon",
-      "primary_tag": "television",
-      "politics_related": false,
-      "hard_news_related": false,
-      "published_at": "2026-08-18T12:20:17Z",
-      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/18/DC227802-E67E-44BD-9894-A1CA76950F6C/98.jpg?crop=4500,2532,x0,y236&width=1900&height=1069&optimize=low&format=webply",
-      "image_linked": true,
-      "image_verified": false,
-      "image_origin": "og:image",
-      "image_alt": "Terremoto en Granada, en directo: última hora de los seísmos, réplicas, heridos y daños",
       "media_type": "article",
       "signals": [
         "Selección editorial: La Razón · Sociedad"
@@ -10944,7 +12134,7 @@
       "image_height": 1069
     },
     {
-      "title": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
+      "title": "Terremoto en Granada, última hora en directo: los seísmos obligan a desalojar la Alhambra y los Palacios Nazaríes",
       "link": "https://www.lavanguardia.com/local/andalucia/20260818/11615877/nuevo-terremoto-magnitud-4-7-granada-sigue-ultima-hora-directo-hoy.html",
       "score": 0,
       "viral_score": 0,
@@ -10971,12 +12161,12 @@
       "primary_tag": "television",
       "politics_related": false,
       "hard_news_related": false,
-      "published_at": "2026-08-18T11:18:14Z",
+      "published_at": "2026-08-18T12:22:20Z",
       "thumbnail": "https://www.lavanguardia.com/files/og_thumbnail/uploads/2026/08/18/6a844baa8f4a3.jpeg",
       "image_linked": true,
       "image_verified": false,
       "image_origin": "og:image",
-      "image_alt": "Terremoto en Granada, en directo | Última hora del seísmo de magnitud 4,7 y los heridos y destrozos",
+      "image_alt": "Terremoto en Granada, última hora en directo: los seísmos obligan a desalojar la Alhambra y los Palacios Nazaríes",
       "media_type": "article",
       "signals": [
         "Selección editorial: La Vanguardia · Portada"
@@ -10989,8 +12179,8 @@
   ],
   "forocoches_stories": [
     {
-      "title": "FINLANDIA se HUNDE desde que gobierna la DERECHA (no se podía saber)",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779355",
+      "title": "He tenido una hija con una mujer india y respondo preguntas",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779889",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11013,18 +12203,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: FINLANDIA se HUNDE desde que gobierna la DERECHA (no se podía saber)",
+      "image_alt": "ForoCoches: He tenido una hija con una mujer india y respondo preguntas",
       "media_type": "link",
-      "matched_forocoches_trend": "FINLANDIA se HUNDE desde que gobierna la DERECHA (no se podía saber)",
+      "matched_forocoches_trend": "He tenido una hija con una mujer india y respondo preguntas",
       "forocoches_rank": 1,
-      "thread_id": "10779355",
+      "thread_id": "10779889",
       "signals": [
         "Trending #1 en ForoCoches"
       ]
     },
     {
-      "title": "He tenido una hija con una mujer india y respondo preguntas",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779889",
+      "title": "AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780000",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11047,18 +12237,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: He tenido una hija con una mujer india y respondo preguntas",
+      "image_alt": "ForoCoches: AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
       "media_type": "link",
-      "matched_forocoches_trend": "He tenido una hija con una mujer india y respondo preguntas",
+      "matched_forocoches_trend": "AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
       "forocoches_rank": 2,
-      "thread_id": "10779889",
+      "thread_id": "10780000",
       "signals": [
         "Trending #2 en ForoCoches"
       ]
     },
     {
-      "title": "AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780000",
+      "title": "Luz verde de Flick al plan B al 9, sería Harry Kane",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779857",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11081,47 +12271,13 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
-      "media_type": "link",
-      "matched_forocoches_trend": "AGENTE de CIVISMO se ENGORILA y suelta una MANTA OSTIAS",
-      "forocoches_rank": 3,
-      "thread_id": "10780000",
-      "signals": [
-        "Trending #3 en ForoCoches"
-      ]
-    },
-    {
-      "title": "Luz verde de Flick al plan B al 9, sería Harry Kane",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779857",
-      "sources": [
-        "ForoCoches Trending"
-      ],
-      "platforms": [
-        "forocoches"
-      ],
-      "platform_labels": [
-        "ForoCoches"
-      ],
-      "main_platform": "forocoches",
-      "published_at": null,
-      "viral_score": 82,
-      "raw_score": 82,
-      "cabronazi_affinity": 50,
-      "topic_tags": [
-        "curiosidades",
-        "viral"
-      ],
-      "general_category": "humor-curiosidades",
-      "thumbnail": "media/forocoches.svg",
-      "image_linked": true,
-      "image_origin": "local:forocoches",
       "image_alt": "ForoCoches: Luz verde de Flick al plan B al 9, sería Harry Kane",
       "media_type": "link",
       "matched_forocoches_trend": "Luz verde de Flick al plan B al 9, sería Harry Kane",
-      "forocoches_rank": 4,
+      "forocoches_rank": 3,
       "thread_id": "10779857",
       "signals": [
-        "Trending #4 en ForoCoches"
+        "Trending #3 en ForoCoches"
       ]
     },
     {
@@ -11138,8 +12294,8 @@
       ],
       "main_platform": "forocoches",
       "published_at": null,
-      "viral_score": 81,
-      "raw_score": 81,
+      "viral_score": 82,
+      "raw_score": 82,
       "cabronazi_affinity": 50,
       "topic_tags": [
         "curiosidades",
@@ -11153,15 +12309,49 @@
       "image_alt": "ForoCoches: Mi novia me sigue ocultando que habla por WhatsApp con su ex",
       "media_type": "link",
       "matched_forocoches_trend": "Mi novia me sigue ocultando que habla por WhatsApp con su ex",
-      "forocoches_rank": 5,
+      "forocoches_rank": 4,
       "thread_id": "10779815",
       "signals": [
-        "Trending #5 en ForoCoches"
+        "Trending #4 en ForoCoches"
       ]
     },
     {
       "title": "Otro terremoto en Granada",
       "link": "https://forocoches.com/foro/showthread.php?t=10780105",
+      "sources": [
+        "ForoCoches Trending"
+      ],
+      "platforms": [
+        "forocoches"
+      ],
+      "platform_labels": [
+        "ForoCoches"
+      ],
+      "main_platform": "forocoches",
+      "published_at": null,
+      "viral_score": 81,
+      "raw_score": 81,
+      "cabronazi_affinity": 50,
+      "topic_tags": [
+        "curiosidades",
+        "viral"
+      ],
+      "general_category": "humor-curiosidades",
+      "thumbnail": "media/forocoches.svg",
+      "image_linked": true,
+      "image_origin": "local:forocoches",
+      "image_alt": "ForoCoches: Otro terremoto en Granada",
+      "media_type": "link",
+      "matched_forocoches_trend": "Otro terremoto en Granada",
+      "forocoches_rank": 5,
+      "thread_id": "10780105",
+      "signals": [
+        "Trending #5 en ForoCoches"
+      ]
+    },
+    {
+      "title": "vengo de la gasolinera y se ve el reflejo del pais sin dudas",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780030",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11184,18 +12374,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Otro terremoto en Granada",
+      "image_alt": "ForoCoches: vengo de la gasolinera y se ve el reflejo del pais sin dudas",
       "media_type": "link",
-      "matched_forocoches_trend": "Otro terremoto en Granada",
+      "matched_forocoches_trend": "vengo de la gasolinera y se ve el reflejo del pais sin dudas",
       "forocoches_rank": 6,
-      "thread_id": "10780105",
+      "thread_id": "10780030",
       "signals": [
         "Trending #6 en ForoCoches"
       ]
     },
     {
-      "title": "vengo de la gasolinera y se ve el reflejo del pais sin dudas",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780030",
+      "title": "Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780174",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11218,18 +12408,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: vengo de la gasolinera y se ve el reflejo del pais sin dudas",
+      "image_alt": "ForoCoches: Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
       "media_type": "link",
-      "matched_forocoches_trend": "vengo de la gasolinera y se ve el reflejo del pais sin dudas",
+      "matched_forocoches_trend": "Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
       "forocoches_rank": 7,
-      "thread_id": "10780030",
+      "thread_id": "10780174",
       "signals": [
         "Trending #7 en ForoCoches"
       ]
     },
     {
-      "title": "Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780174",
+      "title": "Aprendamos del sistema de educación suizo",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779426",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11252,18 +12442,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
+      "image_alt": "ForoCoches: Aprendamos del sistema de educación suizo",
       "media_type": "link",
-      "matched_forocoches_trend": "Tengo 23 años y me estoy construyendo mi casa A MANO +serio",
+      "matched_forocoches_trend": "Aprendamos del sistema de educación suizo",
       "forocoches_rank": 8,
-      "thread_id": "10780174",
+      "thread_id": "10779426",
       "signals": [
         "Trending #8 en ForoCoches"
       ]
     },
     {
-      "title": "Aprendamos del sistema de educación suizo",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779426",
+      "title": "La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779991",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11286,18 +12476,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Aprendamos del sistema de educación suizo",
+      "image_alt": "ForoCoches: La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
       "media_type": "link",
-      "matched_forocoches_trend": "Aprendamos del sistema de educación suizo",
+      "matched_forocoches_trend": "La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
       "forocoches_rank": 9,
-      "thread_id": "10779426",
+      "thread_id": "10779991",
       "signals": [
         "Trending #9 en ForoCoches"
       ]
     },
     {
-      "title": "La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779991",
+      "title": "Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780078",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11320,18 +12510,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
+      "image_alt": "ForoCoches: Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
       "media_type": "link",
-      "matched_forocoches_trend": "La situación que mas me aterra con diferencia cuando estoy conduciendo un trailer:",
+      "matched_forocoches_trend": "Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
       "forocoches_rank": 10,
-      "thread_id": "10779991",
+      "thread_id": "10780078",
       "signals": [
         "Trending #10 en ForoCoches"
       ]
     },
     {
-      "title": "Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780078",
+      "title": "Guantazo a Periodista en Ceuta +roto2",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779950",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11354,18 +12544,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
+      "image_alt": "ForoCoches: Guantazo a Periodista en Ceuta +roto2",
       "media_type": "link",
-      "matched_forocoches_trend": "Me dicen en Adidas que NO sacarán camiseta blanca de España con 2 estrellas",
+      "matched_forocoches_trend": "Guantazo a Periodista en Ceuta +roto2",
       "forocoches_rank": 11,
-      "thread_id": "10780078",
+      "thread_id": "10779950",
       "signals": [
         "Trending #11 en ForoCoches"
       ]
     },
     {
-      "title": "Guantazo a Periodista en Ceuta +roto2",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779950",
+      "title": "SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780144",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11388,18 +12578,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Guantazo a Periodista en Ceuta +roto2",
+      "image_alt": "ForoCoches: SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
       "media_type": "link",
-      "matched_forocoches_trend": "Guantazo a Periodista en Ceuta +roto2",
+      "matched_forocoches_trend": "SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
       "forocoches_rank": 12,
-      "thread_id": "10779950",
+      "thread_id": "10780144",
       "signals": [
         "Trending #12 en ForoCoches"
       ]
     },
     {
-      "title": "SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780144",
+      "title": "Estás son las CALIDADES de un MG ZS por debajo",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780068",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11422,18 +12612,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
+      "image_alt": "ForoCoches: Estás son las CALIDADES de un MG ZS por debajo",
       "media_type": "link",
-      "matched_forocoches_trend": "SANCIONADA Cecilia Sopuerca por infracciones en la bicicleta",
+      "matched_forocoches_trend": "Estás son las CALIDADES de un MG ZS por debajo",
       "forocoches_rank": 13,
-      "thread_id": "10780144",
+      "thread_id": "10780068",
       "signals": [
         "Trending #13 en ForoCoches"
       ]
     },
     {
-      "title": "Estás son las CALIDADES de un MG ZS por debajo",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780068",
+      "title": "Me acabo de gastar 4k en un MacBook y respondo preguntas",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779917",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11456,18 +12646,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Estás son las CALIDADES de un MG ZS por debajo",
+      "image_alt": "ForoCoches: Me acabo de gastar 4k en un MacBook y respondo preguntas",
       "media_type": "link",
-      "matched_forocoches_trend": "Estás son las CALIDADES de un MG ZS por debajo",
+      "matched_forocoches_trend": "Me acabo de gastar 4k en un MacBook y respondo preguntas",
       "forocoches_rank": 14,
-      "thread_id": "10780068",
+      "thread_id": "10779917",
       "signals": [
         "Trending #14 en ForoCoches"
       ]
     },
     {
-      "title": "Me acabo de gastar 4k en un MacBook y respondo preguntas",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779917",
+      "title": "Dejarías de trabajar por 1450 al mes en 12 pagas ?",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779758",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11490,18 +12680,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Me acabo de gastar 4k en un MacBook y respondo preguntas",
+      "image_alt": "ForoCoches: Dejarías de trabajar por 1450 al mes en 12 pagas ?",
       "media_type": "link",
-      "matched_forocoches_trend": "Me acabo de gastar 4k en un MacBook y respondo preguntas",
+      "matched_forocoches_trend": "Dejarías de trabajar por 1450 al mes en 12 pagas ?",
       "forocoches_rank": 15,
-      "thread_id": "10779917",
+      "thread_id": "10779758",
       "signals": [
         "Trending #15 en ForoCoches"
       ]
     },
     {
-      "title": "Dejarías de trabajar por 1450 al mes en 12 pagas ?",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779758",
+      "title": "PAULA MARTÍNEZ la NUEVA VOZ DEL ESPECTADOR DEL CHIRINGUITO ¿ALBERTOO?",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780011",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11524,18 +12714,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Dejarías de trabajar por 1450 al mes en 12 pagas ?",
+      "image_alt": "ForoCoches: PAULA MARTÍNEZ la NUEVA VOZ DEL ESPECTADOR DEL CHIRINGUITO ¿ALBERTOO?",
       "media_type": "link",
-      "matched_forocoches_trend": "Dejarías de trabajar por 1450 al mes en 12 pagas ?",
+      "matched_forocoches_trend": "PAULA MARTÍNEZ la NUEVA VOZ DEL ESPECTADOR DEL CHIRINGUITO ¿ALBERTOO?",
       "forocoches_rank": 16,
-      "thread_id": "10779758",
+      "thread_id": "10780011",
       "signals": [
         "Trending #16 en ForoCoches"
       ]
     },
     {
-      "title": "En qué ha mejorado Madrid con Ayuso?",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779534",
+      "title": "Me pillan los alambres en 400km? +Neumáticos",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779684",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11558,11 +12748,11 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: En qué ha mejorado Madrid con Ayuso?",
+      "image_alt": "ForoCoches: Me pillan los alambres en 400km? +Neumáticos",
       "media_type": "link",
-      "matched_forocoches_trend": "En qué ha mejorado Madrid con Ayuso?",
+      "matched_forocoches_trend": "Me pillan los alambres en 400km? +Neumáticos",
       "forocoches_rank": 17,
-      "thread_id": "10779534",
+      "thread_id": "10779684",
       "signals": [
         "Trending #17 en ForoCoches"
       ]
@@ -11670,8 +12860,8 @@
       ]
     },
     {
-      "title": "Vas en kayak y te encuentras esto",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780036",
+      "title": "617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780123",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11694,18 +12884,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Vas en kayak y te encuentras esto",
+      "image_alt": "ForoCoches: 617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
       "media_type": "link",
-      "matched_forocoches_trend": "Vas en kayak y te encuentras esto",
+      "matched_forocoches_trend": "617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
       "forocoches_rank": 21,
-      "thread_id": "10780036",
+      "thread_id": "10780123",
       "signals": [
         "Trending #21 en ForoCoches"
       ]
     },
     {
-      "title": "617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780123",
+      "title": "Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780099",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11728,18 +12918,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: 617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
+      "image_alt": "ForoCoches: Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
       "media_type": "link",
-      "matched_forocoches_trend": "617 KM de Madrid a MARBELLA en Tesla M3 SIN RECARGAR. +VIDEO",
+      "matched_forocoches_trend": "Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
       "forocoches_rank": 22,
-      "thread_id": "10780123",
+      "thread_id": "10780099",
       "signals": [
         "Trending #22 en ForoCoches"
       ]
     },
     {
-      "title": "Cuándo es a las hijas de los demás VS cuando es a tu hija",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779365",
+      "title": "Alguna vez te ha pasado algo que no puedes explicar? tema serio",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779617",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11762,18 +12952,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Cuándo es a las hijas de los demás VS cuando es a tu hija",
+      "image_alt": "ForoCoches: Alguna vez te ha pasado algo que no puedes explicar? tema serio",
       "media_type": "link",
-      "matched_forocoches_trend": "Cuándo es a las hijas de los demás VS cuando es a tu hija",
+      "matched_forocoches_trend": "Alguna vez te ha pasado algo que no puedes explicar? tema serio",
       "forocoches_rank": 23,
-      "thread_id": "10779365",
+      "thread_id": "10779617",
       "signals": [
         "Trending #23 en ForoCoches"
       ]
     },
     {
-      "title": "Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780099",
+      "title": "me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780097",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11796,18 +12986,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
+      "image_alt": "ForoCoches: me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
       "media_type": "link",
-      "matched_forocoches_trend": "Montan un mercadillo en CEUTA con la ropa de CÁRITAS. Todo a 1 EURO",
+      "matched_forocoches_trend": "me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
       "forocoches_rank": 24,
-      "thread_id": "10780099",
+      "thread_id": "10780097",
       "signals": [
         "Trending #24 en ForoCoches"
       ]
     },
     {
-      "title": "Alguna vez te ha pasado algo que no puedes explicar? tema serio",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779617",
+      "title": "Es imposible que pasen más cosas en un vídeo",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780117",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11830,18 +13020,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Alguna vez te ha pasado algo que no puedes explicar? tema serio",
+      "image_alt": "ForoCoches: Es imposible que pasen más cosas en un vídeo",
       "media_type": "link",
-      "matched_forocoches_trend": "Alguna vez te ha pasado algo que no puedes explicar? tema serio",
+      "matched_forocoches_trend": "Es imposible que pasen más cosas en un vídeo",
       "forocoches_rank": 25,
-      "thread_id": "10779617",
+      "thread_id": "10780117",
       "signals": [
         "Trending #25 en ForoCoches"
       ]
     },
     {
-      "title": "me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780097",
+      "title": "Dime una peli guapa para verme no posterior a 2005",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779844",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11864,18 +13054,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
+      "image_alt": "ForoCoches: Dime una peli guapa para verme no posterior a 2005",
       "media_type": "link",
-      "matched_forocoches_trend": "me he encontrado una revista vieja y este era el RIDÍCULO precio de un GOLF en 2016",
+      "matched_forocoches_trend": "Dime una peli guapa para verme no posterior a 2005",
       "forocoches_rank": 26,
-      "thread_id": "10780097",
+      "thread_id": "10779844",
       "signals": [
         "Trending #26 en ForoCoches"
       ]
     },
     {
-      "title": "Es imposible que pasen más cosas en un vídeo",
-      "link": "https://forocoches.com/foro/showthread.php?t=10780117",
+      "title": "Vuelvo de vacaciones y sorpresa.... +OKUPAS",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779973",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11892,24 +13082,25 @@
       "cabronazi_affinity": 50,
       "topic_tags": [
         "curiosidades",
+        "historias",
         "viral"
       ],
       "general_category": "humor-curiosidades",
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Es imposible que pasen más cosas en un vídeo",
+      "image_alt": "ForoCoches: Vuelvo de vacaciones y sorpresa.... +OKUPAS",
       "media_type": "link",
-      "matched_forocoches_trend": "Es imposible que pasen más cosas en un vídeo",
+      "matched_forocoches_trend": "Vuelvo de vacaciones y sorpresa.... +OKUPAS",
       "forocoches_rank": 27,
-      "thread_id": "10780117",
+      "thread_id": "10779973",
       "signals": [
         "Trending #27 en ForoCoches"
       ]
     },
     {
-      "title": "Dime una peli guapa para verme no posterior a 2005",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779844",
+      "title": "Os acordais de Pablo Casado",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780083",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11932,18 +13123,18 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Dime una peli guapa para verme no posterior a 2005",
+      "image_alt": "ForoCoches: Os acordais de Pablo Casado",
       "media_type": "link",
-      "matched_forocoches_trend": "Dime una peli guapa para verme no posterior a 2005",
+      "matched_forocoches_trend": "Os acordais de Pablo Casado",
       "forocoches_rank": 28,
-      "thread_id": "10779844",
+      "thread_id": "10780083",
       "signals": [
         "Trending #28 en ForoCoches"
       ]
     },
     {
-      "title": "Vuelvo de vacaciones y sorpresa.... +OKUPAS",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779973",
+      "title": "Las puertas son mentira",
+      "link": "https://forocoches.com/foro/showthread.php?t=10779818",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -11960,25 +13151,24 @@
       "cabronazi_affinity": 50,
       "topic_tags": [
         "curiosidades",
-        "historias",
         "viral"
       ],
       "general_category": "humor-curiosidades",
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Vuelvo de vacaciones y sorpresa.... +OKUPAS",
+      "image_alt": "ForoCoches: Las puertas son mentira",
       "media_type": "link",
-      "matched_forocoches_trend": "Vuelvo de vacaciones y sorpresa.... +OKUPAS",
+      "matched_forocoches_trend": "Las puertas son mentira",
       "forocoches_rank": 29,
-      "thread_id": "10779973",
+      "thread_id": "10779818",
       "signals": [
         "Trending #29 en ForoCoches"
       ]
     },
     {
-      "title": "Las puertas son mentira",
-      "link": "https://forocoches.com/foro/showthread.php?t=10779818",
+      "title": "La mentira de la masia",
+      "link": "https://forocoches.com/foro/showthread.php?t=10780064",
       "sources": [
         "ForoCoches Trending"
       ],
@@ -12001,11 +13191,11 @@
       "thumbnail": "media/forocoches.svg",
       "image_linked": true,
       "image_origin": "local:forocoches",
-      "image_alt": "ForoCoches: Las puertas son mentira",
+      "image_alt": "ForoCoches: La mentira de la masia",
       "media_type": "link",
-      "matched_forocoches_trend": "Las puertas son mentira",
+      "matched_forocoches_trend": "La mentira de la masia",
       "forocoches_rank": 30,
-      "thread_id": "10779818",
+      "thread_id": "10780064",
       "signals": [
         "Trending #30 en ForoCoches"
       ]
@@ -12016,7 +13206,7 @@
     {
       "name": "Antena 3 · Sociedad RSS",
       "ok": true,
-      "items": 4,
+      "items": 3,
       "note": "RSS"
     },
     {
@@ -12034,19 +13224,19 @@
     {
       "name": "20minutos · Virales y Gonzoo",
       "ok": true,
-      "items": 21,
+      "items": 22,
       "note": "directo + respaldo Google News"
     },
     {
       "name": "El HuffPost · Portada RSS",
       "ok": true,
-      "items": 1,
-      "note": "RSS"
+      "items": 7,
+      "note": "RSS + respaldo Google News"
     },
     {
       "name": "Lecturas · RSS",
       "ok": true,
-      "items": 10,
+      "items": 11,
       "note": "respaldo Google News"
     },
     {
@@ -12076,7 +13266,7 @@
     {
       "name": "Infobae España · Virales",
       "ok": true,
-      "items": 19,
+      "items": 17,
       "note": null
     },
     {
@@ -12094,20 +13284,20 @@
     {
       "name": "La Vanguardia · Portada",
       "ok": true,
-      "items": 0,
-      "note": "Sin artículos recientes"
+      "items": 1,
+      "note": null
     },
     {
       "name": "La Razón · Sociedad",
       "ok": true,
-      "items": 8,
+      "items": 9,
       "note": null
     },
     {
       "name": "EL PAÍS · Lo más visto",
       "ok": true,
-      "items": 0,
-      "note": "Sin artículos recientes"
+      "items": 1,
+      "note": null
     },
     {
       "name": "EL PAÍS · Viral Internet",
@@ -12130,7 +13320,7 @@
     {
       "name": "Virales y curiosidades · prensa nacional",
       "ok": true,
-      "items": 11,
+      "items": 10,
       "note": null
     },
     {
@@ -12148,7 +13338,7 @@
     {
       "name": "Google News · humor y memes",
       "ok": true,
-      "items": 3,
+      "items": 2,
       "note": null
     },
     {
@@ -12166,13 +13356,13 @@
     {
       "name": "Corazón · HOLA",
       "ok": true,
-      "items": 11,
+      "items": 10,
       "note": null
     },
     {
       "name": "Corazón · Diez Minutos",
       "ok": true,
-      "items": 2,
+      "items": 3,
       "note": null
     },
     {
@@ -12196,7 +13386,7 @@
     {
       "name": "Google News · redes y creadores",
       "ok": true,
-      "items": 5,
+      "items": 9,
       "note": null
     },
     {
@@ -12208,13 +13398,13 @@
     {
       "name": "Google News · deporte viral",
       "ok": true,
-      "items": 5,
+      "items": 6,
       "note": null
     },
     {
       "name": "Google News · comida y trucos",
       "ok": true,
-      "items": 1,
+      "items": 4,
       "note": null
     },
     {
@@ -12226,7 +13416,7 @@
     {
       "name": "Google News · videojuegos y nostalgia",
       "ok": true,
-      "items": 5,
+      "items": 4,
       "note": null
     },
     {
@@ -12286,52 +13476,52 @@
     "active": 40,
     "configured": 40,
     "total": 45,
-    "entries_collected": 158,
-    "entries_before_fetch_filter": 239
+    "entries_collected": 181,
+    "entries_before_fetch_filter": 252
   },
   "history_summary": {
-    "entries": 136,
+    "entries": 160,
     "retention_hours": 72,
     "fetch_window_hours": 3,
     "previous_source": "C:\\Users\\Christian\\Documents\\GIT\\noticias-virales\\docs\\history.json",
     "previous_entries": 136,
-    "fetched_this_update": 128
+    "fetched_this_update": 138
   },
   "image_summary": {
     "verified": 0,
-    "linked": 60,
+    "linked": 62,
     "generated": 0,
-    "with_visual": 60,
-    "total": 60,
+    "with_visual": 62,
+    "total": 62,
     "placeholders": 0,
     "discarded_without_image": 0,
-    "discarded_unresolved": 2,
+    "discarded_unresolved": 3,
     "cached_files": 0,
     "origins": {
-      "schema:primaryImageOfPage": 10,
-      "og:image": 43,
-      "schema:image": 7
+      "og:image": 44,
+      "schema:image": 8,
+      "schema:primaryImageOfPage": 10
     }
   },
   "unfiltered_image_summary": {
-    "linked": 132,
-    "placeholders": 4,
-    "resolved_links": 136,
-    "total": 136
+    "linked": 155,
+    "placeholders": 5,
+    "resolved_links": 160,
+    "total": 160
   },
   "content_window_hours": 72,
   "default_panel_window_hours": 24,
   "temporal_summary": {
-    "accepted": 136,
-    "total": 158,
+    "accepted": 160,
+    "total": 181,
     "old": 0,
     "missing_date": 0,
     "future_date": 0,
     "rejected_english": 0,
-    "accepted_before_spain_filter": 158,
-    "foreign_local_rejected": 16,
+    "accepted_before_spain_filter": 181,
+    "foreign_local_rejected": 18,
     "fetch_window_hours": 3,
-    "fetched_this_update": 128
+    "fetched_this_update": 138
   },
   "publication_date_summary": {
     "attempted": 101,
@@ -12339,12 +13529,12 @@
   },
   "editorial_summary": {
     "politics": 0,
-    "hard_news": 5,
-    "trending": 3,
+    "hard_news": 6,
+    "trending": 4,
     "top_tags": [
       [
         "famosos",
-        20
+        21
       ],
       [
         "redes",
@@ -12352,7 +13542,7 @@
       ],
       [
         "corazon",
-        16
+        17
       ],
       [
         "curiosidades",
@@ -12360,7 +13550,7 @@
       ],
       [
         "tiktok",
-        10
+        11
       ],
       [
         "comida",
@@ -12377,20 +13567,21 @@
     ]
   },
   "tag_distribution": {
-    "viral": 60,
+    "trending": 4,
+    "viral": 62,
+    "sucesos": 9,
     "animales": 1,
-    "famosos": 20,
+    "famosos": 21,
     "television": 1,
     "nostalgia": 3,
     "curiosidades": 16,
-    "trending": 3,
     "insolito": 3,
     "redes": 20,
-    "sucesos": 8,
     "deportes": 1,
-    "tiktok": 10,
-    "corazon": 16,
+    "tiktok": 11,
     "humor": 1,
+    "corazon": 17,
+    "tecnologia": 1,
     "comida": 3,
     "lifestyle": 3
   },

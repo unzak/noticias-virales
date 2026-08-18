@@ -55,6 +55,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Cada update consulta una ventana solapada de 3 horas, la fusiona con
   `docs/history.json`, elimina duplicados y poda automáticamente lo anterior a
   72 horas.
+- Cuando una URL reaparece, prevalece la copia nueva o la que conserve más
+  metadatos editoriales, evitando que una entrada histórica pierda etiquetas,
+  afinidad o prioridad en la selección.
 - Las noticias meteorológicas se descartan en toda la ingesta, incluidas las
   previsiones, alertas y piezas sobre AEMET, temperaturas, lluvias o borrascas.
 - Los sucesos españoles disponen de una consulta y un impulso editorial propios,

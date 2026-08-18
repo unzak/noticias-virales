@@ -2534,8 +2534,28 @@ def is_stale_rss_fallback_entry(entry: StoryEntry) -> bool:
     return host != official_host
 
 
+def history_entry_priority(entry: StoryEntry) -> tuple[Any, ...]:
+    """Prioriza fecha y riqueza editorial; en empate gana la entrada más reciente."""
+    published_at = entry.published_at or dt.datetime.min.replace(tzinfo=dt.timezone.utc)
+    tags = entry.metrics.get("topic_tags") or []
+    return (
+        published_at,
+        bool(entry.metrics.get("curated_editorial")),
+        bool(entry.metrics.get("editorial_feed")),
+        len(tags) if isinstance(tags, (list, tuple, set)) else 0,
+        bool(entry.metrics.get("editorial_section")),
+        float(entry.social_points or 0),
+        bool(entry.thumbnail),
+        len(entry.image_candidates),
+    )
+
+
 def dedupe_history_entries(entries: list[StoryEntry]) -> list[StoryEntry]:
-    """Une URL idénticas y titulares equivalentes antes de reconstruir el panel."""
+    """Une duplicados conservando la versión fechada y editorialmente más completa.
+
+    Los llamadores añaden primero el historial y después la ingesta nueva. El
+    operador ``>=`` hace que, ante un empate total, gane la copia recién leída.
+    """
     by_identity: dict[str, StoryEntry] = {}
     without_identity: list[StoryEntry] = []
     for entry in entries:
@@ -2544,11 +2564,7 @@ def dedupe_history_entries(entries: list[StoryEntry]) -> list[StoryEntry]:
             without_identity.append(entry)
             continue
         previous = by_identity.get(identity)
-        if previous is None or (
-            entry.published_at or dt.datetime.min.replace(tzinfo=dt.timezone.utc)
-        ) > (
-            previous.published_at or dt.datetime.min.replace(tzinfo=dt.timezone.utc)
-        ):
+        if previous is None or history_entry_priority(entry) >= history_entry_priority(previous):
             by_identity[identity] = entry
     unique = [*by_identity.values(), *without_identity]
     return [choose_main(cluster["items"]) for cluster in cluster_entries(unique)]
