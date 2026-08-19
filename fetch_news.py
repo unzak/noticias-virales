@@ -355,6 +355,8 @@ GENERAL_FRONT_PAGE_SOURCES = frozenset({
 })
 GENERAL_DIRECT_FEED_SOURCES = frozenset({
     "Antena 3 · Noticias RSS",
+})
+UNFILTERED_DIRECT_FEED_SOURCES = frozenset({
     "El HuffPost · Portada RSS",
 })
 PRIMARY_RSS_OFFICIAL_HOSTS = {
@@ -2493,33 +2495,45 @@ def history_public_url(filename: str) -> str | None:
 
 
 def load_history_entries() -> tuple[list[StoryEntry], str]:
-    payload: Any = None
-    source = "vacío"
+    payloads: list[tuple[Any, str]] = []
     if os.getenv("GITHUB_ACTIONS") == "true":
         for filename in (HISTORY_PATH.name, OUTPUT_PATH.name):
             url = history_public_url(filename)
             if not url:
                 continue
             try:
-                payload = fetch_json(url)
-                source = url
+                payloads.append((fetch_json(url), url))
                 break
             except (OSError, ValueError, urllib.error.URLError, urllib.error.HTTPError):
                 continue
-    if payload is None:
-        for path in (HISTORY_PATH, OUTPUT_PATH):
-            try:
-                payload = json.loads(path.read_text(encoding="utf-8"))
-                source = str(path)
-                break
-            except (OSError, ValueError):
-                continue
-    raw_entries = []
-    if isinstance(payload, dict):
-        raw_entries = payload.get("entries") or payload.get("unfiltered_stories") or []
-    entries = [deserialize_history_entry(item) for item in raw_entries]
-    valid = [entry for entry in entries if entry is not None]
-    valid = [entry for entry in valid if not is_stale_rss_fallback_entry(entry)]
+
+    # En Actions, el historial desplegado conserva las novedades de los cron
+    # anteriores, mientras que el versionado puede contener correcciones o
+    # metadatos editoriales enriquecidos. Cargar ambos evita que una copia
+    # remota antigua anule permanentemente esas mejoras.
+    for path in (HISTORY_PATH, OUTPUT_PATH):
+        try:
+            payloads.append((json.loads(path.read_text(encoding="utf-8")), str(path)))
+            break
+        except (OSError, ValueError):
+            continue
+
+    entries: list[StoryEntry] = []
+    sources: list[str] = []
+    for payload, source in payloads:
+        raw_entries = []
+        if isinstance(payload, dict):
+            raw_entries = payload.get("entries") or payload.get("unfiltered_stories") or []
+        entries.extend(
+            entry
+            for item in raw_entries
+            if (entry := deserialize_history_entry(item)) is not None
+        )
+        sources.append(source)
+
+    source = " + ".join(sources) if sources else "vacío"
+    valid = [entry for entry in entries if not is_stale_rss_fallback_entry(entry)]
+    valid = dedupe_history_entries(valid)
     print(f"[ok] Historial previo: {len(valid)} entradas desde {source}")
     return valid, source
 
@@ -3782,7 +3796,14 @@ def fetch_direct_section_entries(
         for item in direct_items:
             title = clean_section_title(str(item.get("title") or ""))
             link = valid_http_url(item.get("link"))
-            if not title or not link or is_blocked_content(title):
+            if (
+                not title
+                or not link
+                or (
+                    status_name not in UNFILTERED_DIRECT_FEED_SOURCES
+                    and is_blocked_content(title)
+                )
+            ):
                 continue
             published_at = item.get("published_at") if isinstance(item.get("published_at"), dt.datetime) else None
             if published_at and published_at < cutoff:

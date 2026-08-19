@@ -41,6 +41,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - HuffPost se consulta desde su RSS de portada y Antena 3 desde los RSS oficiales
   de Noticias y Sociedad. Lecturas y Semana prueban primero sus RSS; si el medio
   bloquea la petición, se conserva Google News como respaldo.
+- El RSS de portada de HuffPost se incorpora completo dentro de cada ventana de
+  actualización, sin prefiltrado editorial; el ranking decide después qué piezas
+  entran en la selección, pero todas permanecen disponibles en `Sin filtro`.
 - 20minutos, Público Tremending y LOS40 se consultan desde sus secciones
   directas, con Google News como respaldo.
 - Las consultas de Google News incluyen exclusiones de política, instituciones,
@@ -58,6 +61,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Cuando una URL reaparece, prevalece la copia nueva o la que conserve más
   metadatos editoriales, evitando que una entrada histórica pierda etiquetas,
   afinidad o prioridad en la selección.
+- En GitHub Actions se fusionan el historial publicado y el historial versionado:
+  el primero aporta las novedades de cada cron y el segundo puede restaurar
+  correcciones o metadatos editoriales que una copia desplegada antigua no tenga.
 - Las noticias meteorológicas se descartan en toda la ingesta, incluidas las
   previsiones, alertas y piezas sobre AEMET, temperaturas, lluvias o borrascas.
 - Los sucesos españoles disponen de una consulta y un impulso editorial propios,
