@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T09:48:09.964624Z",
+  "updated_at": "2026-08-19T10:24:21.223978Z",
   "retention_hours": 72,
   "fetch_window_hours": 3,
   "entries": [
@@ -341,38 +341,6 @@
       ],
       "media_type": "article",
       "seed_trend": "maffeo"
-    },
-    {
-      "title": "¿Quién va hoy a ‘Pasapalabra’? Invitados famosos del 18 al 20 de agosto de 2026",
-      "link": "https://okdiario.com/happyfm/quien-va-hoy-pasapalabra-invitados-famosos-del-18-20-agosto-2026-19119293",
-      "source": "OkDiario",
-      "platform": "news",
-      "published_at": "2026-08-18T17:30:09Z",
-      "social_points": 14.369496950188463,
-      "metrics": {
-        "google_trends_item": true,
-        "trend_name": "veronica sanz",
-        "search_traffic": 500,
-        "search_traffic_label": "500+",
-        "trend_published_at": "2026-08-18T18:30:00Z",
-        "topic_tags": [
-          "google-trends"
-        ]
-      },
-      "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhF5p3lGmMcGC4I-TEsAAHw65yPg4UZE4atqh1pmpOnBE6ZMGyH6YeG9oUQ4",
-      "image_candidates": [
-        {
-          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAhF5p3lGmMcGC4I-TEsAAHw65yPg4UZE4atqh1pmpOnBE6ZMGyH6YeG9oUQ4",
-          "origin": "google-trends:picture",
-          "base_score": 74.0,
-          "alt": "¿Quién va hoy a ‘Pasapalabra’? Invitados famosos del 18 al 20 de agosto de 2026",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://okdiario.com/happyfm/quien-va-hoy-pasapalabra-invitados-famosos-del-18-20-agosto-2026-19119293"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": "veronica sanz"
     },
     {
       "title": "Nicolas Altmayer, producteur d’« OSS 117 », et sa compagne, Mathilde Favier, cadre chez Dior meurent dans un accident de la route",
@@ -1652,6 +1620,95 @@
       "seed_trend": null
     },
     {
+      "title": "La Justicia avala el despido de un trabajador por entrar más de 7.000 veces en redes sociales en su jornada laboral",
+      "link": "https://www.huffingtonpost.es/sociedad/la-justicia-avala-despido-trabajador-entrar-mas-7000-veces-redes-sociales-jornada-laboral-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T10:07:34Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [
+          "redes"
+        ],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/19/usar-las-redes-sociales-en-tu-trabajo-puede-ser-motivo-de-despido.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/19/usar-las-redes-sociales-en-tu-trabajo-puede-ser-motivo-de-despido.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La Justicia avala el despido de un trabajador por entrar más de 7.000 veces en redes sociales en su jornada laboral",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/la-justicia-avala-despido-trabajador-entrar-mas-7000-veces-redes-sociales-jornada-laboral-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Natalie Harp se convierte en un dolor de cabeza para Trump: críticas demócratas a su asesora fiel... y ¿tensión con Melania?",
+      "link": "https://www.huffingtonpost.es/global/natalie-harp-convierte-dolor-cabeza-trump-criticas-democratas-asesora-fiel-tension-melania-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T09:50:28Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/19/la-asesora-natalie-harp-entrega-un-documento-al-presidente-de-eeuu-donald-trump-el-25-de-febrero-de-2025-en-el-despacho-oval-en-washington.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/19/la-asesora-natalie-harp-entrega-un-documento-al-presidente-de-eeuu-donald-trump-el-25-de-febrero-de-2025-en-el-despacho-oval-en-washington.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Natalie Harp se convierte en un dolor de cabeza para Trump: críticas demócratas a su asesora fiel... y ¿tensión con Melania?",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/global/natalie-harp-convierte-dolor-cabeza-trump-criticas-democratas-asesora-fiel-tension-melania-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Detenidos dos jóvenes por hacer una inscripción en la Colegiata de Santillana del Mar",
+      "link": "https://www.huffingtonpost.es/sociedad/detenidos-dos-jovenes-inscripcion-colegiata-santillana-mar-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T09:47:16Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2025/12/25/vista-de-la-impresionante-fachada-de-la-colegiata-romanica-de-santa-juliana.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2025/12/25/vista-de-la-impresionante-fachada-de-la-colegiata-romanica-de-santa-juliana.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Detenidos dos jóvenes por hacer una inscripción en la Colegiata de Santillana del Mar",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/detenidos-dos-jovenes-inscripcion-colegiata-santillana-mar-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Rufián se lleva más de 21.000 'me gusta' con su tuit sobre Lorca: firma una frase que conviene recordar",
       "link": "https://www.huffingtonpost.es/virales/rufian-lleva-mas-21000-me-gusta-tuit-sobre-lorca-firma-aviso-conviene-recordar-f202608.html",
       "source": "El HuffPost",
@@ -2320,6 +2377,241 @@
       "seed_trend": null
     },
     {
+      "title": "\"Es una verdadera pesadilla\": la interminable cola para coger un taxi en el aeropuerto de Palma que refleja la saturación de la isla",
+      "link": "https://www.huffingtonpost.es/sociedad/es-verdadera-pesadilla-interminable-cola-coger-taxi-aeropuerto-palma-refleja-saturacion-isla-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:53:51Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/pasajeros-en-el-aeropuerto-de-palma-fotografiados-el-1-de-agosto-de-2025.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/pasajeros-en-el-aeropuerto-de-palma-fotografiados-el-1-de-agosto-de-2025.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "\"Es una verdadera pesadilla\": la interminable cola para coger un taxi en el aeropuerto de Palma que refleja la saturación de la isla",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/es-verdadera-pesadilla-interminable-cola-coger-taxi-aeropuerto-palma-refleja-saturacion-isla-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Bélgica confirma que el auge de los pisos turísticos y del comercio electrónico está ofreciendo nuevas oportunidades al narcotráfico: \"Muchas cosas ya no son sospechosas\"",
+      "link": "https://www.huffingtonpost.es/sociedad/belgica-confirma-auge-pisos-turisticos-comercio-electronico-esta-ofreciendo-nuevas-oportunidades-narcotrafico-muchas-cosas-son-sospechosas-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:52:59Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/imagen-de-archivo-de-una-calle-de-bruselas.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/imagen-de-archivo-de-una-calle-de-bruselas.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Bélgica confirma que el auge de los pisos turísticos y del comercio electrónico está ofreciendo nuevas oportunidades al narcotráfico: \"Muchas cosas ya no son sospechosas\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/belgica-confirma-auge-pisos-turisticos-comercio-electronico-esta-ofreciendo-nuevas-oportunidades-narcotrafico-muchas-cosas-son-sospechosas-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Compran una casa de 211 metros buscando tranquilidad, el ruido de la frutería vecina la hace invivible y la Justicia anula la venta: el vendedor devolverá 1,18 millones de euros",
+      "link": "https://www.huffingtonpost.es/sociedad/compran-casa-211-metros-buscando-tranquilidad-ruido-fruteria-vecina-invivible-justicia-anula-venta-vendedor-devolvera-118-millones-euros-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:52:32Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/una-pareja-tapandose-los-oidos-molesta-por-el-ruido-de-sus-vecinos.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/una-pareja-tapandose-los-oidos-molesta-por-el-ruido-de-sus-vecinos.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Compran una casa de 211 metros buscando tranquilidad, el ruido de la frutería vecina la hace invivible y la Justicia anula la venta: el vendedor devolverá 1,18 millones de euros",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/compran-casa-211-metros-buscando-tranquilidad-ruido-fruteria-vecina-invivible-justicia-anula-venta-vendedor-devolvera-118-millones-euros-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Ni España ni Italia: el destino de playa más barato de Europa para una familia está en el Algarve, con el café a 1,49 euros y la cerveza a 3,07",
+      "link": "https://www.huffingtonpost.es/life/viajes/ni-espana-italia-destino-playa-mas-barato-europa-familia-esta-algarve-cafe-149-euros-cerveza-307-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:52:06Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [
+          "lifestyle",
+          "viajes"
+        ],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/una-familia-en-un-mirador-de-la-zona-de-albufeira-algarve-portugal.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/una-familia-en-un-mirador-de-la-zona-de-albufeira-algarve-portugal.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Ni España ni Italia: el destino de playa más barato de Europa para una familia está en el Algarve, con el café a 1,49 euros y la cerveza a 3,07",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/life/viajes/ni-espana-italia-destino-playa-mas-barato-europa-familia-esta-algarve-cafe-149-euros-cerveza-307-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Reforman la chimenea de su casa y aparece un libro de la biblioteca prestado hace 150 años: la multa acumulada rondaría los 17.000 euros",
+      "link": "https://www.huffingtonpost.es/sociedad/reforman-chimenea-casa-aparece-libro-biblioteca-prestado-150nos-multa-acumulada-rondaria-17000-euros-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:51:42Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2024/03/06/libros-antiguos.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2024/03/06/libros-antiguos.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Reforman la chimenea de su casa y aparece un libro de la biblioteca prestado hace 150 años: la multa acumulada rondaría los 17.000 euros",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/reforman-chimenea-casa-aparece-libro-biblioteca-prestado-150nos-multa-acumulada-rondaria-17000-euros-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Las crueles matemáticas de los recortes: la crisis mundial de la asistencia humanitaria",
+      "link": "https://www.huffingtonpost.es/global/las-crueles-matematicas-recortes-crisis-mundial-asistencia-humanitaria-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:50:56Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/un-hombre-rohingya-carga-sacos-con-ayuda-humanitaria-en-el-campamento-de-refugiados-de-kutupalong-en-cox-s-bazar-bangladesh-el-4-de-agosto-de-2026.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/un-hombre-rohingya-carga-sacos-con-ayuda-humanitaria-en-el-campamento-de-refugiados-de-kutupalong-en-cox-s-bazar-bangladesh-el-4-de-agosto-de-2026.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Las crueles matemáticas de los recortes: la crisis mundial de la asistencia humanitaria",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/global/las-crueles-matematicas-recortes-crisis-mundial-asistencia-humanitaria-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Un mes después de tocar el cielo: ¿cuánto recuerdas del Mundial que nos hizo campeones?",
+      "link": "https://www.huffingtonpost.es/deporte/un-mes-tocar-cielo-cuanto-recuerdas-mundial-hizo-campeones-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T03:50:06Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/17/la-plaza-de-cibeles-durante-la-celebracion-del-mundial.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/17/la-plaza-de-cibeles-durante-la-celebracion-del-mundial.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un mes después de tocar el cielo: ¿cuánto recuerdas del Mundial que nos hizo campeones?",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/deporte/un-mes-tocar-cielo-cuanto-recuerdas-mundial-hizo-campeones-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La ciencia confirma que las olas de calor extremo son más dañinas para las personas de más de 60 años de lo que se creía: \"El estudio es alarmante\"",
+      "link": "https://www.huffingtonpost.es/sociedad/ciencia-confirma-olas-calor-extremo-son-mas-daninas-personas-mas-60-anos-creia-estudio-alarmante-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T20:32:47Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/06/26/un-termometro-apunta-a-45-grados-en-pleno-centro-de-madrid.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/06/26/un-termometro-apunta-a-45-grados-en-pleno-centro-de-madrid.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La ciencia confirma que las olas de calor extremo son más dañinas para las personas de más de 60 años de lo que se creía: \"El estudio es alarmante\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/ciencia-confirma-olas-calor-extremo-son-mas-daninas-personas-mas-60-anos-creia-estudio-alarmante-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "RTVE adelanta la vuelta de Jesús Cintora tras la marcha de Javier Ruiz a La Séptima",
       "link": "https://www.mundodeportivo.com/elotromundo/television/20260818/1004217370/rtve-adelanta-vuelta-jesus-cintora-marcha-javier-ruiz-septima-partir-sabado-22-agosto-dct.html",
       "source": "Mundo Deportivo · El Otro Mundo",
@@ -2372,6 +2664,122 @@
       "seed_trend": null
     },
     {
+      "title": "Vivas y Gamarra presionan al Gobierno a la espera de Feijóo: denuncian \"abandono\" y piden más medios para las devoluciones",
+      "link": "https://www.huffingtonpost.es/politica/vivas-gamarra-presionan-gobierno-espera-feijoo-denuncian-abandono-piden-mas-medios-devoluciones-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T19:12:18Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/comparecencia-de-vivas-y-gamarra-este-18-de-agosto.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/comparecencia-de-vivas-y-gamarra-este-18-de-agosto.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Vivas y Gamarra presionan al Gobierno a la espera de Feijóo: denuncian \"abandono\" y piden más medios para las devoluciones",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/politica/vivas-gamarra-presionan-gobierno-espera-feijoo-denuncian-abandono-piden-mas-medios-devoluciones-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Mataron a Federico, pero no pudieron con Lorca: 90 aniversario de su asesinato",
+      "link": "https://www.huffingtonpost.es/videos/mataron-federico-pudieron-lorca90-aniversario-asesinato-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T19:04:50Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/14/noventa-anos-sin-federico-garcia-lorca.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/14/noventa-anos-sin-federico-garcia-lorca.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Mataron a Federico, pero no pudieron con Lorca: 90 aniversario de su asesinato",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/videos/mataron-federico-pudieron-lorca90-aniversario-asesinato-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Susto de una eurodiputada tras ser mordida por una víbora y acabar en la UCI: \"Hay menos de 300 picaduras al año y me tenía que pasar a mí\"",
+      "link": "https://www.huffingtonpost.es/global/susto-eurodiputada-mordida-vibora-acabar-uci-hay-300-picaduras-ano-me-tenia-pasar-mi-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T19:00:00Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2025/10/07/vibora-de-arbusto-de-escamas-rugosas-preparandose-para-atacar.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2025/10/07/vibora-de-arbusto-de-escamas-rugosas-preparandose-para-atacar.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Susto de una eurodiputada tras ser mordida por una víbora y acabar en la UCI: \"Hay menos de 300 picaduras al año y me tenía que pasar a mí\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/global/susto-eurodiputada-mordida-vibora-acabar-uci-hay-300-picaduras-ano-me-tenia-pasar-mi-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Recuperan esta escena de 'El ministerio del tiempo' sobre el asesinato de Lorca: \"Federico, no vuelvas a Granada\"",
+      "link": "https://www.huffingtonpost.es/virales/recuperan-escena-el-ministerio-sobre-asesinato-lorca-federico-vuelvas-granadabr-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T18:50:49Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/federico-garcia-lorca-en-el-ministerio-del-tiempo-rtve.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/federico-garcia-lorca-en-el-ministerio-del-tiempo-rtve.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Recuperan esta escena de 'El ministerio del tiempo' sobre el asesinato de Lorca: \"Federico, no vuelvas a Granada\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/virales/recuperan-escena-el-ministerio-sobre-asesinato-lorca-federico-vuelvas-granadabr-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Muere Juan Tamariz, el mago por excelencia, a los 83 años por causas naturales",
       "link": "https://www.mundodeportivo.com/elotromundo/gente/20260818/1004217365/muere-juan-tamariz-mago-excelencia-83-anos-causas-naturales-asi-comunicado-hija-dct.html",
       "source": "Mundo Deportivo · El Otro Mundo",
@@ -2418,6 +2826,35 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.mundodeportivo.com/elotromundo/gente/20260818/1004217365/muere-juan-tamariz-mago-excelencia-83-anos-causas-naturales-asi-comunicado-hija-dct.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Basta con un minuto de un irreconocible Juan Tamariz para mantener viva su magia",
+      "link": "https://www.huffingtonpost.es/life/cultura/basta-minuto-irreconocible-juan-tamariz-mantener-viva-magia-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-18T18:19:10Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/juan-tamariz-en-una-imagen-de-archivo-de-2016.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/juan-tamariz-en-una-imagen-de-archivo-de-2016.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Basta con un minuto de un irreconocible Juan Tamariz para mantener viva su magia",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/life/cultura/basta-minuto-irreconocible-juan-tamariz-mantener-viva-magia-f202608.html"
         }
       ],
       "media_type": "article",
@@ -3155,6 +3592,360 @@
       "seed_trend": null
     },
     {
+      "title": "La alcaldesa de Granada descarta daños estructurales graves: \"Las viviendas son seguras si hay réplicas\"",
+      "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
+      "source": "20minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T10:17:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8556e03d5b07-74672619.webp",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8556e03d5b07-74672619.webp",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La alcaldesa de Granada descarta daños estructurales graves: \"Las viviendas son seguras si hay réplicas\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El incendio en Las Hurdes, que ha arrasado ya 2.200 hectáreas, es \"al 99%\" intencionado",
+      "link": "https://www.20minutos.es/extremadura/caceres/incendio-las-hurdes-que-ha-arrasado-ya-2-200-hectareas-es-99-intencionado_7027237_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T10:15:12Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8578620bab60-41035654.webp",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8578620bab60-41035654.webp",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El incendio en Las Hurdes, que ha arrasado ya 2.200 hectáreas, es \"al 99%\" intencionado",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/extremadura/caceres/incendio-las-hurdes-que-ha-arrasado-ya-2-200-hectareas-es-99-intencionado_7027237_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Ella Rubin, de ser rechazada durante 7 años a triunfar en 'Sterling Point'",
+      "link": "https://www.hola.com/actualidad/20260819918317/ella-rubin-protagonista-sterling-point-prime-video/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-19T10:13:08Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/3aafd45ebbb6-sterling-point58d2c8272608040939421600x900.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/3aafd45ebbb6-sterling-point58d2c8272608040939421600x900.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Ella Rubin, de ser rechazada durante 7 años a triunfar en 'Sterling Point'",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/actualidad/20260819918317/ella-rubin-protagonista-sterling-point-prime-video/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Roberta, chef italiana: “La pizza pepperoni no existe en Italia, sino que es un invento americano del siglo XX; en realidad, pepperoni significa pimiento”",
+      "link": "https://www.infobae.com/espana/2026/08/19/roberta-chef-italiana-la-pizza-pepperoni-no-existe-en-italia-sino-que-es-un-invento-americano-del-siglo-xx-en-realidad-pepperoni-significa-pimiento/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-19T10:11:46Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "comida",
+          "curiosidades",
+          "tecnologia",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/JTQ4K6VZMNBUHO24OAPSDGWJDY.jpg?auth=a1f12877c32b4a33d64fe095084bc3a9ce577513f70171c0a01450e757b385b7&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/JTQ4K6VZMNBUHO24OAPSDGWJDY.jpg?auth=a1f12877c32b4a33d64fe095084bc3a9ce577513f70171c0a01450e757b385b7&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Roberta, chef italiana: “La pizza pepperoni no existe en Italia, sino que es un invento americano del siglo XX; en realidad, pepperoni significa pimiento”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/roberta-chef-italiana-la-pizza-pepperoni-no-existe-en-italia-sino-que-es-un-invento-americano-del-siglo-xx-en-realidad-pepperoni-significa-pimiento/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/JTQ4K6VZMNBUHO24OAPSDGWJDY.jpg?auth=a1f12877c32b4a33d64fe095084bc3a9ce577513f70171c0a01450e757b385b7&smart=true&width=1920&height=1080",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 1920,
+          "height": 1080,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/roberta-chef-italiana-la-pizza-pepperoni-no-existe-en-italia-sino-que-es-un-invento-americano-del-siglo-xx-en-realidad-pepperoni-significa-pimiento/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/3PZL5OICLVCO3C6FRJXKHOMNJY.jpg?auth=e3762e9c30fab577124a6fbf745806d2bc84f1b084cab17ec002a4940e721960&smart=true&width=4441&height=3331",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "La pizza pepperoni se ha convertido en un símbolo de la cocina americana (Pexels)",
+          "width": 4441,
+          "height": 3331,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/roberta-chef-italiana-la-pizza-pepperoni-no-existe-en-italia-sino-que-es-un-invento-americano-del-siglo-xx-en-realidad-pepperoni-significa-pimiento/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El Senado reprobará a cinco ministros por no estar \"a la altura de las circunstancias\" con la crisis de Ceuta",
+      "link": "https://www.20minutos.es/nacional/senado-reprobara-cinco-ministros-por-no-estar-altura-las-circunstancias-con-crisis-ceuta_7027226_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T10:10:27Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/04/07/69d4eb810d4401-62629819.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/04/07/69d4eb810d4401-62629819.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El Senado reprobará a cinco ministros por no estar \"a la altura de las circunstancias\" con la crisis de Ceuta",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/nacional/senado-reprobara-cinco-ministros-por-no-estar-altura-las-circunstancias-con-crisis-ceuta_7027226_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Ana, hija de Juan Tamariz, sobre su padre: \"Me gustaría que se le recordara con toda su alegría y su pasión por la magia\"",
+      "link": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73471896/ana-tamariz-hija-juan-tamariz-tanatorio-recuerdo/",
+      "source": "Diez Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T10:06:37Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Diez Minutos",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/a4c4d9d8-43dc-4586-8a00-d1c7c51d1313.jpg?crop=1.00xw:0.334xh;0,0.0597xh&resize=1200:*",
+      "image_candidates": [
+        {
+          "url": "https://hips.hearstapps.com/hmg-prod/images/a4c4d9d8-43dc-4586-8a00-d1c7c51d1313.jpg?crop=1.00xw:0.334xh;0,0.0597xh&resize=1200:*",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Ana, hija de Juan Tamariz, sobre su padre: \"Me gustaría que se le recordara con toda su alegría y su pasión por la magia\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73471896/ana-tamariz-hija-juan-tamariz-tanatorio-recuerdo/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Este verano consigue con Diez Minutos las mejores novelas de Megan Maxwell",
+      "link": "https://www.diezminutos.es/estilo-de-vida/ocio/g71833194/novelas-megan-maxwell-diez-minutos-verano-2026/",
+      "source": "Diez Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T05:13:02Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Diez Minutos",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/aa805689-5632-4128-a612-da2e7b19cffb.jpg?crop=1.00xw:0.368xh;0,0.0179xh&resize=1200:*",
+      "image_candidates": [
+        {
+          "url": "https://hips.hearstapps.com/hmg-prod/images/aa805689-5632-4128-a612-da2e7b19cffb.jpg?crop=1.00xw:0.368xh;0,0.0179xh&resize=1200:*",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Este verano consigue con Diez Minutos las mejores novelas de Megan Maxwell",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.diezminutos.es/estilo-de-vida/ocio/g71833194/novelas-megan-maxwell-diez-minutos-verano-2026/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "‘Pinctada radiata’, la ostra invasora de origen tropical que se expande por el Mediterráneo occidental",
+      "link": "https://www.infobae.com/espana/2026/08/19/pinctada-radiata-la-ostra-invasora-de-origen-tropical-que-se-expande-por-el-mediterraneo-occidental/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-19T10:01:21Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/N75HIMUR7JCWXINEP24LG6BPOA.jpg?auth=064c91b5427c043ffbf779fb662b806f9c9c45748ef0035e5994a46c280d9da4&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/N75HIMUR7JCWXINEP24LG6BPOA.jpg?auth=064c91b5427c043ffbf779fb662b806f9c9c45748ef0035e5994a46c280d9da4&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "‘Pinctada radiata’, la ostra invasora de origen tropical que se expande por el Mediterráneo occidental",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/pinctada-radiata-la-ostra-invasora-de-origen-tropical-que-se-expande-por-el-mediterraneo-occidental/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/N75HIMUR7JCWXINEP24LG6BPOA.jpg?auth=064c91b5427c043ffbf779fb662b806f9c9c45748ef0035e5994a46c280d9da4&smart=true&width=559&height=269",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 559,
+          "height": 269,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/pinctada-radiata-la-ostra-invasora-de-origen-tropical-que-se-expande-por-el-mediterraneo-occidental/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/KTU6RR2PZVH5NI74CPBOC2G7HY.jpg?auth=d21ed2f1e6ae27247a5f176d38f424f29eec3506f5dcec9b90ca0b8e02ed35ab&smart=true&width=1920&height=1285",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Imagen de las Islas Columbretes, en Castellón. (Turismo de Castellón / Europa Press)",
+          "width": 1920,
+          "height": 1285,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/pinctada-radiata-la-ostra-invasora-de-origen-tropical-que-se-expande-por-el-mediterraneo-occidental/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "En fotos | Familiares y amigos despiden a Juan Tamariz en Madrid en un mágico último adiós: \"No sufrió\"",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/familiares-amigos-juan-tamariz-velatorio-magico-ultimo-adios-sufrio_4408202/",
+      "source": "Vanitatis",
+      "platform": "news",
+      "published_at": "2026-08-19T09:53:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://images.ecestaticos.com/uUmW5ep32tn8LfEjNKz8htY5N_8=/0x0:3279x1844/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F5ca%2F037%2F959%2F5ca037959c2fa1e4131451fe057dadfc.jpg",
+      "image_candidates": [
+        {
+          "url": "https://images.ecestaticos.com/uUmW5ep32tn8LfEjNKz8htY5N_8=/0x0:3279x1844/1200x675/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F5ca%2F037%2F959%2F5ca037959c2fa1e4131451fe057dadfc.jpg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "En fotos | Familiares y amigos despiden a Juan Tamariz en Madrid en un mágico último adiós: \"No sufrió\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/familiares-amigos-juan-tamariz-velatorio-magico-ultimo-adios-sufrio_4408202/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Amigos, familiares y compañeros despiden a Juan Tamariz tras su fallecimiento a los 83 años",
+      "link": "http://www.lecturas.com/actualidad/amigos-familiares-y-companeros-despiden-a-juan-tamariz-tras-su-fallecimiento-a-83-anos_197280",
+      "source": "Lecturas",
+      "platform": "news",
+      "published_at": "2026-08-19T09:47:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Lecturas · RSS",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://content25.lecturas.com/medio/2026/08/19/ana-tamariz_5cc3967e_260819114636_1200x630.jpg",
+      "image_candidates": [
+        {
+          "url": "https://content25.lecturas.com/medio/2026/08/19/ana-tamariz_5cc3967e_260819114636_1200x630.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Amigos, familiares y compañeros despiden a Juan Tamariz tras su fallecimiento a los 83 años",
+          "width": 0,
+          "height": 0,
+          "page_url": "http://www.lecturas.com/actualidad/amigos-familiares-y-companeros-despiden-a-juan-tamariz-tras-su-fallecimiento-a-83-anos_197280"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "La confesión del tenista Nick Kyrgios tras dar positivo por cocaína: “Cometí un grave error”",
       "link": "https://www.hola.com/actualidad/20260819918769/la-confesion-del-tenista-nick-kyrgios-tras-dar-positivo-por-cocaina/",
       "source": "HOLA",
@@ -3291,38 +4082,6 @@
           "width": 646,
           "height": 801,
           "page_url": "https://www.infobae.com/espana/2026/08/19/cristina-pedroche-sobre-su-vida-en-pareja-con-dabiz-munoz-llegamos-a-la-conclusion-de-que-era-mejor-que-se-fuera-a-otra-habitacion/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "La alcaldesa de Granada descarta daños estructurales graves: \"Las viviendas son seguras si hay réplicas\"",
-      "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
-      "source": "20minutos",
-      "platform": "news",
-      "published_at": "2026-08-19T09:42:00Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8556e03d5b07-74672619.webp",
-      "image_candidates": [
-        {
-          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8556e03d5b07-74672619.webp",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "La alcaldesa de Granada descarta daños estructurales graves: \"Las viviendas son seguras si hay réplicas\"",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html"
         }
       ],
       "media_type": "article",
@@ -3469,6 +4228,37 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Jordi Hurtado, incombustible: \"No me planteo dejar de trabajar\"",
+      "link": "https://amp.marca.com/tiramillas/television/2026/08/19/jordi-hurtado-incombustible-me-planto-dejar-trabajar.html",
+      "source": "MARCA",
+      "platform": "news",
+      "published_at": "2026-08-19T09:19:11Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tiramillas",
+        "editorial_feed": "MARCA · Tiramillas",
+        "topic_tags": [
+          "curiosidades",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2025/09/01/68b5390c252e4.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2025/09/01/68b5390c252e4.jpeg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "Jordi Hurtado, incombustible: \"No me planteo dejar de trabajar\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://amp.marca.com/tiramillas/television/2026/08/19/jordi-hurtado-incombustible-me-planto-dejar-trabajar.html"
         }
       ],
       "media_type": "article",
@@ -3670,32 +4460,33 @@
       "seed_trend": null
     },
     {
-      "title": "El fuego en Pinofranqueado (Cáceres) ya supera las 1.600 hectáreas: el alcalde apunta a un incendio intencionado",
-      "link": "https://www.lasexta.com/noticias/nacional/fuego-pinofranqueado-caceres-supera-1600-hectareas-alcalde-apunta-incendio-intencionado_202608196a85719c71b42a0b5df7cce7.html",
-      "source": "laSexta",
+      "title": "Jordi Cruz, chef, revela el truco para recuperar el crujiente de la lechuga: \"Necesita un contraste térmico\"",
+      "link": "https://amp.marca.com/tiramillas/gastronomia/2026/08/19/jordi-cruz-chef-revela-truco-recuperar-crujiente-lechuga-necesita-contraste-termico.html",
+      "source": "MARCA",
       "platform": "news",
-      "published_at": "2026-08-19T09:04:28Z",
+      "published_at": "2026-08-19T09:08:59Z",
       "social_points": 9.0,
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Viral y vídeos virales",
-        "editorial_feed": "laSexta · Viral",
+        "editorial_section": "Tiramillas",
+        "editorial_feed": "MARCA · Tiramillas",
         "topic_tags": [
+          "comida",
           "curiosidades",
+          "lifestyle",
           "viral"
-        ],
-        "source_mode": "direct-section"
+        ]
       },
-      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/5A26F73D-FA6F-4255-8650-3A5DB435F5A2/agentes-emergencias-trabajan-puesto-mando-avanzado-incendio-pinofranqueado_69.jpg?crop=3504,1971,x0,y185&width=1280&height=720&optimize=low&format=webply",
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/19/6a857115efc8b.jpeg",
       "image_candidates": [
         {
-          "url": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/5A26F73D-FA6F-4255-8650-3A5DB435F5A2/agentes-emergencias-trabajan-puesto-mando-avanzado-incendio-pinofranqueado_69.jpg?crop=3504,1971,x0,y185&width=1280&height=720&optimize=low&format=webply",
-          "origin": "og:image",
+          "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/19/6a857115efc8b.jpeg",
+          "origin": "schema:image",
           "base_score": 90.0,
-          "alt": "El fuego en Pinofranqueado (Cáceres) ya supera las 1.600 hectáreas: el alcalde apunta a un incendio intencionado",
+          "alt": "Jordi Cruz, chef, revela el truco para recuperar el crujiente de la lechuga: \"Necesita un contraste térmico\"",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.lasexta.com/noticias/nacional/fuego-pinofranqueado-caceres-supera-1600-hectareas-alcalde-apunta-incendio-intencionado_202608196a85719c71b42a0b5df7cce7.html"
+          "page_url": "https://amp.marca.com/tiramillas/gastronomia/2026/08/19/jordi-cruz-chef-revela-truco-recuperar-crujiente-lechuga-necesita-contraste-termico.html"
         }
       ],
       "media_type": "article",
@@ -3728,6 +4519,37 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.diezminutos.es/moda-belleza/belleza/a73411674/cuca-miquel-experta-belleza-bolsas-ojeras-rutina-cuidado-ojos/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Daniel Tamariz, el desconocido nieto campeón de yo-yo de Juan Tamariz que siguió sus pasos en el mundo del arte",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/daniel-tamariz-nieto-campeon-yoyo-juan-tamariz-siguio-pasos-mundo-arte_4408171/",
+      "source": "Vanitatis",
+      "platform": "news",
+      "published_at": "2026-08-19T09:00:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://images.ecestaticos.com/gz1jXWpIThOoC_-ni6fgvvAftqk=/0x212:1290x938/1200x675/filters:fill(white):format(jpeg)/f.elconfidencial.com%2Foriginal%2F4fc%2Fbe9%2Fab1%2F4fcbe9ab1d89e47c13b51697ef2a3314.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://images.ecestaticos.com/gz1jXWpIThOoC_-ni6fgvvAftqk=/0x212:1290x938/1200x675/filters:fill(white):format(jpeg)/f.elconfidencial.com%2Foriginal%2F4fc%2Fbe9%2Fab1%2F4fcbe9ab1d89e47c13b51697ef2a3314.jpeg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "Daniel Tamariz, el desconocido nieto campeón de yo-yo de Juan Tamariz que siguió sus pasos en el mundo del arte",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/daniel-tamariz-nieto-campeon-yoyo-juan-tamariz-siguio-pasos-mundo-arte_4408171/"
         }
       ],
       "media_type": "article",
@@ -3776,6 +4598,37 @@
       "seed_trend": null
     },
     {
+      "title": "Irene Junquera, sobre las peticiones más extrañas que recibe por sus pies: “Podría ser millonaria”",
+      "link": "https://amp.marca.com/tiramillas/television/2026/08/19/irene-junquera-sobre-peticiones-extranas-recibe-pies-podria-millonaria.html",
+      "source": "MARCA",
+      "platform": "news",
+      "published_at": "2026-08-19T08:57:59Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tiramillas",
+        "editorial_feed": "MARCA · Tiramillas",
+        "topic_tags": [
+          "curiosidades",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2025/01/29/67996213de65d.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2025/01/29/67996213de65d.jpeg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "Irene Junquera, sobre las peticiones más extrañas que recibe por sus pies: “Podría ser millonaria”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://amp.marca.com/tiramillas/television/2026/08/19/irene-junquera-sobre-peticiones-extranas-recibe-pies-podria-millonaria.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "La reflexión de Manuel Carrasco sobre el uso de las redes sociales: \"Estamos intentando gustar todo el rato y no me gusta nada porque estamos siendo más frágiles que nunca\"",
       "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/manuel-carrasco-redes-sociales-reflexion-autoestima-fragilidad-aprobacion-bienestar-1qrt_4408144/",
       "source": "Vanitatis",
@@ -3802,6 +4655,38 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/manuel-carrasco-redes-sociales-reflexion-autoestima-fragilidad-aprobacion-bienestar-1qrt_4408144/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Reabre esta importante estación del metro de Barcelona tras casi dos meses sin parada",
+      "link": "https://www.20minutos.es/cataluna/barcelona/reabre-esta-importante-estacion-metro-barcelona-tras-casi-dos-meses-sin-parada_7026188_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T08:48:04Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/16/6a81833363e696-42293875.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/16/6a81833363e696-42293875.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Reabre esta importante estación del metro de Barcelona tras casi dos meses sin parada",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/cataluna/barcelona/reabre-esta-importante-estacion-metro-barcelona-tras-casi-dos-meses-sin-parada_7026188_0.html"
         }
       ],
       "media_type": "article",
@@ -4024,6 +4909,38 @@
       "seed_trend": null
     },
     {
+      "title": "El PP catalán asegura que Junts tiene parte de razón en inmigración pero que no se pueden \"desguazar\" competencias",
+      "link": "https://www.20minutos.es/cataluna/pp-catalan-asegura-que-junts-tiene-parte-razon-inmigracion-pero-que-no-se-pueden-desguazar-competencias_7027168_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T08:21:54Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/01/09/6960fdd41fbe46-25113842.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/01/09/6960fdd41fbe46-25113842.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El PP catalán asegura que Junts tiene parte de razón en inmigración pero que no se pueden \"desguazar\" competencias",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/cataluna/pp-catalan-asegura-que-junts-tiene-parte-razon-inmigracion-pero-que-no-se-pueden-desguazar-competencias_7027168_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "El Ministerio de Agricultura elige los mejores vinos de España este 2026: un tinto catalán, un blanco riojano y un rosado de Navarra",
       "link": "https://www.infobae.com/espana/2026/08/19/el-ministerio-de-agricultura-elige-los-mejores-vinos-de-espana-este-2026-un-tinto-catalan-un-blanco-riojano-y-un-rosado-de-navarra/",
       "source": "Infobae España · Virales",
@@ -4068,46 +4985,6 @@
           "width": 1536,
           "height": 864,
           "page_url": "https://www.infobae.com/espana/2026/08/19/el-ministerio-de-agricultura-elige-los-mejores-vinos-de-espana-este-2026-un-tinto-catalan-un-blanco-riojano-y-un-rosado-de-navarra/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
-      "link": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html",
-      "source": "Antena 3",
-      "platform": "news",
-      "published_at": "2026-08-19T08:34:32Z",
-      "social_points": 5.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad y sucesos filtrados",
-        "editorial_feed": "Antena 3 · Sociedad RSS",
-        "topic_tags": [
-          "sucesos"
-        ],
-        "source_mode": "rss"
-      },
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
-      "image_candidates": [
-        {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
-        },
-        {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_96.jpg?crop=1920,1080,x0,y0&width=1200&height=675&optimize=low&format=webply",
-          "origin": "section:rss",
-          "base_score": 94.0,
-          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
         }
       ],
       "media_type": "article",
@@ -4172,39 +5049,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/gente/verano-mas-familiar-alejandro-sanz-sus-cuatro-hijos-su-novia-stephanie-cayo-juntos-baleares_7027160_0.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Muere Frank Beard (ZZ Top) a los 77 años",
-      "link": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/",
-      "source": "LOS40",
-      "platform": "news",
-      "published_at": "2026-08-19T07:58:22Z",
-      "social_points": 8.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, música y entretenimiento",
-        "editorial_feed": "LOS40 · Entretenimiento viral",
-        "topic_tags": [
-          "famosos",
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "thumbnail": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
-      "image_candidates": [
-        {
-          "url": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Muere Frank Beard (ZZ Top) a los 77 años",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/"
         }
       ],
       "media_type": "article",
@@ -5324,56 +6168,6 @@
       "seed_trend": null
     },
     {
-      "title": "Los embalses de agua se encuentran al 66,21 % de su capacidad este miércoles 19 de agosto",
-      "link": "https://www.infobae.com/espana/2026/08/19/los-embalses-de-agua-se-encuentran-al-6621-de-su-capacidad-este-miercoles-19-de-agosto/",
-      "source": "Infobae España · Virales",
-      "platform": "news",
-      "published_at": "2026-08-19T05:15:52Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales España",
-        "editorial_feed": "Infobae España · Virales",
-        "topic_tags": [
-          "curiosidades",
-          "tiktok",
-          "viral"
-        ]
-      },
-      "thumbnail": "https://www.infobae.com/resizer/v2/KQS6AV5DE5GBFADFLZ5AGX3GIA.png?auth=5e8024028308e1b9e05216da61c2a96eaf1d587ec99588b909fac547fb51a129&smart=true&width=1200&height=900&quality=85",
-      "image_candidates": [
-        {
-          "url": "https://www.infobae.com/resizer/v2/KQS6AV5DE5GBFADFLZ5AGX3GIA.png?auth=5e8024028308e1b9e05216da61c2a96eaf1d587ec99588b909fac547fb51a129&smart=true&width=1200&height=900&quality=85",
-          "origin": "schema:primaryImageOfPage",
-          "base_score": 90.0,
-          "alt": "Los embalses de agua se encuentran al 66,21 % de su capacidad este miércoles 19 de agosto",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.infobae.com/espana/2026/08/19/los-embalses-de-agua-se-encuentran-al-6621-de-su-capacidad-este-miercoles-19-de-agosto/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/KQS6AV5DE5GBFADFLZ5AGX3GIA.png?auth=5e8024028308e1b9e05216da61c2a96eaf1d587ec99588b909fac547fb51a129&smart=true&width=3532&height=2355",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 3532,
-          "height": 2355,
-          "page_url": "https://www.infobae.com/espana/2026/08/19/los-embalses-de-agua-se-encuentran-al-6621-de-su-capacidad-este-miercoles-19-de-agosto/"
-        },
-        {
-          "url": "https://www.infobae.com/resizer/v2/XUJWUFY3VZCPNNM6ZGKRRKQS4E.png?auth=34684b2355d28edfa883020032a6678590b4312d4173d586b2c94f1d3175e9ff&smart=true&width=1000&height=667",
-          "origin": "feed:content-img",
-          "base_score": 88.0,
-          "alt": "La capacidad del agua bajó en comparación con la última semana (Europa Press)",
-          "width": 1000,
-          "height": 667,
-          "page_url": "https://www.infobae.com/espana/2026/08/19/los-embalses-de-agua-se-encuentran-al-6621-de-su-capacidad-este-miercoles-19-de-agosto/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "Así es a sus 28 años Greyson Chance, el niño pianista que conquistó el mundo en 2010",
       "link": "https://www.20minutos.es/gente/asi-es-sus-28-anos-greyson-chance-nino-pianista-que-conquisto-mundo-2010_7012848_0.html",
       "source": "20Minutos",
@@ -5400,37 +6194,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/gente/asi-es-sus-28-anos-greyson-chance-nino-pianista-que-conquisto-mundo-2010_7012848_0.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Este verano consigue con Diez Minutos las mejores novelas de Megan Maxwell",
-      "link": "https://www.diezminutos.es/estilo-de-vida/ocio/g71833194/novelas-megan-maxwell-diez-minutos-verano-2026/",
-      "source": "Diez Minutos",
-      "platform": "news",
-      "published_at": "2026-08-19T05:13:02Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · Diez Minutos",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/aa805689-5632-4128-a612-da2e7b19cffb.jpg?crop=1.00xw:0.368xh;0,0.0179xh&resize=1200:*",
-      "image_candidates": [
-        {
-          "url": "https://hips.hearstapps.com/hmg-prod/images/aa805689-5632-4128-a612-da2e7b19cffb.jpg?crop=1.00xw:0.368xh;0,0.0179xh&resize=1200:*",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Este verano consigue con Diez Minutos las mejores novelas de Megan Maxwell",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.diezminutos.es/estilo-de-vida/ocio/g71833194/novelas-megan-maxwell-diez-minutos-verano-2026/"
         }
       ],
       "media_type": "article",
@@ -7045,37 +7808,6 @@
       "seed_trend": null
     },
     {
-      "title": "Descubre el horóscopo de Sagitario hoy, 19 de agosto de 2026",
-      "link": "https://www.vanitatis.elconfidencial.com/horoscopo/sagitario/2026-08-19/hoy-19-agosto_4407515/",
-      "source": "Vanitatis",
-      "platform": "news",
-      "published_at": "2026-08-19T03:00:00Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · Vanitatis",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "thumbnail": "https://images.ecestaticos.com/kWQ2TH50C6uxHP6QyPpMMlh1yXk=/0x0:1920x1080/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F3e0%2F98d%2F14c%2F3e098d14c91493ce11c7d78369da11bb.jpg",
-      "image_candidates": [
-        {
-          "url": "https://images.ecestaticos.com/kWQ2TH50C6uxHP6QyPpMMlh1yXk=/0x0:1920x1080/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F3e0%2F98d%2F14c%2F3e098d14c91493ce11c7d78369da11bb.jpg",
-          "origin": "schema:image",
-          "base_score": 90.0,
-          "alt": "Descubre el horóscopo de Sagitario hoy, 19 de agosto de 2026",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.vanitatis.elconfidencial.com/horoscopo/sagitario/2026-08-19/hoy-19-agosto_4407515/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "La reina Sofía y el final del verano: con las infantas Elena y Cristina, en Grecia para el 80 cumpleaños de la reina Ana María",
       "link": "https://www.vanitatis.elconfidencial.com/casas-reales/2026-08-19/reina-sofia-cumpleanos-ana-maria-grecia-infantas_4406165/",
       "source": "Vanitatis",
@@ -7526,31 +8258,40 @@
       "seed_trend": null
     },
     {
-      "title": "Horóscopo de hoy, miércoles 19 de agosto, descubre tu predicción diaria gratis",
-      "link": "https://www.hola.com/horoscopo/20260818917615/horoscopo-de-hoy-miercoles-19-de-agosto/",
-      "source": "HOLA",
+      "title": "Noticias de hoy, miércoles 19 de agosto de 2026",
+      "link": "https://www.antena3.com/noticias/sociedad/noticias-hoy-miercoles-19-agosto-2026_202608196a857de871b42a0b5df7e5a9.html",
+      "source": "Antena 3",
       "platform": "news",
-      "published_at": "2026-08-18T23:00:00Z",
-      "social_points": 9.0,
+      "published_at": "2026-08-19T09:56:56Z",
+      "social_points": 5.0,
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · HOLA",
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
         "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
+          "sucesos"
+        ],
+        "source_mode": "rss"
       },
-      "thumbnail": "https://www.hola.com/horizon/landscape/1163be618ce3-mette-marit-de-noruega-semana.jpg?im=Resize=(1200)",
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2025/09/01/35442A99-F424-4723-A3F2-9967EB0CB41C/noticias-hoy_69.jpg?crop=576,324,x3,y0&width=1280&height=720&optimize=low&format=webply",
       "image_candidates": [
         {
-          "url": "https://www.hola.com/horizon/landscape/1163be618ce3-mette-marit-de-noruega-semana.jpg?im=Resize=(1200)",
+          "url": "https://fotografias.antena3.com/clipping/cmsimages01/2025/09/01/35442A99-F424-4723-A3F2-9967EB0CB41C/noticias-hoy_69.jpg?crop=576,324,x3,y0&width=1280&height=720&optimize=low&format=webply",
           "origin": "og:image",
           "base_score": 90.0,
-          "alt": "Horóscopo de hoy, miércoles 19 de agosto, descubre tu predicción diaria gratis",
+          "alt": "Noticias de hoy, miércoles 19 de agosto de 2026",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.hola.com/horoscopo/20260818917615/horoscopo-de-hoy-miercoles-19-de-agosto/"
+          "page_url": "https://www.antena3.com/noticias/sociedad/noticias-hoy-miercoles-19-agosto-2026_202608196a857de871b42a0b5df7e5a9.html"
+        },
+        {
+          "url": "https://dpvclip.antena3.com/assets13/2026/08/19/D124DB8A-5484-4A93-B2C4-14A93ED02F57/640x360.mp4",
+          "origin": "section:rss",
+          "base_score": 94.0,
+          "alt": "Noticias de hoy, miércoles 19 de agosto de 2026",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/noticias-hoy-miercoles-19-agosto-2026_202608196a857de871b42a0b5df7e5a9.html"
         }
       ],
       "media_type": "article",
@@ -17263,6 +18004,39 @@
       "seed_trend": null
     },
     {
+      "title": "El Aston Villa cierra un sorprendente fichaje de la estrella del Mundial Zion Suzuki",
+      "link": "https://www.goal.com/es-mx/listados/el-aston-villa-cierra-un-sorprendente-fichaje-de-la-estrella-del-mundial-zion-suzuki/bltc187b2e4f26fd5df",
+      "source": "Goal.com",
+      "platform": "news",
+      "published_at": "2026-08-19T09:49:05Z",
+      "social_points": 8.5,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales y curiosidades",
+        "editorial_feed": "Virales y curiosidades · prensa nacional",
+        "topic_tags": [
+          "curiosidades",
+          "insolito",
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://assets.goal.com/images/v3/blt1caa78f5b13a24f4/FotoJet%20-%202026-08-02T094307.684.jpg",
+      "image_candidates": [
+        {
+          "url": "https://assets.goal.com/images/v3/blt1caa78f5b13a24f4/FotoJet%20-%202026-08-02T094307.684.jpg",
+          "origin": "og:image:secure_url",
+          "base_score": 90.0,
+          "alt": "El Aston Villa cierra un sorprendente fichaje de la estrella del Mundial Zion Suzuki",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.goal.com/es-mx/listados/el-aston-villa-cierra-un-sorprendente-fichaje-de-la-estrella-del-mundial-zion-suzuki/bltc187b2e4f26fd5df"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Las declaraciones de Ester Expósito sobre Mbappé, el bikinazo viral de Dua Lipa y la tierna foto de Lewis Hamilton con Kim Kardashian, entre las fotos de este miércoles",
       "link": "https://www.elmundo.es/album/loc/famosos/2026/08/19/6a856a85e9cf4ac90c8b4587.html",
       "source": "El Mundo",
@@ -19398,6 +20172,39 @@
       "seed_trend": null
     },
     {
+      "title": "Muere Frank Beard (ZZ Top) a los 77 años",
+      "link": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/",
+      "source": "LOS40",
+      "platform": "news",
+      "published_at": "2026-08-19T07:58:22Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "topic_tags": [
+          "famosos",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
+      "image_candidates": [
+        {
+          "url": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Muere Frank Beard (ZZ Top) a los 77 años",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Allianz y Spotify ponen banda sonora a los pequeños momentos del verano",
       "link": "https://cincodias.elpais.com/branded-content/2026-08-19/allianz-y-spotify-ponen-banda-sonora-a-los-pequenos-momentos-del-verano.html?outputType=amp",
       "source": "Cinco Días",
@@ -19423,6 +20230,68 @@
           "width": 0,
           "height": 0,
           "page_url": "https://cincodias.elpais.com/branded-content/2026-08-19/allianz-y-spotify-ponen-banda-sonora-a-los-pequenos-momentos-del-verano.html?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Seis terremotos marcan la noche en Granada, cinco de ellos sentidos por los vecinos",
+      "link": "https://elpais.com/espana/2026-08-19/seis-terremotos-marcan-la-noche-en-granada-cinco-de-ellos-sentidos-por-los-vecinos.html?outputType=amp",
+      "source": "EL PAÍS",
+      "platform": "news",
+      "published_at": "2026-08-19T07:50:25Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/2XR56EXD25OTXNM4BS5QHCC3TE.jpg?auth=7fe5e51701942507ca6ab84f2b2d0c6fc4a9462d48cdce8a9652ae41dabdbb8a&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/2XR56EXD25OTXNM4BS5QHCC3TE.jpg?auth=7fe5e51701942507ca6ab84f2b2d0c6fc4a9462d48cdce8a9652ae41dabdbb8a&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Seis terremotos marcan la noche en Granada, cinco de ellos sentidos por los vecinos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://elpais.com/espana/2026-08-19/seis-terremotos-marcan-la-noche-en-granada-cinco-de-ellos-sentidos-por-los-vecinos.html?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Iberdrola suma 13.000 millones de euros de inversión en parques eólicos marinos",
+      "link": "https://cincodias.elpais.com/companias/2026-08-19/iberdrola-suma-13000-millones-de-euros-de-inversion-en-parques-eolicos-marinos.html?outputType=amp",
+      "source": "Cinco Días",
+      "platform": "news",
+      "published_at": "2026-08-19T07:16:51Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/6K77UN4GUNMBZFMCR2Y322QXX4.jpg?auth=f3677dd72602b8f694f3672ce5fda413bb5036f6b1f11c85490fd528231e1094&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/6K77UN4GUNMBZFMCR2Y322QXX4.jpg?auth=f3677dd72602b8f694f3672ce5fda413bb5036f6b1f11c85490fd528231e1094&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Iberdrola suma 13.000 millones de euros de inversión en parques eólicos marinos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://cincodias.elpais.com/companias/2026-08-19/iberdrola-suma-13000-millones-de-euros-de-inversion-en-parques-eolicos-marinos.html?outputType=amp"
         }
       ],
       "media_type": "article",
@@ -22083,6 +22952,26 @@
       "seed_trend": null
     },
     {
+      "title": "«Cuando has recorrido más de 100 países, es imposible quedarse con uno»",
+      "link": "https://www.pressreader.com/spain/abc-primera/20260819/282153593118181",
+      "source": "PressReader",
+      "platform": "news",
+      "published_at": "2026-08-19T07:48:12Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Redes y creadores",
+        "editorial_feed": "Google News · redes y creadores",
+        "topic_tags": [
+          "redes"
+        ]
+      },
+      "thumbnail": null,
+      "image_candidates": [],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "La trágica historia real detrás de 'La fiera': el accidente que marcó el rodaje de la nueva película que llega a Netflix",
       "link": "https://www.20minutos.es/cinemania/noticias/fiera-netflix-tragica-historia-real-miguel-bernardeau_7024215_0.html",
       "source": "20Minutos",
@@ -22116,6 +23005,36 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/cinemania/noticias/fiera-netflix-tragica-historia-real-carlos-cuevas-miguel-bernardeau_7024215_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Recomendaciones para atender a tu mascota en caso de emergencia",
+      "link": "https://dereporteros.com/2026/08/19/recomendaciones-para-atender-a-tu-mascota-en-caso-de-emergencia/",
+      "source": "de reporteros",
+      "platform": "news",
+      "published_at": "2026-08-19T07:09:37Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Animales y mascotas",
+        "editorial_feed": "Google News · animales y mascotas",
+        "topic_tags": [
+          "animales"
+        ]
+      },
+      "thumbnail": "https://dereporteros.com/wp-content/uploads/Captura-de-pantalla-2026-08-19-a-las-1.03.46-a.m.jpg",
+      "image_candidates": [
+        {
+          "url": "https://dereporteros.com/wp-content/uploads/Captura-de-pantalla-2026-08-19-a-las-1.03.46-a.m.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Recomendaciones para atender a tu mascota en caso de emergencia",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://dereporteros.com/2026/08/19/recomendaciones-para-atender-a-tu-mascota-en-caso-de-emergencia/"
         }
       ],
       "media_type": "article",
@@ -23881,7 +24800,7 @@
     },
     {
       "title": "YouTube cambiará la manera en que cuenta las visualizaciones",
-      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_6740ec8e-2de5-411b-97bf-4a6b408ab30a",
+      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_4a58d421-1727-4310-8fcd-b3ade814dcd7",
       "source": "es-us.vida-estilo.yahoo.com",
       "platform": "news",
       "published_at": "2026-08-18T12:57:08Z",
@@ -24173,7 +25092,7 @@
     },
     {
       "title": "Nuevos negocios: las pequeñas marcas se hacen famosas en TikTok, pero Amazon sigue siendo el rey de las ventas online",
-      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_64482d4b-cb07-4928-afeb-817ce0dc9a7e",
+      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_0a9c1249-e083-490c-97db-24d04e745b08",
       "source": "Yahoo",
       "platform": "news",
       "published_at": "2026-08-18T10:15:00Z",
@@ -26048,8 +26967,26 @@
           "deportes"
         ]
       },
-      "thumbnail": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=58",
+      "thumbnail": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=60",
       "image_candidates": [
+        {
+          "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=60",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "'Siempre mi nombre': Guardiola y Walker protagonizaron fuerte pleito en el City",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://planoinformativo.com/planodeportivo/341628/siempre-mi-nombre-guardiola-y-walker-protagonizaron-fuerte-pleito-en-el-city"
+        },
+        {
+          "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=73",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "'Siempre mi nombre': Guardiola y Walker protagonizaron fuerte pleito en el City",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://planoinformativo.com/planodeportivo/341628/siempre-mi-nombre-guardiola-y-walker-protagonizaron-fuerte-pleito-en-el-city"
+        },
         {
           "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=58",
           "origin": "og:image",
@@ -27161,7 +28098,7 @@
     },
     {
       "title": "¡Cuatro celebridades conquistan la primera salvación en Top Chef VIP 5!",
-      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_0d32c158-5e73-4257-b6ce-f3a155e38914",
+      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_c1a740b5-8f48-47f8-a047-898300ca7887",
       "source": "Yahoo",
       "platform": "news",
       "published_at": "2026-08-18T01:09:00Z",
@@ -27574,6 +28511,37 @@
       "seed_trend": null
     },
     {
+      "title": "¿Por qué caen hoy las acciones de Corsair Gaming?",
+      "link": "https://es.investing.com/news/stock-market-news/por-que-caen-hoy-las-acciones-de-corsair-gaming-93CH-3802332",
+      "source": "Investing.com España",
+      "platform": "news",
+      "published_at": "2026-08-19T09:39:00Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Videojuegos y nostalgia",
+        "editorial_feed": "Google News · videojuegos y nostalgia",
+        "topic_tags": [
+          "nostalgia",
+          "videojuegos"
+        ]
+      },
+      "thumbnail": "https://content-media.investing.com/news/LYNXNPEB6J0AJ_L.jpg",
+      "image_candidates": [
+        {
+          "url": "https://content-media.investing.com/news/LYNXNPEB6J0AJ_L.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "¿Por qué caen hoy las acciones de Corsair Gaming?",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://es.investing.com/news/stock-market-news/por-que-caen-hoy-las-acciones-de-corsair-gaming-93CH-3802332"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Citizens reitera su calificación de la acción de Gaming and Leisure sobre su cartera de financiación",
       "link": "https://es.investing.com/news/analyst-ratings/citizens-reitera-su-calificacion-de-la-accion-de-gaming-and-leisure-sobre-su-cartera-de-financiacion-93CH-3802254",
       "source": "Investing.com España",
@@ -27605,6 +28573,37 @@
       "seed_trend": null
     },
     {
+      "title": "Si estás suscrito a Amazon Prime, tienes acceso a muchos videojuegos. Y con este mando Luna podrás disfrutarlos en todos tus dispositivos",
+      "link": "https://www.xataka.com/seleccion/estas-suscrito-a-amazon-prime-tienes-acceso-a-muchos-videojuegos-este-mando-luna-podras-disfrutarlos-todos-tus-dispositivos/amp",
+      "source": "Xataka",
+      "platform": "news",
+      "published_at": "2026-08-19T08:50:58Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Videojuegos y nostalgia",
+        "editorial_feed": "Google News · videojuegos y nostalgia",
+        "topic_tags": [
+          "nostalgia",
+          "videojuegos"
+        ]
+      },
+      "thumbnail": "https://i.blogs.es/f18bf0/mando-luna/840_560.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://i.blogs.es/f18bf0/mando-luna/840_560.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Si estás suscrito a Amazon Prime, tienes acceso a muchos videojuegos. Y con este mando Luna podrás disfrutarlos en todos tus dispositivos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.xataka.com/seleccion/estas-suscrito-a-amazon-prime-tienes-acceso-a-muchos-videojuegos-este-mando-luna-podras-disfrutarlos-todos-tus-dispositivos/amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Hannan Alcalde, activista residente en Ceuta, de las violaciones: \"No son denunciadas. Muchas víctimas no han reconocido al agresor\"",
       "link": "https://www.telecinco.es/noticias/espana/20260819/hannan-alcalde-activista-residente-ceuta-violaciones-no-denunciadas_18_019977555.html",
       "source": "Telecinco · RSS",
@@ -27629,6 +28628,46 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.telecinco.es/noticias/espana/20260819/hannan-alcalde-activista-residente-ceuta-violaciones-no-denunciadas_18_019977555.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+      "link": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html",
+      "source": "Antena 3",
+      "platform": "news",
+      "published_at": "2026-08-19T08:34:32Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
+        "topic_tags": [
+          "sucesos"
+        ],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
+        },
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_96.jpg?crop=1920,1080,x0,y0&width=1200&height=675&optimize=low&format=webply",
+          "origin": "section:rss",
+          "base_score": 94.0,
+          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
         }
       ],
       "media_type": "article",
@@ -28205,46 +29244,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.antena3.com/noticias/sociedad/dia-mundial-fotografia-celebrando-arte-capturar-instante_202608196a852a63a046ad6ebcb97ea6.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Efemérides de hoy 19 de agosto de 2026: ¿Qué pasó el 19 de agosto?",
-      "link": "https://www.antena3.com/noticias/sociedad/efemerides-hoy-19-agosto-2026-que-paso-19-agosto_202608196a852a61a5690f047381db05.html",
-      "source": "Antena 3",
-      "platform": "news",
-      "published_at": "2026-08-19T04:00:33Z",
-      "social_points": 5.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad y sucesos filtrados",
-        "editorial_feed": "Antena 3 · Sociedad RSS",
-        "topic_tags": [
-          "sucesos"
-        ],
-        "source_mode": "rss"
-      },
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages01/2026/08/14/7E1EE9B1-8414-4F49-B185-43B200088EE5/efemerides-hoy-19-agosto-2026-naufragio-bayesian_69.jpg?crop=853,480,x0,y0&width=1280&height=720&optimize=low&format=webply",
-      "image_candidates": [
-        {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages01/2026/08/14/7E1EE9B1-8414-4F49-B185-43B200088EE5/efemerides-hoy-19-agosto-2026-naufragio-bayesian_69.jpg?crop=853,480,x0,y0&width=1280&height=720&optimize=low&format=webply",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Efemérides de hoy 19 de agosto de 2026: ¿Qué pasó el 19 de agosto?",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/efemerides-hoy-19-agosto-2026-que-paso-19-agosto_202608196a852a61a5690f047381db05.html"
-        },
-        {
-          "url": "https://dpvclip.antena3.com/assets5/2026/08/14/D0C58970-2FD2-4ED2-97AD-855A6629E121/video_480p_es.mp4",
-          "origin": "section:rss",
-          "base_score": 94.0,
-          "alt": "Efemérides de hoy 19 de agosto de 2026: ¿Qué pasó el 19 de agosto?",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/efemerides-hoy-19-agosto-2026-que-paso-19-agosto_202608196a852a61a5690f047381db05.html"
         }
       ],
       "media_type": "article",
@@ -30839,6 +31838,37 @@
       "seed_trend": null
     },
     {
+      "title": "Economía.- El 25% de los españoles deja siempre propina y un 60% ve inapropiado que el restaurante sugiera la cantidad",
+      "link": "https://www.bolsamania.com/noticias_amp/empresas/economia--el-25-de-los-espanoles-deja-siempre-propina-y-un-60-ve-inapropiado-que-el-restaurante-sugiera-la-cantidad--23303334.html",
+      "source": "Bolsamania",
+      "platform": "news",
+      "published_at": "2026-08-19T08:56:27Z",
+      "social_points": 4.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Lifestyle compartible",
+        "editorial_feed": "Google News · comida y trucos",
+        "topic_tags": [
+          "comida",
+          "lifestyle"
+        ]
+      },
+      "thumbnail": "https://img5.s3wfg.com/web/img/images_uploaded/8/3/ep_archivo_-_varias_personas_en_una_terraza_de_un_bar_en_santander.jpg",
+      "image_candidates": [
+        {
+          "url": "https://img5.s3wfg.com/web/img/images_uploaded/8/3/ep_archivo_-_varias_personas_en_una_terraza_de_un_bar_en_santander.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Economía.- El 25% de los españoles deja siempre propina y un 60% ve inapropiado que el restaurante sugiera la cantidad",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.bolsamania.com/noticias_amp/empresas/economia--el-25-de-los-espanoles-deja-siempre-propina-y-un-60-ve-inapropiado-que-el-restaurante-sugiera-la-cantidad--23303334.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "El truco de Aldi para multiplicar tu espacio: organiza 8 pares de zapatos por menos de 4 euros",
       "link": "https://elmon.cat/delconsumidor/es/compras/el-truco-de-aldi-para-multiplicar-tu-espacio-organiza-8-pares-de-zapatos-por-menos-de-4-euros-9958/",
       "source": "El Món",
@@ -31774,7 +32804,7 @@
       "link": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-replicas-danos-afectados_202608196a85315c71b42a0b5df767b0.html",
       "source": "La Razón · Sociedad",
       "platform": "news",
-      "published_at": "2026-08-19T09:35:17Z",
+      "published_at": "2026-08-19T10:17:21Z",
       "social_points": 2.0,
       "metrics": {
         "curated_editorial": true,
@@ -31803,6 +32833,43 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-replicas-danos-afectados_202608196a85315c71b42a0b5df767b0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El Cermi exige al Gobierno acelerar la tarjeta europea de discapacidad tras meses de retraso",
+      "link": "https://www.larazon.es/sociedad/cermi-exige-gobierno-acelerar-tarjeta-europea-discapacidad-meses-retraso_202608196a857c9871b42a0b5df7e312.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:51:20Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/18/D4FF75D6-3954-429A-9F7D-D1D07803A11C/presidente-gobierno-pedro-sanchez-mantiene-encuentro-presidente-ucrania-volodimir-zelenski-complejo-moncloa_58.jpg?crop%3D4683%2C2655%2Cx0%2Cy0%26width%3D1000%26height%3D567%26optimize%3Dhigh%26format%3Dwebply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/18/D4FF75D6-3954-429A-9F7D-D1D07803A11C/presidente-gobierno-pedro-sanchez-mantiene-encuentro-presidente-ucrania-volodimir-zelenski-complejo-moncloa_58.jpg?crop%3D4683%2C2655%2Cx0%2Cy0%26width%3D1000%26height%3D567%26optimize%3Dhigh%26format%3Dwebply",
+          "origin": "page:article-img",
+          "base_score": 90.0,
+          "alt": "El Cermi exige al Gobierno acelerar la tarjeta europea de discapacidad tras meses de retraso",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/cermi-exige-gobierno-acelerar-tarjeta-europea-discapacidad-meses-retraso_202608196a857c9871b42a0b5df7e312.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2025/12/15/F65761CC-05D6-45F5-9D5A-D2071C12D107/ministro-derechos-sociales-consumo-agenda-2030-pablo-bustinduy-rueda-prensa-este-lunes-madrid-que-advertido-que-departamento-cursa-otros-expedientes-s_96.jpg?crop=5351,3010,x0,y0&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/cermi-exige-gobierno-acelerar-tarjeta-europea-discapacidad-meses-retraso_202608196a857c9871b42a0b5df7e312.html"
         }
       ],
       "media_type": "article",
@@ -31954,43 +33021,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.larazon.es/sociedad/vecinos-cinco-poblaciones-desalojadas-incendio-riglos-huesca-pueden-volver-sus-casas_202608196a857664a046ad6ebcb9f0a5.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Los 339 desalojados por el incendio de Las Peñas de Riglos vuelven a sus casas",
-      "link": "https://www.larazon.es/sociedad/339-desalojados-incendio-penas-riglos-vuelven-sus-casas_202608196a85765e71b42a0b5df7d5f9.html",
-      "source": "La Razón · Sociedad",
-      "platform": "news",
-      "published_at": "2026-08-19T09:24:46Z",
-      "social_points": 2.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad filtrada",
-        "editorial_feed": "La Razón · Sociedad",
-        "topic_tags": []
-      },
-      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/AEA13292-8F48-418D-B498-92C30F775075/controlado-incendio-centro-residuos-zona-norte-avila_98.jpg?crop=1598,899,x0,y0&width=1900&height=1069&optimize=low&format=webply",
-      "image_candidates": [
-        {
-          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/AEA13292-8F48-418D-B498-92C30F775075/controlado-incendio-centro-residuos-zona-norte-avila_98.jpg?crop=1598,899,x0,y0&width=1900&height=1069&optimize=low&format=webply",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Los 339 desalojados por el incendio de Las Peñas de Riglos vuelven a sus casas",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.larazon.es/sociedad/339-desalojados-incendio-penas-riglos-vuelven-sus-casas_202608196a85765e71b42a0b5df7d5f9.html"
-        },
-        {
-          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/AEA13292-8F48-418D-B498-92C30F775075/controlado-incendio-centro-residuos-zona-norte-avila_96.jpg?crop=1598,899,x0,y0&width=1200&height=675&optimize=low&format=webply",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.larazon.es/sociedad/339-desalojados-incendio-penas-riglos-vuelven-sus-casas_202608196a85765e71b42a0b5df7d5f9.html"
         }
       ],
       "media_type": "article",

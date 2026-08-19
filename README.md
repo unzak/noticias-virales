@@ -50,6 +50,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Los `og:image` de HuffPost ya guardados se reutilizan en updates posteriores;
   así se evitan peticiones repetidas al medio y se reserva la extracción para
   noticias nuevas o fichas que todavía carecen de imagen.
+- HuffPost se revisa sobre las últimas 24 horas en cada update. Si una noticia
+  todavía no expone una imagen editorial, queda pendiente y se reintenta en el
+  siguiente ciclo en lugar de publicarse como una ficha sin imagen.
 - 20minutos, Público Tremending y LOS40 se consultan desde sus secciones
   directas, con Google News como respaldo.
 - Las consultas de Google News incluyen exclusiones de política, instituciones,

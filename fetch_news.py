@@ -359,6 +359,9 @@ GENERAL_DIRECT_FEED_SOURCES = frozenset({
 UNFILTERED_DIRECT_FEED_SOURCES = frozenset({
     "El HuffPost · Portada RSS",
 })
+DEFER_UNTIL_IMAGE_FEEDS = frozenset({
+    "El HuffPost · Portada RSS",
+})
 PRIMARY_RSS_OFFICIAL_HOSTS = {
     "Antena 3 · Noticias RSS": "antena3.com",
     "Antena 3 · Sociedad RSS": "antena3.com",
@@ -3816,6 +3819,11 @@ def fetch_direct_section_entries(
             direct_error = exc
 
         accepted = 0
+        source_cutoff = (
+            dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=DEFAULT_PANEL_AGE_HOURS)
+            if status_name in DEFER_UNTIL_IMAGE_FEEDS
+            else cutoff
+        )
         for item in direct_items:
             title = clean_section_title(str(item.get("title") or ""))
             link = valid_http_url(item.get("link"))
@@ -3829,7 +3837,7 @@ def fetch_direct_section_entries(
             ):
                 continue
             published_at = item.get("published_at") if isinstance(item.get("published_at"), dt.datetime) else None
-            if published_at and published_at < cutoff:
+            if published_at and published_at < source_cutoff:
                 continue
             key = (normalize(title), publisher.casefold())
             if key in seen:
@@ -5578,6 +5586,20 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
     return stories
 
 
+def is_story_pending_required_image(story: dict[str, Any]) -> bool:
+    """Retiene fuera del panel fuentes que exigen foto hasta obtenerla."""
+    feeds = story.get("editorial_feeds") or []
+    return (
+        not story.get("thumbnail")
+        and any(feed in DEFER_UNTIL_IMAGE_FEEDS for feed in feeds)
+    )
+
+
+def entry_requires_image_retry(entry: StoryEntry) -> bool:
+    """Indica si una entrada mantiene una ventana ampliada para obtener foto."""
+    return entry.metrics.get("editorial_feed") in DEFER_UNTIL_IMAGE_FEEDS
+
+
 def enrich_unfiltered_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, int]]:
     """Obtiene la URL de imagen del artículo para la vista completa, sin descargarla."""
     output: list[dict[str, Any] | None] = [None] * len(stories)
@@ -5791,9 +5813,14 @@ def build() -> dict[str, Any]:
     raw_entries_count = len(entries)
     entries, publication_date_summary = enrich_missing_publication_dates(entries)
     now = dt.datetime.now(dt.timezone.utc)
+    image_retry_entries = [entry for entry in entries if entry_requires_image_retry(entry)]
     entries, _fetch_temporal_summary = filter_recent_entries(
         entries, now, FETCH_MAX_AGE_HOURS
     )
+    image_retry_entries, _ = filter_recent_entries(
+        image_retry_entries, now, DEFAULT_PANEL_AGE_HOURS
+    )
+    entries = dedupe_history_entries([*entries, *image_retry_entries])
     entries, current_foreign_rejected = filter_spain_focused_entries(entries)
     current_entries_count = len(entries)
     history_entries, history_source = load_history_entries()
@@ -5830,11 +5857,26 @@ def build() -> dict[str, Any]:
     unfiltered_stories, unfiltered_image_summary = enrich_unfiltered_images(
         build_unfiltered_stories(entries)
     )
+    pending_ranked_images = sum(is_story_pending_required_image(story) for story in ranked)
+    pending_unfiltered_images = sum(
+        is_story_pending_required_image(story) for story in unfiltered_stories
+    )
+    if pending_ranked_images or pending_unfiltered_images:
+        ranked = [story for story in ranked if not is_story_pending_required_image(story)]
+        unfiltered_stories = [
+            story for story in unfiltered_stories
+            if not is_story_pending_required_image(story)
+        ]
+        print(
+            f"[ok] Imágenes pendientes: {pending_unfiltered_images} fichas de HuffPost "
+            "se reintentarán en el siguiente update"
+        )
     ranked, ranked_foreign_rejected = filter_spain_focused_stories(ranked)
     unfiltered_stories, resolved_foreign_rejected = filter_spain_focused_stories(unfiltered_stories)
     foreign_local_rejected += resolved_foreign_rejected
     temporal_summary["foreign_local_rejected"] = foreign_local_rejected
     temporal_summary["accepted"] = len(unfiltered_stories)
+    temporal_summary["pending_required_image"] = pending_unfiltered_images
     unfiltered_image_summary = {
         "linked": sum(1 for story in unfiltered_stories if story.get("thumbnail")),
         "placeholders": sum(1 for story in unfiltered_stories if not story.get("thumbnail")),
