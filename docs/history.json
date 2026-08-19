@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-19T08:44:44.992932Z",
+  "updated_at": "2026-08-19T09:48:09.964624Z",
   "retention_hours": 72,
   "fetch_window_hours": 3,
   "entries": [
@@ -414,6 +414,47 @@
       ],
       "media_type": "article",
       "seed_trend": "mathilde favier"
+    },
+    {
+      "title": "Oleada de críticas a Tania Llasera tras empatizar con una madre que mató a sus tres hijos: \"Hizo todo lo que estaba en su mano y los sistemas le fallaron\"",
+      "link": "https://www.elmundo.es/loc/2026/08/19/6a856f98fdddffe0438b4580.html",
+      "source": "El Mundo",
+      "platform": "news",
+      "published_at": "2026-08-19T08:59:35Z",
+      "social_points": 13.139907778003515,
+      "metrics": {
+        "google_trends_item": true,
+        "trend_name": "tania llasera",
+        "search_traffic": 200,
+        "search_traffic_label": "200+",
+        "trend_published_at": "2026-08-19T08:40:00Z",
+        "topic_tags": [
+          "google-trends"
+        ]
+      },
+      "thumbnail": "https://e01-phantom-elmundo.uecdn.es/0d68160e10ff5853c0ab558c8a1dc221/resize/1200/f/webp/assets/multimedia/imagenes/2026/08/19/17871296262603.png",
+      "image_candidates": [
+        {
+          "url": "https://e01-phantom-elmundo.uecdn.es/0d68160e10ff5853c0ab558c8a1dc221/resize/1200/f/webp/assets/multimedia/imagenes/2026/08/19/17871296262603.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Oleada de críticas a Tania Llasera tras empatizar con una madre que mató a sus tres hijos: \"Hizo todo lo que estaba en su mano y los sistemas le fallaron\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.elmundo.es/loc/2026/08/19/6a856f98fdddffe0438b4580.html"
+        },
+        {
+          "url": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRVigDw_vPHR2a7emq45KCxST9zcnkCzyZ8vkVoHlRnSpte3wjB2CtIihuclcg",
+          "origin": "google-trends:picture",
+          "base_score": 74.0,
+          "alt": "Oleada de críticas a Tania Llasera tras empatizar con una madre que mató a sus tres hijos: \"Hizo todo lo que estaba en su mano y los sistemas le fallaron\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.elmundo.es/loc/2026/08/19/6a856f98fdddffe0438b4580.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": "tania llasera"
     },
     {
       "title": "Dolz pone en valor el Premio Ciudad de Cuenca a Señorito Ortega por su talento y fomento del trabajo artesano",
@@ -1141,46 +1182,6 @@
       "seed_trend": null
     },
     {
-      "title": "Muere Delfín Amaya, miembro de 'Los Amaya', a los 74 años en Barcelona",
-      "link": "https://www.antena3.com/noticias/sociedad/muere-delfin-amaya-miembro-amaya-74-anos-barcelona_202608196a8566dda5690f0473822d67.html",
-      "source": "Antena 3",
-      "platform": "news",
-      "published_at": "2026-08-19T08:18:36Z",
-      "social_points": 5.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad y sucesos filtrados",
-        "editorial_feed": "Antena 3 · Sociedad RSS",
-        "topic_tags": [
-          "sucesos"
-        ],
-        "source_mode": "rss"
-      },
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/078688B5-EE75-4D71-B6BE-27AD32D8220B/foto-archivo-amaya_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
-      "image_candidates": [
-        {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/078688B5-EE75-4D71-B6BE-27AD32D8220B/foto-archivo-amaya_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Muere Delfín Amaya, miembro de 'Los Amaya', a los 74 años en Barcelona",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/muere-delfin-amaya-miembro-amaya-74-anos-barcelona_202608196a8566dda5690f0473822d67.html"
-        },
-        {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/078688B5-EE75-4D71-B6BE-27AD32D8220B/foto-archivo-amaya_96.jpg?crop=1920,1080,x0,y99&width=1200&height=675&optimize=low&format=webply",
-          "origin": "section:rss",
-          "base_score": 94.0,
-          "alt": "Muere Delfín Amaya, miembro de 'Los Amaya', a los 74 años en Barcelona",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/muere-delfin-amaya-miembro-amaya-74-anos-barcelona_202608196a8566dda5690f0473822d67.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "Playas de Ibiza: empresarios de Talamanca aúnan esfuerzos para reabrir el aparcamiento gratuito",
       "link": "https://www.diariodeibiza.es/ibiza/2026/08/19/aparcamiento-talamanca-ibiza-turismo-133460783.html",
       "source": "Diario de Ibiza",
@@ -1651,6 +1652,192 @@
       "seed_trend": null
     },
     {
+      "title": "Rufián se lleva más de 21.000 'me gusta' con su tuit sobre Lorca: firma una frase que conviene recordar",
+      "link": "https://www.huffingtonpost.es/virales/rufian-lleva-mas-21000-me-gusta-tuit-sobre-lorca-firma-aviso-conviene-recordar-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T09:28:57Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [
+          "nostalgia"
+        ],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/04/10/gabriel-rufian-este-jueves-durante-su-acto-con-irene-montero.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/04/10/gabriel-rufian-este-jueves-durante-su-acto-con-irene-montero.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Rufián se lleva más de 21.000 'me gusta' con su tuit sobre Lorca: firma una frase que conviene recordar",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/virales/rufian-lleva-mas-21000-me-gusta-tuit-sobre-lorca-firma-aviso-conviene-recordar-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "'El Chiringuito' da otro golpe en Energy: sube al 5,3% y vuelve a ganar a Telecinco",
+      "link": "https://www.mundodeportivo.com/elotromundo/television/20260819/1004217553/audiencias-tv-ayer-18-agosto-chiringuito-da-golpe-energy-sube-5-3-vuelve-ganar-telecinco-dct.html",
+      "source": "Mundo Deportivo · El Otro Mundo",
+      "platform": "news",
+      "published_at": "2026-08-19T09:27:13Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "El Otro Mundo",
+        "editorial_feed": "Mundo Deportivo · El Otro Mundo",
+        "topic_tags": [
+          "animales",
+          "curiosidades",
+          "famosos",
+          "television",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2026/07/31/6a6ce104b847f.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2026/07/31/6a6ce104b847f.jpeg",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.mundodeportivo.com/elotromundo/television/20260819/1004217553/audiencias-tv-ayer-18-agosto-chiringuito-da-golpe-energy-sube-5-3-vuelve-ganar-telecinco-dct.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Novedades con el futuro de Alberto Chicote: laSexta toma una decisión dos años después",
+      "link": "https://www.mundodeportivo.com/elotromundo/television/20260819/1004217541/novedades-futuro-alberto-chicote-lasexta-toma-decision-dos-anos-dct.html",
+      "source": "Mundo Deportivo · El Otro Mundo",
+      "platform": "news",
+      "published_at": "2026-08-19T09:00:48Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "El Otro Mundo",
+        "editorial_feed": "Mundo Deportivo · El Otro Mundo",
+        "topic_tags": [
+          "animales",
+          "curiosidades",
+          "famosos",
+          "television",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2025/05/09/681e45c43978e.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes2.mundodeportivo.com/files/og_thumbnail/uploads/2025/05/09/681e45c43978e.jpeg",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.mundodeportivo.com/elotromundo/television/20260819/1004217541/novedades-futuro-alberto-chicote-lasexta-toma-decision-dos-anos-dct.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La hiperpolítica y el retorno a la normalidad",
+      "link": "https://www.huffingtonpost.es/opinion/la-hiperpolitica-retorno-normalidad-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T08:56:12Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/el-presidente-de-eeuu-donald-trump-habla-junto-a-un-nino-rescatado-por-un-socorrista-frente-a-la-costa-de-santa-cruz-en-una-recepcion-en-el-despacho-oval-el-17-de-agosto-de-2026.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/18/el-presidente-de-eeuu-donald-trump-habla-junto-a-un-nino-rescatado-por-un-socorrista-frente-a-la-costa-de-santa-cruz-en-una-recepcion-en-el-despacho-oval-el-17-de-agosto-de-2026.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La hiperpolítica y el retorno a la normalidad",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/opinion/la-hiperpolitica-retorno-normalidad-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El creador Fabio Mufañas, sobre la caída de los influencers: \"El problema no es que cobren una millonada, es que no son conscientes de la burbuja en la que viven\"",
+      "link": "https://www.huffingtonpost.es/life/influencers-celebrities/el-creador-fabio-mufanas-sobre-caida-influencers-el-problema-cobren-millonada-son-conscientes-burbuja-viven-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T08:51:32Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/17/redes-sociales-y-fabio-mufanas.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/17/redes-sociales-y-fabio-mufanas.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El creador Fabio Mufañas, sobre la caída de los influencers: \"El problema no es que cobren una millonada, es que no son conscientes de la burbuja en la que viven\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/life/influencers-celebrities/el-creador-fabio-mufanas-sobre-caida-influencers-el-problema-cobren-millonada-son-conscientes-burbuja-viven-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Cómo reclamar al seguro daños por terremoto y qué perdidas cubre",
+      "link": "https://www.huffingtonpost.es/sociedad/como-reclamar-seguro-danos-terremoto-que-perdidas-cubre-f202608.html",
+      "source": "El HuffPost",
+      "platform": "news",
+      "published_at": "2026-08-19T08:43:35Z",
+      "social_points": 10.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Portada RSS filtrada",
+        "editorial_feed": "El HuffPost · Portada RSS",
+        "topic_tags": [],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/19/una-mujer-senala-danos-en-su-casa-tras-uno-de-los-terremotos-en-granada.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://img2.huffingtonpost.es/files/og_thumbnail/uploads/2026/08/19/una-mujer-senala-danos-en-su-casa-tras-uno-de-los-terremotos-en-granada.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Cómo reclamar al seguro daños por terremoto y qué perdidas cubre",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.huffingtonpost.es/sociedad/como-reclamar-seguro-danos-terremoto-que-perdidas-cubre-f202608.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Mamdani le da la vuelta a las críticas que recibió por ir en bici sin casco de una forma que está siendo muy aplaudida",
       "link": "https://www.huffingtonpost.es/virales/mamdani-le-da-vuelta-criticas-recibio-bici-casco-forma-esta-siendo-aplaudida-f202608.html",
       "source": "El HuffPost",
@@ -1971,39 +2158,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.huffingtonpost.es/global/zelenski-echo-defensa-le-pide-elecciones-que-importante-desafiomykhailo-fedorov-f202608.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Muere Frank Beard (ZZ Top) a los 77 años",
-      "link": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/",
-      "source": "LOS40",
-      "platform": "news",
-      "published_at": "2026-08-19T07:58:22Z",
-      "social_points": 8.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, música y entretenimiento",
-        "editorial_feed": "LOS40 · Entretenimiento viral",
-        "topic_tags": [
-          "famosos",
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "thumbnail": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
-      "image_candidates": [
-        {
-          "url": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Muere Frank Beard (ZZ Top) a los 77 años",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/"
         }
       ],
       "media_type": "article",
@@ -3001,11 +3155,11 @@
       "seed_trend": null
     },
     {
-      "title": "8 exitosas actrices que antes fueron estrellas de la pasarela: de Diane Kruger o Caitriona Balfe a Alex Consani en 'American Horror Story: 13'",
-      "link": "https://www.hola.com/moda/20260819918742/actrices-que-fueron-modelos-diane-kruger-caitriona-balfe-alex-consani/",
+      "title": "La confesión del tenista Nick Kyrgios tras dar positivo por cocaína: “Cometí un grave error”",
+      "link": "https://www.hola.com/actualidad/20260819918769/la-confesion-del-tenista-nick-kyrgios-tras-dar-positivo-por-cocaina/",
       "source": "HOLA",
       "platform": "news",
-      "published_at": "2026-08-19T08:38:14Z",
+      "published_at": "2026-08-19T09:46:27Z",
       "social_points": 9.0,
       "metrics": {
         "curated_editorial": true,
@@ -3016,16 +3170,127 @@
           "famosos"
         ]
       },
-      "thumbnail": "https://www.hola.com/horizon/landscape/1e23c4dd98b2-gettyimages-2274537017.jpg?im=Resize=(1200)",
+      "thumbnail": "https://www.hola.com/horizon/landscape/4e9674b5d176-saveclipapp763561369185520596050726963861585311384042540n-1.jpg?im=Resize=(1200)",
       "image_candidates": [
         {
-          "url": "https://www.hola.com/horizon/landscape/1e23c4dd98b2-gettyimages-2274537017.jpg?im=Resize=(1200)",
+          "url": "https://www.hola.com/horizon/landscape/4e9674b5d176-saveclipapp763561369185520596050726963861585311384042540n-1.jpg?im=Resize=(1200)",
           "origin": "og:image",
           "base_score": 90.0,
-          "alt": "8 exitosas actrices que antes fueron estrellas de la pasarela: de Diane Kruger o Caitriona Balfe a Alex Consani en 'American Horror Story: 13'",
+          "alt": "La confesión del tenista Nick Kyrgios tras dar positivo por cocaína: “Cometí un grave error”",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.hola.com/moda/20260819918742/actrices-que-fueron-modelos-diane-kruger-caitriona-balfe-alex-consani/"
+          "page_url": "https://www.hola.com/actualidad/20260819918769/la-confesion-del-tenista-nick-kyrgios-tras-dar-positivo-por-cocaina/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Las mafias ya intentan trasladar a los migrantes de Ceuta a la Península: la Guardia Civil frustra la salida de una embarcación en La Sirena",
+      "link": "https://www.infobae.com/espana/2026/08/19/las-mafias-ya-intentan-trasladar-a-los-migrantes-de-ceuta-a-la-peninsula-la-guardia-civil-frustra-la-salida-de-una-embarcacion-en-la-sirena/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-19T09:45:50Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/ULJP5TAK75F5FK3Y6XSJRGGC6Y.jpg?auth=c46cb1cebce4b131667d0744c74c00608ed43c6a15bf0f6fd7c8d9c1b539c3b1&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/ULJP5TAK75F5FK3Y6XSJRGGC6Y.jpg?auth=c46cb1cebce4b131667d0744c74c00608ed43c6a15bf0f6fd7c8d9c1b539c3b1&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Las mafias ya intentan trasladar a los migrantes de Ceuta a la Península: la Guardia Civil frustra la salida de una embarcación en La Sirena",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/las-mafias-ya-intentan-trasladar-a-los-migrantes-de-ceuta-a-la-peninsula-la-guardia-civil-frustra-la-salida-de-una-embarcacion-en-la-sirena/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/ULJP5TAK75F5FK3Y6XSJRGGC6Y.jpg?auth=c46cb1cebce4b131667d0744c74c00608ed43c6a15bf0f6fd7c8d9c1b539c3b1&smart=true&width=900&height=600",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 900,
+          "height": 600,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/las-mafias-ya-intentan-trasladar-a-los-migrantes-de-ceuta-a-la-peninsula-la-guardia-civil-frustra-la-salida-de-una-embarcacion-en-la-sirena/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/BSVSURBCANESDIWW6STPNFSYHM.jpg?auth=33af986a393e3d4087cb2a4fb8cf9fd4e1cf1bec07d77dd5d01673e541d532d0&smart=true&width=3060&height=1376",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Una embarcación con varias personas navega cerca de la costa rocosa de La Sirena en un intento de traslado de migrantes de Ceuta a la Península, frustrado por la Guardia Civil. (AUGC)",
+          "width": 3060,
+          "height": 1376,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/las-mafias-ya-intentan-trasladar-a-los-migrantes-de-ceuta-a-la-peninsula-la-guardia-civil-frustra-la-salida-de-una-embarcacion-en-la-sirena/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Cristina Pedroche, sobre su vida en pareja con Dabiz Muñoz: “Llegamos a la conclusión de que era mejor que se fuera a otra habitación”",
+      "link": "https://www.infobae.com/espana/2026/08/19/cristina-pedroche-sobre-su-vida-en-pareja-con-dabiz-munoz-llegamos-a-la-conclusion-de-que-era-mejor-que-se-fuera-a-otra-habitacion/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-19T09:43:04Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "corazon",
+          "curiosidades",
+          "lifestyle",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/Q4KSGLIS6BBHRI3VVF2T4EYNAI.jpg?auth=cbaa131d51128a373970a26c6a108968a7302006b0cab0c860789766988368c0&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/Q4KSGLIS6BBHRI3VVF2T4EYNAI.jpg?auth=cbaa131d51128a373970a26c6a108968a7302006b0cab0c860789766988368c0&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "Cristina Pedroche, sobre su vida en pareja con Dabiz Muñoz: “Llegamos a la conclusión de que era mejor que se fuera a otra habitación”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/cristina-pedroche-sobre-su-vida-en-pareja-con-dabiz-munoz-llegamos-a-la-conclusion-de-que-era-mejor-que-se-fuera-a-otra-habitacion/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/Q4KSGLIS6BBHRI3VVF2T4EYNAI.jpg?auth=cbaa131d51128a373970a26c6a108968a7302006b0cab0c860789766988368c0&smart=true&width=1696&height=954",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 1696,
+          "height": 954,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/cristina-pedroche-sobre-su-vida-en-pareja-con-dabiz-munoz-llegamos-a-la-conclusion-de-que-era-mejor-que-se-fuera-a-otra-habitacion/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/QHV7R4AINFEWNGTI254JAEMQOE.jpg?auth=eba433ef9b305bfab6e0c10c13a38533f1b79d4a1d6f838f5325b15a472e09a6&smart=true&width=1920&height=1440",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Dabiz Muñoz se cuela en 'El Hormiguero' y sorprende a Cristina Pedroche arrodillándose para pedirle matrimonio. (ATRESMEDIA).",
+          "width": 1920,
+          "height": 1440,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/cristina-pedroche-sobre-su-vida-en-pareja-con-dabiz-munoz-llegamos-a-la-conclusion-de-que-era-mejor-que-se-fuera-a-otra-habitacion/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/GF23MMUI7FDKDDXZNSVWLPHAKA.png?auth=71e66e2534128b1df8da6d52eb76ce13104328af4a2992dcbb10571227c4a104&smart=true&width=646&height=801",
+          "origin": "feed:content-img",
+          "base_score": 88.0,
+          "alt": "Cristina Pedroche en una imagen de sus redes sociales. (Instagram.com @cristipedroche)",
+          "width": 646,
+          "height": 801,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/cristina-pedroche-sobre-su-vida-en-pareja-con-dabiz-munoz-llegamos-a-la-conclusion-de-que-era-mejor-que-se-fuera-a-otra-habitacion/"
         }
       ],
       "media_type": "article",
@@ -3036,7 +3301,7 @@
       "link": "https://www.20minutos.es/andalucia/granada/terremoto-granada-directo-ultima-hora-nuevo-seismo-con-epicentro-alhendin_7026805_6.html",
       "source": "20minutos",
       "platform": "news",
-      "published_at": "2026-08-19T08:38:00Z",
+      "published_at": "2026-08-19T09:42:00Z",
       "social_points": 9.0,
       "metrics": {
         "curated_editorial": true,
@@ -3064,11 +3329,220 @@
       "seed_trend": null
     },
     {
+      "title": "El hijo de Mathilde Favier habla de la inesperada muerte de la directora de Dior en un accidente: \"Nada de esto tiene sentido\"",
+      "link": "https://www.20minutos.es/gente/hijo-mathilde-favier-habla-inesperada-muerte-directora-dior-un-accidente-nada-esto-tiene-sentido_7027211_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T09:34:46Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8576a43dafc0-37228723.png",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8576a43dafc0-37228723.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El hijo de Mathilde Favier habla de la inesperada muerte de la directora de Dior en un accidente: \"Nada de esto tiene sentido\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/gente/hijo-mathilde-favier-habla-inesperada-muerte-directora-dior-un-accidente-nada-esto-tiene-sentido_7027211_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Desarticulan una organización criminal que fabricaba medicamentos veterinarios sin autorización en un laboratorio en Terrassa",
+      "link": "https://www.20minutos.es/cataluna/barcelona/desarticulan-una-organizacion-criminal-que-fabricaba-medicamentos-veterinarios-sin-autorizacion-un-laboratorio-terrassa_7027201_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T09:33:11Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a857802a3ac50-78857785.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a857802a3ac50-78857785.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Desarticulan una organización criminal que fabricaba medicamentos veterinarios sin autorización en un laboratorio en Terrassa",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/cataluna/barcelona/desarticulan-una-organizacion-criminal-que-fabricaba-medicamentos-veterinarios-sin-autorizacion-un-laboratorio-terrassa_7027201_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Más de una decena de réplicas sacuden Granada durante la noche tras el terremoto de escala 4,8 de este martes",
+      "link": "https://www.lasexta.com/noticias/sociedad/mas-decena-replicas-sacuden-granada-noche-terremoto-escala-48-este-martes_202608196a8577b371b42a0b5df7d91a.html",
+      "source": "laSexta",
+      "platform": "news",
+      "published_at": "2026-08-19T09:30:27Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral y vídeos virales",
+        "editorial_feed": "laSexta · Viral",
+        "topic_tags": [
+          "curiosidades",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/117F9950-DF40-4EE3-9F21-D6CCFAF6786B/imagenes-destrozos-causado-terremoto-18-agosto-2026-granada-andalucia-espana_69.jpg?crop=6000,3375,x0,y267&width=1280&height=720&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/117F9950-DF40-4EE3-9F21-D6CCFAF6786B/imagenes-destrozos-causado-terremoto-18-agosto-2026-granada-andalucia-espana_69.jpg?crop=6000,3375,x0,y267&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Más de una decena de réplicas sacuden Granada durante la noche tras el terremoto de escala 4,8 de este martes",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lasexta.com/noticias/sociedad/mas-decena-replicas-sacuden-granada-noche-terremoto-escala-48-este-martes_202608196a8577b371b42a0b5df7d91a.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Un incendio en Las Hurdes obliga a desalojar a 600 vecinos y activa a la UME",
+      "link": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html",
+      "source": "20minutos",
+      "platform": "news",
+      "published_at": "2026-08-18T18:17:04Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8578620bab60-41035654.webp",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8578620bab60-41035654.webp",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un incendio en Las Hurdes obliga a desalojar a 600 vecinos y activa a la UME",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html"
+        },
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a85775bc6e925-20754327.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un incendio en Las Hurdes obliga a desalojar a 600 vecinos y activa a la UME",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html"
+        },
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a849bf3b85206-66778438.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un incendio en Las Hurdes obliga a desalojar a 600 vecinos y activa a la UME",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Cocina marinera y con vistas al Mediterráneo: Así es El Ancla, uno de los restaurantes favoritos de Isabel Preysler en Marbella",
+      "link": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73470947/restaurante-el-ancla-isabel-preysler-vacaciones-marbella-cocina-marinera-vistas-mediterraneo/",
+      "source": "Diez Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T09:13:07Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Diez Minutos",
+        "topic_tags": [
+          "comida",
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/2d134029-1069-4e69-b791-35c04219242a.jpeg?crop=1.00xw:0.334xh;0,0.0565xh&resize=1200:*",
+      "image_candidates": [
+        {
+          "url": "https://hips.hearstapps.com/hmg-prod/images/2d134029-1069-4e69-b791-35c04219242a.jpeg?crop=1.00xw:0.334xh;0,0.0565xh&resize=1200:*",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Cocina marinera y con vistas al Mediterráneo: Así es El Ancla, uno de los restaurantes favoritos de Isabel Preysler en Marbella",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.diezminutos.es/famosos-corazon/famosos-espanoles/a73470947/restaurante-el-ancla-isabel-preysler-vacaciones-marbella-cocina-marinera-vistas-mediterraneo/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La madre de Hayden Panettiere rompe su silencio tras perderla estando distanciadas: \"Desearía que hubiera sido diferente\"",
+      "link": "https://www.hola.com/actualidad/20260819918751/madre-hayden-panettiere-rompe-silencio-muerte-distanciadas/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-19T09:12:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/b4bdaefed048-gettyimages-114617931.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/b4bdaefed048-gettyimages-114617931.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La madre de Hayden Panettiere rompe su silencio tras perderla estando distanciadas: \"Desearía que hubiera sido diferente\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/actualidad/20260819918751/madre-hayden-panettiere-rompe-silencio-muerte-distanciadas/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Ceuta y el Gobierno central activan un plan urgente para trasladar a 500 niñas migrantes desde Ceuta a la Península",
       "link": "https://www.infobae.com/espana/2026/08/19/ceuta-y-el-gobierno-central-activan-un-plan-urgente-para-trasladar-a-500-ninas-migrantes-desde-ceuta-a-la-peninsula/",
       "source": "Infobae España · Virales",
       "platform": "news",
-      "published_at": "2026-08-19T08:37:27Z",
+      "published_at": "2026-08-19T09:10:51Z",
       "social_points": 9.0,
       "metrics": {
         "curated_editorial": true,
@@ -3108,6 +3582,288 @@
           "width": 1920,
           "height": 1280,
           "page_url": "https://www.infobae.com/espana/2026/08/19/ceuta-y-el-gobierno-central-activan-un-plan-urgente-para-trasladar-a-500-ninas-migrantes-desde-ceuta-a-la-peninsula/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El agente francés, encarcelado en Malí durante un año por “atentar contra la seguridad”, que ha sido liberado tras la ayuda atribuida a Marruecos",
+      "link": "https://www.infobae.com/espana/2026/08/19/el-agente-frances-encarcelado-en-mali-durante-un-ano-por-atentar-contra-la-seguridad-que-ha-sido-liberado-tras-la-ayuda-atribuida-a-marruecos/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-19T09:09:37Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/YSZW3B66R5HYZBAZH4K7GAKEBI.png?auth=f1af11572b792c2f2f49df8620d671fb7bbb4e4f596b13e600dcc74b2770282a&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/YSZW3B66R5HYZBAZH4K7GAKEBI.png?auth=f1af11572b792c2f2f49df8620d671fb7bbb4e4f596b13e600dcc74b2770282a&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "El agente francés, encarcelado en Malí durante un año por “atentar contra la seguridad”, que ha sido liberado tras la ayuda atribuida a Marruecos",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/el-agente-frances-encarcelado-en-mali-durante-un-ano-por-atentar-contra-la-seguridad-que-ha-sido-liberado-tras-la-ayuda-atribuida-a-marruecos/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/YSZW3B66R5HYZBAZH4K7GAKEBI.png?auth=f1af11572b792c2f2f49df8620d671fb7bbb4e4f596b13e600dcc74b2770282a&smart=true&width=1672&height=941",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 1672,
+          "height": 941,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/el-agente-frances-encarcelado-en-mali-durante-un-ano-por-atentar-contra-la-seguridad-que-ha-sido-liberado-tras-la-ayuda-atribuida-a-marruecos/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La Audiencia Nacional rechaza el asilo a un brasileño que huyó a España tras denunciar a una banda que le robó la moto y sufrir un intento de asesinato",
+      "link": "https://www.infobae.com/espana/2026/08/19/la-audiencia-nacional-rechaza-el-asilo-a-un-brasileno-que-huyo-a-espana-tras-denunciar-a-una-banda-que-le-robo-la-moto-y-sufrir-un-intento-de-asesinato/",
+      "source": "Infobae España · Virales",
+      "platform": "news",
+      "published_at": "2026-08-19T09:09:34Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales España",
+        "editorial_feed": "Infobae España · Virales",
+        "topic_tags": [
+          "curiosidades",
+          "tiktok",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.infobae.com/resizer/v2/TSXOHBZWHVH7TOYSPNPZGRJUSQ.jpg?auth=15fc99f29fd138ab359e61888da8147f47970223918fed5581c945d88a683761&smart=true&width=1200&height=900&quality=85",
+      "image_candidates": [
+        {
+          "url": "https://www.infobae.com/resizer/v2/TSXOHBZWHVH7TOYSPNPZGRJUSQ.jpg?auth=15fc99f29fd138ab359e61888da8147f47970223918fed5581c945d88a683761&smart=true&width=1200&height=900&quality=85",
+          "origin": "schema:primaryImageOfPage",
+          "base_score": 90.0,
+          "alt": "La Audiencia Nacional rechaza el asilo a un brasileño que huyó a España tras denunciar a una banda que le robó la moto y sufrir un intento de asesinato",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/la-audiencia-nacional-rechaza-el-asilo-a-un-brasileno-que-huyo-a-espana-tras-denunciar-a-una-banda-que-le-robo-la-moto-y-sufrir-un-intento-de-asesinato/"
+        },
+        {
+          "url": "https://www.infobae.com/resizer/v2/TSXOHBZWHVH7TOYSPNPZGRJUSQ.jpg?auth=15fc99f29fd138ab359e61888da8147f47970223918fed5581c945d88a683761&smart=true&width=1920&height=1280",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 1920,
+          "height": 1280,
+          "page_url": "https://www.infobae.com/espana/2026/08/19/la-audiencia-nacional-rechaza-el-asilo-a-un-brasileno-que-huyo-a-espana-tras-denunciar-a-una-banda-que-le-robo-la-moto-y-sufrir-un-intento-de-asesinato/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El fuego en Pinofranqueado (Cáceres) ya supera las 1.600 hectáreas: el alcalde apunta a un incendio intencionado",
+      "link": "https://www.lasexta.com/noticias/nacional/fuego-pinofranqueado-caceres-supera-1600-hectareas-alcalde-apunta-incendio-intencionado_202608196a85719c71b42a0b5df7cce7.html",
+      "source": "laSexta",
+      "platform": "news",
+      "published_at": "2026-08-19T09:04:28Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral y vídeos virales",
+        "editorial_feed": "laSexta · Viral",
+        "topic_tags": [
+          "curiosidades",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/5A26F73D-FA6F-4255-8650-3A5DB435F5A2/agentes-emergencias-trabajan-puesto-mando-avanzado-incendio-pinofranqueado_69.jpg?crop=3504,1971,x0,y185&width=1280&height=720&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/5A26F73D-FA6F-4255-8650-3A5DB435F5A2/agentes-emergencias-trabajan-puesto-mando-avanzado-incendio-pinofranqueado_69.jpg?crop=3504,1971,x0,y185&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El fuego en Pinofranqueado (Cáceres) ya supera las 1.600 hectáreas: el alcalde apunta a un incendio intencionado",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lasexta.com/noticias/nacional/fuego-pinofranqueado-caceres-supera-1600-hectareas-alcalde-apunta-incendio-intencionado_202608196a85719c71b42a0b5df7cce7.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Cuca Miquel, experta en belleza, revela las claves para tratar el contorno de ojos, bolsas y ojeras",
+      "link": "https://www.diezminutos.es/moda-belleza/belleza/a73411674/cuca-miquel-experta-belleza-bolsas-ojeras-rutina-cuidado-ojos/",
+      "source": "Diez Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T09:01:37Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Diez Minutos",
+        "topic_tags": [
+          "corazon",
+          "famosos",
+          "lifestyle"
+        ]
+      },
+      "thumbnail": "https://hips.hearstapps.com/hmg-prod/images/2348bce5-9da0-4801-b644-c6b36282b7c4.jpeg?crop=1xw:0.75xh;center,top&resize=1200:*",
+      "image_candidates": [
+        {
+          "url": "https://hips.hearstapps.com/hmg-prod/images/2348bce5-9da0-4801-b644-c6b36282b7c4.jpeg?crop=1xw:0.75xh;center,top&resize=1200:*",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Cuca Miquel, experta en belleza, revela las claves para tratar el contorno de ojos, bolsas y ojeras",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.diezminutos.es/moda-belleza/belleza/a73411674/cuca-miquel-experta-belleza-bolsas-ojeras-rutina-cuidado-ojos/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Alberto Guzmán, de la boda de Makoke",
+      "link": "https://www.lasexta.com/programas/arusitys/alberto-guzman-boda-makoke_202608196a857026a046ad6ebcb9e41e.html",
+      "source": "laSexta",
+      "platform": "news",
+      "published_at": "2026-08-19T08:58:14Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral y vídeos virales",
+        "editorial_feed": "laSexta · Viral",
+        "topic_tags": [
+          "corazon",
+          "curiosidades",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/D42612AB-615E-46A8-B4C2-7BA6579D77C3/guzman-arus_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/D42612AB-615E-46A8-B4C2-7BA6579D77C3/guzman-arus_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Alberto Guzmán, de la boda de Makoke",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.lasexta.com/programas/arusitys/alberto-guzman-boda-makoke_202608196a857026a046ad6ebcb9e41e.html"
+        },
+        {
+          "url": "https://fotografias.lasexta.com/clipping/cmsimages02/2026/08/19/D42612AB-615E-46A8-B4C2-7BA6579D77C3/guzman-arus_165.jpg?crop=1920,1080,x0,y0&width=1440&height=810&optimize=low&format=webply",
+          "origin": "section:html",
+          "base_score": 94.0,
+          "alt": "Guzmán ha destacado en este vídeo que \"hay películas que dan miedo y, en último lugar, está la boda de Makoke\"",
+          "width": 1440,
+          "height": 810,
+          "page_url": "https://www.lasexta.com/programas/arusitys/alberto-guzman-boda-makoke_202608196a857026a046ad6ebcb9e41e.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La reflexión de Manuel Carrasco sobre el uso de las redes sociales: \"Estamos intentando gustar todo el rato y no me gusta nada porque estamos siendo más frágiles que nunca\"",
+      "link": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/manuel-carrasco-redes-sociales-reflexion-autoestima-fragilidad-aprobacion-bienestar-1qrt_4408144/",
+      "source": "Vanitatis",
+      "platform": "news",
+      "published_at": "2026-08-19T08:51:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · Vanitatis",
+        "topic_tags": [
+          "corazon",
+          "famosos",
+          "redes"
+        ]
+      },
+      "thumbnail": "https://images.ecestaticos.com/cFe8Y0LfBO4ZxOtORAL4YY2poLU=/0x0:1600x900/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F4d1%2F613%2F02e%2F4d161302e671fe96e46e3546540d6f54.jpg",
+      "image_candidates": [
+        {
+          "url": "https://images.ecestaticos.com/cFe8Y0LfBO4ZxOtORAL4YY2poLU=/0x0:1600x900/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F4d1%2F613%2F02e%2F4d161302e671fe96e46e3546540d6f54.jpg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "La reflexión de Manuel Carrasco sobre el uso de las redes sociales: \"Estamos intentando gustar todo el rato y no me gusta nada porque estamos siendo más frágiles que nunca\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.vanitatis.elconfidencial.com/famosos/2026-08-19/manuel-carrasco-redes-sociales-reflexion-autoestima-fragilidad-aprobacion-bienestar-1qrt_4408144/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Pablo Urdangarin vuelve al trabajo con el apoyo de su novia, Johanna Zott: los gestos a pie de cancha que revelan en qué momento se encuentran",
+      "link": "https://www.hola.com/actualidad/20260819918747/pablo-urdangarin-johanna-zott-besos-cancha/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-19T08:46:00Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/404933d3191b-europapress7720255johanazottpablourdangarinpartido18agosto2026barcelon.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/404933d3191b-europapress7720255johanazottpablourdangarinpartido18agosto2026barcelon.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Pablo Urdangarin vuelve al trabajo con el apoyo de su novia, Johanna Zott: los gestos a pie de cancha que revelan en qué momento se encuentran",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/actualidad/20260819918747/pablo-urdangarin-johanna-zott-besos-cancha/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "8 exitosas actrices que antes fueron estrellas de la pasarela: de Diane Kruger o Caitriona Balfe a Alex Consani en 'American Horror Story: 13'",
+      "link": "https://www.hola.com/moda/20260819918742/actrices-que-fueron-modelos-diane-kruger-caitriona-balfe-alex-consani/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-19T08:38:14Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/1e23c4dd98b2-gettyimages-2274537017.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/1e23c4dd98b2-gettyimages-2274537017.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "8 exitosas actrices que antes fueron estrellas de la pasarela: de Diane Kruger o Caitriona Balfe a Alex Consani en 'American Horror Story: 13'",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/moda/20260819918742/actrices-que-fueron-modelos-diane-kruger-caitriona-balfe-alex-consani/"
         }
       ],
       "media_type": "article",
@@ -3171,6 +3927,38 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/musica/wisin-anuncia-con-mucho-orgullo-compromiso-creacion-primera-universidad-perreo_7027171_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La intrahistoria del fichaje de Rodri por el FC Barcelona: la boda de un amigo y dos reuniones secretas con Deco, claves",
+      "link": "https://www.20minutos.es/deportes/futbol/intrahistoria-fichaje-rodri-por-fc-barcelona-boda-un-amigo-dos-reuniones-secretas-con-deco-claves_7027155_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T08:27:56Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a855dedcacb44-58577508.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a855dedcacb44-58577508.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La intrahistoria del fichaje de Rodri por el FC Barcelona: la boda de un amigo y dos reuniones secretas con Deco, claves",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/deportes/futbol/intrahistoria-fichaje-rodri-por-fc-barcelona-boda-un-amigo-dos-reuniones-secretas-con-deco-claves_7027155_0.html"
         }
       ],
       "media_type": "article",
@@ -3286,6 +4074,78 @@
       "seed_trend": null
     },
     {
+      "title": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+      "link": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html",
+      "source": "Antena 3",
+      "platform": "news",
+      "published_at": "2026-08-19T08:34:32Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
+        "topic_tags": [
+          "sucesos"
+        ],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
+        },
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_96.jpg?crop=1920,1080,x0,y0&width=1200&height=675&optimize=low&format=webply",
+          "origin": "section:rss",
+          "base_score": 94.0,
+          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Tres detenidos en Madrid por retirar placas de amianto y dejarlas en un olivar de Cuenca",
+      "link": "https://www.20minutos.es/madrid/tres-detenidos-madrid-por-retirar-placas-amianto-dejarlas-un-olivar-cuenca_7027170_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T08:12:43Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8565338ed3b1-69341688.png",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8565338ed3b1-69341688.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Tres detenidos en Madrid por retirar placas de amianto y dejarlas en un olivar de Cuenca",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/madrid/tres-detenidos-madrid-por-retirar-placas-amianto-dejarlas-un-olivar-cuenca_7027170_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "El verano más familiar de Alejandro Sanz: sus cuatro hijos y su novia, Stephanie Cayo, juntos en Baleares",
       "link": "https://www.20minutos.es/gente/verano-mas-familiar-alejandro-sanz-sus-cuatro-hijos-su-novia-stephanie-cayo-juntos-baleares_7027160_0.html",
       "source": "20Minutos",
@@ -3312,6 +4172,39 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/gente/verano-mas-familiar-alejandro-sanz-sus-cuatro-hijos-su-novia-stephanie-cayo-juntos-baleares_7027160_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Muere Frank Beard (ZZ Top) a los 77 años",
+      "link": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/",
+      "source": "LOS40",
+      "platform": "news",
+      "published_at": "2026-08-19T07:58:22Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "topic_tags": [
+          "famosos",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
+      "image_candidates": [
+        {
+          "url": "https://los40.com/resizer/v2/SI2SVAENRNMVFCIFVUFSP3YN44.jpg?auth=0540ff00adb01b17538089f620adb13b5eacaad0797d9b0dc69dd48effb853a0&quality=70&width=1200&height=675&focal=862,301",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Muere Frank Beard (ZZ Top) a los 77 años",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://los40.com/2026/08/19/muere-frank-beard-zz-top-a-los-77-anos/"
         }
       ],
       "media_type": "article",
@@ -3374,6 +4267,70 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.diezminutos.es/teleprograma/series-tv/a73462714/atrapa-a-un-ladron-netflix-serie-actores-critica-pelicula-alfred-hitchcock-javier-olivares-isabel-el-ministerio-del-tiempo/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La influencer Pawgli desmiente que llorase porque su novio futbolista fichase por un equipo de Londres",
+      "link": "https://amp.marca.com/tiramillas/sociedad/2026/08/19/influencer-pawgli-desmiente-llorase-novio-futbolista-fichase-equipo-londres-video.html",
+      "source": "MARCA",
+      "platform": "news",
+      "published_at": "2026-08-19T07:52:54Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tiramillas",
+        "editorial_feed": "MARCA · Tiramillas",
+        "topic_tags": [
+          "curiosidades",
+          "famosos",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/19/dYmCE1gXM28BaBh0K.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/19/dYmCE1gXM28BaBh0K.jpeg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "La influencer Pawgli desmiente que llorase porque su novio futbolista fichase por un equipo de Londres",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://amp.marca.com/tiramillas/sociedad/2026/08/19/influencer-pawgli-desmiente-llorase-novio-futbolista-fichase-equipo-londres-video.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El cantante Wisin abre la Universidad del perreo: “Nuestra misión es darle al reguetón el rigor y el lugar de respeto que se merece”",
+      "link": "https://amp.marca.com/tiramillas/musica/2026/08/19/cantante-wisin-abre-universidad-perreo-nuestra-mision-darle-regueton-rigor-lugar-respeto-merece.html",
+      "source": "MARCA",
+      "platform": "news",
+      "published_at": "2026-08-19T07:49:15Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Tiramillas",
+        "editorial_feed": "MARCA · Tiramillas",
+        "topic_tags": [
+          "curiosidades",
+          "famosos",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/19/6a855e5436ddb.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/19/6a855e5436ddb.jpeg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "El cantante Wisin abre la Universidad del perreo: “Nuestra misión es darle al reguetón el rigor y el lugar de respeto que se merece”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://amp.marca.com/tiramillas/musica/2026/08/19/cantante-wisin-abre-universidad-perreo-nuestra-mision-darle-regueton-rigor-lugar-respeto-merece.html"
         }
       ],
       "media_type": "article",
@@ -3616,6 +4573,38 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.hola.com/actualidad/20260819918739/sara-carbonero-reto-imposible-galapagos-operacion/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Te va a estallar la cabeza: Cosas que hace 25 años aún no habían ocurrido",
+      "link": "https://www.20minutos.es/nacional/te-va-estallar-cabeza-cosas-que-hace-25-anos-aun-no-habian-ocurrido_7025068_1.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T07:21:01Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2023/12/20/banderas-de-la-union-europea-ondean-al-viento-mientras-los-peatones-caminan-por-la-sede-de-la-ue-en-bruselas.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2023/12/20/banderas-de-la-union-europea-ondean-al-viento-mientras-los-peatones-caminan-por-la-sede-de-la-ue-en-bruselas.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Te va a estallar la cabeza: Cosas que hace 25 años aún no habían ocurrido",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/nacional/te-va-estallar-cabeza-cosas-que-hace-25-anos-aun-no-habian-ocurrido_7025068_1.html"
         }
       ],
       "media_type": "article",
@@ -3867,37 +4856,6 @@
       "seed_trend": null
     },
     {
-      "title": "Laura Escanes rompe a llorar tras dejar a su hija Roma con Risto Mejide: \"Siento que me pierdo tantas cosas\"",
-      "link": "https://www.hola.com/actualidad/20260818918687/laura-escanes-desolada-tras-despedirse-de-su-hija/",
-      "source": "HOLA",
-      "platform": "news",
-      "published_at": "2026-08-18T19:03:20Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Prensa del corazón",
-        "editorial_feed": "Corazón · HOLA",
-        "topic_tags": [
-          "corazon",
-          "famosos"
-        ]
-      },
-      "thumbnail": "https://www.hola.com/horizon/landscape/c38e1491dd34-captura-de-pantalla-2026-08-18-192232.jpg?im=Resize=(1200)",
-      "image_candidates": [
-        {
-          "url": "https://www.hola.com/horizon/landscape/c38e1491dd34-captura-de-pantalla-2026-08-18-192232.jpg?im=Resize=(1200)",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Laura Escanes rompe a llorar tras dejar a su hija Roma con Risto Mejide: \"Siento que me pierdo tantas cosas\"",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.hola.com/actualidad/20260818918687/laura-escanes-desolada-tras-despedirse-de-su-hija/"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "La foto de la infancia de Lourdes Montes con la que confirma el asombroso parecido de su hija Carmen que cumple 11 años",
       "link": "https://www.hola.com/actualidad/20260819918738/lourdes-montes-parecido-de-su-hija-carmen-cumple-11/",
       "source": "HOLA",
@@ -3924,6 +4882,38 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.hola.com/actualidad/20260819918738/lourdes-montes-parecido-de-su-hija-carmen-cumple-11/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Musiala se desploma en un partido por segunda vez en cuatro días y explica la razón: \"Viene de una disfunción neurológica\"",
+      "link": "https://www.20minutos.es/deportes/futbol/musiala-se-desploma-un-partido-por-segunda-vez-cuatro-dias-explica-razon-viene-una-disfuncion-neurologica_7027127_0.html",
+      "source": "20Minutos",
+      "platform": "news",
+      "published_at": "2026-08-19T06:26:12Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, redes y Gonzoo",
+        "editorial_feed": "20minutos · Virales y Gonzoo",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ],
+        "source_mode": "google-news-fallback"
+      },
+      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8549351964a2-76872229.png",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/19/6a8549351964a2-76872229.png",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Musiala se desploma en un partido por segunda vez en cuatro días y explica la razón: \"Viene de una disfunción neurológica\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.20minutos.es/deportes/futbol/musiala-se-desploma-un-partido-por-segunda-vez-cuatro-dias-explica-razon-viene-una-disfuncion-neurologica_7027127_0.html"
         }
       ],
       "media_type": "article",
@@ -7276,6 +8266,37 @@
       "seed_trend": null
     },
     {
+      "title": "Laura Escanes rompe a llorar tras dejar a su hija Roma con Risto Mejide: \"Siento que me pierdo tantas cosas\"",
+      "link": "https://www.hola.com/actualidad/20260818918687/laura-escanes-desolada-tras-despedirse-de-su-hija/",
+      "source": "HOLA",
+      "platform": "news",
+      "published_at": "2026-08-18T19:03:20Z",
+      "social_points": 9.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Prensa del corazón",
+        "editorial_feed": "Corazón · HOLA",
+        "topic_tags": [
+          "corazon",
+          "famosos"
+        ]
+      },
+      "thumbnail": "https://www.hola.com/horizon/landscape/c38e1491dd34-captura-de-pantalla-2026-08-18-192232.jpg?im=Resize=(1200)",
+      "image_candidates": [
+        {
+          "url": "https://www.hola.com/horizon/landscape/c38e1491dd34-captura-de-pantalla-2026-08-18-192232.jpg?im=Resize=(1200)",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Laura Escanes rompe a llorar tras dejar a su hija Roma con Risto Mejide: \"Siento que me pierdo tantas cosas\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.hola.com/actualidad/20260818918687/laura-escanes-desolada-tras-despedirse-de-su-hija/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Céline Dion comparte una rara actualización sobre su enfermedad y confiesa que \"no siempre es bonito\"",
       "link": "https://www.hola.com/actualidad/20260818918685/celine-dion-comparte-actualizacion-sobre-su-salud-no-siempre-es-bonito/",
       "source": "HOLA",
@@ -7715,38 +8736,6 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/andalucia/granada/mariangeles-vecina-churriana-vega-estamos-asustados-voy-pasar-noche-parque-porque-mi-casa-esta-agrietada_7027056_0.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
-      "title": "Un incendio en Las Hurdes obliga a desalojar a 600 vecinos y activa a la UME",
-      "link": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html",
-      "source": "20minutos",
-      "platform": "news",
-      "published_at": "2026-08-18T18:17:04Z",
-      "social_points": 9.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Virales, redes y Gonzoo",
-        "editorial_feed": "20minutos · Virales y Gonzoo",
-        "topic_tags": [
-          "redes",
-          "viral"
-        ],
-        "source_mode": "direct-section"
-      },
-      "thumbnail": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a849bf3b85206-66778438.jpeg",
-      "image_candidates": [
-        {
-          "url": "https://imagenes.20minutos.es/files/image_1920_1080/uploads/imagenes/2026/08/18/6a849bf3b85206-66778438.jpeg",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "Un incendio en Las Hurdes obliga a desalojar a 600 vecinos y activa a la UME",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.20minutos.es/extremadura/caceres/un-incendio-las-hurdes-obliga-desalojar-600-vecinos-activa-ume_7027073_0.html"
         }
       ],
       "media_type": "article",
@@ -8568,8 +9557,17 @@
           "viral"
         ]
       },
-      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2025/03/21/16962306845187.jpeg",
+      "thumbnail": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/18/dXtKc1gXBOllSD0uv.jpeg",
       "image_candidates": [
+        {
+          "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2026/08/18/dXtKc1gXBOllSD0uv.jpeg",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "Muere Juan Tamariz, leyenda de la magia y uno de los rostros más queridos de la televisión española",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://amp.marca.com/tiramillas/sociedad/2026/08/18/muere-juan-tamariz-leyenda-magia-rostros-queridos-television-espanola.html"
+        },
         {
           "url": "https://objetos-xlk.estaticos-marca.com/files/article_main_microformat_4_3/uploads/2025/03/21/16962306845187.jpeg",
           "origin": "schema:image",
@@ -16265,6 +17263,70 @@
       "seed_trend": null
     },
     {
+      "title": "Las declaraciones de Ester Expósito sobre Mbappé, el bikinazo viral de Dua Lipa y la tierna foto de Lewis Hamilton con Kim Kardashian, entre las fotos de este miércoles",
+      "link": "https://www.elmundo.es/album/loc/famosos/2026/08/19/6a856a85e9cf4ac90c8b4587.html",
+      "source": "El Mundo",
+      "platform": "news",
+      "published_at": "2026-08-19T08:43:04Z",
+      "social_points": 8.5,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales y curiosidades",
+        "editorial_feed": "Virales y curiosidades · prensa nacional",
+        "topic_tags": [
+          "curiosidades",
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://e01-phantom-elmundo.uecdn.es/e7224af2aea6a83bf2659e83bb599e75/resize/1200/f/webp/assets/multimedia/imagenes/2026/08/19/17871281723961.jpg",
+      "image_candidates": [
+        {
+          "url": "https://e01-phantom-elmundo.uecdn.es/e7224af2aea6a83bf2659e83bb599e75/resize/1200/f/webp/assets/multimedia/imagenes/2026/08/19/17871281723961.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Las declaraciones de Ester Expósito sobre Mbappé, el bikinazo viral de Dua Lipa y la tierna foto de Lewis Hamilton con Kim Kardashian, entre las fotos de este miércoles",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.elmundo.es/album/loc/famosos/2026/08/19/6a856a85e9cf4ac90c8b4587.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "La reacción de dos jóvenes debutantes en el Cádiz: \"Esto es solo el comienzo\"",
+      "link": "https://www.andaluciainformacion.es/articulo/corazon-cadista/reaccion-dos-jovenes-debutantes-cadiz-es-solo-comienzo/202608191037493457697.amp.html",
+      "source": "Andalucía Información",
+      "platform": "news",
+      "published_at": "2026-08-19T08:37:49Z",
+      "social_points": 8.5,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales y curiosidades",
+        "editorial_feed": "Virales y curiosidades · prensa nacional",
+        "topic_tags": [
+          "curiosidades",
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://www.andaluciainformacion.es/media/andaluciainformacion/images/2026/08/19/2026081910370433974.jpg",
+      "image_candidates": [
+        {
+          "url": "https://www.andaluciainformacion.es/media/andaluciainformacion/images/2026/08/19/2026081910370433974.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La reacción de dos jóvenes debutantes en el Cádiz: \"Esto es solo el comienzo\"",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.andaluciainformacion.es/articulo/corazon-cadista/reaccion-dos-jovenes-debutantes-cadiz-es-solo-comienzo/202608191037493457697.amp.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Cómo reconocer una anafilaxia este verano: reacción alérgica súbita potencialmente mortal",
       "link": "https://lasgastrocronicas.com/como-reconocer-una-anafilaxia-este-verano-reaccion-alergica-subita-potencialmente-mortal/",
       "source": "Las Gastrocrónicas",
@@ -18203,6 +19265,106 @@
       "seed_trend": null
     },
     {
+      "title": "La inesperada decisión de JC Reyes: se retira de la música",
+      "link": "https://los40.com/2026/08/19/la-inesperada-decision-de-jc-reyes-se-retira-de-la-musica/",
+      "source": "LOS40",
+      "platform": "news",
+      "published_at": "2026-08-19T09:31:05Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "topic_tags": [
+          "famosos",
+          "insolito",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://los40.com/resizer/v2/XOAMXQYPVJCCRGBE2GUV4VHH7M.jpg?auth=39b75c4a3784773f5c4438ebf4649d61ba1d36f1753a4e629b2408afb9030919&quality=70&width=1200&height=675&focal=1767,471",
+      "image_candidates": [
+        {
+          "url": "https://los40.com/resizer/v2/XOAMXQYPVJCCRGBE2GUV4VHH7M.jpg?auth=39b75c4a3784773f5c4438ebf4649d61ba1d36f1753a4e629b2408afb9030919&quality=70&width=1200&height=675&focal=1767,471",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "La inesperada decisión de JC Reyes: se retira de la música",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://los40.com/2026/08/19/la-inesperada-decision-de-jc-reyes-se-retira-de-la-musica/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Los Grammy se replantean su nueva categoría de pop asiático tras la decisión de BTS de no acudir a la gala",
+      "link": "https://los40.com/2026/08/19/los-grammy-se-replantean-su-nueva-categoria-de-pop-asiatico-tras-la-decision-de-bts-de-no-acudir-a-la-gala/",
+      "source": "LOS40",
+      "platform": "news",
+      "published_at": "2026-08-19T08:43:12Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "topic_tags": [
+          "famosos",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://los40.com/resizer/v2/ARM2TXHAPZGPFMKHPGOQWKFTXI.jpg?auth=36effdb694942920b50dc3ac215eca368bbf384fb581e613ba94039b8481924b&quality=70&width=1200&height=900&smart=true",
+      "image_candidates": [
+        {
+          "url": "https://los40.com/resizer/v2/ARM2TXHAPZGPFMKHPGOQWKFTXI.jpg?auth=36effdb694942920b50dc3ac215eca368bbf384fb581e613ba94039b8481924b&quality=70&width=1200&height=900&smart=true",
+          "origin": "schema:image",
+          "base_score": 90.0,
+          "alt": "Los Grammy se replantean su nueva categoría de pop asiático tras la decisión de BTS de no acudir a la gala",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://los40.com/2026/08/19/los-grammy-se-replantean-su-nueva-categoria-de-pop-asiatico-tras-la-decision-de-bts-de-no-acudir-a-la-gala/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Carolina Ramírez habla sinceramente sobre su participación en la gira de ‘La reina del Flow’: “No crean que se van a encontrar con Beyoncé”",
+      "link": "https://los40.com/2026/08/19/carolina-ramirez-habla-sinceramente-sobre-su-participacion-en-la-gira-de-la-reina-del-flow-no-crean-que-se-van-a-encontrar-con-beyonce/",
+      "source": "LOS40",
+      "platform": "news",
+      "published_at": "2026-08-19T08:35:44Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Virales, música y entretenimiento",
+        "editorial_feed": "LOS40 · Entretenimiento viral",
+        "topic_tags": [
+          "famosos",
+          "redes",
+          "viral"
+        ],
+        "source_mode": "direct-section"
+      },
+      "thumbnail": "https://los40.com/resizer/v2/PHDYK4E54NGMJN4DKDGYXYMPVQ.jpg?auth=981aed1c1a9b289dd5c206f971f499206b285a58b01bc7d58344811c75862526&quality=70&width=1200&height=675&focal=1034,476",
+      "image_candidates": [
+        {
+          "url": "https://los40.com/resizer/v2/PHDYK4E54NGMJN4DKDGYXYMPVQ.jpg?auth=981aed1c1a9b289dd5c206f971f499206b285a58b01bc7d58344811c75862526&quality=70&width=1200&height=675&focal=1034,476",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Carolina Ramírez habla sinceramente sobre su participación en la gira de ‘La reina del Flow’: “No crean que se van a encontrar con Beyoncé”",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://los40.com/2026/08/19/carolina-ramirez-habla-sinceramente-sobre-su-participacion-en-la-gira-de-la-reina-del-flow-no-crean-que-se-van-a-encontrar-con-beyonce/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Karol G bate dos récords al mismo tiempo con 'No Me Arrepiento De Sentir Tanto' y su gira",
       "link": "https://los40.com/2026/08/19/karol-g-bate-dos-records-al-mismo-tiempo-con-no-me-arrepiento-de-sentir-tanto/",
       "source": "LOS40",
@@ -18230,6 +19392,101 @@
           "width": 0,
           "height": 0,
           "page_url": "https://los40.com/2026/08/19/karol-g-bate-dos-records-al-mismo-tiempo-con-no-me-arrepiento-de-sentir-tanto/"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Allianz y Spotify ponen banda sonora a los pequeños momentos del verano",
+      "link": "https://cincodias.elpais.com/branded-content/2026-08-19/allianz-y-spotify-ponen-banda-sonora-a-los-pequenos-momentos-del-verano.html?outputType=amp",
+      "source": "Cinco Días",
+      "platform": "news",
+      "published_at": "2026-08-19T07:54:03Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/QHY2KPHPTFHSBCWRH6JI7KPZZM.jpg?auth=a5ecb284ccd31d11e68affd8614b3d8f32206d8f72e9534fc62cc6b67b3a4a99&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/QHY2KPHPTFHSBCWRH6JI7KPZZM.jpg?auth=a5ecb284ccd31d11e68affd8614b3d8f32206d8f72e9534fc62cc6b67b3a4a99&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Allianz y Spotify ponen banda sonora a los pequeños momentos del verano",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://cincodias.elpais.com/branded-content/2026-08-19/allianz-y-spotify-ponen-banda-sonora-a-los-pequenos-momentos-del-verano.html?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Una mujer de 35 años, en estado grave tras ser apuñalada por su pareja en Madrid",
+      "link": "https://elpais.com/espana/madrid/2026-08-19/una-mujer-de-35-anos-en-estado-grave-tras-ser-apunalada-por-su-pareja-en-madrid.html?outputType=amp",
+      "source": "EL PAÍS",
+      "platform": "news",
+      "published_at": "2026-08-19T06:59:26Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Viral Internet y redes",
+        "editorial_feed": "EL PAÍS · Viral Internet",
+        "topic_tags": [
+          "corazon",
+          "lifestyle",
+          "redes",
+          "viral"
+        ]
+      },
+      "thumbnail": "https://imagenes.elpais.com/resizer/v2/XFVZHMC4QFGHLHPFGNNEUIPLHQ.jpg?auth=30d0bb1de706f88f3dec144a177de80a21443f4939dbb589b72aac5548bccdc3&width=1200",
+      "image_candidates": [
+        {
+          "url": "https://imagenes.elpais.com/resizer/v2/XFVZHMC4QFGHLHPFGNNEUIPLHQ.jpg?auth=30d0bb1de706f88f3dec144a177de80a21443f4939dbb589b72aac5548bccdc3&width=1200",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Una mujer de 35 años, en estado grave tras ser apuñalada por su pareja en Madrid",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://elpais.com/espana/madrid/2026-08-19/una-mujer-de-35-anos-en-estado-grave-tras-ser-apunalada-por-su-pareja-en-madrid.html?outputType=amp"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "NZI y BMW: el Futuro Sorprendente de los Cascos de Moto",
+      "link": "https://www.elmotero.es/articulo/trending/nzi-bmw-futuro-sorprendente-cascos-moto/20260819085801009323.amp.html",
+      "source": "EL MOTERO",
+      "platform": "news",
+      "published_at": "2026-08-19T06:58:01Z",
+      "social_points": 8.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Insólito y sorprendente",
+        "editorial_feed": "Google News · insólito y WTF",
+        "topic_tags": [
+          "curiosidades",
+          "insolito"
+        ]
+      },
+      "thumbnail": "https://www.elmotero.es/media/elmotero/images/2026/08/19/2026081906432029433.jpg",
+      "image_candidates": [
+        {
+          "url": "https://www.elmotero.es/media/elmotero/images/2026/08/19/2026081906432029433.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "NZI y BMW: el Futuro Sorprendente de los Cascos de Moto",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.elmotero.es/articulo/trending/nzi-bmw-futuro-sorprendente-cascos-moto/20260819085801009323.amp.html"
         }
       ],
       "media_type": "article",
@@ -20735,6 +21992,37 @@
       "seed_trend": null
     },
     {
+      "title": "Reíslas 2026 en el Teatro Leal",
+      "link": "https://lagenda.org/noticias/reislas-2026-en-el-teatro-leal-tenerife-septiembre-43411",
+      "source": "Lagenda",
+      "platform": "news",
+      "published_at": "2026-08-19T08:40:27Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Humor y memes",
+        "editorial_feed": "Google News · humor y memes",
+        "topic_tags": [
+          "humor",
+          "memes"
+        ]
+      },
+      "thumbnail": "https://s3-eu-west-1.amazonaws.com/beta.lagenda/images/reislas-teatro-leal-2026.jpg",
+      "image_candidates": [
+        {
+          "url": "https://s3-eu-west-1.amazonaws.com/beta.lagenda/images/reislas-teatro-leal-2026.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Reíslas 2026 en el Teatro Leal",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://lagenda.org/noticias/reislas-2026-en-el-teatro-leal-tenerife-septiembre-43411"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Detenido en Ourense un hombre acusado de intentar robar dinero a otro amenazándolo con un cuchillo",
       "link": "https://www.20minutos.es/galicia/ourense/detenido-ourense-un-hombre-acusado-intentar-robar-dinero-otro-amenazandolo-con-un-cuchillo_7027175_0.html",
       "source": "20Minutos",
@@ -20759,6 +22047,36 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.20minutos.es/galicia/ourense/detenido-ourense-un-hombre-acusado-intentar-robar-dinero-otro-amenazandolo-con-un-cuchillo_7027175_0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "YouTube cambia su sistema de medición de visualizaciones para unificar las métricas",
+      "link": "https://www.marketingdirecto.com/digital-general/digital/youtube-cambia-sistema-medicion-visualizaciones-unificar-metricas/amp",
+      "source": "Marketing Directo",
+      "platform": "news",
+      "published_at": "2026-08-19T08:00:14Z",
+      "social_points": 7.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Redes y creadores",
+        "editorial_feed": "Google News · redes y creadores",
+        "topic_tags": [
+          "redes"
+        ]
+      },
+      "thumbnail": "https://www.marketingdirecto.com/wp-content/uploads/2026/08/youtube-views-2026.jpg",
+      "image_candidates": [
+        {
+          "url": "https://www.marketingdirecto.com/wp-content/uploads/2026/08/youtube-views-2026.jpg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "YouTube cambia su sistema de medición de visualizaciones para unificar las métricas",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.marketingdirecto.com/digital-general/digital/youtube-cambia-sistema-medicion-visualizaciones-unificar-metricas/amp"
         }
       ],
       "media_type": "article",
@@ -22563,7 +23881,7 @@
     },
     {
       "title": "YouTube cambiará la manera en que cuenta las visualizaciones",
-      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_a08d7b8d-c09d-4d2d-b209-8437844ecfd3",
+      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_6740ec8e-2de5-411b-97bf-4a6b408ab30a",
       "source": "es-us.vida-estilo.yahoo.com",
       "platform": "news",
       "published_at": "2026-08-18T12:57:08Z",
@@ -22855,7 +24173,7 @@
     },
     {
       "title": "Nuevos negocios: las pequeñas marcas se hacen famosas en TikTok, pero Amazon sigue siendo el rey de las ventas online",
-      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_ced65bc3-767a-446b-9c51-9ec27496cb0f",
+      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_64482d4b-cb07-4928-afeb-817ce0dc9a7e",
       "source": "Yahoo",
       "platform": "news",
       "published_at": "2026-08-18T10:15:00Z",
@@ -24109,6 +25427,37 @@
       "seed_trend": null
     },
     {
+      "title": "Celebridades y famosos despiden a Juan Tamariz, el último gran mago",
+      "link": "https://www.eldebate.com/sociedad/20260819/celebridades-famosos-despiden-juan-tamariz-ultimo-gran-mago_450552.html",
+      "source": "El Debate",
+      "platform": "news",
+      "published_at": "2026-08-19T09:07:47Z",
+      "social_points": 6.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Famosos, televisión y realities",
+        "editorial_feed": "Google News · famosos, televisión y realities",
+        "topic_tags": [
+          "famosos",
+          "television"
+        ]
+      },
+      "thumbnail": "https://www.eldebate.com/files/article_social/uploads/2026/08/19/6a8570de6cecc.jpeg",
+      "image_candidates": [
+        {
+          "url": "https://www.eldebate.com/files/article_social/uploads/2026/08/19/6a8570de6cecc.jpeg",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Celebridades y famosos despiden a Juan Tamariz, el último gran mago",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.eldebate.com/sociedad/20260819/celebridades-famosos-despiden-juan-tamariz-ultimo-gran-mago_450552.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
       "title": "Jorge seguirá liderando al CD Pedroñeras: el capitán renueva una temporada más",
       "link": "https://eldeporteconquense.com/noticias/futbol-noticias/noticias-futbol-preferente/jorge-seguira-liderando-al-cd-pedroneras-el-capitan-renueva-una-temporada-mas/",
       "source": "El Deporte Conquense",
@@ -24699,8 +26048,35 @@
           "deportes"
         ]
       },
-      "thumbnail": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=18",
+      "thumbnail": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=58",
       "image_candidates": [
+        {
+          "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=58",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "'Siempre mi nombre': Guardiola y Walker protagonizaron fuerte pleito en el City",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://planoinformativo.com/planodeportivo/341628/siempre-mi-nombre-guardiola-y-walker-protagonizaron-fuerte-pleito-en-el-city"
+        },
+        {
+          "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=71",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "'Siempre mi nombre': Guardiola y Walker protagonizaron fuerte pleito en el City",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://planoinformativo.com/planodeportivo/341628/siempre-mi-nombre-guardiola-y-walker-protagonizaron-fuerte-pleito-en-el-city"
+        },
+        {
+          "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=91",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "'Siempre mi nombre': Guardiola y Walker protagonizaron fuerte pleito en el City",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://planoinformativo.com/planodeportivo/341628/siempre-mi-nombre-guardiola-y-walker-protagonizaron-fuerte-pleito-en-el-city"
+        },
         {
           "url": "https://planoinformativo.com/stockd1/share/341628.jpg?cache=18",
           "origin": "og:image",
@@ -25785,7 +27161,7 @@
     },
     {
       "title": "¡Cuatro celebridades conquistan la primera salvación en Top Chef VIP 5!",
-      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_ad5202c2-c724-4665-9f48-72223915e3bd",
+      "link": "https://consent.yahoo.com/v2/collectConsent?sessionId=3_cc-session_0d32c158-5e73-4257-b6ce-f3a155e38914",
       "source": "Yahoo",
       "platform": "news",
       "published_at": "2026-08-18T01:09:00Z",
@@ -26198,40 +27574,61 @@
       "seed_trend": null
     },
     {
-      "title": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
-      "link": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html",
-      "source": "Antena 3",
+      "title": "Citizens reitera su calificación de la acción de Gaming and Leisure sobre su cartera de financiación",
+      "link": "https://es.investing.com/news/analyst-ratings/citizens-reitera-su-calificacion-de-la-accion-de-gaming-and-leisure-sobre-su-cartera-de-financiacion-93CH-3802254",
+      "source": "Investing.com España",
       "platform": "news",
-      "published_at": "2026-08-19T08:34:32Z",
+      "published_at": "2026-08-19T09:05:00Z",
       "social_points": 5.0,
       "metrics": {
         "curated_editorial": true,
-        "editorial_section": "Sociedad y sucesos filtrados",
-        "editorial_feed": "Antena 3 · Sociedad RSS",
+        "editorial_section": "Videojuegos y nostalgia",
+        "editorial_feed": "Google News · videojuegos y nostalgia",
         "topic_tags": [
-          "sucesos"
-        ],
-        "source_mode": "rss"
+          "nostalgia",
+          "videojuegos"
+        ]
       },
-      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+      "thumbnail": "https://content-media.investing.com/news/moved_LYNXMPEM4416N_1200_L.jpg",
       "image_candidates": [
         {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
+          "url": "https://content-media.investing.com/news/moved_LYNXMPEM4416N_1200_L.jpg",
           "origin": "og:image",
           "base_score": 90.0,
-          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+          "alt": "Citizens reitera su calificación de la acción de Gaming and Leisure sobre su cartera de financiación",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
-        },
+          "page_url": "https://es.investing.com/news/analyst-ratings/citizens-reitera-su-calificacion-de-la-accion-de-gaming-and-leisure-sobre-su-cartera-de-financiacion-93CH-3802254"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Hannan Alcalde, activista residente en Ceuta, de las violaciones: \"No son denunciadas. Muchas víctimas no han reconocido al agresor\"",
+      "link": "https://www.telecinco.es/noticias/espana/20260819/hannan-alcalde-activista-residente-ceuta-violaciones-no-denunciadas_18_019977555.html",
+      "source": "Telecinco · RSS",
+      "platform": "news",
+      "published_at": "2026-08-19T08:40:59Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Telecinco",
+        "editorial_feed": "Telecinco · RSS",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "thumbnail": "https://album.mediaset.es/eimg/2026/08/19/hannan-alcalde-activista-residente-en-ceuta-de-las-violaciones-no-son-denunciadas-muchas-victimas-no_a952.jpg",
+      "image_candidates": [
         {
-          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/FFDE8B96-8136-431F-AE2E-CE784C61D5C8/zona-tiroteo-mortal-isla-cristina_96.jpg?crop=1920,1080,x0,y0&width=1200&height=675&optimize=low&format=webply",
-          "origin": "section:rss",
-          "base_score": 94.0,
-          "alt": "La Guardia Civil localiza las armas presuntamente utilizadas en el tiroteo mortal de Isla Cristina",
+          "url": "https://album.mediaset.es/eimg/2026/08/19/hannan-alcalde-activista-residente-en-ceuta-de-las-violaciones-no-son-denunciadas-muchas-victimas-no_a952.jpg",
+          "origin": "feed:enclosure",
+          "base_score": 96.0,
+          "alt": "",
           "width": 0,
           "height": 0,
-          "page_url": "https://www.antena3.com/noticias/sociedad/guardia-civil-localiza-armas-presuntamente-utilizadas-tiroteo-mortal-isla-cristina_202608196a856a8ea046ad6ebcb9d8f2.html"
+          "page_url": "https://www.telecinco.es/noticias/espana/20260819/hannan-alcalde-activista-residente-ceuta-violaciones-no-denunciadas_18_019977555.html"
         }
       ],
       "media_type": "article",
@@ -26272,6 +27669,76 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.antena3.com/noticias/sociedad/tiburon-solrayo-especie-dificil-encontrar-deja-ver-hierro-sido-regalo_202608196a85699b71b42a0b5df7bd4d.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Laura Ulldemolins carga contra Luciana y habla de su relación con Alexis Gardes: “Yo me informaría un poco mejor de tu novio”",
+      "link": "https://www.telecinco.es/famosos/20260819/laura-ulldemolins-estalla-contra-luciana-tamagni-relacion-casados-primera-vista_18_019977852.html",
+      "source": "Telecinco · RSS",
+      "platform": "news",
+      "published_at": "2026-08-19T08:18:38Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Telecinco",
+        "editorial_feed": "Telecinco · RSS",
+        "topic_tags": [
+          "television"
+        ]
+      },
+      "thumbnail": "https://album.mediaset.es/eimg/2026/08/19/laura-ulldemolins-carga-contra-luciana-y-habla-de-su-relacion-con-alexis-gardes-con-vista-a-by-laura_2a81.jpg",
+      "image_candidates": [
+        {
+          "url": "https://album.mediaset.es/eimg/2026/08/19/laura-ulldemolins-carga-contra-luciana-y-habla-de-su-relacion-con-alexis-gardes-con-vista-a-by-laura_2a81.jpg",
+          "origin": "feed:enclosure",
+          "base_score": 96.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.telecinco.es/famosos/20260819/laura-ulldemolins-estalla-contra-luciana-tamagni-relacion-casados-primera-vista_18_019977852.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Muere Delfín Amaya, miembro de 'Los Amaya', a los 74 años en Barcelona",
+      "link": "https://www.antena3.com/noticias/sociedad/muere-delfin-amaya-miembro-amaya-74-anos-barcelona_202608196a8566dda5690f0473822d67.html",
+      "source": "Antena 3",
+      "platform": "news",
+      "published_at": "2026-08-19T08:18:36Z",
+      "social_points": 5.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad y sucesos filtrados",
+        "editorial_feed": "Antena 3 · Sociedad RSS",
+        "topic_tags": [
+          "sucesos"
+        ],
+        "source_mode": "rss"
+      },
+      "thumbnail": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/078688B5-EE75-4D71-B6BE-27AD32D8220B/foto-archivo-amaya_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/078688B5-EE75-4D71-B6BE-27AD32D8220B/foto-archivo-amaya_69.jpg?crop=1920,1080,x0,y99&width=1280&height=720&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Muere Delfín Amaya, miembro de 'Los Amaya', a los 74 años en Barcelona",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/muere-delfin-amaya-miembro-amaya-74-anos-barcelona_202608196a8566dda5690f0473822d67.html"
+        },
+        {
+          "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/078688B5-EE75-4D71-B6BE-27AD32D8220B/foto-archivo-amaya_96.jpg?crop=1920,1080,x0,y99&width=1200&height=675&optimize=low&format=webply",
+          "origin": "section:rss",
+          "base_score": 94.0,
+          "alt": "Muere Delfín Amaya, miembro de 'Los Amaya', a los 74 años en Barcelona",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.antena3.com/noticias/sociedad/muere-delfin-amaya-miembro-amaya-74-anos-barcelona_202608196a8566dda5690f0473822d67.html"
         }
       ],
       "media_type": "article",
@@ -26350,7 +27817,7 @@
       "seed_trend": null
     },
     {
-      "title": "El incendio en Pinofranqueado, en las Hurdes (Cáceres), arrasa 1.600 hectáreas",
+      "title": "El incendio en Pinofranqueado, en las Hurdes (Cáceres), arrasa 1.600 hectáreas y deja 700 desalojados",
       "link": "https://www.antena3.com/noticias/sociedad/incendio-pinofranqueado-hurdes-caceres-arrasa-1600-hectareas_202608196a8560f5a046ad6ebcb9c73f.html",
       "source": "Antena 3",
       "platform": "news",
@@ -26371,7 +27838,7 @@
           "url": "https://fotografias.antena3.com/clipping/cmsimages02/2026/08/19/4FD9E626-04AE-4180-8867-303629AB90FE/incendio-hurdes_69.jpg?crop=1920,1080,x0,y0&width=1280&height=720&optimize=low&format=webply",
           "origin": "og:image",
           "base_score": 90.0,
-          "alt": "El incendio en Pinofranqueado, en las Hurdes (Cáceres), arrasa 1.600 hectáreas",
+          "alt": "El incendio en Pinofranqueado, en las Hurdes (Cáceres), arrasa 1.600 hectáreas y deja 700 desalojados",
           "width": 0,
           "height": 0,
           "page_url": "https://www.antena3.com/noticias/sociedad/incendio-pinofranqueado-hurdes-caceres-arrasa-1600-hectareas_202608196a8560f5a046ad6ebcb9c73f.html"
@@ -26380,7 +27847,7 @@
           "url": "https://dpvclip.antena3.com/assets11/2026/08/19/61E914CA-EE43-4F91-B289-866E059170E2/640x360.mp4",
           "origin": "section:rss",
           "base_score": 94.0,
-          "alt": "El incendio en Pinofranqueado, en las Hurdes (Cáceres), arrasa 1.600 hectáreas",
+          "alt": "El incendio en Pinofranqueado, en las Hurdes (Cáceres), arrasa 1.600 hectáreas y deja 700 desalojados",
           "width": 0,
           "height": 0,
           "page_url": "https://www.antena3.com/noticias/sociedad/incendio-pinofranqueado-hurdes-caceres-arrasa-1600-hectareas_202608196a8560f5a046ad6ebcb9c73f.html"
@@ -30303,48 +31770,11 @@
       "seed_trend": null
     },
     {
-      "title": "El alcalde de Pinofranqueado (Cáceres) apunta a la intencionalidad del incendio",
-      "link": "https://www.larazon.es/sociedad/alcalde-pinofranqueado-caceres-apunta-intencionalidad-incendio_202608196a856b5e71b42a0b5df7c0ad.html",
-      "source": "La Razón · Sociedad",
-      "platform": "news",
-      "published_at": "2026-08-19T08:37:50Z",
-      "social_points": 2.0,
-      "metrics": {
-        "curated_editorial": true,
-        "editorial_section": "Sociedad filtrada",
-        "editorial_feed": "La Razón · Sociedad",
-        "topic_tags": []
-      },
-      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2023/07/12/82CF4C42-9BC1-4E3C-8D56-11572B7ACB14/graf5138-pinofranqueado-caceres-22052023-fotografia-este-lunes-efectos-incendio-pinofranqueado-comarca-cacerena-hurdes-extremadura-vez-que-incendio-fo_98.jpg?crop=4955,2788,x0,y261&width=1900&height=1069&optimize=low&format=webply",
-      "image_candidates": [
-        {
-          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2023/07/12/82CF4C42-9BC1-4E3C-8D56-11572B7ACB14/graf5138-pinofranqueado-caceres-22052023-fotografia-este-lunes-efectos-incendio-pinofranqueado-comarca-cacerena-hurdes-extremadura-vez-que-incendio-fo_98.jpg?crop=4955,2788,x0,y261&width=1900&height=1069&optimize=low&format=webply",
-          "origin": "og:image",
-          "base_score": 90.0,
-          "alt": "El alcalde de Pinofranqueado (Cáceres) apunta a la intencionalidad del incendio",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.larazon.es/sociedad/alcalde-pinofranqueado-caceres-apunta-intencionalidad-incendio_202608196a856b5e71b42a0b5df7c0ad.html"
-        },
-        {
-          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2023/07/12/82CF4C42-9BC1-4E3C-8D56-11572B7ACB14/graf5138-pinofranqueado-caceres-22052023-fotografia-este-lunes-efectos-incendio-pinofranqueado-comarca-cacerena-hurdes-extremadura-vez-que-incendio-fo_96.jpg?crop=4955,2787,x0,y261&width=1200&height=675&optimize=low&format=webply",
-          "origin": "feed:media_content",
-          "base_score": 98.0,
-          "alt": "",
-          "width": 0,
-          "height": 0,
-          "page_url": "https://www.larazon.es/sociedad/alcalde-pinofranqueado-caceres-apunta-intencionalidad-incendio_202608196a856b5e71b42a0b5df7c0ad.html"
-        }
-      ],
-      "media_type": "article",
-      "seed_trend": null
-    },
-    {
       "title": "Terremoto en Granada, en directo: última hora sobre réplicas, daños y afectados",
       "link": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-replicas-danos-afectados_202608196a85315c71b42a0b5df767b0.html",
       "source": "La Razón · Sociedad",
       "platform": "news",
-      "published_at": "2026-08-19T08:35:19Z",
+      "published_at": "2026-08-19T09:35:17Z",
       "social_points": 2.0,
       "metrics": {
         "curated_editorial": true,
@@ -30373,6 +31803,305 @@
           "width": 0,
           "height": 0,
           "page_url": "https://www.larazon.es/sociedad/terremoto-granada-directo-ultima-hora-replicas-danos-afectados_202608196a85315c71b42a0b5df767b0.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Un estudiante crea una herramienta para ayudar a docentes a detectar el uso indebido de IA",
+      "link": "https://www.larazon.es/sociedad/estudiante-crea-herramienta-ayudar-docentes-detectar-uso-indebido_202608196a8578b1a046ad6ebcb9f597.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:34:41Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/14/F49D57FC-F919-4894-BC51-1F6FC052DD59/agentes-ia-sustituyen-estudiantes-cursos-linea-completos_98.jpg?crop=1280,720,x0,y0&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/14/F49D57FC-F919-4894-BC51-1F6FC052DD59/agentes-ia-sustituyen-estudiantes-cursos-linea-completos_98.jpg?crop=1280,720,x0,y0&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un estudiante crea una herramienta para ayudar a docentes a detectar el uso indebido de IA",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/estudiante-crea-herramienta-ayudar-docentes-detectar-uso-indebido_202608196a8578b1a046ad6ebcb9f597.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/14/F49D57FC-F919-4894-BC51-1F6FC052DD59/agentes-ia-sustituyen-estudiantes-cursos-linea-completos_96.jpg?crop=1280,720,x0,y0&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/estudiante-crea-herramienta-ayudar-docentes-detectar-uso-indebido_202608196a8578b1a046ad6ebcb9f597.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "El test para hablar de dinero con tu pareja este verano (sin acabar discutiendo)",
+      "link": "https://www.larazon.es/sociedad/test-hablar-dinero-pareja-este-verano-acabar-discutiendo_202608196a85778fa5690f0473824dea.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:29:51Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": [
+          "corazon",
+          "lifestyle"
+        ]
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/07/13/3A58FC06-3EE8-42C4-8B69-DC248F0B48D6/imagen-archivo-pareja-playa-verano_98.jpg?crop=1920,1080,x0,y101&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/07/13/3A58FC06-3EE8-42C4-8B69-DC248F0B48D6/imagen-archivo-pareja-playa-verano_98.jpg?crop=1920,1080,x0,y101&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "El test para hablar de dinero con tu pareja este verano (sin acabar discutiendo)",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/test-hablar-dinero-pareja-este-verano-acabar-discutiendo_202608196a85778fa5690f0473824dea.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/07/13/3A58FC06-3EE8-42C4-8B69-DC248F0B48D6/imagen-archivo-pareja-playa-verano_96.jpg?crop=1920,1080,x0,y101&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/test-hablar-dinero-pareja-este-verano-acabar-discutiendo_202608196a85778fa5690f0473824dea.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Cómo elegir el colegio internacional adecuado para tu hijo",
+      "link": "https://www.larazon.es/sociedad/como-elegir-colegio-internacional-adecuado-hijo_202608196a8576ba71b42a0b5df7d704.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:26:18Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/07/09/63B65330-3C70-4DD4-A3E6-13D5D46AEFC3/ninos-llegando-colegio_98.jpg?crop=640,360,x0,y59&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/07/09/63B65330-3C70-4DD4-A3E6-13D5D46AEFC3/ninos-llegando-colegio_98.jpg?crop=640,360,x0,y59&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Cómo elegir el colegio internacional adecuado para tu hijo",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/como-elegir-colegio-internacional-adecuado-hijo_202608196a8576ba71b42a0b5df7d704.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/07/09/63B65330-3C70-4DD4-A3E6-13D5D46AEFC3/ninos-llegando-colegio_96.jpg?crop=640,360,x0,y59&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/como-elegir-colegio-internacional-adecuado-hijo_202608196a8576ba71b42a0b5df7d704.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Vecinos de cinco poblaciones desalojadas por el incendio de Riglos (Huesca) ya pueden volver a sus casas",
+      "link": "https://www.larazon.es/sociedad/vecinos-cinco-poblaciones-desalojadas-incendio-riglos-huesca-pueden-volver-sus-casas_202608196a857664a046ad6ebcb9f0a5.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:24:52Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/1254ACD9-19F7-4876-8BF2-662049EE9070/98.jpg?crop=1280,720,x0,y120&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/1254ACD9-19F7-4876-8BF2-662049EE9070/98.jpg?crop=1280,720,x0,y120&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Vecinos de cinco poblaciones desalojadas por el incendio de Riglos (Huesca) ya pueden volver a sus casas",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/vecinos-cinco-poblaciones-desalojadas-incendio-riglos-huesca-pueden-volver-sus-casas_202608196a857664a046ad6ebcb9f0a5.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/1254ACD9-19F7-4876-8BF2-662049EE9070/96.jpg?crop=1280,720,x0,y120&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/vecinos-cinco-poblaciones-desalojadas-incendio-riglos-huesca-pueden-volver-sus-casas_202608196a857664a046ad6ebcb9f0a5.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Los 339 desalojados por el incendio de Las Peñas de Riglos vuelven a sus casas",
+      "link": "https://www.larazon.es/sociedad/339-desalojados-incendio-penas-riglos-vuelven-sus-casas_202608196a85765e71b42a0b5df7d5f9.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:24:46Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/AEA13292-8F48-418D-B498-92C30F775075/controlado-incendio-centro-residuos-zona-norte-avila_98.jpg?crop=1598,899,x0,y0&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/AEA13292-8F48-418D-B498-92C30F775075/controlado-incendio-centro-residuos-zona-norte-avila_98.jpg?crop=1598,899,x0,y0&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Los 339 desalojados por el incendio de Las Peñas de Riglos vuelven a sus casas",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/339-desalojados-incendio-penas-riglos-vuelven-sus-casas_202608196a85765e71b42a0b5df7d5f9.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/19/AEA13292-8F48-418D-B498-92C30F775075/controlado-incendio-centro-residuos-zona-norte-avila_96.jpg?crop=1598,899,x0,y0&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/339-desalojados-incendio-penas-riglos-vuelven-sus-casas_202608196a85765e71b42a0b5df7d5f9.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Llega la temporada de vendimia en Abadía Retuerta",
+      "link": "https://www.larazon.es/sociedad/llega-temporada-vendimia-abadia-retuerta_202608196a85760ba046ad6ebcb9efec.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:23:23Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/02/03/F7AA2281-F5F0-4F12-A79E-AD3106B48E7C/abadia-retuerta-primer-legado-natural-historico-corp-mundo_98.jpg?crop=8256,4645,x0,y644&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/02/03/F7AA2281-F5F0-4F12-A79E-AD3106B48E7C/abadia-retuerta-primer-legado-natural-historico-corp-mundo_98.jpg?crop=8256,4645,x0,y644&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Llega la temporada de vendimia en Abadía Retuerta",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/llega-temporada-vendimia-abadia-retuerta_202608196a85760ba046ad6ebcb9efec.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/02/03/F7AA2281-F5F0-4F12-A79E-AD3106B48E7C/abadia-retuerta-primer-legado-natural-historico-corp-mundo_96.jpg?crop=8256,4644,x0,y645&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/llega-temporada-vendimia-abadia-retuerta_202608196a85760ba046ad6ebcb9efec.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Al menos 326 trabajadores humanitarios fueron asesinados el año pasado",
+      "link": "https://www.larazon.es/sociedad/menos-326-trabajadores-humanitarios-fueron-asesinados-ano-pasado_202608196a85759ba046ad6ebcb9eef5.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:21:31Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/17/34891660-ACD2-4CB3-9278-7519FBF9DD0C/98.jpg?crop=1920,1080,x0,y100&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/17/34891660-ACD2-4CB3-9278-7519FBF9DD0C/98.jpg?crop=1920,1080,x0,y100&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Al menos 326 trabajadores humanitarios fueron asesinados el año pasado",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/menos-326-trabajadores-humanitarios-fueron-asesinados-ano-pasado_202608196a85759ba046ad6ebcb9eef5.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/08/17/34891660-ACD2-4CB3-9278-7519FBF9DD0C/96.jpg?crop=1920,1080,x0,y100&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/menos-326-trabajadores-humanitarios-fueron-asesinados-ano-pasado_202608196a85759ba046ad6ebcb9eef5.html"
+        }
+      ],
+      "media_type": "article",
+      "seed_trend": null
+    },
+    {
+      "title": "Un estudio revela que los órganos envejecen a ritmos diferentes a lo largo de la vida",
+      "link": "https://www.larazon.es/sociedad/estudio-revela-que-organos-envejecen-ritmos-diferentes-largo-vida_202608196a8573dc71b42a0b5df7d14e.html",
+      "source": "La Razón · Sociedad",
+      "platform": "news",
+      "published_at": "2026-08-19T09:14:04Z",
+      "social_points": 2.0,
+      "metrics": {
+        "curated_editorial": true,
+        "editorial_section": "Sociedad filtrada",
+        "editorial_feed": "La Razón · Sociedad",
+        "topic_tags": []
+      },
+      "thumbnail": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/06/1F0F8582-17C4-422D-BFC3-49F59B7D2D51/medicos-mirando-ordenador-hospital-puerta-hierro-majadahonda_98.jpg?crop=7724,4346,x0,y354&width=1900&height=1069&optimize=low&format=webply",
+      "image_candidates": [
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/06/1F0F8582-17C4-422D-BFC3-49F59B7D2D51/medicos-mirando-ordenador-hospital-puerta-hierro-majadahonda_98.jpg?crop=7724,4346,x0,y354&width=1900&height=1069&optimize=low&format=webply",
+          "origin": "og:image",
+          "base_score": 90.0,
+          "alt": "Un estudio revela que los órganos envejecen a ritmos diferentes a lo largo de la vida",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/estudio-revela-que-organos-envejecen-ritmos-diferentes-largo-vida_202608196a8573dc71b42a0b5df7d14e.html"
+        },
+        {
+          "url": "https://fotografias-2.larazon.es/clipping/cmsimages01/2026/08/06/1F0F8582-17C4-422D-BFC3-49F59B7D2D51/medicos-mirando-ordenador-hospital-puerta-hierro-majadahonda_96.jpg?crop=7724,4345,x0,y355&width=1200&height=675&optimize=low&format=webply",
+          "origin": "feed:media_content",
+          "base_score": 98.0,
+          "alt": "",
+          "width": 0,
+          "height": 0,
+          "page_url": "https://www.larazon.es/sociedad/estudio-revela-que-organos-envejecen-ritmos-diferentes-largo-vida_202608196a8573dc71b42a0b5df7d14e.html"
         }
       ],
       "media_type": "article",

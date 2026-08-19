@@ -2233,6 +2233,22 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
         platform = str(context.get("platform") or "")
         direct_candidates = _context_candidates(context, story["title"])
         has_trusted_direct = any(item.base_score >= 115 for item in direct_candidates)
+        context_host = (
+            urllib.parse.urlparse(str(context.get("link") or "")).hostname or ""
+        ).lower()
+        has_huffpost_og = (
+            context_host == "huffingtonpost.es"
+            or context_host.endswith(".huffingtonpost.es")
+        ) and any(
+            image_origin_kind(item.origin).startswith("og:image")
+            for item in direct_candidates
+        )
+        if platform == "news" and has_huffpost_og:
+            # El historial ya conserva la tarjeta editorial correcta. Evitar
+            # reabrir todos los artículos antiguos en cada cron reduce la
+            # presión sobre HuffPost y deja las peticiones para piezas nuevas
+            # o todavía incompletas.
+            continue
         if has_trusted_direct and platform not in {"news", "meneame"}:
             continue
         link = public_fetch_url(context.get("link"))
