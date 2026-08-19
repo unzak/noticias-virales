@@ -44,6 +44,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - El RSS de portada de HuffPost se incorpora completo dentro de cada ventana de
   actualización, sin prefiltrado editorial; el ranking decide después qué piezas
   entran en la selección, pero todas permanecen disponibles en `Sin filtro`.
+- Las fichas de HuffPost que no obtienen imagen durante la fase concurrente se
+  reintentan secuencialmente para recuperar su `og:image` editorial, sin recurrir
+  a miniaturas de noticias relacionadas de la propia página.
 - 20minutos, Público Tremending y LOS40 se consultan desde sus secciones
   directas, con Google News como respaldo.
 - Las consultas de Google News incluyen exclusiones de política, instituciones,

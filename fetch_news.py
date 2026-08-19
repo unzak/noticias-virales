@@ -2002,6 +2002,13 @@ def candidate_relevance(candidate: ImageCandidate, story_title: str, *, main_con
     shared = keywords(descriptive) & keywords(story_title)
     score += min(18.0, len(shared) * 4.5)
     origin_kind = image_origin_kind(candidate.origin)
+    page_host = (urllib.parse.urlparse(candidate.page_url or "").hostname or "").lower()
+    if page_host == "huffingtonpost.es" or page_host.endswith(".huffingtonpost.es"):
+        # HuffPost mantiene ocasionalmente una imagen antigua en JSON-LD o en
+        # el cuerpo mientras og:image ya apunta a la foto editorial actual.
+        # Su tarjeta social es, por tanto, la referencia canónica del artículo.
+        if origin_kind.startswith("og:image"):
+            score += 24.0
     if origin_kind == "page:img" and not shared:
         score -= 42.0
     elif origin_kind == "page:main-img" and not shared:
@@ -5572,6 +5579,27 @@ def enrich_unfiltered_images(stories: list[dict[str, Any]]) -> tuple[list[dict[s
                 updated.pop("_image_contexts", None)
                 updated.pop("_allow_article_img_fallback", None)
             output[index] = updated
+
+    # HuffPost puede anunciar una pieza en el RSS mientras su página o la caché
+    # de metadatos todavía responde de forma incompleta. Además, alguna petición
+    # concurrente aislada puede fallar. Reintentar al final, ya sin concurrencia,
+    # recupera el og:image editorial y evita usar fotos de noticias relacionadas.
+    huffpost_recovered = 0
+    for index, item in enumerate(output):
+        if item is None or item.get("thumbnail"):
+            continue
+        original = stories[index]
+        feeds = original.get("editorial_feeds") or []
+        if "El HuffPost · Portada RSS" not in feeds:
+            continue
+        try:
+            retried, _ = enrich_one_story_image(original)
+        except Exception:
+            continue
+        output[index] = retried
+        huffpost_recovered += int(bool(retried.get("thumbnail")))
+    if huffpost_recovered:
+        print(f"[ok] HuffPost: {huffpost_recovered} imágenes recuperadas en segundo intento")
 
     processed = [item for item in output if item is not None]
     # La vista sin filtro es la predeterminada: tampoco debe publicar
