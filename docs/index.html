@@ -47,7 +47,7 @@
   .updated{color:var(--muted);font-size:.82rem;white-space:nowrap;padding-top:4px}
 
   main{padding:26px 0 58px}
-  .view-switch{display:flex;align-items:center;justify-content:center;gap:15px;margin:0 0 22px;padding:9px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(117,35,73,.06)}
+  .view-switch{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:15px;margin:0 0 22px;padding:9px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(117,35,73,.06)}
   .view-tab{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px;cursor:pointer;font-size:.82rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
   .view-tab:hover,.view-tab.active{background:var(--hot);color:#fff}
   .view-divider{color:#d9a9be;font-weight:900}
@@ -56,15 +56,22 @@
   .summary-card strong{display:block;font-size:1.5rem;letter-spacing:-.04em}
   .summary-card span{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em}
 
-  .toolbar{display:flex;justify-content:space-between;gap:14px;align-items:center;margin:20px 0}
-  .toolbar-main{display:flex;align-items:center;gap:12px;min-width:0;flex:1}
-  .filters{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
-  .filters::-webkit-scrollbar{display:none}
+  .toolbar{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin:20px 0;flex-wrap:wrap}
+  .toolbar-main{display:flex;align-items:center;gap:12px;min-width:0;flex:1;flex-wrap:wrap}
+  /* Los filtros ocupan su propia fila y se envuelven: ninguna etiqueta queda
+     fuera de la vista ni depende de un desplazamiento horizontal invisible. */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;flex:1 0 100%;padding-bottom:2px}
   .filter{
+    display:inline-flex;align-items:center;gap:6px;
     border:1px solid var(--line);background:var(--panel);color:var(--muted);
     border-radius:999px;padding:9px 13px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:750
   }
-  .filter:hover,.filter.active{border-color:var(--hot);color:var(--hot);background:rgba(237,20,112,.09)}
+  .filter:hover{border-color:var(--hot);color:var(--hot);background:rgba(237,20,112,.09)}
+  .filter.active{border-color:var(--hot);background:var(--hot);color:#fff}
+  .filter:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
+  .filter[data-empty="true"]{opacity:.45;cursor:default}
+  .filter[data-empty="true"]:hover{border-color:var(--line);color:var(--muted);background:var(--panel)}
+  .filter-count{font-size:.72rem;font-weight:850;opacity:.75;font-variant-numeric:tabular-nums}
   .time-range,.sort-control{display:flex;align-items:center;gap:7px;flex:0 0 auto;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
   .time-range select,.sort-control select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:9px 30px 9px 10px;font:inherit;text-transform:none;letter-spacing:0;cursor:pointer}
   .count{color:var(--muted);font-size:.82rem;white-space:nowrap}
@@ -154,6 +161,8 @@
   }
   @media(max-width:560px){
     .shell{padding:0 14px}header{padding-top:28px}.summary-grid{gap:8px}.summary-card{padding:12px}.toolbar{display:block}.toolbar-main{display:block}.time-range{margin-bottom:10px}.count{margin-top:10px}
+    .filters{margin-top:12px}.filter{padding:8px 11px;font-size:.78rem}
+    .view-switch{gap:6px;padding:7px}.view-tab{padding:9px 11px;font-size:.72rem;letter-spacing:.04em}.view-divider{display:none}
     .story{grid-template-columns:42px minmax(0,1fr)}
     .rank-rail{grid-row:1/4}.visual{grid-column:2;height:180px;min-height:180px}.visual img{height:180px;min-height:180px}
     .content{grid-column:2;padding:14px}.score-panel{grid-column:2;grid-template-columns:auto 1fr}.open-button{grid-column:1/-1}.score-panel .score-caption{display:none}
@@ -206,15 +215,15 @@
           <option value="time-desc" selected>Tiempo desc.</option>
         </select>
       </label>
-      <div class="filters" id="filters" aria-label="Filtros">
-        <button class="filter active" data-filter="all">Todo</button>
-        <button class="filter" data-filter="humor-curiosidades">Humor y curiosidades</button>
-        <button class="filter" data-filter="famosos-corazon">Famosos y corazón</button>
-        <button class="filter" data-filter="redes-tecnologia">Redes y tecnología</button>
-        <button class="filter" data-filter="animales">Animales</button>
-        <button class="filter" data-filter="deportes">Deportes</button>
-        <button class="filter" data-filter="vida-bienestar">Vida y bienestar</button>
-        <button class="filter" data-filter="sucesos">Sucesos</button>
+      <div class="filters" id="filters" role="group" aria-label="Filtros por categoría">
+        <button class="filter active" type="button" data-filter="all" aria-pressed="true">Todo</button>
+        <button class="filter" type="button" data-filter="humor-curiosidades" aria-pressed="false">Humor y curiosidades</button>
+        <button class="filter" type="button" data-filter="famosos-corazon" aria-pressed="false">Famosos y corazón</button>
+        <button class="filter" type="button" data-filter="redes-tecnologia" aria-pressed="false">Redes y tecnología</button>
+        <button class="filter" type="button" data-filter="animales" aria-pressed="false">Animales</button>
+        <button class="filter" type="button" data-filter="deportes" aria-pressed="false">Deportes</button>
+        <button class="filter" type="button" data-filter="vida-bienestar" aria-pressed="false">Vida y bienestar</button>
+        <button class="filter" type="button" data-filter="sucesos" aria-pressed="false">Sucesos</button>
       </div>
     </div>
     <div class="count" id="visibleCount"></div>
@@ -352,8 +361,33 @@ function storyCard(story, index){
     </aside>
   </article>`;
 }
+function markFilterActive(filter){
+  document.querySelectorAll('.filter').forEach(button => {
+    const active = button.dataset.filter === filter;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', active ? 'true' : 'false');
+  });
+}
+// Muestra cuántas piezas hay tras cada etiqueta con el periodo actual, para que
+// no haya que pulsar a ciegas una categoría que está vacía.
+function updateFilterCounts(){
+  if(document.getElementById('filters').hidden) return;
+  document.querySelectorAll('.filter').forEach(button => {
+    const total = allStories.filter(story => visibleFor(story, button.dataset.filter)).length;
+    let badge = button.querySelector('.filter-count');
+    if(!badge){
+      badge = document.createElement('span');
+      badge.className = 'filter-count';
+      button.appendChild(badge);
+    }
+    badge.textContent = total;
+    button.dataset.empty = total === 0 && button.dataset.filter !== 'all' ? 'true' : 'false';
+    button.disabled = total === 0 && button.dataset.filter !== 'all';
+  });
+}
 function renderStories(){
   const storiesEl = document.getElementById('stories');
+  updateFilterCounts();
   const visible = allStories.filter(s => visibleFor(s,currentFilter)).sort((a,b) => {
     if(currentView === 'forocoches') return Number(a.forocoches_rank || 999) - Number(b.forocoches_rank || 999);
     if(currentSort === 'priority'){
@@ -378,7 +412,7 @@ function setView(view){
   allStories = currentView === 'unfiltered' ? unfilteredStories : currentView === 'forocoches' ? forocochesStories : selectionStories;
   currentFilter = 'all';
   document.querySelectorAll('.view-tab').forEach(button => button.classList.toggle('active', button.dataset.view === currentView));
-  document.querySelectorAll('.filter').forEach(button => button.classList.toggle('active', button.dataset.filter === 'all'));
+  markFilterActive('all');
   const dedicatedForocoches = currentView === 'forocoches';
   document.querySelector('.time-range').hidden = dedicatedForocoches;
   document.querySelector('.sort-control').hidden = dedicatedForocoches;
@@ -433,7 +467,7 @@ document.getElementById('filters').addEventListener('click', event => {
   const button = event.target.closest('[data-filter]');
   if(!button) return;
   currentFilter = button.dataset.filter;
-  document.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button));
+  markFilterActive(currentFilter);
   renderStories();
 });
 document.querySelector('.view-switch').addEventListener('click', event => {
