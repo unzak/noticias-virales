@@ -472,14 +472,9 @@ MENEAME_SECTIONS = (
     ("Menéame · Más visitadas", "https://www.meneame.net/top_visited", "top_visited"),
 )
 GOOGLE_TRENDS_URL = "https://trends.google.com/trending/rss?geo=ES"
-BLUESKY_SEARCH_URLS = (
-    "https://public.api.bsky.app/xrpc/app.bsky.feed.searchPosts",
-    "https://api.bsky.app/xrpc/app.bsky.feed.searchPosts",
-)
 X_TRENDS_URL = "https://api.x.com/2/trends/by/woeid/23424950"
 YOUTUBE_VIDEOS_URL = "https://www.googleapis.com/youtube/v3/videos"
 
-DEFAULT_MASTODON_INSTANCES = ("https://masto.es",)
 DEFAULT_REDDIT_ES = (
     "spain",
     "Espana",
@@ -1288,8 +1283,6 @@ def valid_http_url(value: Any) -> str | None:
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         return None
     return value
-
-
 
 
 GENERIC_IMAGE_TERMS = (
@@ -2394,56 +2387,6 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
     return updated, selected.origin
 
 
-def generated_story_image(story: dict[str, Any]) -> str:
-    """Crea una tarjeta visual local cuando no existe una foto editorial fiable."""
-    title = compact_text(str(story.get("title") or "Pulso Viral"), 150)
-    words = title.split()
-    lines: list[str] = []
-    current: list[str] = []
-    for word in words:
-        candidate = " ".join([*current, word])
-        if current and len(candidate) > 34:
-            lines.append(" ".join(current))
-            current = [word]
-        else:
-            current.append(word)
-        if len(lines) >= 3:
-            break
-    if current and len(lines) < 4:
-        lines.append(" ".join(current))
-    if len(lines) == 4 and len(" ".join(words)) > len(" ".join(lines)):
-        lines[-1] = compact_text(lines[-1], 31).rstrip(".") + "…"
-
-    primary_tag = str(story.get("primary_tag") or "viral")
-    palette = {
-        "humor": ("#ff5b2e", "#4b1720"), "memes": ("#ffd15c", "#4a3512"),
-        "animales": ("#62d6bf", "#123c37"), "famosos": ("#bb8cff", "#35204c"),
-        "television": ("#75a7ff", "#182d55"), "insolito": ("#ff7f7f", "#4c1c2a"),
-        "redes": ("#75a7ff", "#182d55"), "tecnologia": ("#62d6bf", "#123c37"),
-        "deportes": ("#ffd15c", "#3d3513"), "lifestyle": ("#bb8cff", "#35204c"),
-    }
-    accent, glow = palette.get(primary_tag, ("#ff5b2e", "#4b1720"))
-    escaped_lines = [html.escape(line) for line in lines]
-    text_nodes = "".join(
-        f'<text x="72" y="{250 + index * 72}" class="headline">{line}</text>'
-        for index, line in enumerate(escaped_lines)
-    )
-    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-<defs><radialGradient id="g" cx="85%" cy="10%" r="80%"><stop offset="0" stop-color="{glow}"/><stop offset="1" stop-color="#101219"/></radialGradient></defs>
-<rect width="1200" height="675" fill="url(#g)"/><circle cx="1040" cy="90" r="210" fill="{accent}" opacity=".13"/>
-<rect x="72" y="72" width="94" height="10" rx="5" fill="{accent}"/><text x="72" y="135" class="brand">PULSO VIRAL</text>
-<text x="72" y="190" class="tag">#{html.escape(primary_tag.upper())}</text>{text_nodes}
-<text x="72" y="610" class="footer">Vista editorial generada · abre la noticia para ver el contenido original</text>
-<style>.brand{{font:900 30px Arial,sans-serif;fill:#f5f1e8;letter-spacing:5px}}.tag{{font:800 24px Arial,sans-serif;fill:{accent};letter-spacing:2px}}.headline{{font:800 50px Arial,sans-serif;fill:#f5f1e8}}.footer{{font:500 19px Arial,sans-serif;fill:#aaa69d}}</style></svg>'''
-    payload = svg.encode("utf-8")
-    digest = hashlib.sha256(payload).hexdigest()[:24]
-    filename = f"generated-{digest}.svg"
-    destination = MEDIA_DIR / filename
-    if not destination.exists():
-        destination.write_bytes(payload)
-    return f"media/{filename}"
-
-
 def enrich_ranked_images(stories: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     output: list[dict[str, Any] | None] = [None] * len(stories)
     origins: dict[str, int] = {}
@@ -2664,8 +2607,6 @@ def update_history_from_published_stories(
             image_candidates=candidates,
         ))
     return output
-
-
 
 
 def parse_publication_date(value: Any) -> dt.datetime | None:
@@ -3068,31 +3009,6 @@ def reddit_social_points(score: int, comments: int, published_at: dt.datetime | 
     return min(58.0, points)
 
 
-def bluesky_social_points(
-    likes: int,
-    reposts: int,
-    replies: int,
-    quotes: int,
-    published_at: dt.datetime | None,
-) -> float:
-    now = dt.datetime.now(dt.timezone.utc)
-    weighted = likes + reposts * 3 + replies * 2 + quotes * 3
-    points = math.log10(weighted + 1) * 15 + velocity_bonus(weighted, published_at, now)
-    return min(52.0, points)
-
-
-def mastodon_social_points(
-    favourites: int,
-    boosts: int,
-    replies: int,
-    published_at: dt.datetime | None,
-) -> float:
-    now = dt.datetime.now(dt.timezone.utc)
-    weighted = favourites + boosts * 3 + replies * 2
-    points = math.log10(weighted + 1) * 14 + velocity_bonus(weighted, published_at, now)
-    return min(48.0, points)
-
-
 def youtube_social_points(
     views: int,
     likes: int,
@@ -3104,7 +3020,6 @@ def youtube_social_points(
     points = math.log10(views + 1) * 4.5 + math.log10(engagement + 1) * 8
     points += velocity_bonus(views, published_at, now)
     return min(65.0, points)
-
 
 
 def meneame_social_points(
@@ -3470,7 +3385,6 @@ def extract_publisher(entry: Any, fallback: str) -> str:
         if possible:
             return possible
     return fallback
-
 
 
 SECTION_GENERIC_TITLES = {
@@ -4438,238 +4352,6 @@ def fetch_reddit_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, 
     return entries, warnings, statuses
 
 
-def bluesky_image_candidates(embed: Any, *, alt_context: str = "") -> tuple[tuple[ImageCandidate, ...], str]:
-    if not isinstance(embed, dict):
-        return (), "text"
-    embed_type = str(embed.get("$type", ""))
-    if "recordWithMedia" in embed_type:
-        return bluesky_image_candidates(embed.get("media"), alt_context=alt_context)
-    candidates: list[ImageCandidate | None] = []
-    if "images" in embed_type:
-        images = embed.get("images")
-        if isinstance(images, list):
-            for image in images:
-                if not isinstance(image, dict):
-                    continue
-                alt = image.get("alt") or alt_context
-                aspect = image.get("aspectRatio") if isinstance(image.get("aspectRatio"), dict) else {}
-                candidates.append(
-                    make_image_candidate(
-                        image.get("fullsize"),
-                        "bluesky:image-fullsize",
-                        122.0,
-                        alt=alt,
-                        width=aspect.get("width") or 0,
-                        height=aspect.get("height") or 0,
-                    )
-                )
-                candidates.append(
-                    make_image_candidate(
-                        image.get("thumb"),
-                        "bluesky:image-thumb",
-                        120.0,
-                        alt=alt,
-                        width=aspect.get("width") or 0,
-                        height=aspect.get("height") or 0,
-                    )
-                )
-        return dedupe_image_candidates(candidates), "image"
-    if "video" in embed_type:
-        aspect = embed.get("aspectRatio") if isinstance(embed.get("aspectRatio"), dict) else {}
-        candidates.append(
-            make_image_candidate(
-                embed.get("thumbnail"),
-                "bluesky:video-thumbnail",
-                121.0,
-                alt=alt_context,
-                width=aspect.get("width") or 0,
-                height=aspect.get("height") or 0,
-            )
-        )
-        return dedupe_image_candidates(candidates), "video"
-    if "external" in embed_type:
-        external = embed.get("external")
-        if isinstance(external, dict):
-            candidates.append(
-                make_image_candidate(
-                    external.get("thumb"),
-                    "bluesky:external-card",
-                    105.0,
-                    alt=external.get("title") or external.get("description") or alt_context,
-                    page_url=external.get("uri"),
-                )
-            )
-        return dedupe_image_candidates(candidates), "link"
-    return (), "text"
-
-
-def bluesky_thumbnail(embed: Any) -> tuple[str | None, str]:
-    candidates, media_type = bluesky_image_candidates(embed)
-    return (candidates[0].url if candidates else None), media_type
-
-
-def bluesky_post_url(uri: str, handle: str) -> str | None:
-    parts = uri.split("/")
-    if len(parts) < 5 or not handle:
-        return None
-    rkey = parts[-1]
-    return valid_http_url(f"https://bsky.app/profile/{handle}/post/{rkey}")
-
-
-def fetch_bluesky_search(params: str) -> tuple[Any | None, int | None, str | None]:
-    """Prueba el AppView público con caché y el host directo con backoff."""
-    last_code: int | None = None
-    last_error: str | None = None
-    for attempt, base in enumerate(BLUESKY_SEARCH_URLS):
-        try:
-            return fetch_json(
-                f"{base}?{params}",
-                headers={"Accept-Language": "es-ES,es;q=0.9"},
-            ), None, None
-        except urllib.error.HTTPError as exc:
-            last_code = exc.code
-            last_error = f"HTTP {exc.code}"
-            if exc.code not in {403, 429, 500, 502, 503, 504}:
-                break
-            time.sleep(0.9 + attempt * 0.8)
-        except (OSError, urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
-            last_error = compact_text(str(exc) or exc.__class__.__name__, 120)
-            time.sleep(0.5 + attempt * 0.5)
-    return None, last_code, last_error
-
-
-def fetch_bluesky_entries(
-    seed_trends: list[str],
-) -> tuple[list[StoryEntry], list[str], dict[str, Any]]:
-    now = dt.datetime.now(dt.timezone.utc)
-    since = (now - dt.timedelta(hours=SOCIAL_MAX_AGE_HOURS)).isoformat().replace("+00:00", "Z")
-    seeds: list[str] = []
-    normalized_seeds: set[str] = set()
-    # Menos consultas y pausas cortas reducen los bloqueos 403 del AppView.
-    for candidate in [*seed_trends[:6], "meme", "animales"]:
-        candidate = candidate.strip().lstrip("#")
-        normalized = normalize(candidate)
-        if len(candidate) < 3 or normalized in normalized_seeds:
-            continue
-        normalized_seeds.add(normalized)
-        seeds.append(candidate)
-        if len(seeds) >= 8:
-            break
-
-    entries: list[StoryEntry] = []
-    warnings: list[str] = []
-    seen: set[str] = set()
-    successful_queries = 0
-    limited_seeds: list[str] = []
-    other_failures: list[str] = []
-    consecutive_access_failures = 0
-
-    for seed in seeds:
-        params = urllib.parse.urlencode(
-            {
-                "q": seed,
-                "lang": "es",
-                "sort": "top",
-                "since": since,
-                "limit": 20,
-            }
-        )
-        payload, error_code, error_text = fetch_bluesky_search(params)
-        if payload is None:
-            if error_code in {403, 429}:
-                limited_seeds.append(seed)
-                consecutive_access_failures += 1
-                if consecutive_access_failures >= 2:
-                    break
-            else:
-                other_failures.append(f"{seed}: {error_text or 'sin respuesta'}")
-                consecutive_access_failures = 0
-            continue
-        consecutive_access_failures = 0
-        successful_queries += 1
-
-        for post in payload.get("posts", []) if isinstance(payload, dict) else []:
-            if not isinstance(post, dict):
-                continue
-            uri = str(post.get("uri", ""))
-            if not uri or uri in seen:
-                continue
-            record = post.get("record")
-            if not isinstance(record, dict) or record.get("reply"):
-                continue
-            text = strip_html(record.get("text"))
-            if len(text) < 12 or is_blocked_content(text):
-                continue
-            labels = post.get("labels")
-            if isinstance(labels, list) and any(
-                str(label.get("val", "")) in {"porn", "sexual", "nudity", "graphic-media"}
-                for label in labels
-                if isinstance(label, dict)
-            ):
-                continue
-            published_at = parse_iso_datetime(record.get("createdAt") or post.get("indexedAt"))
-            if published_at and published_at < now - dt.timedelta(hours=SOCIAL_MAX_AGE_HOURS):
-                continue
-            likes = max(0, int(post.get("likeCount") or 0))
-            reposts = max(0, int(post.get("repostCount") or 0))
-            replies = max(0, int(post.get("replyCount") or 0))
-            quotes = max(0, int(post.get("quoteCount") or 0))
-            weighted = likes + reposts * 3 + replies * 2 + quotes * 3
-            image_candidates, media_type = bluesky_image_candidates(post.get("embed"), alt_context=text)
-            thumbnail = image_candidates[0].url if image_candidates else None
-            if weighted < 8 and not thumbnail:
-                continue
-            author = post.get("author") if isinstance(post.get("author"), dict) else {}
-            handle = str(author.get("handle", "")).strip()
-            link = bluesky_post_url(uri, handle)
-            if not link:
-                continue
-            seen.add(uri)
-            entries.append(
-                StoryEntry(
-                    title=compact_text(text, 220),
-                    link=link,
-                    source=f"Bluesky · @{handle}" if handle else "Bluesky",
-                    platform="bluesky",
-                    published_at=published_at,
-                    keywords=keywords(text),
-                    social_points=bluesky_social_points(likes, reposts, replies, quotes, published_at),
-                    metrics={
-                        "likes": likes,
-                        "reposts": reposts,
-                        "replies": replies,
-                        "quotes": quotes,
-                    },
-                    thumbnail=thumbnail,
-                    image_candidates=image_candidates,
-                    media_type=media_type,
-                    seed_trend=seed,
-                )
-            )
-        time.sleep(0.35)
-
-    if limited_seeds:
-        warnings.append(
-            "Bluesky limitó temporalmente algunas búsquedas (403/429): "
-            + ", ".join(f"«{item}»" for item in limited_seeds)
-            + ". Se conservaron los resultados obtenidos antes del límite."
-        )
-    if other_failures:
-        warnings.append("Bluesky tuvo fallos parciales: " + "; ".join(other_failures[:3]))
-
-    ok = successful_queries > 0
-    note_parts = [f"{successful_queries}/{len(seeds)} búsquedas respondieron"]
-    if limited_seeds:
-        note_parts.append(f"{len(limited_seeds)} limitadas")
-    print(f"[ok] Bluesky: {len(entries)} publicaciones · {'; '.join(note_parts)}")
-    return entries, warnings, {
-        "name": "Bluesky España",
-        "ok": ok,
-        "items": len(entries),
-        "note": "; ".join(note_parts) if ok else "No respondió ninguna búsqueda",
-    }
-
-
 def looks_spanish(text: str) -> bool:
     tokens = normalize(text).split()
     if not tokens:
@@ -4730,196 +4412,6 @@ def likely_spanish_link(title: str, description: str, url: str) -> bool:
             "telecinco.es", "marca.com", "as.com", "infobae.com",
         )
     )
-
-
-def mastodon_history_totals(history: Any) -> tuple[int, int]:
-    uses = 0
-    accounts = 0
-    for item in history if isinstance(history, list) else []:
-        if not isinstance(item, dict):
-            continue
-        uses += parse_human_count(item.get("uses"))
-        accounts += parse_human_count(item.get("accounts"))
-    return uses, accounts
-
-
-def fetch_mastodon_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
-    instances = env_list("MASTODON_INSTANCES", DEFAULT_MASTODON_INSTANCES)
-    now = dt.datetime.now(dt.timezone.utc)
-    cutoff = now - dt.timedelta(hours=SOCIAL_MAX_AGE_HOURS)
-    entries: list[StoryEntry] = []
-    warnings: list[str] = []
-    statuses: list[dict[str, Any]] = []
-    seen: set[str] = set()
-
-    for instance in instances:
-        base = instance.rstrip("/")
-        host = urllib.parse.urlparse(base).netloc
-        name = f"Mastodon · {host}"
-        try:
-            payload = fetch_json(f"{base}/api/v1/trends/statuses?limit=40")
-        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
-            warnings.append(f"No se pudo consultar {name}: {exc}")
-            statuses.append({"name": name, "ok": False, "items": 0})
-            continue
-
-        accepted_statuses = 0
-        for status in payload if isinstance(payload, list) else []:
-            if not isinstance(status, dict):
-                continue
-            if status.get("sensitive") or status.get("in_reply_to_id"):
-                continue
-            content = strip_html(status.get("content"))
-            spoiler = strip_html(status.get("spoiler_text"))
-            if spoiler or len(content) < 16 or is_blocked_content(content):
-                continue
-            language = str(status.get("language") or "").lower()
-            if language and not language.startswith("es"):
-                continue
-            if not language and not looks_spanish(content):
-                continue
-            published_at = parse_iso_datetime(status.get("created_at"))
-            if published_at and published_at < cutoff:
-                continue
-            link = valid_http_url(status.get("url"))
-            if not link or link in seen:
-                continue
-            favourites = max(0, int(status.get("favourites_count") or 0))
-            boosts = max(0, int(status.get("reblogs_count") or 0))
-            replies = max(0, int(status.get("replies_count") or 0))
-            weighted = favourites + boosts * 3 + replies * 2
-            media = status.get("media_attachments")
-            media_candidates: list[ImageCandidate | None] = []
-            media_type = "text"
-            if isinstance(media, list) and media:
-                for attachment in media:
-                    if not isinstance(attachment, dict):
-                        continue
-                    attachment_type = str(attachment.get("type", ""))
-                    if attachment_type in {"video", "gifv"}:
-                        media_type = "video"
-                    elif media_type != "video":
-                        media_type = "image"
-                    meta = attachment.get("meta") if isinstance(attachment.get("meta"), dict) else {}
-                    small = meta.get("small") if isinstance(meta.get("small"), dict) else {}
-                    original = meta.get("original") if isinstance(meta.get("original"), dict) else {}
-                    alt = attachment.get("description") or content
-                    media_candidates.append(
-                        make_image_candidate(
-                            attachment.get("preview_url"),
-                            "mastodon:preview",
-                            121.0,
-                            alt=alt,
-                            width=small.get("width") or 0,
-                            height=small.get("height") or 0,
-                            page_url=link,
-                        )
-                    )
-                    media_candidates.append(
-                        make_image_candidate(
-                            attachment.get("url") or attachment.get("remote_url"),
-                            "mastodon:original",
-                            118.0,
-                            alt=alt,
-                            width=original.get("width") or 0,
-                            height=original.get("height") or 0,
-                            page_url=link,
-                        )
-                    )
-            image_candidates = dedupe_image_candidates(media_candidates)
-            thumbnail = image_candidates[0].url if image_candidates else None
-            if weighted < 6 and not thumbnail:
-                continue
-            account = status.get("account") if isinstance(status.get("account"), dict) else {}
-            acct = str(account.get("acct", "")).strip()
-            seen.add(link)
-            entries.append(
-                StoryEntry(
-                    title=compact_text(content, 220),
-                    link=link,
-                    source=f"Mastodon · @{acct}" if acct else name,
-                    platform="mastodon",
-                    published_at=published_at,
-                    keywords=keywords(content),
-                    social_points=mastodon_social_points(favourites, boosts, replies, published_at),
-                    metrics={"favourites": favourites, "boosts": boosts, "replies": replies},
-                    thumbnail=thumbnail,
-                    image_candidates=image_candidates,
-                    media_type=media_type,
-                )
-            )
-            accepted_statuses += 1
-
-        # Cuando una instancia no tiene posts españoles en tendencias, se prueban
-        # enlaces compartidos en tendencia. Este endpoint también es público.
-        accepted_links = 0
-        if accepted_statuses < 5:
-            try:
-                link_payload = fetch_json(f"{base}/api/v1/trends/links?limit=20")
-            except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
-                warnings.append(f"No se pudieron consultar enlaces de {name}: {exc}")
-                link_payload = []
-            for card in link_payload if isinstance(link_payload, list) else []:
-                if not isinstance(card, dict):
-                    continue
-                link = valid_http_url(card.get("url"))
-                title = compact_text(str(card.get("title") or ""), 220)
-                description = compact_text(str(card.get("description") or ""), 260)
-                if not link or link in seen or len(title) < 20 or is_blocked_content(title):
-                    continue
-                if not likely_spanish_link(title, description, link):
-                    continue
-                uses, accounts = mastodon_history_totals(card.get("history"))
-                if uses < 2 and accounts < 2:
-                    continue
-                provider = compact_text(str(card.get("provider_name") or card.get("author_name") or host), 80)
-                image_candidate = make_image_candidate(
-                    card.get("image"),
-                    "mastodon:trending-link",
-                    112.0,
-                    alt=title,
-                    width=card.get("width") or 0,
-                    height=card.get("height") or 0,
-                    page_url=link,
-                )
-                image_candidates = dedupe_image_candidates((image_candidate,))
-                seen.add(link)
-                social_points = min(18.0, 3.0 + math.log10(uses + 1) * 4.0 + math.log10(accounts + 1) * 2.0)
-                entries.append(
-                    StoryEntry(
-                        title=title,
-                        link=link,
-                        source=f"Mastodon · {provider}",
-                        platform="mastodon",
-                        published_at=None,
-                        keywords=keywords(f"{title} {description}"),
-                        social_points=social_points,
-                        metrics={
-                            "favourites": 0,
-                            "boosts": 0,
-                            "replies": 0,
-                            "link_uses": uses,
-                            "link_accounts": accounts,
-                            "mastodon_trending_link": True,
-                        },
-                        thumbnail=image_candidates[0].url if image_candidates else None,
-                        image_candidates=image_candidates,
-                        media_type="article",
-                    )
-                )
-                accepted_links += 1
-
-        accepted = accepted_statuses + accepted_links
-        note = f"{accepted_statuses} publicaciones"
-        if accepted_links:
-            note += f" + {accepted_links} enlaces"
-        elif accepted == 0:
-            note = "Sin tendencias en español en esta actualización"
-        statuses.append({"name": name, "ok": True, "items": accepted, "note": note})
-        print(f"[ok] {name}: {accepted} elementos · {note}")
-
-    return entries, warnings, statuses
-
 
 
 def fetch_youtube_entries() -> tuple[list[StoryEntry], list[str], dict[str, Any]]:

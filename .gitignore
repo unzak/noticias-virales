@@ -2,3 +2,10 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+.claude/worktrees/
+
+# El panel enlaza siempre la imagen remota del medio: en docs/media/ solo viven
+# assets propios (forocoches.svg). Cualquier imagen de terceros que aparezca aquí
+# es un error — además, el workflow rechaza los thumbnails que no sean http(s).
+docs/media/*
+!docs/media/*.svg
