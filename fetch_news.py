@@ -649,6 +649,36 @@ LATAM_DOMAIN_SUFFIXES = (
     ".ar", ".mx", ".cl", ".co", ".pe", ".uy", ".py", ".pa", ".hn",
     ".cr", ".ec", ".ve", ".bo", ".cu", ".do",
 )
+# Territorios sin edición española que aparecen en las búsquedas temáticas.
+FOREIGN_DOMAIN_SUFFIXES = (
+    ".vn", ".kr", ".jp", ".cn", ".uz", ".ye", ".tr", ".ru", ".in",
+    ".br", ".pt", ".fr", ".de", ".it", ".uk", ".us", ".ph", ".id",
+)
+# Medios españoles que publican bajo un TLD genérico. La selección editorial
+# solo admite dominios de esta lista o con TLD español: la lista negra no
+# escala frente a la cola de dominios nuevos que entra cada día por las
+# búsquedas temáticas de Google News.
+SPANISH_GENERIC_TLD_MEDIA = frozenset({
+    "infobae.com", "elperiodico.com", "cadenaser.com", "eldebate.com",
+    "expansion.com", "telva.com", "diariovasco.com", "menorca.info",
+    "elconfidencialdigital.com", "diariosigloxxi.com", "mundiario.com",
+    "diaridetarragona.com", "huelva24.com", "zamoranews.com",
+    "sevillabuenasnoticias.com", "montilladigital.com", "plazanueva.com",
+    "digitaldeleon.com", "cordobabn.com", "directoextremadura.com",
+    "badajozdeportes.com", "eldeporteconquense.com", "diarioenpositivo.com",
+    "3djuegos.com", "noticias3d.com", "profesionalreview.com",
+    "elchapuzasinformatico.com", "mundoxiaomi.com", "windowsnoticias.com",
+    "xataka.com", "motorpasion.com", "espinof.com", "trendencias.com",
+    "directoalpaladar.com", "elblogsalmon.com", "hibridosyelectricos.com",
+    "rutamotor.com", "eldesmarque.com", "futbolfantasy.com",
+    "puntodebreak.com", "realmadrid.com", "bolsamania.com", "negocios.com",
+    "marketingdirecto.com", "periodicopublicidad.com", "ecosistemastartup.com",
+    "sensacine.com", "elpalomitron.com", "labrujulaverde.com",
+    "lasgastrocronicas.com", "metalcry.com", "masscultura.com",
+})
+SPANISH_PUBLISHER_DOMAINS = SPANISH_GENERIC_TLD_MEDIA | frozenset(
+    domain.lower() for domain in SPANISH_MEDIA_DOMAINS
+)
 LATAM_MEDIA_DOMAINS = frozenset({
     "la100.cienradios.com", "lmneuquen.com", "elimparcial.com",
     "lasillarota.com", "revistagente.com", "lacasadelosfamososmexico.tv",
@@ -657,6 +687,40 @@ LATAM_MEDIA_DOMAINS = frozenset({
     "televicentro.com", "heraldousa.com", "cnnespanol.cnn.com",
     "espndeportes.espn.com", "diariodecuba.com", "latam.ign.com",
     "eltiempomx.com", "lasestrellas.tv", "espn.com.do",
+    # Detectados colándose en la vista sin filtro con TLD genérico.
+    "labrujula24.com", "aztecabajio.com", "aztecapuebla.com",
+    "aztecachiapas.com", "aztecaquintanaroo.com", "eltiempo.com",
+    "eluniverso.com", "elsalvador.com", "elespectador.com",
+    "emisorasunidas.com", "noticiassin.com", "teleprensa.com",
+    "tudn.com", "tycsports.com", "urgente24.com", "trome.com",
+    "vanidades.com", "sopitas.com", "tierragamer.com", "merca20.com",
+    "mvsnoticias.com", "ntrzacatecas.com", "planoinformativo.com",
+    "qhubomedellin.com", "quepasamedia.com", "remolacha.net",
+    "periodicocubano.com", "martinoticias.com", "diariolasamericas.com",
+    "diariohuarpe.com", "infocielo.com", "elmarplatense.com",
+    "eltucumano.com", "ellitoral.com", "elmanana.com", "elnorte.com",
+    "elnueve.com", "lmcipolletti.com", "mendovoz.com", "minutoneuquen.com",
+    "tiempodesanjuan.com", "rafaelanoticias.com", "mejorinformado.com",
+    "infodelestero.com", "eldiariodelarepublica.com", "lacuarta.com",
+    "madboxpc.com", "pisapapeles.net", "ecuagol.com", "tolimaonline.com",
+    "technocio.com", "ecoosfera.com", "somosohlala.com", "soyfiera.com",
+    "revistafama.com", "culturayespectaculos.com", "altagracianoticias.com",
+    "ameliarueda.com", "herediahoy.com", "radioabcstereo.com",
+    "canalantigua.tv", "canal44.com", "udgtv.com", "bavarodigital.net",
+    "24morelos.com", "11noticias.com", "monclova.com", "municipiosur.com",
+    "diarioprimerahora.com", "dereporteros.com", "carburando.com",
+    "sabesdeportes.com", "vardeportivo.com", "soyreferee.com",
+    "espn.com.gt", "tenisbrasil.uol.com.br",
+})
+# Cabeceras internacionales sin edición española que llegan por Google News.
+FOREIGN_MEDIA_DOMAINS = frozenset({
+    "bbc.com", "theguardian.com", "foxnews.com", "dallasnews.com",
+    "eu.usatoday.com", "lostcoastoutpost.com", "arstechnica.com",
+    "notebookcheck.org", "goal.com", "beinsports.com", "espn.com",
+    "aol.com", "pressreader.com", "sphericalinsights.com",
+    "starnewskorea.com", "vietnam.vn", "haberhurriyeti.com", "zamin.uz",
+    "saba.ye", "ixbt.games", "es.gizmodo.com", "es.kotaku.com",
+    "es.investing.com", "diariobitcoin.com", "la-lista.com",
 })
 LATAM_PUBLISHER_TERMS = (
     "la 100", "reporte indigo", "lmneuquen", "el imparcial", "la gaceta",
@@ -1192,7 +1256,30 @@ def is_latin_american_media(source: str, link: str) -> bool:
         return True
     if host in LATAM_MEDIA_DOMAINS or any(host.endswith(suffix) for suffix in LATAM_DOMAIN_SUFFIXES):
         return True
+    if host in FOREIGN_MEDIA_DOMAINS or any(host.endswith(suffix) for suffix in FOREIGN_DOMAIN_SUFFIXES):
+        return True
     return any(contains_phrase(normalized_source, (publisher,)) for publisher in LATAM_PUBLISHER_TERMS)
+
+
+def is_spanish_publisher(link: str) -> bool:
+    """Comprueba que el dominio corresponde a un medio con edición española.
+
+    La selección editorial exige esta comprobación además de descartar medios
+    extranjeros: enumerar los medios admitidos es lo único que resiste la cola
+    de dominios nuevos que aparece a diario en las búsquedas temáticas.
+    """
+    host = (urllib.parse.urlparse(link).hostname or "").lower()
+    for prefix in ("www.", "amp.", "m."):
+        if host.startswith(prefix):
+            host = host[len(prefix):]
+    if not host:
+        return False
+    if host.endswith((".es", ".cat", ".gal", ".eus")):
+        return True
+    return any(
+        host == domain or host.endswith("." + domain)
+        for domain in SPANISH_PUBLISHER_DOMAINS
+    )
 
 
 def spain_relevance(items: Iterable["StoryEntry"]) -> tuple[int, list[str], bool]:
@@ -4723,9 +4810,16 @@ def build_ranked(
 ) -> list[dict[str, Any]]:
     now = dt.datetime.now(dt.timezone.utc)
     ranked: list[dict[str, Any]] = []
+    non_spanish_rejected = 0
 
     for cluster in cluster_entries(entries):
         items: list[StoryEntry] = cluster["items"]
+        # La selección solo publica medios con edición española: la vista sin
+        # filtro sigue siendo permisiva, pero lo que llega a la selección es
+        # material candidato a republicarse.
+        if not any(is_spanish_publisher(item.link) for item in items):
+            non_spanish_rejected += 1
+            continue
         sources = sorted({item.source for item in items}, key=str.casefold)
         platforms = sorted({item.platform for item in items})
         editorial_feeds = sorted(
@@ -4966,6 +5060,11 @@ def build_ranked(
         key=lambda item: (item["raw_score"], item.get("published_at") or ""),
         reverse=True,
     )
+    if non_spanish_rejected:
+        print(
+            f"[ok] Selección solo con medios españoles: {non_spanish_rejected} "
+            f"grupos descartados por dominio sin edición española"
+        )
     return diversify_ranked(ranked, len(ranked))
 
 
