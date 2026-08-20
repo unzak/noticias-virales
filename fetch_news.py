@@ -167,6 +167,13 @@ NEWS_SOURCES = (
         ("viral", "tiktok", "curiosidades"),
     ),
     (
+        "Magnet · Curiosidades",
+        "https://magnet.xataka.com/feedburner.xml",
+        7.0,
+        "Curiosidades y sociedad",
+        ("curiosidades", "viral"),
+    ),
+    (
         "Telecinco · RSS",
         "https://www.telecinco.es/rss.xml",
         5.0,
