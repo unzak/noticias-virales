@@ -581,13 +581,15 @@ ROUTINE_CONTENT_TERMS = (
     "programacion de television", "programacion tv", "el tiempo para hoy",
     "programa de las fiestas", "horarios programa", "la aemet confirma",
 )
+# Solo partes meteorológicos. Los términos genéricos que había antes
+# ("temperaturas", "lluvias", "tormentas", "granizo", "nevadas", "clima")
+# descartaban cualquier historia que mencionara el tiempo de pasada, aunque su
+# tema fuera otro. El contenido sensible sigue cubierto por BLOCKED_TERMS.
 WEATHER_CONTENT_TERMS = (
     "aemet", "agencia estatal de meteorologia", "prevision meteorologica",
     "prevision del tiempo", "pronostico del tiempo", "alerta meteorologica",
     "aviso meteorologico", "mapa del tiempo", "el tiempo para hoy",
     "ola de calor", "ola de frio", "borrasca", "anticiclon", "isobara",
-    "temperaturas", "lluvias", "tormentas", "granizo", "nevadas",
-    "dana", "clima",
 )
 TRAVEL_CONTENT_TERMS = (
     "viaje", "viajes", "viajar", "viajero", "viajera", "viajeros",
@@ -966,11 +968,13 @@ def contains_phrase(text: str, phrases: Iterable[str]) -> int:
 
 
 def is_blocked_content(text: str) -> bool:
+    # Los viajes ya no se descartan aquí: en el histórico real de publicaciones
+    # rinden en la media, y la lista marcaba como turismo cualquier pieza que
+    # mencionara unas vacaciones. Pasan al ranking con penalización blanda.
     if (
         contains_phrase(text, BLOCKED_TERMS)
         or contains_phrase(text, LOW_VALUE_CONTENT_TERMS)
         or contains_phrase(text, WEATHER_CONTENT_TERMS)
-        or contains_phrase(text, TRAVEL_CONTENT_TERMS)
         or contains_phrase(text, FESTIVAL_CONTENT_TERMS)
     ):
         return True
@@ -4731,11 +4735,20 @@ def editorial_fit(entry: StoryEntry) -> float:
     politics_hits = contains_phrase(entry.title, POLITICS_TERMS)
     hard_hits = contains_phrase(entry.title, HARD_NEWS_TERMS)
     institutional_hits = contains_phrase(entry.title, INSTITUTIONAL_TERMS)
+    travel_hits = contains_phrase(entry.title, TRAVEL_CONTENT_TERMS)
     strong_angle = bool(tags & CABRONAZI_STRONG_TAGS) and (entry.media_type in {"image", "video"} or entry.platform != "news")
     if politics_hits:
         score -= 10.0 if strong_angle else 34.0
+    # Los sucesos rinden en la media del histórico real, así que la penalización
+    # sin ángulo baja de 34 a 18: basta para que no dominen la selección, sin
+    # condenarlos de antemano.
     if hard_hits:
-        score -= 4.0 if "sucesos" in tags else (9.0 if strong_angle else 28.0)
+        score -= 4.0 if "sucesos" in tags else (9.0 if strong_angle else 18.0)
+    # Viajes y turismo: penalización blanda en lugar del descarte que había en
+    # is_blocked_content(). Una guía de destinos no remonta; una pieza de
+    # famosos que menciona sus vacaciones, sí.
+    if travel_hits:
+        score -= 5.0 if strong_angle else 12.0
     score -= min(20.0, institutional_hits * 10.0)
 
     if entry.source.startswith("Reddit r/yo_elvr") or entry.source.startswith("Reddit r/MemesEnEspanol"):
