@@ -174,6 +174,13 @@ NEWS_SOURCES = (
         ("curiosidades", "viral"),
     ),
     (
+        "Señoras que · Famosos y TV",
+        "https://segnorasque.com/feed/",
+        9.0,
+        "Famosos, corazón y televisión",
+        ("famosos", "corazon", "television", "viral"),
+    ),
+    (
         "Telecinco · RSS",
         "https://www.telecinco.es/rss.xml",
         5.0,
@@ -677,6 +684,7 @@ SPANISH_GENERIC_TLD_MEDIA = frozenset({
     "marketingdirecto.com", "periodicopublicidad.com", "ecosistemastartup.com",
     "sensacine.com", "elpalomitron.com", "labrujulaverde.com",
     "lasgastrocronicas.com", "metalcry.com", "masscultura.com",
+    "segnorasque.com",
 })
 SPANISH_PUBLISHER_DOMAINS = SPANISH_GENERIC_TLD_MEDIA | frozenset(
     domain.lower() for domain in SPANISH_MEDIA_DOMAINS
