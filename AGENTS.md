@@ -24,7 +24,7 @@ Esto no es una preferencia de estilo:
 - Los datos publicados están en `docs/data.json` y el historial móvil en `docs/history.json`.
 - Ambos JSON están versionados **a propósito**: en Actions, `load_history_entries()` fusiona el historial publicado en Pages con el versionado en el repositorio. El primero aporta las novedades de los cron anteriores; el segundo puede restaurar correcciones o metadatos que una copia desplegada antigua no tenga. No añadirlos a `.gitignore`.
 - El generador principal es `fetch_news.py`. Dependencia única: `feedparser==6.0.11`.
-- Los workflows son `.github/workflows/update.yml` (minuto `:07`) y `.github/workflows/update-half-hour.yml` (minuto `:37`, mediante `workflow_call`).
+- Los workflows son `.github/workflows/update.yml` (minutos `:11` y `:41`) y `.github/workflows/update-half-hour.yml` (minutos `:26` y `:56`, mediante `workflow_call`). Se declaran cuatro disparos por hora para obtener dos o tres: GitHub retrasa o descarta los eventos `schedule` cuando hay carga. El cron corre siempre en UTC; la clave `timezone` no existe en Actions.
 - **No hay límite global de resultados.** La vista `Sin filtro` debe contener todas las piezas válidas del historial. La `Selección Cabronazi` sí aplica ranking y límites de diversidad.
 - Ventanas temporales vigentes (`fetch_news.py`): consulta incremental de **3 h** (`FETCH_MAX_AGE_HOURS`), historial móvil de **72 h** (`CONTENT_MAX_AGE_HOURS`), panel abierto por defecto en **24 h** (`DEFAULT_PANEL_AGE_HOURS`). Se rechazan fechas ausentes, antiguas o futuras que no puedan verificarse.
 - Máximo de `MAX_NEWS_ITEMS_PER_SOURCE = 35` piezas por fuente.

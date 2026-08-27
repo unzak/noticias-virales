@@ -1,10 +1,11 @@
-name: Actualizar radar viral · segundo turno
+name: Actualizar radar viral · turnos intercalados
 
 on:
   schedule:
-    # Segundo turno, 30 minutos después del principal, en horario de Madrid.
-    - cron: '37 * * * *'
-      timezone: 'Europe/Madrid'
+    # Turnos 2 y 4 de cada hora, intercalados con los de update.yml para que
+    # los cuatro disparos queden repartidos cada quince minutos: :11, :26,
+    # :41 y :56. Ver update.yml para por qué se declaran cuatro y no dos.
+    - cron: '26,56 * * * *'
 
   workflow_dispatch:
 
