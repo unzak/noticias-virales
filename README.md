@@ -248,11 +248,19 @@ Abre `http://localhost:8000`.
 - `docs/data.json`: datos generados.
 - `docs/history.json`: historial móvil generado de las últimas 72 horas.
 - `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
-- `.github/workflows/update.yml`: generación principal a las `:07` de cada hora
-  y definición reutilizable del proceso completo.
-- `.github/workflows/update-half-hour.yml`: segundo turno a las `:37`, separado
-  para que GitHub no agrupe varios cron del mismo workflow. Juntos solicitan una
-  actualización cada 30 minutos, durante las 24 horas y en horario de Madrid.
+- `.github/workflows/update.yml`: turnos `:11` y `:41` de cada hora y definición
+  reutilizable del proceso completo.
+- `.github/workflows/update-half-hour.yml`: turnos `:26` y `:56`, en un archivo
+  aparte para que GitHub no agrupe varios cron del mismo workflow.
+
+  Entre los dos **solicitan** cuatro actualizaciones por hora, siempre en UTC.
+  Se piden cuatro para obtener dos o tres: los eventos `schedule` son de baja
+  prioridad y GitHub los retrasa o los descarta cuando hay carga, así que la
+  cadencia real es orientativa y no un compromiso. Con dos disparos por hora se
+  obtenían entre 31 y 45 ejecuciones de las 48 esperadas, con huecos de hasta
+  ocho horas. Los minutos evitan el arranque de hora y de media hora, cuando se
+  concentran los cron de todo GitHub.
+
   La generación y el despliegue se serializan con el grupo `pages` para que cada
   ejecución fusione el historial publicado por la anterior sin perder noticias.
 
