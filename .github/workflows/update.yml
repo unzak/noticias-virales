@@ -1,21 +1,19 @@
 name: Actualizar y publicar radar viral
 
 on:
-  schedule:
-    # Turnos 1 y 3 de cada hora; los otros dos viven en update-half-hour.yml,
-    # porque GitHub tiende a agrupar u omitir varios cron del mismo workflow.
-    #
-    # Se declaran cuatro disparos por hora para obtener dos o tres: los eventos
-    # schedule son de baja prioridad y GitHub los retrasa o los descarta cuando
-    # hay carga. Con un disparo cada 30 minutos salían 31-45 ejecuciones de las
-    # 48 esperadas, con huecos de hasta ocho horas.
-    #
-    # Los minutos evitan el arranque de hora y de media hora, que es cuando se
-    # concentran los cron de todo GitHub. El cron siempre corre en UTC: la clave
-    # `timezone` no existe en Actions y se ignoraba en silencio (además de ser
-    # indiferente aquí, porque estos cron son horarios y no fijan una hora).
-    - cron: '11,41 * * * *'
-
+  # Sin `schedule`: la actualización periódica la dispara un cronjob externo
+  # (cron-job.org) cada quince minutos, llamando a la API de Actions.
+  #
+  # El scheduler de GitHub resultó inservible para este panel: en cinco días
+  # entregó entre 31 y 45 ejecuciones de las 48 pedidas, y llegó a estar 13
+  # horas seguidas sin lanzar ninguna. Ningún run falló nunca: sencillamente
+  # no se disparaban. Los eventos `schedule` son de baja prioridad y GitHub
+  # los retrasa o los descarta sin aviso ni garantía.
+  #
+  # Al no haber respaldo dentro de GitHub, si el cronjob externo se detiene
+  # —por ejemplo al caducar su token— el panel deja de actualizarse hasta que
+  # alguien lo dispare a mano. La alerta de fallo de cron-job.org es el único
+  # aviso; conviene mantenerla activada.
   workflow_dispatch:
 
   workflow_call:
@@ -32,7 +30,6 @@ on:
       - 'tools/fetch_forocoches_trending.py'
       - 'requirements.txt'
       - '.github/workflows/update.yml'
-      - '.github/workflows/update-half-hour.yml'
 
 permissions:
   contents: read
