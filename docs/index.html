@@ -6,6 +6,9 @@
 <meta name="referrer" content="no-referrer">
 <meta name="color-scheme" content="light">
 <title>Pulso Viral — Radar social para España</title>
+<link rel="icon" type="image/svg+xml" href="media/logo.svg">
+<link rel="apple-touch-icon" href="media/logo.svg">
+<meta name="theme-color" content="#ed1470">
 <style>
   :root{
     --bg:#fff7fb;
@@ -42,6 +45,10 @@
   .topline{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
   .brand-kicker{display:flex;align-items:center;gap:9px;color:var(--hot);font-weight:850;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase}
   .live-dot{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 6px rgba(237,20,112,.12)}
+  /* El logo escala con el titular para que la pareja se lea como una unidad. */
+  .brand{display:flex;align-items:center;gap:clamp(12px,2vw,22px);margin:16px 0 14px}
+  .brand-logo{width:clamp(2.6rem,8vw,5.4rem);height:auto;flex:0 0 auto}
+  .brand h1{margin:0}
   h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.9;letter-spacing:-.065em;margin:16px 0 14px;max-width:850px}
   .lede{margin:0;max-width:760px;color:var(--muted);font-size:clamp(1rem,2vw,1.16rem);line-height:1.55}
   .updated{color:var(--muted);font-size:.82rem;white-space:nowrap;padding-top:4px}
@@ -176,7 +183,7 @@
   <div class="shell topline">
     <div>
       <div class="brand-kicker"><span class="live-dot"></span> Radar social España</div>
-      <h1>Pulso Viral</h1>
+      <div class="brand"><img class="brand-logo" src="media/logo.svg" alt="" width="96" height="96" decoding="async"><h1>Pulso Viral</h1></div>
       <p class="lede">Noticias de las últimas 72 horas, con las últimas 24 horas visibles por defecto y priorizadas para entretenimiento en España. Incluye sucesos como categoría independiente para que puedas mostrarlos u ocultarlos.</p>
     </div>
     <div class="updated" id="updated">Cargando actualización…</div>
