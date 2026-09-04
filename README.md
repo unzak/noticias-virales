@@ -247,7 +247,9 @@ Abre `http://localhost:8000`.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados.
 - `docs/history.json`: historial móvil generado de las últimas 72 horas.
-- `docs/media/`: recursos locales heredados; las noticias nuevas enlazan la imagen remota.
+- `docs/media/`: assets propios del panel; las noticias siempre enlazan la imagen
+  remota del medio. Contiene `logo.svg`, que hace de marca junto al titular y de
+  favicon, y `forocoches.svg`.
 - `.github/workflows/update.yml`: proceso completo de generación y despliegue.
   Se ejecuta por `workflow_dispatch` y al hacer push de los archivos que
   intervienen en la generación.
