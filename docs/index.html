@@ -26,14 +26,24 @@
     --radius:16px;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;background:var(--bg)}
+  /* Los degradados van en una capa fija: colocados sobre el body, sus centros
+     en porcentaje se calculaban sobre la altura del documento, así que con el
+     panel lleno (200.000 px de alto) quedaban miles de píxeles fuera de la
+     vista y el fondo se veía plano. Anclados a la ventana se ven siempre. */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    pointer-events:none;
+    background:
+      radial-gradient(circle at 85% -10%, rgba(237,20,112,.15), transparent 33rem),
+      radial-gradient(circle at -10% 20%, rgba(255,190,218,.25), transparent 28rem);
+  }
   body{
     margin:0;
     min-height:100vh;
-    background:
-      radial-gradient(circle at 85% -10%, rgba(237,20,112,.15), transparent 33rem),
-      radial-gradient(circle at -10% 20%, rgba(255,190,218,.25), transparent 28rem),
-      var(--bg);
     color:var(--text);
     font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
@@ -50,7 +60,6 @@
   .brand-logo{width:clamp(2.6rem,8vw,5.4rem);height:auto;flex:0 0 auto}
   .brand h1{margin:0}
   h1{font-size:clamp(2.6rem,8vw,5.4rem);line-height:.9;letter-spacing:-.065em;margin:16px 0 14px;max-width:850px}
-  .lede{margin:0;max-width:760px;color:var(--muted);font-size:clamp(1rem,2vw,1.16rem);line-height:1.55}
   .updated{color:var(--muted);font-size:.82rem;white-space:nowrap;padding-top:4px}
 
   main{padding:26px 0 58px}
@@ -67,18 +76,21 @@
   .toolbar-main{display:flex;align-items:center;gap:12px;min-width:0;flex:1;flex-wrap:wrap}
   /* Los filtros ocupan su propia fila y se envuelven: ninguna etiqueta queda
      fuera de la vista ni depende de un desplazamiento horizontal invisible. */
-  .filters{display:flex;flex-wrap:wrap;gap:8px;flex:1 0 100%;padding-bottom:2px}
+  /* Compactos para que las ocho categorías entren en una sola fila; siguen
+     envolviéndose si la pantalla no da de sí. */
+  .filters{display:flex;flex-wrap:wrap;gap:5px;flex:1 0 100%;padding-bottom:2px}
   .filter{
-    display:inline-flex;align-items:center;gap:6px;
+    display:inline-flex;align-items:center;gap:5px;
     border:1px solid var(--line);background:var(--panel);color:var(--muted);
-    border-radius:999px;padding:9px 13px;cursor:pointer;white-space:nowrap;font-size:.82rem;font-weight:750
+    border-radius:999px;padding:7px 9px;cursor:pointer;white-space:nowrap;
+    font-size:.74rem;font-weight:750;letter-spacing:-.01em
   }
   .filter:hover{border-color:var(--hot);color:var(--hot);background:rgba(237,20,112,.09)}
   .filter.active{border-color:var(--hot);background:var(--hot);color:#fff}
   .filter:focus-visible{outline:2px solid var(--hot);outline-offset:2px}
   .filter[data-empty="true"]{opacity:.45;cursor:default}
   .filter[data-empty="true"]:hover{border-color:var(--line);color:var(--muted);background:var(--panel)}
-  .filter-count{font-size:.72rem;font-weight:850;opacity:.75;font-variant-numeric:tabular-nums}
+  .filter-count{font-size:.66rem;font-weight:850;opacity:.72;font-variant-numeric:tabular-nums}
   .time-range,.sort-control{display:flex;align-items:center;gap:7px;flex:0 0 auto;color:var(--muted);font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em}
   .time-range select,.sort-control select{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);padding:9px 30px 9px 10px;font:inherit;text-transform:none;letter-spacing:0;cursor:pointer}
   .count{color:var(--muted);font-size:.82rem;white-space:nowrap}
@@ -184,7 +196,6 @@
     <div>
       <div class="brand-kicker"><span class="live-dot"></span> Radar social España</div>
       <div class="brand"><img class="brand-logo" src="media/logo.svg" alt="" width="96" height="96" decoding="async"><h1>Pulso Viral</h1></div>
-      <p class="lede">Noticias de las últimas 72 horas, con las últimas 24 horas visibles por defecto y priorizadas para entretenimiento en España. Incluye sucesos como categoría independiente para que puedas mostrarlos u ocultarlos.</p>
     </div>
     <div class="updated" id="updated">Cargando actualización…</div>
   </div>
