@@ -22,14 +22,20 @@ Esto no es una preferencia de estilo:
 - El repositorio se publica mediante GitHub Pages y GitHub Actions.
 - La web está en `docs/index.html`, sin framework y con CSS y JavaScript en línea.
 - Los datos publicados están en `docs/data.json` y el historial móvil en `docs/history.json`.
-- Ambos JSON están versionados **a propósito**: en Actions, `load_history_entries()` fusiona el historial publicado en Pages con el versionado en el repositorio. El primero aporta las novedades de los cron anteriores; el segundo puede restaurar correcciones o metadatos que una copia desplegada antigua no tenga. No añadirlos a `.gitignore`.
+- **Ninguno de los dos JSON se versiona.** Están en `.gitignore` desde que se comprobó que la copia del repositorio nunca llegaba a usarse: el workflow los genera en el runner y los despliega a Pages sin hacer commit de vuelta, así que solo se actualizaban cuando alguien ejecutaba el generador en local. La que había versionada era del 20 de agosto, con 1.079 entradas y **cero dentro de la ventana de 72 h**; `filter_recent_entries()` las descartaba todas al cargarlas. Costaba 1,74 MB por commit y no aportaba nada.
+- En Actions, `load_history_entries()` carga el historial publicado en Pages, que sí está al día. Si no existiera, el panel reconstruye su ventana de 72 h solo, en 72 horas.
+- Consecuencia para quien trabaje en local: hay que ejecutar `python fetch_news.py` antes de abrir `docs/index.html`, o el panel mostrará el mensaje de error por falta de `data.json`.
 - El generador principal es `fetch_news.py`. Dependencia única: `feedparser==6.0.11`.
 - El único workflow es `.github/workflows/update.yml`, que se dispara por `workflow_dispatch` y por push. **No declara `schedule`**: la actualización periódica la lanza un cronjob externo en cron-job.org que llama cada quince minutos a la API de Actions. El scheduler de GitHub se retiró porque entregaba 31-45 ejecuciones de las 48 pedidas y llegó a estar trece horas sin disparar ninguna. No añadir un `schedule` de vuelta sin comprobar antes que el problema se ha corregido.
-- **No hay límite global de resultados.** La vista `Sin filtro` debe contener todas las piezas válidas del historial. La `Selección Cabronazi` sí aplica ranking y límites de diversidad.
+- **No hay límite global de resultados.** La vista `Cabronazi` debe contener todas las piezas válidas del historial: es la antigua `Sin filtro`, sin ranking ni cupos.
 - Ventanas temporales vigentes (`fetch_news.py`): consulta incremental de **3 h** (`FETCH_MAX_AGE_HOURS`), historial móvil de **72 h** (`CONTENT_MAX_AGE_HOURS`), panel abierto por defecto en **24 h** (`DEFAULT_PANEL_AGE_HOURS`). Se rechazan fechas ausentes, antiguas o futuras que no puedan verificarse.
-- Máximo de `MAX_NEWS_ITEMS_PER_SOURCE = 35` piezas por fuente.
+- Máximo de `MAX_NEWS_ITEMS_PER_SOURCE = 35` piezas por fuente. En cada vertical, `VERTICAL_SOURCE_LIMIT = 14` piezas por medio y `VERTICAL_STORY_LIMIT = 300` en total.
 - La interfaz muestra una noticia por fila y usa numeración `#01`, `#02`, etc.
-- Tres vistas independientes: `Sin filtro` (por defecto, más recientes primero), `Selección Cabronazi` y `Trending ForoCoches`.
+- Cinco categorías en el panel: `Cabronazi` (por defecto, historial completo, más recientes primero), las tres verticales `Cabropeludos`, `Cabromotor` y `Cabrogamer`, y `TT ForoCoches`.
+- `build_ranked()` se sigue ejecutando y `stories` se sigue publicando en `data.json` porque alimentan `build_google_trend_news()`, `editorial_summary` y `tag_distribution`, pero **ninguna vista del panel los muestra**. No borrar esa maquinaria sin comprobar antes esos tres consumidores.
+- Las verticales se construyen sobre `unfiltered_stories`, nunca sobre `build_ranked`: ese filtro está afinado para una portada de virales generalista y descarta actualidad de motor o de videojuegos que en su vertical es justamente el material bueno.
+- En `data.json`, `vertical_stories` contiene **listas de enlaces**, no fichas. Duplicar las fichas engordaba el archivo en ~1,7 MB. El panel las resuelve contra `unfiltered_stories`.
+- La descarga de RSS va en paralelo (`NEWS_FEED_WORKERS`) pero el procesado sigue siendo secuencial y en el orden de `NEWS_SOURCES`: la deduplicación depende de ese orden.
 - Google Trends aporta señales internas al ranking, pero **ya no ocupa un panel propio** en la interfaz.
 - Menéame debe consultar `Populares` y `Más visitadas`; la imagen debe extraerse del artículo destino, nunca de una miniatura genérica de Menéame.
 - Bluesky y Mastodon están desactivados por configuración editorial y no realizan ninguna petición.
@@ -46,6 +52,7 @@ Priorizar:
 - vídeos, reacciones y situaciones insólitas;
 - redes sociales, influencers y streamers;
 - tecnología curiosa, inteligencia artificial y videojuegos;
+- motor, cuando el ángulo es compartible (las verticales sí admiten actualidad sectorial);
 - deporte viral;
 - comida, trucos, nostalgia e historias humanas o positivas.
 
@@ -61,6 +68,21 @@ Reducir fuertemente:
 - noticias duplicadas o titulares equivalentes.
 
 Las piezas políticas solo deben entrar en la selección cuando tengan un ángulo viral inequívoco. `Sin filtro` puede conservar contenidos generalistas procedentes de fuentes sin prefiltrado, como HuffPost. Mantener los límites de diversidad por medio y categoría para evitar que una fuente monopolice el ranking.
+
+## Verticales temáticas
+
+`CABROPELUDOS`, `CABROMOTOR` y `CABROGAMER` se alimentan del mismo historial que el resto del panel. Una pieza entra en una vertical si:
+
+1. viene de un feed declarado en `CABROPELUDOS_SOURCES`, `CABROMOTOR_SOURCES` o `CABROGAMER_SOURCES`, **o**
+2. su titular contiene alguna de las palabras de `VERTICAL_KEYWORD_RULES`, venga del medio que venga.
+
+Excepción importante: las fuentes cuyo feed es una búsqueda de Google News (`VERTICAL_KEYWORD_REQUIRED`) **exigen además la coincidencia en el titular**. Google busca en el texto completo del artículo y el operador `site:` con ruta se le escapa, así que sin esa condición se colaban programaciones de televisión y sucesos sin relación.
+
+`story_vertical()` recalcula la vertical en cada ejecución en lugar de confiar en lo que guardó el historial: al cambiar una regla, las piezas de las 72 h anteriores se reclasifican solas en la siguiente pasada. Es el único sitio donde vive esa decisión.
+
+Al elegir palabras clave, comprobar que no sean también otra cosa en español. Ya se descartaron por falsos positivos: `leon` (ciudad), `mono` (prenda), `mario` y `paloma` (nombres de pila), `fifa` (fútbol), `panda` (coche), `granja` (de criptomonedas), `especie` («una especie de…») y `trafico` (de drogas).
+
+La prensa española de mascotas casi no tiene RSS vivo: al montar la vertical, Notas de Mascotas llevaba 40 días sin publicar, Bekia Mascotas 58, Etología Veterinaria 86, Curiosfera y PetDarling más de dos años. `CABROPELUDOS` se apoya por eso en la cobertura animal de la prensa generalista y será siempre la vertical con menos volumen. Antes de añadir un feed de animales, comprobar cuándo publicó por última vez.
 
 ## Fuentes principales
 
@@ -139,8 +161,8 @@ La puntuación es una heurística editorial: no predice ni garantiza alcance, in
 
 ## Workflow y despliegue
 
-- El workflow compila `fetch_news.py`, genera los datos, valida los JSON, comprueba las previsualizaciones enlazadas y despliega Pages.
-- Los dos turnos existen por separado porque GitHub agrupa u omite varios `cron` declarados en un mismo workflow.
+- El workflow compila `fetch_news.py`, genera los datos, valida los JSON, comprueba las previsualizaciones enlazadas, comprueba que cada enlace de `vertical_stories` exista en el historial y despliega Pages.
+- No hay turnos ni `schedule`: la actualización periódica la lanza el cronjob externo descrito más arriba.
 - Mantener siempre:
 
 ```yaml
