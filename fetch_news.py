@@ -928,6 +928,54 @@ VERTICAL_KEYWORD_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
 )
 
 
+# Medios monotemáticos: cualquier pieza suya pertenece a su vertical, diga lo
+# que diga el titular. Sin esto, una prueba del Dacia Sandero de soymotor.com
+# acababa en Cabronazi porque "híbrido" no estaba en las palabras clave, y una
+# crónica del Baja Aragón tampoco entraba porque ese rally no se llama rally.
+#
+# Aquí solo caben cabeceras dedicadas por completo al tema. Los generalistas con
+# sección (Marca, AS, ABC, 20minutos, La Vanguardia) quedan fuera a propósito:
+# su vertical la decide el feed de sección del que llegan, no el dominio.
+VERTICAL_DOMAINS: dict[str, tuple[str, ...]] = {
+    "peludos": (
+        "misanimales.com", "animalshealth.es", "expertoanimal.com",
+        "srperro.com", "diarioveterinario.com", "notasdemascotas.com",
+        "bekiamascotas.com", "etologiaveterinaria.net",
+    ),
+    "motor": (
+        "motorpasion.com", "motorpasionmoto.com", "diariomotor.com",
+        "es.motor1.com", "es.motorsport.com", "highmotor.com", "coches.net",
+        "autofacil.es", "caranddriver.com", "periodismodelmotor.com",
+        "espirituracer.com", "motociclismo.es", "autopista.es", "motor.es",
+        "km77.com", "autobild.es", "soymotor.com", "hibridosyelectricos.com",
+        "autocasion.com",
+    ),
+    "gamer": (
+        "3djuegos.com", "hobbyconsolas.com", "es.ign.com", "eurogamer.es",
+        "areajugones.sport.es", "anaitgames.com", "nintenderos.com",
+        "generacionxbox.com", "gamereactor.es", "vidaextra.com", "laps4.com",
+        "nextn.es", "nintenduo.com", "akihabarablues.com",
+        "vandal.elespanol.com", "zonared.com", "somosxbox.com",
+        "alfabetajuega.com", "muycomputer.com", "elchapuzasinformatico.com",
+        "profesionalreview.com",
+    ),
+}
+
+
+def vertical_for_domain(link: str) -> str:
+    """Vertical de un medio monotemático, o cadena vacía si no lo es."""
+    host = (urllib.parse.urlparse(link).hostname or "").lower()
+    for prefijo in ("www.", "amp.", "m."):
+        if host.startswith(prefijo):
+            host = host[len(prefijo):]
+    if not host:
+        return ""
+    for vertical, dominios in VERTICAL_DOMAINS.items():
+        if any(host == d or host.endswith("." + d) for d in dominios):
+            return vertical
+    return ""
+
+
 def vertical_for_text(text: str) -> str:
     """Vertical a la que pertenece un titular, o cadena vacía si a ninguna."""
     for vertical, phrases in VERTICAL_KEYWORD_RULES:
@@ -952,9 +1000,17 @@ def story_vertical(title: str, link: str, feed: str) -> str:
     # pasa no se pierde, se queda en Cabronazi.
     if not is_spanish_publisher(link):
         return ""
+    # El dominio manda sobre todo lo demás: un medio dedicado por entero a una
+    # vertical no necesita que su titular contenga la palabra clave.
+    por_dominio = vertical_for_domain(link)
+    if por_dominio:
+        return por_dominio
     vertical = VERTICAL_FEEDS.get(feed, "")
     if vertical and feed in VERTICAL_KEYWORD_REQUIRED:
-        return vertical if vertical_for_text(title) == vertical else ""
+        # En un grupo de Google News decide el titular y solo el titular. Si
+        # encaja en otra vertical, va a esa: una crónica del GP de Madrid que
+        # llegó por la consulta de animales es motor, no se descarta.
+        return vertical_for_text(title)
     return vertical or vertical_for_text(title)
 
 GENERAL_FRONT_PAGE_SOURCES = frozenset({
