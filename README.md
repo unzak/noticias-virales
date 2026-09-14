@@ -81,10 +81,9 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   72 horas.
 - Cuando una URL reaparece, prevalece la copia nueva o la que conserve más
   metadatos editoriales, evitando que una entrada histórica pierda etiquetas,
-  afinidad o prioridad en la selección.
-- En GitHub Actions se fusionan el historial publicado y el historial versionado:
-  el primero aporta las novedades de cada cron y el segundo puede restaurar
-  correcciones o metadatos editoriales que una copia desplegada antigua no tenga.
+  feed o prioridad.
+- En GitHub Actions el historial se carga desde la copia publicada en Pages, que
+  es la única que está al día: los JSON no se versionan.
 - Las noticias meteorológicas se descartan en toda la ingesta, incluidas las
   previsiones, alertas y piezas sobre AEMET, temperaturas, lluvias o borrascas.
 - Los sucesos españoles disponen de una consulta y un impulso editorial propios,
@@ -146,38 +145,13 @@ Google News cuyo destino original no puede resolverse.
 
 El panel sigue funcionando sin estas claves.
 
-## Rendimiento histórico de Cabronazi
-
-`cabronazi_performance_profile.json` resume el informe de Meta del 1 de julio al
-3 de agosto de 2026 sin incluir el CSV original, identificadores ni métricas por
-publicación. El perfil se construye con 834 posts —560 con texto analizable— y
-usa este score: 40% compartidos sobre alcance, 25% interacción sobre alcance,
-15% alcance, 10% clics sobre alcance y 10% comentarios sobre alcance. Las
-señales negativas incluidas en la exportación de Meta aplican una penalización.
-
-El generador compara los titulares nuevos con categorías, patrones narrativos y
-expresiones del histórico. Para evitar falsos positivos, un nombre propio o un
-lugar aislado no eleva el ranking: la coincidencia debe estar respaldada por una
-categoría editorial y otro patrón, o por dos expresiones históricas. La afinidad
-modifica el ranking un máximo de siete puntos y no aporta puntos positivos a
-política o sucesos. Por tanto, nunca puede saltarse los filtros editoriales,
-temporales o de diversidad.
-
-Los formatos narrativos claramente cómicos —expectativa contra realidad,
-errores, confusiones o situaciones absurdas que terminan mal— reciben una señal
-editorial propia cuando el histórico no contiene las mismas palabras exactas.
+## Histórico de selección editorial
 
 `editorial_selection_profile.json` agrega 158 enlaces seleccionados manualmente
 en recuentos por dominio y sección, sin guardar las URLs originales. El ranking
 aplica un bonus máximo de ocho puntos: prioriza especialmente `El Otro Mundo` de
 Mundo Deportivo y `Tiramillas` de MARCA, pero no puede saltarse los filtros de
 España, idioma, fecha, diversidad o calidad editorial.
-
-Para actualizar el perfil con una exportación posterior:
-
-```bash
-python tools/build_cabronazi_profile.py ruta/al/informe.csv
-```
 
 ## Selección editorial
 
@@ -256,11 +230,9 @@ Abre `http://localhost:8000`.
 ## Archivos
 
 - `fetch_news.py`: consulta, verifica fechas, clasifica, filtra, agrupa y puntúa.
-- `tools/build_cabronazi_profile.py`: genera el perfil agregado desde Meta.
 - `tools/fetch_forocoches_trending.py`: obtiene los hilos públicos del ranking,
   abre cada hilo para verificar la fecha del primer mensaje y puede ejecutarse
   de forma independiente con `--limit`.
-- `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
 - `editorial_selection_profile.json`: recuentos agregados de fuentes y secciones seleccionadas.
 - `docs/index.html`: interfaz del panel.
 - `docs/data.json`: datos generados. **No se versiona**, lo escribe `fetch_news.py`.

@@ -138,11 +138,13 @@ Se deduplica por URL canónica y equivalencia de titulares. Cuando una URL reapa
 5. imagen válida;
 6. más candidatos visuales.
 
-Esto evita que una copia antigua elimine etiquetas, afinidad, feed o prioridad de una noticia corregida. Si ninguna fuente produce resultados válidos, se conserva el despliegue anterior.
+Esto evita que una copia antigua elimine etiquetas, feed o prioridad de una noticia corregida. Si ninguna fuente produce resultados válidos, se conserva el despliegue anterior.
 
 ## Ranking
 
-Combina señales editoriales, etiquetas temáticas, presencia en varias fuentes o plataformas, tendencias, afinidad con `cabronazi_performance_profile.json` y bonus de `editorial_selection_profile.json`, con límites de diversidad por fuente y categoría. El perfil se regenera con `tools/build_cabronazi_profile.py`.
+Combina señales editoriales, etiquetas temáticas, presencia en varias fuentes o plataformas, tendencias y el bonus de `editorial_selection_profile.json`, con límites de diversidad por fuente y categoría.
+
+La afinidad con el histórico de Meta se retiró: ninguna vista del panel la mostraba —todas salen de `unfiltered_stories`, donde el campo iba fijo a 50— y el perfil había aprendido que lo que mejor rendía era política e inmigración, justo lo que el filtro editorial descarta. No reintroducirla sin resolver antes esas dos cosas.
 
 La puntuación es una heurística editorial: no predice ni garantiza alcance, interacciones ni ingresos.
 
@@ -178,7 +180,7 @@ Serializa generación y despliegue para que cada ejecución pueda fusionar el `h
 Antes de dar una tarea por terminada:
 
 ```bash
-python -m py_compile fetch_news.py tools/build_cabronazi_profile.py tools/fetch_forocoches_trending.py
+python -m py_compile fetch_news.py tools/fetch_forocoches_trending.py
 python fetch_news.py
 python -m json.tool docs/data.json > /dev/null
 python -m json.tool docs/history.json > /dev/null

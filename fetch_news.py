@@ -12,7 +12,7 @@ Fuentes opcionales mediante secretos de GitHub:
 
 El ranking es una heurística editorial. Combina interacción observable,
 velocidad, recencia, presencia en varias plataformas, coincidencia con
-Google/X Trends y afinidad con formatos de entretenimiento. No predice ni
+Google/X Trends y encaje con los formatos de entretenimiento. No predice ni
 garantiza likes futuros.
 """
 
@@ -51,7 +51,6 @@ ROOT = Path(__file__).resolve().parent
 OUTPUT_PATH = ROOT / "docs" / "data.json"
 HISTORY_PATH = ROOT / "docs" / "history.json"
 MEDIA_DIR = ROOT / "docs" / "media"
-PERFORMANCE_PROFILE_PATH = ROOT / "cabronazi_performance_profile.json"
 EDITORIAL_SELECTION_PROFILE_PATH = ROOT / "editorial_selection_profile.json"
 
 GOOGLE_NEWS_BASE = "https://news.google.com/rss"
@@ -1667,15 +1666,6 @@ def general_category_for(tags: Iterable[str]) -> str:
 
 
 @lru_cache(maxsize=1)
-def load_performance_profile() -> dict[str, Any]:
-    try:
-        profile = json.loads(PERFORMANCE_PROFILE_PATH.read_text(encoding="utf-8"))
-        return profile if isinstance(profile, dict) else {}
-    except (OSError, ValueError, json.JSONDecodeError):
-        return {}
-
-
-@lru_cache(maxsize=1)
 def load_editorial_selection_profile() -> dict[str, Any]:
     """Carga únicamente recuentos agregados del histórico seleccionado."""
     try:
@@ -1732,89 +1722,6 @@ def editorial_selection_priority(items: Iterable["StoryEntry"]) -> tuple[float, 
             best_reason = reason
 
     return round(best_bonus, 1), [best_reason] if best_reason else []
-
-
-def historical_affinity(
-    title: str,
-    tags: Iterable[str],
-    *,
-    has_visual: bool,
-    politics_related: bool,
-    hard_news_related: bool,
-) -> tuple[int, float, list[str]]:
-    """Compara una noticia con rasgos agregados del rendimiento de Cabronazi."""
-    profile = load_performance_profile()
-    if not profile:
-        return 50, 0.0, []
-    normalized = normalize(title)
-    tokens = [token for token in normalized.split() if len(token) >= 4 and token not in STOPWORDS]
-    bigrams = {f"{left} {right}" for left, right in zip(tokens, tokens[1:])}
-    # Los nombres propios, lugares y temas coyunturales del CSV sobreajustan con
-    # facilidad. Solo se aceptan unigramas que pertenezcan al vocabulario
-    # editorial; el resto debe coincidir como expresión de dos palabras.
-    editorial_terms = {
-        token
-        for _, phrases in CABRONAZI_TAG_RULES
-        for phrase in phrases
-        for token in normalize(phrase).split()
-        if len(token) >= 4 and token not in STOPWORDS
-    }
-    editorial_terms.update(
-        token
-        for terms in (profile.get("pattern_terms") or {}).values()
-        for term in terms
-        for token in normalize(str(term)).split()
-        if len(token) >= 4 and token not in STOPWORDS
-    )
-    title_features = bigrams | {token for token in tokens if token in editorial_terms}
-    feature_weights = profile.get("feature_weights") or {}
-    matches = sorted(
-        ((feature, float(feature_weights.get(feature) or 0.0)) for feature in title_features if feature in feature_weights),
-        key=lambda item: abs(item[1]),
-        reverse=True,
-    )[:4]
-    tag_set = {str(tag) for tag in tags}
-    category = general_category_for(tag_set)
-    has_editorial_category = bool(tag_set & CABRONAZI_CORE_TAGS)
-    category_weight = float((profile.get("category_weights") or {}).get(category) or 0.0) if has_editorial_category else 0.0
-    pattern_matches: list[tuple[str, float]] = []
-    for pattern, terms in (profile.get("pattern_terms") or {}).items():
-        if any(normalize(str(term)) in normalized for term in terms):
-            pattern_matches.append((str(pattern), float((profile.get("pattern_weights") or {}).get(pattern) or 0.0)))
-    visual_bonus = 1.5 if has_visual else -2.0
-    affinity = 45.0 + category_weight * 0.9 + sum(weight for _, weight in matches) * 0.5
-    affinity += sum(weight for _, weight in pattern_matches) * 0.4 + visual_bonus
-    comedic_mishap = contains_phrase(normalized, (
-        "parece chiste", "sale mal", "salio mal", "acaba mal", "por error",
-        "metedura de pata", "batalla campal", "lo que le llego",
-        "no era lo que esperaba", "resultado inesperado",
-    )) > 0
-    if comedic_mishap:
-        # El CSV histórico no representa bien los titulares de expectativa
-        # contra realidad y caos absurdo, un formato editorial muy Cabronazi.
-        affinity = max(affinity, 68.0 if has_visual else 62.0)
-    affinity_score = int(round(max(0.0, min(100.0, affinity))))
-    adjustment = max(-7.0, min(7.0, (affinity_score - 50) * 0.16))
-    positive_matches = sum(1 for _, weight in matches if weight > 1.0)
-    positive_patterns = sum(1 for _, weight in pattern_matches if weight > 1.0)
-    # Una coincidencia aislada no eleva el ranking: debe estar respaldada por
-    # una categoría editorial y otro patrón, o por dos expresiones históricas.
-    if not (
-        comedic_mishap
-        or (has_editorial_category and positive_matches + positive_patterns >= 1)
-        or positive_matches >= 2
-    ):
-        adjustment = min(adjustment, 0.5)
-    # El histórico no puede convertir política o sucesos en la prioridad principal.
-    if politics_related or hard_news_related:
-        adjustment = min(adjustment, 0.0)
-    reasons = [feature for feature, weight in matches if weight > 1.0][:2]
-    reasons.extend(pattern for pattern, weight in pattern_matches if weight > 1.0 and pattern not in reasons)
-    if comedic_mishap:
-        reasons.append("situación absurda que sale mal")
-    if has_visual and visual_bonus >= 2.0:
-        reasons.append("potencial visual")
-    return affinity_score, round(adjustment, 1), reasons[:3]
 
 
 def cluster_editorial_profile(items: list["StoryEntry"]) -> dict[str, Any]:
@@ -5326,7 +5233,6 @@ def build_forocoches_stories(trends: list[dict[str, Any]]) -> list[dict[str, Any
             "published_at": None,
             "viral_score": score,
             "raw_score": score,
-            "cabronazi_affinity": 50,
             "topic_tags": sorted(tags),
             "general_category": "humor-curiosidades",
             "thumbnail": "media/forocoches.svg",
@@ -5565,13 +5471,6 @@ def build_ranked(
             and social_score < 18
         ):
             continue
-        historical_score, historical_adjustment, historical_reasons = historical_affinity(
-            " ".join(item.title for item in items),
-            profile["tags"],
-            has_visual=any(item.thumbnail or item.image_candidates or item.media_type in {"image", "video"} for item in items),
-            politics_related=bool(profile["politics_hits"]),
-            hard_news_related=bool(profile["hard_news_hits"]),
-        )
         selection_bonus, selection_reasons = editorial_selection_priority(items)
         explicit_priority = profile["explicit_title_tags"] & CABRONAZI_STRONG_TAGS
         precision_adjustment = min(15.0, len(explicit_priority) * 5.0)
@@ -5589,7 +5488,6 @@ def build_ranked(
             + trend_bonus
             + recency_points(items, now)
             + fit_score
-            + historical_adjustment
             + selection_bonus
             + precision_adjustment
             + spain_score
@@ -5674,9 +5572,6 @@ def build_ranked(
                 "editorial_precision_adjustment": round(precision_adjustment, 1),
                 "spain_relevance_score": spain_score,
                 "spain_relevance_reasons": spain_reasons,
-                "cabronazi_affinity": historical_score,
-                "cabronazi_historical_adjustment": historical_adjustment,
-                "cabronazi_match_reasons": historical_reasons,
                 "editorial_selection_bonus": selection_bonus,
                 "editorial_selection_reasons": selection_reasons,
                 "sources": sources,
@@ -5818,7 +5713,6 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
             "image_alt": entry.title,
             "media_type": entry.media_type,
             "signals": [signal] if signal else [],
-            "cabronazi_affinity": 50,
             "unfiltered": True,
             "_allow_article_img_fallback": True,
             "_image_contexts": [{
@@ -6209,15 +6103,7 @@ def build() -> dict[str, Any]:
         f"{editorial_summary['hard_news']} sucesos · "
         + ", ".join(f"#{tag} {count}" for tag, count in editorial_summary["top_tags"][:5])
     )
-    performance_profile = load_performance_profile()
     selection_profile = load_editorial_selection_profile()
-    affinity_values = [int(story.get("cabronazi_affinity") or 50) for story in ranked]
-    print(
-        "[ok] Match Cabronazi: "
-        f"media {round(sum(affinity_values) / max(1, len(affinity_values)))} · "
-        f"{sum(value >= 65 for value in affinity_values)} afinidades altas · "
-        f"perfil de {int(performance_profile.get('posts_with_text') or 0)} posts con texto"
-    )
     google_trend_news = build_google_trend_news(google_trends, ranked, entries)
     active_sources = sum(1 for status in source_status if status.get("ok") is True)
     configured_sources = sum(1 for status in source_status if status.get("ok") is not None)
@@ -6284,13 +6170,6 @@ def build() -> dict[str, Any]:
         "publication_date_summary": publication_date_summary,
         "editorial_summary": editorial_summary,
         "tag_distribution": tag_distribution,
-        "performance_profile_summary": {
-            "enabled": bool(performance_profile),
-            "period": performance_profile.get("period"),
-            "posts": int(performance_profile.get("posts") or 0),
-            "posts_with_text": int(performance_profile.get("posts_with_text") or 0),
-            "kpi_weights": performance_profile.get("kpi_weights") or {},
-        },
         "editorial_selection_profile_summary": {
             "enabled": bool(selection_profile),
             "links": int(selection_profile.get("generated_from_links") or 0),
@@ -6302,7 +6181,7 @@ def build() -> dict[str, Any]:
         },
         "methodology": (
             "Potencial viral heurístico basado en interacción observable, velocidad, recencia, "
-            "presencia en varias plataformas, Google/X Trends y afinidad con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 72 horas; el panel muestra 24 horas por defecto. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking cuando no superan 24 horas. "
+            "presencia en varias plataformas, Google/X Trends y encaje temático con humor, memes, animales, famosos, televisión, contenido insólito, redes, tecnología y lifestyle. La actualidad política o de sucesos solo entra cuando tiene un ángulo viral inequívoco y está limitada por cupos de diversidad. Solo se publican contenidos cuya fecha se ha podido verificar dentro de las últimas 72 horas; el panel muestra 24 horas por defecto. Las noticias relacionadas de Google Trends se incorporan como candidatas al ranking cuando no superan 24 horas. "
             "Los dominios y secciones del histórico de selección editorial reciben un bonus limitado. "
             "Las previsualizaciones enlazan directamente la mejor URL encontrada en los tags img "
             "del artículo, sin descargar ni versionar la imagen de terceros. "
