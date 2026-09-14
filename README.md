@@ -263,8 +263,10 @@ Abre `http://localhost:8000`.
 - `cabronazi_performance_profile.json`: pesos históricos sin datos por post.
 - `editorial_selection_profile.json`: recuentos agregados de fuentes y secciones seleccionadas.
 - `docs/index.html`: interfaz del panel.
-- `docs/data.json`: datos generados.
-- `docs/history.json`: historial móvil generado de las últimas 72 horas.
+- `docs/data.json`: datos generados. **No se versiona**, lo escribe `fetch_news.py`.
+- `docs/history.json`: historial móvil generado de las últimas 72 horas. Tampoco
+  se versiona: se poda solo en cada ejecución y la copia viva es la desplegada en
+  Pages. Para ver el panel en local, ejecuta antes `python fetch_news.py`.
 - `docs/media/`: assets propios del panel; las noticias siempre enlazan la imagen
   remota del medio. Contiene `logo.svg`, que hace de marca junto al titular y de
   favicon, y `forocoches.svg`.

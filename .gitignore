@@ -9,3 +9,11 @@ __pycache__/
 # es un error — además, el workflow rechaza los thumbnails que no sean http(s).
 docs/media/*
 !docs/media/*.svg
+
+# Los dos JSON los regenera fetch_news.py en cada ejecución y el workflow los
+# despliega a Pages sin hacer commit de vuelta, así que la copia del repositorio
+# nunca estaba al día: la que había versionada era del 20 de agosto, con 1.079
+# entradas y CERO dentro de la ventana de 72 h. load_history_entries() las
+# descartaba todas al cargarlas. Eran 1,74 MB de peso muerto por commit.
+docs/data.json
+docs/history.json
