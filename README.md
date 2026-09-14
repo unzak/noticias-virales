@@ -4,7 +4,12 @@ Panel estático para detectar contenidos con potencial editorial viral en Españ
 La vista sin filtro y la selección editorial se construyen sobre un historial
 móvil con todas las piezas cuya fecha pueda verificarse dentro de las **últimas
 72 horas**, sin imponer un límite global de resultados.
-Una tercera vista, `Trending ForoCoches`, muestra por separado todos los hilos del
+`Cabronazi` es esa vista general completa. Sobre el mismo historial se montan
+tres verticales temáticas —`Cabropeludos` (animales), `Cabromotor` (motor) y
+`Cabrogamer` (videojuegos)—, que recogen tanto lo que llega de sus medios
+especializados como cualquier pieza del historial cuyo titular trate el tema,
+venga del medio que venga.
+Una vista más, `TT ForoCoches`, muestra por separado todos los hilos del
 ranking público actual, en su orden original y sin comprobar su fecha.
 
 Las búsquedas temáticas de Google News se limitan a medios con edición española.
@@ -21,9 +26,16 @@ se abren por defecto con las noticias más recientes primero. Google
 Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
 propio en la interfaz.
 
-El menú superior abre por defecto `Sin filtro`, limitado visualmente a las piezas
-de las últimas 24 horas, y deja `Selección Cabronazi`, con ranking
-editorial y diversidad, como segunda opción. La ausencia de imagen ya no elimina una noticia: el panel
+El menú superior ofrece cinco categorías: `Cabronazi`, que abre por defecto y
+contiene el historial completo sin ranking limitado visualmente a las últimas
+24 horas, las tres verticales `Cabropeludos`, `Cabromotor` y `Cabrogamer`, y
+`TT ForoCoches`. En `data.json` cada vertical viaja como lista de enlaces, no
+como fichas duplicadas: el panel las resuelve contra el historial que ya tiene
+cargado.
+
+El ranking editorial (`stories` en `data.json`) se sigue calculando porque
+alimenta las noticias asociadas a Google Trends y los resúmenes editoriales,
+pero **ya no tiene vista propia en el panel**. La ausencia de imagen ya no elimina una noticia: el panel
 abre el artículo, enlaza la URL de su imagen editorial y usa un placeholder rosa
 solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 
@@ -105,8 +117,14 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
 - Menéame: Populares y Más visitadas.
 - Google Trends España y sus noticias relacionadas.
 - La Razón Sociedad mediante su RSS público, sometido a los mismos filtros.
-- ForoCoches Trending como vista independiente: no mezcla sus hilos con `Sin
-  filtro` ni con `Selección Cabronazi`; publica el ranking actual completo con
+- Verticales temáticas: 20 medios españoles de animales para `Cabropeludos`,
+  21 fuentes de motor para `Cabromotor` y 21 de videojuegos para `Cabrogamer`.
+  Los medios sin RSS utilizable entran por Google News restringido con `site:`.
+  A esas consultas de grupo se les exige además que el titular hable de la
+  vertical, porque Google busca en el texto completo del artículo y colaba
+  piezas ajenas.
+- ForoCoches Trending como vista independiente: no mezcla sus hilos con `Cabronazi`
+  ni con las verticales; publica el ranking actual completo con
   sus títulos, enlaces y la imagen local FOROCOCHES, sin verificar fechas. Los
   temas también actúan como señal para noticias coincidentes.
 - Bluesky y Mastodon están desactivados por configuración editorial y no
