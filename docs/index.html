@@ -66,7 +66,7 @@
   .view-switch{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:15px;margin:0 0 22px;padding:9px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(117,35,73,.06)}
   .view-tab{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:10px;cursor:pointer;font-size:.82rem;font-weight:900;letter-spacing:.07em;text-transform:uppercase}
   .view-tab:hover,.view-tab.active{background:var(--hot);color:#fff}
-  .summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px}
+  .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
   .summary-card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:14px;padding:15px;box-shadow:0 8px 24px rgba(117,35,73,.06)}
   .summary-card strong{display:block;font-size:1.5rem;letter-spacing:-.04em}
   .summary-card span{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.08em}
@@ -208,7 +208,6 @@
   </nav>
   <section class="summary-grid" aria-label="Resumen">
     <div class="summary-card"><strong id="storyCount">—</strong><span>oportunidades</span></div>
-    <div class="summary-card"><strong id="highCount">—</strong><span>potencial alto</span></div>
     <div class="summary-card"><strong id="sourceCount">—</strong><span>fuentes activas</span></div>
     <div class="summary-card"><strong id="entryCount">—</strong><span>piezas analizadas</span></div>
   </section>
@@ -442,7 +441,6 @@ function setView(view){
   document.querySelector('.sort-control').hidden = dedicatedForocoches;
   document.getElementById('filters').hidden = dedicatedForocoches;
   document.getElementById('storyCount').textContent = allStories.length;
-  document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
   renderStories();
 }
 function renderSources(data){
@@ -466,9 +464,9 @@ async function load(){
     const response = await fetch('./data.json?_=' + Date.now(), {cache:'no-store'});
     if(!response.ok) throw new Error('data.json no disponible');
     const data = await response.json();
-    generalStories = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
+    const historial = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
     forocochesStories = Array.isArray(data.forocoches_stories) ? data.forocoches_stories : [];
-    const byLink = new Map(generalStories.map(story => [story.link, story]));
+    const byLink = new Map(historial.map(story => [story.link, story]));
     const verticalLinks = data.vertical_stories || {};
     verticalStories = Object.fromEntries(VERTICAL_VIEWS.map(key => [
       key,
@@ -476,6 +474,10 @@ async function load(){
         .map(link => byLink.get(link))
         .filter(Boolean)
     ]));
+    // Cabronazi es el resto: lo que pertenece a una vertical vive solo en su
+    // pestaña. El historial completo sigue viajando en data.json porque es
+    // contra él contra lo que se resuelven las verticales.
+    generalStories = historial.filter(story => !story.vertical);
     allStories = storiesForView(currentView);
     const updated = data.updated_at ? new Date(data.updated_at) : null;
     document.getElementById('updated').textContent = updated && !Number.isNaN(updated.valueOf())
@@ -484,7 +486,6 @@ async function load(){
 
     const summary = data.source_summary || {};
     document.getElementById('storyCount').textContent = allStories.length;
-    document.getElementById('highCount').textContent = allStories.filter(s => Number(s.viral_score ?? s.score) >= 65).length;
     document.getElementById('sourceCount').textContent = summary.active ?? '—';
     document.getElementById('entryCount').textContent = summary.entries_collected ?? '—';
     if(data.editorial_notice) document.getElementById('notice').textContent = data.editorial_notice;

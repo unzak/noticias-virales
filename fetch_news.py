@@ -936,15 +936,23 @@ def vertical_for_text(text: str) -> str:
     return ""
 
 
-def story_vertical(title: str, metrics: dict[str, Any]) -> str:
+def story_vertical(title: str, link: str, feed: str) -> str:
     """Vertical definitiva de una pieza, revisada en cada ejecución.
 
     Se recalcula siempre en vez de confiar en lo que guardó el historial: si
     una regla cambia, las piezas de las 72 h anteriores se reclasifican solas
     en la siguiente pasada.
+
+    El panel se apoya en esta decisión: lo que tiene vertical sale de su
+    pestaña y desaparece de Cabronazi, así que una pieza no puede estar en dos
+    sitios y nada puede quedarse sin sitio.
     """
-    vertical = str(metrics.get("vertical") or "")
-    feed = str(metrics.get("editorial_feed") or "")
+    # Las verticales son material candidato a republicarse y mantienen el
+    # criterio de la selección: solo medios con edición española. Lo que no
+    # pasa no se pierde, se queda en Cabronazi.
+    if not is_spanish_publisher(link):
+        return ""
+    vertical = VERTICAL_FEEDS.get(feed, "")
     if vertical and feed in VERTICAL_KEYWORD_REQUIRED:
         return vertical if vertical_for_text(title) == vertical else ""
     return vertical or vertical_for_text(title)
@@ -4522,7 +4530,12 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             if not title_keywords:
                 continue
 
-            detected_tags = classify_topic_tags(title, configured_tags)
+            # Un grupo de Google News trae piezas cuyo titular no va del tema
+            # (ver VERTICAL_KEYWORD_REQUIRED). Heredar sus etiquetas fijas
+            # colocaba la programación de televisión bajo #animales, así que
+            # esas fuentes se etiquetan solo por lo que diga el titular.
+            configuradas = () if fallback_source in VERTICAL_KEYWORD_REQUIRED else configured_tags
+            detected_tags = classify_topic_tags(title, configuradas)
             if (
                 fallback_source in GENERAL_FRONT_PAGE_SOURCES
                 and not is_general_front_page_candidate(title, detected_tags)
@@ -5675,7 +5688,15 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
     """Serializa el historial válido de 72 h sin aplicar el ranking editorial."""
     stories: list[dict[str, Any]] = []
     for entry in entries:
-        tags = classify_topic_tags(entry.title, entry.metrics.get("topic_tags") or [])
+        # Misma regla que en la ingesta y por el mismo motivo, pero aplicada
+        # también a lo que llega del historial: una entrada guardada ayer
+        # conserva las etiquetas fijas del grupo de Google News que la trajo.
+        feed = str(entry.metrics.get("editorial_feed") or "")
+        configuradas = (
+            () if feed in VERTICAL_KEYWORD_REQUIRED
+            else (entry.metrics.get("topic_tags") or [])
+        )
+        tags = classify_topic_tags(entry.title, configuradas)
         if contains_phrase(entry.title, HARD_NEWS_TERMS):
             tags.add("sucesos")
         if contains_phrase(entry.title, POLITICS_TERMS):
@@ -5701,7 +5722,10 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
             "editorial_feeds": [entry.metrics.get("editorial_feed")] if entry.metrics.get("editorial_feed") else [],
             "topic_tags": sorted(tags),
             "general_category": general_category_for(tags),
-            "vertical": story_vertical(entry.title, entry.metrics),
+            # Se rellena más abajo, cuando el enlace ya apunta al artículo
+            # original: aquí todavía puede ser el envoltorio de Google News y
+            # ningún medio español se reconocería como tal.
+            "vertical": "",
             "primary_tag": next((tag for tag in CABRONAZI_TAG_ORDER if tag in tags), "viral"),
             "politics_related": "politica" in tags,
             "hard_news_related": "sucesos" in tags,
@@ -5730,52 +5754,29 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
     return stories
 
 
-VERTICAL_SOURCE_LIMIT = 14
-VERTICAL_STORY_LIMIT = 300
-
-
 def build_vertical_stories(
     stories: list[dict[str, Any]], vertical: str
 ) -> list[dict[str, Any]]:
-    """Construye una vista vertical sobre el historial ya enriquecido.
+    """Todas las piezas clasificadas en una vertical, de más reciente a menos.
 
-    Entra una pieza si viene de un feed de la vertical o si su titular la
-    menciona, sea cual sea el medio: así un rescate de un perro publicado por
-    20minutos aparece en CABROPELUDOS aunque no llegue de un feed de animales.
+    Sin topes por medio ni globales, a propósito: el panel oculta de Cabronazi
+    lo que pertenece a una vertical, así que cualquier pieza que se quedara
+    fuera aquí no aparecería en ninguna parte. `story_vertical()` decide; esto
+    solo agrupa.
 
     No se reaprovecha `build_ranked` a propósito. Aquel filtro está afinado
     para una portada de virales generalista y descarta actualidad de motor o de
     videojuegos que aquí es justamente el material de la vertical.
     """
-    candidates = [
-        story
-        for story in stories
+    seleccion = [
+        story for story in stories
         if str(story.get("vertical") or "") == vertical
-        or vertical_for_text(str(story.get("title") or "")) == vertical
     ]
-    candidates.sort(
+    seleccion.sort(
         key=lambda story: str(story.get("published_at") or ""),
         reverse=True,
     )
-
-    selected: list[dict[str, Any]] = []
-    per_source: dict[str, int] = {}
-    for story in candidates:
-        # Mismo criterio que la selección: estas vistas son material candidato
-        # a republicarse, así que solo entran medios con edición española. El
-        # control geográfico general deja pasar prensa argentina o mexicana que
-        # habla de perros o de coches sin ángulo español.
-        if not is_spanish_publisher(str(story.get("link") or "")):
-            continue
-        sources = story.get("sources") or []
-        key = normalize(str(sources[0] if sources else "Fuente original"))
-        if per_source.get(key, 0) >= VERTICAL_SOURCE_LIMIT:
-            continue
-        per_source[key] = per_source.get(key, 0) + 1
-        selected.append(story)
-        if len(selected) >= VERTICAL_STORY_LIMIT:
-            break
-    return selected
+    return seleccion
 
 
 def is_story_pending_required_image(story: dict[str, Any]) -> bool:
@@ -6065,6 +6066,14 @@ def build() -> dict[str, Any]:
         )
     ranked, ranked_foreign_rejected = filter_spain_focused_stories(ranked)
     unfiltered_stories, resolved_foreign_rejected = filter_spain_focused_stories(unfiltered_stories)
+    # Ahora sí: los envoltorios de Google News ya están resueltos al artículo,
+    # así que is_spanish_publisher() puede juzgar el dominio real.
+    for story in unfiltered_stories:
+        story["vertical"] = story_vertical(
+            str(story.get("title") or ""),
+            str(story.get("link") or ""),
+            str(next(iter(story.get("editorial_feeds") or []), "")),
+        )
     foreign_local_rejected += resolved_foreign_rejected
     temporal_summary["foreign_local_rejected"] = foreign_local_rejected
     temporal_summary["accepted"] = len(unfiltered_stories)
