@@ -363,6 +363,593 @@ NEWS_SOURCES = (
     ),
 )
 
+
+# ---------------------------------------------------------------------------
+# Verticales temáticas: CABROPELUDOS, CABROMOTOR y CABROGAMER
+#
+# No son paneles aislados: sus fuentes entran en el mismo historial de 72 h que
+# el resto del proyecto, y cada vista se construye después filtrando ese
+# historial. Por eso una pieza de animales publicada por un medio generalista
+# aparece en CABROPELUDOS aunque su feed no esté marcado como vertical.
+#
+# Los medios sin RSS utilizable (404, 403 o feed inválido en la comprobación)
+# se cubren con una búsqueda de Google News restringida por site:. Google News
+# devuelve la cabecera real en cada entrada, así que el panel sigue mostrando
+# el medio de origen y no el nombre del grupo de búsqueda.
+# ---------------------------------------------------------------------------
+
+VERTICAL_LABELS: dict[str, str] = {
+    "peludos": "Cabropeludos",
+    "motor": "Cabromotor",
+    "gamer": "Cabrogamer",
+}
+
+
+def vertical_sites_query(domains: Iterable[str], terms: str) -> str:
+    """Google News restringido a una lista de medios de una vertical.
+
+    No aplica CABRONAZI_QUERY_EXCLUSIONS: excluir "economía" o "precio" dejaría
+    fuera media cobertura de motor y de videojuegos.
+    """
+    sites = " OR ".join(f"site:{domain}" for domain in domains)
+    return google_news_search_url(f"({terms}) when:1d ({sites})")
+
+
+def vertical_site_feed(domain: str) -> str:
+    """Últimas 24 h de un medio concreto, sin términos de búsqueda.
+
+    Google News deja de devolver resultados cuando se combina un site: con
+    ruta (as.com/meristation) y un grupo de términos, así que estos medios se
+    consultan por dominio a secas.
+    """
+    return google_news_search_url(f"site:{domain} when:1d")
+
+
+# CABROPELUDOS · 20 medios españoles de animales.
+#
+# La prensa de mascotas española casi no tiene RSS vivo: al comprobar los
+# candidatos, Notas de Mascotas llevaba 40 días sin publicar, Bekia Mascotas
+# 58, Etología Veterinaria 86, Curiosfera y PetDarling más de dos años. Por eso
+# esta vertical se apoya sobre todo en la cobertura animal de la prensa
+# generalista, filtrada por titular.
+#
+# Con RSS propio: Animal's Health, La Vanguardia Natural, ABC Natural y Mis
+# Animales. Vía Google News: 20minutos, El Español, El Periódico, La Razón,
+# El Mundo, RTVE, Antena 3, laSexta, Telecinco, Cadena SER, eldiario.es,
+# Público, HuffPost, Okdiario, ExpertoAnimal, SrPerro, Diario Veterinario,
+# Muy Interesante, Quo y National Geographic España.
+CABROPELUDOS_SOURCES: tuple[tuple[Any, ...], ...] = (
+    (
+        "Animal's Health",
+        "https://www.animalshealth.es/rss",
+        6.0,
+        "Veterinaria y fauna",
+        ("animales",),
+    ),
+    (
+        "La Vanguardia · Natural",
+        "https://www.lavanguardia.com/rss/natural.xml",
+        7.0,
+        "Naturaleza y fauna",
+        ("animales",),
+    ),
+    (
+        "ABC · Natural",
+        "https://www.abc.es/rss/2.0/natural/",
+        7.0,
+        "Naturaleza y fauna",
+        ("animales",),
+    ),
+    (
+        "Mis Animales",
+        "https://misanimales.com/feed/",
+        6.0,
+        "Mascotas",
+        ("animales",),
+    ),
+    (
+        "Google News · rescates y adopciones",
+        spanish_topic_search(
+            'rescate de un perro OR rescate de un gato OR protectora OR refugio de animales OR adopcion de mascotas OR "abandono animal"'
+        ),
+        8.0,
+        "Rescates y adopciones",
+        ("animales", "historias"),
+    ),
+    (
+        "Google News · animales insólitos",
+        spanish_topic_search(
+            'animal insolito OR "vídeo de un perro" OR "vídeo de un gato" OR mascota viral OR perro viral OR gato viral OR zoo'
+        ),
+        8.0,
+        "Animales virales",
+        ("animales", "viral"),
+    ),
+    (
+        "Google News · mascotas en prensa",
+        vertical_sites_query(
+            (
+                "20minutos.es", "elespanol.com", "elperiodico.com",
+                "larazon.es", "elmundo.es", "abc.es",
+            ),
+            "perro OR perra OR gato OR gata OR mascota OR cachorro OR veterinario",
+        ),
+        8.0,
+        "Mascotas virales",
+        ("animales", "viral"),
+    ),
+    (
+        "Google News · animales en televisión",
+        vertical_sites_query(
+            (
+                "rtve.es", "antena3.com", "lasexta.com", "telecinco.es",
+                "cadenaser.com", "eldiario.es",
+            ),
+            'animal OR animales OR perro OR gato OR "rescate de un" OR refugio',
+        ),
+        7.0,
+        "Animales en televisión",
+        ("animales", "viral"),
+    ),
+    (
+        "Google News · fauna y rescates",
+        vertical_sites_query(
+            (
+                "lavanguardia.com", "huffingtonpost.es", "okdiario.com",
+                "publico.es", "nationalgeographic.com.es", "muyinteresante.com",
+                "quo.es",
+            ),
+            "fauna OR zoo OR santuario OR oso OR lobo OR delfin OR ballena",
+        ),
+        6.0,
+        "Fauna y rescates",
+        ("animales",),
+    ),
+    (
+        "Google News · medios de mascotas",
+        vertical_sites_query(
+            (
+                "expertoanimal.com", "srperro.com", "diarioveterinario.com",
+                "animalshealth.es", "misanimales.com",
+            ),
+            "perro OR gato OR animal OR mascota",
+        ),
+        6.0,
+        "Medios especializados",
+        ("animales",),
+    ),
+)
+
+# CABROMOTOR · 20 medios españoles de motor con RSS propio verificado, más un
+# grupo de Google News para los que no publican feed utilizable (Motor.es,
+# km77, AutoBild, SoyMotor, Híbridos y Eléctricos y Autocasión).
+CABROMOTOR_SOURCES: tuple[tuple[Any, ...], ...] = (
+    (
+        "Motorpasión",
+        "https://www.motorpasion.com/feedburner.xml",
+        8.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Motorpasión Moto",
+        "https://www.motorpasionmoto.com/feedburner.xml",
+        8.0,
+        "Motos",
+        ("motor",),
+    ),
+    (
+        "Diariomotor",
+        "https://www.diariomotor.com/feed/",
+        8.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Motor1 España",
+        "https://es.motor1.com/rss/news/all/",
+        7.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Motorsport España",
+        "https://es.motorsport.com/rss/all/news/",
+        7.0,
+        "Competición",
+        ("motor", "deportes"),
+    ),
+    (
+        "Motorsport · MotoGP",
+        "https://es.motorsport.com/rss/motogp/news/",
+        7.0,
+        "MotoGP",
+        ("motor", "deportes"),
+    ),
+    (
+        "Highmotor",
+        "https://www.highmotor.com/feed",
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Coches.net · Actualidad",
+        "https://www.coches.net/noticias/rss/",
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Autofácil",
+        "https://www.autofacil.es/rss",
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Car and Driver España",
+        "https://www.caranddriver.com/es/rss/all.xml/",
+        7.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Periodismo del Motor",
+        "https://www.periodismodelmotor.com/feed/",
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Espíritu Racer",
+        "https://www.espirituracer.com/feed",
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Motociclismo",
+        "https://www.motociclismo.es/rss.xml",
+        7.0,
+        "Motos",
+        ("motor",),
+    ),
+    (
+        "Autopista",
+        "https://www.autopista.es/rss.xml",
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Marca · Motor",
+        "https://www.marca.com/rss/motor.xml",
+        8.0,
+        "Motor",
+        ("motor", "deportes"),
+    ),
+    (
+        # El RSS propio (as.com/rss/motor/portada.xml) responde 200 pero sus
+        # fechas son de 2022: ninguna pieza entraría nunca en la ventana.
+        "AS · Motor",
+        vertical_sites_query(
+            ("as.com",),
+            'motor OR coche OR moto OR rally OR "formula 1" OR motogp',
+        ),
+        8.0,
+        "Motor",
+        ("motor", "deportes"),
+    ),
+    (
+        "Mundo Deportivo · Motor",
+        "https://www.mundodeportivo.com/feed/rss/motor",
+        8.0,
+        "Motor",
+        ("motor", "deportes"),
+    ),
+    (
+        "La Vanguardia · Motor",
+        "https://www.lavanguardia.com/rss/motor.xml",
+        7.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "20minutos · Motor",
+        "https://www.20minutos.es/rss/motor/",
+        7.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "ABC · Motor",
+        "https://www.abc.es/rss/2.0/motor/",
+        7.0,
+        "Motor",
+        ("motor",),
+    ),
+    (
+        "Google News · motor español",
+        vertical_sites_query(
+            (
+                "motor.es", "km77.com", "autobild.es", "soymotor.com",
+                "hibridosyelectricos.com", "autocasion.com",
+            ),
+            'coche OR coches OR moto OR motor OR conductor OR DGT OR "carnet de conducir"',
+        ),
+        6.0,
+        "Motor",
+        ("motor",),
+    ),
+)
+
+# CABROGAMER · 20 medios españoles de videojuegos. Vandal, Meristation,
+# Zonared, SomosXbox, AlfaBetaJuega y MuyComputer bloquean el feed o no
+# exponen uno utilizable: entran por Google News.
+CABROGAMER_SOURCES: tuple[tuple[Any, ...], ...] = (
+    (
+        "3DJuegos",
+        "https://www.3djuegos.com/feedburner.xml",
+        8.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "HobbyConsolas · Videojuegos",
+        "https://www.hobbyconsolas.com/rss/videojuegos",
+        8.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "IGN España",
+        "https://es.ign.com/feed.xml",
+        8.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "Eurogamer España",
+        "https://www.eurogamer.es/feed",
+        7.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "Areajugones",
+        "https://areajugones.sport.es/feed/",
+        8.0,
+        "Videojuegos y cultura pop",
+        ("videojuegos", "viral"),
+    ),
+    (
+        "AnaitGames",
+        "https://www.anaitgames.com/feed/",
+        6.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "Nintenderos",
+        "https://www.nintenderos.com/feed/",
+        6.0,
+        "Nintendo",
+        ("videojuegos",),
+    ),
+    (
+        "Generación Xbox",
+        "https://generacionxbox.com/feed/",
+        6.0,
+        "Xbox",
+        ("videojuegos",),
+    ),
+    (
+        "Gamereactor España",
+        "https://www.gamereactor.es/rss/rss.php",
+        6.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "VidaExtra",
+        "https://www.vidaextra.com/rss2.xml",
+        8.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "LaPS4",
+        "https://www.laps4.com/feed/",
+        6.0,
+        "PlayStation",
+        ("videojuegos",),
+    ),
+    (
+        "NextN",
+        "https://www.nextn.es/feed/",
+        5.0,
+        "Nintendo",
+        ("videojuegos",),
+    ),
+    (
+        "Nintenduo",
+        "https://www.nintenduo.com/feed/",
+        5.0,
+        "Nintendo",
+        ("videojuegos",),
+    ),
+    (
+        "Akihabara Blues",
+        "https://akihabarablues.com/feed/",
+        5.0,
+        "Videojuegos y cultura otaku",
+        ("videojuegos",),
+    ),
+    (
+        "Marca · Videojuegos",
+        "https://www.marca.com/rss/videojuegos.xml",
+        8.0,
+        "Videojuegos y esports",
+        ("videojuegos",),
+    ),
+    (
+        "20minutos · Videojuegos",
+        "https://www.20minutos.es/rss/videojuegos/",
+        7.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "El Chapuzas Informático",
+        "https://elchapuzasinformatico.com/feed/",
+        5.0,
+        "Hardware y gaming",
+        ("videojuegos", "tecnologia"),
+    ),
+    (
+        "Profesional Review",
+        "https://www.profesionalreview.com/feed/",
+        5.0,
+        "Hardware y gaming",
+        ("videojuegos", "tecnologia"),
+    ),
+    (
+        "Vandal",
+        vertical_site_feed("vandal.elespanol.com"),
+        8.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "Meristation",
+        vertical_site_feed("as.com/meristation"),
+        8.0,
+        "Videojuegos",
+        ("videojuegos",),
+    ),
+    (
+        "Google News · gaming español",
+        vertical_sites_query(
+            (
+                "zonared.com", "somosxbox.com", "alfabetajuega.com",
+                "muycomputer.com", "mundodeportivo.com", "esports.as.com",
+            ),
+            'videojuego OR videojuegos OR gaming OR esports OR consola OR "Game Pass"',
+        ),
+        6.0,
+        "Videojuegos y esports",
+        ("videojuegos",),
+    ),
+)
+
+NEWS_SOURCES = NEWS_SOURCES + CABROPELUDOS_SOURCES + CABROMOTOR_SOURCES + CABROGAMER_SOURCES
+
+# Feeds cuyas piezas pertenecen a una vertical por origen, sin depender de que
+# el titular contenga una palabra clave.
+VERTICAL_FEEDS: dict[str, str] = {
+    **{source[0]: "peludos" for source in CABROPELUDOS_SOURCES},
+    **{source[0]: "motor" for source in CABROMOTOR_SOURCES},
+    **{source[0]: "gamer" for source in CABROGAMER_SOURCES},
+}
+
+# Google News busca en el texto completo del artículo, no solo en el titular, y
+# el operador site: con ruta se le escapa: una consulta a as.com/meristation
+# devolvía también sucesos de as.com, y un site: a la web de una televisión
+# colaba la programación del día porque mencionaba un documental de animales.
+# Para estas fuentes se exige que el titular hable de la vertical. A un medio
+# entero dedicado a ella (Motorpasión, 3DJuegos, Mis Animales) le basta el
+# origen.
+VERTICAL_KEYWORD_REQUIRED = frozenset(
+    source[0]
+    for group in (CABROPELUDOS_SOURCES, CABROMOTOR_SOURCES, CABROGAMER_SOURCES)
+    for source in group
+    if str(source[1]).startswith(GOOGLE_NEWS_BASE)
+)
+
+# Palabras que adscriben a una vertical una pieza llegada de cualquier otra
+# fuente del historial. El orden importa: la primera vertical que encaja gana.
+VERTICAL_KEYWORD_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
+    (
+        "peludos",
+        (
+            "perro", "perros", "perra", "perrita", "perrito", "cachorro",
+            "gato", "gatos", "gata", "gatito", "michi", "mascota", "mascotas",
+            "veterinario", "veterinaria", "protectora", "refugio animal",
+            "animal", "animales", "fauna", "zoo", "zoologico",
+            "santuario de animales", "oso", "lobo", "delfin", "ballena",
+            "tiburon", "caballo", "elefante", "tigre", "loro", "pajaro",
+            "aves", "adopcion animal", "maltrato animal", "rescate animal",
+            # Ni "especie" ("una especie de..."), ni "granja" (de criptomonedas,
+            # de servidores), ni "panda" (el coche, la panda de amigos), ni
+            # "paloma" (nombre de pila): se colaban titulares ajenos.
+            "extincion", "ganaderia",
+            "ganadero", "ganaderos", "vaca", "vacas", "cerdo", "cerdos",
+            "oveja", "ovejas", "cabra", "cabras", "gallina", "gallinas",
+            "conejo", "conejos", "burro", "abeja", "abejas", "avispa",
+            "avispas", "mosquito", "mosquitos", "insecto", "insectos",
+            "serpiente", "serpientes", "reptil", "tortuga", "tortugas",
+            "jabali", "jabalies", "ciervo", "ciervos", "zorro", "erizo",
+            "pez", "peces", "acuario", "gorila", "chimpance",
+            "pinguino", "foca", "orca", "murcielago",
+            "hamster", "cotorra", "buitre", "aguila", "cigueña",
+            # Sin "leon" ni "mono": en español son también una ciudad y una
+            # prenda de ropa, y se llevaban titulares que no van de animales.
+        ),
+    ),
+    (
+        "motor",
+        (
+            "coche", "coches", "automovil", "automoviles", "moto", "motos",
+            "motociclista", "conductor", "conductora", "conductores",
+            "carnet de conducir", "permiso de conducir", "dgt",
+            "autopista", "autovia", "gasolina", "diesel",
+            "gasolinera", "matricula", "itv", "radar de velocidad",
+            "coche electrico", "formula 1", "formula1", "motogp",
+            # "trafico" a secas arrastraba el tráfico de drogas o de personas.
+            "gran premio", "escuderia", "fernando alonso", "carlos sainz",
+            "marc marquez", "rally", "todoterreno", "suv", "furgoneta",
+            "camion", "atasco", "multa de trafico",
+        ),
+    ),
+    (
+        "gamer",
+        (
+            "videojuego", "videojuegos", "gaming", "gamer", "gamers",
+            "playstation", "ps5", "ps6", "xbox", "nintendo", "switch",
+            "steam", "epic games", "game pass", "consola", "consolas",
+            "fortnite", "minecraft", "roblox", "call of duty", "gta",
+            "grand theft auto", "zelda", "super mario", "pokemon",
+            # Ni "mario" ni "fifa" sueltos: uno es un nombre de pila corriente
+            # y el otro sale en cada noticia de fútbol.
+            "ea sports fc", "league of legends", "valorant", "counter-strike",
+            "esports", "e-sports", "twitch", "speedrun",
+        ),
+    ),
+)
+
+
+def vertical_for_text(text: str) -> str:
+    """Vertical a la que pertenece un titular, o cadena vacía si a ninguna."""
+    for vertical, phrases in VERTICAL_KEYWORD_RULES:
+        if contains_phrase(text, phrases):
+            return vertical
+    return ""
+
+
+def story_vertical(title: str, metrics: dict[str, Any]) -> str:
+    """Vertical definitiva de una pieza, revisada en cada ejecución.
+
+    Se recalcula siempre en vez de confiar en lo que guardó el historial: si
+    una regla cambia, las piezas de las 72 h anteriores se reclasifican solas
+    en la siguiente pasada.
+    """
+    vertical = str(metrics.get("vertical") or "")
+    feed = str(metrics.get("editorial_feed") or "")
+    if vertical and feed in VERTICAL_KEYWORD_REQUIRED:
+        return vertical if vertical_for_text(title) == vertical else ""
+    return vertical or vertical_for_text(title)
+
 GENERAL_FRONT_PAGE_SOURCES = frozenset({
     "EL ESPAÑOL · Portada",
     "La Vanguardia · Portada",
@@ -520,6 +1107,9 @@ IMAGE_PAGE_CONTEXT_LIMIT = 3
 IMAGE_CANDIDATE_LIMIT = 5
 IMAGE_WORKERS = 10
 UNFILTERED_IMAGE_WORKERS = 12
+# Descarga de RSS en paralelo: con las verticales el proyecto pasa de 46 a más
+# de 100 feeds y en serie no cabía entre dos ejecuciones del cron.
+NEWS_FEED_WORKERS = 10
 IMAGE_HTML_MAX_BYTES = 1_800_000
 IMAGE_FILE_MAX_BYTES = 2_500_000
 IMAGE_MIN_WIDTH = 300
@@ -615,8 +1205,13 @@ LOW_VALUE_CONTENT_TERMS = (
     "la primitiva", "cupon de la once", "super once", "sorteo de la once",
     "numeros ganadores", "combinacion ganadora", "resultado de la once",
     "trucos de cocina", "truco para cocinar", "cocinar", "coctel",
-    "granizado", "postre", "postres", "precio", "precios",
-    "cuanto cuesta", "tarifa", "tarifas",
+    "granizado", "postre", "postres",
+)
+# El precio es ruido en un panel de virales generalista, pero es vocabulario
+# corriente en motor y en videojuegos: "el precio del diesel", "PS6: fecha y
+# precio". Se bloquea salvo en las verticales.
+PRICE_CONTENT_TERMS = (
+    "precio", "precios", "cuanto cuesta", "tarifa", "tarifas",
 )
 RECIPE_INSTRUCTION_TERMS = ("como preparar", "como hacer")
 RECIPE_CONTEXT_TERMS = (
@@ -686,8 +1281,26 @@ SPANISH_GENERIC_TLD_MEDIA = frozenset({
     "lasgastrocronicas.com", "metalcry.com", "masscultura.com",
     "segnorasque.com",
 })
-SPANISH_PUBLISHER_DOMAINS = SPANISH_GENERIC_TLD_MEDIA | frozenset(
-    domain.lower() for domain in SPANISH_MEDIA_DOMAINS
+# Medios de las verticales con dominio genérico o subdominio español. Sin esta
+# lista, el control geográfico y la selección los tratarían como prensa
+# extranjera y CABRONAZI nunca vería una pieza suya.
+VERTICAL_MEDIA_DOMAINS = frozenset({
+    "misanimales.com", "notasdemascotas.com", "bekiamascotas.com",
+    "etologiaveterinaria.net", "expertoanimal.com", "srperro.com",
+    "diarioveterinario.com", "muyinteresante.com",
+    "diariomotor.com", "es.motor1.com", "es.motorsport.com", "highmotor.com",
+    "coches.net", "caranddriver.com", "periodismodelmotor.com",
+    "espirituracer.com", "motorpasionmoto.com", "km77.com", "soymotor.com",
+    "autocasion.com", "motor.es",
+    "hobbyconsolas.com", "es.ign.com", "anaitgames.com", "nintenderos.com",
+    "generacionxbox.com", "vidaextra.com", "laps4.com", "nintenduo.com",
+    "akihabarablues.com", "zonared.com", "somosxbox.com", "alfabetajuega.com",
+    "muycomputer.com",
+})
+SPANISH_PUBLISHER_DOMAINS = (
+    SPANISH_GENERIC_TLD_MEDIA
+    | VERTICAL_MEDIA_DOMAINS
+    | frozenset(domain.lower() for domain in SPANISH_MEDIA_DOMAINS)
 )
 LATAM_MEDIA_DOMAINS = frozenset({
     "la100.cienradios.com", "lmneuquen.com", "elimparcial.com",
@@ -975,10 +1588,12 @@ def contains_phrase(text: str, phrases: Iterable[str]) -> int:
     return sum(1 for phrase in phrases if f" {normalize(phrase)} " in normalized)
 
 
-def is_blocked_content(text: str) -> bool:
+def is_blocked_content(text: str, *, vertical: str = "") -> bool:
     # Los viajes ya no se descartan aquí: en el histórico real de publicaciones
     # rinden en la media, y la lista marcaba como turismo cualquier pieza que
     # mencionara unas vacaciones. Pasan al ranking con penalización blanda.
+    if not vertical and contains_phrase(text, PRICE_CONTENT_TERMS):
+        return True
     if (
         contains_phrase(text, BLOCKED_TERMS)
         or contains_phrase(text, LOW_VALUE_CONTENT_TERMS)
@@ -3954,11 +4569,25 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
     warnings.extend(direct_warnings)
     statuses.extend(direct_statuses)
 
-    for fallback_source, url, editorial_boost, editorial_section, configured_tags in NEWS_SOURCES:
+    # Solo se paraleliza la descarga. El procesado sigue siendo secuencial y en
+    # el orden de NEWS_SOURCES porque la deduplicación depende de él: la
+    # primera fuente que trae un titular se lo queda.
+    def download_feed(source_config: tuple[Any, ...]) -> tuple[Any, Exception | None]:
         try:
-            feed = fetch_feed(url)
+            return fetch_feed(source_config[1]), None
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
-            warnings.append(f"No se pudo descargar {fallback_source}: {exc}")
+            return None, exc
+
+    with ThreadPoolExecutor(max_workers=NEWS_FEED_WORKERS) as executor:
+        downloaded = list(executor.map(download_feed, NEWS_SOURCES))
+
+    # `source_config`, no `source`: más abajo el bucle interior usa `source`
+    # para la cabecera real de cada pieza.
+    for source_config, (feed, download_error) in zip(NEWS_SOURCES, downloaded):
+        fallback_source, url, editorial_boost, editorial_section, configured_tags = source_config
+        vertical = VERTICAL_FEEDS.get(fallback_source, "")
+        if download_error is not None:
+            warnings.append(f"No se pudo descargar {fallback_source}: {download_error}")
             statuses.append({"name": fallback_source, "ok": False, "items": 0})
             continue
 
@@ -3980,7 +4609,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             if is_google_news_feed and source == fallback_source and " - " in raw_title:
                 source = raw_title.rsplit(" - ", 1)[1].strip() or fallback_source
             title = clean_google_title(raw_title, source) if is_google_news_feed else raw_title
-            if is_blocked_content(title):
+            if is_blocked_content(title, vertical=vertical):
                 continue
             title_keywords = keywords(title)
             if not title_keywords:
@@ -4017,6 +4646,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                         "editorial_section": editorial_section or "",
                         "editorial_feed": fallback_source,
                         "topic_tags": sorted(detected_tags),
+                        "vertical": vertical,
                     },
                     thumbnail=image_candidates[0].url if image_candidates else None,
                     image_candidates=image_candidates,
@@ -5176,6 +5806,7 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
             "editorial_feeds": [entry.metrics.get("editorial_feed")] if entry.metrics.get("editorial_feed") else [],
             "topic_tags": sorted(tags),
             "general_category": general_category_for(tags),
+            "vertical": story_vertical(entry.title, entry.metrics),
             "primary_tag": next((tag for tag in CABRONAZI_TAG_ORDER if tag in tags), "viral"),
             "politics_related": "politica" in tags,
             "hard_news_related": "sucesos" in tags,
@@ -5203,6 +5834,54 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
             }],
         })
     return stories
+
+
+VERTICAL_SOURCE_LIMIT = 14
+VERTICAL_STORY_LIMIT = 300
+
+
+def build_vertical_stories(
+    stories: list[dict[str, Any]], vertical: str
+) -> list[dict[str, Any]]:
+    """Construye una vista vertical sobre el historial ya enriquecido.
+
+    Entra una pieza si viene de un feed de la vertical o si su titular la
+    menciona, sea cual sea el medio: así un rescate de un perro publicado por
+    20minutos aparece en CABROPELUDOS aunque no llegue de un feed de animales.
+
+    No se reaprovecha `build_ranked` a propósito. Aquel filtro está afinado
+    para una portada de virales generalista y descarta actualidad de motor o de
+    videojuegos que aquí es justamente el material de la vertical.
+    """
+    candidates = [
+        story
+        for story in stories
+        if str(story.get("vertical") or "") == vertical
+        or vertical_for_text(str(story.get("title") or "")) == vertical
+    ]
+    candidates.sort(
+        key=lambda story: str(story.get("published_at") or ""),
+        reverse=True,
+    )
+
+    selected: list[dict[str, Any]] = []
+    per_source: dict[str, int] = {}
+    for story in candidates:
+        # Mismo criterio que la selección: estas vistas son material candidato
+        # a republicarse, así que solo entran medios con edición española. El
+        # control geográfico general deja pasar prensa argentina o mexicana que
+        # habla de perros o de coches sin ángulo español.
+        if not is_spanish_publisher(str(story.get("link") or "")):
+            continue
+        sources = story.get("sources") or []
+        key = normalize(str(sources[0] if sources else "Fuente original"))
+        if per_source.get(key, 0) >= VERTICAL_SOURCE_LIMIT:
+            continue
+        per_source[key] = per_source.get(key, 0) + 1
+        selected.append(story)
+        if len(selected) >= VERTICAL_STORY_LIMIT:
+            break
+    return selected
 
 
 def is_story_pending_required_image(story: dict[str, Any]) -> bool:
@@ -5547,6 +6226,23 @@ def build() -> dict[str, Any]:
     )
     write_history_atomic(published_history_entries, now)
 
+    # Las verticales se construyen sobre el historial ya enriquecido: no
+    # vuelven a pedir imágenes ni a consultar ningún feed.
+    #
+    # En data.json solo se publica la lista de enlaces de cada vertical, no la
+    # ficha completa. Duplicar las fichas engordaba el archivo en ~1,7 MB y el
+    # panel ya tiene esas piezas en unfiltered_stories: las resuelve por enlace.
+    vertical_selection = {
+        key: build_vertical_stories(unfiltered_stories, key)
+        for key in VERTICAL_LABELS
+    }
+    vertical_stories = {
+        key: [str(story.get("link") or "") for story in items if story.get("link")]
+        for key, items in vertical_selection.items()
+    }
+    for key, label in VERTICAL_LABELS.items():
+        print(f"[vertical] {label}: {len(vertical_stories[key])} piezas")
+
     return {
         "updated_at": now.isoformat().replace("+00:00", "Z"),
         "trends_google": [item["name"] for item in google_trends[:20]],
@@ -5561,6 +6257,8 @@ def build() -> dict[str, Any]:
         "stories": ranked,
         "unfiltered_stories": unfiltered_stories,
         "forocoches_stories": forocoches_stories,
+        "vertical_stories": vertical_stories,
+        "vertical_labels": VERTICAL_LABELS,
         "warnings": warnings,
         "source_status": source_status,
         "source_summary": {
