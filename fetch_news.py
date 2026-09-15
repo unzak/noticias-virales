@@ -414,19 +414,16 @@ def vertical_site_feed(domain: str) -> str:
 # esta vertical se apoya sobre todo en la cobertura animal de la prensa
 # generalista, filtrada por titular.
 #
-# Con RSS propio: Animal's Health, La Vanguardia Natural, ABC Natural y Mis
-# Animales. Vía Google News: 20minutos, El Español, El Periódico, La Razón,
+# Con RSS propio: La Vanguardia Natural, ABC Natural y Mis Animales.
+#
+# Animal's Health tenía feed propio y se retiró: publica los enlaces sin el
+# segmento de sección (/slug en vez de /profesionales/slug) y los 40 devuelven
+# 404, así que sus piezas salían con el enlace roto y sin foto. El medio sigue
+# cubierto por "Google News · medios de mascotas", que sí trae la URL buena. Vía Google News: 20minutos, El Español, El Periódico, La Razón,
 # El Mundo, RTVE, Antena 3, laSexta, Telecinco, Cadena SER, eldiario.es,
 # Público, HuffPost, Okdiario, ExpertoAnimal, SrPerro, Diario Veterinario,
 # Muy Interesante, Quo y National Geographic España.
 CABROPELUDOS_SOURCES: tuple[tuple[Any, ...], ...] = (
-    (
-        "Animal's Health",
-        "https://www.animalshealth.es/rss",
-        6.0,
-        "Veterinaria y fauna",
-        ("animales",),
-    ),
     (
         "La Vanguardia · Natural",
         "https://www.lavanguardia.com/rss/natural.xml",
@@ -2939,6 +2936,7 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
     contexts = story.get("_image_contexts") if isinstance(story.get("_image_contexts"), list) else []
     candidates: list[tuple[ImageCandidate, bool]] = []
     resolved_main_link: str | None = None
+    enlace_muerto = False
     for context in contexts:
         if not isinstance(context, dict):
             continue
@@ -2997,7 +2995,15 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
                 link,
                 expected_title=str(context.get("title") or story["title"]),
             )
-        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
+        except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError) as exc:
+            # Un 404 o un 410 dicen que la URL es incorrecta, no que el medio
+            # nos rechace: publicar la pieza dejaría un enlace muerto en el
+            # panel. Es distinto de un 403 o un 5xx, donde la dirección es
+            # buena y solo nos bloquean a nosotros.
+            if isinstance(exc, urllib.error.HTTPError) and exc.code in (404, 410):
+                if bool(context.get("is_main")):
+                    enlace_muerto = True
+                continue
             # El artículo no se deja pedir —semana.es devuelve 403 a cualquier
             # cliente automático, también a Googlebot, aunque en un navegador
             # abre sin problema—, pero el envoltorio de Google News sí se
@@ -3067,6 +3073,8 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
     updated = dict(story)
     updated.pop("_image_contexts", None)
     updated.pop("_allow_article_img_fallback", None)
+    if enlace_muerto:
+        updated["_dead_link"] = True
     if resolved_main_link:
         updated["link"] = resolved_main_link
 
@@ -5946,24 +5954,31 @@ def enrich_unfiltered_images(stories: list[dict[str, Any]]) -> tuple[list[dict[s
     # La vista sin filtro es la predeterminada: tampoco debe publicar
     # envoltorios de Google News. Sin destino real el enlace queda roto y no
     # existe una imagen editorial fiable que se pueda asociar a la noticia.
+    # Un enlace muerto es peor que una pieza de menos: el usuario pulsa y se
+    # lleva un 404. El RSS de Animal's Health publicaba todas sus URLs sin el
+    # segmento de sección y así llegaban al panel.
+    vivos = [item for item in processed if not item.pop("_dead_link", False)]
+    discarded_dead = len(processed) - len(vivos)
     final = [
-        item for item in processed
+        item for item in vivos
         if not _is_google_host(str(item.get("link") or ""))
     ]
-    discarded_unresolved = len(processed) - len(final)
+    discarded_unresolved = len(vivos) - len(final)
     linked = sum(1 for item in final if item.get("thumbnail"))
     placeholders = len(final) - linked
     resolved = sum(1 for item in final if not _is_google_host(str(item.get("link") or "")))
     print(
         f"[ok] Imágenes sin filtro: {linked}/{len(final)} enlazadas desde el artículo · "
         f"{placeholders} con placeholder · {resolved} destinos originales · "
-        f"{discarded_unresolved} descartadas sin resolver"
+        f"{discarded_unresolved} descartadas sin resolver · "
+        f"{discarded_dead} con enlace muerto"
     )
     return final, {
         "linked": linked,
         "placeholders": placeholders,
         "resolved_links": resolved,
         "discarded_unresolved": discarded_unresolved,
+        "discarded_dead": discarded_dead,
         "total": len(final),
     }
 
