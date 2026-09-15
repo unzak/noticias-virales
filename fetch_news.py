@@ -414,7 +414,10 @@ def vertical_site_feed(domain: str) -> str:
 # esta vertical se apoya sobre todo en la cobertura animal de la prensa
 # generalista, filtrada por titular.
 #
-# Con RSS propio: La Vanguardia Natural, ABC Natural y Mis Animales.
+# Con RSS propio: La Vanguardia Natural, ABC Natural y Mis Animales. El resto
+# de la vertical se sostiene sobre búsquedas de Google News, porque el contenido
+# de animales que funciona vive en la prensa generalista, no en cabeceras
+# especializadas.
 #
 # Animal's Health tenía feed propio y se retiró: publica los enlaces sin el
 # segmento de sección (/slug en vez de /profesionales/slug) y los 40 devuelven
@@ -445,23 +448,77 @@ CABROPELUDOS_SOURCES: tuple[tuple[Any, ...], ...] = (
         "Mascotas",
         ("animales",),
     ),
+    # Las consultas temáticas se restringen a grupos pequeños de medios. Con los
+    # 38 dominios de spanish_topic_search() en una sola consulta, Google degrada
+    # el resultado: las dos que había aquí traían 1 pieza cada una, y estas
+    # traen entre 2 y 12. Se midió cada candidata antes de incluirla; rescates,
+    # protectoras y curiosidades se descartaron porque daban cero.
     (
-        "Google News · rescates y adopciones",
-        spanish_topic_search(
-            'rescate de un perro OR rescate de un gato OR protectora OR refugio de animales OR adopcion de mascotas OR "abandono animal"'
+        "Google News · veterinarios y mascotas",
+        vertical_sites_query(
+            (
+                "elpais.com", "elmundo.es", "abc.es", "lavanguardia.com",
+                "20minutos.es", "elespanol.com",
+            ),
+            "veterinario OR veterinaria OR etologo OR adiestrador perro OR gato",
+        ),
+        9.0,
+        "Veterinarios y mascotas",
+        ("animales",),
+    ),
+    (
+        "Google News · consejos veterinarios",
+        vertical_sites_query(
+            (
+                "eldiario.es", "publico.es", "huffingtonpost.es", "okdiario.com",
+                "larazon.es", "elperiodico.com",
+            ),
+            'veterinario explica OR "por que mi perro" OR "por que mi gato" OR adiestrador',
         ),
         8.0,
-        "Rescates y adopciones",
+        "Consejos veterinarios",
+        ("animales",),
+    ),
+    (
+        "Google News · maltrato y abandono",
+        vertical_sites_query(
+            (
+                "elpais.com", "elmundo.es", "abc.es", "lavanguardia.com",
+                "20minutos.es", "elespanol.com",
+            ),
+            'maltrato animal OR abandono de animales OR "condenado por maltratar" OR crueldad animal',
+        ),
+        8.0,
+        "Maltrato y abandono",
+        ("animales", "sucesos"),
+    ),
+    (
+        "Google News · historias de mascotas",
+        vertical_sites_query(
+            (
+                "elpais.com", "elmundo.es", "abc.es", "lavanguardia.com",
+                "20minutos.es", "elespanol.com",
+            ),
+            '"su perro" OR "su gata" OR "su gato" historia OR emociona OR acompaña OR muere',
+        ),
+        8.0,
+        "Historias de mascotas",
         ("animales", "historias"),
     ),
     (
-        "Google News · animales insólitos",
-        spanish_topic_search(
-            'animal insolito OR "vídeo de un perro" OR "vídeo de un gato" OR mascota viral OR perro viral OR gato viral OR zoo'
+        "Google News · zoo y fauna",
+        vertical_sites_query(
+            (
+                "elpais.com", "elmundo.es", "abc.es", "lavanguardia.com",
+                "20minutos.es", "elespanol.com",
+            ),
+            # Sin "acuario": es el signo del zodiaco y la consulta se llenaba
+            # de horóscopos, 100 piezas de las que ninguna iba de animales.
+            'zoo OR zoologico OR bioparc OR faunia OR "parque de animales" -acuario -horoscopo',
         ),
-        8.0,
-        "Animales virales",
-        ("animales", "viral"),
+        7.0,
+        "Zoo y fauna",
+        ("animales",),
     ),
     (
         "Google News · mascotas en prensa",
