@@ -21,6 +21,7 @@ from __future__ import annotations
 import base64
 import calendar
 import datetime as dt
+import gzip
 import hashlib
 import html
 import ipaddress
@@ -35,6 +36,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+import zlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import lru_cache
 from html.parser import HTMLParser
@@ -928,6 +930,54 @@ VERTICAL_KEYWORD_RULES: tuple[tuple[str, tuple[str, ...]], ...] = (
 )
 
 
+# Medios monotemáticos: cualquier pieza suya pertenece a su vertical, diga lo
+# que diga el titular. Sin esto, una prueba del Dacia Sandero de soymotor.com
+# acababa en Cabronazi porque "híbrido" no estaba en las palabras clave, y una
+# crónica del Baja Aragón tampoco entraba porque ese rally no se llama rally.
+#
+# Aquí solo caben cabeceras dedicadas por completo al tema. Los generalistas con
+# sección (Marca, AS, ABC, 20minutos, La Vanguardia) quedan fuera a propósito:
+# su vertical la decide el feed de sección del que llegan, no el dominio.
+VERTICAL_DOMAINS: dict[str, tuple[str, ...]] = {
+    "peludos": (
+        "misanimales.com", "animalshealth.es", "expertoanimal.com",
+        "srperro.com", "diarioveterinario.com", "notasdemascotas.com",
+        "bekiamascotas.com", "etologiaveterinaria.net",
+    ),
+    "motor": (
+        "motorpasion.com", "motorpasionmoto.com", "diariomotor.com",
+        "es.motor1.com", "es.motorsport.com", "highmotor.com", "coches.net",
+        "autofacil.es", "caranddriver.com", "periodismodelmotor.com",
+        "espirituracer.com", "motociclismo.es", "autopista.es", "motor.es",
+        "km77.com", "autobild.es", "soymotor.com", "hibridosyelectricos.com",
+        "autocasion.com",
+    ),
+    "gamer": (
+        "3djuegos.com", "hobbyconsolas.com", "es.ign.com", "eurogamer.es",
+        "areajugones.sport.es", "anaitgames.com", "nintenderos.com",
+        "generacionxbox.com", "gamereactor.es", "vidaextra.com", "laps4.com",
+        "nextn.es", "nintenduo.com", "akihabarablues.com",
+        "vandal.elespanol.com", "zonared.com", "somosxbox.com",
+        "alfabetajuega.com", "muycomputer.com", "elchapuzasinformatico.com",
+        "profesionalreview.com",
+    ),
+}
+
+
+def vertical_for_domain(link: str) -> str:
+    """Vertical de un medio monotemático, o cadena vacía si no lo es."""
+    host = (urllib.parse.urlparse(link).hostname or "").lower()
+    for prefijo in ("www.", "amp.", "m."):
+        if host.startswith(prefijo):
+            host = host[len(prefijo):]
+    if not host:
+        return ""
+    for vertical, dominios in VERTICAL_DOMAINS.items():
+        if any(host == d or host.endswith("." + d) for d in dominios):
+            return vertical
+    return ""
+
+
 def vertical_for_text(text: str) -> str:
     """Vertical a la que pertenece un titular, o cadena vacía si a ninguna."""
     for vertical, phrases in VERTICAL_KEYWORD_RULES:
@@ -952,9 +1002,17 @@ def story_vertical(title: str, link: str, feed: str) -> str:
     # pasa no se pierde, se queda en Cabronazi.
     if not is_spanish_publisher(link):
         return ""
+    # El dominio manda sobre todo lo demás: un medio dedicado por entero a una
+    # vertical no necesita que su titular contenga la palabra clave.
+    por_dominio = vertical_for_domain(link)
+    if por_dominio:
+        return por_dominio
     vertical = VERTICAL_FEEDS.get(feed, "")
     if vertical and feed in VERTICAL_KEYWORD_REQUIRED:
-        return vertical if vertical_for_text(title) == vertical else ""
+        # En un grupo de Google News decide el titular y solo el titular. Si
+        # encaja en otra vertical, va a esa: una crónica del GP de Madrid que
+        # llegó por la consulta de animales es motor, no se descarta.
+        return vertical_for_text(title)
     return vertical or vertical_for_text(title)
 
 GENERAL_FRONT_PAGE_SOURCES = frozenset({
@@ -1539,6 +1597,39 @@ def env_list(name: str, default: Iterable[str]) -> tuple[str, ...]:
     return tuple(item.strip() for item in raw.split(",") if item.strip())
 
 
+def decompress_payload(payload: bytes, content_encoding: Any) -> bytes:
+    """Descomprime una respuesta que el servidor comprimió sin que se le pidiera.
+
+    Los lectores de HTML piden `Accept-Encoding: identity`, pero hay servidores
+    que comprimen igualmente y urllib no descomprime solo. Vandal devolvía
+    `Content-Encoding: gzip`: el HTML llegaba como 38 KB de binario en vez de
+    169 KB de texto, no se encontraba ninguna etiqueta og:image y 11 de sus 12
+    piezas salían sin foto.
+
+    Ante una respuesta truncada por el límite de bytes se devuelve lo que se
+    haya podido descomprimir, y si nada funciona, el contenido original.
+    """
+    encoding = str(content_encoding or "").strip().lower()
+    if not encoding or encoding == "identity":
+        return payload
+    try:
+        if encoding == "gzip":
+            try:
+                return gzip.decompress(payload)
+            except (OSError, EOFError, zlib.error):
+                # Un flujo cortado a la mitad no se puede descomprimir entero,
+                # pero sí aprovechar hasta donde llega.
+                return zlib.decompressobj(zlib.MAX_WBITS | 16).decompress(payload)
+        if encoding in {"deflate", "zlib"}:
+            try:
+                return zlib.decompress(payload)
+            except zlib.error:
+                return zlib.decompress(payload, -zlib.MAX_WBITS)
+    except (OSError, EOFError, zlib.error):
+        return payload
+    return payload
+
+
 def fetch_bytes(
     url: str,
     *,
@@ -1559,7 +1650,7 @@ def fetch_bytes(
         method=method,
     )
     with urllib.request.urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
-        return response.read()
+        return decompress_payload(response.read(), response.headers.get("Content-Encoding"))
 
 
 def fetch_json(
@@ -2506,7 +2597,10 @@ def fetch_html_metadata(url: str, *, expected_title: str = "", _depth: int = 0) 
         content_type = response.headers.get_content_type().lower()
         if content_type not in {"text/html", "application/xhtml+xml"}:
             return final_url, ()
-        payload = response.read(IMAGE_HTML_MAX_BYTES + 1)
+        payload = decompress_payload(
+            response.read(IMAGE_HTML_MAX_BYTES + 1),
+            response.headers.get("Content-Encoding"),
+        )
         if len(payload) > IMAGE_HTML_MAX_BYTES:
             payload = payload[:IMAGE_HTML_MAX_BYTES]
         charset = response.headers.get_content_charset() or "utf-8"
@@ -2564,7 +2658,10 @@ def resolve_meneame_destination(url: str, expected_title: str) -> str:
             final_url = public_fetch_url(response.geturl()) or target
             if response.headers.get_content_type().lower() not in {"text/html", "application/xhtml+xml"}:
                 return final_url
-            payload = response.read(IMAGE_HTML_MAX_BYTES + 1)[:IMAGE_HTML_MAX_BYTES]
+            payload = decompress_payload(
+                response.read(IMAGE_HTML_MAX_BYTES + 1),
+                response.headers.get("Content-Encoding"),
+            )[:IMAGE_HTML_MAX_BYTES]
             charset = response.headers.get_content_charset() or "utf-8"
         parser = PageMetadataParser(final_url)
         parser.feed(payload.decode(charset, errors="replace"))
@@ -2901,6 +2998,19 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
                 expected_title=str(context.get("title") or story["title"]),
             )
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
+            # El artículo no se deja pedir —semana.es devuelve 403 a cualquier
+            # cliente automático, también a Googlebot, aunque en un navegador
+            # abre sin problema—, pero el envoltorio de Google News sí se
+            # decodifica sin visitarlo. Sin esto la pieza conservaba el enlace
+            # de news.google.com y se descartaba entera: Semana declaraba
+            # elementos aceptados y no publicaba ni una pieza.
+            if _is_google_host(link) and (
+                bool(context.get("is_main"))
+                or (not resolved_main_link and _is_google_host(str(story.get("link") or "")))
+            ):
+                decodificado = resolve_google_news_destination(link)
+                if decodificado and not _is_google_host(decodificado):
+                    resolved_main_link = decodificado
             continue
         if (
             not _is_google_host(final_url)
