@@ -21,6 +21,7 @@ from __future__ import annotations
 import base64
 import calendar
 import datetime as dt
+import gzip
 import hashlib
 import html
 import ipaddress
@@ -35,6 +36,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+import zlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from functools import lru_cache
 from html.parser import HTMLParser
@@ -1595,6 +1597,39 @@ def env_list(name: str, default: Iterable[str]) -> tuple[str, ...]:
     return tuple(item.strip() for item in raw.split(",") if item.strip())
 
 
+def decompress_payload(payload: bytes, content_encoding: Any) -> bytes:
+    """Descomprime una respuesta que el servidor comprimió sin que se le pidiera.
+
+    Los lectores de HTML piden `Accept-Encoding: identity`, pero hay servidores
+    que comprimen igualmente y urllib no descomprime solo. Vandal devolvía
+    `Content-Encoding: gzip`: el HTML llegaba como 38 KB de binario en vez de
+    169 KB de texto, no se encontraba ninguna etiqueta og:image y 11 de sus 12
+    piezas salían sin foto.
+
+    Ante una respuesta truncada por el límite de bytes se devuelve lo que se
+    haya podido descomprimir, y si nada funciona, el contenido original.
+    """
+    encoding = str(content_encoding or "").strip().lower()
+    if not encoding or encoding == "identity":
+        return payload
+    try:
+        if encoding == "gzip":
+            try:
+                return gzip.decompress(payload)
+            except (OSError, EOFError, zlib.error):
+                # Un flujo cortado a la mitad no se puede descomprimir entero,
+                # pero sí aprovechar hasta donde llega.
+                return zlib.decompressobj(zlib.MAX_WBITS | 16).decompress(payload)
+        if encoding in {"deflate", "zlib"}:
+            try:
+                return zlib.decompress(payload)
+            except zlib.error:
+                return zlib.decompress(payload, -zlib.MAX_WBITS)
+    except (OSError, EOFError, zlib.error):
+        return payload
+    return payload
+
+
 def fetch_bytes(
     url: str,
     *,
@@ -1615,7 +1650,7 @@ def fetch_bytes(
         method=method,
     )
     with urllib.request.urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
-        return response.read()
+        return decompress_payload(response.read(), response.headers.get("Content-Encoding"))
 
 
 def fetch_json(
@@ -2562,7 +2597,10 @@ def fetch_html_metadata(url: str, *, expected_title: str = "", _depth: int = 0) 
         content_type = response.headers.get_content_type().lower()
         if content_type not in {"text/html", "application/xhtml+xml"}:
             return final_url, ()
-        payload = response.read(IMAGE_HTML_MAX_BYTES + 1)
+        payload = decompress_payload(
+            response.read(IMAGE_HTML_MAX_BYTES + 1),
+            response.headers.get("Content-Encoding"),
+        )
         if len(payload) > IMAGE_HTML_MAX_BYTES:
             payload = payload[:IMAGE_HTML_MAX_BYTES]
         charset = response.headers.get_content_charset() or "utf-8"
@@ -2620,7 +2658,10 @@ def resolve_meneame_destination(url: str, expected_title: str) -> str:
             final_url = public_fetch_url(response.geturl()) or target
             if response.headers.get_content_type().lower() not in {"text/html", "application/xhtml+xml"}:
                 return final_url
-            payload = response.read(IMAGE_HTML_MAX_BYTES + 1)[:IMAGE_HTML_MAX_BYTES]
+            payload = decompress_payload(
+                response.read(IMAGE_HTML_MAX_BYTES + 1),
+                response.headers.get("Content-Encoding"),
+            )[:IMAGE_HTML_MAX_BYTES]
             charset = response.headers.get_content_charset() or "utf-8"
         parser = PageMetadataParser(final_url)
         parser.feed(payload.decode(charset, errors="replace"))
@@ -2957,6 +2998,19 @@ def enrich_one_story_image(story: dict[str, Any]) -> tuple[dict[str, Any], str |
                 expected_title=str(context.get("title") or story["title"]),
             )
         except (OSError, urllib.error.URLError, urllib.error.HTTPError, TimeoutError, UnicodeError, ValueError):
+            # El artículo no se deja pedir —semana.es devuelve 403 a cualquier
+            # cliente automático, también a Googlebot, aunque en un navegador
+            # abre sin problema—, pero el envoltorio de Google News sí se
+            # decodifica sin visitarlo. Sin esto la pieza conservaba el enlace
+            # de news.google.com y se descartaba entera: Semana declaraba
+            # elementos aceptados y no publicaba ni una pieza.
+            if _is_google_host(link) and (
+                bool(context.get("is_main"))
+                or (not resolved_main_link and _is_google_host(str(story.get("link") or "")))
+            ):
+                decodificado = resolve_google_news_destination(link)
+                if decodificado and not _is_google_host(decodificado):
+                    resolved_main_link = decodificado
             continue
         if (
             not _is_google_host(final_url)
