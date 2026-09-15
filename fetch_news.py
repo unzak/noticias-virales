@@ -1740,6 +1740,26 @@ def contains_phrase(text: str, phrases: Iterable[str]) -> int:
     return sum(1 for phrase in phrases if f" {normalize(phrase)} " in normalized)
 
 
+# Publicaciones de redes sociales que Google News indexa como si fueran
+# artículos. No son noticias: la cabecera que muestra el panel es el propio
+# instagram.com, no hay imagen que enlazar y el texto suele venir de cuentas
+# latinoamericanas con el formato "#Viral | ¡Bebió s4ngr3 de tortuga!".
+SOCIAL_POST_HOSTS = frozenset({
+    "instagram.com", "facebook.com", "fb.watch", "x.com", "twitter.com",
+    "tiktok.com", "threads.net", "t.me", "pinterest.com", "whatsapp.com",
+})
+
+
+def is_social_post_link(link: str) -> bool:
+    host = (urllib.parse.urlparse(link).hostname or "").lower()
+    for prefijo in ("www.", "m.", "amp."):
+        if host.startswith(prefijo):
+            host = host[len(prefijo):]
+    if not host:
+        return False
+    return any(host == d or host.endswith("." + d) for d in SOCIAL_POST_HOSTS)
+
+
 def is_blocked_content(text: str, *, vertical: str = "") -> bool:
     # Los viajes ya no se descartan aquí: en el histórico real de publicaciones
     # rinden en la media, y la lista marcaba como turismo cualquier pieza que
@@ -4487,7 +4507,7 @@ def feed_fallback_for_section(
         if published_at and published_at < cutoff:
             continue
         key = (normalize(title), source.casefold())
-        if key in seen or is_blocked_content(title):
+        if key in seen or is_blocked_content(title) or is_social_post_link(link):
             continue
         seen.add(key)
         image_candidates = extract_feed_image_candidates(raw)
@@ -4699,7 +4719,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             if is_google_news_feed and source == fallback_source and " - " in raw_title:
                 source = raw_title.rsplit(" - ", 1)[1].strip() or fallback_source
             title = clean_google_title(raw_title, source) if is_google_news_feed else raw_title
-            if is_blocked_content(title, vertical=vertical):
+            if is_blocked_content(title, vertical=vertical) or is_social_post_link(link):
                 continue
             title_keywords = keywords(title)
             if not title_keywords:
@@ -5863,6 +5883,10 @@ def build_unfiltered_stories(entries: list[StoryEntry]) -> list[dict[str, Any]]:
     """Serializa el historial válido de 72 h sin aplicar el ranking editorial."""
     stories: list[dict[str, Any]] = []
     for entry in entries:
+        # También contra el historial: una publicación de Instagram guardada
+        # ayer seguiría saliendo durante 72 h si solo se filtrara en la ingesta.
+        if is_social_post_link(entry.link):
+            continue
         # Misma regla que en la ingesta y por el mismo motivo, pero aplicada
         # también a lo que llega del historial: una entrada guardada ayer
         # conserva las etiquetas fijas del grupo de Google News que la trajo.
