@@ -29,9 +29,9 @@ Esto no es una preferencia de estilo:
 - El único workflow es `.github/workflows/update.yml`, que se dispara por `workflow_dispatch` y por push. **No declara `schedule`**: la actualización periódica la lanza un cronjob externo en cron-job.org que llama cada quince minutos a la API de Actions. El scheduler de GitHub se retiró porque entregaba 31-45 ejecuciones de las 48 pedidas y llegó a estar trece horas sin disparar ninguna. No añadir un `schedule` de vuelta sin comprobar antes que el problema se ha corregido.
 - **No hay límite global de resultados.** La vista `Cabronazi` debe contener todas las piezas válidas del historial: es la antigua `Sin filtro`, sin ranking ni cupos.
 - Ventanas temporales vigentes (`fetch_news.py`): consulta incremental de **3 h** (`FETCH_MAX_AGE_HOURS`), historial móvil de **72 h** (`CONTENT_MAX_AGE_HOURS`), panel abierto por defecto en **24 h** (`DEFAULT_PANEL_AGE_HOURS`). Se rechazan fechas ausentes, antiguas o futuras que no puedan verificarse.
-- Máximo de `MAX_NEWS_ITEMS_PER_SOURCE = 35` piezas por fuente. En cada vertical, `VERTICAL_SOURCE_LIMIT = 14` piezas por medio y `VERTICAL_STORY_LIMIT = 300` en total.
+- Máximo de `MAX_NEWS_ITEMS_PER_SOURCE = 35` piezas por fuente. Las verticales no tienen límites por medio ni globales: muestran todas las piezas clasificadas.
 - La interfaz muestra una noticia por fila y usa numeración `#01`, `#02`, etc.
-- Cinco categorías en el panel: `Cabronazi` (por defecto, historial completo, más recientes primero), las tres verticales `Cabropeludos`, `Cabromotor` y `Cabrogamer`, y `TT ForoCoches`.
+- Seis categorías en el panel: `Cabronazi` (por defecto, piezas sin vertical ni ENGLISH, más recientes primero), `ENGLISH` (titulares en inglés de cualquier fuente, incluidos LADbible y UNILAD, sin traducción), las tres verticales `Cabropeludos`, `Cabromotor` y `Cabrogamer`, y `TT ForoCoches`.
 - `build_ranked()` se sigue ejecutando y `stories` se sigue publicando en `data.json` porque alimentan `build_google_trend_news()`, `editorial_summary` y `tag_distribution`, pero **ninguna vista del panel los muestra**. No borrar esa maquinaria sin comprobar antes esos tres consumidores.
 - Las verticales se construyen sobre `unfiltered_stories`, nunca sobre `build_ranked`: ese filtro está afinado para una portada de virales generalista y descarta actualidad de motor o de videojuegos que en su vertical es justamente el material bueno.
 - En `data.json`, `vertical_stories` contiene **listas de enlaces**, no fichas. Duplicar las fichas engordaba el archivo en ~1,7 MB. El panel las resuelve contra `unfiltered_stories`.
@@ -63,7 +63,7 @@ Reducir fuertemente:
 - tribunales, guerra y sucesos sin ángulo claramente viral;
 - viajes y turismo, meteorología, recetas, festivales, sorteos y loterías;
 - programaciones y agendas locales;
-- titulares total o parcialmente en inglés;
+- los titulares detectados en inglés se conservan en ENGLISH, sin descartarlos por idioma;
 - actualidad local de Latinoamérica sin ángulo español;
 - noticias duplicadas o titulares equivalentes.
 
@@ -209,3 +209,11 @@ Ante cualquier contradicción entre este documento y el comportamiento observado
 5. Revisar el diff buscando regresiones, funciones duplicadas y cambios accidentales.
 6. Entregar un resumen con archivos modificados, pruebas realizadas y riesgos pendientes.
 7. Esperar autorización antes de commit, push o despliegue.
+
+## Fuentes internacionales explícitas
+
+Bored Panda España y El Imparcial · Lo Curioso están autorizados. El Imparcial exige destino en `elimparcial.com/locurioso/` tras resolver Google News. LADbible, UNILAD y todos los titulares detectados en inglés se conservan exclusivamente en ENGLISH, después de Cabronazi, con prioridad sobre las verticales. Las piezas en inglés no se descartan por idioma ni por geografía, independientemente de su fuente; mantienen las demás validaciones. `english_stories` publica enlaces al historial, sin duplicar fichas. Cabronazi excluye las piezas asignadas a una vertical o a ENGLISH; las verticales actuales no tienen cupos por medio ni globales, según el código.
+
+## Recuperación semanal de los nuevos medios
+
+Bored Panda España, El Imparcial · Lo Curioso, LADbible y UNILAD conservan siete días; el resto mantiene 72 horas. `PULSO_BACKFILL_NEW_SOURCES=1` consulta sus RSS y búsquedas diarias por dominio en Google News para recuperar la última semana. Actions ofrece el input manual `backfill_new_sources`. El periodo de 168 h permite ver las piezas recuperadas. Se mantienen fechas verificadas, destinos resueltos, imágenes remotas y 35 resultados por consulta.

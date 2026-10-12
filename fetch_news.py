@@ -152,7 +152,23 @@ def build_topic_sources() -> tuple[tuple[Any, ...], ...]:
     return tuple(sources)
 
 
+LO_CURIOSO_FEED = "El Imparcial · Lo Curioso"
+WEEKLY_SOURCE_HOURS = 7 * 24
+WEEKLY_SOURCE_FEEDS = frozenset({
+    "Bored Panda · España", LO_CURIOSO_FEED,
+    "LADbible · English", "UNILAD · English",
+})
+
 NEWS_SOURCES = (
+    ("Bored Panda · España", "https://www.boredpanda.es/feed/", 9.0,
+     "Virales y curiosidades", ("viral", "curiosidades")),
+    (LO_CURIOSO_FEED,
+     "https://news.google.com/rss/search?q=site%3Aelimparcial.com%2Flocurioso&hl=es&gl=MX&ceid=MX%3Aes",
+     9.0, "Lo Curioso", ("viral", "curiosidades")),
+    ("LADbible · English", "https://www.ladbible.com/index.rss", 9.0,
+     "English", ("viral",)),
+    ("UNILAD · English", "https://www.unilad.com/index.rss", 9.0,
+     "English", ("viral",)),
     (
         "Mundo Deportivo · El Otro Mundo",
         "https://www.mundodeportivo.com/feed/rss/elotromundo",
@@ -1040,6 +1056,29 @@ def vertical_for_text(text: str) -> str:
     return ""
 
 
+def international_panel_source(link: str, feed: str = "") -> str:
+    """Excepciones explícitas del panel; Lo Curioso se valida por destino."""
+    parsed = urllib.parse.urlparse(link)
+    host = (parsed.hostname or "").lower().removeprefix("www.")
+    if host in {"ladbible.com", "unilad.com"}:
+        return "english"
+    if host == "boredpanda.es":
+        return "boredpanda"
+    if host == "elimparcial.com" and (
+        parsed.path.lower() == "/locurioso"
+        or parsed.path.lower().startswith("/locurioso/")
+    ):
+        return "locurioso"
+    if host == "news.google.com" and feed == LO_CURIOSO_FEED:
+        return "locurioso"
+    return ""
+
+
+def is_english_story(title: str, link: str) -> bool:
+    """ENGLISH reúne sus medios dedicados y titulares ingleses de cualquier fuente."""
+    return international_panel_source(link) == "english" or is_probably_english(title)
+
+
 def story_vertical(title: str, link: str, feed: str) -> str:
     """Vertical definitiva de una pieza, revisada en cada ejecución.
 
@@ -1051,6 +1090,10 @@ def story_vertical(title: str, link: str, feed: str) -> str:
     pestaña y desaparece de Cabronazi, así que una pieza no puede estar en dos
     sitios y nada puede quedarse sin sitio.
     """
+    if is_english_story(title, link):
+        return "english"
+    if international_panel_source(link) == "locurioso":
+        return ""
     # Las verticales son material candidato a republicarse y mantienen el
     # criterio de la selección: solo medios con edición española. Lo que no
     # pasa no se pierde, se queda en Cabronazi.
@@ -2036,7 +2079,13 @@ def filter_spain_focused_entries(entries: list["StoryEntry"]) -> tuple[list["Sto
     rejected = 0
     for entry in entries:
         _, _, foreign_without_spanish_angle = spain_relevance((entry,))
-        if foreign_without_spanish_angle:
+        if (
+            foreign_without_spanish_angle
+            and not is_english_story(entry.title, entry.link)
+            and not international_panel_source(
+                entry.link, str(entry.metrics.get("editorial_feed") or "")
+            )
+        ):
             rejected += 1
             continue
         accepted.append(entry)
@@ -2058,7 +2107,11 @@ def filter_spain_focused_stories(stories: list[dict[str, Any]]) -> tuple[list[di
             keywords=(),
         )
         _, _, foreign_without_spanish_angle = spain_relevance((probe,))
-        if foreign_without_spanish_angle:
+        if (
+            foreign_without_spanish_angle
+            and not is_english_story(probe.title, probe.link)
+            and not international_panel_source(probe.link)
+        ):
             rejected += 1
             continue
         accepted.append(story)
@@ -3387,6 +3440,8 @@ def dedupe_history_entries(entries: list[StoryEntry]) -> list[StoryEntry]:
 def write_history_atomic(entries: list[StoryEntry], now: dt.datetime) -> None:
     payload = {
         "updated_at": now.isoformat().replace("+00:00", "Z"),
+        "weekly_source_retention_hours": WEEKLY_SOURCE_HOURS,
+        "weekly_source_feeds": sorted(WEEKLY_SOURCE_FEEDS),
         "retention_hours": CONTENT_MAX_AGE_HOURS,
         "fetch_window_hours": FETCH_MAX_AGE_HOURS,
         "entries": [serialize_history_entry(entry) for entry in entries],
@@ -3721,30 +3776,33 @@ def filter_recent_entries(
     entries: list[StoryEntry],
     now: dt.datetime,
     max_age_hours: int = CONTENT_MAX_AGE_HOURS,
+    weekly_source_hours: int | None = None,
 ) -> tuple[list[StoryEntry], dict[str, int]]:
     recent: list[StoryEntry] = []
     missing = 0
     old = 0
     future = 0
-    non_spanish = 0
     cutoff = now - dt.timedelta(hours=max_age_hours)
     future_limit = now + dt.timedelta(minutes=FUTURE_CLOCK_SKEW_MINUTES)
     for entry in entries:
-        if is_probably_english(entry.title):
-            non_spanish += 1
-            continue
+        entry_cutoff = (
+            now - dt.timedelta(hours=weekly_source_hours)
+            if weekly_source_hours is not None
+            and entry.metrics.get("editorial_feed") in WEEKLY_SOURCE_FEEDS
+            else cutoff
+        )
         published_at = entry.published_at
         if published_at is None:
             missing += 1
             continue
         value = published_at.astimezone(dt.timezone.utc)
         url_day = publication_day_from_url(entry.link)
-        if url_day and url_day < cutoff.date():
+        if url_day and url_day < entry_cutoff.date():
             # Una fecha antigua explícita en la URL prevalece sobre fechas
             # recientes del RSS, que a veces representan una republicación.
             old += 1
             continue
-        if value < cutoff:
+        if value < entry_cutoff:
             old += 1
             continue
         if value > future_limit:
@@ -3754,12 +3812,11 @@ def filter_recent_entries(
     print(
         f"[ok] Ventana de {max_age_hours} h: {len(recent)}/{len(entries)} contenidos válidos · "
         f"{old} antiguos · {missing} sin fecha · {future} con fecha futura"
-        f" · {non_spanish} en inglés"
     )
     return recent, {
         "accepted": len(recent), "total": len(entries), "old": old,
         "missing_date": missing, "future_date": future,
-        "rejected_english": non_spanish,
+        "rejected_english": 0,
     }
 
 
@@ -4667,11 +4724,38 @@ def fetch_direct_section_entries(
             print(f"[ok] {status_name}: {accepted} elementos · {mode}")
     return entries, warnings, statuses
 
+def weekly_backfill_sources(now: dt.datetime) -> tuple[tuple[Any, ...], ...]:
+    """Busca por día para recuperar una semana sin depender de la cola del RSS."""
+    domains = {
+        "Bored Panda · España": ("boredpanda.es", "es", "ES"),
+        LO_CURIOSO_FEED: ("elimparcial.com/locurioso", "es", "MX"),
+        "LADbible · English": ("ladbible.com", "en", "GB"),
+        "UNILAD · English": ("unilad.com", "en", "US"),
+    }
+    sources = []
+    for name, _, boost, section, tags in NEWS_SOURCES:
+        if name not in domains:
+            continue
+        domain, language, country = domains[name]
+        for offset in range(8):
+            day = now.date() - dt.timedelta(days=offset)
+            end = day + dt.timedelta(days=1)
+            query = f"site:{domain} after:{day.isoformat()} before:{end.isoformat()}"
+            params = {"q": query, "hl": language, "gl": country,
+                      "ceid": f"{country}:{language}"}
+            url = f"{GOOGLE_NEWS_BASE}/search?{urllib.parse.urlencode(params)}"
+            sources.append((name, url, boost, section, tags))
+    return tuple(sources)
+
+
 def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, Any]]]:
     entries: list[StoryEntry] = []
     warnings: list[str] = []
     statuses: list[dict[str, Any]] = []
-    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=NEWS_MAX_AGE_HOURS)
+    now = dt.datetime.now(dt.timezone.utc)
+    cutoff = now - dt.timedelta(hours=NEWS_MAX_AGE_HOURS)
+    backfill = os.getenv("PULSO_BACKFILL_NEW_SOURCES") == "1"
+    sources = NEWS_SOURCES + (weekly_backfill_sources(now) if backfill else ())
     seen: set[tuple[str, str]] = set()
 
     direct_entries, direct_warnings, direct_statuses = fetch_direct_section_entries(cutoff, seen)
@@ -4689,13 +4773,15 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
             return None, exc
 
     with ThreadPoolExecutor(max_workers=NEWS_FEED_WORKERS) as executor:
-        downloaded = list(executor.map(download_feed, NEWS_SOURCES))
+        downloaded = list(executor.map(download_feed, sources))
 
     # `source_config`, no `source`: más abajo el bucle interior usa `source`
     # para la cabecera real de cada pieza.
-    for source_config, (feed, download_error) in zip(NEWS_SOURCES, downloaded):
+    for source_config, (feed, download_error) in zip(sources, downloaded):
         fallback_source, url, editorial_boost, editorial_section, configured_tags = source_config
         vertical = VERTICAL_FEEDS.get(fallback_source, "")
+        source_cutoff = (now - dt.timedelta(hours=WEEKLY_SOURCE_HOURS)
+                         if backfill and fallback_source in WEEKLY_SOURCE_FEEDS else cutoff)
         if download_error is not None:
             warnings.append(f"No se pudo descargar {fallback_source}: {download_error}")
             statuses.append({"name": fallback_source, "ok": False, "items": 0})
@@ -4738,7 +4824,7 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                 continue
 
             published_at = parse_published(raw)
-            if published_at and published_at < cutoff:
+            if published_at and published_at < source_cutoff:
                 continue
 
             dedupe_key = (normalize(title), source.casefold())
@@ -4773,7 +4859,9 @@ def fetch_news_entries() -> tuple[list[StoryEntry], list[str], list[dict[str, An
                 break
 
         note = "Sin artículos recientes" if accepted == 0 else None
-        statuses.append({"name": fallback_source, "ok": True, "items": accepted, "note": note})
+        statuses.append({"name": fallback_source, "ok": True, "items": accepted,
+                         "raw_items": len(feed.entries), "note": note,
+                         "feed_url": url, "backfill": backfill and fallback_source in WEEKLY_SOURCE_FEEDS})
         prefix = "[sin resultados]" if accepted == 0 else "[ok]"
         print(f"{prefix} {fallback_source}: {accepted} elementos")
 
@@ -5577,7 +5665,10 @@ def build_ranked(
     ranked: list[dict[str, Any]] = []
     non_spanish_rejected = 0
 
-    for cluster in cluster_entries(entries):
+    for cluster in cluster_entries([
+        entry for entry in entries
+        if not is_english_story(entry.title, entry.link)
+    ]):
         items: list[StoryEntry] = cluster["items"]
         # La selección solo publica medios con edición española: la vista sin
         # filtro sigue siendo permisiva, pero lo que llega a la selección es
@@ -6214,7 +6305,9 @@ def build() -> dict[str, Any]:
     now = dt.datetime.now(dt.timezone.utc)
     image_retry_entries = [entry for entry in entries if entry_requires_image_retry(entry)]
     entries, _fetch_temporal_summary = filter_recent_entries(
-        entries, now, FETCH_MAX_AGE_HOURS
+        entries, now, FETCH_MAX_AGE_HOURS,
+        weekly_source_hours=(WEEKLY_SOURCE_HOURS
+                             if os.getenv("PULSO_BACKFILL_NEW_SOURCES") == "1" else None),
     )
     image_retry_entries, _ = filter_recent_entries(
         image_retry_entries, now, DEFAULT_PANEL_AGE_HOURS
@@ -6225,7 +6318,7 @@ def build() -> dict[str, Any]:
     history_entries, history_source = load_history_entries()
     entries = dedupe_history_entries([*history_entries, *entries])
     entries, temporal_summary = filter_recent_entries(
-        entries, now, CONTENT_MAX_AGE_HOURS
+        entries, now, CONTENT_MAX_AGE_HOURS, weekly_source_hours=WEEKLY_SOURCE_HOURS
     )
     accepted_before_spain_filter = len(entries)
     entries, historical_foreign_rejected = filter_spain_focused_entries(entries)
@@ -6358,6 +6451,8 @@ def build() -> dict[str, Any]:
         "stories": ranked,
         "unfiltered_stories": unfiltered_stories,
         "forocoches_stories": forocoches_stories,
+        "english_stories": [story["link"] for story in unfiltered_stories
+                            if story.get("vertical") == "english"],
         "vertical_stories": vertical_stories,
         "vertical_labels": VERTICAL_LABELS,
         "warnings": warnings,
@@ -6379,6 +6474,8 @@ def build() -> dict[str, Any]:
         },
         "image_summary": image_summary,
         "unfiltered_image_summary": unfiltered_image_summary,
+        "weekly_source_window_hours": WEEKLY_SOURCE_HOURS,
+        "weekly_source_feeds": sorted(WEEKLY_SOURCE_FEEDS),
         "content_window_hours": CONTENT_MAX_AGE_HOURS,
         "default_panel_window_hours": DEFAULT_PANEL_AGE_HOURS,
         "temporal_summary": temporal_summary,
