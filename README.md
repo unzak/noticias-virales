@@ -4,7 +4,7 @@ Panel estático para detectar contenidos con potencial editorial viral en Españ
 La vista sin filtro y la selección editorial se construyen sobre un historial
 móvil con todas las piezas cuya fecha pueda verificarse dentro de las **últimas
 72 horas**, sin imponer un límite global de resultados.
-`Cabronazi` es esa vista general completa. Sobre el mismo historial se montan
+`Cabronazi` muestra las piezas sin vertical asignada ni ENGLISH. Sobre el mismo historial se montan
 tres verticales temáticas —`Cabropeludos` (animales), `Cabromotor` (motor) y
 `Cabrogamer` (videojuegos)—, que recogen tanto lo que llega de sus medios
 especializados como cualquier pieza del historial cuyo titular trate el tema,
@@ -26,9 +26,9 @@ se abren por defecto con las noticias más recientes primero. Google
 Trends sigue aportando señales internas al ranking, pero ya no ocupa un panel
 propio en la interfaz.
 
-El menú superior ofrece cinco categorías: `Cabronazi`, que abre por defecto y
-contiene el historial completo sin ranking limitado visualmente a las últimas
-24 horas, las tres verticales `Cabropeludos`, `Cabromotor` y `Cabrogamer`, y
+El menú superior ofrece seis categorías: `Cabronazi`, que abre por defecto y
+contiene las piezas generales sin ranking, limitado visualmente a las últimas
+24 horas, `ENGLISH` con titulares en inglés de cualquier fuente, incluidos LADbible y UNILAD, las tres verticales `Cabropeludos`, `Cabromotor` y `Cabrogamer`, y
 `TT ForoCoches`. En `data.json` cada vertical viaja como lista de enlaces, no
 como fichas duplicadas: el panel las resuelve contra el historial que ya tiene
 cargado.
@@ -71,7 +71,8 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   guerra, tribunales y economía, además del filtro temporal de un día.
 - El clasificador asigna etiquetas editoriales automáticamente a partir del
   titular y de la sección de origen.
-- Los titulares total o parcialmente en inglés se descartan antes del ranking.
+- Los titulares detectados en inglés se conservan y se clasifican en `ENGLISH`,
+  independientemente de su fuente; mantienen los controles de fecha y calidad.
 - Los artículos de viajes, turismo, hoteles, aeropuertos y vuelos se descartan
   antes de construir tanto la selección como la vista completa.
 - La interfaz permite limitar el panel a la última hora, las últimas 4, 24, 48
@@ -95,6 +96,39 @@ solo cuando el medio no expone ninguna imagen fiable. Nunca descarga la imagen.
   `Deportes` y `Vida y bienestar`.
 - El ranking compara cada titular con un perfil agregado de 834 publicaciones
   reales de Cabronazi y muestra la `Afinidad Cabronazi` de cada coincidencia.
+
+## Nuevas fuentes y ENGLISH
+
+Bored Panda España y El Imparcial · Lo Curioso se incorporan al panel. La
+excepción de El Imparcial se limita a artículos cuyo destino resuelto esté en
+`elimparcial.com/locurioso/`; no abre el filtro a otras secciones mexicanas.
+ENGLISH aparece después de Cabronazi y reúne LADbible, UNILAD y cualquier
+noticia cuyo titular se detecte en inglés, venga de la fuente que venga,
+con títulos originales, sin traducción ni claves adicionales. Comparte la
+ventana de 72 horas, los filtros y la ordenación, y no mezcla sus piezas con
+Cabronazi ni las verticales españolas. `english_stories` contiene enlaces que
+el panel resuelve contra `unfiltered_stories`, sin duplicar fichas ni imágenes.
+Los titulares en inglés se conservan también si el medio es extranjero. La
+clasificación por idioma tiene prioridad sobre las verticales y se recalcula
+en cada actualización para todo el historial. Los controles de fecha, enlaces,
+deduplicación y calidad se mantienen; no hay traducción.
+
+Los cuatro medios nuevos conservan una ventana de siete días; el resto sigue
+con 72 horas. El periodo `Última semana (medios nuevos)` permite consultar esas
+piezas. Para recuperar publicaciones anteriores a la cola actual del RSS:
+
+```powershell
+$env:PULSO_BACKFILL_NEW_SOURCES = "1"
+python fetch_news.py
+Remove-Item Env:PULSO_BACKFILL_NEW_SOURCES
+```
+
+En Actions, la ejecución manual ofrece `backfill_new_sources`. La recuperación
+consulta los RSS originales y búsquedas de Google News por día y dominio,
+verifica las fechas y destinos y fusiona el resultado con el historial. Cada
+consulta mantiene el máximo de 35 resultados; la cobertura depende de lo que
+publique el RSS y de la indexación de Google News. Las actualizaciones normales
+siguen consultando tres horas y conservan estas piezas hasta cumplir siete días.
 
 ## Fuentes sin claves
 

@@ -201,6 +201,7 @@
 <main class="shell">
   <nav class="view-switch" aria-label="Categoría">
     <button class="view-tab active" type="button" data-view="general">Cabronazi</button>
+    <button class="view-tab" type="button" data-view="english">ENGLISH</button>
     <button class="view-tab" type="button" data-view="peludos">Cabropeludos</button>
     <button class="view-tab" type="button" data-view="motor">Cabromotor</button>
     <button class="view-tab" type="button" data-view="gamer">Cabrogamer</button>
@@ -221,6 +222,7 @@
           <option value="24" selected>Últimas 24 horas</option>
           <option value="48">Últimas 48 horas</option>
           <option value="72">Últimas 72 horas</option>
+          <option value="168">Última semana (medios nuevos)</option>
         </select>
       </label>
       <label class="sort-control" for="sortBy">Ordenar
@@ -252,19 +254,20 @@
   <div class="notice" id="notice">El score es una ayuda editorial: no garantiza likes. Comprueba contexto, derechos, autoría, privacidad y seguridad de marca antes de republicar contenido de terceros.</div>
 </main>
 
-<footer><div class="shell">Se actualiza varias veces por hora · Historial móvil de 72 horas · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
+<footer><div class="shell">Se actualiza varias veces por hora · Historial de 72 horas · Medios nuevos: 7 días · Ranking diversificado con política residual · El panel enlaza a la publicación original.</div></footer>
 
 <script>
 let allStories = [];
 // Cabronazi es el historial completo de 72 h sin ranking: es la vista que el
 // panel llamaba "Sin filtro". El ranking editorial ya no se muestra.
 let generalStories = [];
+let englishStories = [];
 let forocochesStories = [];
 // Cada vertical llega como lista de enlaces y se resuelve contra el historial
 // completo, que es donde viajan las fichas con su imagen ya verificada.
 let verticalStories = {peludos:[], motor:[], gamer:[]};
 const VERTICAL_VIEWS = ['peludos','motor','gamer'];
-const VIEWS = ['general'].concat(VERTICAL_VIEWS, ['forocoches']);
+const VIEWS = ['general','english'].concat(VERTICAL_VIEWS, ['forocoches']);
 let currentView = 'general';
 let currentFilter = 'all';
 let currentHours = 24;
@@ -426,6 +429,7 @@ function renderStories(){
   }, {once:true}));
 }
 function storiesForView(view){
+  if(view === 'english') return englishStories;
   if(view === 'forocoches') return forocochesStories;
   if(VERTICAL_VIEWS.includes(view)) return verticalStories[view] || [];
   return generalStories;
@@ -467,6 +471,8 @@ async function load(){
     const historial = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
     forocochesStories = Array.isArray(data.forocoches_stories) ? data.forocoches_stories : [];
     const byLink = new Map(historial.map(story => [story.link, story]));
+    englishStories = (Array.isArray(data.english_stories) ? data.english_stories : [])
+      .map(link => byLink.get(link)).filter(Boolean);
     const verticalLinks = data.vertical_stories || {};
     verticalStories = Object.fromEntries(VERTICAL_VIEWS.map(key => [
       key,
