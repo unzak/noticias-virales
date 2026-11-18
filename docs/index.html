@@ -272,6 +272,10 @@ let currentView = 'general';
 let currentFilter = 'all';
 let currentHours = 24;
 let currentSort = 'time-desc';
+const DATA_REFRESH_MS = 60 * 1000;
+let dataLoading = false;
+let dataLoaded = false;
+let loadedUpdate = null;
 
 function escapeHtml(value){
   return String(value ?? '').replace(/[&<>'"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]));
@@ -458,16 +462,17 @@ function renderSources(data){
     return `<span class="source-chip ${state}" title="${escapeHtml(suffix)}"><span class="status-dot"></span>${escapeHtml(s.name)}</span>`;
   }).join('');
   const warnings = data.warnings || [];
-  if(warnings.length){
-    document.getElementById('warningsBox').hidden = false;
-    document.getElementById('warnings').innerHTML = warnings.map(w => `<li>${escapeHtml(w)}</li>`).join('');
-  }
+  document.getElementById('warningsBox').hidden = !warnings.length;
+  document.getElementById('warnings').innerHTML = warnings.map(w => `<li>${escapeHtml(w)}</li>`).join('');
 }
 async function load(){
+  if(dataLoading) return;
+  dataLoading = true;
   try{
     const response = await fetch('./data.json?_=' + Date.now(), {cache:'no-store'});
     if(!response.ok) throw new Error('data.json no disponible');
     const data = await response.json();
+    if(dataLoaded && data.updated_at && data.updated_at === loadedUpdate) return;
     const historial = Array.isArray(data.unfiltered_stories) ? data.unfiltered_stories : [];
     forocochesStories = Array.isArray(data.forocoches_stories) ? data.forocoches_stories : [];
     const byLink = new Map(historial.map(story => [story.link, story]));
@@ -497,8 +502,16 @@ async function load(){
     if(data.editorial_notice) document.getElementById('notice').textContent = data.editorial_notice;
     renderStories();
     renderSources(data);
+    loadedUpdate = data.updated_at || null;
+    dataLoaded = true;
   }catch(error){
+    if(dataLoaded){
+      console.warn("No se pudo refrescar Pulso Viral:", error);
+      return;
+    }
     document.getElementById('stories').innerHTML = `<div class="error">No se pudieron cargar los datos: ${escapeHtml(error.message)}.<br>Ejecuta el workflow de GitHub Actions al menos una vez.</div>`;
+  }finally{
+    dataLoading = false;
   }
 }
 document.getElementById('filters').addEventListener('click', event => {
@@ -521,6 +534,15 @@ document.getElementById('sortBy').addEventListener('change', event => {
   renderStories();
 });
 load();
+setInterval(() => {
+  if(!document.hidden) load();
+}, DATA_REFRESH_MS);
+document.addEventListener('visibilitychange', () => {
+  if(!document.hidden) load();
+});
+window.addEventListener('pageshow', event => {
+  if(event.persisted) load();
+});
 </script>
 </body>
 </html>

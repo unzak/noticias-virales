@@ -249,6 +249,15 @@ El `push` inicia el workflow. También puede ejecutarse manualmente desde:
 
 En `Settings → Pages`, la fuente debe ser **GitHub Actions**.
 
+## Actualización del panel abierto
+
+El panel comprueba `data.json` cada minuto mientras está visible y al volver a
+la pestaña o restaurar la página desde el historial del navegador. Conserva la
+categoría, el periodo y la ordenación seleccionados. Si la conexión falla en
+un refresco, mantiene los últimos datos cargados y vuelve a intentarlo; la
+fecha mostrada sigue siendo la de esos datos. Las consultas no generan nuevos
+datos: los sigue generando y publicando el workflow invocado por cron-job.org.
+
 ## Probar localmente
 
 ```bash
